@@ -16,12 +16,12 @@ const CalendarEvent: React.FC<DataProps> = ({
     ", " +
     date;
   return (
-    <div className="bg-gray flex gap-6 overflow-hidden column item">
+    <div className="bg-gray flex gap-6 overflow-hidden column min-w-[30ch]">
       <div className="event">
         <div className="text-neutral-900 text-sm">{normalDate}</div>
         <div>
           <a
-            className="big-font font-bold text-secondary-blue-500 no-underline leading-4"
+            className="text-xl font-bold text-secondary-blue-500 no-underline leading-4"
             href={url}
             target="_blank"
           >
@@ -29,7 +29,7 @@ const CalendarEvent: React.FC<DataProps> = ({
             {title}{" "}
           </a>
         </div>
-        <div className="datetime text-xs">{date_time}</div>
+        <div className="text-primary-500 text-xs">{date_time}</div>
         <div className="py-2">
           {description_long && <p>{descriptionLong}</p>}
         </div>

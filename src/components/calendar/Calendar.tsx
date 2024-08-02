@@ -44,7 +44,7 @@ const Calendar = () => {
 
   return (
     <section className="container px-2 my-6">
-      <div className="control-row is-hidden-touch">
+      <div className="hidden min-h-8 relative lg:block">
         <div className="toggle-btn">
           <p
             id="week"

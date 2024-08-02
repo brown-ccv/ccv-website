@@ -60,41 +60,12 @@
         @apply p-3;
     }
 
-    .datetime {
-        @apply text-sm;
-        @apply text-primary-500;
-    }
-
     .weekly-datetime {
         @apply text-darkblue;
     }
 }
 
 @layer utilities {
-    .text-balance {
-        text-wrap: balance;
-    }
-
-    .title {
-        font-size: 15px;
-        font-weight: bold;
-        word-wrap: break-word;
-    }
-
-    .big-font {
-        font-size: 1.5em;
-    }
-
-    .calendar {
-        margin: auto;
-        width: 100%;
-    }
-
-    .control-row {
-        min-height: 32px;
-        position: relative;
-    }
-
     .toggle-btn {
         position: absolute;
         top: -8px;
@@ -122,26 +93,10 @@
         box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
     }
 
-    .bump-margin-top {
-        margin-top: 1.5em;
-    }
-
     .calendar-container {
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         text-align: center;
         color: #2c3e50;
-    }
-
-    .calendar-button {
-        margin-top: 10px;
-    }
-
-    .overflow-hidden {
-        overflow: hidden;
-    }
-
-    .item {
-        min-width: 30ch;
     }
 }
