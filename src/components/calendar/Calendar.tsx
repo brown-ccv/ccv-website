@@ -18,6 +18,7 @@ export interface DataProps {
 const Calendar = () => {
   const [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [view, setView] = useState("upcoming");
   const currentDate = new Date();
   const today = getStringDate(
     currentDate.getMonth() + 1,
@@ -42,7 +43,33 @@ const Calendar = () => {
   if (!data) return <p>No profile data</p>;
 
   return (
-    <>
+    <section className="container px-2 my-6">
+      <div className="control-row is-hidden-touch">
+        <div className="toggle-btn">
+          <p
+            id="week"
+            className={view === "weekly" ? "selected" : ""}
+            onClick={() => setView("weekly")}
+          >
+            Weekly
+          </p>
+          <p
+            id="month"
+            className={view === "monthly" ? "selected" : ""}
+            onClick={() => setView("monthly")}
+          >
+            Monthly
+          </p>
+          <p
+            id="upcoming"
+            className={view === "upcoming" ? "selected" : ""}
+            onClick={() => setView("upcoming")}
+          >
+            Upcoming
+          </p>
+        </div>
+      </div>
+
       <div className="flex flex-wrap justify-between gap-4">
         {data &&
           data.map((e: DataProps, i) => {
@@ -62,7 +89,7 @@ const Calendar = () => {
             );
           })}
       </div>
-    </>
+    </section>
   );
 };
 
