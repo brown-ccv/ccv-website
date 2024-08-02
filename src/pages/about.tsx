@@ -1,3 +1,9 @@
+import { Opportunities } from "@/components/Opportunities";
+
 export default function About() {
-    return <div>About</div>
+  return (
+    <section>
+      <Opportunities />
+    </section>
+  );
 }
