@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { getStringDate } from "@/utils";
+import { useState } from "react";
 import CalendarEvent from "@/components/calendar/CalendarEvent";
+import { getEventData } from "@/hooks/events";
 
 export interface DataProps {
   date_time: string;
@@ -16,30 +16,9 @@ export interface DataProps {
 }
 
 const Calendar = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setLoading] = useState(true);
   const [view, setView] = useState("upcoming");
-  const currentDate = new Date();
-  const today = getStringDate(
-    currentDate.getMonth() + 1,
-    currentDate.getDate(),
-    currentDate.getFullYear(),
-  );
+  const data = getEventData();
 
-  useEffect(() => {
-    fetch(
-      "https://events.brown.edu/live/json/events/description_long/true/group/Center%20for%20Computation%20and%20Visualization%20%28CCV%29/start_date/" +
-        today +
-        "/",
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
-  });
-
-  if (isLoading) return <p>Loading...</p>;
   if (!data) return <p>No event data</p>;
 
   return (
