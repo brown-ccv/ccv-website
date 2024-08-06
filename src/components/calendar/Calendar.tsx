@@ -40,7 +40,7 @@ const Calendar = () => {
   });
 
   if (isLoading) return <p>Loading...</p>;
-  if (!data) return <p>No profile data</p>;
+  if (!data) return <p>No event data</p>;
 
   return (
     <section className="container px-2 my-6">
