@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getStringDate } from "../utils";
 
-export function getEventData() {
+export function useGetEventData() {
   const [data, setData] = useState([]);
 
   const currentDate = new Date();

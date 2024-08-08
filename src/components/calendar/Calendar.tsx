@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import CalendarEvent from "@/components/calendar/CalendarEvent";
-import { getEventData } from "@/hooks/events";
+import { useGetEventData } from "@/hooks/events";
 
 export interface DataProps {
   date_time: string;
@@ -17,7 +17,7 @@ export interface DataProps {
 
 const Calendar = () => {
   const [view, setView] = useState("upcoming");
-  const data = getEventData();
+  const data = useGetEventData();
 
   if (!data) return <p>No event data</p>;
 
