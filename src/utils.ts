@@ -58,13 +58,3 @@ export const ALL_DAYS_OF_WEEK = [
   "Fri",
   "Sat",
 ];
-
-export const DISPLAY_YEAR = new Date().getFullYear();
-export const DISPLAY_MONTH = new Date().getMonth() + 1;
-export const DISPLAY_DAY = new Date().getDate();
-
-export const TODAYS_DATE = getStringDate(
-  new Date().getMonth() + 1,
-  new Date().getDate(),
-  new Date().getFullYear(),
-);
