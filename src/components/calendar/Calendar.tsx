@@ -51,19 +51,12 @@ const Calendar = () => {
 
       <div className="flex flex-wrap justify-between gap-4">
         {data &&
-          data.map((e: DataProps, i) => {
+          data.map((event: DataProps) => {
             return (
-              <div key={i}>
-                <CalendarEvent
-                  date_time={e.date_time}
-                  title={e.title}
-                  url={e.url}
-                  date={e.date}
-                  date_utc={e.date_utc}
-                  description_long={e.description_long}
-                  contact_info={e.contact_info}
-                  description={e.description}
-                />
+              <div
+                key={`${event.date_time}-${event.contact_info}-${event.title}`}
+              >
+                <CalendarEvent data={event} />
               </div>
             );
           })}
