@@ -54,7 +54,7 @@ const Calendar = () => {
           data.map((event: DataProps) => {
             return (
               <div
-                key={`${event.date_time}-${event.contact_info}-${event.title}`}
+                key={`${event.date_utc}-${event.contact_info}-${event.title}`}
               >
                 <CalendarEvent data={event} />
               </div>
