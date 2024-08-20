@@ -3,6 +3,7 @@ import { getStringDate } from "@/utils";
 
 export function useGetEventData() {
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const currentDate = new Date();
   const today = getStringDate(
@@ -18,7 +19,8 @@ export function useGetEventData() {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
+        setIsLoading(false);
       });
   });
-  return data;
+  return { data, isLoading };
 }
