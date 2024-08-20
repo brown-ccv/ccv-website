@@ -22,8 +22,7 @@ const CalendarEvent: React.FC<EventProps> = ({ data }) => {
             href={data.url}
             target="_blank"
           >
-            {" "}
-            {data.title}{" "}
+            {data.title}
           </a>
         </div>
         <div className="text-primary-500 text-xs">{data.date_time}</div>
