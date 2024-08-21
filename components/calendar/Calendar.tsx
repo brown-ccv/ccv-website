@@ -1,26 +1,26 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import CalendarEvent from "@/components/calendar/CalendarEvent";
-import { useGetEventData } from "@/hooks/events";
+import { useState } from "react"
+import CalendarEvent from "@/components/calendar/CalendarEvent"
+import { useGetEventData } from "@/hooks/events"
 
 export interface DataProps {
-  date_time: string;
-  date: string;
-  title: string;
-  date_utc: string;
-  url: string;
-  contact_info: string;
-  description: string;
-  description_long: string;
+  date_time: string
+  date: string
+  title: string
+  date_utc: string
+  url: string
+  contact_info: string
+  description: string
+  description_long: string
 }
 
 const Calendar = () => {
-  const [view, setView] = useState("upcoming");
-  const { data, isLoading } = useGetEventData();
+  const [view, setView] = useState("upcoming")
+  const { data, isLoading } = useGetEventData()
 
-  if (!data) return <p>No event data</p>;
-  if (isLoading) return <p>Loading event data</p>;
+  if (!data) return <p>No event data</p>
+  if (isLoading) return <p>Loading event data</p>
 
   return (
     <section className="container px-2 my-6">
@@ -59,11 +59,11 @@ const Calendar = () => {
               >
                 <CalendarEvent data={event} />
               </div>
-            );
+            )
           })}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Calendar;
+export default Calendar
