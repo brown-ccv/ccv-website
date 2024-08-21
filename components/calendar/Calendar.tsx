@@ -17,9 +17,10 @@ export interface DataProps {
 
 const Calendar = () => {
   const [view, setView] = useState("upcoming");
-  const data = useGetEventData();
+  const { data, isLoading } = useGetEventData();
 
   if (!data) return <p>No event data</p>;
+  if (isLoading) return <p>Loading event data</p>;
 
   return (
     <section className="container px-2 my-6">
