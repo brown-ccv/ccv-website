@@ -1,10 +1,8 @@
 /** @type {import("tailwindcss").Config} */
 module.exports = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx,astro}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx,astro}",
-    "./src/content/**/*.{js,ts,jsx,tsx,mdx,astro}",
-    "./src/layouts/**/*.{js,ts,jsx,tsx,mdx,astro}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   presets: [],
   darkMode: "media", // or 'class'
@@ -49,13 +47,17 @@ module.exports = {
     backgroundImage: {
       none: "none",
       "gradient-to-t": "linear-gradient(to top, var(--tw-gradient-stops))",
-      "gradient-to-tr": "linear-gradient(to top right, var(--tw-gradient-stops))",
+      "gradient-to-tr":
+        "linear-gradient(to top right, var(--tw-gradient-stops))",
       "gradient-to-r": "linear-gradient(to right, var(--tw-gradient-stops))",
-      "gradient-to-br": "linear-gradient(to bottom right, var(--tw-gradient-stops))",
+      "gradient-to-br":
+        "linear-gradient(to bottom right, var(--tw-gradient-stops))",
       "gradient-to-b": "linear-gradient(to bottom, var(--tw-gradient-stops))",
-      "gradient-to-bl": "linear-gradient(to bottom left, var(--tw-gradient-stops))",
+      "gradient-to-bl":
+        "linear-gradient(to bottom left, var(--tw-gradient-stops))",
       "gradient-to-l": "linear-gradient(to left, var(--tw-gradient-stops))",
-      "gradient-to-tl": "linear-gradient(to top left, var(--tw-gradient-stops))",
+      "gradient-to-tl":
+        "linear-gradient(to top left, var(--tw-gradient-stops))",
     },
     backgroundOpacity: ({ theme }) => theme("opacity"),
     backgroundPosition: {
@@ -119,13 +121,13 @@ module.exports = {
       xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
       "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
       "book-shadow":
-          "4px 4px 12px 4px rgba(167, 153, 139, 0.35), 12px 12px 4px 0px rgba(167, 153, 139, 0.35);",
+        "4px 4px 12px 4px rgba(167, 153, 139, 0.35), 12px 12px 4px 0px rgba(167, 153, 139, 0.35);",
       inner:
-          "-1px -1px 4px 0px rgba(167, 153, 139, 0.35) inset, 1px 1px 4px 0px rgba(167, 153, 139, 0.35) inset",
+        "-1px -1px 4px 0px rgba(167, 153, 139, 0.35) inset, 1px 1px 4px 0px rgba(167, 153, 139, 0.35) inset",
       "inner-focus":
-          "-2px -2px 4px 0px rgba(97, 59, 26, 0.35) inset, 2px 2px 4px 0px rgba(97, 59, 26, 0.35) inset",
+        "-2px -2px 4px 0px rgba(97, 59, 26, 0.35) inset, 2px 2px 4px 0px rgba(97, 59, 26, 0.35) inset",
       showcase:
-          "4px 4px 12px 4px rgba(167, 153, 139, 0.35), 12px 12px 4px 0px rgba(167, 153, 139, 0.35)",
+        "4px 4px 12px 4px rgba(167, 153, 139, 0.35), 12px 12px 4px 0px rgba(167, 153, 139, 0.35)",
       none: "none",
     },
     boxShadowColor: ({ theme }) => theme("colors"),
@@ -154,7 +156,7 @@ module.exports = {
         700: "#00806C",
         500: "#00B398",
         300: "#00E6C3",
-        100: "#19FFDD"
+        100: "#19FFDD",
       },
       neutral: {
         900: "#242424",
@@ -177,7 +179,6 @@ module.exports = {
           700: "#002B52",
           500: "#003c70",
         },
-
       },
     },
     columns: {
@@ -341,7 +342,14 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      serif: ["ui-serif", "Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],
+      serif: [
+        "ui-serif",
+        "Georgia",
+        "Cambria",
+        '"Times New Roman"',
+        "Times",
+        "serif",
+      ],
       mono: [
         "ui-monospace",
         "SFMono-Regular",
@@ -979,8 +987,9 @@ module.exports = {
       none: "none",
       all: "all",
       DEFAULT:
-          "color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter",
-      colors: "color, background-color, border-color, text-decoration-color, fill, stroke",
+        "color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter",
+      colors:
+        "color, background-color, border-color, text-decoration-color, fill, stroke",
       opacity: "opacity",
       shadow: "box-shadow",
       transform: "transform",
@@ -1091,4 +1100,4 @@ module.exports = {
     },
   },
   plugins: [],
-}
+};
