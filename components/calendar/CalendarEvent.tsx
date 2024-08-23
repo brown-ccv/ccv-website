@@ -1,17 +1,17 @@
-import React from "react";
-import { DataProps } from "@/components/calendar/Calendar";
+import React from "react"
+import { DataProps } from "@/components/calendar/Calendar"
 
 interface EventProps {
-  data: DataProps;
+  data: DataProps
 }
 
 const CalendarEvent: React.FC<EventProps> = ({ data }) => {
-  const descriptionLong = data.description_long.replace(/<(.|\n)*?>/g, "");
-  const dateTime = new Date(data.date_utc.replace(/-/g, "/"));
+  const descriptionLong = data.description_long.replace(/<(.|\n)*?>/g, "")
+  const dateTime = new Date(data.date_utc.replace(/-/g, "/"))
   const normalDate =
     new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(dateTime) +
     ", " +
-    data.date;
+    data.date
   return (
     <div className="bg-gray flex gap-6 overflow-hidden column min-w-[30ch]">
       <div className="event">
@@ -31,7 +31,7 @@ const CalendarEvent: React.FC<EventProps> = ({ data }) => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default CalendarEvent;
+export default CalendarEvent

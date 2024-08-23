@@ -11,9 +11,9 @@
  */
 export function weeksInMonth(month: number, year: number) {
   // month = # (0 indexed), year = #
-  const firstDay = new Date(year, month, 1).getDay(); // day of the week of 1st
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-  return Math.ceil((firstDay + daysInMonth) / 7);
+  const firstDay = new Date(year, month, 1).getDay() // day of the week of 1st
+  const daysInMonth = new Date(year, month + 1, 0).getDate()
+  return Math.ceil((firstDay + daysInMonth) / 7)
 }
 
 /**
@@ -27,11 +27,11 @@ export function weeksInMonth(month: number, year: number) {
 export function getStringDate(
   month: number,
   day: number,
-  year: number,
+  year: number
 ): string {
-  const mm = month.toString().padStart(2, "0");
-  const dd = day.toString().padStart(2, "0");
-  return `${year}-${mm}-${dd}`;
+  const mm = month.toString().padStart(2, "0")
+  const dd = day.toString().padStart(2, "0")
+  return `${year}-${mm}-${dd}`
 }
 
 export const ALL_MONTHS = [
@@ -47,7 +47,7 @@ export const ALL_MONTHS = [
   "October",
   "November",
   "December",
-];
+]
 
 export const ALL_DAYS_OF_WEEK = [
   "Sun",
@@ -57,4 +57,4 @@ export const ALL_DAYS_OF_WEEK = [
   "Thurs",
   "Fri",
   "Sat",
-];
+]
