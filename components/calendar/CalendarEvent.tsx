@@ -1,5 +1,5 @@
 import React from "react";
-import { DataProps } from "@/components/calendar/Calendar";
+import { DataProps } from "@/components/EventSection";
 
 const CalendarEvent: React.FC<DataProps> = ({
   date_time,

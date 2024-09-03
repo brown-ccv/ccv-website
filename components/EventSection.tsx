@@ -3,7 +3,18 @@
 import { useEffect, useState } from "react";
 import { getStringDate } from "@/utils";
 import CalendarEvent from "@/components/calendar/CalendarEvent";
-import { DataProps } from "@/components/calendar/Calendar";
+import Calendar from "@/components/calendar/Calendar";
+
+export interface DataProps {
+  date_time: string;
+  date: string;
+  title: string;
+  date_utc: string;
+  url: string;
+  contact_info: string;
+  description: string;
+  description_long: string;
+}
 
 const EventSection = () => {
   const [data, setData] = useState([]);
@@ -87,6 +98,7 @@ const EventSection = () => {
               })}
           </div>
         )}
+        {view === "weekly" && <Calendar events={data} />}
       </section>
 
       <section className="flex justify-center">
