@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { getStringDate } from "@/utils";
 import CalendarEvent from "@/components/calendar/CalendarEvent";
-import Calendar from "@/components/calendar/Calendar";
+import CalendarWeekly from "@/components/calendar/CalendarWeekly";
 
 export interface DataProps {
   date_time: string;
@@ -98,7 +98,13 @@ const EventSection = () => {
               })}
           </div>
         )}
-        {view === "weekly" && <Calendar events={data} />}
+        {view === "weekly" && (
+          <CalendarWeekly
+            today={today}
+            currentDate={currentDate}
+            events={data}
+          />
+        )}
       </section>
 
       <section className="flex justify-center">
