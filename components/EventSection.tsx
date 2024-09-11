@@ -9,7 +9,9 @@ export interface DataProps {
   date_time: string;
   date: string;
   title: string;
+  date_iso: string;
   date_utc: string;
+  date2_utc: string;
   url: string;
   contact_info: string;
   description: string;
@@ -36,6 +38,7 @@ const EventSection = () => {
       .then((res) => res.json())
       .then((data) => {
         setData(data);
+        console.log(data);
         setLoading(false);
       });
   });
@@ -89,6 +92,8 @@ const EventSection = () => {
                       url={e.url}
                       date={e.date}
                       date_utc={e.date_utc}
+                      date2_utc={e.date2_utc}
+                      date_iso={e.date_iso}
                       description_long={e.description_long}
                       contact_info={e.contact_info}
                       description={e.description}
@@ -99,11 +104,13 @@ const EventSection = () => {
           </div>
         )}
         {view === "weekly" && (
-          <CalendarWeekly
-            today={today}
-            currentDate={currentDate}
-            events={data}
-          />
+          <div className="h-0 min-h-[768px] ">
+            <CalendarWeekly
+              today={today}
+              currentDate={currentDate}
+              events={data}
+            />
+          </div>
         )}
       </section>
 
