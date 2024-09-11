@@ -8,12 +8,17 @@ import {
   format,
   startOfWeek,
   addDays,
-  startOfMonth,
-  endOfMonth,
-  endOfWeek,
+  differenceInHours,
   isSameMonth,
   isSameDay,
   subDays,
+  isBefore,
+  isAfter,
+  getDay,
+  differenceInMinutes,
+  getDate,
+  getMonth,
+  getYear,
 } from "date-fns";
 
 export interface CalendarProps {
@@ -77,6 +82,49 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
     });
 
     return <>{week}</>;
+  };
+
+  const generateEventsForCurrentWeek = (activeDate: Date) => {
+    let thisDate = activeDate;
+    const startDate = startOfWeek(thisDate);
+    const weekEvents = events.filter(
+      (event) =>
+        isAfter(event.date_utc, startDate) &&
+        isBefore(event.date_utc, addDays(startDate, 7)),
+    );
+
+    const formattedWeekEvents = weekEvents.map((event, i) => {
+      thisDate = addDays(startDate, i);
+      const lengthOfTime = differenceInHours(event.date2_utc, event.date_utc);
+      const dayOfWeek = getDay(addDays(event.date_iso, 1));
+      const yearEvent = getYear(event.date_utc);
+      const monthEvent = getMonth(event.date_utc);
+      const dateEvent = getDate(event.date_utc);
+      const durationIntoDay = differenceInMinutes(
+        event.date_iso,
+        new Date(yearEvent, monthEvent, dateEvent),
+      );
+
+      return (
+        <li
+          className={`relative mt-px col-start-${dayOfWeek} sm:flex`}
+          style={{
+            gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,
+          }}
+        >
+          <a
+            href="#"
+            className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-white p-2 text-xs leading-5 hover:bg-gray-200"
+          >
+            <p className="order-1 font-semibold text-gray-700">{event.title}</p>
+            <p className="text-gray-500 group-hover:text-gray-700">
+              <time dateTime={event.date_utc}>{event.date_time}</time>
+            </p>
+          </a>
+        </li>
+      );
+    });
+    return <>{formattedWeekEvents}</>;
   };
 
   return (
@@ -308,60 +356,20 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
               </div>
 
               {/* Events */}
+              {/* Note on (style):
+              N / corresponds to the start row of the event -- there are 288 rows (15 min blocks)
+              74th row is 6am Wednesday 92nd row is 7:30am Wednesday (18 rows apart), so 30 min is 6 units
+               / span N corresponds to the height of the event -- every
+              6 units is 30 min
+              */}
+
               <ol
                 className="col-start-1 col-end-2 row-start-1 grid grid-cols-1 sm:grid-cols-7 sm:pr-8"
                 style={{
                   gridTemplateRows: "1.75rem repeat(288, minmax(0, 1fr)) auto",
                 }}
               >
-                <li
-                  className="relative mt-px flex sm:col-start-3"
-                  style={{ gridRow: "74 / span 12" }}
-                >
-                  <a
-                    href="#"
-                    className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-blue-50 p-2 text-xs leading-5 hover:bg-blue-100"
-                  >
-                    <p className="order-1 font-semibold text-blue-700">
-                      Breakfast
-                    </p>
-                    <p className="text-blue-500 group-hover:text-blue-700">
-                      <time dateTime="2022-01-12T06:00">6:00 AM</time>
-                    </p>
-                  </a>
-                </li>
-                <li
-                  className="relative mt-px flex sm:col-start-3"
-                  style={{ gridRow: "92 / span 30" }}
-                >
-                  <a
-                    href="#"
-                    className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-pink-50 p-2 text-xs leading-5 hover:bg-pink-100"
-                  >
-                    <p className="order-1 font-semibold text-pink-700">
-                      Flight to Paris
-                    </p>
-                    <p className="text-pink-500 group-hover:text-pink-700">
-                      <time dateTime="2022-01-12T07:30">7:30 AM</time>
-                    </p>
-                  </a>
-                </li>
-                <li
-                  className="relative mt-px hidden sm:col-start-6 sm:flex"
-                  style={{ gridRow: "122 / span 24" }}
-                >
-                  <a
-                    href="#"
-                    className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-white p-2 text-xs leading-5 hover:bg-gray-200"
-                  >
-                    <p className="order-1 font-semibold text-gray-700">
-                      Meeting with design team at Disney
-                    </p>
-                    <p className="text-gray-500 group-hover:text-gray-700">
-                      <time dateTime="2022-01-15T10:00">10:00 AM</time>
-                    </p>
-                  </a>
-                </li>
+                {generateEventsForCurrentWeek(activeDate)}
               </ol>
             </div>
           </div>
