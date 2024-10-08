@@ -14,7 +14,7 @@ const LogoBrown: React.FC = () => {
         enableBackground="new 0 0 3078 1273"
       >
         <path
-          fill="#020202"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -399,7 +399,7 @@ z"
         />
 
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -451,7 +451,7 @@ M1883.439087,1159.075684
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -486,7 +486,7 @@ M3079.000000,935.555847
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -520,7 +520,7 @@ M1972.449951,1274.000000
 z"
         />
         <path
-          fill="#020202"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -681,7 +681,7 @@ M482.003235,978.500000
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -736,7 +736,7 @@ M1805.000000,534.002686
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -788,7 +788,7 @@ M1198.000000,449.500000
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -840,7 +840,7 @@ M919.000000,467.426208
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -896,7 +896,7 @@ M2364.755371,592.258423
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -932,7 +932,7 @@ M1507.062866,602.579407
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1001,7 +1001,7 @@ M1101.041870,770.436157
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1055,7 +1055,7 @@ M2455.000000,915.890930
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1086,7 +1086,7 @@ M961.278870,775.027161
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1125,7 +1125,7 @@ M1222.000000,1088.000000
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1160,7 +1160,7 @@ M891.038940,1045.000000
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1199,7 +1199,7 @@ M1460.000000,1174.979858
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1238,7 +1238,7 @@ M1923.000000,936.000000
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1262,7 +1262,7 @@ M2903.972900,849.797119
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1287,7 +1287,7 @@ M1605.898682,828.377625
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1312,7 +1312,7 @@ M1714.002686,1140.733521
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1337,7 +1337,7 @@ M1566.002563,1106.505737
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1361,7 +1361,7 @@ M2147.462891,840.020630
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1399,7 +1399,7 @@ M2588.045654,917.569519
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1437,7 +1437,7 @@ M2055.000000,840.052246
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1478,7 +1478,7 @@ M1690.000000,867.000000
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1511,7 +1511,7 @@ M1010.001953,1126.577637
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1539,7 +1539,7 @@ M1442.979614,845.963745
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1565,7 +1565,7 @@ M1818.694702,926.999146
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1589,7 +1589,7 @@ M1643.000000,1207.000000
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1612,7 +1612,7 @@ M1127.766479,1204.307861
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1633,7 +1633,7 @@ M1353.490479,837.005676
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1663,7 +1663,7 @@ M2688.248535,795.253296
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1693,7 +1693,7 @@ M2284.000488,918.662109
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1714,7 +1714,7 @@ M2788.000000,849.000000
 z"
         />
         <path
-          fill="#000000"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1727,7 +1727,7 @@ M2762.139648,774.616943
 z"
         />
         <path
-          fill="#FDFDFD"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1850,7 +1850,7 @@ M106.049683,168.671234
 z"
         />
         <path
-          fill="#FDFDFD"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1900,7 +1900,7 @@ M337.077576,344.800323
 z"
         />
         <path
-          fill="#EB1D25"
+          className="fill-red"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1918,7 +1918,7 @@ M359.226196,365.111786
 z"
         />
         <path
-          fill="#EB1D25"
+          className="fill-red"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1937,7 +1937,7 @@ M119.396141,372.484467
 z"
         />
         <path
-          fill="#EB1D25"
+          className="fill-red"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1955,7 +1955,7 @@ M667.324158,380.698364
 z"
         />
         <path
-          fill="#FCFCFC"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -1979,7 +1979,7 @@ M298.533447,405.456543
 z"
         />
         <path
-          fill="#FCFCFC"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2001,7 +2001,7 @@ M493.672241,387.858765
 z"
         />
         <path
-          fill="#FCFCFC"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2021,7 +2021,7 @@ M626.247131,278.433777
 z"
         />
         <path
-          fill="#FCFCFC"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2044,7 +2044,7 @@ M84.501282,363.340759
 z"
         />
         <path
-          fill="#FBFBFB"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2064,7 +2064,7 @@ M46.668129,285.197815
 z"
         />
         <path
-          fill="#FCFCFC"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2083,7 +2083,7 @@ z"
         />
 
         <path
-          fill="#FCFCFC"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2099,7 +2099,7 @@ M453.261292,235.244766
 z"
         />
         <path
-          fill="#FCFCFC"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2113,7 +2113,7 @@ M437.243042,171.924042
 z"
         />
         <path
-          fill="#FAFAFA"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2127,7 +2127,7 @@ M332.994080,195.000000
 z"
         />
         <path
-          fill="#FBFBFB"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2143,7 +2143,7 @@ M247.906952,164.057541
 z"
         />
         <path
-          fill="#FFFFFF"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2154,7 +2154,7 @@ M262.930298,234.861481
 z"
         />
         <path
-          fill="#FFFFFF"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2165,7 +2165,7 @@ M480.868927,267.903503
 z"
         />
         <path
-          fill="#FBFBFB"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2177,7 +2177,7 @@ z"
         />
 
         <path
-          fill="#EC1D24"
+          className="fill-red"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2205,7 +2205,7 @@ M394.822144,632.000000
 z"
         />
         <path
-          fill="#FCFCFD"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2238,7 +2238,7 @@ M678.033936,881.164062
 z"
         />
         <path
-          fill="#FDFDFD"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2270,7 +2270,7 @@ M62.208763,943.000122
 z"
         />
         <path
-          fill="#FDFDFD"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2302,7 +2302,7 @@ M635.314148,563.212524
 z"
         />
         <path
-          fill="#FEFEFE"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2333,7 +2333,7 @@ M78.861710,556.415710
 z"
         />
         <path
-          fill="#FBFBFB"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2351,7 +2351,7 @@ M194.882721,905.109436
 z"
         />
         <path
-          fill="#FEFEFE"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2369,7 +2369,7 @@ M607.996826,944.000000
 z"
         />
         <path
-          fill="#FEFEFE"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2387,7 +2387,7 @@ M109.631042,906.674500
 z"
         />
         <path
-          fill="#FEFEFE"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2407,7 +2407,7 @@ z"
         />
 
         <path
-          fill="#040404"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2423,7 +2423,7 @@ M431.117584,59.839298
 z"
         />
         <path
-          fill="#040404"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2439,7 +2439,7 @@ M306.031799,60.839424
 z"
         />
         <path
-          fill="#050505"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2456,7 +2456,7 @@ M174.280304,110.328049
 z"
         />
         <path
-          fill="#030303"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2471,7 +2471,7 @@ M606.677856,161.403076
 z"
         />
         <path
-          fill="#060606"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2487,7 +2487,7 @@ M50.716537,213.753357
 z"
         />
         <path
-          fill="#050505"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2503,7 +2503,7 @@ M486.456604,109.235329
 z"
         />
         <path
-          fill="#040404"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2518,7 +2518,7 @@ M648.055725,185.093567
 z"
         />
         <path
-          fill="#050505"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2533,7 +2533,7 @@ M105.771118,168.404892
 z"
         />
         <path
-          fill="#030303"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2553,7 +2553,7 @@ M300.866821,307.921753
 z"
         />
         <path
-          fill="#040404"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2570,7 +2570,7 @@ M398.710327,308.632355
 z"
         />
         <path
-          fill="#060606"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2583,7 +2583,7 @@ M336.744171,344.585022
 z"
         />
         <path
-          fill="#020202"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2630,7 +2630,7 @@ M479.792633,593.499878
 z"
         />
         <path
-          fill="#020202"
+          className="fill-black"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2676,7 +2676,7 @@ M92.792740,619.499878
 z"
         />
         <path
-          fill="#FBFBFB"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2694,7 +2694,7 @@ M605.868225,638.000122
 z"
         />
         <path
-          fill="#FEFEFE"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2711,7 +2711,7 @@ M479.792633,592.999878
 z"
         />
         <path
-          fill="#FBFBFB"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
@@ -2729,7 +2729,7 @@ M164.431488,571.002991
 z"
         />
         <path
-          fill="#FEFEFE"
+          className="fill-white"
           opacity="1.000000"
           stroke="none"
           d="
