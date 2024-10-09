@@ -149,7 +149,7 @@ module.exports = {
       white: "#FAFAFA",
       gray: "#E5E5E5",
       black: "#0A0A0A",
-      red: "#C00404",
+      red: "#ED1C24",
       brown: "#4E3629",
       primary: {
         900: "#004d41",
@@ -1104,4 +1104,4 @@ module.exports = {
     },
   },
   plugins: [],
-};
+}
