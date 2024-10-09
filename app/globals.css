@@ -64,7 +64,8 @@
     }
 
     .weekly-datetime {
-        @apply text-darkblue;
+        @apply text-secondary-blue-700;
+        @apply text-xs;
     }
 }
 

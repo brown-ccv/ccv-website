@@ -105,19 +105,29 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         new Date(yearEvent, monthEvent, dateEvent),
       );
 
+      const calColor =
+        event.title === "CCV Office Hours"
+          ? "bg-primary-50 hover:bg-primary-500"
+          : event.title ===
+              "COBRE CBC Computational Biology Walk-in Office hours"
+            ? "bg-secondary-blue-50 hover:bg-secondary-blue-300"
+            : "bg-secondary-yellow-50 hover:bg-secondary-yellow-100";
+
       return (
         <li
           className={`relative mt-px col-start-${dayOfWeek} sm:flex`}
           style={{
-            gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,
+            gridRow: `${durationIntoDay / 5 + 3} / span ${lengthOfTime * 12}`,
           }}
         >
           <a
-            href="#"
-            className="group absolute inset-1 flex flex-col overflow-y-auto rounded-lg bg-white p-2 text-xs leading-5 hover:bg-gray-200"
+            href={event.url}
+            className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5`}
           >
-            <p className="order-1 font-semibold text-gray-700">{event.title}</p>
-            <p className="text-gray-500 group-hover:text-gray-700">
+            <p className="order-1 font-semibold text-secondary-blue-700">
+              {event.title}
+            </p>
+            <p className="weekly-datetime">
               <time dateTime={event.date_utc}>{event.date_time}</time>
             </p>
           </a>
