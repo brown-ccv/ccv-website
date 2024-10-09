@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid";
-import React, { useEffect, useRef, useState } from "react";
-import { DataProps } from "@/components/EventSection";
-import { getStringDate, ALL_MONTHS, ALL_DAYS_OF_WEEK } from "@/utils";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid"
+import React, { useEffect, useRef, useState } from "react"
+import { DataProps } from "@/components/EventSection"
+import { ALL_MONTHS, ALL_DAYS_OF_WEEK } from "@/utils"
 import {
   format,
   startOfWeek,
@@ -19,12 +19,12 @@ import {
   getDate,
   getMonth,
   getYear,
-} from "date-fns";
+} from "date-fns"
 
 export interface CalendarProps {
-  events: Array<DataProps>;
-  currentDate: Date;
-  today: string;
+  events: Array<DataProps>
+  currentDate: Date
+  today: string
 }
 
 const CalendarWeekly: React.FC<CalendarProps> = ({
@@ -32,34 +32,36 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
   currentDate,
   today,
 }) => {
-  const container = useRef<HTMLDivElement>(null);
-  const containerNav = useRef<HTMLDivElement>(null);
-  const containerOffset = useRef<HTMLDivElement>(null);
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [activeDate, setActiveDate] = useState(new Date());
+  const container = useRef<HTMLDivElement>(null)
+  const containerNav = useRef<HTMLDivElement>(null)
+  const containerOffset = useRef<HTMLDivElement>(null)
+  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [activeDate, setActiveDate] = useState(new Date())
+
+  const todayRow = getDay(today) + 1
 
   useEffect(() => {
     // Set the container scroll position based on the current time.
-    const currentMinute = new Date().getHours() * 60;
+    const currentMinute = new Date().getHours() * 60
 
     container.current!.scrollTop =
       ((container.current!.scrollHeight -
         containerNav.current!.offsetHeight -
         containerOffset.current!.offsetHeight) *
         currentMinute) /
-      1440;
-  }, []);
+      1440
+  }, [])
 
   const generateDatesForCurrentWeek = (
     date: Date,
     selectedDate: Date,
-    activeDate: Date,
+    activeDate: Date
   ) => {
-    let thisDate = date;
-    const startDate = startOfWeek(thisDate);
+    let thisDate = date
+    const startDate = startOfWeek(thisDate)
     const week = ALL_DAYS_OF_WEEK.map((day, i) => {
-      thisDate = addDays(startDate, i);
-      const cloneDate = thisDate;
+      thisDate = addDays(startDate, i)
+      const cloneDate = thisDate
 
       return (
         <div
@@ -68,7 +70,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
           ${isSameDay(thisDate, currentDate) ? "today bg-secondary-yellow-100" : ""}`}
           onClick={() => {
-            setSelectedDate(cloneDate);
+            setSelectedDate(cloneDate)
           }}
         >
           <span>
@@ -78,32 +80,32 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             </span>
           </span>
         </div>
-      );
-    });
+      )
+    })
 
-    return <>{week}</>;
-  };
+    return <>{week}</>
+  }
 
   const generateEventsForCurrentWeek = (activeDate: Date) => {
-    let thisDate = activeDate;
-    const startDate = startOfWeek(thisDate);
+    let thisDate = activeDate
+    const startDate = startOfWeek(thisDate)
     const weekEvents = events.filter(
       (event) =>
         isAfter(event.date_utc, startDate) &&
-        isBefore(event.date_utc, addDays(startDate, 7)),
-    );
+        isBefore(event.date_utc, addDays(startDate, 7))
+    )
 
     const formattedWeekEvents = weekEvents.map((event, i) => {
-      thisDate = addDays(startDate, i);
-      const lengthOfTime = differenceInHours(event.date2_utc, event.date_utc);
-      const dayOfWeek = getDay(addDays(event.date_iso, 1));
-      const yearEvent = getYear(event.date_utc);
-      const monthEvent = getMonth(event.date_utc);
-      const dateEvent = getDate(event.date_utc);
+      thisDate = addDays(startDate, i)
+      const lengthOfTime = differenceInHours(event.date2_utc, event.date_utc)
+      const dayOfWeek = getDay(addDays(event.date_iso, 1))
+      const yearEvent = getYear(event.date_utc)
+      const monthEvent = getMonth(event.date_utc)
+      const dateEvent = getDate(event.date_utc)
       const durationIntoDay = differenceInMinutes(
         event.date_iso,
-        new Date(yearEvent, monthEvent, dateEvent),
-      );
+        new Date(yearEvent, monthEvent, dateEvent)
+      )
 
       const calColor =
         event.title === "CCV Office Hours"
@@ -111,7 +113,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           : event.title ===
               "COBRE CBC Computational Biology Walk-in Office hours"
             ? "bg-secondary-blue-50 hover:bg-secondary-blue-300"
-            : "bg-secondary-yellow-50 hover:bg-secondary-yellow-100";
+            : "bg-secondary-yellow-50 hover:bg-secondary-yellow-100"
 
       return (
         <li
@@ -132,15 +134,15 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             </p>
           </a>
         </li>
-      );
-    });
-    return <>{formattedWeekEvents}</>;
-  };
+      )
+    })
+    return <>{formattedWeekEvents}</>
+  }
 
   return (
     <div className="flex h-full flex-col">
-      <header className="flex flex-none items-center justify-between px-6 py-4">
-        <h1 className="text-base font-semibold leading-6 text-gray-900">
+      <header className="flex flex-none items-center justify-end gap-3.5 px-6 py-4">
+        <h1 className="text-lg font-semibold leading-6 text-gray-900">
           <time dateTime={today}>
             {`${ALL_MONTHS[activeDate.getMonth()]} ${activeDate.getFullYear()}`}
           </time>
@@ -194,7 +196,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
               {generateDatesForCurrentWeek(
                 activeDate,
                 selectedDate,
-                activeDate,
+                activeDate
               )}
             </div>
           </div>
@@ -355,14 +357,14 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
               {/* Vertical lines */}
               <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-white sm:grid sm:grid-cols-7">
-                <div className="col-start-1 row-span-full" />
-                <div className="col-start-2 row-span-full" />
-                <div className="col-start-3 row-span-full" />
-                <div className="col-start-4 row-span-full" />
-                <div className="col-start-5 row-span-full" />
-                <div className="col-start-6 row-span-full" />
-                <div className="col-start-7 row-span-full" />
-                <div className="col-start-8 row-span-full w-8" />
+                {Array.from({ length: 8 }, (_, index) => (
+                  <div
+                    key={`column-${index}`}
+                    className={`row-span-full col-start-${index + 1} ${
+                      index === 7 ? "w-8" : ""
+                    } ${index === todayRow && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                  />
+                ))}
               </div>
 
               {/* Events */}
@@ -386,6 +388,6 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         </div>
       </div>
     </div>
-  );
-};
-export default CalendarWeekly;
+  )
+}
+export default CalendarWeekly

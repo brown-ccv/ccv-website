@@ -1,47 +1,47 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { getStringDate } from "@/utils";
-import CalendarEvent from "@/components/calendar/CalendarEvent";
-import CalendarWeekly from "@/components/calendar/CalendarWeekly";
+import { useEffect, useState } from "react"
+import { getStringDate } from "@/utils"
+import CalendarEvent from "@/components/calendar/CalendarEvent"
+import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 
 export interface DataProps {
-  date_time: string;
-  date: string;
-  title: string;
-  date_iso: string;
-  date_utc: string;
-  date2_utc: string;
-  url: string;
-  contact_info: string;
-  description: string;
-  description_long: string;
+  date_time: string
+  date: string
+  title: string
+  date_iso: string
+  date_utc: string
+  date2_utc: string
+  url: string
+  contact_info: string
+  description: string
+  description_long: string
 }
 
 const EventSection = () => {
-  const [data, setData] = useState([]);
-  const [isLoading, setLoading] = useState(true);
-  const [view, setView] = useState("upcoming");
-  const currentDate = new Date();
+  const [data, setData] = useState([])
+  const [isLoading, setLoading] = useState(true)
+  const [view, setView] = useState("upcoming")
+  const currentDate = new Date()
   const today = getStringDate(
     currentDate.getMonth() + 1,
     currentDate.getDate(),
-    currentDate.getFullYear(),
-  );
+    currentDate.getFullYear()
+  )
 
   useEffect(() => {
     fetch(
       "https://events.brown.edu/live/json/events/description_long/true/group/Center%20for%20Computation%20and%20Visualization%20%28CCV%29/start_date/" +
         today +
-        "/",
+        "/"
     )
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
-        console.log(data);
-        setLoading(false);
-      });
-  });
+        setData(data)
+        console.log(data)
+        setLoading(false)
+      })
+  }, [])
   return (
     <article className="container px-2 my-6 space-y-2">
       <div>
@@ -99,7 +99,7 @@ const EventSection = () => {
                       description={e.description}
                     />
                   </div>
-                );
+                )
               })}
           </div>
         )}
@@ -123,7 +123,7 @@ const EventSection = () => {
         </a>
       </section>
     </article>
-  );
-};
+  )
+}
 
-export default EventSection;
+export default EventSection
