@@ -19,7 +19,8 @@ export interface DataProps {
 }
 
 const EventSection = () => {
-  const [data, setData] = useState([])
+  const [dataFuture, setDataFuture] = useState([])
+  const [dataPast, setDataPast] = useState([])
   const [isLoading, setLoading] = useState(true)
   const [view, setView] = useState("upcoming")
   const currentDate = new Date()
@@ -37,9 +38,19 @@ const EventSection = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        setData(data)
+        setDataFuture(data)
         console.log(data)
         setLoading(false)
+      })
+    fetch(
+      "https://events.brown.edu/live/json/events/description_long/true/group/Center%20for%20Computation%20and%20Visualization%20%28CCV%29/start_date/-2 months" +
+        today +
+        "/"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setDataPast(data)
+        console.log(data)
       })
   }, [])
   return (
@@ -76,11 +87,11 @@ const EventSection = () => {
           </div>
         </div>
         {isLoading && <p>Loading...</p>}
-        {!data && <p>No event data</p>}
+        {!dataFuture && <p>No event data</p>}
         {view === "upcoming" && (
           <div className="flex flex-wrap justify-between gap-4">
-            {data &&
-              data.slice(0, 4).map((e: DataProps, i) => {
+            {dataFuture &&
+              dataFuture.slice(0, 4).map((e: DataProps, i) => {
                 return (
                   <div
                     key={i}
@@ -108,7 +119,7 @@ const EventSection = () => {
             <CalendarWeekly
               today={today}
               currentDate={currentDate}
-              events={data}
+              events={dataPast.concat(dataFuture)}
             />
           </div>
         )}
