@@ -164,7 +164,7 @@ module.exports = {
         500: "#2F363C",
         300: "#98A4AE",
         100: "#ACB6BE",
-        50: "#D7DCE0",
+        50: "#F5F5F5",
       },
       secondary: {
         yellow: {
