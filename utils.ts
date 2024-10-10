@@ -1,5 +1,5 @@
 //
-// Calendar Utils
+// CalendarWeekly Utils
 //
 
 /**
@@ -53,7 +53,7 @@ export const ALL_DAYS_OF_WEEK = [
   "Sun",
   "Mon",
   "Tues",
-  "Weds",
+  "Wed",
   "Thurs",
   "Fri",
   "Sat",
