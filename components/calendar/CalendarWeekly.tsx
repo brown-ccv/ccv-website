@@ -119,7 +119,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         <li
           className={`relative mt-px col-start-${dayOfWeek} sm:flex`}
           style={{
-            gridRow: `${durationIntoDay / 5 + 3} / span ${lengthOfTime * 12}`,
+            gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,
           }}
         >
           <a
