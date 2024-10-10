@@ -24,7 +24,6 @@
     }
 
     body {
-        @apply grid;
         @apply bg-neutral-50;
     }
 
