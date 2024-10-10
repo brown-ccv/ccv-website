@@ -1,6 +1,11 @@
 import React from "react"
 
-const LogoBrown: React.FC = () => {
+export interface LogoProps {
+  width?: number
+  height?: number
+}
+
+const LogoBrown: React.FC<LogoProps> = ({ width = 75 }) => {
   return (
     <>
       <svg
@@ -9,7 +14,7 @@ const LogoBrown: React.FC = () => {
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
         y="0px"
-        width="100%"
+        width={width}
         viewBox="0 0 3078 1273"
         enableBackground="new 0 0 3078 1273"
       >
