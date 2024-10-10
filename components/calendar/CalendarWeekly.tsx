@@ -124,6 +124,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         >
           <a
             href={event.url}
+            target={"_blank"}
             className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5`}
           >
             <p className="order-1 font-semibold text-secondary-blue-700">
@@ -357,14 +358,30 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
               {/* Vertical lines */}
               <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-white sm:grid sm:grid-cols-7">
-                {Array.from({ length: 8 }, (_, index) => (
-                  <div
-                    key={`column-${index}`}
-                    className={`row-span-full col-start-${index + 1} ${
-                      index === 7 ? "w-8" : ""
-                    } ${index === todayRow && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
-                  />
-                ))}
+                <div
+                  className={`col-start-1 row-span-full ${todayRow === 0 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                />
+                <div
+                  className={`col-start-2 row-span-full ${todayRow === 1 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                />
+                <div
+                  className={`col-start-3 row-span-full ${todayRow === 2 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                />
+                <div
+                  className={`col-start-4 row-span-full ${todayRow === 3 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                />
+                <div
+                  className={`col-start-5 row-span-full ${todayRow === 4 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                />
+                <div
+                  className={`col-start-6 row-span-full ${todayRow === 5 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                />
+                <div
+                  className={`col-start-7 row-span-full ${todayRow === 6 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                />
+                <div
+                  className={`col-start-8 row-span-full w-8 ${todayRow === 7 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                />
               </div>
 
               {/* Events */}
