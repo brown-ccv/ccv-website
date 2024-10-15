@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { getStringDate } from "@/utils"
+import { getStringDate } from "@/components/calendar/utils"
 import CalendarEvent from "@/components/calendar/CalendarEvent"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 
