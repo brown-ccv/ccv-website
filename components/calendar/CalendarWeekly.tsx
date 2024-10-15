@@ -94,7 +94,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           className={`flex items-center justify-center py-3 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
-          ${isSameDay(thisDate, currentDate) ? "today bg-neutral-50" : ""}`}
+          ${isSameDay(thisDate, currentDate) ? "today bg-secondary-yellow-50" : ""}`}
           onClick={() => {
             setSelectedDate(cloneDate)
           }}
@@ -135,11 +135,11 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
       const calColor =
         event.title === "CCV Office Hours"
-          ? "bg-primary-50 hover:bg-primary-500"
+          ? "bg-secondary-blue-50 hover:bg-secondary-blue-300"
           : event.title ===
               "COBRE CBC Computational Biology Walk-in Office hours"
             ? "bg-secondary-blue-50 hover:bg-secondary-blue-300"
-            : "bg-secondary-yellow-50 hover:bg-secondary-yellow-100"
+            : "bg-primary-50 hover:bg-primary-500"
 
       return (
         <li
@@ -254,7 +254,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 {DAY_COLUMN_ARRAY.map(({ day, key }) => (
                   <div
                     key={key}
-                    className={`row-span-full ${CAL_STYLE_ARRAY[day + 1]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-neutral-50" : ""}`}
+                    className={`row-span-full ${CAL_STYLE_ARRAY[day + 1]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-50" : ""}`}
                   />
                 ))}
               </div>
