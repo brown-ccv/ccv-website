@@ -42,8 +42,6 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
   const containerOffset = useRef<HTMLDivElement>(null)
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [activeDate, setActiveDate] = useState(new Date())
-  const [week, setWeek] = useState<Array<weekProps>>([])
-
   // Tailwind cannot handle template literals within their styles, so I am creating an array that I will then use
   // when mapping over the vertical columns later
   const CAL_STYLE_ARRAY = [
@@ -64,16 +62,6 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
     key: Math.random(),
     day: i,
   }))
-
-  useEffect(() => {
-    // Generate unique IDs for list items
-    const updatedWeeks = Array.from(Array(8).keys()).map((_, i) => ({
-      id: self.crypto.randomUUID(),
-      num: i,
-    }))
-    setWeek(updatedWeeks)
-    console.log(updatedWeeks)
-  }, [])
 
   const todayRow = getDay(today)
 
