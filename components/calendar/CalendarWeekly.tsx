@@ -27,6 +27,11 @@ export interface CalendarProps {
   today: string
 }
 
+export interface weekProps {
+  id: string
+  num: number
+}
+
 const CalendarWeekly: React.FC<CalendarProps> = ({
   events,
   currentDate,
@@ -37,8 +42,40 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
   const containerOffset = useRef<HTMLDivElement>(null)
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [activeDate, setActiveDate] = useState(new Date())
+  const [week, setWeek] = useState<Array<weekProps>>([])
 
-  const todayRow = getDay(today) + 1
+  // Tailwind cannot handle template literals within their styles, so I am creating an array that I will then use
+  // when mapping over the vertical columns later
+  const CAL_STYLE_ARRAY = [
+    "col-start-1",
+    "col-start-2",
+    "col-start-3",
+    "col-start-4",
+    "col-start-5",
+    "col-start-6",
+    "col-start-7",
+  ]
+
+  const TIMES_ARRAY = Array.from(Array(24), (_, i) => ({
+    key: Math.random(),
+    time: `${((i + 11) % 12) + 1}${i <= 11 ? "AM" : "PM"}`,
+  }))
+  const DAY_COLUMN_ARRAY = Array.from(Array(8), (_, i) => ({
+    key: Math.random(),
+    day: i,
+  }))
+
+  useEffect(() => {
+    // Generate unique IDs for list items
+    const updatedWeeks = Array.from(Array(8).keys()).map((_, i) => ({
+      id: self.crypto.randomUUID(),
+      num: i,
+    }))
+    setWeek(updatedWeeks)
+    console.log(updatedWeeks)
+  }, [])
+
+  const todayRow = getDay(today)
 
   useEffect(() => {
     // Set the container scroll position based on the current time.
@@ -212,178 +249,26 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 style={{ gridTemplateRows: "repeat(48, minmax(3.5rem, 1fr))" }}
               >
                 <div ref={containerOffset} className="row-end-1 h-7"></div>
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    12AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    1AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    2AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    3AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    4AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    5AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    6AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    7AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    8AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    9AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    10AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    11AM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    12PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    1PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    2PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    3PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    4PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    5PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    6PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    7PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    8PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    9PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    10PM
-                  </div>
-                </div>
-                <div />
-                <div>
-                  <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                    11PM
-                  </div>
-                </div>
-                <div />
+                {TIMES_ARRAY.map(({ key, time }) => (
+                  <React.Fragment key={key}>
+                    <div>
+                      <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                        {time}
+                      </div>
+                    </div>
+                    <div />
+                  </React.Fragment>
+                ))}
               </div>
 
               {/* Vertical lines */}
               <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-white sm:grid sm:grid-cols-7">
-                <div
-                  className={`col-start-1 row-span-full ${todayRow === 0 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
-                />
-                <div
-                  className={`col-start-2 row-span-full ${todayRow === 1 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
-                />
-                <div
-                  className={`col-start-3 row-span-full ${todayRow === 2 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
-                />
-                <div
-                  className={`col-start-4 row-span-full ${todayRow === 3 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
-                />
-                <div
-                  className={`col-start-5 row-span-full ${todayRow === 4 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
-                />
-                <div
-                  className={`col-start-6 row-span-full ${todayRow === 5 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
-                />
-                <div
-                  className={`col-start-7 row-span-full ${todayRow === 6 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
-                />
-                <div
-                  className={`col-start-8 row-span-full w-8 ${todayRow === 7 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
-                />
+                {DAY_COLUMN_ARRAY.map(({ day, key }) => (
+                  <div
+                    key={key}
+                    className={`row-span-full ${CAL_STYLE_ARRAY[day + 1]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-neutral-50" : ""}`}
+                  />
+                ))}
               </div>
 
               {/* Events */}
