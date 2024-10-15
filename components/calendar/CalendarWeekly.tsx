@@ -65,6 +65,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
       return (
         <div
+          key={day}
           className={`flex items-center justify-center py-3 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
@@ -117,6 +118,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
       return (
         <li
+          key={self.crypto.randomUUID()}
           className={`relative mt-px col-start-${dayOfWeek} sm:flex`}
           style={{
             gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,

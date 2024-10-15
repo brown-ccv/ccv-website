@@ -6,6 +6,7 @@ import CalendarEvent from "@/components/calendar/CalendarEvent"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 
 export interface DataProps {
+  id: string
   date_time: string
   date: string
   title: string
@@ -98,6 +99,7 @@ const EventSection = () => {
                     className="bg-gray flex gap-6 overflow-hidden column min-w-[30ch]"
                   >
                     <CalendarEvent
+                      id={e.id}
                       date_time={e.date_time}
                       title={e.title}
                       url={e.url}
