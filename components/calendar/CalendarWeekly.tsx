@@ -3,7 +3,7 @@
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid"
 import React, { useEffect, useRef, useState } from "react"
 import { DataProps } from "@/components/EventSection"
-import { ALL_MONTHS, ALL_DAYS_OF_WEEK } from "@/utils"
+import { ALL_MONTHS, ALL_DAYS_OF_WEEK } from "@/components/calendar/utils"
 import {
   format,
   startOfWeek,
@@ -94,7 +94,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           className={`flex items-center justify-center py-3 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
-          ${isSameDay(thisDate, currentDate) ? "today bg-secondary-yellow-100" : ""}`}
+          ${isSameDay(thisDate, currentDate) ? "today bg-neutral-50" : ""}`}
           onClick={() => {
             setSelectedDate(cloneDate)
           }}
@@ -209,7 +209,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
       </header>
       <div
         ref={container}
-        className="isolate flex flex-auto flex-col overflow-auto bg-gray"
+        className="isolate border-white border-t-2 shadow ring-1 ring-white ring-opacity-5 flex flex-auto flex-col overflow-auto bg-gray"
       >
         <div
           style={{ width: "165%" }}
@@ -217,7 +217,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         >
           <div
             ref={containerNav}
-            className="sticky top-0 z-30 flex-none bg-gray shadow ring-1 ring-white ring-opacity-5 sm:pr-8"
+            className="sticky top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-white ring-opacity-5 sm:pr-8"
           >
             <div className="-mr-px hidden grid-cols-7 divide-x divide-white border-r border-white text-sm leading-6 text-gray-500 sm:grid">
               <div className="col-end-1 w-14" />

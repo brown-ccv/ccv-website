@@ -19,3 +19,28 @@ export function getStringDate(
   const dd = day.toString().padStart(2, "0")
   return `${year}-${mm}-${dd}`
 }
+
+export const ALL_MONTHS = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+]
+
+export const ALL_DAYS_OF_WEEK = [
+  "Sun",
+  "Mon",
+  "Tues",
+  "Wed",
+  "Thurs",
+  "Fri",
+  "Sat",
+]
