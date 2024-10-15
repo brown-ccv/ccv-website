@@ -21,6 +21,9 @@ import {
   getYear,
 } from "date-fns"
 
+const TIMES_ARRAY = Array.from(Array(24), (_, i) => ({ key: Math.random(), time: `${((i + 11) % 12) + 1}${i <= 11 ? "AM" : "PM"}` }));
+const DAY_COLUMN_ARRAY = Array.from(Array(8), (_, i) => ({ key: Math.random(), day: i }));
+
 export interface CalendarProps {
   events: Array<DataProps>
   currentDate: Date
@@ -212,6 +215,20 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 style={{ gridTemplateRows: "repeat(48, minmax(3.5rem, 1fr))" }}
               >
                 <div ref={containerOffset} className="row-end-1 h-7"></div>
+                {TIMES_ARRAY.map(({ key, time }) => (
+                  <React.Fragment key={key}>
+                    <div>
+                      <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
+                        {time}
+                      </div>
+                    </div>
+                    <div />
+                  </React.Fragment>
+                ))}
+                {/*
+                  
+                
+                
                 <div>
                   <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
                     12AM
@@ -355,11 +372,21 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                     11PM
                   </div>
                 </div>
+                
                 <div />
+                */}
               </div>
 
               {/* Vertical lines */}
               <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-white sm:grid sm:grid-cols-7">
+                {DAY_COLUMN_ARRAY.map(({ day, key }) => (
+                  <div
+                    key={key}
+                    className={`col-start-${day + 1} row-span-full ${day === 7 ? "w-8" : ""} ${todayRow === day && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
+                  />
+                ))}
+                
+                  {/* 
                 <div
                   className={`col-start-1 row-span-full ${todayRow === 0 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
                 />
@@ -384,6 +411,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 <div
                   className={`col-start-8 row-span-full w-8 ${todayRow === 7 && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-100" : ""}`}
                 />
+                */}
               </div>
 
               {/* Events */}
