@@ -1,20 +1,6 @@
 //
-// Calendar Utils
+// CalendarWeekly Utils
 //
-
-/**
- * Calculates the number of weeks in the current month.
- *
- * @param {number} month The month.
- * @param {number} year The year.
- * @returns {number} The number of weeks in the month.
- */
-export function weeksInMonth(month: number, year: number) {
-  // month = # (0 indexed), year = #
-  const firstDay = new Date(year, month, 1).getDay() // day of the week of 1st
-  const daysInMonth = new Date(year, month + 1, 0).getDate()
-  return Math.ceil((firstDay + daysInMonth) / 7)
-}
 
 /**
  * Generates the string representation of a date.
@@ -52,9 +38,9 @@ export const ALL_MONTHS = [
 export const ALL_DAYS_OF_WEEK = [
   "Sun",
   "Mon",
-  "Tues",
-  "Weds",
-  "Thurs",
+  "Tue",
+  "Wed",
+  "Thur",
   "Fri",
   "Sat",
 ]
