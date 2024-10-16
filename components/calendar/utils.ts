@@ -38,9 +38,9 @@ export const ALL_MONTHS = [
 export const ALL_DAYS_OF_WEEK = [
   "Sun",
   "Mon",
-  "Tues",
+  "Tue",
   "Wed",
-  "Thurs",
+  "Thur",
   "Fri",
   "Sat",
 ]
