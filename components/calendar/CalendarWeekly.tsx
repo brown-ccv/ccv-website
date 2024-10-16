@@ -52,6 +52,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
     "col-start-5",
     "col-start-6",
     "col-start-7",
+    "col-start-8",
   ]
 
   const TIMES_ARRAY = Array.from(Array(24), (_, i) => ({
@@ -63,7 +64,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
     day: i,
   }))
 
-  const todayRow = getDay(today)
+  const todayRow = getDay(today) + 1
 
   useEffect(() => {
     // Set the container scroll position based on the current time.
@@ -254,7 +255,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 {DAY_COLUMN_ARRAY.map(({ day, key }) => (
                   <div
                     key={key}
-                    className={`row-span-full ${CAL_STYLE_ARRAY[day + 1]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-50" : ""}`}
+                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-50" : ""}`}
                   />
                 ))}
               </div>
