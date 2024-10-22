@@ -1,12 +1,14 @@
 import React from "react"
+import { LogoProps } from "@/components/assets/LogoBrown"
 
-const LogoCcv: React.FC = () => {
+const LogoCcv: React.FC<LogoProps> = ({ width = 75 }) => {
   return (
     <>
       <svg
         id="ccv-logo"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
+        width={width}
         x="0px"
         y="0px"
         viewBox="0 0 810 306"
