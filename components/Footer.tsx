@@ -122,7 +122,7 @@ export default function Footer() {
           <div className="flex items-center mt-6 lg:mt-0 lg:justify-end space-x-6">
             Socials Here
           </div>
-          <div className="mt-16 grid grid-cols-2 lg:grid-cols-5 gap-12 xl:col-span-2 xl:mt-0">
+          <div className="mt-16 grid grid-cols-2 lg:grid-cols-5 gap-12 xl:col-span-2">
             {Object.entries(navigation).map(([_, contents]) => {
               return (
                 <div key={_}>
@@ -151,7 +151,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-24">
-        <p className="text-xs text-center leading-5 text-gray-500">
+        <p className="mb-16 text-xs text-center leading-5 text-gray-500">
           &copy; 2021 Center for Computation and Visualization, Brown University
           | 180 George St, Providence RI 02906
         </p>
