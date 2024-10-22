@@ -5,7 +5,7 @@
 @layer base {
     :root {
         @apply font-body;
-        @apply text-base;
+        @apply text-xl;
         @apply text-neutral-700;
         --accent: 0, 128, 108;
         --accent-light: 0, 230, 195;
@@ -24,18 +24,9 @@
     }
 
     body {
-        @apply grid;
-        @apply bg-neutral-50;
-        grid-template-columns:
-      1fr
-      min(1000px, 100%)
-      1fr;
+        @apply bg-white;
     }
 
-    body > * {
-        grid-column: 2;
-        @apply px-3;
-    }
 }
 
 
