@@ -8,22 +8,28 @@ export default function Footer() {
       name: "Services",
       href: "/services",
       items: [
-        { name: "Classroom", href: "#" },
-        { name: "Computing", href: "#" },
-        { name: "Campus File Storage and Transfer", href: "#" },
-        { name: "Rates", href: "#" },
-        { name: "Visualization Systems", href: "#" },
-        { name: "Consulting", href: "#" },
+        { name: "Classroom", href: "/services/classroom" },
+        { name: "Computing", href: "/services/computing" },
+        {
+          name: "Campus File Storage and Transfer",
+          href: "/services/file-storage-and-transfer",
+        },
+        { name: "Rates", href: "/services/rates" },
+        { name: "Visualization Systems", href: "/services/visualization" },
+        { name: "Consulting", href: "/services/consulting" },
       ],
     },
     documentation: {
       name: "Documentation",
       href: "/documentation",
       items: [
-        { name: "Oscar", href: "#" },
-        { name: "Stronghold", href: "#" },
-        { name: "Globus", href: "#" },
-        { name: "Jupyter Hub", href: "#" },
+        { name: "Oscar", href: "https://docs.ccv.brown.edu" },
+        {
+          name: "Stronghold",
+          href: "/services/computing#data-risk-level-3-computing-(stronghold)",
+        },
+        { name: "Globus", href: "/services/file-storage-and-transfer#globus" },
+        { name: "Jupyter Hub", href: "/services/classroom#jupyterhub" },
       ],
     },
     ourWork: {
@@ -33,19 +39,15 @@ export default function Footer() {
         { name: "Collaborations", href: "#" },
         {
           name: "Software",
-          href: "#",
+          href: "/our-work/software",
         },
         {
           name: "Workshops and Talks",
-          href: "#",
+          href: "/our-work/workshops-and-talks",
         },
         {
           name: "Publications",
-          href: "#",
-        },
-        {
-          name: "Partners",
-          href: "#",
+          href: "https://publications.ccv.brown.edu",
         },
       ],
     },
@@ -53,18 +55,18 @@ export default function Footer() {
       name: "Help",
       href: "/help",
       items: [
-        { name: "Submit a Ticket", href: "#" },
+        { name: "Submit a Ticket", href: "mailto:support@ccv.brown.edu" },
         {
           name: "Discourse",
-          href: "#",
+          href: "https://ask.cyberinfrastructure.org/c/brown-research-computing/37",
         },
         {
           name: "Slack",
-          href: "#",
+          href: "https://ccv-share.slack.com/signup#/",
         },
         {
           name: "Office Hours",
-          href: "#",
+          href: "https://events.brown.edu/ccv/month",
         },
       ],
     },
@@ -72,34 +74,34 @@ export default function Footer() {
       name: "About",
       href: "/about",
       items: [
-        { name: "Mission", href: "#" },
+        { name: "Mission", href: "/about#mission" },
         {
           name: "Office of Information Technology",
-          href: "#",
+          href: "/about#office-of-information-technology",
         },
         {
           name: "Our Teams",
-          href: "#",
+          href: "/about#our-teams",
         },
         {
           name: "People",
-          href: "#",
+          href: "/about#people",
         },
         {
           name: "Opportunities",
-          href: "#",
+          href: "/about#opportunities",
         },
         {
           name: "Events",
-          href: "#",
+          href: "https://events.brown.edu/ccv/month",
         },
         {
           name: "Facilities Statement",
-          href: "#",
+          href: "/about#facilities-statement",
         },
         {
           name: "Diversity Statement",
-          href: "#",
+          href: "/about#diversity-statement",
         },
       ],
     },
@@ -123,7 +125,7 @@ export default function Footer() {
           <div className="mt-16 grid grid-cols-2 lg:grid-cols-5 gap-12 xl:col-span-2 xl:mt-0">
             {Object.entries(navigation).map(([_, contents]) => {
               return (
-                <div>
+                <div key={_}>
                   <Link
                     href={contents.href}
                     className="text-sm font-semibold leading-6 text-gray-900 hover:text-secondary-blue-700 hover:border-b-2"
