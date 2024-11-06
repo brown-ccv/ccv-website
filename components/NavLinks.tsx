@@ -158,7 +158,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ linkType }) => {
                 {path.title}
               </Link>
               {path.routes && (
-                <MenuButton className="pt-1 group relative inline-flex items-center justify-center rounded-md text-neutral-700 hover:text-neutral-500 focus:outline-none">
+                <MenuButton className="pt-1 group relative inline-flex items-center justify-center rounded-md text-neutral-700 hover:text-neutral-500">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open {path.title}</span>
                   <ChevronDownIcon
@@ -185,7 +185,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ linkType }) => {
                       <Link
                         key={route.href}
                         href={route.href}
-                        className="inline-flex items-center px-1 pt-1 font-medium hover:text-secondary-blue-500"
+                        className="inline-flex items-center px-1 pt-1 font-medium hover:text-secondary-blue-500 data-[focus]:bg-white data-[focus]:outline-none"
                       >
                         {route.name}
                       </Link>

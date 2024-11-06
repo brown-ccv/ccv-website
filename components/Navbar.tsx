@@ -27,13 +27,13 @@ const Navbar = () => {
               </a>
               <Link href="/">
                 <span className="sr-only">Home</span>
-                <LogoCcv width={105} />
+                <LogoCcv width={95} />
               </Link>
             </div>
-            <div className="hidden lg:ml-6 lg:flex lg:items-center lg:space-x-8">
+            <div className="hidden xl:ml-6 xl:flex xl:items-center xl:space-x-8">
               <NavLinks />
             </div>
-            <div className="flex items-center lg:hidden">
+            <div className="flex items-center xl:hidden">
               {/* Mobile menu button */}
               <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                 <span className="absolute -inset-0.5" />
@@ -49,7 +49,7 @@ const Navbar = () => {
               </DisclosureButton>
             </div>
           </div>
-          <div className="flex flex-1 items-center justify-center px-2 gap-10 lg:ml-6">
+          <div className="flex flex-1 items-center justify-center px-2 gap-10 xl:ml-6">
             <div>
               <a
                 href="https://docs.ccv.brown.edu"
@@ -65,7 +65,7 @@ const Navbar = () => {
               </a>
             </div>
 
-            <div className="w-full max-w-lg lg:max-w-xs">
+            <div className="w-full max-w-lg xl:max-w-xs">
               <label htmlFor="search" className="sr-only">
                 Search
               </label>
@@ -73,7 +73,7 @@ const Navbar = () => {
                 <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                   <MagnifyingGlassIcon
                     aria-hidden="true"
-                    className="h-5 w-5 text-gray-400"
+                    className="h-5 w-5 text-neutral-300"
                   />
                 </div>
                 <input
@@ -89,7 +89,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <DisclosurePanel className="lg:hidden">
+      <DisclosurePanel className="xl:hidden">
         <div className="space-y-1 pb-3 pt-2">
           <NavLinks linkType="mobile" />
         </div>
