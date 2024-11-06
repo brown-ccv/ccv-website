@@ -148,10 +148,9 @@ const NavLinks: React.FC<NavLinksProps> = ({ linkType }) => {
     <>
       {navigation.map((path) => {
         return (
-          <Menu>
+          <Menu key={path.href}>
             <div className="hidden lg:ml-6 group lg:flex">
               <Link
-                key={path.href}
                 className={`inline-flex items-center border-b-2 px-1 pt-1 font-medium hover:border-gray-300 hover:text-secondary-blue-500 ${pathname === path.href ? "active text-secondary-blue-500 border-b-2 border-secondary-blue-500" : "border-transparent text-neutral-700"}`}
                 href={path.href}
               >
@@ -181,9 +180,8 @@ const NavLinks: React.FC<NavLinksProps> = ({ linkType }) => {
               {path.routes &&
                 path.routes.map((route) => {
                   return (
-                    <MenuItem>
+                    <MenuItem key={route.href}>
                       <Link
-                        key={route.href}
                         href={route.href}
                         className="inline-flex items-center px-1 pt-1 font-medium hover:text-secondary-blue-500 data-[focus]:bg-white data-[focus]:outline-none"
                       >

@@ -1,7 +1,3 @@
-import LogoCcv from "@/components/assets/LogoCcv"
-import LogoBrown from "@/components/assets/LogoBrown"
-import NavLinks from "@/components/NavLinks"
-
 import {
   Disclosure,
   DisclosureButton,
@@ -13,6 +9,9 @@ import {
 } from "@heroicons/react/20/solid"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
+import LogoCcv from "@/components/assets/LogoCcv"
+import LogoBrown from "@/components/assets/LogoBrown"
+import NavLinks from "@/components/NavLinks"
 
 const Navbar = () => {
   return (
