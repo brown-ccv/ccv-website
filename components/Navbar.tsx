@@ -32,58 +32,36 @@ const Navbar = () => {
             <div className="hidden xl:ml-6 xl:flex xl:items-center xl:space-x-8">
               <NavLinks />
             </div>
-            <div className="flex items-center xl:hidden">
-              {/* Mobile menu button */}
-              <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
-                <span className="absolute -inset-0.5" />
-                <span className="sr-only">Open main menu</span>
-                <Bars3Icon
-                  aria-hidden="true"
-                  className="block h-6 w-6 group-data-[open]:hidden"
-                />
-                <XMarkIcon
-                  aria-hidden="true"
-                  className="hidden h-6 w-6 group-data-[open]:block"
-                />
-              </DisclosureButton>
-            </div>
-          </div>
-          <div className="flex flex-1 items-center justify-center px-2 gap-10 xl:ml-6">
-            <div>
-              <a
-                href="https://docs.ccv.brown.edu"
-                target="_blank"
-                aria-label="CCV Services' Documentation"
-                className="bg-white text-secondary-blue-700 inline-flex items-center rounded-md px-3 py-2 "
-              >
-                Docs
-                <DocumentTextIcon
-                  aria-hidden="true"
-                  className="h-5 w-5 text-secondary-blue-700"
-                />
-              </a>
-            </div>
-
-            <div className="w-full max-w-lg xl:max-w-xs">
-              <label htmlFor="search" className="sr-only">
-                Search
-              </label>
-              <div className="relative">
-                <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                  <MagnifyingGlassIcon
-                    aria-hidden="true"
-                    className="h-5 w-5 text-neutral-300"
-                  />
+            <section className="flex items-center px-2 gap-10 space-x-4 xl:ml-6">
+              <div className="w-full max-w-lg xl:max-w-xs">
+                <label htmlFor="search" className="sr-only">
+                  Search
+                </label>
+                <div className="relative">
+                  <button className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                    <MagnifyingGlassIcon
+                      aria-hidden="true"
+                      className="h-5 w-5 text-neutral-300"
+                    />
+                  </button>
                 </div>
-                <input
-                  id="search"
-                  name="search"
-                  type="search"
-                  placeholder="Search"
-                  className="block w-full rounded-md border-0 bg-white py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                />
               </div>
-            </div>
+              <div className="flex items-center xl:hidden">
+                {/* Mobile menu button */}
+                <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                  <span className="absolute -inset-0.5" />
+                  <span className="sr-only">Open main menu</span>
+                  <Bars3Icon
+                    aria-hidden="true"
+                    className="block h-6 w-6 group-data-[open]:hidden"
+                  />
+                  <XMarkIcon
+                    aria-hidden="true"
+                    className="hidden h-6 w-6 group-data-[open]:block"
+                  />
+                </DisclosureButton>
+              </div>
+            </section>
           </div>
         </div>
       </div>
