@@ -127,7 +127,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ linkType }) => {
               key={path.href}
               as="a"
               href={path.href}
-              className={`block border-l-4 text-lg font-medium py-2 pl-3 pr-4 hover:border-gray-300 hover:text-secondary-blue-500 ${pathname === path.slug ? "active text-secondary-blue-500 border-secondary-blue-500" : "border-transparent text-neutral-700"}`}
+              className={`block border-l-4 text-lg font-medium py-2 pl-3 pr-4 hover:border-gray-300 hover:text-secondary-blue-500 ${pathname === path.href ? "active text-secondary-blue-500 border-secondary-blue-500" : "border-transparent text-neutral-700"}`}
             >
               {path.title}
             </Menu>
