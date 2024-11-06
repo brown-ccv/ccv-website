@@ -3,10 +3,7 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from "@headlessui/react"
-import {
-  MagnifyingGlassIcon,
-  DocumentTextIcon,
-} from "@heroicons/react/20/solid"
+import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline"
 import Link from "next/link"
 import LogoCcv from "@/components/assets/LogoCcv"
@@ -48,7 +45,7 @@ const Navbar = () => {
               </div>
               <div className="flex items-center xl:hidden">
                 {/* Mobile menu button */}
-                <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                <DisclosureButton className="group relative inline-flex items-center justify-center rounded-md p-2 text-neutral-700 ">
                   <span className="absolute -inset-0.5" />
                   <span className="sr-only">Open main menu</span>
                   <Bars3Icon

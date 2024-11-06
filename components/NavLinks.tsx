@@ -135,7 +135,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ linkType }) => {
               key={path.slug}
               as="a"
               href={path.slug}
-              className={`block border-l-4 font-medium py-2 pl-3 pr-4 hover:border-gray-300 hover:text-secondary-blue-500 ${pathname === path.slug ? "active text-secondary-blue-500 border-secondary-blue-500" : "border-transparent text-neutral-700"}`}
+              className={`block border-l-4 text-lg font-medium py-2 pl-3 pr-4 hover:border-gray-300 hover:text-secondary-blue-500 ${pathname === path.slug ? "active text-secondary-blue-500 border-secondary-blue-500" : "border-transparent text-neutral-700"}`}
             >
               {path.title}
             </Menu>
@@ -151,7 +151,7 @@ const NavLinks: React.FC<NavLinksProps> = ({ linkType }) => {
           <Menu key={path.href}>
             <div className="hidden lg:ml-6 group lg:flex">
               <Link
-                className={`inline-flex items-center border-b-2 px-1 pt-1 font-medium hover:border-gray-300 hover:text-secondary-blue-500 ${pathname === path.href ? "active text-secondary-blue-500 border-b-2 border-secondary-blue-500" : "border-transparent text-neutral-700"}`}
+                className={`inline-flex text-lg items-center border-b-2 px-1 pt-1 font-medium hover:border-gray-300 hover:text-secondary-blue-500 ${pathname === path.href ? "active text-secondary-blue-500 border-b-2 border-secondary-blue-500" : "border-transparent text-neutral-700"}`}
                 href={path.href}
               >
                 {path.title}

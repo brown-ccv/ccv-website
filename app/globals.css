@@ -5,7 +5,7 @@
 @layer base {
     :root {
         @apply font-body;
-        @apply text-xl;
+        @apply text-base;
         @apply text-neutral-700;
         --accent: 0, 128, 108;
         --accent-light: 0, 230, 195;
