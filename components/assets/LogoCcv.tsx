@@ -1,6 +1,7 @@
 import React from "react"
+import { SvgProps } from "@/components/assets/LogoBrown"
 
-const LogoCcv: React.FC = () => {
+const LogoCcv: React.FC<SvgProps> = ({ width = 95 }) => {
   return (
     <>
       <svg
@@ -9,6 +10,7 @@ const LogoCcv: React.FC = () => {
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
         y="0px"
+        width={width}
         viewBox="0 0 810 306"
       >
         <g>
