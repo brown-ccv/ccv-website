@@ -26,7 +26,7 @@ export default function Button({
       break
     case "tertiary":
       buttonStyles =
-        "bg-neutral-50 text-secondary-blue-700 hover:bg-neutral-100"
+        "bg-white text-secondary-blue-700 hover:bg-neutral-100 hover:text-white"
       break
     default:
       buttonStyles =
