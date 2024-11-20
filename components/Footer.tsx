@@ -3,109 +3,114 @@ import LogoBrown from "@/components/assets/LogoBrown"
 import LogoCcv from "@/components/assets/LogoCcv"
 
 export default function Footer() {
-  const navigation = {
-    services: {
-      name: "Services",
+  const navigation = [
+    {
+      title: "Services",
       href: "/services",
-      items: [
-        { name: "Classroom", href: "/services/classroom" },
-        { name: "Computing", href: "/services/computing" },
+      routes: [
+        { title: "Classroom", href: "/services/classroom" },
+        { title: "Computing", href: "/services/computing" },
         {
-          name: "Campus File Storage and Transfer",
+          title: "Campus File Storage and Transfer",
           href: "/services/file-storage-and-transfer",
         },
-        { name: "Rates", href: "/services/rates" },
-        { name: "Visualization Systems", href: "/services/visualization" },
-        { name: "Consulting", href: "/services/consulting" },
+        { title: "Rates", href: "/services/rates" },
+        { title: "Visualization Systems", href: "/services/visualization" },
+        { title: "Consulting", href: "/services/consulting" },
       ],
     },
-    documentation: {
-      name: "Documentation",
+    {
+      title: "Documentation",
       href: "/documentation",
-      items: [
-        { name: "Oscar", href: "https://docs.ccv.brown.edu" },
+      routes: [
+        { title: "Oscar", href: "https://docs.ccv.brown.edu" },
         {
-          name: "Stronghold",
+          title: "Stronghold",
           href: "/services/computing#data-risk-level-3-computing-(stronghold)",
         },
-        { name: "Globus", href: "/services/file-storage-and-transfer#globus" },
-        { name: "Jupyter Hub", href: "/services/classroom#jupyterhub" },
+        { title: "Globus", href: "/services/file-storage-and-transfer#globus" },
+        { title: "Jupyter Hub", href: "/services/classroom#jupyterhub" },
       ],
     },
-    ourWork: {
-      name: "Our Work",
+    {
+      title: "Our Work",
       href: "/our-work",
-      items: [
-        { name: "Collaborations", href: "#" },
+      routes: [
+        { title: "Collaborations", href: "#" },
         {
-          name: "Software",
+          title: "Software",
           href: "/our-work/software",
         },
         {
-          name: "Workshops and Talks",
+          title: "Workshops and Talks",
           href: "/our-work/workshops-and-talks",
         },
         {
-          name: "Publications",
+          title: "Publications",
           href: "https://publications.ccv.brown.edu",
         },
       ],
     },
-    help: {
-      name: "Help",
+    {
+      title: "Help",
       href: "/help",
-      items: [
-        { name: "Submit a Ticket", href: "mailto:support@ccv.brown.edu" },
+      routes: [
+        { title: "Submit a Ticket", href: "mailto:support@ccv.brown.edu" },
         {
-          name: "Discourse",
+          title: "Discourse",
           href: "https://ask.cyberinfrastructure.org/c/brown-research-computing/37",
         },
         {
-          name: "Slack",
+          title: "Slack",
           href: "https://ccv-share.slack.com/signup#/",
         },
         {
-          name: "Office Hours",
+          title: "Office Hours",
           href: "https://events.brown.edu/ccv/month",
         },
       ],
     },
-    about: {
-      name: "About",
+    {
+      title: "About",
       href: "/about",
-      items: [
-        { name: "Mission", href: "/about#mission" },
+      routes: [
+        { title: "Mission", href: "/about#mission" },
         {
-          name: "Office of Information Technology",
+          title: "Office of Information Technology",
           href: "/about#office-of-information-technology",
         },
         {
-          name: "Our Teams",
+          title: "Our Teams",
           href: "/about#our-teams",
         },
         {
-          name: "People",
+          title: "People",
           href: "/about#people",
         },
         {
-          name: "Opportunities",
+          title: "Opportunities",
           href: "/about#opportunities",
         },
         {
-          name: "Events",
+          title: "Events",
           href: "https://events.brown.edu/ccv/month",
         },
         {
-          name: "Facilities Statement",
+          title: "Facilities Statement",
           href: "/about#facilities-statement",
         },
         {
-          name: "Diversity Statement",
+          title: "Diversity Statement",
           href: "/about#diversity-statement",
         },
       ],
     },
-  }
+    {
+      title: "Blog",
+      href: "/blog",
+      routes: [],
+    },
+  ]
   return (
     <footer aria-labelledby="footer-heading" className="w-full bg-neutral-50">
       <h2 id="footer-heading" className="sr-only">
@@ -120,24 +125,32 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 lg:grid-cols-5 gap-8 xl:col-span-2">
-            {Object.entries(navigation).map(([_, contents]) => {
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 xl:col-span-2">
+            {navigation.map((contents) => {
               return (
-                <div key={_}>
-                  <Link
+                <div key={contents.href}>
+                  <p
                     href={contents.href}
-                    className="text-sm font-semibold leading-6 text-gray-900 hover:text-secondary-blue-700 hover:border-b-2"
+                    className="text-sm font-semibold leading-6 text-gray-900"
                   >
-                    {contents.name}
-                  </Link>
+                    {contents.title}
+                  </p>
                   <ul role="list" className="mt-6 space-y-2">
-                    {contents.items.map((item) => (
-                      <li key={item.name}>
+                    <li>
+                      <Link
+                        href={contents.href}
+                        className="text-sm leading-6 text-secondary-blue-700 hover:text-black hover:border-b-2"
+                      >
+                        Explore {contents.title}
+                      </Link>
+                    </li>
+                    {contents.routes.map((item) => (
+                      <li key={item.title}>
                         <a
                           href={item.href}
-                          className="text-sm leading-6 text-secondary-blue-700 hover:text-black"
+                          className="text-sm leading-6 text-secondary-blue-700 hover:text-black hover:border-b-2"
                         >
-                          {item.name}
+                          {item.title}
                         </a>
                       </li>
                     ))}
@@ -150,7 +163,7 @@ export default function Footer() {
       </div>
       <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-16">
         <p className="mb-8 text-xs text-center leading-5 text-gray-500">
-          &copy; 2021 Center for Computation and Visualization, Brown University
+          &copy; 2024 Center for Computation and Visualization, Brown University
           | 180 George St, Providence RI 02906
         </p>
       </div>
