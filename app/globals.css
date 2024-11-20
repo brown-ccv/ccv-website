@@ -27,6 +27,18 @@
         @apply bg-white;
     }
 
+    }
+
+    body > * {
+        grid-column: 2;
+        @apply px-3;
+    }
+
+    h1 {
+        font-weight: 600;
+        line-height: 1.125;
+        font-size: 4.5rem;
+    }
 }
 
 
@@ -45,14 +57,16 @@
     }
 
     .column {
-        @apply flex-grow;
+        @apply block;
         @apply basis-0;
+        @apply flex-grow;
         @apply flex-shrink;
         @apply p-3;
     }
 
     .weekly-datetime {
-        @apply text-darkblue;
+        @apply text-secondary-blue-700;
+        @apply text-xs;
     }
 }
 
