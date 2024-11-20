@@ -50,10 +50,6 @@
         @apply flex-shrink;
         @apply p-3;
     }
-
-    .weekly-datetime {
-        @apply text-darkblue;
-    }
 }
 
 @layer utilities {
