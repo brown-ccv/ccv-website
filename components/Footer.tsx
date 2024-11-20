@@ -129,10 +129,7 @@ export default function Footer() {
             {navigation.map((contents) => {
               return (
                 <div key={contents.href}>
-                  <p
-                    href={contents.href}
-                    className="text-sm font-semibold leading-6 text-gray-900"
-                  >
+                  <p className="text-sm font-semibold leading-6 text-gray-900">
                     {contents.title}
                   </p>
                   <ul role="list" className="mt-6 space-y-2">
