@@ -1,6 +1,5 @@
 {
   "extends": [
-    "next/core-web-vitals",
-    "@brown-ccv/eslint-config"
+    "next/core-web-vitals"
   ]
 }

@@ -25,7 +25,6 @@ interface RouteItem {
 
 interface NavigationProps {
   routes: RouteItem[]
-  type?: "mobile" | "desktop"
   parentTitle: string
   parentHref: string
 }
@@ -195,7 +194,7 @@ const Navbar = () => {
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-neutral-50 mt-3 z-50 overflow-y-scroll h-96">
-            <NavigationLinks type="mobile" />
+            <MobileLinks />
           </DropdownMenuContent>
         </DropdownMenu>
       </section>
@@ -203,50 +202,49 @@ const Navbar = () => {
   )
 }
 
+const MobileLinks = () => {
+  return (
+    <>
+      {navigation.map((path) => {
+        return (
+          <div key={path.href}>
+            <DropdownMenuLabel>{path.title}</DropdownMenuLabel>
+            <DropdownMenuItem className="p-2 hover:bg-white hover:text-secondary-blue-700">
+              <Link
+                href={path.href}
+                className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+              >
+                Explore {path.title}
+              </Link>
+            </DropdownMenuItem>
+            {path.routes &&
+              path.routes.map((route) => {
+                return (
+                  <DropdownMenuItem
+                    key={route.href}
+                    className="p-2 hover:bg-white hover:text-secondary-blue-700"
+                  >
+                    <Link
+                      href={route.href}
+                      className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+                    >
+                      {route.title}
+                    </Link>
+                  </DropdownMenuItem>
+                )
+              })}
+            <DropdownMenuSeparator />
+          </div>
+        )
+      })}
+    </>
+  )
+}
 const NavigationLinks: React.FC<NavigationProps> = ({
-  type,
   routes,
   parentTitle,
   parentHref,
 }) => {
-  if (type === "mobile") {
-    return (
-      <>
-        {navigation.map((path) => {
-          return (
-            <div key={path.href}>
-              <DropdownMenuLabel>{path.title}</DropdownMenuLabel>
-              <DropdownMenuItem className="p-2 hover:bg-white hover:text-secondary-blue-700">
-                <Link
-                  href={path.href}
-                  className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
-                >
-                  Explore {path.title}
-                </Link>
-              </DropdownMenuItem>
-              {path.routes &&
-                path.routes.map((route) => {
-                  return (
-                    <DropdownMenuItem
-                      key={route.href}
-                      className="p-2 hover:bg-white hover:text-secondary-blue-700"
-                    >
-                      <Link
-                        href={route.href}
-                        className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
-                      >
-                        {route.title}
-                      </Link>
-                    </DropdownMenuItem>
-                  )
-                })}
-              <DropdownMenuSeparator />
-            </div>
-          )
-        })}
-      </>
-    )
-  }
   return (
     <NavigationMenu.Content className="absolute top-[100%] z-50 w-max rounded-md shadow-md">
       <ul className="list-none p-4 m-0 bg-neutral-50 flex flex-col gap-2">
