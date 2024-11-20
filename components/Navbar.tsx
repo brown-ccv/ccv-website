@@ -158,7 +158,7 @@ const Navbar = () => {
           {navigation.map((item) => {
             return (
               <NavigationMenu.Item key={item.href}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center rounded-md bg-background px-4 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center rounded-md bg-background px-4 py-2 text-md font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                   {item.title}{" "}
                   <ChevronDownIcon
                     className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
@@ -194,7 +194,7 @@ const Navbar = () => {
               className="h-5 w-5 text-neutral-500"
             />
           </DropdownMenuTrigger>
-          <DropdownMenuContent className="bg-neutral-50 mt-3 overflow-y-scroll h-96">
+          <DropdownMenuContent className="bg-neutral-50 mt-3 z-50 overflow-y-scroll h-96">
             <NavigationLinks type="mobile" />
           </DropdownMenuContent>
         </DropdownMenu>
@@ -235,17 +235,26 @@ const NavigationLinks: React.FC<NavigationProps> = ({
     )
   }
   return (
-    <NavigationMenu.Content className="absolute top-[100%] w-max rounded-md shadow-md">
-      <ul className="list-none p-6 m-0 bg-neutral-50 flex flex-col gap-2">
-        <li>
-          <NavigationMenu.Link href={parentHref}>
+    <NavigationMenu.Content className="absolute top-[100%] z-50 w-max rounded-md shadow-md">
+      <ul className="list-none p-4 m-0 bg-neutral-50 flex flex-col gap-2">
+        <li className="p-2 hover:bg-white hover:text-secondary-blue-700">
+          <NavigationMenu.Link
+            href={parentHref}
+            className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+          >
             Explore {parentTitle}
           </NavigationMenu.Link>
         </li>
         {routes.length > 0 &&
           routes.map((route) => (
-            <li key={route.href}>
-              <NavigationMenu.Link href={route.href}>
+            <li
+              key={route.href}
+              className="p-2 hover:bg-white hover:text-secondary-blue-700 "
+            >
+              <NavigationMenu.Link
+                href={route.href}
+                className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+              >
                 {route.title}
               </NavigationMenu.Link>
             </li>
