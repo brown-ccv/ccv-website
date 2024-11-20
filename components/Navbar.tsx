@@ -216,14 +216,27 @@ const NavigationLinks: React.FC<NavigationProps> = ({
           return (
             <div key={path.href}>
               <DropdownMenuLabel>{path.title}</DropdownMenuLabel>
-              <DropdownMenuItem>
-                <Link href={path.href}>Explore {path.title}</Link>
+              <DropdownMenuItem className="p-2 hover:bg-white hover:text-secondary-blue-700">
+                <Link
+                  href={path.href}
+                  className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+                >
+                  Explore {path.title}
+                </Link>
               </DropdownMenuItem>
               {path.routes &&
                 path.routes.map((route) => {
                   return (
-                    <DropdownMenuItem key={route.href}>
-                      <Link href={route.href}>{route.title}</Link>
+                    <DropdownMenuItem
+                      key={route.href}
+                      className="p-2 hover:bg-white hover:text-secondary-blue-700"
+                    >
+                      <Link
+                        href={route.href}
+                        className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+                      >
+                        {route.title}
+                      </Link>
                     </DropdownMenuItem>
                   )
                 })}
@@ -249,7 +262,7 @@ const NavigationLinks: React.FC<NavigationProps> = ({
           routes.map((route) => (
             <li
               key={route.href}
-              className="p-2 hover:bg-white hover:text-secondary-blue-700 "
+              className="p-2 hover:bg-white hover:text-secondary-blue-700"
             >
               <NavigationMenu.Link
                 href={route.href}
