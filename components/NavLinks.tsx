@@ -1,20 +1,25 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Menu, MenuItem, MenuItems } from "@headlessui/react"
-import MenuDropdown from "@/components/MenuDropdown"
-import React, { useRef } from "react"
-import { cn } from "@/lib/utils"
+import React from "react"
 import {
-  NavigationMenu,
   NavigationMenuContent,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuList,
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 
-const NavLinks: React.FC = () => {
+import {
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+} from "@/components/ui/dropdown-menu"
+
+interface NavLinksProps {
+  type?: string
+}
+
+const NavLinks: React.FC<NavLinksProps> = ({ type }) => {
   const navigation = [
     {
       title: "Services",
@@ -122,7 +127,43 @@ const NavLinks: React.FC = () => {
       href: "/blog",
     },
   ]
-  const pathname = usePathname()
+  //const pathname = usePathname()
+
+  if (type === "mobile") {
+    return (
+      <>
+        {navigation.map((path) => {
+          return (
+            <div key={path.href}>
+              <DropdownMenuLabel>{path.title}</DropdownMenuLabel>
+              <DropdownMenuItem>
+                <Link href={path.href} legacyBehavior passHref>
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    Explore {path.title}
+                  </NavigationMenuLink>
+                </Link>
+              </DropdownMenuItem>
+              {path.routes &&
+                path.routes.map((route) => {
+                  return (
+                    <DropdownMenuItem key={route.href}>
+                      <Link href={route.href} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={navigationMenuTriggerStyle()}
+                        >
+                          {route.title}
+                        </NavigationMenuLink>
+                      </Link>
+                    </DropdownMenuItem>
+                  )
+                })}
+              <DropdownMenuSeparator />
+            </div>
+          )
+        })}
+      </>
+    )
+  }
   return (
     <>
       {navigation.map((path) => {
@@ -132,37 +173,29 @@ const NavLinks: React.FC = () => {
               <NavigationMenuItem>
                 <NavigationMenuTrigger>{path.title}</NavigationMenuTrigger>
                 <NavigationMenuContent className="bg-neutral-50">
-                  <ul className="grid gap-1  md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
-                    {path.routes && (
-                      <li>
-                        <Link href={path.href} legacyBehavior passHref>
-                          <NavigationMenuLink
-                            className={navigationMenuTriggerStyle()}
-                          >
-                            Explore {path.title}
-                          </NavigationMenuLink>
-                        </Link>
-                      </li>
-                    )}
-                    {path.routes &&
-                      path.routes.map((item) => {
-                        return (
-                          <li>
-                            <Link
-                              key={item.href}
-                              href={item.href}
-                              legacyBehavior
-                              passHref
+                  <ul className="grid gap-1 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                    <li>
+                      <Link href={path.href} legacyBehavior passHref>
+                        <NavigationMenuLink
+                          className={navigationMenuTriggerStyle()}
+                        >
+                          Explore {path.title}
+                        </NavigationMenuLink>
+                      </Link>
+                    </li>
+                    {path.routes.map((item) => {
+                      return (
+                        <li key={item.href}>
+                          <Link href={item.href} legacyBehavior passHref>
+                            <NavigationMenuLink
+                              className={navigationMenuTriggerStyle()}
                             >
-                              <NavigationMenuLink
-                                className={navigationMenuTriggerStyle()}
-                              >
-                                {item.title}
-                              </NavigationMenuLink>
-                            </Link>
-                          </li>
-                        )
-                      })}
+                              {item.title}
+                            </NavigationMenuLink>
+                          </Link>
+                        </li>
+                      )
+                    })}
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -171,7 +204,7 @@ const NavLinks: React.FC = () => {
               <NavigationMenuItem>
                 <Link href={path.href} legacyBehavior passHref>
                   <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                    Documentation
+                    {path.title}
                   </NavigationMenuLink>
                 </Link>
               </NavigationMenuItem>
