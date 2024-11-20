@@ -27,8 +27,6 @@
         @apply bg-white;
     }
 
-    }
-
     body > * {
         grid-column: 2;
         @apply px-3;
