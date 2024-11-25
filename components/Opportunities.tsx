@@ -26,31 +26,45 @@ export const Opportunities: React.FC = () => {
   }
   const [data, setData] = useState<OpportunityProps>(initialData)
   const [isLoading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-  useEffect(() => {
-    fetch("/api/opportunities")
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data)
-        setLoading(false)
+  const handleApiCall = async () => {
+    try {
+      const res = await fetch("/api/about", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
       })
-  }, [])
 
-  if (isLoading) return <p className="text-neutral-900">Loading...</p>
-  if (!data) return <p className="text-neutral-900">No profile data</p>
+      if (!res.ok) {
+        throw new Error(`Failed to fetch: ${res.status}`)
+      }
+
+      const opportunities = await res.json()
+      setData(opportunities.json.jobPostings)
+    } catch (err: any) {
+      setError(err.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+  useEffect(() => {
+    handleApiCall()
+  }, [])
 
   return (
     <div className="text-neutral-900">
-      {data.jobPostings.length > 0 &&
-        data.jobPostings.map((position) => {
+      <h2 className="text-3xl bg-primary-500 text-white p-4">Opportunities</h2>
+      {isLoading && <p className="px-2 font-bold">Loading...</p>}
+      {error && <p className="px-2 font-bold text-red">Error: {error}</p>}
+      {data.length > 0 &&
+        data.map((position) => {
           return (
             <div
               key={position.externalPath}
               className="flex flex-col gap-6 m-4"
             >
-              <h2 className="text-3xl bg-primary-500 text-white p-4">
-                Opportunities
-              </h2>
               <Card>
                 <div className="flex items-center justify-between">
                   <div>
