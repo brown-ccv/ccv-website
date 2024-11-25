@@ -1,20 +1,20 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import { Card } from "@/components/Card";
+"use client"
+import React, { useState, useEffect } from "react"
+import { Card } from "@/components/Card"
 
 interface OpportunityProps {
-  total: number;
-  jobPostings: PositionProps[];
-  facets: Object[];
-  userAuthenticated: boolean;
+  total: number
+  jobPostings: PositionProps[]
+  facets: Object[]
+  userAuthenticated: boolean
 }
 
 interface PositionProps {
-  title: string;
-  externalPath: string;
-  locationsText: string;
-  postedOn: string;
-  bulletFields: string[];
+  title: string
+  externalPath: string
+  locationsText: string
+  postedOn: string
+  bulletFields: string[]
 }
 
 export const Opportunities: React.FC = () => {
@@ -23,21 +23,21 @@ export const Opportunities: React.FC = () => {
     jobPostings: [],
     userAuthenticated: false,
     facets: [],
-  };
-  const [data, setData] = useState<OpportunityProps>(initialData);
-  const [isLoading, setLoading] = useState(true);
+  }
+  const [data, setData] = useState<OpportunityProps>(initialData)
+  const [isLoading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch("/api/opportunities")
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
-        setLoading(false);
-      });
-  }, []);
+        setData(data)
+        setLoading(false)
+      })
+  }, [])
 
-  if (isLoading) return <p className="text-neutral-900">Loading...</p>;
-  if (!data) return <p className="text-neutral-900">No profile data</p>;
+  if (isLoading) return <p className="text-neutral-900">Loading...</p>
+  if (!data) return <p className="text-neutral-900">No profile data</p>
 
   return (
     <div className="text-neutral-900">
@@ -74,8 +74,8 @@ export const Opportunities: React.FC = () => {
                 </div>
               </Card>
             </div>
-          );
+          )
         })}
     </div>
-  );
-};
+  )
+}
