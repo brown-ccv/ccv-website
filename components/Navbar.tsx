@@ -34,14 +34,14 @@ const Navbar = () => {
   return (
     <div className="bg-neutral-50 p-2 shadow flex justify-between items-center">
       {/* Logo Section */}
-      <section className="flex items-center space-x-3">
+      <div className="flex items-center space-x-3">
         <a href="https://it.brown.edu">
           <LogoBrown width={135} />
         </a>
         <Link href={"/"}>
           <LogoCcv width={105} />
         </Link>
-      </section>
+      </div>
 
       {/* Navigation Menu for Desktop */}
       <NavigationMenu.Root className="hidden lg:block">
@@ -70,14 +70,14 @@ const Navbar = () => {
       </NavigationMenu.Root>
 
       {/* Search Icon */}
-      <section>
+      <div>
         <Button variant="tertiary">
           <MagnifyingGlassIcon aria-hidden="true" className="h-5 w-5" />
         </Button>
-      </section>
+      </div>
 
       {/* Mobile Dropdown Menu */}
-      <section className="block lg:hidden">
+      <div className="block lg:hidden">
         <DropdownMenu>
           <DropdownMenuTrigger className="bg-white p-2">
             <Bars3Icon
@@ -89,7 +89,7 @@ const Navbar = () => {
             <MobileLinks />
           </DropdownMenuContent>
         </DropdownMenu>
-      </section>
+      </div>
     </div>
   )
 }
