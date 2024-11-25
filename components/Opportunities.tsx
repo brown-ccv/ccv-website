@@ -42,7 +42,7 @@ export const Opportunities: React.FC = () => {
       }
 
       const opportunities = await res.json()
-      setData(opportunities.json.jobPostings)
+      setData(opportunities.json)
     } catch (err: any) {
       setError(err.message)
     } finally {
@@ -58,8 +58,8 @@ export const Opportunities: React.FC = () => {
       <h2 className="text-3xl bg-primary-500 text-white p-4">Opportunities</h2>
       {isLoading && <p className="px-2 font-bold">Loading...</p>}
       {error && <p className="px-2 font-bold text-red">Error: {error}</p>}
-      {data.length > 0 &&
-        data.map((position) => {
+      {data.jobPostings.length > 0 &&
+        data.jobPostings.map((position) => {
           return (
             <div
               key={position.externalPath}

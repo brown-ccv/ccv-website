@@ -13,16 +13,13 @@ export async function POST() {
     searchText: "180 George Street",
   })
 
-  const requestOptions = {
-    method: "POST",
-    headers: myHeaders,
-    body: raw,
-    redirect: "follow",
-  }
-
   const response = await fetch(
     "https://brown.wd5.myworkdayjobs.com/wday/cxs/brown/staff-careers-brown/jobs",
-    requestOptions
+    {
+      method: "POST",
+      headers: myHeaders,
+      body: raw,
+    }
   )
   const json = await response.json()
 
