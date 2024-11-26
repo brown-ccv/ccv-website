@@ -1,9 +1,9 @@
-import React from "react";
+import React from "react"
 
 interface CardProps {
-  children?: React.ReactNode;
+  children?: React.ReactNode
 }
 
 export const Card: React.FC<CardProps> = ({ children }) => {
-  return <div className="bg-gray p-6">{children}</div>;
-};
+  return <div className="bg-gray-50 shadow-md p-6">{children}</div>
+}

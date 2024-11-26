@@ -1,6 +1,11 @@
 "use client"
 import React, { useState, useEffect } from "react"
 import { Card } from "@/components/Card"
+import {
+  MapPinIcon,
+  ArrowRightIcon,
+  UserPlusIcon,
+} from "@heroicons/react/24/solid"
 
 interface OpportunityProps {
   total: number
@@ -55,7 +60,10 @@ export const Opportunities: React.FC = () => {
 
   return (
     <div className="text-neutral-900">
-      <h2 className="text-3xl bg-primary-500 text-white p-4">Opportunities</h2>
+      <h2 className="text-3xl bg-primary-500 text-white p-4 flex items-center gap-2">
+        <UserPlusIcon className="h-7 w-7" />
+        Opportunities
+      </h2>
       {isLoading && <p className="px-2 font-bold">Loading...</p>}
       {error && <p className="px-2 font-bold text-red">Error: {error}</p>}
       {data.jobPostings.length > 0 &&
@@ -68,21 +76,20 @@ export const Opportunities: React.FC = () => {
               <Card>
                 <div className="flex items-center justify-between">
                   <div>
-                    Providence, RI - United States
-                    <p className="has-text-dark">{position.title}</p>
+                    <p className="flex items-center gap-4 text-secondary-blue-700">
+                      <MapPinIcon className="h-4 w-4" /> Providence, RI - United
+                      States
+                    </p>
+                    <p className="text-gray-800">{position.title}</p>
                   </div>
                   <a
                     key={position.externalPath}
-                    className="position-block underline"
+                    className="position-block text-secondary-blue-700 hover:text-black"
                     href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
                   >
-                    <div>
-                      <p>
-                        Learn More
-                        <span className="icon ml-3">
-                          <i className="mdi mdi-arrow-right" />
-                        </span>
-                      </p>
+                    <div className="flex items-center gap-4">
+                      <p>Learn More</p>
+                      <ArrowRightIcon className="h-4 w-4" />
                     </div>
                   </a>
                 </div>
