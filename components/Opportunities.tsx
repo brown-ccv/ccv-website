@@ -1,5 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react"
+import Link from "next/link"
 import { LinkCard } from "@/components/LinkCard"
 import {
   MapPinIcon,
@@ -59,7 +60,7 @@ export const Opportunities: React.FC = () => {
   }, [])
 
   return (
-    <div className="text-neutral-900">
+    <Link href="#opportunities" className="text-neutral-900">
       <h2 className="text-3xl bg-primary-500 text-white p-4 flex items-center gap-2">
         <UserPlusIcon className="h-7 w-7" />
         Opportunities
@@ -98,6 +99,6 @@ export const Opportunities: React.FC = () => {
             </div>
           )
         })}
-    </div>
+    </Link>
   )
 }
