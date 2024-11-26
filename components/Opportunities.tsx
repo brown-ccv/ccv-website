@@ -1,6 +1,6 @@
 "use client"
 import React, { useState, useEffect } from "react"
-import { Card } from "@/components/Card"
+import { LinkCard } from "@/components/LinkCard"
 import {
   MapPinIcon,
   ArrowRightIcon,
@@ -73,27 +73,28 @@ export const Opportunities: React.FC = () => {
               key={position.externalPath}
               className="flex flex-col gap-6 m-4"
             >
-              <Card>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="flex items-center gap-4 text-secondary-blue-700">
-                      <MapPinIcon className="h-4 w-4" /> Providence, RI - United
-                      States
-                    </p>
-                    <p className="text-gray-800">{position.title}</p>
-                  </div>
-                  <a
-                    key={position.externalPath}
-                    className="position-block text-secondary-blue-700 hover:text-black"
-                    href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
-                  >
+              <a
+                key={position.externalPath}
+                className="position-block text-secondary-blue-700 hover:text-black"
+                href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
+              >
+                <LinkCard>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <p className="flex items-center gap-4 text-secondary-blue-700">
+                        <MapPinIcon className="h-4 w-4" /> Providence, RI -
+                        United States
+                      </p>
+                      <p className="text-gray-800">{position.title}</p>
+                    </div>
+
                     <div className="flex items-center gap-4">
                       <p>Learn More</p>
                       <ArrowRightIcon className="h-4 w-4" />
                     </div>
-                  </a>
-                </div>
-              </Card>
+                  </div>
+                </LinkCard>
+              </a>
             </div>
           )
         })}
