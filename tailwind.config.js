@@ -1,4 +1,4 @@
-/** @type {import("tailwindcss").Config} */
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
@@ -78,7 +78,7 @@ module.exports = {
     },
     blur: {
       0: "0",
-      none: "0",
+      none: "",
       sm: "4px",
       DEFAULT: "8px",
       md: "12px",
@@ -120,14 +120,7 @@ module.exports = {
       lg: "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)",
       xl: "0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1)",
       "2xl": "0 25px 50px -12px rgb(0 0 0 / 0.25)",
-      "book-shadow":
-        "4px 4px 12px 4px rgba(167, 153, 139, 0.35), 12px 12px 4px 0px rgba(167, 153, 139, 0.35);",
-      inner:
-        "-1px -1px 4px 0px rgba(167, 153, 139, 0.35) inset, 1px 1px 4px 0px rgba(167, 153, 139, 0.35) inset",
-      "inner-focus":
-        "-2px -2px 4px 0px rgba(97, 59, 26, 0.35) inset, 2px 2px 4px 0px rgba(97, 59, 26, 0.35) inset",
-      showcase:
-        "4px 4px 12px 4px rgba(167, 153, 139, 0.35), 12px 12px 4px 0px rgba(167, 153, 139, 0.35)",
+      inner: "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)",
       none: "none",
     },
     boxShadowColor: ({ theme }) => theme("colors"),
@@ -145,12 +138,34 @@ module.exports = {
       200: "2",
     },
     caretColor: ({ theme }) => theme("colors"),
-    colors: {
-      white: "#FAFAFA",
-      gray: "#E5E5E5",
-      black: "#0A0A0A",
-      red: "#ED1C24",
+    colors: ({ colors }) => ({
+      inherit: colors.inherit,
+      current: colors.current,
+      transparent: colors.transparent,
+      black: colors.black,
       brown: "#4E3629",
+      white: colors.white,
+      slate: colors.slate,
+      gray: colors.gray,
+      zinc: colors.zinc,
+      stone: colors.stone,
+      red: "#ED1C24",
+      orange: colors.orange,
+      amber: colors.amber,
+      yellow: colors.yellow,
+      lime: colors.lime,
+      green: colors.green,
+      emerald: colors.emerald,
+      teal: colors.teal,
+      cyan: colors.cyan,
+      sky: colors.sky,
+      blue: colors.blue,
+      indigo: colors.indigo,
+      violet: colors.violet,
+      purple: colors.purple,
+      fuchsia: colors.fuchsia,
+      pink: colors.pink,
+      rose: colors.rose,
       primary: {
         900: "#004d41",
         700: "#00806C",
@@ -165,7 +180,7 @@ module.exports = {
         500: "#2F363C",
         300: "#98A4AE",
         100: "#ACB6BE",
-        50: "#D7DCE0",
+        50: "#F5F5F5",
       },
       secondary: {
         yellow: {
@@ -184,7 +199,7 @@ module.exports = {
           50: "#a3b8ca",
         },
       },
-    },
+    }),
     columns: {
       auto: "auto",
       1: "1",
@@ -1103,5 +1118,5 @@ module.exports = {
       50: "50",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 }
