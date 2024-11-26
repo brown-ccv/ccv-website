@@ -1,5 +1,5 @@
 import React from "react"
-import { LogoProps } from "@/components/assets/LogoBrown"
+import { LogoProps } from "@/components/assets/types"
 
 const LogoCcv: React.FC<LogoProps> = ({ width = 75 }) => {
   return (

@@ -1,9 +1,5 @@
 import React from "react"
-
-export interface LogoProps {
-  width?: number
-  height?: number
-}
+import { LogoProps } from "@/components/assets/types"
 
 const LogoBrown: React.FC<LogoProps> = ({ width = 75 }) => {
   return (
