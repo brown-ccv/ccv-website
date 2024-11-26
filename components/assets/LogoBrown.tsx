@@ -1,10 +1,7 @@
 import React from "react"
+import { LogoProps } from "@/components/assets/types"
 
-export interface SvgProps {
-  width?: number
-}
-
-const LogoBrown: React.FC<SvgProps> = ({ width = 95 }) => {
+const LogoBrown: React.FC<LogoProps> = ({ width = 75 }) => {
   return (
     <>
       <svg
