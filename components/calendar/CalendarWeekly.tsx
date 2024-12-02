@@ -95,7 +95,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           className={`flex items-center justify-center py-3 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
-          ${isSameDay(thisDate, currentDate) ? "today bg-secondary-yellow-50" : ""}`}
+          ${isSameDay(thisDate, currentDate) ? "today bg-secondary-yellow-50" : "bg-white"}`}
           onClick={() => {
             setSelectedDate(cloneDate)
           }}
@@ -203,14 +203,11 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
               <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
-          <div className="hidden md:ml-4 md:flex md:items-center">
-            <div className="ml-6 h-6 w-px bg-gray-300" />
-          </div>
         </div>
       </header>
       <div
         ref={container}
-        className="isolate border-white border-t-2 shadow ring-1 ring-white ring-opacity-5 flex flex-auto flex-col overflow-auto bg-gray"
+        className="isolate border-white border-t-2 shadow ring-1 ring-black ring-opacity-5 flex flex-auto flex-col overflow-auto bg-gray"
       >
         <div
           style={{ width: "165%" }}
@@ -218,9 +215,9 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         >
           <div
             ref={containerNav}
-            className="sticky top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-white ring-opacity-5 sm:pr-8"
+            className="sticky top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
           >
-            <div className="-mr-px hidden grid-cols-7 divide-x divide-white border-r border-white text-sm leading-6 text-gray-500 sm:grid">
+            <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-500 sm:grid">
               <div className="col-end-1 w-14" />
               {generateDatesForCurrentWeek(
                 activeDate,
@@ -230,11 +227,11 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             </div>
           </div>
           <div className="flex flex-auto">
-            <div className="sticky left-0 z-10 w-14 flex-none bg-gray ring-1 ring-white" />
+            <div className="sticky left-0 z-10 w-14 flex-none bg-gray ring-1 ring-gray-100" />
             <div className="grid flex-auto grid-cols-1 grid-rows-1">
               {/* Horizontal lines */}
               <div
-                className="col-start-1 col-end-2 row-start-1 grid divide-y divide-white"
+                className="col-start-1 col-end-2 row-start-1 grid divide-y divide-gray-100"
                 style={{ gridTemplateRows: "repeat(48, minmax(3.5rem, 1fr))" }}
               >
                 <div ref={containerOffset} className="row-end-1 h-7"></div>
@@ -251,7 +248,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
               </div>
 
               {/* Vertical lines */}
-              <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-white sm:grid sm:grid-cols-7">
+              <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-gray-100 sm:grid sm:grid-cols-7">
                 {DAY_COLUMN_ARRAY.map(({ day, key }) => (
                   <div
                     key={key}
