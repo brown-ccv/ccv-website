@@ -21,11 +21,8 @@ import {
   getYear,
 } from "date-fns"
 
-export interface CalendarProps {
-  events: Array<DataProps>
-  currentDate: Date
-  today: string
-}
+import { CalendarProps } from "@/components/calendar/types"
+import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 
 export interface weekProps {
   id: string
@@ -170,41 +167,14 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
   return (
     <div className="flex h-full flex-col">
-      <header className="flex flex-none items-center justify-end gap-3.5 px-6 py-4">
-        <h1 className="text-lg font-semibold leading-6 text-gray-900">
-          <time dateTime={today}>
-            {`${ALL_MONTHS[activeDate.getMonth()]} ${activeDate.getFullYear()}`}
-          </time>
-        </h1>
-        <div className="flex items-center">
-          <div className="relative flex items-center rounded-md bg-gray shadow-sm md:items-stretch">
-            <button
-              type="button"
-              className="flex h-9 w-12 items-center justify-center rounded-l-md border-y border-l border-white pr-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pr-0 md:hover:bg-gray-50"
-              onClick={() => setActiveDate(subDays(activeDate, 7))}
-            >
-              <span className="sr-only">Previous week</span>
-              <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              className="hidden border-y border-white px-3.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative md:block"
-              onClick={() => setActiveDate(currentDate)}
-            >
-              Today
-            </button>
-            <span className="relative -mx-px h-5 w-px bg-gray-300 md:hidden" />
-            <button
-              type="button"
-              className="flex h-9 w-12 items-center justify-center rounded-r-md border-y border-r border-white pl-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pl-0 md:hover:bg-gray-50"
-              onClick={() => setActiveDate(addDays(activeDate, 7))}
-            >
-              <span className="sr-only">Next week</span>
-              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-            </button>
-          </div>
-        </div>
-      </header>
+      <CalendarHeading
+        date={activeDate}
+        srButtonText={"week"}
+        nextButtonFunction={() => setActiveDate(addDays(activeDate, 7))}
+        prevButtonFunction={() => setActiveDate(subDays(activeDate, 7))}
+        todayButtonFunction={() => setActiveDate(currentDate)}
+      />
+
       <div
         ref={container}
         className="isolate border-white border-t-2 shadow ring-1 ring-black ring-opacity-5 flex flex-auto flex-col overflow-auto bg-gray"

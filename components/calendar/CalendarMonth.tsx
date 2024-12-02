@@ -6,6 +6,11 @@ import {
   ClockIcon,
   EllipsisHorizontalIcon,
 } from "@heroicons/react/20/solid"
+import React, { useState } from "react"
+import { CalendarProps } from "@/components/calendar/types"
+import { ALL_MONTHS } from "@/components/calendar/utils"
+import { addDays, subDays, addMonths, subMonths } from "date-fns"
+import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 
 const days = [
   { date: "2021-12-27", events: [] },
@@ -132,39 +137,22 @@ function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-export default function CalendarMonth() {
+const CalendarMonth: React.FC<CalendarProps> = ({
+  events,
+  currentDate,
+  today,
+}) => {
+  const [selectedDate, setSelectedDate] = useState(new Date())
+  const [activeDate, setActiveDate] = useState(new Date())
   return (
     <div className="lg:flex lg:h-full lg:flex-col">
-      <header className="flex items-center justify-between border-b border-gray-200 px-6 py-4 lg:flex-none">
-        <h1 className="text-base font-semibold text-gray-900">
-          <time dateTime="2022-01">January 2022</time>
-        </h1>
-        <div className="flex items-center">
-          <div className="relative flex items-center rounded-md bg-white shadow-sm md:items-stretch">
-            <button
-              type="button"
-              className="flex h-9 w-12 items-center justify-center rounded-l-md border-y border-l border-gray-300 pr-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pr-0 md:hover:bg-gray-50"
-            >
-              <span className="sr-only">Previous month</span>
-              <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              className="hidden border-y border-gray-300 px-3.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative md:block"
-            >
-              Today
-            </button>
-            <span className="relative -mx-px h-5 w-px bg-gray-300 md:hidden" />
-            <button
-              type="button"
-              className="flex h-9 w-12 items-center justify-center rounded-r-md border-y border-r border-gray-300 pl-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pl-0 md:hover:bg-gray-50"
-            >
-              <span className="sr-only">Next month</span>
-              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-            </button>
-          </div>
-        </div>
-      </header>
+      <CalendarHeading
+        date={activeDate}
+        srButtonText={"month"}
+        nextButtonFunction={() => setActiveDate(addMonths(activeDate, 1))}
+        prevButtonFunction={() => setActiveDate(subMonths(activeDate, 1))}
+        todayButtonFunction={() => setActiveDate(currentDate)}
+      />
       <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
         <div className="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs/6 font-semibold text-gray-700 lg:flex-none">
           <div className="bg-white py-2">
@@ -320,3 +308,5 @@ export default function CalendarMonth() {
     </div>
   )
 }
+
+export default CalendarMonth
