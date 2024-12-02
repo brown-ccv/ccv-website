@@ -1,9 +1,9 @@
-import { Opportunities } from "@/components/Opportunities";
+import { Opportunities } from "@/components/Opportunities"
 
 export default function About() {
   return (
-    <section>
+    <div>
       <Opportunities />
-    </section>
-  );
+    </div>
+  )
 }

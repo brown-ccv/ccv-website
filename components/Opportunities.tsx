@@ -60,11 +60,13 @@ export const Opportunities: React.FC = () => {
   }, [])
 
   return (
-    <Link href="#opportunities" className="text-neutral-900">
-      <h2 className="text-3xl bg-primary-500 text-white p-4 flex items-center gap-2">
-        <UserPlusIcon className="h-7 w-7" />
-        Opportunities
-      </h2>
+    <section>
+      <Link href="#opportunities" className="text-neutral-900">
+        <h2 className="text-3xl bg-primary-500 text-white p-4 flex items-center gap-2">
+          <UserPlusIcon className="h-7 w-7" />
+          Opportunities
+        </h2>
+      </Link>
       {isLoading && <p className="px-2 font-bold">Loading...</p>}
       {error && <p className="px-2 font-bold text-red">Error: {error}</p>}
       {data.jobPostings.length > 0 &&
@@ -99,6 +101,6 @@ export const Opportunities: React.FC = () => {
             </div>
           )
         })}
-    </Link>
+    </section>
   )
 }
