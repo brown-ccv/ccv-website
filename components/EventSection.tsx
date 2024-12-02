@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { getStringDate } from "@/components/calendar/utils"
 import CalendarEvent from "@/components/calendar/CalendarEvent"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
+import CalendarMonth from "@/components/calendar/CalendarMonth"
 
 export interface DataProps {
   id: string
@@ -111,6 +112,11 @@ const EventSection = () => {
               currentDate={currentDate}
               events={dataPast.concat(dataFuture)}
             />
+          </div>
+        )}
+        {view === "Monthly" && (
+          <div>
+            <CalendarMonth />
           </div>
         )}
       </section>
