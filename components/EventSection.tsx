@@ -54,7 +54,7 @@ const EventSection = () => {
       .then((data) => {
         setDataPast(data)
       })
-  }, [])
+  }, [today])
   return (
     <article className="container px-2 my-6 space-y-2">
       <div>
