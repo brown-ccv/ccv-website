@@ -20,6 +20,10 @@ export interface DataProps {
   description_long: string
 }
 
+function classNames(...classes: (string | boolean | undefined)[]) {
+  return classes.filter(Boolean).join(" ")
+}
+
 const EventSection = () => {
   const [dataFuture, setDataFuture] = useState([])
   const [dataPast, setDataPast] = useState([])
@@ -59,14 +63,19 @@ const EventSection = () => {
         </h1>
       </div>
       <section>
-        <div className="hidden min-h-8 relative lg:block">
+        <div className="min-h-8 relative">
           <div className="toggle-btn">
             {CAL_VIEW_ARRAY.map((item) => {
               return (
                 <p
                   id={item}
                   key={item}
-                  className={view === item ? "selected" : ""}
+                  className={classNames(
+                    view === item ? "selected" : "",
+                    item === "Weekly" && "hidden lg:inline-block",
+                    item !== "Weekly" && "inline-block",
+                    "m-0 rounded-sm py-2 px-3"
+                  )}
                   role="button"
                   onClick={() => setView(item)}
                 >

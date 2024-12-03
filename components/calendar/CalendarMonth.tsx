@@ -1,15 +1,8 @@
 "use client"
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ClockIcon,
-  EllipsisHorizontalIcon,
-} from "@heroicons/react/20/solid"
+import { ClockIcon } from "@heroicons/react/20/solid"
 import React, { useState } from "react"
 import { CalendarProps } from "@/components/calendar/types"
-import { ALL_DAYS_OF_WEEK, ALL_MONTHS } from "@/components/calendar/utils"
 import {
   addDays,
   getDay,
