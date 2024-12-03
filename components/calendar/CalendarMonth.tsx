@@ -1,3 +1,4 @@
+"use client"
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
 import {
   ChevronDownIcon,
@@ -167,12 +168,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
   const [activeDate, setActiveDate] = useState(new Date())
 
   // help from https://l-u-k-e.medium.com/lets-build-a-full-page-calendar-with-react-fb6f99412e6a
-  function createDaysForPreviousMonth() {
-    const visibleNumberOfDaysFromPreviousMonth = getDay(
-      subDays(startOfMonth(activeDate), getDay(subDays(activeDate, 1)))
-    )
+  function createDaysForPreviousMonth(day: Date) {
+    const visibleNumberOfDaysFromPreviousMonth = getDay(startOfMonth(day))
     const previousMonthLastMondayDayOfMonth = subDays(
-      startOfMonth(activeDate),
+      startOfMonth(day),
       visibleNumberOfDaysFromPreviousMonth
     )
 
@@ -189,10 +188,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     })
   }
 
-  function createDaysforNextMonth() {
-    const lastDayOfTheMonthWeekday = getDay(endOfMonth(activeDate))
-    const nextMonth = startOfMonth(addMonths(activeDate, 1))
-    const visibleNumberOfDaysFromNextMonth = 7 - lastDayOfTheMonthWeekday
+  function createDaysforNextMonth(day: Date) {
+    const lastDayOfTheMonthWeekday = getDay(endOfMonth(day))
+    const nextMonth = startOfMonth(addMonths(day, 1))
+    const visibleNumberOfDaysFromNextMonth = 6 - lastDayOfTheMonthWeekday
 
     return [...Array(visibleNumberOfDaysFromNextMonth)].map((day, index) => {
       return {
@@ -204,9 +203,9 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     })
   }
 
-  function createDaysForCurrentMonth() {
-    return [...Array(getDaysInMonth(activeDate))].map((_, index) => {
-      const currentDay = addDays(startOfMonth(activeDate), index)
+  function createDaysForCurrentMonth(day: Date) {
+    return [...Array(getDaysInMonth(day))].map((_, index) => {
+      const currentDay = addDays(startOfMonth(day), index)
       return {
         date: currentDay,
         dateString: currentDay.toISOString(),
@@ -219,7 +218,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
 
   const generateEventsForCurrentDay = (day: Date) => {
     let sameDayEvents = events.filter((event) => isSameDay(event.date_utc, day))
-    // Set to get unique objects
+    // Set to get unique objects -- the above filter results in two identical events
     sameDayEvents = new Set(sameDayEvents.map(JSON.stringify))
     const dayEvents = Array.from(sameDayEvents).map(JSON.parse)
 
@@ -227,14 +226,14 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       return (
         <li key={self.crypto.randomUUID()}>
           <a href={event.url} className="group flex">
-            <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-indigo-600">
+            <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-secondary-blue-500 group-hover:font-semibold">
               {event.title}
             </p>
             <time
               dateTime={event.date_utc}
-              className="ml-3 hidden flex-none text-gray-500 group-hover:text-indigo-600 xl:block"
+              className="ml-3 hidden flex-none text-gray-500 group-hover:text-secondary-blue-500 group-hover:font-semibold xl:block"
             >
-              {event.date_time}
+              {event.date_time.split("-").shift().replace(/^0/, "")}
             </time>
           </a>
         </li>
@@ -243,23 +242,23 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     return <>{formattedEvents}</>
   }
 
-  const generateDatesForCurrentMonth = (activeDate: Date) => {
-    const previousMonthDates = createDaysForPreviousMonth()
-    const currentMonthDates = createDaysForCurrentMonth()
-    const nextMonthDates = createDaysforNextMonth()
+  const generateDatesForCurrentMonth = (day: Date) => {
+    const previousMonthDates = createDaysForPreviousMonth(day)
+    const currentMonthDates = createDaysForCurrentMonth(day)
+    const nextMonthDates = createDaysforNextMonth(day)
     const combinedDates = [
       ...previousMonthDates,
       ...currentMonthDates,
       ...nextMonthDates,
     ]
-    const startDate = startOfMonth(activeDate)
+    const startDate = startOfMonth(day)
     const month = combinedDates.map((day, i) => {
       return (
         <div
           key={day.dateString}
           className={classNames(
             day.isCurrentMonth ? "bg-white" : "bg-gray-50 text-gray-500",
-            "relative px-3 py-2"
+            "relative px-3 py-4"
           )}
         >
           <time
@@ -292,6 +291,9 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
         <div className="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs/6 font-semibold text-gray-700 lg:flex-none">
           <div className="bg-white py-2">
+            S<span className="sr-only sm:not-sr-only">un</span>
+          </div>
+          <div className="bg-white py-2">
             M<span className="sr-only sm:not-sr-only">on</span>
           </div>
           <div className="bg-white py-2">
@@ -309,9 +311,6 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           <div className="bg-white py-2">
             S<span className="sr-only sm:not-sr-only">at</span>
           </div>
-          <div className="bg-white py-2">
-            S<span className="sr-only sm:not-sr-only">un</span>
-          </div>
         </div>
         <div className="flex bg-gray-200 text-xs/6 text-gray-700 lg:flex-auto">
           <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-px">
@@ -326,7 +325,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                   day.isCurrentMonth ? "bg-white" : "bg-gray-50",
                   (day.isSelected || day.isToday) && "font-semibold",
                   day.isSelected && "text-white",
-                  !day.isSelected && day.isToday && "text-indigo-600",
+                  !day.isSelected && day.isToday && "text-secondary-blue-500",
                   !day.isSelected &&
                     day.isCurrentMonth &&
                     !day.isToday &&
@@ -343,7 +342,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                   className={classNames(
                     day.isSelected &&
                       "flex h-6 w-6 items-center justify-center rounded-full",
-                    day.isSelected && day.isToday && "bg-indigo-600",
+                    day.isSelected && day.isToday && "bg-secondary-blue-700",
                     day.isSelected && !day.isToday && "bg-gray-900",
                     "ml-auto"
                   )}
