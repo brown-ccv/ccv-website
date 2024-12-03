@@ -62,7 +62,7 @@ const EventSection = () => {
           Events
         </h1>
       </div>
-      <section>
+      <div>
         <div className="min-h-8 relative">
           <div className="toggle-btn">
             {CAL_VIEW_ARRAY.map((item) => {
@@ -88,7 +88,7 @@ const EventSection = () => {
         {isLoading && <p>Loading...</p>}
         {!dataFuture && <p>No event data</p>}
         {view === "Upcoming" && (
-          <div className="flex flex-wrap justify-between gap-4">
+          <div className="flex flex-wrap justify-between">
             {dataFuture &&
               dataFuture.slice(0, 4).map((e: DataProps, i) => {
                 return (
@@ -132,16 +132,16 @@ const EventSection = () => {
             />
           </div>
         )}
-      </section>
+      </div>
 
-      <section className="flex justify-center">
+      <div className="flex justify-center">
         <a
           className="bg-secondary-blue-500 text-white p-4 rounded"
           href="https://events.brown.edu/ccv/all"
         >
           VIEW ALL EVENTS
         </a>
-      </section>
+      </div>
     </article>
   )
 }

@@ -16,7 +16,7 @@ const CalendarEvent: React.FC<DataProps> = ({
     ", " +
     date
   return (
-    <div className="event">
+    <div className="bg-gray-50 p-4">
       <div className="text-neutral-900 text-sm">{normalDate}</div>
       <div>
         <a
