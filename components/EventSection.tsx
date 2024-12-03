@@ -58,7 +58,7 @@ const EventSection = () => {
   return (
     <article className="container px-2 my-6 space-y-2">
       <div>
-        <h1 id="events" role="heading">
+        <h1 id="events" role="heading" className="font-semibold text-4xl">
           Events
         </h1>
       </div>
