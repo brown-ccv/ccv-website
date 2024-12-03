@@ -17,6 +17,7 @@ import {
   isSameDay,
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
+import { DataProps } from "@/components/EventSection"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -48,6 +49,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         dayOfMonth: getDate(addDays(previousMonthLastMondayDayOfMonth, index)),
         isCurrentMonth: false,
         isPreviousMonth: true,
+        isToday: false,
       }
     })
   }
@@ -64,6 +66,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         dayOfMonth: index + 1,
         isCurrentMonth: false,
         isNextMonth: true,
+        isToday: false,
       }
     })
   }
@@ -83,11 +86,16 @@ const CalendarMonth: React.FC<CalendarProps> = ({
 
   const generateEventsForCurrentDay = (day: Date, isMobile = false) => {
     let sameDayEvents = events.filter((event) => isSameDay(event.date_utc, day))
-    // Set to get unique objects -- the above filter results in two identical events
-    sameDayEvents = new Set(sameDayEvents.map(JSON.stringify))
-    const dayEvents = Array.from(sameDayEvents).map(JSON.parse)
+    const dayEvents = sameDayEvents.filter(
+      (item: DataProps, index: number, self: DataProps[]) =>
+        item.id !== undefined &&
+        index === self.findIndex((t) => t.id === item.id)
+    )
+    const validDayEvents = dayEvents.filter(
+      (event) => event.date_time !== undefined
+    )
 
-    const formattedCalEvents = dayEvents.map((event, i) => {
+    const formattedCalEvents = validDayEvents.map((event: DataProps) => {
       return (
         <li key={self.crypto.randomUUID()}>
           <a href={event.url} className="group flex">
@@ -98,7 +106,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               dateTime={event.date_utc}
               className="ml-3 hidden flex-none text-primary-500 group-hover:text-secondary-blue-500 group-hover:font-semibold xl:block"
             >
-              {event.date_time.split("-").shift().replace(/^0/, "")}
+              {event.date_time!.split("-").shift()!.replace(/^0/, "")}
             </time>
           </a>
         </li>
@@ -173,9 +181,15 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       let sameDayEvents = events.filter((event) =>
         isSameDay(event.date_utc, day.date)
       )
-      // Set to get unique objects -- the above filter results in two identical events
-      sameDayEvents = new Set(sameDayEvents.map(JSON.stringify))
-      const dayEvents = Array.from(sameDayEvents).map(JSON.parse)
+      const dayEvents = sameDayEvents.filter(
+        (item: DataProps, index: number, self: DataProps[]) =>
+          item.id !== undefined &&
+          index === self.findIndex((t) => t.id === item.id)
+      )
+      const validDayEvents = dayEvents.filter(
+        (event) => event.date_time !== undefined
+      )
+
       return (
         <button
           key={day.dateString}
@@ -201,7 +215,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           )}
         >
           <time
-            dateTime={day.date}
+            dateTime={day.dateString}
             className={classNames(
               isSameDay(day.date, selectedDate) &&
                 "flex h-6 w-6 items-center justify-center rounded-full",
@@ -215,10 +229,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           >
             {day.dayOfMonth}
           </time>
-          <span className="sr-only">{dayEvents.length} events</span>
-          {dayEvents.length > 0 && (
+          <span className="sr-only">{validDayEvents.length} events</span>
+          {validDayEvents.length > 0 && (
             <span className="-mx-0.5 mt-auto flex flex-wrap-reverse">
-              {dayEvents.map((event) => (
+              {validDayEvents.map((event) => (
                 <span
                   key={event.id}
                   className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-secondary-blue-700"
