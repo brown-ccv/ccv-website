@@ -8,8 +8,29 @@ import {
 } from "@heroicons/react/20/solid"
 import React, { useState } from "react"
 import { CalendarProps } from "@/components/calendar/types"
-import { ALL_MONTHS } from "@/components/calendar/utils"
-import { addDays, subDays, addMonths, subMonths } from "date-fns"
+import { ALL_DAYS_OF_WEEK, ALL_MONTHS } from "@/components/calendar/utils"
+import {
+  addDays,
+  getDay,
+  addMonths,
+  format,
+  isToday,
+  isSameMonth,
+  startOfWeek,
+  subMonths,
+  subDays,
+  startOfMonth,
+  endOfMonth,
+  getDaysInMonth,
+  isAfter,
+  isBefore,
+  differenceInHours,
+  getYear,
+  getMonth,
+  getDate,
+  differenceInMinutes,
+  isSameDay,
+} from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 
 const days = [
@@ -144,6 +165,121 @@ const CalendarMonth: React.FC<CalendarProps> = ({
 }) => {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [activeDate, setActiveDate] = useState(new Date())
+
+  // help from https://l-u-k-e.medium.com/lets-build-a-full-page-calendar-with-react-fb6f99412e6a
+  function createDaysForPreviousMonth() {
+    const visibleNumberOfDaysFromPreviousMonth = getDay(
+      subDays(startOfMonth(activeDate), getDay(subDays(activeDate, 1)))
+    )
+    const previousMonthLastMondayDayOfMonth = subDays(
+      startOfMonth(activeDate),
+      visibleNumberOfDaysFromPreviousMonth
+    )
+
+    return [...Array(visibleNumberOfDaysFromPreviousMonth)].map((_, index) => {
+      return {
+        dateString: addDays(
+          previousMonthLastMondayDayOfMonth,
+          index
+        ).toISOString(),
+        dayOfMonth: getDate(addDays(previousMonthLastMondayDayOfMonth, index)),
+        isCurrentMonth: false,
+        isPreviousMonth: true,
+      }
+    })
+  }
+
+  function createDaysforNextMonth() {
+    const lastDayOfTheMonthWeekday = getDay(endOfMonth(activeDate))
+    const nextMonth = startOfMonth(addMonths(activeDate, 1))
+    const visibleNumberOfDaysFromNextMonth = 7 - lastDayOfTheMonthWeekday
+
+    return [...Array(visibleNumberOfDaysFromNextMonth)].map((day, index) => {
+      return {
+        dateString: addDays(nextMonth, index).toISOString(),
+        dayOfMonth: index + 1,
+        isCurrentMonth: false,
+        isNextMonth: true,
+      }
+    })
+  }
+
+  function createDaysForCurrentMonth() {
+    return [...Array(getDaysInMonth(activeDate))].map((_, index) => {
+      const currentDay = addDays(startOfMonth(activeDate), index)
+      return {
+        date: currentDay,
+        dateString: currentDay.toISOString(),
+        dayOfMonth: index + 1,
+        isCurrentMonth: true,
+        isToday: isToday(currentDay),
+      }
+    })
+  }
+
+  const generateEventsForCurrentDay = (day: Date) => {
+    let sameDayEvents = events.filter((event) => isSameDay(event.date_utc, day))
+    // Set to get unique objects
+    sameDayEvents = new Set(sameDayEvents.map(JSON.stringify))
+    const dayEvents = Array.from(sameDayEvents).map(JSON.parse)
+
+    const formattedEvents = dayEvents.map((event, i) => {
+      return (
+        <li key={self.crypto.randomUUID()}>
+          <a href={event.url} className="group flex">
+            <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-indigo-600">
+              {event.title}
+            </p>
+            <time
+              dateTime={event.date_utc}
+              className="ml-3 hidden flex-none text-gray-500 group-hover:text-indigo-600 xl:block"
+            >
+              {event.date_time}
+            </time>
+          </a>
+        </li>
+      )
+    })
+    return <>{formattedEvents}</>
+  }
+
+  const generateDatesForCurrentMonth = (activeDate: Date) => {
+    const previousMonthDates = createDaysForPreviousMonth()
+    const currentMonthDates = createDaysForCurrentMonth()
+    const nextMonthDates = createDaysforNextMonth()
+    const combinedDates = [
+      ...previousMonthDates,
+      ...currentMonthDates,
+      ...nextMonthDates,
+    ]
+    const startDate = startOfMonth(activeDate)
+    const month = combinedDates.map((day, i) => {
+      return (
+        <div
+          key={day.dateString}
+          className={classNames(
+            day.isCurrentMonth ? "bg-white" : "bg-gray-50 text-gray-500",
+            "relative px-3 py-2"
+          )}
+        >
+          <time
+            dateTime={day.dateString}
+            className={
+              day.isToday
+                ? "flex h-6 w-6 items-center justify-center rounded-full bg-secondary-yellow-50 font-semibold"
+                : undefined
+            }
+          >
+            {day.dayOfMonth}
+          </time>
+          <ol className="mt-2">{generateEventsForCurrentDay(day.date)}</ol>
+        </div>
+      )
+    })
+
+    return <>{month}</>
+  }
+
   return (
     <div className="lg:flex lg:h-full lg:flex-col">
       <CalendarHeading
@@ -179,50 +315,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         </div>
         <div className="flex bg-gray-200 text-xs/6 text-gray-700 lg:flex-auto">
           <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-px">
-            {days.map((day) => (
-              <div
-                key={day.date}
-                className={classNames(
-                  day.isCurrentMonth ? "bg-white" : "bg-gray-50 text-gray-500",
-                  "relative px-3 py-2"
-                )}
-              >
-                <time
-                  dateTime={day.date}
-                  className={
-                    day.isToday
-                      ? "flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white"
-                      : undefined
-                  }
-                >
-                  {day.date && day.date.split("-").pop().replace(/^0/, "")}
-                </time>
-                {day.events.length > 0 && (
-                  <ol className="mt-2">
-                    {day.events.slice(0, 2).map((event) => (
-                      <li key={event.id}>
-                        <a href={event.href} className="group flex">
-                          <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-indigo-600">
-                            {event.name}
-                          </p>
-                          <time
-                            dateTime={event.datetime}
-                            className="ml-3 hidden flex-none text-gray-500 group-hover:text-indigo-600 xl:block"
-                          >
-                            {event.time}
-                          </time>
-                        </a>
-                      </li>
-                    ))}
-                    {day.events.length > 2 && (
-                      <li className="text-gray-500">
-                        + {day.events.length - 2} more
-                      </li>
-                    )}
-                  </ol>
-                )}
-              </div>
-            ))}
+            {generateDatesForCurrentMonth(activeDate)}
           </div>
           <div className="isolate grid w-full grid-cols-7 grid-rows-6 gap-px lg:hidden">
             {days.map((day) => (
