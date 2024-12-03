@@ -96,7 +96,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             </p>
             <time
               dateTime={event.date_utc}
-              className="ml-3 hidden flex-none text-gray-500 group-hover:text-secondary-blue-500 group-hover:font-semibold xl:block"
+              className="ml-3 hidden flex-none text-primary-500 group-hover:text-secondary-blue-500 group-hover:font-semibold xl:block"
             >
               {event.date_time.split("-").shift().replace(/^0/, "")}
             </time>
@@ -117,10 +117,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             </a>
             <time
               dateTime={event.date_utc}
-              className="mt-2 flex items-center text-gray-700"
+              className="mt-2 flex items-center text-primary-500"
             >
               <ClockIcon
-                className="mr-2 h-5 w-5 text-gray-400"
+                className="mr-2 h-5 w-5 text-primary-500"
                 aria-hidden="true"
               />
               {event.date_time}
