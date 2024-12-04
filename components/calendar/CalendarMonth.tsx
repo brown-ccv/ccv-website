@@ -260,6 +260,9 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         prevButtonFunction={() => setActiveDate(subMonths(activeDate, 1))}
         todayButtonFunction={() => setActiveDate(currentDate)}
       />
+      <p className="flex text-sm mx-1 mb-2 lg:hidden">
+        Click on a date to see a list of its events!
+      </p>
       <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
         <div className="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs/6 font-semibold text-gray-700 lg:flex-none">
           <div className="bg-white py-2">
