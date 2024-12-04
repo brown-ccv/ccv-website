@@ -104,7 +104,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     const formattedCalEvents = validDayEvents.map((event: DataProps) => {
       return (
         <li key={self.crypto.randomUUID()}>
-          <TooltipProvider className="group flex">
+          <TooltipProvider>
             <Tooltip>
               <TooltipTrigger className="rounded-md max-w-[100%] px-2 hover:bg-neutral-50">
                 <p className="flex-auto min-w-0 truncate font-medium text-secondary-blue-700">
@@ -115,6 +115,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                 <p className="font-semibold pb-2">{event.date}</p>
                 <a
                   href={event.url}
+                  target="_blank"
                   className="flex gap-1 text-secondary-blue-500"
                 >
                   <p className="font-semibold hover:underline">{event.title}</p>
@@ -148,7 +149,11 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           className="group flex p-4 pr-6 focus-within:bg-gray-50 hover:bg-gray-50"
         >
           <div className="flex-auto">
-            <a href={event.url} className="flex gap-1 text-secondary-blue-500">
+            <a
+              href={event.url}
+              target="_blank"
+              className="flex gap-1 text-secondary-blue-500"
+            >
               <p className="font-semibold hover:underline">{event.title}</p>
               <ArrowTopRightOnSquareIcon
                 className="mr-2 h-4 w-4"

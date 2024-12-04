@@ -188,7 +188,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             className="sticky top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
           >
             <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-500 sm:grid">
-              <div className="col-end-1 w-14" />
+              <div className="col-end-1 w-14 bg-white" />
               {generateDatesForCurrentWeek(
                 activeDate,
                 selectedDate,
