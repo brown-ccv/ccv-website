@@ -1,5 +1,11 @@
 "use client"
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import { ClockIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid"
 import React, { useState } from "react"
 import { CalendarProps } from "@/components/calendar/types"
@@ -98,17 +104,39 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     const formattedCalEvents = validDayEvents.map((event: DataProps) => {
       return (
         <li key={self.crypto.randomUUID()}>
-          <a href={event.url} className="group flex">
-            <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-secondary-blue-500 group-hover:font-semibold">
-              {event.title}
-            </p>
-            <time
-              dateTime={event.date_utc}
-              className="ml-3 hidden flex-none text-primary-500 group-hover:text-secondary-blue-500 group-hover:font-semibold xl:block"
-            >
-              {event.date_time!.split("-").shift()!.replace(/^0/, "")}
-            </time>
-          </a>
+          <TooltipProvider className="group flex">
+            <Tooltip>
+              <TooltipTrigger className="rounded-md max-w-[100%] px-2 hover:bg-neutral-50">
+                <p className="flex-auto min-w-0 truncate font-medium text-gray-900">
+                  {event.title}
+                </p>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p className="font-semibold pb-2">{event.date}</p>
+                <a
+                  href={event.url}
+                  className="flex gap-1 text-secondary-blue-500"
+                >
+                  <p className="font-semibold hover:underline">{event.title}</p>
+                  <ArrowTopRightOnSquareIcon
+                    className="mr-2 h-3 w-3"
+                    aria-hidden="true"
+                  />
+                </a>
+
+                <time
+                  dateTime={event.date_utc}
+                  className="hidden flex-none text-primary-500 group-hover:text-secondary-blue-500 group-hover:font-semibold xl:flex xl:items-center"
+                >
+                  <ClockIcon
+                    className="mr-1 h-4 w-4 text-primary-500"
+                    aria-hidden="true"
+                  />
+                  {event.date_time}
+                </time>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </li>
       )
     })
@@ -121,7 +149,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         >
           <div className="flex-auto">
             <a href={event.url} className="flex gap-1 text-secondary-blue-500">
-              <p className="font-semibold">{event.title}</p>
+              <p className="font-semibold hover:underline">{event.title}</p>
               <ArrowTopRightOnSquareIcon
                 className="mr-2 h-4 w-4"
                 aria-hidden="true"
