@@ -1,6 +1,6 @@
 "use client"
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react"
-import { ClockIcon } from "@heroicons/react/20/solid"
+import { ClockIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid"
 import React, { useState } from "react"
 import { CalendarProps } from "@/components/calendar/types"
 import {
@@ -120,8 +120,12 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           className="group flex p-4 pr-6 focus-within:bg-gray-50 hover:bg-gray-50"
         >
           <div className="flex-auto">
-            <a href={event.url} className="hover:text-secondary-blue-500">
-              <p className="font-semibold text-gray-900">{event.title}</p>
+            <a href={event.url} className="flex gap-1 text-secondary-blue-500">
+              <p className="font-semibold">{event.title}</p>
+              <ArrowTopRightOnSquareIcon
+                className="mr-2 h-4 w-4"
+                aria-hidden="true"
+              />
             </a>
             <time
               dateTime={event.date_utc}
