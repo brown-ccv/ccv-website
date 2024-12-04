@@ -21,6 +21,7 @@ import {
   getDaysInMonth,
   getDate,
   isSameDay,
+  getWeeksInMonth,
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
@@ -189,8 +190,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       ...currentMonthDates,
       ...nextMonthDates,
     ]
-
+    const numberOfWeeks = getWeeksInMonth(day)
     const month = combinedDates.map((day, i) => {
+      //lg:grid-rows-6
+      // numberOfWeeks === 4 ? "lg:grid-rows-4" : numberOfWeeks === 5 ? "lg:grid-rows-5" : "lg:grid-rows-6"
       return (
         <div
           key={day.dateString}
@@ -282,10 +285,36 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     })
 
     if (isMobile) {
-      return <>{mobileMonth}</>
+      return (
+        <div
+          className={classNames(
+            numberOfWeeks === 4
+              ? "lg:grid-rows-4"
+              : numberOfWeeks === 5
+                ? "lg:grid-rows-5"
+                : "lg:grid-rows-6",
+            "isolate grid w-full grid-cols-7 gap-px lg:hidden"
+          )}
+        >
+          {mobileMonth}
+        </div>
+      )
     }
 
-    return <>{month}</>
+    return (
+      <div
+        className={classNames(
+          numberOfWeeks === 4
+            ? "lg:grid-rows-4"
+            : numberOfWeeks === 5
+              ? "lg:grid-rows-5"
+              : "lg:grid-rows-6",
+          "hidden w-full lg:grid lg:grid-cols-7 lg:gap-px"
+        )}
+      >
+        {month}
+      </div>
+    )
   }
 
   return (
@@ -326,14 +355,11 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         </div>
         <div className="flex bg-gray-200 text-xs/6 text-gray-700 lg:flex-auto">
           {/*Large View*/}
-          <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-6 lg:gap-px">
-            {generateDatesForCurrentMonth(activeDate)}
-          </div>
+          {generateDatesForCurrentMonth(activeDate)}
 
           {/*Mobile View*/}
-          <div className="isolate grid w-full grid-cols-7 grid-rows-6 gap-px lg:hidden">
-            {generateDatesForCurrentMonth(activeDate, true)}
-          </div>
+
+          {generateDatesForCurrentMonth(activeDate, true)}
         </div>
       </div>
 
