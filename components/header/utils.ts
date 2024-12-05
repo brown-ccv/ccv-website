@@ -46,23 +46,7 @@ export default async function getOpenIssues() {
         direction: "desc",
       })
 
-      // This currently only gets the last 100 comments on the repo. It should be changed
-      // to get the comments per issue instead, which will be addressed in the next PR
-      const comments = await octokit.request(
-        `GET /repos/${org}/${name}/issues/comments`,
-        {
-          org: { org },
-          repo: { name },
-          sort: "created",
-          direction: "desc",
-          per_page: 100,
-        }
-      )
-
-      const openIssues = filterPRs(open.data).map((issue) => ({
-        ...issue,
-        comments: comments.data.filter((el) => el.issue_url === issue.url),
-      }))
+      const openIssues = filterPRs(open.data)
 
       return {
         name,

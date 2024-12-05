@@ -4,13 +4,13 @@ import getOpenIssues from "@/components/header/utils"
 
 export default async function Header() {
   const repositories = await getOpenIssues()
-  // uncomment to test banner with no open issues
-  const issues = []
+  // uncomment the next line to test banner with no open issues
+  //const issues = []
 
-  // comment out to test banner with no open issues
-  // const issues = repositories.filter(
-  //   (repository) => repository.openIssues.length > 0
-  // )
+  // comment out lines 11-13 to test banner with open issues
+  const issues = repositories.filter(
+    (repository) => repository.openIssues.length > 0
+  )
   const repoNames = issues.map((repo) => repo.name).join(", ")
   return (
     <>
