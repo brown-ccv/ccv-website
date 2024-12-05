@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { getStringDate } from "@/components/calendar/utils"
 import CalendarEvent from "@/components/calendar/CalendarEvent"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
+import CalendarMonth from "@/components/calendar/CalendarMonth"
 
 export interface DataProps {
   id: string
@@ -17,6 +18,10 @@ export interface DataProps {
   contact_info: string
   description: string
   description_long: string
+}
+
+function classNames(...classes: (string | boolean | undefined)[]) {
+  return classes.filter(Boolean).join(" ")
 }
 
 const EventSection = () => {
@@ -49,23 +54,28 @@ const EventSection = () => {
       .then((data) => {
         setDataPast(data)
       })
-  }, [])
+  }, [today])
   return (
     <article className="container px-2 my-6 space-y-2">
       <div>
-        <h1 id="events" role="heading">
+        <h1 id="events" role="heading" className="font-semibold text-4xl">
           Events
         </h1>
       </div>
-      <section>
-        <div className="hidden min-h-8 relative lg:block">
+      <div>
+        <div className="min-h-8 relative">
           <div className="toggle-btn">
             {CAL_VIEW_ARRAY.map((item) => {
               return (
                 <p
                   id={item}
                   key={item}
-                  className={view === item ? "selected" : ""}
+                  className={classNames(
+                    view === item ? "selected" : "",
+                    item === "Weekly" && "hidden lg:inline-block",
+                    item !== "Weekly" && "inline-block",
+                    "m-0 rounded-sm py-2 px-3"
+                  )}
                   role="button"
                   onClick={() => setView(item)}
                 >
@@ -78,7 +88,7 @@ const EventSection = () => {
         {isLoading && <p>Loading...</p>}
         {!dataFuture && <p>No event data</p>}
         {view === "Upcoming" && (
-          <div className="flex flex-wrap justify-between gap-4">
+          <div className="flex flex-wrap justify-between">
             {dataFuture &&
               dataFuture.slice(0, 4).map((e: DataProps, i) => {
                 return (
@@ -113,16 +123,25 @@ const EventSection = () => {
             />
           </div>
         )}
-      </section>
+        {view === "Monthly" && (
+          <div>
+            <CalendarMonth
+              today={today}
+              currentDate={currentDate}
+              events={dataPast.concat(dataFuture)}
+            />
+          </div>
+        )}
+      </div>
 
-      <section className="flex justify-center">
+      <div className="flex justify-center">
         <a
           className="bg-secondary-blue-500 text-white p-4 rounded"
           href="https://events.brown.edu/ccv/all"
         >
           VIEW ALL EVENTS
         </a>
-      </section>
+      </div>
     </article>
   )
 }
