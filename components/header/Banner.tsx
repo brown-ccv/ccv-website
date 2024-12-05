@@ -20,9 +20,8 @@ export default function Banner({
         <div
           className={
             variant === "primary"
-              ? "bg-gray-50"
-              : "bg-secondary-blue-900 border-t-4 border-[#991b1b]" +
-                " relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1"
+              ? "relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1"
+              : "bg-secondary-blue-900 border-t-4 border-[#991b1b] relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1"
           }
         >
           {variant === "primary" && (
@@ -65,8 +64,8 @@ export default function Banner({
                 aria-hidden="true"
                 className={
                   variant === "primary"
-                    ? "text-gray-900"
-                    : "text-white" + " size-5"
+                    ? "text-gray-900 size-5"
+                    : "text-white size-5"
                 }
               />
             </button>
