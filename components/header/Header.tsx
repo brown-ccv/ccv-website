@@ -5,12 +5,12 @@ import getOpenIssues from "@/components/header/utils"
 export default async function Header() {
   const repositories = await getOpenIssues()
   // uncomment to test banner with no open issues
-  //const issues = []
+  const issues = []
 
   // comment out to test banner with no open issues
-  const issues = repositories.filter(
-    (repository) => repository.openIssues.length > 0
-  )
+  // const issues = repositories.filter(
+  //   (repository) => repository.openIssues.length > 0
+  // )
   const repoNames = issues.map((repo) => repo.name).join(", ")
   return (
     <>
@@ -58,7 +58,7 @@ export default async function Header() {
             <a
               href="https://status.ccv.brown.edu/"
               target="_blank"
-              className="flex-none rounded-full bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+              className="flex-none rounded-md bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
             >
               View Issues
             </a>
