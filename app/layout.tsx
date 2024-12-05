@@ -4,6 +4,7 @@ import "./globals.css"
 import React from "react"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import Banner from "@/components/Banner"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -20,6 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        <Banner />
         <Navbar />
         <main>{children}</main>
         <Footer />
