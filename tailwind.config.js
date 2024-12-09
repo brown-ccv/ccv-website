@@ -150,6 +150,7 @@ module.exports = {
       zinc: colors.zinc,
       stone: colors.stone,
       red: "#ED1C24",
+      ruby: "#450a0a",
       orange: colors.orange,
       amber: colors.amber,
       yellow: colors.yellow,
