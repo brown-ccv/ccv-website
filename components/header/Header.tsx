@@ -1,6 +1,7 @@
 import Banner from "@/components/header/Banner"
 import Navbar from "@/components/header/Navbar"
 import getOpenIssues from "@/components/header/utils"
+import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 
 export default async function Header() {
   const repositories = await getOpenIssues()
@@ -18,7 +19,8 @@ export default async function Header() {
         <Banner variant="Service Disruption">
           {repoNames && (
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <p className="text-sm/6 text-white">
+              <ExclamationTriangleIcon className="h-5 w-5 text-[#991b1b]" />
+              <p className="text-sm/6 text-gray-900">
                 <strong className="font-semibold">CCV Services Status</strong>
                 <svg
                   viewBox="0 0 2 2"
@@ -35,7 +37,7 @@ export default async function Header() {
                 target="_blank"
                 className="flex-none rounded-md bg-[#991b1b] px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
               >
-                View Issues
+                View Incidents
               </a>
             </div>
           )}
@@ -58,9 +60,9 @@ export default async function Header() {
             <a
               href="https://status.ccv.brown.edu/"
               target="_blank"
-              className="flex-none rounded-md bg-gray-900 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
+              className="flex-none rounded-md bg-secondary-blue-700 px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-gray-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gray-900"
             >
-              View Issues
+              View Status
             </a>
           </div>
         </Banner>
