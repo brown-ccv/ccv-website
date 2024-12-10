@@ -4,7 +4,7 @@
 
 import { useState } from 'react'
 
-function RadioButtonGroup({ options }: { options: {id: string}[] }) {
+export default function RadioButtonGroup({ options }: { options: {id: string}[] }) {
 
     const [selectedOption, setSelectedOption] = useState(options[0].id)  
 
@@ -33,4 +33,4 @@ function RadioButtonGroup({ options }: { options: {id: string}[] }) {
     )
 }
 
-export default RadioButtonGroup
+// export default RadioButtonGroup

@@ -1,5 +1,5 @@
 import EventSection from "@/components/EventSection"
-import RadioButtonGroup from "@/components/RadioButtonGroup"
+import RadioButton from "@/components/RadioButton"
 
 const group = [
   { id: 'option 1' },
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <main className="bg-white flex min-h-screen flex-col items-center justify-between p-0 lg:p-24">
       <EventSection />
-      <RadioButtonGroup options={ group }></RadioButtonGroup>
+      <RadioButton options={ group }></RadioButton>
     </main>
   )
 }
