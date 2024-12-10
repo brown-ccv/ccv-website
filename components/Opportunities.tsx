@@ -7,6 +7,7 @@ import {
   ArrowRightIcon,
   UserPlusIcon,
 } from "@heroicons/react/24/solid"
+import Spinner from "@/components/assets/Spinner"
 
 interface OpportunityProps {
   total: number
@@ -67,7 +68,11 @@ export const Opportunities: React.FC = () => {
           Opportunities
         </h2>
       </Link>
-      {isLoading && <p className="px-2 font-bold">Loading...</p>}
+      {isLoading && (
+        <div class="flex justify-center py-4 text-center">
+          <Spinner />
+        </div>
+      )}
       {error && <p className="px-2 font-bold text-red">Error: {error}</p>}
       {data.jobPostings.length > 0 &&
         data.jobPostings.map((position) => {
