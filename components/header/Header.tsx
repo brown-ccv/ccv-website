@@ -3,6 +3,9 @@ import Navbar from "@/components/header/Navbar"
 import getOpenIssues from "@/components/header/utils"
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 
+// ONLY HOME PAGE!
+
+// Green/orange dot?? See if that feels like recording
 export default async function Header() {
   const repositories = await getOpenIssues()
   // uncomment the next line to test banner with no open issues
@@ -19,17 +22,8 @@ export default async function Header() {
         <Banner variant="Service Disruption">
           {repoNames && (
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <ExclamationTriangleIcon className="h-5 w-5 text-[#991b1b]" />
-              <p className="text-sm/6 text-gray-900">
-                <strong className="font-semibold">CCV Services Status</strong>
-                <svg
-                  viewBox="0 0 2 2"
-                  aria-hidden="true"
-                  className="mx-2 inline size-0.5 fill-current"
-                >
-                  <circle r={1} cx={1} cy={1} />
-                </svg>
-                Service Disruption: {repoNames}
+              <p className="text-base text-gray-900">
+                <strong>Service Disruption:</strong> {repoNames}
               </p>
 
               <a
@@ -45,17 +39,7 @@ export default async function Header() {
       ) : (
         <Banner>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <p className="text-sm/6 text-gray-900">
-              <strong className="font-semibold">CCV Services Status</strong>
-              <svg
-                viewBox="0 0 2 2"
-                aria-hidden="true"
-                className="mx-2 inline size-0.5 fill-current"
-              >
-                <circle r={1} cx={1} cy={1} />
-              </svg>
-              All Services Operational
-            </p>
+            <p className="text-base text-gray-900">All Services Operational</p>
 
             <a
               href="https://status.ccv.brown.edu/"
