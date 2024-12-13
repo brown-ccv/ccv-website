@@ -108,9 +108,11 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           <TooltipProvider>
             <Tooltip>
               <TooltipTrigger className="rounded-md max-w-[100%] px-2 hover:bg-neutral-50">
-                <p className="flex-auto min-w-0 truncate font-medium text-secondary-blue-700">
-                  {event.title}
-                </p>
+                <a href={event.url} target="_blank">
+                  <p className="flex-auto min-w-0 truncate font-medium text-secondary-blue-700">
+                    {event.title}
+                  </p>
+                </a>
               </TooltipTrigger>
               <TooltipContent>
                 <p className="font-semibold pb-2">{event.date}</p>
