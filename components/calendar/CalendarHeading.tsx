@@ -29,7 +29,7 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
           <button
             type="button"
             className="flex h-9 w-12 items-center justify-center rounded-l-md border-y border-l border-gray-300 pr-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pr-0 md:hover:bg-gray-50"
-            onClick={() => prevButtonFunction()}
+            onClick={prevButtonFunction}
           >
             <span className="sr-only">Previous {srButtonText}</span>
             <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
@@ -37,7 +37,7 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
           <button
             type="button"
             className="hidden border-y border-gray-300 px-3.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative md:block"
-            onClick={() => todayButtonFunction()}
+            onClick={todayButtonFunction}
           >
             Today
           </button>
@@ -45,7 +45,7 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
           <button
             type="button"
             className="flex h-9 w-12 items-center justify-center rounded-r-md border-y border-r border-gray-300 pl-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pl-0 md:hover:bg-gray-50"
-            onClick={() => nextButtonFunction()}
+            onClick={nextButtonFunction}
           >
             <span className="sr-only">Next {srButtonText}</span>
             <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />

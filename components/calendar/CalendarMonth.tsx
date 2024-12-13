@@ -192,8 +192,6 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     ]
     const numberOfWeeks = getWeeksInMonth(day)
     const month = combinedDates.map((day, i) => {
-      //lg:grid-rows-6
-      // numberOfWeeks === 4 ? "lg:grid-rows-4" : numberOfWeeks === 5 ? "lg:grid-rows-5" : "lg:grid-rows-6"
       return (
         <div
           key={day.dateString}

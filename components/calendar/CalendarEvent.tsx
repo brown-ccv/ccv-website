@@ -25,7 +25,7 @@ const CalendarEvent: React.FC<DataProps> = ({
           href={url}
           target="_blank"
         >
-          <p>{title}</p>
+          {title}
         </a>
       </div>
       <div className="flex items-center text-primary-500 text-sm">
