@@ -3,15 +3,9 @@ import Navbar from "@/components/header/Navbar"
 import getOpenIssues from "@/components/header/utils"
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 
-// ONLY HOME PAGE!
-
-// Green/orange dot?? See if that feels like recording
 export default async function Header() {
   const repositories = await getOpenIssues()
-  // uncomment the next line to test banner with no open issues
-  //const issues = []
 
-  // comment out lines 11-13 to test banner with open issues
   const issues = repositories.filter(
     (repository) => repository.openIssues.length > 0
   )

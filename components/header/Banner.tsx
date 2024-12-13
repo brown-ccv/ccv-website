@@ -7,8 +7,6 @@ interface BannerProps {
   variant: string
 }
 
-// Try red/orange for the error gradient
-
 export default function Banner({
   variant = "primary",
   children,
