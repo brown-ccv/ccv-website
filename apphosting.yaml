@@ -1,0 +1,3 @@
+env:
+  - variable: GH_TOKEN
+    secret: myGithubToken
