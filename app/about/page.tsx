@@ -22,6 +22,7 @@ export default async function About() {
       </div>
     )
   } catch (err: any) {
+    console.error(err)
     return (
       <div>
         <SectionHeader

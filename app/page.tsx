@@ -39,5 +39,19 @@ export default async function Home() {
     )
   } catch (err) {
     console.error(err)
+    return (
+      <div className="px-2 my-6 space-y-2">
+        <SectionHeader href={"#events"} title={"Events"} />
+        <p>{err}</p>
+        <div className="flex justify-center">
+          <a
+            className="bg-secondary-blue-500 text-white p-4 rounded"
+            href="https://events.brown.edu/ccv/all"
+          >
+            VIEW ALL EVENTS
+          </a>
+        </div>
+      </div>
+    )
   }
 }
