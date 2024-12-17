@@ -1,4 +1,4 @@
-export async function POST() {
+export async function getWorkdayData() {
   const myHeaders = new Headers()
   myHeaders.append("Content-Type", "application/json")
   myHeaders.append(
@@ -22,6 +22,5 @@ export async function POST() {
     }
   )
   const json = await response.json()
-
-  return Response.json({ json })
+  return json
 }

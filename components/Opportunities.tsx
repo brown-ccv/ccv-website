@@ -1,5 +1,5 @@
 "use client"
-import React, { useState, useEffect } from "react"
+import React, { use, useState, useEffect } from "react"
 import Link from "next/link"
 import { LinkCard } from "@/components/LinkCard"
 import {
@@ -9,7 +9,7 @@ import {
 } from "@heroicons/react/24/solid"
 import Spinner from "@/components/assets/Spinner"
 
-interface OpportunityProps {
+export interface OpportunityProps {
   total: number
   jobPostings: PositionProps[]
   facets: Object[]
@@ -24,58 +24,12 @@ interface PositionProps {
   bulletFields: string[]
 }
 
-export const Opportunities: React.FC = () => {
-  const initialData = {
-    total: 0,
-    jobPostings: [],
-    userAuthenticated: false,
-    facets: [],
-  }
-  const [data, setData] = useState<OpportunityProps>(initialData)
-  const [isLoading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
-
-  const handleApiCall = async () => {
-    try {
-      const res = await fetch("/api/about", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-
-      if (!res.ok) {
-        throw new Error(`Failed to fetch: ${res.status}`)
-      }
-
-      const opportunities = await res.json()
-      setData(opportunities.json)
-    } catch (err: any) {
-      setError(err.message)
-    } finally {
-      setLoading(false)
-    }
-  }
-  useEffect(() => {
-    handleApiCall()
-  }, [])
-
+export function Opportunities({ data }: { data: OpportunityProps }) {
+  const opportunities = use(data)
   return (
     <section>
-      <Link href="#opportunities" className="text-neutral-900">
-        <h2 className="text-3xl bg-primary-500 text-white p-4 flex items-center gap-2">
-          <UserPlusIcon className="h-7 w-7" />
-          Opportunities
-        </h2>
-      </Link>
-      {isLoading && (
-        <div class="flex justify-center py-4 text-center">
-          <Spinner />
-        </div>
-      )}
-      {error && <p className="px-2 font-bold text-red">Error: {error}</p>}
-      {data.jobPostings.length > 0 &&
-        data.jobPostings.map((position) => {
+      {opportunities.jobPostings.length > 0 &&
+        opportunities.jobPostings.map((position) => {
           return (
             <div
               key={position.externalPath}

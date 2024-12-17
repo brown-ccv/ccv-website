@@ -3,7 +3,7 @@ import { LogoProps } from "@/components/assets/types"
 
 const Spinner: React.FC<LogoProps> = ({ width = 75 }) => {
   return (
-    <div role="status">
+    <div role="status" className="flex justify-center py-4 text-center">
       <svg
         aria-hidden="true"
         className="w-12 h-12 animate-spin text-gray-500 fill-primary-500"
