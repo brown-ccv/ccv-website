@@ -9,13 +9,6 @@ import {
 } from "@heroicons/react/24/solid"
 import Spinner from "@/components/assets/Spinner"
 
-export interface OpportunityProps {
-  total: number
-  jobPostings: PositionProps[]
-  facets: Object[]
-  userAuthenticated: boolean
-}
-
 interface PositionProps {
   title: string
   externalPath: string
@@ -24,12 +17,12 @@ interface PositionProps {
   bulletFields: string[]
 }
 
-export function Opportunities({ data }: { data: OpportunityProps }) {
+export function Opportunities({ data }: { data: Promise<any> }) {
   const opportunities = use(data)
   return (
     <section>
       {opportunities.jobPostings.length > 0 &&
-        opportunities.jobPostings.map((position) => {
+        opportunities.jobPostings.map((position: PositionProps) => {
           return (
             <div
               key={position.externalPath}

@@ -1,12 +1,11 @@
 "use client"
 import Link from "next/link"
 import React from "react"
-import type { IconType } from "react-icons"
 
 interface SectionHeaderProps {
   title: string
   href: string
-  icon?: IconType
+  icon?: React.ReactNode
 }
 
 const SectionHeader = ({ title, href, icon }: SectionHeaderProps) => {

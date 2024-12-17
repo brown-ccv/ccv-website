@@ -37,12 +37,12 @@ export default async function Home() {
         </div>
       </div>
     )
-  } catch (err) {
+  } catch (err: any) {
     console.error(err)
     return (
       <div className="px-2 my-6 space-y-2">
         <SectionHeader href={"#events"} title={"Events"} />
-        <p>{err}</p>
+        <p>{err.message}</p>
         <div className="flex justify-center">
           <a
             className="bg-secondary-blue-500 text-white p-4 rounded"

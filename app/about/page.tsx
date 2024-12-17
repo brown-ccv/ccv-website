@@ -30,7 +30,7 @@ export default async function About() {
           title={"Opportunities"}
           icon={<UserPlusIcon className="h-7 w-7" />}
         />
-        <p>{err}</p>
+        <p>{err.message}</p>
       </div>
     )
   }

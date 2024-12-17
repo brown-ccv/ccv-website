@@ -25,18 +25,18 @@ function classNames(...classes: (string | boolean | undefined)[]) {
 }
 
 interface EventSectionProps {
-  streamedDataFuture: Array<DataProps>
-  streamedDataPast: Array<DataProps>
-  today: Date
-  currentDate: string
+  streamedDataFuture: Promise<any>
+  streamedDataPast: Promise<any>
+  today: string
+  currentDate: Date
 }
 
-const EventSection = ({
+export function EventSection({
   streamedDataFuture,
   streamedDataPast,
   today,
   currentDate,
-}): EventSectionProps => {
+}: EventSectionProps): JSX.Element {
   const dataFuture = use(streamedDataFuture)
   const dataPast = use(streamedDataPast)
   const [view, setView] = useState("Upcoming")
@@ -70,7 +70,7 @@ const EventSection = ({
       {view === "Upcoming" && (
         <div className="flex flex-wrap justify-between gap-4">
           {dataFuture &&
-            dataFuture.slice(0, 4).map((e: DataProps, i) => {
+            dataFuture.slice(0, 4).map((e: DataProps, i: number) => {
               return (
                 <div
                   key={i}
