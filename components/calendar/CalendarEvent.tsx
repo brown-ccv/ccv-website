@@ -1,5 +1,6 @@
 import React from "react"
 import { DataProps } from "@/components/EventSection"
+import { ArrowTopRightOnSquareIcon, ClockIcon } from "@heroicons/react/20/solid"
 
 const CalendarEvent: React.FC<DataProps> = ({
   date_time,
@@ -16,19 +17,21 @@ const CalendarEvent: React.FC<DataProps> = ({
     ", " +
     date
   return (
-    <div className="event">
-      <div className="text-neutral-900 text-sm">{normalDate}</div>
+    <div className="bg-gray-50 p-4 space-y-2">
+      <div className="text-neutral-900 font-semibold text-sm">{normalDate}</div>
       <div>
         <a
-          className="text-xl font-bold text-secondary-blue-500 no-underline leading-4"
+          className="text-2xl font-bold text-secondary-blue-500 no-underline hover:underline leading-6"
           href={url}
           target="_blank"
         >
-          {" "}
-          {title}{" "}
+          {title}
         </a>
       </div>
-      <div className="text-primary-500 text-xs">{date_time}</div>
+      <div className="flex items-center text-primary-500 text-sm">
+        <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />
+        {date_time}
+      </div>
       <div className="py-2">{description_long && <p>{descriptionLong}</p>}</div>
     </div>
   )

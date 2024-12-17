@@ -21,11 +21,8 @@ import {
   getYear,
 } from "date-fns"
 
-export interface CalendarProps {
-  events: Array<DataProps>
-  currentDate: Date
-  today: string
-}
+import { CalendarProps } from "@/components/calendar/types"
+import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 
 export interface weekProps {
   id: string
@@ -95,7 +92,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           className={`flex items-center justify-center py-3 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
-          ${isSameDay(thisDate, currentDate) ? "today bg-secondary-yellow-50" : ""}`}
+          ${isSameDay(thisDate, currentDate) ? "today bg-secondary-yellow-50" : "bg-white"}`}
           onClick={() => {
             setSelectedDate(cloneDate)
           }}
@@ -170,47 +167,17 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
   return (
     <div className="flex h-full flex-col">
-      <header className="flex flex-none items-center justify-end gap-3.5 px-6 py-4">
-        <h1 className="text-lg font-semibold leading-6 text-gray-900">
-          <time dateTime={today}>
-            {`${ALL_MONTHS[activeDate.getMonth()]} ${activeDate.getFullYear()}`}
-          </time>
-        </h1>
-        <div className="flex items-center">
-          <div className="relative flex items-center rounded-md bg-gray shadow-sm md:items-stretch">
-            <button
-              type="button"
-              className="flex h-9 w-12 items-center justify-center rounded-l-md border-y border-l border-white pr-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pr-0 md:hover:bg-gray-50"
-              onClick={() => setActiveDate(subDays(activeDate, 7))}
-            >
-              <span className="sr-only">Previous week</span>
-              <ChevronLeftIcon className="h-5 w-5" aria-hidden="true" />
-            </button>
-            <button
-              type="button"
-              className="hidden border-y border-white px-3.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative md:block"
-              onClick={() => setActiveDate(currentDate)}
-            >
-              Today
-            </button>
-            <span className="relative -mx-px h-5 w-px bg-gray-300 md:hidden" />
-            <button
-              type="button"
-              className="flex h-9 w-12 items-center justify-center rounded-r-md border-y border-r border-white pl-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pl-0 md:hover:bg-gray-50"
-              onClick={() => setActiveDate(addDays(activeDate, 7))}
-            >
-              <span className="sr-only">Next week</span>
-              <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
-            </button>
-          </div>
-          <div className="hidden md:ml-4 md:flex md:items-center">
-            <div className="ml-6 h-6 w-px bg-gray-300" />
-          </div>
-        </div>
-      </header>
+      <CalendarHeading
+        date={activeDate}
+        srButtonText={"week"}
+        nextButtonFunction={() => setActiveDate(addDays(activeDate, 7))}
+        prevButtonFunction={() => setActiveDate(subDays(activeDate, 7))}
+        todayButtonFunction={() => setActiveDate(currentDate)}
+      />
+
       <div
         ref={container}
-        className="isolate border-white border-t-2 shadow ring-1 ring-white ring-opacity-5 flex flex-auto flex-col overflow-auto bg-gray"
+        className="isolate border-white border-t-2 shadow ring-1 ring-black ring-opacity-5 flex flex-auto flex-col overflow-auto bg-gray"
       >
         <div
           style={{ width: "165%" }}
@@ -218,10 +185,10 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         >
           <div
             ref={containerNav}
-            className="sticky top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-white ring-opacity-5 sm:pr-8"
+            className="sticky top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
           >
-            <div className="-mr-px hidden grid-cols-7 divide-x divide-white border-r border-white text-sm leading-6 text-gray-500 sm:grid">
-              <div className="col-end-1 w-14" />
+            <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-500 sm:grid">
+              <div className="col-end-1 w-14 bg-white" />
               {generateDatesForCurrentWeek(
                 activeDate,
                 selectedDate,
@@ -230,11 +197,11 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             </div>
           </div>
           <div className="flex flex-auto">
-            <div className="sticky left-0 z-10 w-14 flex-none bg-gray ring-1 ring-white" />
+            <div className="sticky left-0 z-10 w-14 flex-none bg-gray ring-1 ring-gray-100" />
             <div className="grid flex-auto grid-cols-1 grid-rows-1">
               {/* Horizontal lines */}
               <div
-                className="col-start-1 col-end-2 row-start-1 grid divide-y divide-white"
+                className="col-start-1 col-end-2 row-start-1 grid divide-y divide-gray-100"
                 style={{ gridTemplateRows: "repeat(48, minmax(3.5rem, 1fr))" }}
               >
                 <div ref={containerOffset} className="row-end-1 h-7"></div>
@@ -251,7 +218,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
               </div>
 
               {/* Vertical lines */}
-              <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-white sm:grid sm:grid-cols-7">
+              <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-gray-100 sm:grid sm:grid-cols-7">
                 {DAY_COLUMN_ARRAY.map(({ day, key }) => (
                   <div
                     key={key}

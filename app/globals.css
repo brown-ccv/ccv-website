@@ -31,19 +31,6 @@
 
 
 @layer components {
-    .event {
-        @apply relative;
-        @apply mb-1.5;
-        @apply text-left;
-        @apply py-0.5;
-        @apply pr-1;
-        @apply pl-2;
-    }
-
-    .event * {
-        @apply m-0;
-    }
-
     .column {
         @apply flex-grow;
         @apply basis-0;
@@ -61,14 +48,6 @@
         border-radius: 2px;
         background-color: rgba(0, 179, 152, 0.3);
         box-shadow: inset 0 4px 16px 0 rgba(0, 0, 0, 0.1);
-    }
-
-    .toggle-btn p {
-        display: inline-block;
-        margin: 0;
-        border-radius: 2px;
-        padding: 4px 8px 2px 8px;
-        font-size: 15px;
     }
 
     .toggle-btn p:hover {
