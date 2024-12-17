@@ -103,6 +103,15 @@ const EventSection = ({
           />
         </div>
       )}
+      {view === "Monthly" && (
+        <div>
+          <CalendarMonth
+            today={today}
+            currentDate={currentDate}
+            events={dataPast.concat(dataFuture)}
+          />
+        </div>
+      )}
     </div>
   )
 }
