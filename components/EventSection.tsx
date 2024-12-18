@@ -43,7 +43,7 @@ export function EventSection({
   const CAL_VIEW_ARRAY = ["Weekly", "Monthly", "Upcoming"]
 
   return (
-    <div>
+    <>
       <div className="hidden min-h-8 relative lg:block">
         <div className="toggle-btn">
           {CAL_VIEW_ARRAY.map((item) => {
@@ -112,7 +112,7 @@ export function EventSection({
           />
         </div>
       )}
-    </div>
+    </>
   )
 }
 

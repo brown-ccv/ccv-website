@@ -20,7 +20,7 @@ interface PositionProps {
 export function Opportunities({ data }: { data: Promise<any> }) {
   const opportunities = use(data)
   return (
-    <section>
+    <>
       {opportunities.jobPostings.length > 0 &&
         opportunities.jobPostings.map((position: PositionProps) => {
           return (
@@ -53,6 +53,6 @@ export function Opportunities({ data }: { data: Promise<any> }) {
             </div>
           )
         })}
-    </section>
+    </>
   )
 }
