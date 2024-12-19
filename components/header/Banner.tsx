@@ -4,7 +4,8 @@ import getOpenIssues from "@/components/header/utils"
 import { useState } from "react"
 
 interface BannerProps {
-  variant: string
+  variant?: string
+  children: React.ReactNode
 }
 
 export default function Banner({
