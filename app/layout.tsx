@@ -4,6 +4,7 @@ import "./globals.css"
 import React from "react"
 import Header from "@/components/header/Header"
 import Footer from "@/components/Footer"
+import { Hero } from "@/components/header/Hero"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -21,6 +22,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Header />
+        <Hero
+          title={"Center for Computation & Visualization"}
+          description={
+            "Scientific and technical computing expertise to advance computational research"
+          }
+        />
         <main>{children}</main>
         <Footer />
       </body>
