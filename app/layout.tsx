@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import React from "react"
+import { getRoutes } from "@/lib/markdown"
 import Header from "@/components/header/Header"
 import Footer from "@/components/Footer"
 import { Hero } from "@/components/header/Hero"
@@ -15,19 +16,16 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
+  route,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const routes = getRoutes(route)
   return (
     <html lang="en">
       <body className={inter.className}>
         <Header />
-        <Hero
-          title={"Center for Computation & Visualization"}
-          description={
-            "Scientific and technical computing expertise to advance computational research"
-          }
-        />
+        <Hero routes={routes} />
         <main>{children}</main>
         <Footer />
       </body>
