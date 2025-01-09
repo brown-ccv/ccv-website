@@ -12,7 +12,7 @@ export default async function getOpenIssues() {
 
   async function getSecret() {
     const [secret] = await client.accessSecretVersion({
-      name: "projects/ccv-status/secrets/myGithubToken/versions/latest",
+      name: "projects/ccv-website-next/secrets/myGithubToken/versions/latest",
     })
 
     return secret.payload.data.toString()
