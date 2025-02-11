@@ -4,8 +4,41 @@ import { getStringDate } from "@/components/calendar/utils"
 import SectionHeader from "@/components/SectionHeader"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
+import Carousel from "@/components/test/builderio/carousel/ProvidentComponent"
+import StatusBanner from "@/components/test/builderio/status/ServiceDisruption/index"
+import CarouselF from "@/components/test/frontiervscode/Carousel/Frontier"
+import StatusBannerF from "@/components/test/frontiervscode/StatusBanner/StatusBanner"
+import CarouselA from "@/components/test/anima/FeaturedCarousel/FeaturedCarousel"
+import StatusBannerA from "@/components/test/frontiervscode/StatusBanner/StatusBanner"
 
 export default async function Home() {
+  return(
+    <div>
+      <div>
+      =========== Figma Plugins =============================================================================
+        <div>
+          ---------------------- BUILDER.IO ----------------------
+          <StatusBanner></StatusBanner>
+          <Carousel></Carousel>
+        </div>
+        <div>
+        ---------------------- ANIMA ----------------------
+        <StatusBannerA></StatusBannerA>
+          <CarouselA></CarouselA>
+        </div>
+      </div>
+
+      <div>
+      =========== VSCode Plugins =============================================================================
+        <div>
+        ---------------------- FRONTIER ----------------------
+        <StatusBannerF></StatusBannerF>
+          <CarouselF></CarouselF>
+        </div>
+      </div>
+    </div>
+  )
+
   try {
     const currentDate = new Date()
     const today = getStringDate(

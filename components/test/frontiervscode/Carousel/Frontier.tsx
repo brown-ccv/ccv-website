@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { BrowserWindow } from "@/components/carousel-test/frontiervscode/BrowserWindow";
-import { ChevronButton } from "@/components/carousel-test/frontiervscode/ChevronButton";
+import { BrowserWindow } from "@/components/test/frontiervscode/Carousel/BrowserWindow";
+import { ChevronButton } from "@/components/test/frontiervscode/Carousel/ChevronButton";
 import faUser from "@/components/assets/frontier/fa-user.svg";
-import screenshot20250110At20529Pm1 from "./screenshot-2025-01-10-at-2-05-29-PM-1.png";
+import screenshot from "@/components/assets/frontier/screenshot-2025-01-10-at-2-05-29-PM-1.png";
 
 export const PropertyDefault = (): JSX.Element => {
   return (
@@ -75,12 +75,14 @@ export const PropertyDefault = (): JSX.Element => {
           ellipseClassNameOverride="h-[15px] w-[15px] rounded-full left-12 top-[9px]"
           overlapGroupClassName="h-8 bg-[#f8f8f8]"
         />
-        {/* <img
+        <img
           className="absolute w-[567px] h-[389px] top-[39px] left-[66px] object-cover"
           alt="Screenshot"
-          src={screenshot20250110At20529Pm1}
-        /> */}
+          src={screenshot}
+        />
       </div>
     </section>
   );
 };
+
+export default PropertyDefault

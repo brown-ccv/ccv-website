@@ -32,7 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts"
-  ],
+, "components/test/frontiervscode/StatusBanner/sample.tsx"  ],
   "exclude": [
     "node_modules"
   ]

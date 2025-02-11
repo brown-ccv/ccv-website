@@ -1,6 +1,8 @@
+"use client"
+
 import React from "react"
 import { CardProps } from "./types"
-import Button from "./Button"
+import Button from "../Button"
 
 const PublicHealthCard: React.FC<CardProps> = ({
   title,
