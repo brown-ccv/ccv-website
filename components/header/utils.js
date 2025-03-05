@@ -41,7 +41,6 @@ export default async function getOpenIssues() {
       const open = await octokit.request(`GET /repos/${org}/${name}/issues`, {
         org: { org },
         repo: { name },
-        type: "private",
         sort: "created",
         direction: "desc",
       })
