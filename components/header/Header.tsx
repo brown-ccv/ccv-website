@@ -4,15 +4,15 @@ import getOpenIssues from "@/components/header/utils"
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 
 export default async function Header() {
-  // const repositories = await getOpenIssues()
+  const repositories = await getOpenIssues()
 
-  // const issues = repositories.filter(
-  //   (repository) => repository.openIssues.length > 0
-  // )
-  // const repoNames = issues.map((repo) => repo.name).join(", ")
+  const issues = repositories.filter(
+    (repository) => repository.openIssues.length > 0
+  )
+  const repoNames = issues.map((repo) => repo.name).join(", ")
   return (
     <>
-      {/* {issues.length > 0 ? (
+      {issues.length > 0 ? (
         <Banner variant="Service Disruption">
           {repoNames && (
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -44,7 +44,7 @@ export default async function Header() {
             </a>
           </div>
         </Banner>
-      )} */}
+      )}
       <Navbar />
     </>
   )

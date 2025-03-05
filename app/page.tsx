@@ -4,15 +4,15 @@ import { getStringDate } from "@/components/calendar/utils"
 import SectionHeader from "@/components/SectionHeader"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
-import CarouselA from "@/components/test/anima/FeaturedCarousel/FeaturedCarousel"
-import StatusBannerA from "@/components/test/anima/StatusBanner/StatusBanner"
+import Carousel from "@/components/test/anima/FeaturedCarousel/FeaturedCarousel"
+import StatusBanner from "@/components/test/anima/StatusBanner/StatusBanner"
 
 export default async function Home() {
   return(
     <div>
       <div>
-        <StatusBannerA></StatusBannerA>
-        <CarouselA></CarouselA>
+        <StatusBanner></StatusBanner>
+        <Carousel></Carousel>
       </div>
     </div>
   )

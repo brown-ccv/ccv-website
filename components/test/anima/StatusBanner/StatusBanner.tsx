@@ -8,20 +8,20 @@ import { Button } from "../ui/button";
 export const StatusBanner = (): JSX.Element => {
   const [isVisible, setIsVisible] = React.useState(true);
 
-//   if (!isVisible) return null;
+  // if (!isVisible) return null;
 
   return (
     <Alert
-      className="w-full h-10 bg-collection-1-red rounded-none border-none relative"
+      className="w-full h-10 bg-red rounded-none border-none relative"
       variant="destructive"
     >
       <AlertDescription className="flex items-center justify-center gap-1 text-white">
-        <span className="font-bold">Service Disruption:</span>
+        <span className="font-bold">Service Disruption:</span>    {/* TODO: change hardcoded descs */}
         <span>oscar, Hibernate</span>
         <Button
           variant="secondary"
           size="sm"
-          className="ml-4 h-6 bg-collection-1-yellow hover:bg-collection-1-yellow/90 text-black rounded-full text-[11px] font-normal"
+          className="ml-4 h-6 bg-secondary-yellow-500 hover:bg-secondary-yellow-500 text-black rounded-[50px] text-[11px] font-normal"
         >
           View Incidents
         </Button>
