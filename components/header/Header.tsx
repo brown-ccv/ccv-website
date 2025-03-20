@@ -16,14 +16,14 @@ export default async function Header() {
         <Banner variant="Service Disruption">
           {repoNames && (
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-              <p className="text-base text-gray-900">
+              <p className="text-base text-white">
                 <strong>Service Disruption:</strong> {repoNames}
               </p>
 
               <a
                 href="https://status.ccv.brown.edu/"
                 target="_blank"
-                className="flex-none rounded-md bg-[#991b1b] px-3.5 py-1 text-sm font-semibold text-white shadow-sm hover:bg-red focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red"
+                className="flex-none rounded-[50px] bg-secondary-yellow-500 px-3.5 py-1 text-sm font-semibold text-black shadow-sm hover:bg-secondary-yellow-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-secondary-yellow-700"
               >
                 View Incidents
               </a>
@@ -33,7 +33,7 @@ export default async function Header() {
       ) : (
         <Banner>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <p className="text-base text-gray-900">All Services Operational</p>
+            <p className="text-base text-white">All Services Operational</p>
 
             <a
               href="https://status.ccv.brown.edu/"

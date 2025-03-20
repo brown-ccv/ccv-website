@@ -5,7 +5,7 @@ import useEmblaCarousel, {
   import * as React from "react";
   
   import { cn } from "../utils";
-  import { Button } from "./button";
+  import { Button } from "./button_anima";
   
   type CarouselApi = UseEmblaCarouselType[1];
   type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;

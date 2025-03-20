@@ -5,16 +5,16 @@ import {
     ChevronRightCircleIcon,
     User2Icon,
   } from "lucide-react";
-  import { Badge } from "../ui/badge";
-  import { Button } from "../ui/button";
-  import { Card, CardContent, CardHeader } from "../ui/card";
+  import { Badge } from "./test/anima/ui/badge";
+  import { Button } from "./test/anima/ui/button_anima";
+  import { Card, CardContent, CardHeader } from "./test/anima/ui/card";
   import {
     Carousel,
     CarouselContent,
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-  } from "../ui/carousel";
+  } from "./test/anima/ui/carousel";
   
   const projectData = {
     category: "Public Health",
