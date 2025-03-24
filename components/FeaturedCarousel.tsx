@@ -5,19 +5,19 @@ import {
     ChevronRightCircleIcon,
     User2Icon,
   } from "lucide-react";
-  import { Badge } from "./test/anima/ui/badge";
-  import { Button } from "./test/anima/ui/button_anima";
-  import { Card, CardContent, CardHeader } from "./test/anima/ui/card";
+  import { Badge, badgeVariants } from "./badge";
+  import { Button } from "./button_anima";
+  import { Card, CardContent, CardHeader } from "./card";
   import {
     Carousel,
     CarouselContent,
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-  } from "./test/anima/ui/carousel";
+  } from "./carousel";
   
   const projectData = {
-    category: "Public Health",
+    tag: "Public Health",
     title: "PROVIDENT",
     organizations: ["Brown School of Public Health", "RI Department of Health"],
     description:
@@ -30,8 +30,8 @@ import {
     return (
       <div className="relative w-full max-w-[1440px] h-[588px] bg-collection-1-white">
         <div className="px-[122px] py-[30px] space-y-4">
-          <Badge className="bg-collection-1-yellow text-black hover:bg-collection-1-yellow">
-            {projectData.category}
+          <Badge variant="outline">
+            {projectData.tag}
           </Badge>
   
           <h2 className="text-[28px] font-semibold font-['Source_Sans_Pro']">
@@ -50,7 +50,7 @@ import {
           </p>
   
           <div className="flex gap-8 mt-32">
-            <Button className="w-[155px] h-[55px] bg-collection-1-green hover:bg-collection-1-green/90 rounded-[50px] text-xl">
+            <Button variant="default">
               Website
             </Button>
             <Button

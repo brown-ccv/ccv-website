@@ -200,6 +200,11 @@ module.exports = {
           50: "#a3b8ca",
         },
       },
+      university: {
+        red: {
+          100: "#C00404"
+        }
+      }
     }),
     columns: {
       auto: "auto",

@@ -1,6 +1,6 @@
 "use client"
 import { XMarkIcon } from "@heroicons/react/20/solid"
-import getOpenIssues from "@/components/header/utils"
+import getOpenIssues from "@/components/header/ccv-status-utils"
 import { useState } from "react"
 
 interface BannerProps {
@@ -22,7 +22,7 @@ export default function Banner({
           className={
             variant === "primary"
               ? "bg-teal-50 relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1"
-              : "bg-red relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1"
+              : "bg-university-red-100 relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1"
           }
         >
           {children}
