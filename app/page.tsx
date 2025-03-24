@@ -4,13 +4,13 @@ import { getStringDate } from "@/components/calendar/utils"
 import SectionHeader from "@/components/SectionHeader"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
-import Carousel from "@/components/FeaturedCarousel"
+import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 
 export default async function Home() {
   return(
     <div>
       <div>
-        <Carousel></Carousel>
+        <FeaturedCarousel></FeaturedCarousel>
       </div>
     </div>
   )
