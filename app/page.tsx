@@ -5,12 +5,17 @@ import SectionHeader from "@/components/SectionHeader"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
 import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
+import { Footer } from "@/components/footer/Footer"
 
 export default async function Home() {
   return(
     <div>
       <div>
         <FeaturedCarousel></FeaturedCarousel>
+      </div>
+
+      <div>
+        <Footer></Footer>
       </div>
     </div>
   )
@@ -61,6 +66,8 @@ export default async function Home() {
           </a>
         </div>
       </div>
+
+      
     )
   }
 }

@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/dropdown-menu"
 
 import Button from "@/components/Button"
-import LogoCcv from "@/components/assets/LogoCcv"
+import CCVLogo from "@/components/assets/CCVLogo"
 import LogoBrown from "@/components/assets/LogoBrown"
 import Link from "next/link"
 import { navigation } from "@/components/NavItems"
@@ -39,7 +39,7 @@ const Navbar = () => {
           <LogoBrown width={135} />
         </a>
         <Link href={"/"}>
-          <LogoCcv width={105} />
+          <CCVLogo width={105} />
         </Link>
       </div>
 

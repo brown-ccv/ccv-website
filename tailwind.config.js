@@ -203,6 +203,9 @@ module.exports = {
       university: {
         red: {
           100: "#C00404"
+        },
+        gray: {
+          100: "#b5ae9a"
         }
       }
     }),

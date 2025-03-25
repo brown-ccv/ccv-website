@@ -1,6 +1,6 @@
 import Link from "next/link"
 import LogoBrown from "@/components/assets/LogoBrown"
-import LogoCcv from "@/components/assets/LogoCcv"
+import CCVLogo from "@/components/assets/CCVLogo"
 import { navigation } from "@/components/NavItems"
 
 export default function Footer() {
@@ -14,7 +14,7 @@ export default function Footer() {
           <div className="space-y-8">
             <div className="flex w-2/3 gap-3.5">
               <LogoBrown />
-              <LogoCcv />
+              <CCVLogo />
             </div>
           </div>
 

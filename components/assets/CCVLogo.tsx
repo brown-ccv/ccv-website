@@ -1,7 +1,8 @@
+"use client"
 import React from "react"
 import { LogoProps } from "@/components/assets/types"
 
-const LogoCcv: React.FC<LogoProps> = ({ width = 75 }) => {
+const CCVLogo: React.FC<LogoProps> = ({ width = 75 }) => {
   return (
     <>
       <svg
@@ -108,4 +109,4 @@ const LogoCcv: React.FC<LogoProps> = ({ width = 75 }) => {
   )
 }
 
-export default LogoCcv
+export default CCVLogo
