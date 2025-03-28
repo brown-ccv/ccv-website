@@ -2,7 +2,7 @@
 import React from "react"
 import { LogoProps } from "@/components/assets/types"
 
-const CCVLogo: React.FC<LogoProps> = ({ width = 75 }) => {
+const CCVLogo: React.FC<LogoProps> = ({ width = 75, height = width, ...props }) => {
   return (
     <>
       <svg
@@ -13,6 +13,7 @@ const CCVLogo: React.FC<LogoProps> = ({ width = 75 }) => {
         x="0px"
         y="0px"
         viewBox="0 0 810 306"
+        {...props}
       >
         <g>
           <path
