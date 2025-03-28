@@ -1,3 +1,5 @@
+import Header from "@/components/header/Header";
+import ClientLayout from "@/app/ClientLayout";
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
@@ -18,6 +20,8 @@ export default async function Home() {
 
     return (
       <div className="px-2 my-6 space-y-2">
+        <Header />
+        <ClientLayout />
         <SectionHeader href={"#events"} title={"Events"} />
         <Suspense fallback={<Spinner />}>
           <EventSection
