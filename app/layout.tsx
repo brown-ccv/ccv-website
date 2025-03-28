@@ -48,11 +48,11 @@ export default function RootLayout({
               <FeaturedProjects />
             </div>
             {/* <Events /> */}
-            <Footer />
           </div>
         </div>
+        <main>{children}</main>
+        <Footer />
       </body>
-      <main>{children}</main>
     </html>
   )
 }
