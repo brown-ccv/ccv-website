@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { AnimatedTitle } from "@/components/AnimatedTitle";
+import { AnimatedTitle } from "@components/AnimatedTitle";
 
 interface HeroProps {
   onViewEventsClick: () => void;

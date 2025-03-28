@@ -1,3 +1,4 @@
+"use client"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
@@ -10,7 +11,7 @@ import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { MissionCards } from "@/components/MissionCards";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
-import { Footer } from "@/components/Footer";
+import { Footer } from "@/components/Footer2";
 // import { StatusBanner } from "../../components/StatusBanner";
 // import { Navbar } from "../../components/Navbar";
 // import { Events } from "../../components/Events";
