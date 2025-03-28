@@ -1,7 +1,8 @@
-import Banner from "@/components/header/Banner"
+import StatusBanner from "@/components/header/StatusBanner"
+import BrownBanner from "@/components/header/BrownBanner"
 import Navbar from "@/components/header/Navbar"
 import getOpenIssues from "@/components/header/utils"
-import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
+// import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 
 export default async function Header() {
   const repositories = await getOpenIssues()
@@ -13,7 +14,7 @@ export default async function Header() {
   return (
     <>
       {issues.length > 0 ? (
-        <Banner variant="Service Disruption">
+        <StatusBanner variant="Service Disruption">
           {repoNames && (
             <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
               <p className="text-base text-gray-900">
@@ -29,9 +30,9 @@ export default async function Header() {
               </a>
             </div>
           )}
-        </Banner>
+        </StatusBanner>
       ) : (
-        <Banner>
+        <StatusBanner>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <p className="text-base text-gray-900">All Services Operational</p>
 
@@ -43,8 +44,9 @@ export default async function Header() {
               View Status
             </a>
           </div>
-        </Banner>
+        </StatusBanner>
       )}
+      <BrownBanner />
       <Navbar />
     </>
   )

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronDownIcon, SearchIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+// import { Input } from '@/components/ui/input';
 
 const navItems = [
   { name: "Services", hasDropdown: true },
@@ -10,7 +10,7 @@ const navItems = [
   { name: "About", hasDropdown: true },
 ];
 
-export const Navbar: React.FC = () => {
+export const NavbarAnima: React.FC = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
 
   const handleSearchToggle = () => {
@@ -95,11 +95,11 @@ export const Navbar: React.FC = () => {
           <div className="relative">
             {isSearchExpanded ? (
               <div className="flex items-center">
-                <Input
+                {/* <Input
                   type="text"
                   placeholder="Search..."
                   className="w-[200px] h-[45px] rounded-full bg-white text-black"
-                />
+                /> */}
                 <Button
                   size="icon"
                   className="w-[45px] h-[45px] rounded-full bg-extendedsunglow-400 ml-2"

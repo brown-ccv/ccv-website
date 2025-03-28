@@ -2,7 +2,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { MessageSquareIcon } from "lucide-react";
 
-export const Header: React.FC = () => {
+export const BrownBanner: React.FC = () => {
   return (
     <header className="w-full h-[149px] bg-defaultwhite relative mt-10">
       <div className="flex items-center">
@@ -28,3 +28,5 @@ export const Header: React.FC = () => {
     </header>
   );
 };
+
+export default BrownBanner;
