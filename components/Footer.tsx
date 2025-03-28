@@ -1,6 +1,6 @@
 import Link from "next/link"
-import LogoBrown from "@/components/assets/LogoBrown"
-import LogoCcv from "@/components/assets/LogoCcv"
+import LogoBrown from "@/components/assets/BrownLogo"
+import LogoCcv from "@/components/assets/CCVLogo"
 import { navigation } from "@/components/NavItems"
 
 export default function Footer() {

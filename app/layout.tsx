@@ -56,3 +56,5 @@ export default function RootLayout({
     </html>
   )
 }
+
+// TODO: move landing stuff to page.tsx

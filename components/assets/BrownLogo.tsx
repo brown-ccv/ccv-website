@@ -1,7 +1,7 @@
 import React from "react"
 import { LogoProps } from "@/components/assets/types"
 
-const LogoBrown: React.FC<LogoProps> = ({ width = 75 }) => {
+const BrownLogo: React.FC<LogoProps> = ({ width = 75 }) => {
   return (
     <>
       <svg
@@ -2751,4 +2751,4 @@ z"
   )
 }
 
-export default LogoBrown
+export default BrownLogo;
