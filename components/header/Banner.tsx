@@ -1,6 +1,6 @@
 "use client"
 import { XMarkIcon } from "@heroicons/react/20/solid"
-import getOpenIssues from "@/components/header/ccv-status-utils"
+import getOpenIssues from "@/components/header/utils"
 import { useState } from "react"
 
 interface BannerProps {

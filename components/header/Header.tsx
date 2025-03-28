@@ -1,6 +1,6 @@
 import Banner from "@/components/header/Banner"
-import Navbar from "@/components/header/Navbar"
-import getOpenIssues from "@/components/header/ccv-status-utils"
+// import Navbar from "@/components/header/Navbar"
+import getOpenIssues from "@/components/header/utils"
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline"
 
 export default async function Header() {
@@ -45,7 +45,7 @@ export default async function Header() {
           </div>
         </Banner>
       )}
-      <Navbar />
+      {/* <Navbar /> */}
     </>
   )
 }

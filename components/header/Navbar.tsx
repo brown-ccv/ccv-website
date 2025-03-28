@@ -15,7 +15,7 @@ import {
 
 import Button from "@/components/Button"
 import CCVLogo from "@/components/assets/CCVLogo"
-import LogoBrown from "@/components/assets/LogoBrown"
+import LogoBrown from "@/components/assets/BrownLogo"
 import Link from "next/link"
 import { navigation } from "@/components/NavItems"
 
@@ -30,9 +30,9 @@ interface NavigationProps {
   parentHref: string
 }
 
-const Navbar = () => {
+export const Navbar = () => {
   return (
-    <div className="bg-neutral-50 p-2 shadow flex justify-between items-center">
+    <div className="bg-transparent p-2 shadow flex justify-between items-center">
       {/* Logo Section */}
       <div className="flex items-center space-x-3">
         <a href="https://it.brown.edu">
@@ -49,7 +49,7 @@ const Navbar = () => {
           {navigation.map((item) => {
             return (
               <NavigationMenu.Item key={item.href}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 rounded-md bg-background px-4 py-2 text-md font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
+                <NavigationMenu.Trigger className="group text-white inline-flex h-9 items-center justify-center gap-2 rounded-md bg-background px-4 py-2 text-md font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50">
                   {item.title}
                   <ChevronDownIcon
                     className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
@@ -82,7 +82,7 @@ const Navbar = () => {
           <DropdownMenuTrigger className="bg-white p-2">
             <Bars3Icon
               aria-hidden="true"
-              className="h-5 w-5 text-neutral-500"
+              className="h-5 w-5 text-white"
             />
           </DropdownMenuTrigger>
           <DropdownMenuContent className="bg-neutral-50 mt-3 z-50 overflow-y-scroll h-96">
@@ -140,10 +140,10 @@ const NavigationLinks: React.FC<NavigationProps> = ({
   return (
     <NavigationMenu.Content className="absolute top-[100%] z-50 w-max rounded-md shadow-md">
       <ul className="list-none p-4 m-0 bg-neutral-50 flex flex-col gap-2">
-        <li className="p-2 hover:bg-white hover:text-secondary-blue-700">
+        <li className="p-2 hover:bg-white hover:text-white">
           <NavigationMenu.Link
             href={parentHref}
-            className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+            className="p-2 focus:outline-none focus:bg-white focus:text-white"
           >
             Explore {parentTitle}
           </NavigationMenu.Link>
@@ -167,4 +167,4 @@ const NavigationLinks: React.FC<NavigationProps> = ({
   )
 }
 
-export default Navbar
+export default Navbar;
