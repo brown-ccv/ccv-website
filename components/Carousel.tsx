@@ -5,8 +5,16 @@ import { Card, CardContent } from "@/components/carousel/Card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/carousel/Tabs";
 import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react";
 
-// Project data for the carousel
-const projectData = [
+// Project data for the carousel./carousel/badge
+interface ProjectData {
+  category: string;
+  title: string;
+  authors: string[];
+  description: string;
+  screenshot: string;
+}
+
+const projectData: ProjectData[]  = [
   {
     category: "Public Health",
     title: "PROVIDENT",
@@ -14,7 +22,7 @@ const projectData = [
     description:
       "A web app to support the PROVIDENT research study looking to prevent drug-related deaths in neighborhoods across Rhode Island. The dashboard showcases a predictive analytics model that identifies neighborhoods where future overdose deaths are most likely to occur.",
     screenshot:
-      "https://c.animaapp.com/428GomwI/img/screenshot-2025-01-10-at-2-05-29-pm-1.png",
+      "/test-image.jpg",
   },
   {
     category: "Education",
@@ -54,7 +62,7 @@ const categoryColors = {
   "Healthcare": "bg-primary-500",
 };
 
-export const FeaturedCarousel = (): JSX.Element => {
+export const Carousel = (): JSX.Element => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const nextSlide = () => {
@@ -70,7 +78,7 @@ export const FeaturedCarousel = (): JSX.Element => {
         <div className="flex flex-auto relative w-full max-w-[1440px] m-20">
           <div className="flex flex-auto absolute left-0 top-1/2 -translate-y-1/2 z-20">
             <Button
-              variant="secondary"
+              variant="neutral"
               size="icon"
               className="w-[45px] h-[45px] bg-defaultwhite rounded-[99px] border border-solid border-extendedtrue-gray700"
               onClick={prevSlide}
@@ -81,7 +89,7 @@ export const FeaturedCarousel = (): JSX.Element => {
   
           <div className="absolute right-0 top-1/2 -translate-y-1/2 z-20">
             <Button
-              variant="secondary"
+              variant="neutral"
               size="icon"
               className="w-[45px] h-[45px] bg-defaultwhite rounded-[99px] border border-solid border-extendedtrue-gray700"
               onClick={nextSlide}
