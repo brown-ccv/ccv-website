@@ -1,28 +1,24 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { MessageSquareIcon } from "lucide-react";
+import { MessagesSquareIcon } from "lucide-react";
+import BrownLogo from "@/components/assets/BrownLogo";
 
 export const BrownBanner: React.FC = () => {
   return (
-    <header className="w-full h-[149px] bg-defaultwhite relative mt-10">
-      <div className="flex items-center">
-        <img
-          className="w-[187px] h-20 ml-[49px] mt-[35px] mix-blend-multiply object-cover"
-          alt="Brown University Logo"
-          src="https://c.animaapp.com/VOhWj8ET/img/oit-logo-color-horizontal-233px-1@2x.png"
-        />
-        <div className="mx-6 mt-[35px]">
-          <h1 className="font-semibold text-black text-[26px]">
+    <header className="w-full h-[149px] bg-defaultwhite relative mt-10 flex items-center px-6">
+      <div className="flex items-center w-full">
+        <BrownLogo className="w-[200px] h-auto" />
+        <div className="ml-20 flex flex-col justify-center">
+          <h1 className="font-['Source Sans Code', sans-serif] text-black text-[26px] font-semibold">
             Center for Computation and Visualization
           </h1>
         </div>
       </div>
-
       <Button
-        variant="outline"
-        className="absolute w-[159px] h-[50px] top-[53px] right-[49px] border-extendedred-uni text-extendedred-uni font-semibold"
+        variant="outline_primary"
+        className="absolute right-[49px] top-[50%] transform -translate-y-1/2 border-red-university text-red-university font-semibold rounded-none w-[159px] h-[50px] hover:bg-red-university hover:text-white hover:border-red-university"
       >
-        <MessageSquareIcon className="mr-2 h-[26px] w-[26px]" />
+        <MessagesSquareIcon className="mr-2 h-[26px] w-[26px]" />
         Work with Us
       </Button>
     </header>
