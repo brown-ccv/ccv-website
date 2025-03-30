@@ -173,6 +173,7 @@ module.exports = {
       fuchsia: colors.fuchsia,
       pink: colors.pink,
       rose: colors.rose,
+      cream: "#b7b09c",
       primary: {
         900: "#004d41",
         700: "#00806C",

@@ -1,62 +1,89 @@
-import Link from "next/link"
-import LogoBrown from "@/components/assets/BrownLogo"
-import LogoCcv from "@/components/assets/CCVLogo"
-import { navigation } from "@/components/NavItems"
+import React from "react";
+import { ArrowRightIcon, MapPinIcon, PhoneCallIcon } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
 
-export default function Footer() {
+const footerLinks = [
+  { text: "VISIT BROWN", href: "#" },
+  { text: "CAMPUS MAP", href: "#" },
+  { text: "RESERVATIONS", href: "#" },
+  { text: "ACCESSIBILITY", href: "#" },
+  { text: "CAREERS AT BROWN", href: "#" },
+  { text: "GIVE TO BROWN", href: "#" },
+];
+
+export const Footer: React.FC = () => {
   return (
-    <footer aria-labelledby="footer-heading" className="w-full bg-neutral-50">
-      <h2 id="footer-heading" className="sr-only">
-        Footer
-      </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-8 sm:pt-24 lg:px-8 lg:pt-16">
-        <div className="xl:grid xl:grid-cols-2 xl:gap-8">
-          <div className="space-y-8">
-            <div className="flex w-2/3 gap-3.5">
-              <LogoBrown />
-              <LogoCcv />
+    <footer className="w-full bg-neutral-700">
+      <div className="pt-[51px] px-[102px] flex flex-col">
+        <div className="flex flex-wrap justify-between">
+          <div className="w-1/2">
+            <p className="text-cream text-base">BROWN UNIVERSITY</p>
+
+            <div className="flex items-center mt-12">
+              <MapPinIcon className="w-[15px] h-[15px] text-white mr-3" />
+              <p className="font-semibold text-white text-xl">
+                Providence, RI 02912
+              </p>
+            </div>
+
+            <div className="flex items-center mt-4">
+              <PhoneCallIcon className="w-[21px] h-[21px] text-cream mr-3" />
+              <p className="font-semibold text-white text-xl">
+                401-863-1000
+              </p>
+            </div>
+
+            <div className="flex flex-wrap mt-10">
+              {footerLinks.slice(0, 3).map((link, index) => (
+                <div key={index} className="flex items-center mr-8 mb-4">
+                  <span className="text-secondary-500 text-[15px]">
+                    {link.text}
+                  </span>
+                  <ArrowRightIcon className="w-3.5 h-2.5 ml-1.5 text-secondary-500" />
+                </div>
+              ))}
+            </div>
+
+            <Separator className="my-10 w-[572px] bg-cream" />
+
+            <div className="flex flex-wrap">
+              {footerLinks.slice(3, 5).map((link, index) => (
+                <div key={index} className="flex items-center mr-8 mb-4">
+                  <span className="text-secondary-500 text-[15px]">
+                    {link.text}
+                  </span>
+                  <ArrowRightIcon className="w-3.5 h-2.5 ml-1.5 text-secondary-500" />
+                </div>
+              ))}
             </div>
           </div>
 
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 xl:col-span-2">
-            {navigation.map((contents) => {
-              return (
-                <div key={contents.href}>
-                  <p className="text-sm font-semibold leading-6 text-gray-900">
-                    {contents.title}
-                  </p>
-                  <ul role="list" className="mt-6 space-y-2">
-                    <li>
-                      <Link
-                        href={contents.href}
-                        className="text-sm leading-6 text-secondary-blue-700 hover:text-black hover:border-b-2"
-                      >
-                        Explore {contents.title}
-                      </Link>
-                    </li>
-                    {contents.routes.map((item) => (
-                      <li key={item.title}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-secondary-blue-700 hover:text-black hover:border-b-2"
-                        >
-                          {item.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            })}
+          <Separator orientation="vertical" className="mx-10 h-full bg-cream" />
+
+          <div className="w-1/3">
+            <img
+              className="w-[218px] h-[61px] object-cover"
+              alt="Brown University Logo"
+              src="https://c.animaapp.com/VOhWj8ET/img/logo-together-1@2x.png"
+            />
+
+            <p className="font-semibold italic text-cream text-xl mt-10">
+              The campaign for building on distinction
+            </p>
+
+            <div className="flex items-center mt-16">
+              <span className="text-secondary-500 text-[15px]">
+                {footerLinks[5].text}
+              </span>
+              <ArrowRightIcon className="w-3.5 h-2.5 ml-1.5 text-secondary-500" />
+            </div>
           </div>
         </div>
       </div>
-      <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-16">
-        <p className="mb-8 text-xs text-center leading-5 text-gray-500">
-          &copy; 2024 Center for Computation and Visualization, Brown University
-          | 180 George St, Providence RI 02906
-        </p>
+
+      <div className="bg-black flex items-center px-[102px] mt-auto py-4">
+        <p className="text-cream text-base">© Brown University</p>
       </div>
     </footer>
-  )
-}
+  );
+};
