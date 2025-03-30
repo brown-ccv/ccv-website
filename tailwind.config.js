@@ -143,13 +143,19 @@ module.exports = {
       current: colors.current,
       transparent: colors.transparent,
       black: colors.black,
-      brown: "#4E3629",
+      brown: {
+        500: "#4E3629", 
+        university: "#4e3629"
+      },
       white: colors.white,
       slate: colors.slate,
       gray: colors.gray,
       zinc: colors.zinc,
       stone: colors.stone,
-      red: "#ED1C24",
+      red: {
+        500: "#ED1C24", 
+        university: "#C00404"
+      },
       ruby: "#450a0a",
       orange: colors.orange,
       amber: colors.amber,
@@ -174,6 +180,16 @@ module.exports = {
         300: "#00E6C3",
         100: "#19FFDD",
         50: "#afcec9",
+        neutral: "#b9bbbf",
+      },
+      secondary: {
+        900: "#C79200",
+        700: "#FAB700",
+        500: "#FFC72E",
+        300: "#FFD561",
+        100: "#FFE294",
+        50: "#f9ecca",
+        neutral: "#d1d5db",
       },
       neutral: {
         900: "#242424",
@@ -183,22 +199,16 @@ module.exports = {
         100: "#ACB6BE",
         50: "#F5F5F5",
       },
-      secondary: {
-        yellow: {
-          900: "#C79200",
-          700: "#FAB700",
-          500: "#FFC72E",
-          300: "#FFD561",
-          100: "#FFE294",
-          50: "#f9ecca",
-        },
-        blue: {
-          900: "#2c3e50",
-          700: "#002B52",
-          500: "#003c70",
-          300: "#527da1",
-          50: "#a3b8ca",
-        },
+      blue: {
+        900: "#2c3e50",
+        700: "#002B52",
+        500: "#003c70",
+        300: "#527da1",
+        50: "#a3b8ca",
+      },
+      banner: {
+        purple: "#4b004f",
+        blue: "#060734",
       },
     }),
     columns: {
@@ -229,7 +239,7 @@ module.exports = {
       "6xl": "72rem",
       "7xl": "80rem",
     },
-    container: {},
+    container: { center: true, padding: "2rem", screens: { "2xl": "1400px" } },
     content: {
       none: "none",
     },

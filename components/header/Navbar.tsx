@@ -15,7 +15,6 @@ import {
 
 import Button from "@/components/Button"
 import CCVLogo from "@/components/assets/CCVLogo"
-import LogoBrown from "@/components/assets/BrownLogo"
 import Link from "next/link"
 import { navigation } from "@/components/NavItems"
 
@@ -35,9 +34,6 @@ const Navbar = () => {
     <div className="bg-neutral-50 p-2 shadow flex justify-between items-center">
       {/* Logo Section */}
       <div className="flex items-center space-x-3">
-        <a href="https://it.brown.edu">
-          <LogoBrown width={135} />
-        </a>
         <Link href={"/"}>
           <CCVLogo width={105} />
         </Link>

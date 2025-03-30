@@ -123,3 +123,5 @@ export const NavbarAnima: React.FC = () => {
     </nav>
   );
 };
+
+export default NavbarAnima;
