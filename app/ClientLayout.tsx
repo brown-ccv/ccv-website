@@ -4,6 +4,7 @@
 import React, { useRef } from "react";
 import { Hero } from "@/components/Hero";
 import { HeroCard } from "@/components/HeroCard";
+import { ImpactBanner } from "@/components/ImpactBanner"
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 
 export default function ClientLayout() {
@@ -18,6 +19,7 @@ export default function ClientLayout() {
       <div className="relative">
         <Hero onViewEventsClick={scrollToFeaturedProjects} />
         <HeroCard />
+        <ImpactBanner />
       </div>
       <div ref={featuredProjectsRef} className="mt-20">
         <FeaturedProjects />
