@@ -67,7 +67,7 @@ export const Footer: React.FC = () => {
               src="https://c.animaapp.com/VOhWj8ET/img/logo-together-1@2x.png"
             />
 
-            <p className="font-semibold italic text-cream text-xl mt-10">
+            <p className="font-serif italic text-cream text-xl mt-10">
               The campaign for building on distinction
             </p>
 
@@ -87,3 +87,6 @@ export const Footer: React.FC = () => {
     </footer>
   );
 };
+
+
+// #3A3A3A to #272727

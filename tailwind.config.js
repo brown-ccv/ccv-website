@@ -353,7 +353,8 @@ module.exports = {
       DEFAULT: "1",
     },
     fontFamily: {
-      header: [
+      sans: [
+        "Source Sans 3",
         "neue-haas-grotesk-display",
         "ui-sans-serif",
         "system-ui",
@@ -363,17 +364,8 @@ module.exports = {
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
       ],
-      body: [
-        "neue-haas-grotesk-text",
-        "ui-sans-serif",
-        "system-ui",
-        "sans-serif",
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-      ],
       serif: [
+        "Source Serif 4",
         "ui-serif",
         "Georgia",
         "Cambria",

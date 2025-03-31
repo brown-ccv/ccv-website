@@ -9,7 +9,7 @@ export const BrownBanner: React.FC = () => {
       <div className="flex items-center w-full">
         <BrownLogo className="w-[200px] h-auto" />
         <div className="ml-20 flex flex-col justify-center">
-          <h1 className="font-['Source Sans Code', sans-serif] text-black text-[26px] font-semibold">
+          <h1 className="font-semibold text-2xl">
             Center for Computation and Visualization
           </h1>
         </div>
