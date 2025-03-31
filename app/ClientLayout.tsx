@@ -3,7 +3,7 @@
 
 import React, { useRef } from "react";
 import { Hero } from "@/components/Hero";
-import { MissionCards } from "@/components/MissionCards";
+import { HeroCard } from "@/components/HeroCard";
 import { FeaturedProjects } from "@/components/FeaturedProjects";
 import NavbarAnima from "@/components/header/NavbarAnima"
 
@@ -19,7 +19,7 @@ export default function ClientLayout() {
       <div className="relative">
         <NavbarAnima />
         <Hero onViewEventsClick={scrollToFeaturedProjects} />
-        <MissionCards />
+        <HeroCard />
       </div>
       <div ref={featuredProjectsRef} className="mt-20">
         <FeaturedProjects />

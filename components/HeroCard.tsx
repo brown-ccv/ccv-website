@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 
-const missionCards = [
+const heroCards = [
   {
     title: "Our Mission",
     description:
@@ -19,13 +19,13 @@ const missionCards = [
   },
 ];
 
-export const MissionCards: React.FC = () => {
+export const HeroCard: React.FC = () => {
   return (
     <div className="relative z-10 mx-auto" style={{ marginTop: '-150px' }}>
       <Card className="w-[1342px] bg-white rounded-[5px] shadow-[0px_4px_4px_1px_#0000001a] border-none">
         <CardContent className="p-10">
           <div className="flex items-center gap-[88px]">
-            {missionCards.map((card, index) => (
+            {heroCards.map((card, index) => (
               <div key={index} className="w-[348px]">
                 <div className="inline-flex items-center gap-2 px-[5px] py-[29px]">
                   <div className="relative">
