@@ -13,7 +13,7 @@ const footerLinks = [
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="w-full bg-neutral-700">
+    <footer className="w-full bg-gradient-to-b from-[#3A3A3A] to-[#272727]">
       <div className="pt-[51px] px-[102px] flex flex-col">
         <div className="flex flex-wrap justify-between">
           <div className="w-1/2">
