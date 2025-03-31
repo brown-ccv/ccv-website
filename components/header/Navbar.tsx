@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import Button from "@/components/Button"
+import Button from "@/components/ui/Button"
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
 import { navigation } from "@/components/NavItems"
