@@ -41,7 +41,8 @@ export const FeaturedProjects: React.FC = () => {
       <SectionHeader title="Featured Projects" />
 
       <div className="w-full h-[588px] bg-white relative">
-        <div className="flex justify-between px-12">
+        {/* Content container with margin for left and right arrows */}
+        <div className="flex justify-between px-12 max-w-screen-xl mx-auto">
           <div className="max-w-[440px]">
             <Badge className="bg-secondary-500 text-black rounded-[50px] font-semibold text-xs">
               {featuredProjects[currentProjectIndex].category}
@@ -113,7 +114,7 @@ export const FeaturedProjects: React.FC = () => {
         <Button
           variant="outline_neutral"
           size="icon"
-          className="absolute left-12 top-[277px] w-[45px] h-[45px] rounded-full bg-white border-black text-black"
+          className="absolute left-12 top-[277px] w-[45px] h-[45px] rounded-full"
           onClick={handlePrevProject}
         >
           <ChevronLeftIcon className="h-8 w-8" />
