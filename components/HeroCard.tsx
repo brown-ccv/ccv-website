@@ -21,7 +21,7 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <div className="relative z-10 mx-auto" style={{ marginTop: '-150px' }}>
+    <div className="relative z-10 flex justify-center mx-auto" style={{ marginTop: "-150px" }}>
       <Card className="w-[1342px] bg-white rounded-[5px] shadow-[0px_4px_4px_1px_#0000001a] border-none">
         <CardContent className="p-10">
           <div className="flex justify-center items-start gap-[88px]">
