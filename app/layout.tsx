@@ -1,8 +1,6 @@
 import { Inter } from "next/font/google"
-import "./globals.css"
-import Header from "@/components/header/Header"
+import "@/app/globals.css"
 import { Footer } from "@/components/Footer"
-import ClientLayout from "@/app/ClientLayout"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -26,8 +24,8 @@ export default async function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className={`${inter.className} min-h-screen`}>
-        <div className="bg-white flex flex-col justify-between min-h-screen w-full">
+      <body className={`${inter.className}`}>
+        <div className="bg-white flex flex-col justify-between">
           <div className="bg-white w-full flex-grow">
             {children}
           </div>

@@ -1,6 +1,5 @@
 import StatusBanner from "@/components/header/StatusBanner";
 import BrownBanner from "@/components/header/BrownBanner";
-// import Navbar from "@/components/header/Navbar";
 import getOpenIssues from "@/components/header/utils";
 import { Button } from "@/components/ui/button";
 
@@ -51,7 +50,6 @@ export default async function Header() {
         </StatusBanner>
       )}
       <BrownBanner />
-      {/* <Navbar /> */}
     </>
   );
 }

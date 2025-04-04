@@ -19,7 +19,7 @@ export default async function Home() {
     const pastDates = getEventData(`-2 months${today}`)
 
     return (
-      <div className="px-2 my-6 space-y-2">
+      <div className="px-2 my-6 space-y-2 w-full">
         <Header />
         <ClientLayout />
         <SectionHeader href={"#events"} title={"Events"} />

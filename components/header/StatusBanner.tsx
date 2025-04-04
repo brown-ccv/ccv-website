@@ -11,7 +11,7 @@ export default function StatusBanner({ children, isOperational }: { children: Re
 
   return (
     <div
-      className={`relative isolate flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1 
+      className={`relative isolate w-full flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1 
       ${isOperational ? "bg-primary-500 bg-opacity-50" : "bg-red-university"}`}
     >
       {children}

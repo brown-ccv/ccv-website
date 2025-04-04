@@ -16,12 +16,12 @@ export default function ClientLayout() {
 
   return (
     <>
-      <div className="relative">
+      <div className="relative w-full">
         <Hero onViewEventsClick={scrollToFeaturedProjects} />
         <HeroCard />
         <ImpactBanner />
       </div>
-      <div ref={featuredProjectsRef} className="mt-20">
+      <div ref={featuredProjectsRef} className="mt-20 w-full">
         <FeaturedProjects />
       </div>
     </>
