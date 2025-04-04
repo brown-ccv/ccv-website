@@ -1,7 +1,7 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
-import { MessagesSquareIcon } from "lucide-react";
-import BrownLogo from "@/components/assets/BrownLogo";
+import React from "react"
+import { Button } from "@/components/ui/button"
+import { MessagesSquareIcon } from "lucide-react"
+import BrownLogo from "@/components/assets/BrownLogo"
 
 export const BrownBanner: React.FC = () => {
   return (
@@ -28,7 +28,7 @@ export const BrownBanner: React.FC = () => {
         </a>
       </Button>
     </header>
-  );
-};
+  )
+}
 
-export default BrownBanner;
+export default BrownBanner

@@ -1,11 +1,11 @@
-import React from "react";
+import React from "react"
 import heroBackground from '/static/images/hero-landing.jpeg'
-import { Button } from "@/components/ui/button";
+import { Button } from "@/components/ui/button"
 import NavbarAnima from "@/components/header/NavbarAnima"
-import { AnimatedTitle } from "@/components/AnimatedTitle";
+import { AnimatedTitle } from "@/components/AnimatedTitle"
 
 interface HeroProps {
-  onViewEventsClick: () => void;
+  onViewEventsClick: () => void
 }
 
 export const Hero: React.FC<HeroProps> = ({ onViewEventsClick }) => {
@@ -40,5 +40,5 @@ export const Hero: React.FC<HeroProps> = ({ onViewEventsClick }) => {
         </Button>
       </div>
     </section>
-  );
-};
+  )
+}

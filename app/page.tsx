@@ -1,5 +1,5 @@
-import Header from "@/components/header/Header";
-import ClientLayout from "@/app/ClientLayout";
+import Header from "@/components/header/Header"
+import ClientLayout from "@/app/ClientLayout"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"

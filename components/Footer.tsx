@@ -1,6 +1,6 @@
-import React from "react";
-import { ArrowRightIcon, MapPinIcon, PhoneCallIcon } from "lucide-react";
-import { Separator } from "@/components/ui/separator";
+import React from "react"
+import { ArrowRightIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
+import { Separator } from "@/components/ui/separator"
 
 const footerLinks = [
   { text: "VISIT BROWN", href: "https://brown.edu" },
@@ -9,7 +9,7 @@ const footerLinks = [
   { text: "ACCESSIBILITY", href: "https://brown.edu" },
   { text: "CAREERS AT BROWN", href: "https://brown.edu" },
   { text: "GIVE TO BROWN", href: "https://brown.edu" },
-];
+]
 
 export const Footer: React.FC = () => {
   return (
@@ -92,5 +92,5 @@ export const Footer: React.FC = () => {
         <p className="text-cream text-base">© Brown University</p>
       </div>
     </footer>
-  );
-};
+  )
+}

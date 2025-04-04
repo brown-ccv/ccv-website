@@ -108,4 +108,4 @@ const CCVLogo: React.FC<LogoProps> = ({ width = 75 }) => {
   )
 }
 
-export default CCVLogo;
+export default CCVLogo

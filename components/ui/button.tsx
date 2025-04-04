@@ -1,8 +1,7 @@
-import { Slot } from "@radix-ui/react-slot";
-import { type VariantProps, cva } from "class-variance-authority";
-import * as React from "react";
-
-import { cn } from "@/lib/utils";
+import { Slot } from "@radix-ui/react-slot"
+import { type VariantProps, cva } from "class-variance-authority"
+import * as React from "react"
+import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
   "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
@@ -35,26 +34,26 @@ const buttonVariants = cva(
       iconPosition: "none",
     },
   }
-);
+)
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
-  leftIcon?: React.ReactNode;
-  rightIcon?: React.ReactNode;
-  iconOnly?: React.ReactNode;
+  asChild?: boolean
+  leftIcon?: React.ReactNode
+  rightIcon?: React.ReactNode
+  iconOnly?: React.ReactNode
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, iconPosition, asChild = false, leftIcon, rightIcon, iconOnly, children, ...props }, ref) => {
-    const Comp = asChild ? Slot : "button";
+    const Comp = asChild ? Slot : "button"
     
-    let actualIconPosition = iconPosition;
-    if (!actualIconPosition && leftIcon) actualIconPosition = "left";
-    if (!actualIconPosition && rightIcon) actualIconPosition = "right";
+    let actualIconPosition = iconPosition
+    if (!actualIconPosition && leftIcon) actualIconPosition = "left"
+    if (!actualIconPosition && rightIcon) actualIconPosition = "right"
     
-    const actualSize = iconOnly && !size ? "icon" : size;
+    const actualSize = iconOnly && !size ? "icon" : size
     
     return (
       <Comp
@@ -75,9 +74,9 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           </>
         )}
       </Comp>
-    );
+    )
   },
-);
-Button.displayName = "Button";
+)
+Button.displayName = "Button"
 
-export { Button, buttonVariants };
+export { Button, buttonVariants }

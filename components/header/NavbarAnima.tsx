@@ -1,17 +1,9 @@
-import React, { useState } from 'react';
-import { ChevronDownIcon, SearchIcon } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import React, { useState } from 'react'
+import { ChevronDownIcon, SearchIcon } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
-// import { Input } from '@/components/ui/input';
-
-// const navItems = [
-//   { name: "Services", hasDropdown: true },
-//   { name: "Portfolio", hasDropdown: true },
-//   { name: "Blog", hasDropdown: false },
-//   { name: "About", hasDropdown: true },
-// ];
 
 const navItems = [
 {
@@ -91,11 +83,11 @@ const navItems = [
 ]
 
 export const NavbarAnima: React.FC = () => {
-  const [isSearchExpanded, setIsSearchExpanded] = useState(false);
+  const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 
   const handleSearchToggle = () => {
-    setIsSearchExpanded(!isSearchExpanded);
-  };
+    setIsSearchExpanded(!isSearchExpanded)
+  }
 
   return (
     <nav className="w-full h-[131px] bg-transparent">
@@ -108,20 +100,6 @@ export const NavbarAnima: React.FC = () => {
             </Link>
           </div>
 
-          {/* Navigation Items */}
-          {/* <div className="flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-[13px] text-white"
-              >
-                <span className="font-semibold text-xl">{item.name}</span>
-                {item.hasDropdown && (
-                  <ChevronDownIcon className="w-2.5 h-2.5" />
-                )}
-              </div>
-            ))}
-          </div> */}
           {/* Navigation Menu for Desktop */}
           <NavigationMenu.Root className="hidden lg:block">
             <NavigationMenu.List className="flex list-none space-x-5">
@@ -191,11 +169,7 @@ export const NavbarAnima: React.FC = () => {
           <div className="relative">
             {isSearchExpanded ? (
               <div className="flex items-center">
-                {/* <Input
-                  type="text"
-                  placeholder="Search..."
-                  className="w-[200px] h-[45px] rounded-full bg-white text-black"
-                /> */}
+
                 <Button
                   variant="filled_secondary"
                   className="w-[45px] h-[45px] rounded-full bg-extendedsunglow-400 ml-2"
@@ -217,8 +191,8 @@ export const NavbarAnima: React.FC = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
 const NavigationLinks: React.FC<NavigationProps> = ({
   routes,
@@ -255,4 +229,4 @@ const NavigationLinks: React.FC<NavigationProps> = ({
   )
 }
 
-export default NavbarAnima;
+export default NavbarAnima

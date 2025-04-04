@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
+import React from "react"
+import { Card, CardContent } from "@/components/ui/card"
 
 const heroCards = [
   {
@@ -17,7 +17,7 @@ const heroCards = [
     description:
       "We maintain secure, high-performance computing infrastructure, along with storage solutions and virtual computing environments to support research and innovation.",
   },
-];
+]
 
 export const HeroCard: React.FC = () => {
   return (
@@ -48,5 +48,5 @@ export const HeroCard: React.FC = () => {
         </CardContent>
       </Card>
     </div>
-  );
-};
+  )
+}

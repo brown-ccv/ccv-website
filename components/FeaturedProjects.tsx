@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react";
+import React, { useState } from "react"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react"
 
 const featuredProjects = [
   {
@@ -19,22 +19,22 @@ const featuredProjects = [
     description: "Hello world.",
     image: "https://c.animaapp.com/VOhWj8ET/img/screenshot-2025-01-10-at-2-05-29-pm-1.png",
   },
-];
+]
 
 export const FeaturedProjects: React.FC = () => {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
 
   const handlePrevProject = () => {
     setCurrentProjectIndex((prevIndex) =>
       prevIndex === 0 ? featuredProjects.length - 1 : prevIndex - 1
-    );
-  };
+    )
+  }
 
   const handleNextProject = () => {
     setCurrentProjectIndex((prevIndex) =>
       prevIndex === featuredProjects.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+    )
+  }
 
   return (
     <section className="w-full mt-[100px]">
@@ -131,5 +131,5 @@ export const FeaturedProjects: React.FC = () => {
         </Button>
       </div>
     </section>
-  );
-};
+  )
+}

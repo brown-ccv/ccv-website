@@ -1,13 +1,13 @@
-"use client";
+"use client"
 
-import { XMarkIcon } from "@heroicons/react/20/solid";
-import { useState } from "react";
-import { Button } from "@/components/ui/button";
+import { XMarkIcon } from "@heroicons/react/20/solid"
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
 
 export default function StatusBanner({ children, isOperational }: { children: React.ReactNode; isOperational?: boolean }) {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(true)
 
-  if (!isOpen) return null;
+  if (!isOpen) return null
 
   return (
     <div
@@ -25,5 +25,5 @@ export default function StatusBanner({ children, isOperational }: { children: Re
         </Button>
       </div>
     </div>
-  );
+  )
 }
