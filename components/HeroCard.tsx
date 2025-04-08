@@ -22,10 +22,13 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <div className="relative z-10 mx-auto" style={{ marginTop: '-150px' }}>
-      <Card className="w-[1342px] bg-white rounded-[5px] shadow-[0px_4px_4px_1px_#0000001a] border-none">
+    <div
+      className="relative z-10 flex justify-center mx-auto"
+      style={{ marginTop: "-150px" }}
+    >
+      <Card className="inline-block bg-white rounded-[5px] shadow-[0px_4px_4px_1px_#0000001a] border-none">
         <CardContent className="p-10">
-          <div className="flex items-center gap-[88px]">
+          <div className="flex justify-center items-start gap-[88px] flex-wrap">
             {heroCards.map((card, index) => (
               <div key={index} className="w-[348px]">
                 <div className="inline-flex items-center gap-2 px-[5px] py-[29px]">
