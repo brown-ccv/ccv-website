@@ -1,5 +1,5 @@
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card-impact";
+import React from "react"
+import { Card, CardContent } from "@/components/ui/card-impact"
 
 export const ImpactBanner = (): JSX.Element => {
   // Data for impact metrics
@@ -7,7 +7,7 @@ export const ImpactBanner = (): JSX.Element => {
     { count: "700+", label: "Publications" },
     { count: "2,000+", label: "HCP Users" },
     { count: "600+", label: "Collaborations" },
-  ];
+  ]
 
   return (
     <Card className="w-full max-w-[1440px] h-[180px] bg-extendedwarm-gray100 rounded-none shadow-none">
@@ -38,5 +38,5 @@ export const ImpactBanner = (): JSX.Element => {
         </div>
       </CardContent>
     </Card>
-  );
-};
+  )
+}

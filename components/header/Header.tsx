@@ -1,13 +1,12 @@
-import StatusBanner from "@/components/header/StatusBanner";
-import BrownBanner from "@/components/header/BrownBanner";
-// import Navbar from "@/components/header/Navbar";
-import getOpenIssues from "@/components/header/utils";
-import { Button } from "@/components/ui/button";
+import StatusBanner from "@/components/header/StatusBanner"
+import BrownBanner from "@/components/header/BrownBanner"
+import getOpenIssues from "@/components/header/utils"
+import { Button } from "@/components/ui/button"
 
 export default async function Header() {
-  const repositories = await getOpenIssues();
-  const issues = repositories.filter((repo) => repo.openIssues.length > 0);
-  const repoNames = issues.map((repo) => repo.name).join(", ");
+  const repositories = await getOpenIssues()
+  const issues = repositories.filter((repo) => repo.openIssues.length > 0)
+  const repoNames = issues.map((repo) => repo.name).join(", ")
 
   return (
     <>
@@ -51,7 +50,6 @@ export default async function Header() {
         </StatusBanner>
       )}
       <BrownBanner />
-      {/* <Navbar /> */}
     </>
-  );
+  )
 }

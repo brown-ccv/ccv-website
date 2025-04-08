@@ -1,15 +1,18 @@
-import React from "react";
-import { Button } from "@/components/ui/button";
+import React from "react"
+import { Button } from "@/components/ui/button"
 import NavbarAnima from "@/components/header/NavbarAnima"
-import { AnimatedTitle } from "@/components/AnimatedTitle";
+import { AnimatedTitle } from "@/components/AnimatedTitle"
 
 interface HeroProps {
-  onViewEventsClick: () => void;
+  onViewEventsClick: () => void
 }
 
 export const Hero: React.FC<HeroProps> = ({ onViewEventsClick }) => {
   return (
-    <section className="w-full h-[810px] bg-[url(https://c.animaapp.com/VOhWj8ET/img/adobestock-443655134-1.png)] bg-cover bg-center relative">
+    <div
+      className="w-full h-[810px] bg-cover bg-center relative"
+      style={{ backgroundImage: `url(/static/images/hero-landing.jpeg)`, backgroundSize: 'cover' }}
+    >
       <NavbarAnima />
       <div className="absolute w-[708px] top-[190px] left-[161px]">
         <AnimatedTitle text="Advancing Computational Research" />
@@ -35,6 +38,8 @@ export const Hero: React.FC<HeroProps> = ({ onViewEventsClick }) => {
           View Events
         </Button>
       </div>
-    </section>
-  );
-};
+    </div>
+  )
+}
+
+export default Hero

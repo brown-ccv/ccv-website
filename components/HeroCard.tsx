@@ -1,5 +1,6 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
+import CCVBars from "@/components/assets/CCVBars"
 
 const heroCards = [
   {
@@ -32,11 +33,7 @@ export const HeroCard: React.FC = () => {
               <div key={index} className="w-[348px]">
                 <div className="inline-flex items-center gap-2 px-[5px] py-[29px]">
                   <div className="relative">
-                    <img
-                      className="w-[59px] h-[5px]"
-                      alt="CCV bars"
-                      src="https://c.animaapp.com/VOhWj8ET/img/ccvbars-4.svg"
-                    />
+                    <CCVBars />
                     <h3 className="mt-[18px] font-semibold text-defaultblack text-2xl tracking-[-0.72px] leading-[31px]">
                       {card.title}
                     </h3>

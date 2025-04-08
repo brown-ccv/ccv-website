@@ -1,5 +1,4 @@
-import React from "react";
-
+import React from "react"
 const BrownLogo: React.FC<{ className?: string; width?: number; height?: number }> = ({
   className = "",
   width = 200,
@@ -2749,7 +2748,7 @@ C92.792747,643.815796 92.792740,631.657837 92.792740,618.999878
 z"
 	/>
   </svg>
-  );
-};
+  )
+}
 
-export default BrownLogo;
+export default BrownLogo

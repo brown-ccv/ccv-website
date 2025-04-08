@@ -1,9 +1,11 @@
-import React, { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { SectionHeader } from "@/components/ui/SectionHeader";
-import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react";
+import React, { useState } from "react"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import Provident from "@/components/assets/Provident"
+import BrownLogo from "@/components/assets/BrownLogo"
+import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react"
 
 const featuredProjects = [
   {
@@ -11,30 +13,32 @@ const featuredProjects = [
     category: "Public Health",
     description:
       "A web app to support the PROVIDENT research study looking to prevent drug-related deaths in neighborhoods across Rhode Island.",
-    image: "https://c.animaapp.com/VOhWj8ET/img/screenshot-2025-01-10-at-2-05-29-pm-1.png",
+    image: Provident,
   },
   {
     title: "PROJECT 2",
     category: "Economics",
     description: "Hello world.",
-    image: "https://c.animaapp.com/VOhWj8ET/img/screenshot-2025-01-10-at-2-05-29-pm-1.png",
+    image: BrownLogo,
   },
-];
+]
 
 export const FeaturedProjects: React.FC = () => {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
 
   const handlePrevProject = () => {
     setCurrentProjectIndex((prevIndex) =>
       prevIndex === 0 ? featuredProjects.length - 1 : prevIndex - 1
-    );
-  };
+    )
+  }
 
   const handleNextProject = () => {
     setCurrentProjectIndex((prevIndex) =>
       prevIndex === featuredProjects.length - 1 ? 0 : prevIndex + 1
-    );
-  };
+    )
+  }
+
+  const ImageComponent = featuredProjects[currentProjectIndex].image;
 
   return (
     <section className="w-full mt-[100px]">
@@ -88,11 +92,12 @@ export const FeaturedProjects: React.FC = () => {
               <div className="w-[15px] h-[15px] rounded-full"></div>
             </div>
             <CardContent className="p-0 flex justify-center">
-              <img
+              {/* <img
                 className="w-[567px] h-[389px] object-cover"
                 alt={`${featuredProjects[currentProjectIndex].title} Screenshot`}
                 src={featuredProjects[currentProjectIndex].image}
-              />
+              /> */}
+              <ImageComponent />
             </CardContent>
           </Card>
         </div>
@@ -131,5 +136,5 @@ export const FeaturedProjects: React.FC = () => {
         </Button>
       </div>
     </section>
-  );
-};
+  )
+}
