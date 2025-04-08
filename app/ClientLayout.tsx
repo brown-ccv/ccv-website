@@ -17,10 +17,12 @@ export default function ClientLayout() {
   return (
     <>
       <div className="relative w-full">
-        <Hero onViewEventsClick={scrollToFeaturedCarousel} />
-        <HeroCard />
-        <ImpactBanner />
-      </div>
+          <div className="flex flex-col space-y-24"> 
+            <Hero onViewEventsClick={scrollToFeaturedCarousel} />
+            <HeroCard />
+            <ImpactBanner />
+          </div>
+        </div>
       <div ref={featuredCarouselRef} className="mt-20 w-full">
         <FeaturedCarousel />
       </div>
