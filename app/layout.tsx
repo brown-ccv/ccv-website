@@ -13,7 +13,7 @@ export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
-}>) {z
+}>) {
   return (
     <html lang="en">
       <head>

@@ -1,5 +1,4 @@
 import React from "react"
-import heroBackground from '/static/images/hero-landing.jpeg'
 import { Button } from "@/components/ui/button"
 import NavbarAnima from "@/components/header/NavbarAnima"
 import { AnimatedTitle } from "@/components/AnimatedTitle"
@@ -10,9 +9,9 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onViewEventsClick }) => {
   return (
-    <section 
+    <div
       className="w-full h-[810px] bg-cover bg-center relative"
-      style={{ backgroundImage: `url(${heroBackground})` }}
+      style={{ backgroundImage: `url(/static/images/hero-landing.jpeg)`, backgroundSize: 'cover' }}
     >
       <NavbarAnima />
       <div className="absolute w-[708px] top-[190px] left-[161px]">
@@ -39,6 +38,8 @@ export const Hero: React.FC<HeroProps> = ({ onViewEventsClick }) => {
           View Events
         </Button>
       </div>
-    </section>
+    </div>
   )
 }
+
+export default Hero
