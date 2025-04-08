@@ -83,12 +83,7 @@ export const FeaturedCarousel: React.FC = () => {
             </div>
           </div>
 
-          <Card className="w-[721px] h-[443px] rounded-[10px] shadow-[0px_4px_8px_4px_#bbbbbb40] border-none">
-            <div className="h-8 bg-gray-300 rounded-[10px_10px_0px_0px] flex items-center px-6 space-x-3">
-              <div className="w-[15px] h-[15px] bg-gray-500 rounded-full"></div>
-              <div className="w-[15px] h-[15px] rounded-full"></div>
-              <div className="w-[15px] h-[15px] rounded-full"></div>
-            </div>
+          <Card className="w-[721px] h-[443px] border-none shadow-none">
             <CardContent className="p-0 flex justify-center">
               <ImageComponent />
             </CardContent>
