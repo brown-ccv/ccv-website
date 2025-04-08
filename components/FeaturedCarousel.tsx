@@ -42,7 +42,7 @@ export const FeaturedCarousel: React.FC = () => {
 
   return (
     <section className="w-full mt-[100px]">
-      <SectionHeader title="Featured Projects" />
+      <SectionHeader title="Featured Projects" align='center' />
 
       <div className="w-full h-[588px] bg-white relative">
         {/* Content container with margin for left and right arrows */}
