@@ -6,6 +6,7 @@ import { SectionHeader } from "@/components/ui/section-header"
 import Provident from "@/components/assets/Provident"
 import BrownLogo from "@/components/assets/BrownLogo"
 import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react"
+import { ProfileCard } from "@/components/ProfileCard"
 
 const featuredCarouselData = [
   {
@@ -56,14 +57,11 @@ export const FeaturedCarousel: React.FC = () => {
               {featuredCarouselData[currentProjectIndex].title}
             </h3>
 
-            <div className="flex items-center mt-6">
-              <UserIcon className="w-6 h-6 mr-3" />
-              <p className="font-normal text-black text-lg">
-                Brown School of Public Health
-                <br />
-                RI Department of Health
-              </p>
-            </div>
+            <ProfileCard
+              icon={<UserIcon className="w-6 h-6" />}
+              name="Brown School of Public Health"
+              organization="RI Department of Health"
+            />
 
             <p className="font-normal text-gray-800 text-xl mt-10">
               {featuredCarouselData[currentProjectIndex].description}
