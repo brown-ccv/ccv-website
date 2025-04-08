@@ -5,24 +5,24 @@ import React, { useRef } from "react"
 import { Hero } from "@/components/Hero"
 import { HeroCard } from "@/components/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
-import { FeaturedProjects } from "@/components/FeaturedProjects"
+import { FeaturedCarousel } from "@/components/FeaturedCarousel"
 
 export default function ClientLayout() {
-  const featuredProjectsRef = useRef<HTMLDivElement>(null)
+  const featuredCarouselRef = useRef<HTMLDivElement>(null)
 
-  const scrollToFeaturedProjects = () => {
-    featuredProjectsRef.current?.scrollIntoView({ behavior: 'smooth' })
+  const scrollToFeaturedCarousel = () => {
+    featuredCarouselRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <>
       <div className="relative w-full">
-        <Hero onViewEventsClick={scrollToFeaturedProjects} />
+        <Hero onViewEventsClick={scrollToFeaturedCarousel} />
         <HeroCard />
         <ImpactBanner />
       </div>
-      <div ref={featuredProjectsRef} className="mt-20 w-full">
-        <FeaturedProjects />
+      <div ref={featuredCarouselRef} className="mt-20 w-full">
+        <FeaturedCarousel />
       </div>
     </>
   )

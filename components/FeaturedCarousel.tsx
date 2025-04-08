@@ -2,12 +2,12 @@ import React, { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { SectionHeader } from "@/components/ui/SectionHeader"
+import { SectionHeader } from "@/components/ui/section-header"
 import Provident from "@/components/assets/Provident"
 import BrownLogo from "@/components/assets/BrownLogo"
 import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react"
 
-const featuredProjects = [
+const featuredCarouselData = [
   {
     title: "PROVIDENT",
     category: "Public Health",
@@ -23,22 +23,22 @@ const featuredProjects = [
   },
 ]
 
-export const FeaturedProjects: React.FC = () => {
+export const FeaturedCarousel: React.FC = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
 
   const handlePrevProject = () => {
     setCurrentProjectIndex((prevIndex) =>
-      prevIndex === 0 ? featuredProjects.length - 1 : prevIndex - 1
+      prevIndex === 0 ? featuredCarouselData.length - 1 : prevIndex - 1
     )
   }
 
   const handleNextProject = () => {
     setCurrentProjectIndex((prevIndex) =>
-      prevIndex === featuredProjects.length - 1 ? 0 : prevIndex + 1
+      prevIndex === featuredCarouselData.length - 1 ? 0 : prevIndex + 1
     )
   }
 
-  const ImageComponent = featuredProjects[currentProjectIndex].image;
+  const ImageComponent = featuredCarouselData[currentProjectIndex].image;
 
   return (
     <section className="w-full mt-[100px]">
@@ -49,11 +49,11 @@ export const FeaturedProjects: React.FC = () => {
         <div className="flex justify-between px-12 max-w-screen-xl mx-auto">
           <div className="max-w-[440px]">
             <Badge className="bg-secondary-500 text-black rounded-[50px] font-semibold text-xs">
-              {featuredProjects[currentProjectIndex].category}
+              {featuredCarouselData[currentProjectIndex].category}
             </Badge>
 
             <h3 className="font-semibold text-black text-[28px] mt-5">
-              {featuredProjects[currentProjectIndex].title}
+              {featuredCarouselData[currentProjectIndex].title}
             </h3>
 
             <div className="flex items-center mt-6">
@@ -66,7 +66,7 @@ export const FeaturedProjects: React.FC = () => {
             </div>
 
             <p className="font-normal text-gray-800 text-xl mt-10">
-              {featuredProjects[currentProjectIndex].description}
+              {featuredCarouselData[currentProjectIndex].description}
             </p>
 
             <div className="flex space-x-4 mt-12">
@@ -92,11 +92,6 @@ export const FeaturedProjects: React.FC = () => {
               <div className="w-[15px] h-[15px] rounded-full"></div>
             </div>
             <CardContent className="p-0 flex justify-center">
-              {/* <img
-                className="w-[567px] h-[389px] object-cover"
-                alt={`${featuredProjects[currentProjectIndex].title} Screenshot`}
-                src={featuredProjects[currentProjectIndex].image}
-              /> */}
               <ImageComponent />
             </CardContent>
           </Card>
@@ -104,7 +99,7 @@ export const FeaturedProjects: React.FC = () => {
 
         <div className="flex justify-center mt-10">
           <div className="flex space-x-3">
-            {featuredProjects.map((_, index) => (
+            {featuredCarouselData.map((_, index) => (
               <div
                 key={index}
                 className={`${
