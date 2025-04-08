@@ -1,6 +1,7 @@
 import React from "react"
 import { ArrowRightIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
 import { Separator } from "@/components/ui/separator"
+import BrownLogoBuildingTogether from "@/components/assets/BrownLogoBuildingTogether"
 
 const footerLinks = [
   { text: "VISIT BROWN", href: "https://brown.edu" },
@@ -64,11 +65,7 @@ export const Footer: React.FC = () => {
           <Separator orientation="vertical" className="mx-10 w-[1px] h-[300px] bg-white" />
 
           <div className="w-1/3">
-            <img
-              className="w-[218px] h-[61px] object-cover"
-              alt="Brown University Logo"
-              src="https://c.animaapp.com/VOhWj8ET/img/logo-together-1@2x.png"
-            />
+            <BrownLogoBuildingTogether />
 
             <p className="font-serif italic text-cream text-xl mt-10">
               The campaign for building <br />
