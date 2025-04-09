@@ -78,7 +78,7 @@ export const FeaturedCarousel: React.FC = () => {
               <ProfileCard
                 icon={<UserIcon className="w-6 h-6" />}
                 name="Brown School of Public Health"
-                organization="RI Department of Health"
+                organization="People, Place and Health Collective"
               />
 
               <p className="font-normal text-gray-800 text-xl mt-10">
