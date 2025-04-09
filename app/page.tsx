@@ -3,7 +3,6 @@ import ClientLayout from "@/app/ClientLayout"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
-import SectionHeader from "@/components/SectionHeader"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
 
@@ -22,7 +21,6 @@ export default async function Home() {
       <div className="px-2 my-6 space-y-2 w-full">
         <Header />
         <ClientLayout />
-        <SectionHeader href={"#events"} title={"Events"} />
         <Suspense fallback={<Spinner />}>
           <EventSection
             streamedDataPast={pastDates}
@@ -45,7 +43,6 @@ export default async function Home() {
     console.error(err)
     return (
       <div className="px-2 my-6 space-y-2">
-        <SectionHeader href={"#events"} title={"Events"} />
         <p>{err.message}</p>
         <div className="flex justify-center">
           <a
