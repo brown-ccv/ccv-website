@@ -5,7 +5,7 @@ import BrownLogo from "@/components/assets/BrownLogo"
 
 export const BrownBanner: React.FC = () => {
   return (
-    <header className="w-full h-[149px] bg-defaultwhite relative mt-10 flex items-center px-6">
+    <header className="w-full h-[149px] bg-white relative mt-10 flex items-center px-6">
       <div className="flex items-center w-full">
         <BrownLogo className="w-[200px] h-auto" />
         <div className="ml-20 flex flex-col justify-center">

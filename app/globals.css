@@ -1,12 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@300;400;600;700&display=swap");
 
 @layer base {
   :root {
     @apply font-sans;
-    @apply text-base;
     @apply text-neutral-700;
     --accent: 0, 128, 108;
     --accent-light: 0, 230, 195;
@@ -26,12 +24,6 @@
 
   body {
     @apply bg-white;
-  }
-}
-
-@layer base {
-  .font-serif {
-    font-family: "Source Serif 4", serif !important;
   }
 }
 
