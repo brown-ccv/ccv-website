@@ -13,7 +13,7 @@ export const ImpactBanner = (): JSX.Element => {
     <Card className="w-full max-w-[1440px] h-[180px] bg-gray-100 rounded-none shadow-none">
       <CardContent className="flex items-center h-full p-6">
         <div className="flex-shrink-0 mr-32">
-          <h2 className="font-sans font-semibold text-defaultblack text-[28px]">
+          <h2 className="font-sans font-semibold text-black text-[28px]">
             The CCV Impact
           </h2>
           <p className="font-serif font-normal italic text-gray-600 text-xl mt-2">
