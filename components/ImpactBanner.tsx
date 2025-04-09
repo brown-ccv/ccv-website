@@ -10,13 +10,13 @@ export const ImpactBanner = (): JSX.Element => {
   ]
 
   return (
-    <Card className="w-full max-w-[1440px] h-[180px] bg-extendedwarm-gray100 rounded-none shadow-none">
+    <Card className="w-full max-w-[1440px] h-[180px] bg-gray-100 rounded-none shadow-none">
       <CardContent className="flex items-center h-full p-6">
         <div className="flex-shrink-0 mr-32">
-          <h2 className="[font-family:'Source_Sans_Pro',Helvetica] font-semibold text-defaultblack text-[28px]">
+          <h2 className="font-sans font-semibold text-defaultblack text-[28px]">
             The CCV Impact
           </h2>
-          <p className="[font-family:'Minion_Pro-Italic',Helvetica] font-normal italic text-extendedgray-600 text-xl mt-2">
+          <p className="font-serif font-normal italic text-gray-600 text-xl mt-2">
             As of January 1, 2025
           </p>
         </div>
@@ -25,12 +25,12 @@ export const ImpactBanner = (): JSX.Element => {
           {impactMetrics.map((metric, index) => (
             <div key={index} className="flex flex-col items-center">
               <div
-                className="bg-gradient-to-br from-purple-900 to-pink-500 bg-clip-text text-transparent
-                [font-family:'Source_Sans_Pro',Helvetica] font-bold text-6xl text-center"
+                className="bg-gradient-to-br from-purple-900 to-pink-500 bg-clip-text text-transparent font-sans
+                 font-bold text-6xl text-center"
               >
                 {metric.count}
               </div>
-              <div className="font-serif italic text-defaultblack text-[28px] text-center">
+              <div className="font-serif italic text-black text-[28px] text-center">
                 {metric.label}
               </div>
             </div>

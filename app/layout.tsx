@@ -1,8 +1,23 @@
-import { Inter } from "next/font/google"
+import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
 import "@/app/globals.css"
 import { Footer } from "@/components/Footer"
 
+// Load each font with desired weights and subsets
 const inter = Inter({ subsets: ["latin"] })
+
+const sourceSans = Source_Sans_3({
+  subsets: ['latin'],
+  weight: ['400', '600', '700'],
+  variable: '--font-sans',
+  display: 'swap',
+})
+
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-serif',
+  display: 'swap',
+})
 
 export const metadata = {
   title: "CCV",
@@ -15,14 +30,8 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body className={`${inter.className}`}>
         <div className="bg-white flex flex-col justify-between">

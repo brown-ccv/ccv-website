@@ -15,11 +15,11 @@ export const Hero: React.FC<HeroProps> = ({ onViewEventsClick }) => {
     >
       <NavbarAnima />
       <div className="absolute w-[708px] top-[190px] left-[161px]">
-        <AnimatedTitle text="Advancing Computational Research" />
+        <AnimatedTitle text="Advancing Computational Research"/>
       </div>
 
       <p className="absolute w-[765px] top-[286px] left-[161px] font-normal text-white text-2xl">
-        At CCV, we support a wide range of research at Brown with our scientific and computing expertise.
+        At CCV, we support a wide range of research at Brown with our scientific and computing expertise. Source Serif Pro
       </p>
 
       <div className="absolute top-[457px] left-[157px] flex space-x-4">
