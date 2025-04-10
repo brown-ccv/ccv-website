@@ -25,17 +25,14 @@ export default async function Home() {
     return (
       <div className="px-2 my-6 space-y-2 w-full">
         <Header />
-        <div className="relative w-full">
-          <div className="flex flex-col space-y-24">
-            <HeroHome />
-            <HeroCard />
-            <ImpactBanner />
-            <FeaturedCarousel />
-          </div>
+        <div className="relative w-full flex flex-col space-y-24">
+          <HeroHome />
+          <HeroCard />
+          <ImpactBanner />
+          <FeaturedCarousel />
         </div>
         <div id="events" className="mt-20 w-full">
           <SectionHeader href={"#events"} title={"Events"} />
-
           <Suspense fallback={<Spinner />}>
             <EventSection
               streamedDataPast={pastDates}
