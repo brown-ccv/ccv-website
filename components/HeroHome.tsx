@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 
 export const HeroHome = () => {
   return (
-    <Hero>
+    <Hero image={`url(/static/images/hero-landing.jpeg)`}>
       {/* Sticky top navbar */}
       <NavbarAnima />
       {/* Hero content */}
