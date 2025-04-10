@@ -1,5 +1,10 @@
 import Header from "@/components/header/Header"
-import ClientLayout from "@/app/ClientLayout"
+import { HeroHome } from "@/components/HeroHome"
+import { HeroCard } from "@/components/HeroCard"
+import { ImpactBanner } from "@/components/ImpactBanner"
+import SectionHeader from "@/components/SectionHeader"
+import NavbarAnima from "@/components/header/NavbarAnima"
+import { FeaturedCarousel } from "@/components/FeaturedCarousel"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
@@ -20,15 +25,26 @@ export default async function Home() {
     return (
       <div className="px-2 my-6 space-y-2 w-full">
         <Header />
-        <ClientLayout />
-        <Suspense fallback={<Spinner />}>
-          <EventSection
-            streamedDataPast={pastDates}
-            streamedDataFuture={futureDates}
-            currentDate={currentDate}
-            today={today}
-          />
-        </Suspense>
+        <div className="relative w-full">
+          <div className="flex flex-col space-y-24">
+            <HeroHome />
+            <HeroCard />
+            <ImpactBanner />
+            <FeaturedCarousel />
+          </div>
+        </div>
+        <div id="events" className="mt-20 w-full">
+          <SectionHeader href={"#events"} title={"Events"} />
+
+          <Suspense fallback={<Spinner />}>
+            <EventSection
+              streamedDataPast={pastDates}
+              streamedDataFuture={futureDates}
+              currentDate={currentDate}
+              today={today}
+            />
+          </Suspense>
+        </div>
         <div className="flex justify-center">
           <a
             className="bg-secondary-blue-500 text-white p-4 rounded"
