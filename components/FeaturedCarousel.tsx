@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -39,7 +41,7 @@ export const FeaturedCarousel: React.FC = () => {
     )
   }
 
-  const ImageComponent = featuredCarouselData[currentProjectIndex].image;
+  const ImageComponent = featuredCarouselData[currentProjectIndex].image
 
   return (
     <section className="w-full relative mt-[90px] flex items-center justify-center">
@@ -86,7 +88,10 @@ export const FeaturedCarousel: React.FC = () => {
               </p>
 
               <div className="flex space-x-4 mt-14">
-                <Button className="h-[55px] w-[155px] rounded-[50px] font-semibold text-xl" variant="filled_primary">
+                <Button
+                  className="h-[55px] w-[155px] rounded-[50px] font-semibold text-xl"
+                  variant="filled_primary"
+                >
                   Website
                 </Button>
 

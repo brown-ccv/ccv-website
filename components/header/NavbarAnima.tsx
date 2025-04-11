@@ -1,85 +1,87 @@
-import React, { useState } from 'react'
-import { ChevronDownIcon, SearchIcon } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+"use client"
+
+import React, { useState } from "react"
+import { ChevronDownIcon, SearchIcon } from "lucide-react"
+import { Button } from "@/components/ui/button"
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 
 const navItems = [
-{
-  name: "Services",
-  href: "/services",
-  routes: [
-    { name: "Classroom", href: "/services/classroom" },
-    { name: "Computing", href: "/services/computing" },
-    {
-      name: "Campus File Storage and Transfer",
-      href: "/services/file-storage-and-transfer",
-    },
-    { name: "Rates", href: "/services/rates" },
-    { name: "Visualization Systems", href: "/services/visualization" },
-    { name: "Consulting", href: "/services/consulting" },
-  ],
-},
-{
-  name: "Portfolio",
-  href: "/portfolio",
-  routes: [
-    { name: "Collaborations", href: "#" },
-    {
-      name: "Software",
-      href: "/our-work/software",
-    },
-    {
-      name: "Workshops and Talks",
-      href: "/our-work/workshops-and-talks",
-    },
-    {
-      name: "Publications",
-      href: "https://publications.ccv.brown.edu",
-    },
-  ],
-},
-{
-  name: "Blog",
-  href: "/blog",
-  routes: [],
-},
-{
-  name: "About",
-  href: "/about",
-  routes: [
-    { name: "Mission", href: "/about#mission" },
-    {
-      name: "Office of Information Technology",
-      href: "/about#office-of-information-technology",
-    },
-    {
-      name: "Our Teams",
-      href: "/about#our-teams",
-    },
-    {
-      name: "People",
-      href: "/about#people",
-    },
-    {
-      name: "Opportunities",
-      href: "/about#opportunities",
-    },
-    {
-      name: "Events",
-      href: "https://events.brown.edu/ccv/month",
-    },
-    {
-      name: "Facilities Statement",
-      href: "/about#facilities-statement",
-    },
-    {
-      name: "Diversity Statement",
-      href: "/about#diversity-statement",
-    },
-  ],
-},
+  {
+    name: "Services",
+    href: "/services",
+    routes: [
+      { name: "Classroom", href: "/services/classroom" },
+      { name: "Computing", href: "/services/computing" },
+      {
+        name: "Campus File Storage and Transfer",
+        href: "/services/file-storage-and-transfer",
+      },
+      { name: "Rates", href: "/services/rates" },
+      { name: "Visualization Systems", href: "/services/visualization" },
+      { name: "Consulting", href: "/services/consulting" },
+    ],
+  },
+  {
+    name: "Portfolio",
+    href: "/portfolio",
+    routes: [
+      { name: "Collaborations", href: "#" },
+      {
+        name: "Software",
+        href: "/our-work/software",
+      },
+      {
+        name: "Workshops and Talks",
+        href: "/our-work/workshops-and-talks",
+      },
+      {
+        name: "Publications",
+        href: "https://publications.ccv.brown.edu",
+      },
+    ],
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+    routes: [],
+  },
+  {
+    name: "About",
+    href: "/about",
+    routes: [
+      { name: "Mission", href: "/about#mission" },
+      {
+        name: "Office of Information Technology",
+        href: "/about#office-of-information-technology",
+      },
+      {
+        name: "Our Teams",
+        href: "/about#our-teams",
+      },
+      {
+        name: "People",
+        href: "/about#people",
+      },
+      {
+        name: "Opportunities",
+        href: "/about#opportunities",
+      },
+      {
+        name: "Events",
+        href: "https://events.brown.edu/ccv/month",
+      },
+      {
+        name: "Facilities Statement",
+        href: "/about#facilities-statement",
+      },
+      {
+        name: "Diversity Statement",
+        href: "/about#diversity-statement",
+      },
+    ],
+  },
 ]
 
 export const NavbarAnima: React.FC = () => {
@@ -169,7 +171,6 @@ export const NavbarAnima: React.FC = () => {
           <div className="relative">
             {isSearchExpanded ? (
               <div className="flex items-center">
-
                 <Button
                   variant="filled_secondary"
                   className="w-[45px] h-[45px] rounded-full bg-extendedsunglow-400 ml-2"
@@ -212,10 +213,7 @@ const NavigationLinks: React.FC<NavigationProps> = ({
         </li>
         {routes.length > 0 &&
           routes.map((route) => (
-            <li
-              key={route.href}
-              className="p-2  hover:text-black"
-            >
+            <li key={route.href} className="p-2  hover:text-black">
               <NavigationMenu.Link
                 href={route.href}
                 className="p-2 focus:outline-none focus:text-black"
