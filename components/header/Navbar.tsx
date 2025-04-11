@@ -13,9 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
 
-import Button from "@/components/Button"
-import LogoCcv from "@/components/assets/LogoCcv"
-import LogoBrown from "@/components/assets/LogoBrown"
+import Button from "@/components/ui/Button"
+import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
 import { navigation } from "@/components/NavItems"
 
@@ -35,11 +34,8 @@ const Navbar = () => {
     <div className="bg-neutral-50 p-2 shadow flex justify-between items-center">
       {/* Logo Section */}
       <div className="flex items-center space-x-3">
-        <a href="https://it.brown.edu">
-          <LogoBrown width={135} />
-        </a>
         <Link href={"/"}>
-          <LogoCcv width={105} />
+          <CCVLogo width={105} />
         </Link>
       </div>
 

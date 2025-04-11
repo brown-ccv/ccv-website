@@ -1,7 +1,13 @@
+import Header from "@/components/header/Header"
+import { HeroHome } from "@/components/HeroHome"
+import { HeroCard } from "@/components/HeroCard"
+import { ImpactBanner } from "@/components/ImpactBanner"
+import SectionHeader from "@/components/SectionHeader"
+import NavbarAnima from "@/components/header/NavbarAnima"
+import { FeaturedCarousel } from "@/components/FeaturedCarousel"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
-import SectionHeader from "@/components/SectionHeader"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
 
@@ -17,16 +23,25 @@ export default async function Home() {
     const pastDates = getEventData(`-2 months${today}`)
 
     return (
-      <div className="px-2 my-6 space-y-2">
-        <SectionHeader href={"#events"} title={"Events"} />
-        <Suspense fallback={<Spinner />}>
-          <EventSection
-            streamedDataPast={pastDates}
-            streamedDataFuture={futureDates}
-            currentDate={currentDate}
-            today={today}
-          />
-        </Suspense>
+      <div className="px-2 my-6 space-y-2 w-full">
+        <Header />
+        <div className="relative w-full flex flex-col space-y-24">
+          <HeroHome />
+          <HeroCard />
+          <ImpactBanner />
+          <FeaturedCarousel />
+        </div>
+        <div id="events" className="mt-20 w-full">
+          <SectionHeader href={"#events"} title={"Events"} />
+          <Suspense fallback={<Spinner />}>
+            <EventSection
+              streamedDataPast={pastDates}
+              streamedDataFuture={futureDates}
+              currentDate={currentDate}
+              today={today}
+            />
+          </Suspense>
+        </div>
         <div className="flex justify-center">
           <a
             className="bg-secondary-blue-500 text-white p-4 rounded"
@@ -41,7 +56,6 @@ export default async function Home() {
     console.error(err)
     return (
       <div className="px-2 my-6 space-y-2">
-        <SectionHeader href={"#events"} title={"Events"} />
         <p>{err.message}</p>
         <div className="flex justify-center">
           <a

@@ -15,21 +15,8 @@ export const navigation = [
     ],
   },
   {
-    title: "Documentation",
-    href: "/documentation",
-    routes: [
-      { title: "Oscar", href: "https://docs.ccv.brown.edu" },
-      {
-        title: "Stronghold",
-        href: "/services/computing#data-risk-level-3-computing-(stronghold)",
-      },
-      { title: "Globus", href: "/services/file-storage-and-transfer#globus" },
-      { title: "Jupyter Hub", href: "/services/classroom#jupyterhub" },
-    ],
-  },
-  {
-    title: "Our Work",
-    href: "/our-work",
+    title: "Portfolio",
+    href: "/portfolio",
     routes: [
       { title: "Collaborations", href: "#" },
       {
@@ -47,23 +34,9 @@ export const navigation = [
     ],
   },
   {
-    title: "Help",
-    href: "/help",
-    routes: [
-      { title: "Submit a Ticket", href: "mailto:support@ccv.brown.edu" },
-      {
-        title: "Discourse",
-        href: "https://ask.cyberinfrastructure.org/c/brown-research-computing/37",
-      },
-      {
-        title: "Slack",
-        href: "https://ccv-share.slack.com/signup#/",
-      },
-      {
-        title: "Office Hours",
-        href: "https://events.brown.edu/ccv/month",
-      },
-    ],
+    title: "Blog",
+    href: "/blog",
+    routes: [],
   },
   {
     title: "About",
@@ -101,8 +74,35 @@ export const navigation = [
     ],
   },
   {
-    title: "Blog",
-    href: "/blog",
-    routes: [],
+    title: "Help",
+    href: "/help",
+    routes: [
+      { title: "Submit a Ticket", href: "mailto:support@ccv.brown.edu" },
+      {
+        title: "Discourse",
+        href: "https://ask.cyberinfrastructure.org/c/brown-research-computing/37",
+      },
+      {
+        title: "Slack",
+        href: "https://ccv-share.slack.com/signup#/",
+      },
+      {
+        title: "Office Hours",
+        href: "https://events.brown.edu/ccv/month",
+      },
+    ],
+  },
+  {
+    title: "Documentation",
+    href: "/documentation",
+    routes: [
+      { title: "Oscar", href: "https://docs.ccv.brown.edu" },
+      {
+        title: "Stronghold",
+        href: "/services/computing#data-risk-level-3-computing-(stronghold)",
+      },
+      { title: "Globus", href: "/services/file-storage-and-transfer#globus" },
+      { title: "Jupyter Hub", href: "/services/classroom#jupyterhub" },
+    ],
   },
 ]
