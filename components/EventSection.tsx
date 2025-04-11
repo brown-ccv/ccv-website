@@ -40,7 +40,7 @@ export function EventSection({
   const dataFuture = use(streamedDataFuture)
   const dataPast = use(streamedDataPast)
   const [view, setView] = useState("Upcoming")
-  const CAL_VIEW_ARRAY = ["Weekly", "Monthly", "Upcoming"]
+  const CAL_VIEW_ARRAY = ["Upcoming", "Weekly", "Monthly"]
 
   return (
     <>
