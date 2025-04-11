@@ -32,7 +32,6 @@ export default async function Home() {
           <FeaturedCarousel />
         </div>
         <div id="events" className="mt-20 w-full">
-          <SectionHeader href={"#events"} title={"Events"} />
           <Suspense fallback={<Spinner />}>
             <EventSection
               streamedDataPast={pastDates}
