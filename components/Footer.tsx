@@ -1,93 +1,114 @@
-import React from "react"
-import { ArrowRightIcon, MapPinIcon, PhoneCallIcon } from "lucide-react"
-import { Separator } from "@/components/ui/separator"
-import BrownLogoBuildingTogether from "@/components/assets/BrownLogoBuildingTogether"
+import CCVLogo from "@/components/assets/CCVLogo"
+import { FaArrowRight } from "react-icons/fa"
+import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
 
-const footerLinks = [
-  { text: "VISIT BROWN", href: "https://brown.edu" },
-  { text: "CAMPUS MAP", href: "https://brown.edu" },
-  { text: "RESERVATIONS", href: "https://brown.edu" },
-  { text: "ACCESSIBILITY", href: "https://brown.edu" },
-  { text: "CAREERS AT BROWN", href: "https://brown.edu" },
-  { text: "GIVE TO BROWN", href: "https://brown.edu" },
-]
+// Footer link component
+interface FooterLinkProps {
+  href: string
+  label: string
+}
 
-export const Footer: React.FC = () => {
+const FooterLink = ({ href, label }: FooterLinkProps) => {
   return (
-    <footer className="w-full bg-gradient-to-b from-[#3A3A3A] to-[#272727]">
-      <div className="pt-[51px] px-[102px] flex flex-col">
-        <div className="flex flex-wrap justify-between">
-          <div className="w-1/2 h-full">
-            <p className="text-cream text-base">BROWN UNIVERSITY</p>
+    <li>
+      <a
+        href={href}
+        className="flex items-center text-sm tracking-wider uppercase transition-colors duration-300 text-sunglow-400 hover:text-white"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {label}
+        <FaArrowRight className="block ml-2" />
+      </a>
+    </li>
+  )
+}
 
-            <div className="flex items-center mt-12 space-x-6">
-              <MapPinIcon className="w-[15px] h-[15px] text-white" />
-              <p className="font-semibold text-white text-xl">
-                Providence, RI 02912
-              </p>
-              <div className="ml-8 flex items-center">
-                <PhoneCallIcon className="w-[21px] h-[21px] text-cream" />
-                <p className="font-semibold text-white text-xl ml-2">401-863-1000</p>
-              </div>
-            </div>
+// Footer link section component
+interface FooterSectionProps {
+  links: Array<{ href: string; label: string }>
+  className?: string
+  listClassName?: string
+}
 
-            <div className="flex flex-wrap mt-10">
-              {footerLinks.slice(0, 2).map((link, index) => (
-                <div key={index} className="flex items-center mr-8 mb-4">
-                  <a
-                    href={link.href}
-                    className="text-secondary-500 text-[15px] hover:underline"
-                  >
-                    {link.text}
-                  </a>
-                  <ArrowRightIcon className="w-3.5 h-2.5 ml-1.5 text-secondary-500" />
-                </div>
-              ))}
-            </div>
+const FooterSection = ({ links, className = "" }: FooterSectionProps) => {
+  return (
+    <div className={"mb-10 w-full border-b border-stone-500 " + className}>
+      <ul className="flex flex-col gap-x-0 gap-y-4 justify-center mb-8 w-full sm:flex-wrap sm:gap-x-8 sm:gap-y-4 sm:flex-row">
+        {links.map((link, index) => (
+          <FooterLink key={index} href={link.href} label={link.label} />
+        ))}
+      </ul>
+    </div>
+  )
+}
 
-            <Separator className="my-10 w-[750px] bg-white" /> {/* Make sure it's still centered */}
+// Footer component based on Brown University's footer
+const Footer = () => {
+  const quickNavLinks = [
+    { href: "https://www.brown.edu/about/visit", label: "Visit Brown" },
+    {
+      href: "https://www.brown.edu/Facilities/Facilities_Management/maps/",
+      label: "Campus Map",
+    },
+    { href: "https://www.brown.edu/a-z", label: "A to Z" },
+    { href: "https://www.brown.edu/about/contact-us", label: "Contact Us" },
+  ]
 
-            <div className="flex flex-wrap mt-10 mb-10">
-              {footerLinks.slice(2, 5).map((link, index) => (
-                <div key={index} className="flex items-center mr-8 mb-4">
-                  <a
-                    href={link.href}
-                    className="text-secondary-500 text-[15px] hover:underline"
-                  >
-                    {link.text}
-                  </a>
-                  <ArrowRightIcon className="w-3.5 h-2.5 ml-1.5 text-secondary-500" />
-                </div>
-              ))}
-            </div>
+  const footerNavLinks = [
+    { href: "https://www.brown.edu/news", label: "News" },
+    { href: "https://events.brown.edu/", label: "Events" },
+    { href: "https://dps.brown.edu/", label: "Campus Safety" },
+    {
+      href: "https://www.brown.edu/website-accessibility",
+      label: "Accessibility",
+    },
+    { href: "https://www.brown.edu/careers", label: "Careers at Brown" },
+  ]
+
+  return (
+    <footer className="flex flex-col justify-start items-start sm:justify-center sm:items-center w-full bg-[#4E3629] text-neutral-800">
+      <div className="px-6 py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
+        <div className="flex flex-col justify-start items-start mb-8 space-y-2 sm:justify-center sm:items-center md:mb-16">
+          <div className="text-xs tracking-widest uppercase text-cream">
+            Brown University
           </div>
-
-          <Separator orientation="vertical" className="mx-10 w-[1px] h-[300px] bg-white" />
-
-          <div className="w-1/3">
-            <BrownLogoBuildingTogether />
-
-            <p className="font-serif italic text-cream text-xl mt-10">
-              The campaign for building <br />
-              on distinction
-            </p>
-
-            <div className="flex items-center mt-16">
-              <a
-                href={footerLinks[5].href}
-                className="text-secondary-500 text-[15px] hover:underline"
-              >
-                {footerLinks[5].text}
-              </a>
-              <ArrowRightIcon className="w-3.5 h-2.5 ml-1.5 text-secondary-500" />
+          <div className="flex flex-col space-x-0 space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8">
+            <div className="font-serif text-base text-white sm:text-lg xl:text-xl">
+              <MdLocationPin className="inline-block mr-2 text-stone-400" />
+              Providence, RI 02912
+            </div>
+            <div className="font-serif text-base text-white sm:text-lg xl:text-xl">
+              <MdOutlinePhoneInTalk className="inline-block mr-2 text-stone-400" />
+              401-863-1000
             </div>
           </div>
         </div>
+        <div className="flex flex-col w-full text-secondary-500">
+          {/* Quick Navigation */}
+          <FooterSection links={quickNavLinks} />
+
+          {/* Footer Navigation */}
+          <FooterSection links={footerNavLinks} className="lg:border-b-0" />
+        </div>
+        <div className="flex flex-row w-full sm:justify-center sm:items-center">
+          <a
+            href="https://alumni-friends.brown.edu/giving"
+            className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-secondary-500 hover:bg-secondary-500 hover:text-[#4E3629] "
+          >
+            Give to Brown
+            <FaArrowRight className="inline-block ml-2 text-sunglow-400 group-hover:text-[#4E3629]" />
+          </a>
+        </div>
       </div>
 
-      <div className="bg-black flex items-center px-[102px] mt-auto py-10">
-        <p className="text-cream text-base">© Brown University</p>
+      {/* Copyright Section */}
+      <div className="flex flex-row items-center justify-between px-6 py-4 w-full bg-[#412D22] font-serif text-base text-cream md:px-24 md:text-lg">
+        <div>&copy; Brown University</div>
+        <CCVLogo />
       </div>
     </footer>
   )
 }
+
+export default Footer
