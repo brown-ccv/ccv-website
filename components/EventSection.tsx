@@ -55,7 +55,7 @@ export function EventSection({
                   view === item ? "selected" : "",
                   item === "Weekly" && "hidden lg:inline-block",
                   item !== "Weekly" && "inline-block",
-                  "m-0 rounded-sm py-2 px-3"
+                  "m-0 rounded-[13px] py-2 px-3"
                 )}
                 role="button"
                 onClick={() => setView(item)}
