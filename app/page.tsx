@@ -31,7 +31,7 @@ export default async function Home() {
           <ImpactBanner />
           <FeaturedCarousel />
         </div>
-        <div id="events" className="mt-20 w-full">
+        <div id="events" className="sm:py-8 lg:py-12 w-full bg-gray-100">
           <Suspense fallback={<Spinner />}>
             <EventSection
               streamedDataPast={pastDates}
