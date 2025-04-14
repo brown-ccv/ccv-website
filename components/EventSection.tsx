@@ -75,7 +75,7 @@ export function EventSection({
       <div className="flex flex-wrap justify-evenly gap-6">
         <div className="flex flex-col justify-center items-start min-w-[20%]">
           <Card className="flex items-start w-full h-full border-none shadow-none">
-            <CardContent className="p-10">
+            <CardContent className="py-4">
               <CCVBars />
               <h3 className="flex items-center font-semibold text-black text-[32px]">
                 {<FaCalendarAlt className="mr-3" />}
@@ -96,52 +96,52 @@ export function EventSection({
           </Card>
         </div>
         <div className="flex-1">
-      {!dataFuture && <p>No event data</p>}
-      {view === "Upcoming" && (
-        <div className="flex flex-wrap justify-between gap-4">
-          {dataFuture &&
-            dataFuture.slice(0, 4).map((e: DataProps, i: number) => {
-              return (
-                <div
-                  key={i}
-                  className="bg-gray flex gap-6 overflow-hidden column min-w-[30ch]"
-                >
-                  <CalendarEvent
-                    id={e.id}
-                    date_time={e.date_time}
-                    title={e.title}
-                    url={e.url}
-                    date={e.date}
-                    date_utc={e.date_utc}
-                    date2_utc={e.date2_utc}
-                    date_iso={e.date_iso}
-                    description_long={e.description_long}
-                    contact_info={e.contact_info}
-                    description={e.description}
-                  />
-                </div>
-              )
-            })}
-        </div>
-      )}
-      {view === "Weekly" && (
-        <div className="h-0 min-h-[768px] ">
-          <CalendarWeekly
-            today={today}
-            currentDate={currentDate}
-            events={dataPast.concat(dataFuture)}
-          />
-        </div>
-      )}
-      {view === "Monthly" && (
-        <div>
-          <CalendarMonth
-            today={today}
-            currentDate={currentDate}
-            events={dataPast.concat(dataFuture)}
-          />
-        </div>
-      )}
+          {!dataFuture && <p>No event data</p>}
+          {view === "Upcoming" && (
+            <div className="flex flex-wrap justify-between gap-4">
+              {dataFuture &&
+                dataFuture.slice(0, 4).map((e: DataProps, i: number) => {
+                  return (
+                    <div
+                      key={i}
+                      className="bg-gray flex gap-6 overflow-hidden column min-w-[30ch]"
+                    >
+                      <CalendarEvent
+                        id={e.id}
+                        date_time={e.date_time}
+                        title={e.title}
+                        url={e.url}
+                        date={e.date}
+                        date_utc={e.date_utc}
+                        date2_utc={e.date2_utc}
+                        date_iso={e.date_iso}
+                        description_long={e.description_long}
+                        contact_info={e.contact_info}
+                        description={e.description}
+                      />
+                    </div>
+                  )
+                })}
+            </div>
+          )}
+          {view === "Weekly" && (
+            <div className="h-0 min-h-[768px]">
+              <CalendarWeekly
+                today={today}
+                currentDate={currentDate}
+                events={dataPast.concat(dataFuture)}
+              />
+            </div>
+          )}
+          {view === "Monthly" && (
+            <div>
+              <CalendarMonth
+                today={today}
+                currentDate={currentDate}
+                events={dataPast.concat(dataFuture)}
+              />
+            </div>
+          )}
         </div>
       </div>
     </>
