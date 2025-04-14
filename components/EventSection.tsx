@@ -45,7 +45,7 @@ export function EventSection({
   return (
     <>
       <div className="hidden min-h-8 relative lg:block">
-        <div className="toggle-btn">
+        <div className="toggle-btn space-x-10">
           {CAL_VIEW_ARRAY.map((item) => {
             return (
               <p
