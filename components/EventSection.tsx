@@ -5,6 +5,12 @@ import { getStringDate } from "@/components/calendar/utils"
 import CalendarEvent from "@/components/calendar/CalendarEvent"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
+import { Card, CardContent } from "@/components/ui/card"
+import CCVBars from "@/components/assets/CCVBars"
+import { FaCalendarAlt } from "react-icons/fa"
+import { Button } from "./ui/button"
+
+const events_url = "https://events.brown.edu/ccv/all"
 
 export interface DataProps {
   id: string
@@ -66,6 +72,30 @@ export function EventSection({
           })}
         </div>
       </div>
+      <div className="flex flex-wrap justify-evenly gap-6">
+        <div className="flex flex-col justify-center items-start min-w-[20%]">
+          <Card className="flex items-start w-full h-full border-none shadow-none">
+            <CardContent className="p-10">
+              <CCVBars />
+              <h3 className="flex items-center font-semibold text-black text-[32px]">
+                {<FaCalendarAlt className="mr-3" />}
+                Events
+              </h3>
+              <p className="italic text-black text-[20px] text-style mt-[12px]">
+                What's next at CCV
+              </p>
+              <Button
+                className="h-[55px] w-[176px] rounded-[50px] font-semibold text-[20px] mt-[34px]"
+                variant="filled_primary"
+              >
+                <a href={events_url} target="_blank" rel="noopener noreferrer">
+                  View All Events
+                </a>
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+        <div className="flex-1">
       {!dataFuture && <p>No event data</p>}
       {view === "Upcoming" && (
         <div className="flex flex-wrap justify-between gap-4">
@@ -112,6 +142,8 @@ export function EventSection({
           />
         </div>
       )}
+        </div>
+      </div>
     </>
   )
 }
