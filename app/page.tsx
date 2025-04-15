@@ -3,7 +3,6 @@ import { HeroHome } from "@/components/HeroHome"
 import { HeroCard } from "@/components/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import SectionHeader from "@/components/SectionHeader"
-import NavbarAnima from "@/components/header/NavbarAnima"
 import { FeaturedCarousel } from "@/components/FeaturedCarousel"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
@@ -23,7 +22,7 @@ export default async function Home() {
     const pastDates = getEventData(`-2 months${today}`)
 
     return (
-      <div className="px-2 my-6 space-y-2 w-full">
+      <div className="space-y-2 w-full">
         <Header />
         <div className="relative w-full flex flex-col space-y-24">
           <HeroHome />
@@ -44,7 +43,7 @@ export default async function Home() {
         </div>
         <div className="flex justify-center">
           <a
-            className="bg-secondary-blue-500 text-white p-4 rounded"
+            className="bg-primary-700 text-white p-4 rounded"
             href="https://events.brown.edu/ccv/all"
           >
             VIEW ALL EVENTS
@@ -59,7 +58,7 @@ export default async function Home() {
         <p>{err.message}</p>
         <div className="flex justify-center">
           <a
-            className="bg-secondary-blue-500 text-white p-4 rounded"
+            className="bg-primary-700 text-white p-4 rounded"
             href="https://events.brown.edu/ccv/all"
           >
             VIEW ALL EVENTS
