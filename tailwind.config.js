@@ -143,19 +143,11 @@ module.exports = {
       current: colors.current,
       transparent: colors.transparent,
       black: colors.black,
-      brown: {
-        500: "#4E3629", 
-        university: "#4e3629"
-      },
       white: colors.white,
       slate: colors.slate,
       gray: colors.gray,
       zinc: colors.zinc,
       stone: colors.stone,
-      red: {
-        500: "#ED1C24", 
-        university: "#C00404"
-      },
       ruby: "#450a0a",
       orange: colors.orange,
       amber: colors.amber,
@@ -207,6 +199,14 @@ module.exports = {
         300: "#527da1",
         50: "#a3b8ca",
         navbar: "060839",
+      },
+      brown: {
+        500: "#4E3629", 
+        university: "#4e3629"
+      },
+      red: {
+        500: "#ED1C24", 
+        university: "#C00404"
       },
       keppel: {
         800: "#0A6559",
