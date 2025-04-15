@@ -98,7 +98,7 @@ export function EventSection({
         <div className="flex-1">
           {!dataFuture && <p>No event data</p>}
           {view === "Upcoming" && (
-            <div className="flex flex-wrap justify-between gap-4">
+            <div className="flex flex-wrap justify-between gap-4 pt-4">
               {dataFuture &&
                 dataFuture.slice(0, 4).map((e: DataProps, i: number) => {
                   return (
@@ -125,7 +125,7 @@ export function EventSection({
             </div>
           )}
           {view === "Weekly" && (
-            <div className="h-0 min-h-[768px]">
+            <div className="h-0 min-h-[768px] pt-4">
               <CalendarWeekly
                 today={today}
                 currentDate={currentDate}
@@ -134,7 +134,7 @@ export function EventSection({
             </div>
           )}
           {view === "Monthly" && (
-            <div>
+            <div className="pt-4">
               <CalendarMonth
                 today={today}
                 currentDate={currentDate}
