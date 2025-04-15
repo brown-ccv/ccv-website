@@ -174,7 +174,7 @@ module.exports = {
       pink: colors.pink,
       rose: colors.rose,
       cream: "#b7b09c",
-      primary: {
+      primary: { 
         900: "#004d41",
         700: "#00806C",
         500: "#00B398",
@@ -206,10 +206,28 @@ module.exports = {
         500: "#003c70",
         300: "#527da1",
         50: "#a3b8ca",
+        navbar: "060839",
       },
-      banner: {
-        purple: "#4b004f",
-        blue: "#060734",
+      keppel: {
+        800: "#0A6559",
+        700: "#00947D",
+        600: "#00b398",
+        500: "#04c8a6",
+        400: "#1de4bf",
+        300: "#51f7d3",
+        200: "#90ffe2",
+        100: "#c7fff1",
+        50: "#effefa",
+      },
+      sunglow: {
+        700: "#b75506",
+        600: "#dd7a02",
+        500: "#f9a207",
+        400: "#ffc72c",
+        300: "#ffd74a",
+        200: "#ffe988",
+        100: "#fff5c6",
+        50: "#fffbeb",
       },
     }),
     columns: {
