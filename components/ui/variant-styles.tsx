@@ -1,7 +1,6 @@
-// components/variantStyles.ts
 import { cva } from "class-variance-authority"
 
-export const variantStyles = cva(
+export const buttonVariants = cva(
   "rounded-full text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
@@ -30,6 +29,43 @@ export const variantStyles = cva(
       variant: "filled_primary",
       size: "default",
       iconPosition: "none",
+    },
+  }
+)
+
+export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full", {
+  variants: {
+    color: {
+      keppel: "bg-keppel-500 text-white",
+      sunglow: "bg-sunglow-500 text-black",
+      purple: "bg-purple-500 text-white",
+      sky: "bg-sky-500 text-white",
+      emerald: "bg-emerald-500 text-white",
+      lime: "bg-lime-500 text-black",
+      amber: "bg-amber-500 text-black",
+      rose: "bg-rose-500 text-white",
+      cyan: "bg-cyan-500 text-white",
+      blue: "bg-blue-500 text-white",
+    },
+  },
+  defaultVariants: {
+    color: "keppel",
+  },
+})
+
+export const cardVariants = cva(
+  "rounded-xl bg-white text-black transition-shadow",
+  {
+    variants: {
+      variant: {
+        default: "border bg-card text-card-foreground shadow",
+        elevated: "shadow-lg border border-neutral-200",
+        ghost: "border-none bg-transparent shadow-none",
+        outlined: "border border-gray-300",
+      },
+    },
+    defaultVariants: {
+      variant: "default",
     },
   }
 )

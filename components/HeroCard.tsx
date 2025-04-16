@@ -1,5 +1,6 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
+import { cardVariants } from "@/components/ui/variant-styles"
 import CCVBars from "@/components/assets/CCVBars"
 
 const heroCards = [
@@ -22,26 +23,21 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <div
-      className="relative z-10 flex justify-center mx-auto"
-      style={{ marginTop: "-150px" }}
-    >
-      <Card className="inline-block bg-white rounded-[5px] shadow-[0px_4px_4px_1px_#0000001a] border-none">
+    <div className="relative z-10 flex justify-center mx-auto -mt-[150px]">
+      <Card className={cardVariants({ variant: "elevated" })}>
         <CardContent className="p-10">
-          <div className="flex justify-center items-start gap-[88px] flex-wrap">
+          <div className="flex justify-center items-start gap-20 flex-wrap">
             {heroCards.map((card, index) => (
-              <div key={index} className="w-[348px]">
-                <div className="inline-flex items-center gap-2 px-[5px] py-[29px]">
+              <div key={index} className="max-w-sm">
+                <div className="inline-flex items-center gap-2 py-8">
                   <div className="relative">
                     <CCVBars />
-                    <h3 className="mt-[18px] font-semibold text-black text-2xl tracking-[-0.72px] leading-[31px]">
+                    <h3 className="mt-4 font-semibold text-black text-2xl tracking-tight leading-tight">
                       {card.title}
                     </h3>
                   </div>
                 </div>
-                <p className="font-normal text-black text-xl mt-6">
-                  {card.description}
-                </p>
+                <p className="text-black text-xl mt-6">{card.description}</p>
               </div>
             ))}
           </div>

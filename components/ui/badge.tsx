@@ -1,6 +1,6 @@
 import React from "react"
 import { cn } from "@/lib/utils"
-import { badgeVariants } from "@/components/ui/badgeVariants"
+import { badgeVariants } from "@/components/ui/variant-styles"
 import type { VariantProps } from "class-variance-authority"
 
 type BadgeProps = React.HTMLAttributes<HTMLDivElement> &

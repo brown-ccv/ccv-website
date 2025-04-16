@@ -2,13 +2,13 @@
 import { Slot } from "@radix-ui/react-slot"
 import * as React from "react"
 import { cn } from "@/lib/utils"
-import { variantStyles } from "@/components/ui/variant-styles"
+import { buttonVariants } from "@/components/ui/variant-styles"
 
 import type { VariantProps } from "class-variance-authority"
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof variantStyles> {
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
@@ -42,7 +42,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         className={cn(
-          variantStyles({
+          buttonVariants({
             variant,
             size: resolvedSize,
             iconPosition: resolvedIconPosition,
