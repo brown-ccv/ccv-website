@@ -81,7 +81,7 @@ export function EventSection({
                 {<FaCalendarAlt className="mr-3" />}
                 Events
               </h3>
-              <p className="italic text-black text-[20px] text-style mt-[12px]">
+              <p className="font-serif italic text-black text-[20px] text-style mt-[12px]">
                 What's next at CCV
               </p>
               <Button
