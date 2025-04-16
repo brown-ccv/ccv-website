@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { Badge } from "@/components/ui/badge"
-import { getColorForTag } from "@/lib/getColorForTag"
+import { getColorForTag } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { SectionHeader } from "@/components/ui/section-header"
