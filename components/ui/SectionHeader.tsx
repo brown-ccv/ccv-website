@@ -1,8 +1,8 @@
-import React from "react";
+import React from "react"
 import CCVBars from "@/components/assets/CCVBars"
 
 interface SectionHeaderProps {
-  title: string;
+  title: string
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({ title }) => {
@@ -10,10 +10,10 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({ title }) => {
     <div className="text-center mb-16">
       <div className="relative inline-block">
         <CCVBars />
-        <h2 className="font-semibold text-black text-[40px] tracking-[-1.20px] mt-5">
+        <h2 className="font-semibold text-black text-[40px] tracking-[-1.20px]">
           {title}
         </h2>
       </div>
     </div>
-  );
-};
+  )
+}
