@@ -2,6 +2,7 @@
 
 import React, { useState } from "react"
 import { Badge } from "@/components/ui/badge"
+import { getColorForTag } from "@/lib/getColorForTag"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -69,9 +70,13 @@ export const FeaturedCarousel: React.FC = () => {
         <div className="w-full h-[588px] bg-white mt-[60px] relative">
           <div className="flex justify-between px-12 max-w-screen-xl mx-auto">
             <div className="max-w-[440px]">
-              <Badge className="bg-secondary-500 text-black rounded-[50px] font-semibold text-xs">
-                {featuredCarouselData[currentProjectIndex].category}
-              </Badge>
+            <Badge
+              color={getColorForTag(featuredCarouselData[currentProjectIndex].category)}
+              className="rounded-full font-semibold text-xs"
+            >
+              {featuredCarouselData[currentProjectIndex].category}
+            </Badge>
+
 
               <h3 className="font-semibold text-black text-[28px] mt-10">
                 {featuredCarouselData[currentProjectIndex].title}
