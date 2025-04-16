@@ -12,7 +12,7 @@ export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs f
       amber: "bg-amber-500 text-black",
       rose: "bg-rose-500 text-white",
       cyan: "bg-cyan-500 text-white",
-      blue: "bg-blue-500 text-white",
+      blue: "bg-500 text-white",
     },
   },
   defaultVariants: {

@@ -133,10 +133,10 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
       const calColor =
         event.title === "CCV Office Hours"
-          ? "bg-blue-50 hover:bg-blue-300"
+          ? "bg-50 hover:bg-300"
           : event.title ===
               "COBRE CBC Computational Biology Walk-in Office hours"
-            ? "bg-blue-50 hover:bg-blue-300"
+            ? "bg-50 hover:bg-300"
             : "bg-keppel-50 hover:bg-keppel-500"
 
       return (
@@ -152,7 +152,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             target={"_blank"}
             className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5`}
           >
-            <p className="order-1 font-semibold text-blue-700">
+            <p className="order-1 font-semibold text-700">
               {event.title}
             </p>
             <p className="weekly-datetime">

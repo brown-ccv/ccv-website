@@ -35,7 +35,7 @@ export function Opportunities({ data }: { data: Promise<any> }) {
             <Card className="hover:shadow-lg transition-shadow">
               <CardContent className="flex flex-col gap-6 md:items-center md:justify-between md:flex-row p-6">
                 <div className="flex flex-col gap-2">
-                  <p className="flex items-center text-blue-700 gap-2 md:gap-4 text-sm">
+                  <p className="flex items-center text-700 gap-2 md:gap-4 text-sm">
                     <MapPinIcon className="h-4 w-4" />
                     Providence, RI - United States
                   </p>
@@ -43,7 +43,7 @@ export function Opportunities({ data }: { data: Promise<any> }) {
                     {position.title}
                   </p>
                 </div>
-                <div className="flex items-center gap-2 md:gap-4 text-blue-700 text-sm font-medium">
+                <div className="flex items-center gap-2 md:gap-4 text-700 text-sm font-medium">
                   <span>Learn More</span>
                   <ArrowRightIcon className="h-4 w-4" />
                 </div>

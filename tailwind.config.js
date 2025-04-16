@@ -166,6 +166,10 @@ module.exports = {
       pink: colors.pink,
       rose: colors.rose,
       cream: "#b7b09c",
+      gradient: {
+        light: "#3A3A3A",
+        dark: "#272727",
+      },
       neutral: {
         900: "#242424",
         700: "#282E33",
@@ -184,6 +188,9 @@ module.exports = {
       },
       red: {
         university: "#C00404"
+      },
+      purple: {
+        impact: "#5A0E72",
       },
       keppel: {
         800: "#0A6559",
