@@ -43,7 +43,7 @@ export default async function Home() {
         </div>
         <div className="flex justify-center">
           <a
-            className="bg-primary-700 text-white p-4 rounded"
+            className="bg-keppel-700 text-white p-4 rounded"
             href="https://events.brown.edu/ccv/all"
           >
             VIEW ALL EVENTS
@@ -58,7 +58,7 @@ export default async function Home() {
         <p>{err.message}</p>
         <div className="flex justify-center">
           <a
-            className="bg-primary-700 text-white p-4 rounded"
+            className="bg-keppel-700 text-white p-4 rounded"
             href="https://events.brown.edu/ccv/all"
           >
             VIEW ALL EVENTS

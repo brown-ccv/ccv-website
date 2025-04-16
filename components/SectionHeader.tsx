@@ -11,7 +11,7 @@ interface SectionHeaderProps {
 const SectionHeader = ({ title, href, icon }: SectionHeaderProps) => {
   return (
     <Link href={href} className="text-neutral-900">
-      <h2 className="text-3xl bg-primary-500 text-white p-4 flex items-center gap-2">
+      <h2 className="text-3xl bg-keppel-500 text-white p-4 flex items-center gap-2">
         {icon && icon} <span>{title}</span>
       </h2>
     </Link>

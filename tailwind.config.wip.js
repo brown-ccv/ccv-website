@@ -26,11 +26,11 @@ module.exports = {
           foreground: "hsl(var(--foreground))",
           primary: {
             DEFAULT: "hsl(var(--primary))",
-            foreground: "hsl(var(--primary-foreground))",
+            foreground: "hsl(var(--keppel-foreground))",
           },
           secondary: {
             DEFAULT: "hsl(var(--secondary))",
-            foreground: "hsl(var(--secondary-foreground))",
+            foreground: "hsl(var(--sunglow-foreground))",
           },
           destructive: {
             DEFAULT: "hsl(var(--destructive))",

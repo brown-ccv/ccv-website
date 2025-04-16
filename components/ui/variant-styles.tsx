@@ -5,10 +5,10 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        filled_primary: "bg-primary-500 text-white shadow hover:bg-primary-300 focus:bg-primary-500 active:bg-primary-700",
-        filled_secondary: "bg-secondary-500 text-black shadow hover:bg-secondary-300 focus:bg-secondary-500 active:bg-secondary-700",
-        outline_primary: "border-2 border-primary-500 text-primary-500 bg-transparent hover:border-primary-300 hover:text-primary-300 active:bg-primary-50 active:border-primary-700 active:text-primary-700",
-        outline_secondary: "border-2 border-secondary-500 text-secondary-500 bg-transparent hover:border-secondary-300 hover:text-secondary-300 active:bg-secondary-50 active:border-secondary-700 active:text-secondary-700",
+        filled_primary: "bg-keppel-500 text-white shadow hover:bg-keppel-300 focus:bg-keppel-500 active:bg-keppel-700",
+        filled_secondary: "bg-sunglow-500 text-black shadow hover:bg-sunglow-300 focus:bg-sunglow-500 active:bg-sunglow-700",
+        outline_primary: "border-2 border-keppel-500 text-keppel-500 bg-transparent hover:border-keppel-300 hover:text-keppel-300 active:bg-keppel-50 active:border-keppel-700 active:text-keppel-700",
+        outline_secondary: "border-2 border-sunglow-500 text-sunglow-500 bg-transparent hover:border-sunglow-300 hover:text-sunglow-300 active:bg-sunglow-50 active:border-sunglow-700 active:text-sunglow-700",
         outline_neutral: "border-2 border-neutral-500 text-neutral-500 bg-transparent hover:border-neutral-300 hover:text-neutral-300 active:border-neutral-500 active:text-neutral-500",
         icon: "-m-3 p-3 text-white hover:bg-white/10 rounded-full",
         unstyled: "",

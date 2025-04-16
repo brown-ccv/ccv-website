@@ -21,14 +21,14 @@ const CalendarEvent: React.FC<DataProps> = ({
       <div className="text-neutral-900 font-semibold text-sm">{normalDate}</div>
       <div>
         <a
-          className="text-2xl font-bold text-secondary-blue-500 no-underline hover:underline leading-6"
+          className="text-2xl font-bold text-sunglow-blue-500 no-underline hover:underline leading-6"
           href={url}
           target="_blank"
         >
           {title}
         </a>
       </div>
-      <div className="flex items-center text-primary-500 text-sm">
+      <div className="flex items-center text-keppel-500 text-sm">
         <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />
         {date_time}
       </div>

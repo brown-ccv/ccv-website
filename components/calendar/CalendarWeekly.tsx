@@ -92,7 +92,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           className={`flex items-center justify-center py-3 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
-          ${isSameDay(thisDate, currentDate) ? "today bg-secondary-yellow-50" : "bg-white"}`}
+          ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-yellow-50" : "bg-white"}`}
           onClick={() => {
             setSelectedDate(cloneDate)
           }}
@@ -133,11 +133,11 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
       const calColor =
         event.title === "CCV Office Hours"
-          ? "bg-secondary-blue-50 hover:bg-secondary-blue-300"
+          ? "bg-sunglow-blue-50 hover:bg-sunglow-blue-300"
           : event.title ===
               "COBRE CBC Computational Biology Walk-in Office hours"
-            ? "bg-secondary-blue-50 hover:bg-secondary-blue-300"
-            : "bg-primary-50 hover:bg-primary-500"
+            ? "bg-sunglow-blue-50 hover:bg-sunglow-blue-300"
+            : "bg-keppel-50 hover:bg-keppel-500"
 
       return (
         <li
@@ -152,7 +152,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             target={"_blank"}
             className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5`}
           >
-            <p className="order-1 font-semibold text-secondary-blue-700">
+            <p className="order-1 font-semibold text-sunglow-blue-700">
               {event.title}
             </p>
             <p className="weekly-datetime">
@@ -222,7 +222,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 {DAY_COLUMN_ARRAY.map(({ day, key }) => (
                   <div
                     key={key}
-                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-secondary-yellow-50" : ""}`}
+                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-sunglow-yellow-50" : ""}`}
                   />
                 ))}
               </div>
