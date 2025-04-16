@@ -29,7 +29,7 @@ export default function Footer() {
                     <li>
                       <Link
                         href={contents.href}
-                        className="text-sm leading-6 text-sunglow-blue-700 hover:text-black hover:border-b-2"
+                        className="text-sm leading-6 text-blue-700 hover:text-black hover:border-b-2"
                       >
                         Explore {contents.title}
                       </Link>
@@ -38,7 +38,7 @@ export default function Footer() {
                       <li key={item.title}>
                         <a
                           href={item.href}
-                          className="text-sm leading-6 text-sunglow-blue-700 hover:text-black hover:border-b-2"
+                          className="text-sm leading-6 text-blue-700 hover:text-black hover:border-b-2"
                         >
                           {item.title}
                         </a>

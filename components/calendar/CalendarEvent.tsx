@@ -21,7 +21,7 @@ const CalendarEvent: React.FC<DataProps> = ({
       <div className="text-neutral-900 font-semibold text-sm">{normalDate}</div>
       <div>
         <a
-          className="text-2xl font-bold text-sunglow-blue-500 no-underline hover:underline leading-6"
+          className="text-2xl font-bold text-blue-500 no-underline hover:underline leading-6"
           href={url}
           target="_blank"
         >

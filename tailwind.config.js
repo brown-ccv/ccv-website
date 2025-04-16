@@ -182,12 +182,7 @@ module.exports = {
         50: "#a3b8ca",
         navbar: "060839",
       },
-      brown: {
-        500: "#4E3629", 
-        university: "#4e3629"
-      },
       red: {
-        500: "#ED1C24", 
         university: "#C00404"
       },
       keppel: {

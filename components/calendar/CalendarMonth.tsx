@@ -109,7 +109,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             <Tooltip>
               <TooltipTrigger className="rounded-md max-w-[100%] px-2 hover:bg-neutral-50">
                 <a href={event.url} target="_blank">
-                  <p className="flex-auto min-w-0 truncate font-medium text-sunglow-blue-700">
+                  <p className="flex-auto min-w-0 truncate font-medium text-blue-700">
                     {event.title}
                   </p>
                 </a>
@@ -119,7 +119,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                 <a
                   href={event.url}
                   target="_blank"
-                  className="flex gap-1 text-sunglow-blue-500"
+                  className="flex gap-1 text-blue-500"
                 >
                   <p className="font-semibold hover:underline">{event.title}</p>
                   <ArrowTopRightOnSquareIcon
@@ -130,7 +130,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
 
                 <time
                   dateTime={event.date_utc}
-                  className="hidden flex-none text-keppel-500 group-hover:text-sunglow-blue-500 group-hover:font-semibold xl:flex xl:items-center"
+                  className="hidden flex-none text-keppel-500 group-hover:text-blue-500 group-hover:font-semibold xl:flex xl:items-center"
                 >
                   <ClockIcon
                     className="mr-1 h-4 w-4 text-keppel-500"
@@ -155,7 +155,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             <a
               href={event.url}
               target="_blank"
-              className="flex gap-1 text-sunglow-blue-500"
+              className="flex gap-1 text-blue-500"
             >
               <p className="font-semibold hover:underline">{event.title}</p>
               <ArrowTopRightOnSquareIcon
@@ -242,7 +242,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             isSameDay(day.date, selectedDate) && "text-white",
             !isSameDay(day.date, selectedDate) &&
               day.isToday &&
-              "text-sunglow-blue-500 bg-sunglow-yellow-500",
+              "text-blue-500 bg-sunglow-yellow-500",
             !isSameDay(day.date, selectedDate) &&
               day.isCurrentMonth &&
               !day.isToday &&
@@ -275,7 +275,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               {validDayEvents.map((event) => (
                 <span
                   key={event.id}
-                  className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-sunglow-blue-700"
+                  className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-blue-700"
                 />
               ))}
             </span>
