@@ -17,7 +17,7 @@ export default async function Header() {
               <strong>Service Disruption:</strong> {repoNames}
             </p>
             <Button 
-              variant="filled_secondary" 
+              variant="secondary_filled" 
               size="sm"
             >
               <a 
@@ -35,7 +35,7 @@ export default async function Header() {
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <p className="text-base text-gray-900">All Services Operational</p>
             <Button 
-              variant="filled_secondary" 
+              variant="secondary_filled" 
               size="sm"
             >
               <a 

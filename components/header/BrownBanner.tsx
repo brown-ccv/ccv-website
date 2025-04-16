@@ -16,7 +16,7 @@ export const BrownBanner: React.FC = () => {
       </div>
 
       <Button
-        variant="outline_primary"
+        variant="primary_outlined"
         className="absolute right-[49px] top-[50%] transform -translate-y-1/2 border-red-university text-red-university font-semibold rounded-none w-[159px] h-[50px] hover:bg-red-university hover:text-white hover:border-red-university"
       >
         <a 

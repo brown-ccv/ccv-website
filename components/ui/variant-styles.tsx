@@ -5,12 +5,12 @@ export const buttonVariants = cva(
   {
     variants: {
       variant: {
-        filled_primary: "bg-keppel-500 text-white shadow hover:bg-keppel-300 focus:bg-keppel-500 active:bg-keppel-700",
-        filled_secondary: "bg-sunglow-500 text-black shadow hover:bg-sunglow-300 focus:bg-sunglow-500 active:bg-sunglow-700",
-        outline_primary: "border-2 border-keppel-500 text-keppel-500 bg-transparent hover:border-keppel-300 hover:text-keppel-300 active:bg-keppel-50 active:border-keppel-700 active:text-keppel-700",
-        outline_secondary: "border-2 border-sunglow-500 text-sunglow-500 bg-transparent hover:border-sunglow-300 hover:text-sunglow-300 active:bg-sunglow-50 active:border-sunglow-700 active:text-sunglow-700",
-        outline_neutral: "border-2 border-neutral-500 text-neutral-500 bg-transparent hover:border-neutral-300 hover:text-neutral-300 active:border-neutral-500 active:text-neutral-500",
-        icon: "-m-3 p-3 text-white hover:bg-white/10 rounded-full",
+        primary_filled: "bg-keppel-500 text-white shadow hover:bg-keppel-300 focus:bg-keppel-500 active:bg-keppel-700",
+        secondary_filled: "bg-sunglow-500 text-black shadow hover:bg-sunglow-300 focus:bg-sunglow-500 active:bg-sunglow-700",
+        primary_outlined: "border-2 border-keppel-500 text-keppel-500 bg-transparent hover:border-keppel-300 hover:text-keppel-300 active:bg-keppel-50 active:border-keppel-700 active:text-keppel-700",
+        secondary_outlined: "border-2 border-sunglow-500 text-sunglow-500 bg-transparent hover:border-sunglow-300 hover:text-sunglow-300 active:bg-sunglow-50 active:border-sunglow-700 active:text-sunglow-700",
+        black_filled: "border-2 border-black text-white hover:border-neutral-700 hover:text-white active:border-neutral-700 active:text-white",
+        icon_only_outlined: "-m-3 p-3 text-black hover:border-neutral-700 rounded-full",
         unstyled: "",
       },
       size: {
@@ -26,7 +26,7 @@ export const buttonVariants = cva(
       },
     },
     defaultVariants: {
-      variant: "filled_primary",
+      variant: "primary_filled",
       size: "default",
       iconPosition: "none",
     },
