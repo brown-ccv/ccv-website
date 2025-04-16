@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { cardVariants } from "@/components/ui/variant-styles"
+import { cardVariants } from "@/components/ui/cardVariants"
 import CCVBars from "@/components/assets/CCVBars"
 
 const heroCards = [
@@ -17,13 +17,13 @@ const heroCards = [
   {
     title: "Compute Infrastructure",
     description:
-      "We maintain secure, high-performance computing infrastructure, along with storage solutions and virtual computing environments to support research and innovation.",
+      "We maintain secure, high‑performance computing infrastructure, along with storage solutions and virtual computing environments to support research and innovation.",
   },
 ]
 
 export const HeroCard: React.FC = () => {
   return (
-    <div className="relative z-10 flex justify-center mx-auto -mt-[150px]">
+    <div className="relative z-10 flex justify-center mx-auto" style={{ marginTop: "-150px" }}>
       <Card className={cardVariants({ variant: "elevated" })}>
         <CardContent className="p-10">
           <div className="flex justify-center items-start gap-20 flex-wrap">
