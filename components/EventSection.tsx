@@ -72,10 +72,10 @@ export function EventSection({
           })}
         </div>
       </div>
-      <div className="flex flex-wrap justify-evenly gap-6">
-        <div className="flex flex-col justify-center items-start min-w-[20%]">
-          <Card className="flex items-start w-full h-full border-none shadow-none">
-            <CardContent className="py-4 w-full">
+      <div className="flex flex-wrap justify-between gap-6">
+        <div className="w-full md:w-1/4 min-w-[20%] flex justify-start md:justify-center">
+          <Card className="w-auto max-w-xs border-none shadow-none">
+            <CardContent className="py-4">
               <CCVBars />
               <h3 className="flex items-center font-semibold text-black text-[32px]">
                 {<FaCalendarAlt className="mr-3" />}
