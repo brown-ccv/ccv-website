@@ -1,14 +1,13 @@
 "use client"
 
-import { use, useEffect, useState } from "react"
-import { getStringDate } from "@/components/calendar/utils"
+import { use, useState } from "react"
 import CalendarEvent from "@/components/calendar/CalendarEvent"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import { Card, CardContent } from "@/components/ui/card"
 import CCVBars from "@/components/assets/CCVBars"
 import { FaCalendarAlt } from "react-icons/fa"
-import { Button } from "./ui/button"
+import { Button } from "@/components/ui/button"
 
 const events_url = "https://events.brown.edu/ccv/all"
 
