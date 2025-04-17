@@ -75,13 +75,13 @@ export function EventSection({
       <div className="flex flex-wrap justify-evenly gap-6">
         <div className="flex flex-col justify-center items-start min-w-[20%]">
           <Card className="flex items-start w-full h-full border-none shadow-none">
-            <CardContent className="py-4">
+            <CardContent className="py-4 w-full">
               <CCVBars />
               <h3 className="flex items-center font-semibold text-black text-[32px]">
                 {<FaCalendarAlt className="mr-3" />}
                 Events
               </h3>
-              <p className="font-serif italic text-black text-[20px] text-style mt-[12px]">
+              <p className="font-serif font-light italic text-black text-xl text-style mt-[12px]">
                 What's next at CCV
               </p>
               <Button
