@@ -31,8 +31,8 @@ export const HeroCard: React.FC = () => {
               <div key={index} className="max-w-sm">
                 <div className="inline-flex items-center gap-2 py-8">
                   <div className="relative">
-                    <CCVBars className="mb-2" />
-                    <h3 className="mt-4 font-semibold text-black text-2xl tracking-tight leading-tight">
+                    <CCVBars />
+                    <h3 className="font-semibold text-black text-2xl tracking-tight leading-tight">
                       {card.title}
                     </h3>
                   </div>
