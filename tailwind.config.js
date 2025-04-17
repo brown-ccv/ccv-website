@@ -174,7 +174,7 @@ module.exports = {
         900: "#5A0E72",
       },
       red: {
-        university: "#C00404"
+        university: "#C00404",
       },
       neutral: {
         900: "#242424",
@@ -190,7 +190,7 @@ module.exports = {
         500: "#003c70",
         300: "#527da1",
         50: "#a3b8ca",
-        navbar: "060839",
+        navbar: "#060839",
       },
       keppel: {
         800: "#0A6559",
@@ -355,8 +355,8 @@ module.exports = {
       DEFAULT: "1",
     },
     fontFamily: {
-      sans: ['var(--font-sans)', 'sans-serif'],
-      serif: ['var(--font-serif)', 'serif'],
+      sans: ["var(--font-sans)", "sans-serif"],
+      serif: ["var(--font-serif)", "serif"],
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],
