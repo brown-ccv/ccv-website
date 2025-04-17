@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button"
 export const HeroHome = () => {
   return (
     <Hero image={`url(/static/images/hero-landing.jpeg)`}>
-      {/* Sticky top navbar */}
-      <div className="flex-1 flex items-center px-[8vw]">
-        <div className="flex flex-col w-full text-white space-y-8">
+      {/* Hero content */}
+      <div className="relative flex-1 flex items-start px-[8vw]">
+        <div className="absolute top-[12%] flex flex-col w-full text-white space-y-8">
           <TypingAnimation className="font-bold text-4xl md:text-5xl lg:text-6xl max-w-full">
             Advancing Computational Research
           </TypingAnimation>
@@ -20,7 +20,7 @@ export const HeroHome = () => {
             scientific and computing expertise.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 pt-0 md:pt-20">
             <Button
               variant="secondary_filled"
               className="h-[55px] w-full sm:w-[155px] rounded-[50px] font-semibold text-lg"

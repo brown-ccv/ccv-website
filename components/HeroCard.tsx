@@ -23,7 +23,7 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <div className="relative z-10 flex justify-center mx-auto" style={{ marginTop: "-150px" }}>
+    <div className="relative z-10 flex justify-center mx-auto mt-0 md:-mt-[150px]">
       <Card className={cardVariants({ variant: "elevated" })}>
         <CardContent className="p-10">
           <div className="flex justify-center items-start gap-20 flex-wrap">
