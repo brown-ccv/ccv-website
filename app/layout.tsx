@@ -1,6 +1,6 @@
 import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
 import "@/app/globals.css"
-import { Footer } from "@/components/Footer"
+import Footer from "@/components/Footer"
 
 // Load each font with desired weights and subsets
 const inter = Inter({ subsets: ["latin"] })
