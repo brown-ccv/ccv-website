@@ -31,7 +31,7 @@ export default async function Header() {
           </div>
         </StatusBanner>
       ) : (
-        <StatusBanner className="bg-keppel-500 bg-opacity-50">
+        <StatusBanner>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             <p className="text-base text-gray-900">All Services Operational</p>
             <Button 

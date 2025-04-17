@@ -17,7 +17,7 @@ export default function StatusBanner({ children, isOperational }: { children: Re
       {children}
       <div className="flex flex-1 justify-end">
         <Button
-          variant="icon"
+          variant="icon_only_outlined"
           iconOnly={<XMarkIcon aria-hidden="true" className="size-5 text-white" />}
           onClick={() => setIsOpen(false)}
         >

@@ -170,6 +170,12 @@ module.exports = {
         light: "#3A3A3A",
         dark: "#272727",
       },
+      purple: {
+        900: "#5A0E72",
+      },
+      red: {
+        university: "#C00404"
+      },
       neutral: {
         900: "#242424",
         700: "#282E33",
@@ -185,12 +191,6 @@ module.exports = {
         300: "#527da1",
         50: "#a3b8ca",
         navbar: "060839",
-      },
-      red: {
-        university: "#C00404"
-      },
-      purple: {
-        impact: "#5A0E72",
       },
       keppel: {
         800: "#0A6559",
