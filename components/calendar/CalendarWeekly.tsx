@@ -177,7 +177,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
       <div
         ref={container}
-        className="isolate border-white border-t-2 shadow ring-1 ring-black ring-opacity-5 flex flex-auto flex-col overflow-auto bg-gray"
+        className="isolate border-white border-t-2 shadow ring-1 ring-black ring-opacity-5 flex flex-auto flex-col overflow-auto bg-white"
       >
         <div
           style={{ width: "165%" }}
