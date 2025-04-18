@@ -84,8 +84,8 @@ export function EventSection({
                 What's next at CCV
               </p>
               <Button
-                className="h-[55px] w-[176px] rounded-[50px] font-semibold text-[20px] mt-[34px]"
-                variant="filled_primary"
+                className="h-[55px] w-[176px] rounded-[50px] font-semibold text-lg mt-[34px]"
+                variant="primary_filled"
               >
                 <a href={events_url} target="_blank" rel="noopener noreferrer">
                   View All Events
