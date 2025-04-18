@@ -1,37 +1,81 @@
 import { cva } from "class-variance-authority"
 
 export const buttonVariants = cva(
-  "rounded-full text-sm font-medium transition-colors focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center rounded-full font-medium transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:h-4 [&_svg]:w-4",
   {
     variants: {
       variant: {
-        primary_filled: "bg-keppel-500 text-white shadow hover:bg-keppel-300 focus:bg-keppel-500 active:bg-keppel-700",
-        secondary_filled: "bg-sunglow-400 text-black shadow hover:bg-sunglow-300 focus:bg-sunglow-400 active:bg-sunglow-700",
-        primary_outlined: "border-2 border-keppel-500 text-keppel-500 bg-transparent hover:border-keppel-300 hover:text-keppel-300 active:bg-keppel-50 active:border-keppel-700 active:text-keppel-700",
-        secondary_outlined: "border-2 border-sunglow-400 text-sunglow-400 bg-transparent hover:border-sunglow-300 hover:text-sunglow-300 active:bg-sunglow-50 active:border-sunglow-700 active:text-sunglow-700",
-        black_filled: "border-2 border-black text-white hover:border-neutral-700 hover:text-white active:border-neutral-700 active:text-white",
-        icon_only_outlined: "-m-3 p-3 text-black hover:border-neutral-700 rounded-full",
+        // ————————————————————— Primary Filled —————————————————————
+        primary_filled: [
+          "bg-keppel-500 text-white shadow-sm",
+          "hover:bg-keppel-400",
+          "focus-visible:ring-2 focus-visible:ring-keppel-500",
+          "active:bg-keppel-700",
+        ].join(" "),
+        // ————————————————————— Secondary Filled ————————————————————
+        secondary_filled: [
+          "bg-sunglow-400 text-black shadow-sm",
+          "hover:bg-sunglow-200",
+          "focus-visible:ring-2 focus-visible:ring-sunglow-400",
+          "active:bg-sunglow-700",
+        ].join(" "),
+        // ————————————————————— Primary Outlined ————————————————————
+        primary_outlined: [
+          "bg-transparent border-2 border-keppel-500 text-keppel-500",
+          "hover:border-keppel-400 hover:text-keppel-400",
+          "focus-visible:ring-2 focus-visible:ring-keppel-500",
+          "active:bg-keppel-50 active:border-keppel-700 active:text-keppel-700",
+        ].join(" "),
+        // ————————————————————— Secondary Outlined ———————————————————
+        secondary_outlined: [
+          "bg-transparent border-2 border-sunglow-400 text-sunglow-400",
+          "hover:border-sunglow-200 hover:text-sunglow-200",
+          "focus-visible:ring-2 focus-visible:ring-sunglow-400",
+          "active:bg-sunglow-50 active:border-sunglow-700 active:text-sunglow-700",
+        ].join(" "),
+        // ————————————————————— Black Filled ——————————————————————
+        black_filled: [
+          "bg-neutral-900 text-white shadow-sm",
+          "hover:bg-neutral-700",
+          "focus-visible:ring-2 focus-visible:ring-neutral-900",
+          "active:bg-neutral-800",
+        ].join(" "),
+        // ——————————————————— Icon Only (filled, for black icon buttons) ———————————————————
+        icon_only: [
+          "inline-flex items-center justify-center rounded-full",
+          "bg-neutral-900 text-white shadow-sm",
+          "hover:bg-neutral-700",
+          "focus-visible:ring-2 focus-visible:ring-neutral-900",
+          "active:bg-neutral-800",
+        ].join(" "),
         unstyled: "",
       },
+
       size: {
-        default: "h-9 px-4 py-2",
+        default: "h-9 px-4 text-sm",
         sm: "h-8 px-3 text-xs",
-        lg: "h-10 px-8",
+        lg: "h-10 px-8 text-base",
+        // big circle for icon-only
         icon: "h-9 w-9 p-0",
+        // small circle for icon-only
+        "icon-sm": "h-8 w-8 p-0",
       },
+
       iconPosition: {
+        none: "justify-center",
         left: "flex-row",
         right: "flex-row-reverse",
-        none: "",
       },
     },
+
     defaultVariants: {
       variant: "primary_filled",
       size: "default",
       iconPosition: "none",
     },
   }
-)
+);
+
 
 export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full", {
   variants: {

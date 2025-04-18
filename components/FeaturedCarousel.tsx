@@ -48,7 +48,7 @@ export const FeaturedCarousel: React.FC = () => {
     <section className="w-full relative mt-[90px] flex items-center justify-center">
 
       <Button
-        variant="icon_only_outlined"
+        variant="icon_only"
         size="icon"
         iconOnly={<ChevronLeftIcon className="h-8 w-8" />}
         aria-label="left"
@@ -57,7 +57,7 @@ export const FeaturedCarousel: React.FC = () => {
       />
 
       <Button
-        variant="icon_only_outlined"
+        variant="icon_only"
         size="icon"
         iconOnly={<ChevronRightIcon className="h-8 w-8" />}
         aria-label="right"

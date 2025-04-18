@@ -17,7 +17,9 @@ export default function StatusBanner({ children, isOperational }: { children: Re
       {children}
       <div className="flex flex-1 justify-end">
         <Button
-          variant="icon_only_outlined"
+          variant="icon_only"
+          size="icon-sm"
+          className="bg-transparent hover:bg-red-university/10"
           iconOnly={<XMarkIcon aria-hidden="true" className="size-5 text-white" />}
           onClick={() => setIsOpen(false)}
         >
