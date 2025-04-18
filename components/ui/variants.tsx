@@ -16,7 +16,7 @@ export const buttonVariants = cva(
         secondary_filled: [
           "bg-sunglow-400 text-black shadow-sm",
           "hover:bg-sunglow-200",
-          "focus-visible:ring-2 focus-visible:ring-sunglow-400",
+          "focus-visible:ring-2 focus-visible:ring-sunglow-200",
           "active:bg-sunglow-700",
         ].join(" "),
         // ————————————————————— Primary Outlined ————————————————————
@@ -49,6 +49,14 @@ export const buttonVariants = cva(
           "active:bg-neutral-800",
         ].join(" "),
         unstyled: "",
+        // —————————————————— icon only, outlined ——————————————————
+        icon_only_outlined: [
+          "bg-transparent",
+          "border-2 border-neutral-900 text-neutral-900",
+          "hover:border-neutral-700 hover:text-neutral-700",
+          "focus-visible:ring-2 focus-visible:ring-neutral-900",
+          "active:bg-neutral-50 active:border-neutral-700 active:text-neutral-700",
+        ].join(" "),
       },
 
       size: {
