@@ -6,9 +6,9 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary_filled: "bg-keppel-500 text-white shadow hover:bg-keppel-300 focus:bg-keppel-500 active:bg-keppel-700",
-        secondary_filled: "bg-sunglow-500 text-black shadow hover:bg-sunglow-300 focus:bg-sunglow-500 active:bg-sunglow-700",
+        secondary_filled: "bg-sunglow-400 text-black shadow hover:bg-sunglow-300 focus:bg-sunglow-400 active:bg-sunglow-700",
         primary_outlined: "border-2 border-keppel-500 text-keppel-500 bg-transparent hover:border-keppel-300 hover:text-keppel-300 active:bg-keppel-50 active:border-keppel-700 active:text-keppel-700",
-        secondary_outlined: "border-2 border-sunglow-500 text-sunglow-500 bg-transparent hover:border-sunglow-300 hover:text-sunglow-300 active:bg-sunglow-50 active:border-sunglow-700 active:text-sunglow-700",
+        secondary_outlined: "border-2 border-sunglow-400 text-sunglow-400 bg-transparent hover:border-sunglow-300 hover:text-sunglow-300 active:bg-sunglow-50 active:border-sunglow-700 active:text-sunglow-700",
         black_filled: "border-2 border-black text-white hover:border-neutral-700 hover:text-white active:border-neutral-700 active:text-white",
         icon_only_outlined: "-m-3 p-3 text-black hover:border-neutral-700 rounded-full",
         unstyled: "",
@@ -37,7 +37,7 @@ export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs f
   variants: {
     color: {
       keppel: "bg-keppel-500 text-white",
-      sunglow: "bg-sunglow-500 text-black",
+      sunglow: "bg-sunglow-400 text-black",
       purple: "bg-purple-500 text-white",
       sky: "bg-sky-500 text-white",
       emerald: "bg-emerald-500 text-white",

@@ -1,7 +1,7 @@
 import { Opportunities } from "@/components/Opportunities"
 import { getWorkdayData } from "@/app/about/queries"
 import { UserPlusIcon } from "@heroicons/react/24/solid"
-import SectionHeader from "@/components/SectionHeader"
+import { SectionHeader } from "@/components/ui/section-header"
 import Spinner from "@/components/assets/Spinner"
 import Link from "next/link"
 import React, { Suspense } from "react"

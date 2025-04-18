@@ -15,31 +15,31 @@ const CCVLogo: React.FC<LogoProps> = ({ width = 75 }) => {
       >
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M117,98c-4.4,0-8-3.6-8-8V18c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8v72c0,4.4-3.6,8-8,8H117z"
           />
         </g>
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M216,98c-4.4,0-8-3.6-8-8V18c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8v72c0,4.4-3.6,8-8,8H216z"
           />
         </g>
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M18,197c-4.4,0-8-3.6-8-8v-72c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8v72c0,4.4-3.6,8-8,8H18z"
           />
         </g>
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M117,296c-4.4,0-8-3.6-8-8v-72c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8v72c0,4.4-3.6,8-8,8H117z"
           />
         </g>
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M216,296c-4.4,0-8-3.6-8-8v-72c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8v72c0,4.4-3.6,8-8,8H216z"
           />
         </g>
@@ -75,31 +75,31 @@ const CCVLogo: React.FC<LogoProps> = ({ width = 75 }) => {
         </g>
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M594,190c0,4.4-3.6,8-8,8h-72c-4.4,0-8-3.6-8-8v-72c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8V190z"
           />
         </g>
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M594,91c0,4.4-3.6,8-8,8h-72c-4.4,0-8-3.6-8-8V19c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8V91z"
           />
         </g>
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M693,289c0,4.4-3.6,8-8,8h-72c-4.4,0-8-3.6-8-8v-72c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8V289z"
           />
         </g>
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M792,190c0,4.4-3.6,8-8,8h-72c-4.4,0-8-3.6-8-8v-72c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8V190z"
           />
         </g>
         <g>
           <path
-            className="fill-sunglow-500"
+            className="fill-sunglow-400"
             d="M792,91c0,4.4-3.6,8-8,8h-72c-4.4,0-8-3.6-8-8V19c0-4.4,3.6-8,8-8h72c4.4,0,8,3.6,8,8V91z"
           />
         </g>
