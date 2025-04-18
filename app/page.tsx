@@ -44,14 +44,6 @@ export default async function Home() {
             />
           </Suspense>
         </div>
-        <div className="flex justify-center">
-          <a
-            className="bg-keppel-700 text-white p-4 rounded"
-            href="https://events.brown.edu/ccv/all"
-          >
-            VIEW ALL EVENTS
-          </a>
-        </div>
       </div>
     )
   } catch (err: any) {
@@ -59,14 +51,6 @@ export default async function Home() {
     return (
       <div className="px-2 my-6 space-y-2">
         <p>{err.message}</p>
-        <div className="flex justify-center">
-          <a
-            className="bg-keppel-700 text-white p-4 rounded"
-            href="https://events.brown.edu/ccv/all"
-          >
-            VIEW ALL EVENTS
-          </a>
-        </div>
       </div>
     )
   }
