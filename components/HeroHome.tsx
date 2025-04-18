@@ -25,14 +25,14 @@ export const HeroHome = () => {
 
           <div className="flex flex-col sm:flex-row gap-4">
             <Button
-              variant="filled_secondary"
+              variant="secondary_filled"
               className="h-[55px] w-full sm:w-[155px] rounded-[50px] font-semibold text-lg"
             >
               Work with Us
             </Button>
 
             <Button
-              variant="outline_secondary"
+              variant="secondary_outlined"
               className="h-[55px] w-full sm:w-[155px] rounded-[50px] font-semibold text-lg"
               onClick={() => scrollToID("events")}
             >

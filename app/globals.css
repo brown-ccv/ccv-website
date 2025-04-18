@@ -20,9 +20,6 @@
   html,
   body {
     @apply h-full;
-  }
-
-  body {
     @apply bg-white;
   }
 }

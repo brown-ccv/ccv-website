@@ -16,11 +16,11 @@ export const BrownBanner: React.FC = () => {
             Center for Computation and Visualization
           </h1>
           <Button
-            variant="outline_primary"
-            className="border-red-university text-red-university font-semibold rounded-none w-[159px] h-[50px] hover:bg-red-university hover:text-white hover:border-red-university"
+            variant="primary_outlined"
+            className="absolute right-[49px] top-[50%] transform -translate-y-1/2 border-red-university text-red-university font-semibold rounded-none w-[159px] h-[50px] hover:bg-red-university hover:text-white hover:border-red-university"
           >
-            <a
-              href="mailto:ccv-support@brown.edu"
+            <a 
+              href="mailto:ccv-support@brown.edu" 
               className="flex items-center justify-center w-full h-full"
             >
               <MessagesSquareIcon className="mr-2 h-[26px] w-[26px]" />

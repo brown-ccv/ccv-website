@@ -143,19 +143,11 @@ module.exports = {
       current: colors.current,
       transparent: colors.transparent,
       black: colors.black,
-      brown: {
-        500: "#4E3629", 
-        university: "#4e3629"
-      },
       white: colors.white,
       slate: colors.slate,
       gray: colors.gray,
       zinc: colors.zinc,
       stone: colors.stone,
-      red: {
-        500: "#ED1C24", 
-        university: "#C00404"
-      },
       ruby: "#450a0a",
       orange: colors.orange,
       amber: colors.amber,
@@ -174,23 +166,15 @@ module.exports = {
       pink: colors.pink,
       rose: colors.rose,
       cream: "#b7b09c",
-      primary: {
-        900: "#004d41",
-        700: "#00806C",
-        500: "#00B398",
-        300: "#00E6C3",
-        100: "#19FFDD",
-        50: "#afcec9",
-        neutral: "#b9bbbf",
+      gradient: {
+        light: "#3A3A3A",
+        dark: "#272727",
       },
-      secondary: {
-        900: "#C79200",
-        700: "#FAB700",
-        500: "#FFC72E",
-        300: "#FFD561",
-        100: "#FFE294",
-        50: "#f9ecca",
-        neutral: "#d1d5db",
+      purple: {
+        900: "#5A0E72",
+      },
+      red: {
+        university: "#C00404"
       },
       neutral: {
         900: "#242424",
@@ -206,10 +190,28 @@ module.exports = {
         500: "#003c70",
         300: "#527da1",
         50: "#a3b8ca",
+        navbar: "#060839",
       },
-      banner: {
-        purple: "#4b004f",
-        blue: "#060734",
+      keppel: {
+        800: "#0A6559",
+        700: "#00947D",
+        600: "#00b398",
+        500: "#04c8a6",
+        400: "#1de4bf",
+        300: "#51f7d3",
+        200: "#90ffe2",
+        100: "#c7fff1",
+        50: "#effefa",
+      },
+      sunglow: {
+        700: "#b75506",
+        600: "#dd7a02",
+        500: "#f9a207",
+        400: "#ffc72c",
+        300: "#ffd74a",
+        200: "#ffe988",
+        100: "#fff5c6",
+        50: "#fffbeb",
       },
     }),
     columns: {

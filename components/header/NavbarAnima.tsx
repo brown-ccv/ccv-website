@@ -172,7 +172,7 @@ export const NavbarAnima: React.FC = () => {
             {isSearchExpanded ? (
               <div className="flex items-center">
                 <Button
-                  variant="filled_secondary"
+                  variant="secondary_filled"
                   className="w-[45px] h-[45px] rounded-full bg-extendedsunglow-400 ml-2"
                   onClick={handleSearchToggle}
                 >
@@ -181,7 +181,7 @@ export const NavbarAnima: React.FC = () => {
               </div>
             ) : (
               <Button
-                variant="filled_secondary"
+                variant="secondary_filled"
                 className="w-[45px] h-[45px] rounded-full"
                 onClick={handleSearchToggle}
               >

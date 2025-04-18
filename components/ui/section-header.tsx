@@ -20,7 +20,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         }`}
       >
         <CCVBars />
-        <h2 className="font-semibold text-defaultblack text-[40px] tracking-[-1.20px]">
+        <h2 className="font-semibold text-black text-4xl tracking-tighter">
           {title}
         </h2>
       </div>

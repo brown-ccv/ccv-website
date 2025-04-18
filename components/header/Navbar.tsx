@@ -97,10 +97,10 @@ const MobileLinks = () => {
         return (
           <div key={path.href}>
             <DropdownMenuLabel>{path.title}</DropdownMenuLabel>
-            <DropdownMenuItem className="p-2 hover:bg-white hover:text-secondary-blue-700">
+            <DropdownMenuItem className="p-2 hover:bg-white hover:text-700">
               <Link
                 href={path.href}
-                className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+                className="p-2 focus:outline-none focus:bg-white focus:text-700"
               >
                 Explore {path.title}
               </Link>
@@ -110,11 +110,11 @@ const MobileLinks = () => {
                 return (
                   <DropdownMenuItem
                     key={route.href}
-                    className="p-2 hover:bg-white hover:text-secondary-blue-700"
+                    className="p-2 hover:bg-white hover:text-700"
                   >
                     <Link
                       href={route.href}
-                      className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+                      className="p-2 focus:outline-none focus:bg-white focus:text-700"
                     >
                       {route.title}
                     </Link>
@@ -136,10 +136,10 @@ const NavigationLinks: React.FC<NavigationProps> = ({
   return (
     <NavigationMenu.Content className="absolute top-[100%] z-50 w-max rounded-md shadow-md">
       <ul className="list-none p-4 m-0 bg-neutral-50 flex flex-col gap-2">
-        <li className="p-2 hover:bg-white hover:text-secondary-blue-700">
+        <li className="p-2 hover:bg-white hover:text-700">
           <NavigationMenu.Link
             href={parentHref}
-            className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+            className="p-2 focus:outline-none focus:bg-white focus:text-700"
           >
             Explore {parentTitle}
           </NavigationMenu.Link>
@@ -148,11 +148,11 @@ const NavigationLinks: React.FC<NavigationProps> = ({
           routes.map((route) => (
             <li
               key={route.href}
-              className="p-2 hover:bg-white hover:text-secondary-blue-700"
+              className="p-2 hover:bg-white hover:text-700"
             >
               <NavigationMenu.Link
                 href={route.href}
-                className="p-2 focus:outline-none focus:bg-white focus:text-secondary-blue-700"
+                className="p-2 focus:outline-none focus:bg-white focus:text-700"
               >
                 {route.title}
               </NavigationMenu.Link>

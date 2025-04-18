@@ -12,17 +12,28 @@ export default function StatusBanner({ children, isOperational }: { children: Re
   return (
     <div
       className={`relative isolate w-full flex items-center gap-x-6 overflow-hidden px-6 py-2.5 sm:px-3.5 sm:before:flex-1 
-      ${isOperational ? "bg-primary-500 bg-opacity-50" : "bg-red-university"}`}
+      ${isOperational ? "bg-keppel-500 bg-opacity-50" : "bg-red-university"}`}
     >
       {children}
       <div className="flex flex-1 justify-end">
-        <Button
-          variant="icon"
-          iconOnly={<XMarkIcon aria-hidden="true" className="size-5 text-white" />}
-          onClick={() => setIsOpen(false)}
-        >
-          Dismiss
-        </Button>
+      <Button
+        variant="icon_only"
+        size="icon-sm"
+        aria-label="Dismiss banner"
+        onClick={() => setIsOpen(false)}
+        className="
+          bg-transparent
+          text-white
+
+          hover:bg-white
+          hover:text-red-university
+
+          active:bg-neutral-50
+        "
+        iconOnly={
+          <XMarkIcon aria-hidden="true" className="h-5 w-5" />
+        }
+      />
       </div>
     </div>
   )

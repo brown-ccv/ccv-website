@@ -109,7 +109,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             <Tooltip>
               <TooltipTrigger className="rounded-md max-w-[100%] px-2 hover:bg-neutral-50">
                 <a href={event.url} target="_blank">
-                  <p className="flex-auto min-w-0 truncate font-medium text-secondary-blue-700">
+                  <p className="flex-auto min-w-0 truncate font-medium text-700">
                     {event.title}
                   </p>
                 </a>
@@ -119,7 +119,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                 <a
                   href={event.url}
                   target="_blank"
-                  className="flex gap-1 text-secondary-blue-500"
+                  className="flex gap-1 text-500"
                 >
                   <p className="font-semibold hover:underline">{event.title}</p>
                   <ArrowTopRightOnSquareIcon
@@ -130,10 +130,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
 
                 <time
                   dateTime={event.date_utc}
-                  className="hidden flex-none text-primary-500 group-hover:text-secondary-blue-500 group-hover:font-semibold xl:flex xl:items-center"
+                  className="hidden flex-none text-keppel-500 group-hover:text-500 group-hover:font-semibold xl:flex xl:items-center"
                 >
                   <ClockIcon
-                    className="mr-1 h-4 w-4 text-primary-500"
+                    className="mr-1 h-4 w-4 text-keppel-500"
                     aria-hidden="true"
                   />
                   {event.date_time}
@@ -155,7 +155,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             <a
               href={event.url}
               target="_blank"
-              className="flex gap-1 text-secondary-blue-500"
+              className="flex gap-1 text-500"
             >
               <p className="font-semibold hover:underline">{event.title}</p>
               <ArrowTopRightOnSquareIcon
@@ -165,10 +165,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             </a>
             <time
               dateTime={event.date_utc}
-              className="mt-2 flex items-center text-primary-500"
+              className="mt-2 flex items-center text-keppel-500"
             >
               <ClockIcon
-                className="mr-2 h-5 w-5 text-primary-500"
+                className="mr-2 h-5 w-5 text-keppel-500"
                 aria-hidden="true"
               />
               {event.date_time}
@@ -206,7 +206,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             dateTime={day.dateString}
             className={
               day.isToday
-                ? "flex h-6 w-6 items-center justify-center rounded-full bg-secondary-yellow-500 font-semibold"
+                ? "flex h-6 w-6 items-center justify-center rounded-full bg-sunglow-yellow-500 font-semibold"
                 : undefined
             }
           >
@@ -242,7 +242,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             isSameDay(day.date, selectedDate) && "text-white",
             !isSameDay(day.date, selectedDate) &&
               day.isToday &&
-              "text-secondary-blue-500 bg-secondary-yellow-500",
+              "text-500 bg-sunglow-yellow-500",
             !isSameDay(day.date, selectedDate) &&
               day.isCurrentMonth &&
               !day.isToday &&
@@ -260,7 +260,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               isSameDay(day.date, selectedDate) &&
                 "flex h-6 w-6 items-center justify-center rounded-full",
               day.isToday &&
-                "flex h-6 w-6 items-center justify-center rounded-full bg-secondary-yellow-500",
+                "flex h-6 w-6 items-center justify-center rounded-full bg-sunglow-yellow-500",
               isSameDay(day.date, selectedDate) &&
                 !day.isToday &&
                 "bg-gray-900",
@@ -275,7 +275,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               {validDayEvents.map((event) => (
                 <span
                   key={event.id}
-                  className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-secondary-blue-700"
+                  className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-700"
                 />
               ))}
             </span>
