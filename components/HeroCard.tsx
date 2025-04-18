@@ -32,12 +32,12 @@ export const HeroCard: React.FC = () => {
                 <div className="inline-flex items-center gap-2 py-8">
                   <div className="relative">
                     <CCVBars />
-                    <h3 className="mt-4 font-semibold text-black text-2xl tracking-tight leading-tight">
+                    <h3 className="font-semibold text-black text-2xl tracking-tight leading-tight">
                       {card.title}
                     </h3>
                   </div>
                 </div>
-                <p className="text-black text-xl mt-6">{card.description}</p>
+                <p className="text-black text-xl">{card.description}</p>
               </div>
             ))}
           </div>

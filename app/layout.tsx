@@ -14,7 +14,7 @@ const sourceSans = Source_Sans_3({
 
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["200", "300", "400", "700"],
   variable: "--font-serif",
   display: "swap",
 })
