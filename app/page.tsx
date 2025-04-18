@@ -1,7 +1,12 @@
+import Header from "@/components/header/Header"
+import { HeroHome } from "@/components/HeroHome"
+import { HeroCard } from "@/components/HeroCard"
+import { ImpactBanner } from "@/components/ImpactBanner"
+import Navbar from "@/components/header/Navbar"
+import { FeaturedCarousel } from "@/components/FeaturedCarousel"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
-import SectionHeader from "@/components/SectionHeader"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
 
@@ -17,19 +22,31 @@ export default async function Home() {
     const pastDates = getEventData(`-2 months${today}`)
 
     return (
-      <div className="px-2 my-6 space-y-2">
-        <SectionHeader href={"#events"} title={"Events"} />
-        <Suspense fallback={<Spinner />}>
-          <EventSection
-            streamedDataPast={pastDates}
-            streamedDataFuture={futureDates}
-            currentDate={currentDate}
-            today={today}
-          />
-        </Suspense>
+      <div className="w-full">
+        <Header />
+        <Navbar />
+        <div className="relative w-full flex flex-col">
+          <HeroHome />
+          <HeroCard />
+          <ImpactBanner />
+          <FeaturedCarousel />
+        </div>
+        <div
+          id="events"
+          className="sm:px-2 lg:px-20 sm:py-8 lg:py-12 w-full bg-gray-100"
+        >
+          <Suspense fallback={<Spinner />}>
+            <EventSection
+              streamedDataPast={pastDates}
+              streamedDataFuture={futureDates}
+              currentDate={currentDate}
+              today={today}
+            />
+          </Suspense>
+        </div>
         <div className="flex justify-center">
           <a
-            className="bg-secondary-blue-500 text-white p-4 rounded"
+            className="bg-keppel-700 text-white p-4 rounded"
             href="https://events.brown.edu/ccv/all"
           >
             VIEW ALL EVENTS
@@ -41,11 +58,10 @@ export default async function Home() {
     console.error(err)
     return (
       <div className="px-2 my-6 space-y-2">
-        <SectionHeader href={"#events"} title={"Events"} />
         <p>{err.message}</p>
         <div className="flex justify-center">
           <a
-            className="bg-secondary-blue-500 text-white p-4 rounded"
+            className="bg-keppel-700 text-white p-4 rounded"
             href="https://events.brown.edu/ccv/all"
           >
             VIEW ALL EVENTS

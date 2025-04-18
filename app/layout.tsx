@@ -1,28 +1,45 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import React from "react"
-import Header from "@/components/header/Header"
+import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
+import "@/app/globals.css"
 import Footer from "@/components/Footer"
 
+// Load each font with desired weights and subsets
 const inter = Inter({ subsets: ["latin"] })
 
-export const metadata: Metadata = {
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+})
+
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "700"],
+  variable: "--font-serif",
+  display: "swap",
+})
+
+export const metadata = {
   title: "CCV",
   description: "Center for Computation & Visualization",
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        <main>{children}</main>
-        <Footer />
+    <html
+      lang="en"
+      className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}
+    >
+      <head></head>
+      <body className={`${inter.className}`}>
+        <div className="bg-white flex flex-col justify-between">
+          <div className="bg-white w-full flex-grow">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   )
