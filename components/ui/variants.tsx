@@ -7,31 +7,31 @@ export const buttonVariants = cva(
       variant: {
         // ————————————————————— Primary Filled —————————————————————
         primary_filled: [
-          "bg-keppel-500 text-white shadow-sm",
-          "hover:bg-keppel-400",
-          "focus-visible:ring-2 focus-visible:ring-keppel-500",
-          "active:bg-keppel-700",
+          "bg-keppel-700 text-white shadow-sm",
+          "hover:bg-keppel-500",
+          "focus-visible:ring-2 focus-visible:ring-keppel-600",
+          "active:bg-keppel-600",
         ].join(" "),
         // ————————————————————— Secondary Filled ————————————————————
         secondary_filled: [
           "bg-sunglow-400 text-black shadow-sm",
           "hover:bg-sunglow-200",
-          "focus-visible:ring-2 focus-visible:ring-sunglow-200",
-          "active:bg-sunglow-700",
+          "focus-visible:ring-2 focus-visible:ring-sunglow-300",
+          "active:bg-sunglow-300",
         ].join(" "),
         // ————————————————————— Primary Outlined ————————————————————
         primary_outlined: [
-          "bg-transparent border-2 border-keppel-500 text-keppel-500",
-          "hover:border-keppel-400 hover:text-keppel-400",
-          "focus-visible:ring-2 focus-visible:ring-keppel-500",
-          "active:bg-keppel-50 active:border-keppel-700 active:text-keppel-700",
+          "bg-transparent border-2 border-keppel-700 text-keppel-700",
+          "hover:border-keppel-500 hover:text-keppel-500",
+          "focus-visible:ring-2 focus-visible:ring-keppel-600",
+          "active:bg-keppel-50 active:border-keppel-600 active:text-keppel-600",
         ].join(" "),
         // ————————————————————— Secondary Outlined ———————————————————
         secondary_outlined: [
           "bg-transparent border-2 border-sunglow-400 text-sunglow-400",
           "hover:border-sunglow-200 hover:text-sunglow-200",
           "focus-visible:ring-2 focus-visible:ring-sunglow-400",
-          "active:bg-sunglow-50 active:border-sunglow-700 active:text-sunglow-700",
+          "active:bg-sunglow-50 active:border-sunglow-300 active:text-sunglow-300",
         ].join(" "),
         // ————————————————————— Black Filled ——————————————————————
         black_filled: [
