@@ -96,7 +96,7 @@ const navItems = [
   },
 ]
 
-export const NavbarAnima: React.FC = () => {
+export const Navbar: React.FC = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 
   const handleSearchToggle = () => {
@@ -215,4 +215,4 @@ const NavigationLinks: React.FC<NavigationProps> = ({
   )
 }
 
-export default NavbarAnima
+export default Navbar

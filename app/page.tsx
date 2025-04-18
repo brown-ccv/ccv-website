@@ -2,7 +2,7 @@ import Header from "@/components/header/Header"
 import { HeroHome } from "@/components/HeroHome"
 import { HeroCard } from "@/components/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
-import NavbarAnima from "@/components/header/NavbarAnima"
+import Navbar from "@/components/header/Navbar"
 import { FeaturedCarousel } from "@/components/FeaturedCarousel"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
@@ -24,7 +24,7 @@ export default async function Home() {
     return (
       <div className="w-full">
         <Header />
-        <NavbarAnima />
+        <Navbar />
         <div className="relative w-full flex flex-col">
           <HeroHome />
           <HeroCard />
