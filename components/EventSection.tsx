@@ -73,8 +73,8 @@ export function EventSection({
       </div>
       <div className="flex flex-wrap justify-between gap-6">
         <div className="w-full md:w-1/4 min-w-[20%] flex justify-start md:justify-center">
-          <Card className="w-auto max-w-xs border-none shadow-none">
-            <CardContent className="py-4">
+          <Card className="w-auto max-w-xs border-none shadow-none my-auto sm:mx-auto">
+            <CardContent className="mb-6">
               <CCVBars />
               <h3 className="flex items-center font-semibold text-black text-[32px]">
                 {<FaCalendarAlt className="mr-3" />}
@@ -84,8 +84,8 @@ export function EventSection({
                 What's next at CCV
               </p>
               <Button
-                className="h-[55px] w-[176px] rounded-[50px] font-semibold text-[20px] mt-[34px]"
-                variant="filled_primary"
+                className="h-[55px] w-full sm:w-[155px] font-semibold"
+                variant="primary_filled"
               >
                 <a href={events_url} target="_blank" rel="noopener noreferrer">
                   View All Events
