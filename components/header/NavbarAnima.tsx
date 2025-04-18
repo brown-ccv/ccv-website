@@ -7,6 +7,17 @@ import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 
+interface RouteItem {
+  name: string
+  href: string
+}
+
+interface NavigationProps {
+  routes: RouteItem[]
+  parentTitle: string
+  parentHref: string
+}
+
 const navItems = [
   {
     name: "Services",
