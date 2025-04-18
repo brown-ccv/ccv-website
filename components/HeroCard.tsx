@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
-import { cardVariants } from "@/components/ui/cardVariants"
+import { cardVariants } from "@/components/ui/variants"
 import CCVBars from "@/components/assets/CCVBars"
 
 const heroCards = [

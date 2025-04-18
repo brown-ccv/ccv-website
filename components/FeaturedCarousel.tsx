@@ -51,7 +51,7 @@ export const FeaturedCarousel: React.FC = () => {
         variant="icon_only_outlined"
         size="icon"
         iconOnly={<ChevronLeftIcon className="h-8 w-8" />}
-        aria-label="left"
+        aria-label="previous project"
         className="absolute left-12 top-1/2 transform -translate-y-1/2 w-[45px] h-[45px] rounded-full bg-white border border-neutral-300 shadow-lg z-10"
         onClick={handlePrevProject}
       />
@@ -60,7 +60,7 @@ export const FeaturedCarousel: React.FC = () => {
         variant="icon_only_outlined"
         size="icon"
         iconOnly={<ChevronRightIcon className="h-8 w-8" />}
-        aria-label="right"
+        aria-label="next project"
         className="absolute right-12 top-1/2 transform -translate-y-1/2 w-[45px] h-[45px] rounded-full bg-white border border-neutral-300 shadow-lg z-10"
         onClick={handleNextProject}
       />

@@ -84,7 +84,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-full text-sunglow-500">
+        <div className="flex flex-col w-full text-sunglow-400">
           {/* Quick Navigation */}
           <FooterSection links={quickNavLinks} />
 
@@ -94,7 +94,7 @@ const Footer = () => {
         <div className="flex flex-row w-full sm:justify-center sm:items-center">
           <a
             href="https://alumni-friends.brown.edu/giving"
-            className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-500 hover:bg-sunglow-500 hover:text-[#4E3629] "
+            className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-[#4E3629] "
           >
             Give to Brown
             <FaArrowRight className="inline-block ml-2 text-sunglow-400 group-hover:text-[#4E3629]" />
