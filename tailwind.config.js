@@ -174,7 +174,7 @@ module.exports = {
         900: "#5A0E72",
       },
       red: {
-        university: "#C00404"
+        university: "#C00404",
       },
       neutral: {
         900: "#242424",
@@ -355,8 +355,8 @@ module.exports = {
       DEFAULT: "1",
     },
     fontFamily: {
-      sans: ['var(--font-sans)', 'sans-serif'],
-      serif: ['var(--font-serif)', 'serif'],
+      sans: ["var(--font-sans)", "sans-serif"],
+      serif: ["var(--font-serif)", "serif"],
     },
     fontSize: {
       xs: ["0.75rem", { lineHeight: "1rem" }],
