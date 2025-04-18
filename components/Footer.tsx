@@ -67,7 +67,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="flex flex-col justify-start items-start sm:justify-center sm:items-center w-full bg-[#4E3629] text-neutral-800">
+    <footer className="flex flex-col justify-start items-start sm:justify-center sm:items-center w-full bg-gradient-to-b from-gradient-light to-gradient-dark text-neutral-800">
       <div className="px-6 py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
         <div className="flex flex-col justify-start items-start mb-8 space-y-2 sm:justify-center sm:items-center md:mb-16">
           <div className="text-xs tracking-widest uppercase text-cream">
@@ -94,16 +94,16 @@ const Footer = () => {
         <div className="flex flex-row w-full sm:justify-center sm:items-center">
           <a
             href="https://alumni-friends.brown.edu/giving"
-            className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-[#4E3629] "
+            className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-black"
           >
             Give to Brown
-            <FaArrowRight className="inline-block ml-2 text-sunglow-400 group-hover:text-[#4E3629]" />
+            <FaArrowRight className="inline-block ml-2 text-sunglow-400 group-hover:text-black" />
           </a>
         </div>
       </div>
 
       {/* Copyright Section */}
-      <div className="flex flex-row items-center justify-between px-6 py-4 w-full bg-[#412D22] font-serif text-base text-cream md:px-24 md:text-lg">
+      <div className="flex flex-row items-center justify-between px-6 py-4 w-full bg-black font-serif text-base text-cream md:px-24 md:text-lg">
         <div>&copy; Brown University</div>
         <CCVLogo />
       </div>
