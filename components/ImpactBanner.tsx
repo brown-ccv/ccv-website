@@ -23,7 +23,6 @@ export const ImpactBanner = (): JSX.Element => {
             </div>
 
             {impactMetrics.map((metric, index) => (
-              // and here: lg:mt-0 instead of md:mt-0
               <div key={index} className="flex flex-col items-center mt-6 lg:mt-0">
                 <div
                   className="bg-gradient-to-br from-purple-900 to-pink-500 bg-clip-text text-transparent
