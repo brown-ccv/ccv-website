@@ -11,7 +11,7 @@ export const HeroHome = () => {
       {/* Hero content */}
       <div className="relative flex-1 flex items-start px-[8vw]">
         <div className="absolute top-[12%] flex flex-col w-full text-white space-y-8">
-          <h2 className="font-semibold text-keppel-500 text-2xl tracking-tighter">
+          <h2 className="font-semibold text-keppel-500 text-2xl">
             Center for Computation and Visualization
           </h2>
 
