@@ -2,7 +2,6 @@ import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
 import "@/app/globals.css"
 import Footer from "@/components/Footer"
 
-// Load each font with desired weights and subsets
 const inter = Inter({ subsets: ["latin"] })
 
 const sourceSans = Source_Sans_3({
@@ -34,10 +33,11 @@ export default async function RootLayout({
       lang="en"
       className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}
     >
-      <head></head>
-      <body className={`${inter.className}`}>
-        <div className="bg-white flex flex-col justify-between">
-          <div className="bg-white w-full flex-grow">{children}</div>
+      <head />
+      <body className={`${inter.className} m-0 p-0`}>
+        {/* 👇 Responsive scale on lg+ screens only */}
+        <div className="w-screen overflow-x-hidden bg-white flex flex-col justify-between lg:scale-[0.75] lg:origin-top">
+          <div className="flex-grow">{children}</div>
           <Footer />
         </div>
       </body>
