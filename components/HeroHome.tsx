@@ -11,6 +11,10 @@ export const HeroHome = () => {
       {/* Hero content */}
       <div className="relative flex-1 flex items-start px-[8vw]">
         <div className="absolute top-[12%] flex flex-col w-full text-white space-y-8">
+          <h2 className="font-semibold text-keppel-500 text-2xl tracking-tighter">
+            Center for Computation and Visualization
+          </h2>
+
           <TypingAnimation className="font-bold text-4xl md:text-5xl lg:text-6xl max-w-full">
             Advancing Computational Research
           </TypingAnimation>
