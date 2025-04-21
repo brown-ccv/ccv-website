@@ -80,11 +80,11 @@ export function EventSection({
                 {<FaCalendarAlt className="mr-3" />}
                 Events
               </h3>
-              <p className="font-serif font-light italic text-black text-xl text-style mt-[12px]">
+              <p className="font-serif font-light italic text-black text-xl text-style mt-[12px] mb-[12px]">
                 What's next at CCV
               </p>
               <Button
-                className="h-[55px] w-auto font-semibold"
+                className="h-[55px] font-semibold"
                 variant="primary_filled"
               >
                 <a href={events_url} target="_blank" rel="noopener noreferrer">
