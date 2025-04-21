@@ -170,7 +170,7 @@ export const Navbar: React.FC = () => {
             ) : (
               <Button
                 variant="secondary_filled"
-                className="w-[45px] h-[45px] rounded-full flex items-center justify-center"
+                className="flex items-center justify-center"
                 iconOnly={<FaSearch />}
                 size="icon"
                 onClick={handleSearchToggle}
