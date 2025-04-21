@@ -34,7 +34,7 @@ export const HeroHome = () => {
 
             <Button
               variant="secondary_outlined"
-              className="h-[55px] font-semibold text-lg"
+              className="h-[55px] font-semibold"
               onClick={() => scrollToID("events")}
             >
               View Events
