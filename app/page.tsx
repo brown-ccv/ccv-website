@@ -2,6 +2,7 @@ import Header from "@/components/header/Header"
 import { HeroHome } from "@/components/HeroHome"
 import { HeroCard } from "@/components/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
+import Navbar from "@/components/header/Navbar"
 import { FeaturedCarousel } from "@/components/FeaturedCarousel"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
@@ -21,9 +22,10 @@ export default async function Home() {
     const pastDates = getEventData(`-2 months${today}`)
 
     return (
-      <div className="space-y-2 w-full">
+      <div className="w-full">
         <Header />
-        <div className="relative w-full flex flex-col space-y-24">
+        <Navbar />
+        <div className="relative w-full flex flex-col">
           <HeroHome />
           <HeroCard />
           <ImpactBanner />
