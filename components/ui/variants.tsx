@@ -62,6 +62,7 @@ export const buttonVariants = cva(
       size: {
         default: "h-9 px-6 text-xl",
         sm: "h-8 px-3 text-xs",
+        md: "h-8 px-6 text-md",
         lg: "h-10 px-8 text-2xl",
         // big circle for icon-only
         icon: "h-9 w-9 p-0",
