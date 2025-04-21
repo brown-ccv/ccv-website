@@ -95,7 +95,7 @@ export const FeaturedCarousel: React.FC = () => {
 
               <div className="flex space-x-4 mt-14">
                 <Button
-                  className="h-[55px] w-[155px] rounded-[50px] font-semibold text-xl"
+                  className="h-[55px] w-[155px]  font-semibold text-xl"
                   variant="primary_filled"
                 >
                   Website
@@ -103,7 +103,7 @@ export const FeaturedCarousel: React.FC = () => {
 
                 <Button
                   variant="primary_outlined"
-                  className="h-[55px] w-[155px] rounded-[50px] font-semibold text-xl"
+                  className="h-[55px] w-[155px]  font-semibold text-xl"
                 >
                   View More
                 </Button>

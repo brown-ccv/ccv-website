@@ -158,8 +158,8 @@ export const Navbar: React.FC = () => {
             {isSearchExpanded ? (
               <div className="flex items-center">
                 <Button
-                  variant="secondary_outlined"
-                  className="w-[45px] h-[45px] rounded-full flex items-center justify-center"
+                  variant="secondary_filled"
+                  className="flex items-center justify-center"
                   iconOnly={<FaSearch />}
                   size="icon"
                   onClick={handleSearchToggle}
@@ -170,7 +170,7 @@ export const Navbar: React.FC = () => {
             ) : (
               <Button
                 variant="secondary_filled"
-                className="w-[45px] h-[45px] rounded-full flex items-center justify-center"
+                className="flex items-center justify-center"
                 iconOnly={<FaSearch />}
                 size="icon"
                 onClick={handleSearchToggle}
