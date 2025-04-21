@@ -6,7 +6,7 @@ import OITLogo from "@/assets/oit-logo.png"
 
 export const BrownBanner: React.FC = () => {
   return (
-    <header className="w-full h-[125px] bg-white relative mt-10 flex items-center px-6">
+    <header className="w-full bg-white relative mt-10 flex items-center px-6 py-4">
       <div className="flex flex-row items-center w-full">
         <a href="https://it.brown.edu">
           <Image src={OITLogo} alt="OIT Logo" width={200} height={0} priority />
@@ -17,13 +17,17 @@ export const BrownBanner: React.FC = () => {
           </h1>
           <Button
             variant="primary_outlined"
-            className="text-sm absolute right-[49px] top-[50%] transform -translate-y-1/2 border-red-university text-red-university font-semibold rounded-none w-[159px] h-[50px] hover:bg-red-university hover:text-white hover:border-red-university"
+            className="absolute right-[49px] top-1/2 transform -translate-y-1/2 my-auto
+            font-semibold rounded-none text-md
+            border-red-university text-red-university  
+            hover:bg-red-university hover:text-white hover:border-red-university
+            whitespace-nowrap w-fit px-4 py-4"
           >
             <a 
               href="mailto:ccv-support@brown.edu" 
               className="flex items-center justify-center w-full h-full"
             >
-              <MessagesSquareIcon className="mr-2 h-[26px] w-[26px]" />
+              <MessagesSquareIcon className="mr-2" />
               Work with Us
             </a>
           </Button>
