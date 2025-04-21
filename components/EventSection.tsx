@@ -84,7 +84,7 @@ export function EventSection({
                 What's next at CCV
               </p>
               <Button
-                className="h-[55px] w-full sm:w-[155px] font-semibold"
+                className="h-[55px] w-auto font-semibold"
                 variant="primary_filled"
               >
                 <a href={events_url} target="_blank" rel="noopener noreferrer">
