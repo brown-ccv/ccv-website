@@ -8,11 +8,11 @@ import CalendarMonth from "@/components/calendar/CalendarMonth"
 import { Card, CardContent } from "@/components/ui/card"
 import CCVBars from "@/components/assets/CCVBars"
 import { FaCalendarAlt } from "react-icons/fa"
-import { Button } from "@/components/ui/button"    // ← import your Button
+import { Button } from "@/components/ui/button"
 
 const events_url = "https://events.brown.edu/ccv/all"
 
-export interface DataProps { /* …same as before… */ }
+export interface DataProps { }
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
