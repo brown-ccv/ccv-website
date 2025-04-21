@@ -28,107 +28,135 @@ const featuredCarouselData = [
 ]
 
 export const FeaturedCarousel: React.FC = () => {
-  const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
+  const [idx, setIdx] = useState(0)
+  const { title, category, description, image: ImageComp } =
+    featuredCarouselData[idx]
 
-  const handlePrevProject = () => {
-    setCurrentProjectIndex((prevIndex) =>
-      prevIndex === 0 ? featuredCarouselData.length - 1 : prevIndex - 1
+  const prev = () =>
+    setIdx((i) => (i === 0 ? featuredCarouselData.length - 1 : i - 1))
+  const next = () =>
+    setIdx((i) =>
+      i === featuredCarouselData.length - 1 ? 0 : i + 1
     )
-  }
-
-  const handleNextProject = () => {
-    setCurrentProjectIndex((prevIndex) =>
-      prevIndex === featuredCarouselData.length - 1 ? 0 : prevIndex + 1
-    )
-  }
-
-  const ImageComponent = featuredCarouselData[currentProjectIndex].image
 
   return (
-    <section className="w-full relative mt-[90px] flex items-center justify-center">
+    <section className="mt-24 mb-24">
+      <SectionHeader title="Featured Projects" align="center" />
 
-      <Button
-        variant="icon_only_outlined"
-        size="icon"
-        iconOnly={<ChevronLeftIcon className="h-8 w-8" />}
-        aria-label="previous project"
-        className="absolute left-12 top-1/2 transform -translate-y-1/2 w-[45px] h-[45px] rounded-full bg-white border border-neutral-300 shadow-lg z-10"
-        onClick={handlePrevProject}
-      />
+      <div className="w-full px-[100px]">
+        <div
+          className={`
+            grid items-center gap-y-12
+            grid-cols-1
 
-      <Button
-        variant="icon_only_outlined"
-        size="icon"
-        iconOnly={<ChevronRightIcon className="h-8 w-8" />}
-        aria-label="next project"
-        className="absolute right-12 top-1/2 transform -translate-y-1/2 w-[45px] h-[45px] rounded-full bg-white border border-neutral-300 shadow-lg z-10"
-        onClick={handleNextProject}
-      />
+            /* ≥1212px: 5‑column, 2‑row layout */
+            min-[1212px]:grid-cols-[auto_minmax(100px,1fr)_721px_minmax(100px,1fr)_auto]
+            min-[1212px]:grid-rows-[auto_auto]
 
-      <div className="w-full">
-        <SectionHeader title="Featured Projects" align="center" />
+            /* ≥1952px: 7‑column, single‑row layout with 20px gap */
+            min-[1952px]:grid-cols-[auto_minmax(100px,1fr)_721px_20px_721px_minmax(100px,1fr)_auto]
+            min-[1952px]:grid-rows-[auto]
+            min-[1952px]:gap-y-0
+          `}
+        >
+          {/* Prev */}
+          <Button
+            variant="icon_only_outlined"
+            size="icon"
+            aria-label="previous project"
+            onClick={prev}
+            className={`
+              w-[45px] h-[45px]
+              min-[1212px]:row-span-2
+              min-[1212px]:col-start-1
+            `}
+          >
+            <ChevronLeftIcon className="h-12 w-12" strokeWidth={3} />
+          </Button>
 
-        <div className="w-full h-[588px] bg-white mt-[60px] relative">
-          <div className="flex justify-between px-12 max-w-screen-xl mx-auto">
-            <div className="max-w-[440px]">
+          {/* Text */}
+          <div
+            className={`
+              space-y-6
+              w-[721px]
+              mx-auto
+              min-[1212px]:col-start-3
+              min-[1212px]:row-start-1
+            `}
+          >
             <Badge
-              color={getColorForTag(featuredCarouselData[currentProjectIndex].category)}
+              color={getColorForTag(category)}
               className="rounded-full font-semibold text-xs"
             >
-              {featuredCarouselData[currentProjectIndex].category}
+              {category}
             </Badge>
-
-
-              <h3 className="font-semibold text-black text-[28px] mt-10">
-                {featuredCarouselData[currentProjectIndex].title}
-              </h3>
-
-              <ProfileCard
-                icon={<UserIcon className="w-6 h-6" />}
-                name="Brown School of Public Health"
-                organization="People, Place and Health Collective"
-              />
-
-              <p className="font-normal text-gray-800 text-xl mt-10">
-                {featuredCarouselData[currentProjectIndex].description}
-              </p>
-
-              <div className="flex space-x-4 mt-14">
-                <Button
-                  className="h-[55px] w-[155px]  font-semibold text-xl"
-                  variant="primary_filled"
-                >
-                  Website
-                </Button>
-
-                <Button
-                  variant="primary_outlined"
-                  className="h-[55px] w-[155px]  font-semibold text-xl"
-                >
-                  View More
-                </Button>
-              </div>
-            </div>
-
-            <Card className="w-[721px] h-[443px] border-none shadow-none">
-              <CardContent className="p-0 flex justify-center">
-                <ImageComponent />
-              </CardContent>
-            </Card>
-          </div>
-
-          <div className="flex justify-center mt-12">
-            <div className="flex space-x-3">
-              {featuredCarouselData.map((_, index) => (
-                <div
-                  key={index}
-                  className={`${
-                    index === currentProjectIndex ? "w-4" : "w-[9px]"
-                  } h-[9px] bg-gray-300 rounded-full`}
-                />
-              ))}
+            <h3 className="text-[28px] font-semibold">{title}</h3>
+            <ProfileCard
+              icon={<UserIcon className="w-6 h-6" />}
+              name="Brown School of Public Health"
+              organization="People, Place and Health Collective"
+            />
+            <p className="text-xl font-normal text-gray-800">
+              {description}
+            </p>
+            <div className="flex space-x-4">
+              <Button
+                variant="primary_filled"
+                className="h-[55px] w-[155px] font-semibold text-xl"
+              >
+                Website
+              </Button>
+              <Button
+                variant="primary_outlined"
+                className="h-[55px] w-[155px] font-semibold text-xl"
+              >
+                View More
+              </Button>
             </div>
           </div>
+
+          {/* Image */}
+          <Card
+            className={`
+              w-[721px] h-[443px] border-none shadow-none mx-auto
+              min-[1212px]:col-start-3
+              min-[1212px]:row-start-2
+              min-[1952px]:col-start-5
+              min-[1952px]:row-start-1
+            `}
+          >
+            <CardContent className="flex items-center justify-center p-0 h-full">
+              <ImageComp className="max-w-full max-h-full" />
+            </CardContent>
+          </Card>
+
+          {/* Next */}
+          <Button
+            variant="icon_only_outlined"
+            size="icon"
+            aria-label="next project"
+            onClick={next}
+            className={`
+              w-[45px] h-[45px]
+              min-[1212px]:row-span-2
+              min-[1212px]:col-start-5
+              min-[1952px]:col-start-7
+            `}
+          >
+            <ChevronRightIcon className="h-12 w-12" strokeWidth={3} />
+          </Button>
+        </div>
+
+        {/* pagination dots */}
+        <div className="flex justify-center mt-8">
+          {featuredCarouselData.map((_, i) => (
+            <div
+              key={i}
+              className={`${
+                i === idx ? "w-4" : "w-[9px]"
+              } h-[9px] bg-gray-300 rounded-full mx-1`}
+            />
+          ))}
         </div>
       </div>
     </section>
