@@ -34,11 +34,15 @@ export default async function RootLayout({
       className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}
     >
       <head />
-      <body className={`${inter.className} m-0 p-0`}>
-        {/* 👇 Responsive scale on lg+ screens only */}
-        <div className="w-screen overflow-x-hidden bg-white flex flex-col justify-between lg:scale-[0.75] lg:origin-top">
-          <div className="flex-grow">{children}</div>
-          <Footer />
+      <body className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}>
+        <div
+          className="min-h-screen bg-white"
+          style={{ zoom: 0.93 }}
+        >
+          <div className="flex flex-col justify-between min-h-screen">
+            <div className="flex-grow">{children}</div>
+            <Footer />
+          </div>
         </div>
       </body>
     </html>
