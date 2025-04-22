@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 
 export const HeroHome = () => {
   return (
-    <Hero image={`url(/static/images/hero-landing.jpeg)`}>
+    <Hero image={"static/images/hero-landing.jpeg"}>
       {/* Hero content */}
       <div className="relative flex-1 flex items-start px-[8vw]">
         <div className="absolute top-[12%] flex flex-col w-full text-white space-y-8">
