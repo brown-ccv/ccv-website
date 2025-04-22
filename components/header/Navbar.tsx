@@ -105,7 +105,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav className="w-full h-[131px] bg-blue-navbar">
-      <div className="flex items-center justify-between px-[51px] h-full">
+      <div className="flex items-center justify-between px-6 h-full">
         <div className="flex items-center space-x-4">
           {/* Logo Section */}
           <div className="flex items-center space-x-3">

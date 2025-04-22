@@ -45,7 +45,7 @@ export const FeaturedCarousel: React.FC = () => {
   const ImageComponent = featuredCarouselData[currentProjectIndex].image
 
   return (
-    <section className="w-full relative mt-[90px] flex items-center justify-center">
+    <section className="w-full relative mt-[90px] flex items-center justify-center px-6 m-0 p-0">
 
       <Button
         variant="icon_only_outlined"
@@ -69,8 +69,8 @@ export const FeaturedCarousel: React.FC = () => {
         <SectionHeader title="Featured Projects" align="center" />
 
         <div className="w-full h-[588px] bg-white mt-[60px] relative">
-          <div className="flex justify-between px-12 max-w-screen-xl mx-auto">
-            <div className="max-w-[440px]">
+          <div className="flex justify-between px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+            <div className="max-w-md">
             <Badge
               color={getColorForTag(featuredCarouselData[currentProjectIndex].category)}
               className="rounded-full font-semibold text-xs"

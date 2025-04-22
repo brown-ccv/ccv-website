@@ -6,7 +6,7 @@ import OITLogo from "@/assets/oit-logo.png"
 
 export const BrownBanner: React.FC = () => {
   return (
-    <header className="w-full bg-white relative mt-10 flex items-center px-6 py-4">
+    <header className="w-full bg-white relative mt-10 flex items-center px-4 sm:px-6 lg:px-8 py-4">
       <div className="flex flex-row items-center w-full">
         <a href="https://it.brown.edu">
           <Image src={OITLogo} alt="OIT Logo" width={200} height={0} priority />

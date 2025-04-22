@@ -107,7 +107,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         <li key={self.crypto.randomUUID()}>
           <TooltipProvider>
             <Tooltip>
-              <TooltipTrigger className="rounded-md max-w-[100%] px-2 hover:bg-neutral-50">
+              <TooltipTrigger className="rounded-md max-w-full px-2 hover:bg-neutral-50">
                 <a href={event.url} target="_blank">
                   <p className="flex-auto min-w-0 truncate font-medium text-700">
                     {event.title}
