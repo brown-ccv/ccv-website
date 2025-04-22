@@ -9,9 +9,9 @@ export const Hero = ({
 }) => {
   return (
     <div
-      className="w-full h-[50vh] md:h-[60vh] bg-cover bg-center relative flex flex-col overflow-hidden m-0 p-0"
+      className="w-full h-[clamp(800px,50vh,60vh)] bg-cover bg-center relative flex flex-col overflow-hidden m-0 p-0"
       style={{
-        backgroundImage: image,
+        backgroundImage: `url(${image})`,
         backgroundSize: "cover",
       }}
     >
