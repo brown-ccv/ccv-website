@@ -6,7 +6,7 @@ import OITLogo from "@/assets/oit-logo.png"
 
 export const BrownBanner: React.FC = () => {
   return (
-    <header className="w-full bg-white relative mt-10 flex items-center px-6 py-4">
+    <header className="w-full bg-white relative flex items-center px-6 py-6">
       <div className="flex flex-row items-center w-full">
         <a href="https://it.brown.edu">
           <Image src={OITLogo} alt="OIT Logo" width={200} height={0} priority />
@@ -17,7 +17,7 @@ export const BrownBanner: React.FC = () => {
           </h1>
           <Button
             variant="primary_outlined"
-            className="absolute right-[49px] top-1/2 transform -translate-y-1/2 my-auto
+            className="absolute right-[49px] h-[50px] top-1/2 transform -translate-y-1/2 my-auto
             font-semibold rounded-none text-md
             border-red-university text-red-university  
             hover:bg-red-university hover:text-white hover:border-red-university
