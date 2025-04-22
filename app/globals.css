@@ -44,6 +44,12 @@
     @apply flex-shrink;
     @apply p-3;
   }
+
+  @layer components {
+    .content-wrapper {
+      @apply w-full px-8 md:px-14;
+    }
+  }
 }
 
 @layer utilities {

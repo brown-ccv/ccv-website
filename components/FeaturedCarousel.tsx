@@ -45,7 +45,7 @@ export const FeaturedCarousel: React.FC = () => {
   const ImageComponent = featuredCarouselData[currentProjectIndex].image
 
   return (
-    <section className="w-full relative mt-[90px] flex items-center justify-center px-6 m-0 p-0">
+    <section className="content-wrapper relative mt-[90px] flex items-center justify-center m-0 p-0">
 
       <Button
         variant="icon_only_outlined"
