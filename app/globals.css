@@ -30,8 +30,8 @@
   }
 }
 
-/* Apply zoom on large screens (matches Tailwind's 'xl': 1280px) */
-@media (min-width: 1280px) {
+/* Apply zoom on all screen sizes */
+@media {
   body {
     zoom: 0.75;
   }
