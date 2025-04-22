@@ -10,13 +10,14 @@ export const HeroHome = () => {
     <div className="bg-blue-navbar">
       <Hero image={"static/images/hero-landing.jpeg"}>
         {/* Hero content */}
-        <div className="relative flex-1 flex items-start px-[8vw]">
-          <div className="absolute top-[12%] flex flex-col w-full text-white space-y-8">
-            <TypingAnimation className="font-bold text-4xl md:text-5xl lg:text-6xl max-w-full">
+        <div className="relative flex-1 flex items-start content-wrapper overflow-hidden">
+          {/* Removed w-full here to prevent spillover */}
+          <div className="absolute top-[12%] flex flex-col max-w-full text-white space-y-6">
+          <TypingAnimation className="font-bold text-4xl md:text-5xl lg:text-6xl">
               Center for Computation and Visualization
             </TypingAnimation>
 
-            <p className="text-lg md:text-xl font-normal max-w-full">
+            <p className="text-lg md:text-xl font-normal">
               Advancing computational research with scientific and computing
               expertise.
             </p>
