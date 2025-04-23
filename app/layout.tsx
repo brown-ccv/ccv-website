@@ -40,7 +40,6 @@ export default async function RootLayout({
       <body className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}>
         <div
           className="min-h-screen bg-white"
-          style={{ zoom: 0.93 }}
         >
           <div className="flex flex-col justify-between min-h-screen">
             <div className="flex-grow">{children}</div>
