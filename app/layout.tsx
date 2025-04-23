@@ -1,5 +1,8 @@
 import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
 import "@/app/globals.css"
+import Navbar from "@/components/header/Navbar"
+import Header from "@/components/header/Header"
+import { HeroHome } from "@/components/HeroHome"
 import Footer from "@/components/Footer"
 
 // Load each font with desired weights and subsets
@@ -37,6 +40,9 @@ export default async function RootLayout({
       <head></head>
       <body className={`${inter.className}`}>
         <div className="bg-white flex flex-col justify-between">
+          <Header />
+          <Navbar />
+          <HeroHome />
           <div className="bg-white w-full flex-grow">{children}</div>
           <Footer />
         </div>
