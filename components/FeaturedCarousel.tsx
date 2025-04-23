@@ -43,46 +43,10 @@ export const FeaturedCarousel: React.FC = () => {
     <section className="mt-24 mb-24">
       <SectionHeader title="Featured Projects" align="center" />
 
-      <div className="w-full px-[100px]">
-        <div
-          className={`
-            grid items-center gap-y-12
-            grid-cols-1
-
-            /* ≥1212px: 5‑column, 2‑row layout */
-            min-[1212px]:grid-cols-[auto_minmax(40px,1fr)_721px_minmax(40px,1fr)_auto]
-            min-[1212px]:grid-rows-[auto_auto]
-
-            /* ≥1952px: 7‑column, single‑row layout with 20px gap */
-            min-[1952px]:grid-cols-[auto_minmax(40px,1fr)_721px_20px_721px_minmax(40px,1fr)_auto]
-            min-[1952px]:grid-rows-[auto]
-            min-[1952px]:gap-y-0
-          `}
-        >
-          {/* Prev */}
-          <Button
-            variant="icon_only_outlined"
-            size="icon"
-            aria-label="previous project"
-            onClick={prev}
-            className={`
-              w-[45px] h-[45px]
-              min-[1212px]:row-span-2
-              min-[1212px]:col-start-1
-            `}
-          >
-            <ChevronLeftIcon className="h-12 w-12" strokeWidth={3} />
-          </Button>
-          <div
-            className={`
-              space-y-6
-              w-[721px]
-              mx-auto
-              min-[1212px]:col-start-3
-              min-[1212px]:row-start-1
-            `}
-          >
-
+      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[100px]">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-20">
+          {/* Text Content */}
+          <div className="w-full max-w-[721px] space-y-6">
             <Badge
               color={getColorForTag(category)}
               className="rounded-full font-semibold text-xs"
@@ -95,19 +59,17 @@ export const FeaturedCarousel: React.FC = () => {
               name="Brown School of Public Health"
               organization="People, Place and Health Collective"
             />
-            <p className="text-xl font-normal text-gray-800">
-              {description}
-            </p>
-            <div className="flex space-x-4">
+            <p className="text-xl font-normal text-gray-800">{description}</p>
+            <div className="flex flex-wrap gap-4">
               <Button
                 variant="primary_filled"
-                className="h-[55px] w-[155px] font-semibold text-xl"
+                className="h-[55px] w-[155px] font-semibold text-xl self-start"
               >
                 Website
               </Button>
               <Button
                 variant="primary_outlined"
-                className="h-[55px] w-[155px] font-semibold text-xl"
+                className="h-[55px] w-[155px] font-semibold text-xl self-start"
               >
                 View More
               </Button>
@@ -115,47 +77,48 @@ export const FeaturedCarousel: React.FC = () => {
           </div>
 
           {/* Image */}
-          <Card
-            className={`
-              w-[721px] h-[443px] border-none shadow-none mx-auto
-              min-[1212px]:col-start-3
-              min-[1212px]:row-start-2
-              min-[1952px]:col-start-5
-              min-[1952px]:row-start-1
-            `}
-          >
+          <Card className="w-full max-w-[721px] min-h-[443px] border-none shadow-none">
             <CardContent className="flex items-center justify-center p-0 h-full">
               <ImageComp className="max-w-full max-h-full" />
             </CardContent>
           </Card>
+        </div>
 
-          {/* Next */}
+        {/* Pagination + Chevrons (ALL screens — responsive placement) */}
+        <div className="flex items-center justify-center gap-4 mt-8">
+          {/* Prev button */}
+          <Button
+            variant="icon_only_outlined"
+            size="icon"
+            aria-label="previous project"
+            onClick={prev}
+            className="w-[40px] h-[40px]"
+          >
+            <ChevronLeftIcon className="h-8 w-8" strokeWidth={2.5} />
+          </Button>
+
+          {/* Pagination Dots */}
+          <div className="flex justify-center gap-2">
+            {featuredCarouselData.map((_, i) => (
+              <div
+                key={i}
+                className={`${
+                  i === idx ? "w-4" : "w-[9px]"
+                } h-[9px] bg-gray-300 rounded-full`}
+              />
+            ))}
+          </div>
+
+          {/* Next button */}
           <Button
             variant="icon_only_outlined"
             size="icon"
             aria-label="next project"
             onClick={next}
-            className={`
-              w-[45px] h-[45px]
-              min-[1212px]:row-span-2
-              min-[1212px]:col-start-5
-              min-[1952px]:col-start-7
-            `}
+            className="w-[40px] h-[40px]"
           >
-            <ChevronRightIcon className="h-12 w-12" strokeWidth={3} />
+            <ChevronRightIcon className="h-8 w-8" strokeWidth={2.5} />
           </Button>
-        </div>
-
-        {/* pagination dots */}
-        <div className="flex justify-center mt-8">
-          {featuredCarouselData.map((_, i) => (
-            <div
-              key={i}
-              className={`${
-                i === idx ? "w-4" : "w-[9px]"
-              } h-[9px] bg-gray-300 rounded-full mx-1`}
-            />
-          ))}
         </div>
       </div>
     </section>
