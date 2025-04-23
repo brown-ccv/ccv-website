@@ -65,7 +65,7 @@ export const buttonVariants = cva(
         md: "h-8 px-6 text-md",
         lg: "h-10 px-8 text-2xl",
         // big circle for icon-only
-        icon: "h-9 w-9 p-0",
+        icon: "h-9 w-9 p-0 text-xl",
         // small circle for icon-only
         "icon-sm": "h-8 w-8 p-0",
       },

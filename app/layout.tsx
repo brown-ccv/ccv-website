@@ -5,7 +5,6 @@ import Header from "@/components/header/Header"
 import { HeroHome } from "@/components/HeroHome"
 import Footer from "@/components/Footer"
 
-// Load each font with desired weights and subsets
 const inter = Inter({ subsets: ["latin"] })
 
 const sourceSans = Source_Sans_3({
@@ -37,14 +36,16 @@ export default async function RootLayout({
       lang="en"
       className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}
     >
-      <head></head>
-      <body className={`${inter.className}`}>
-        <div className="bg-white flex flex-col justify-between">
-          <Header />
-          <Navbar />
-          <HeroHome />
-          <div className="bg-white w-full flex-grow">{children}</div>
-          <Footer />
+      <head />
+      <body className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}>
+        <div
+          className="min-h-screen bg-white"
+          style={{ zoom: 0.93 }}
+        >
+          <div className="flex flex-col justify-between min-h-screen">
+            <div className="flex-grow">{children}</div>
+            <Footer />
+          </div>
         </div>
       </body>
     </html>
