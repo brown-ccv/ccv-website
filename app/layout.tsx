@@ -39,9 +39,9 @@ export default async function RootLayout({
       <head></head>
       <body className={`${inter.className}`}>
         <div className="bg-white flex flex-col justify-between">
-          <Header />
+          {/* <Header />
           <Navbar />
-          <HeroHome />
+          <HeroHome /> */}
           <div className="bg-white w-full flex-grow">{children}</div>
           <Footer />
         </div>
