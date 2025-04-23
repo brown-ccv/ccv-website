@@ -1,6 +1,6 @@
 import React from "react"
 import { Button } from "@/components/ui/button"
-import { MessagesSquareIcon } from "lucide-react"
+import { FaComments } from "react-icons/fa"
 import Image from "next/image"
 import OITLogo from "@/assets/oit-logo.png"
 
@@ -27,7 +27,7 @@ export const BrownBanner: React.FC = () => {
               href="mailto:ccv-support@brown.edu" 
               className="flex items-center justify-center w-full h-full"
             >
-              <MessagesSquareIcon className="mr-2" />
+              <FaComments className="mr-2" />
               Work with Us
             </a>
           </Button>
