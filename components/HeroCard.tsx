@@ -2,6 +2,7 @@ import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { cardVariants } from "@/components/ui/variants"
 import CCVBars from "@/components/assets/CCVBars"
+import { cn } from "@/lib/utils"
 
 const heroCards = [
   {
@@ -23,8 +24,13 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <div className="relative z-10 flex justify-center mx-auto mt-0 md:-mt-[170px] mb-[120px]">
-      <Card className={cardVariants({ variant: "elevated" })}>
+    <div className="z-10 mt-6 md:-mt-[170px] mb-[120px] px-6 lg:px-8 flex justify-center relative">
+      <Card
+        className={cn(
+          cardVariants({ variant: "elevated" }),
+          "w-7/8 relative"
+        )}
+      >
         <CardContent className="p-10">
           <div className="flex justify-center items-start gap-20 flex-wrap">
             {heroCards.map((card, index) => (
@@ -46,3 +52,4 @@ export const HeroCard: React.FC = () => {
     </div>
   )
 }
+

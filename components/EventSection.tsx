@@ -37,7 +37,7 @@ export function EventSection({
   const CAL_VIEW_ARRAY = ["Upcoming","Weekly","Monthly"] as const
 
   return (
-    <section className="px-6">
+    <section className="content-wrapper m-0">
       {/* — Tabs — */}
       <div className="hidden min-h-8 relative lg:block mb-4">
         <div className="toggle-btn space-x-10">

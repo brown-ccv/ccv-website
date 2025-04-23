@@ -103,7 +103,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="flex flex-row items-center justify-between px-6 py-4 w-full bg-black font-serif text-base text-cream md:px-24 md:text-lg">
+      <div className="content-wrapper flex flex-row items-center justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
         <div>&copy; Brown University</div>
         <CCVLogo />
       </div>

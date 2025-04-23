@@ -5,7 +5,6 @@ import Header from "@/components/header/Header"
 import { HeroHome } from "@/components/HeroHome"
 import Footer from "@/components/Footer"
 
-// Load each font with desired weights and subsets
 const inter = Inter({ subsets: ["latin"] })
 
 const sourceSans = Source_Sans_3({
