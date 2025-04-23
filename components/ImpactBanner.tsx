@@ -11,10 +11,6 @@ export const ImpactBanner = (): JSX.Element => {
   return (
     <div className="content-wrapper h-auto bg-gray-100">
       <Card className="w-full border-none shadow-none rounded-none bg-transparent">
-
-        {/* <CardContent className="w-full max-h-[600px] flex items-center py-10">
-          <div className="flex flex-wrap flex-col md:flex-row justify-between flex-grow w-full gap-6"> */}
-
         <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
           <div className="flex flex-wrap flex-col lg:flex-row justify-between flex-grow">
 
@@ -28,12 +24,6 @@ export const ImpactBanner = (): JSX.Element => {
             </div>
 
             {impactMetrics.map((metric, index) => (
-
-              // <div
-              //   key={index}
-              //   className="flex flex-col items-center mt-6 md:mt-0"
-              // >
-
               <div key={index} className="flex flex-col items-center mt-6 lg:mt-0">
 
                 <div

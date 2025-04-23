@@ -50,11 +50,11 @@ export const FeaturedCarousel: React.FC = () => {
             grid-cols-1
 
             /* ≥1212px: 5‑column, 2‑row layout */
-            min-[1212px]:grid-cols-[auto_minmax(100px,1fr)_721px_minmax(100px,1fr)_auto]
+            min-[1212px]:grid-cols-[auto_minmax(40px,1fr)_721px_minmax(40px,1fr)_auto]
             min-[1212px]:grid-rows-[auto_auto]
 
             /* ≥1952px: 7‑column, single‑row layout with 20px gap */
-            min-[1952px]:grid-cols-[auto_minmax(100px,1fr)_721px_20px_721px_minmax(100px,1fr)_auto]
+            min-[1952px]:grid-cols-[auto_minmax(40px,1fr)_721px_20px_721px_minmax(40px,1fr)_auto]
             min-[1952px]:grid-rows-[auto]
             min-[1952px]:gap-y-0
           `}
