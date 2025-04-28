@@ -2,10 +2,10 @@
 
 import { usePathname } from "next/navigation";
 import "@/app/globals.css";
-import StatusBanner from "@/components/header/StatusBanner";
+import StatusBanner from "@/components/StatusBanner";
 import Footer from "@/components/Footer";
-import Header from "@/components/header/Header";
-import Navbar from "@/components/header/Navbar";
+import BrownBanner from "@/components/BrownBanner";
+import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 
 interface LayoutWithStatusBannerProps {
@@ -60,7 +60,7 @@ export default function LayoutWithStatusBanner({
           </div>
         </StatusBanner>
       )}
-      <Header />
+      <BrownBanner />
       <Navbar />
       <div className="flex-grow">{children}</div>
       <Footer />
