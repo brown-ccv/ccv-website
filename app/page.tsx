@@ -1,5 +1,5 @@
 // app/page.tsx
-import { HeroHome } from "@/components/HeroHome";
+import { Hero } from "@/components/Hero";
 import { HeroCard } from "@/components/HeroCard";
 import { ImpactBanner } from "@/components/ImpactBanner";
 import { FeaturedCarousel } from "@/components/FeaturedCarousel";
@@ -8,6 +8,9 @@ import { getEventData } from "@/app/queries";
 import { getStringDate } from "@/components/calendar/utils";
 import React, { Suspense } from "react";
 import Spinner from "@/components/assets/Spinner";
+import { TextAnimate } from "@/components/magicui/text-animate"
+import { Button } from "@/components/ui/button"
+import { ScrollButton } from "@/components/ui/scroll-button"
 
 export default async function Home() {
 
@@ -24,7 +27,34 @@ export default async function Home() {
     return (
       <div className="w-full">
         <div className="relative w-full flex flex-col">
-          <HeroHome />
+        <div className="bg-blue-navbar">
+          <Hero image={"static/images/hero-landing.jpeg"}>
+            {/* Hero content */}
+            <div className="relative flex-1 flex items-start w-full px-24 overflow-hidden">
+              {/* Removed w-full here to prevent spillover */}
+              <div className="absolute top-[12%] flex flex-col max-w-full text-white space-y-6">
+                <TextAnimate className="font-bold text-7xl">
+                  Center for Computation and Visualization
+                </TextAnimate>
+
+                <p className="text-2xl font-normal">
+                  Advancing computational research with scientific and computing
+                  expertise.
+                </p>
+
+                <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
+                  <Button
+                    variant="secondary_filled"
+                    className="h-[55px] min-w-[155px] self-start"
+                  >
+                    Work with Us
+                  </Button>
+                  <ScrollButton id="events" variant="secondary_outlined">View Events</ScrollButton>
+                </div>
+              </div>
+            </div>
+          </Hero>
+        </div>
           <HeroCard />
           <ImpactBanner />
           <FeaturedCarousel />
