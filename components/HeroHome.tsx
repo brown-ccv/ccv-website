@@ -2,7 +2,7 @@
 
 import { scrollToID } from "@/lib/utils"
 import { Hero } from "@/components/Hero"
-import { TypingAnimation } from "@/components/magicui/typing-animation"
+import { TextAnimate } from "@/components/magicui/text-animate"
 import { Button } from "@/components/ui/button"
 
 export const HeroHome = () => {
@@ -13,9 +13,9 @@ export const HeroHome = () => {
         <div className="relative flex-1 flex items-start w-full px-24 overflow-hidden">
           {/* Removed w-full here to prevent spillover */}
           <div className="absolute top-[12%] flex flex-col max-w-full text-white space-y-6">
-          <TypingAnimation className="font-bold text-7xl">
+            <TextAnimate className="font-bold text-7xl">
               Center for Computation and Visualization
-            </TypingAnimation>
+            </TextAnimate>
 
             <p className="text-2xl font-normal">
               Advancing computational research with scientific and computing
