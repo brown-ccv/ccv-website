@@ -6,18 +6,199 @@ import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import { FiHelpCircle, FiFileText } from "react-icons/fi"
-import { FaChevronDown, FaSearch } from "react-icons/fa"
+import {
+  FaChevronDown,
+  FaSearch,
+  FaComments,
+  FaUserCheck,
+  FaUserGraduate,
+  FaDollarSign,
+  FaCloud,
+  FaWindowRestore,
+  FaFileImport,
+  FaDesktop,
+} from "react-icons/fa"
 
 interface RouteItem {
   name: string
   href: string
+  description?: string
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
 }
 
 interface NavigationProps {
   routes: RouteItem[]
   parentTitle: string
-  parentHref: string
 }
+
+type Route = {
+  name: string
+  href: string
+  description?: string
+  icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
+}
+
+type RouteGroup = {
+  name: string
+  routes: Route[]
+}
+
+type NavSection = {
+  name: string
+  groups: RouteGroup[]
+}
+
+const routes: NavSection[] = [
+  {
+    name: "Services",
+    groups: [
+      {
+        name: "Research Support & Consulting",
+        routes:= [
+          {
+            name: "Project Consulting",
+            href: "/services/consulting",
+            description:
+              "We help with: Computational Biology, AI / Machine Learning, Software Engineering, Scientific Visualization, and more",
+            icon: FaComments,
+          },
+          {
+            name: "User Support",
+            href: "/services/usersupport",
+            description: "We help with compute infrastructure",
+            icon: FaUserCheck,
+          },
+          {
+            name: "Classroom Support",
+            href: "/services/classroomsupport",
+            description:
+              "We provide technology and training for teaching with code",
+            icon: FaUserGraduate,
+          },
+          {
+            name: "Service Rates",
+            href: "/services/servicerates",
+            description: "Learn about the cost of our services",
+            icon: FaDollarSign,
+          },
+        ],
+      },
+      {
+        name: "Compute Infrastructure",
+        routes: [
+          {
+            name: "Oscar",
+            href: "/services/oscar",
+            description: "Brown’s high-performance computing cluster",
+            icon: FaCloud,
+          },
+          {
+            name: "Stronghold",
+            href: "/services/stronghold",
+            description:
+              "Brown’s highly secure computing & storage environment",
+            icon: FaWindowRestore,
+          },
+          {
+            name: "Campus File Storage and Transfer",
+            href: "/services/filestoreage",
+            description: "Brown’s storage options",
+            icon: FaFileImport,
+          },
+          {
+            name: "Virtual Machine Hosting",
+            href: "/services/vm",
+            description: "Brown-hosted Windows and Linux servers",
+            icon: FaDesktop
+          },
+          {
+            name: "Hardware Rates",
+            href: "/services/hardwarerates",
+            description: "Learn about the cost of our hardware services",
+            icon: FaDollarSign,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Portfolio",
+    groups: [
+      {
+        name: "Our Work",
+        routes: [
+          {
+            name: "Portfolio",
+            href: "/portfolio",
+            description: "",
+          },
+          {
+            name: "Collaborations",
+            href: "#",
+            description: "",
+          },
+          {
+            name: "Software",
+            href: "/our-work/software",
+            description: "",
+          },
+          {
+            name: "Workshops and Talks",
+            href: "/our-work/workshops-and-talks",
+            description: "",
+          },
+          {
+            name: "Publications",
+            href: "https://publications.ccv.brown.edu",
+            description: "",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "About",
+    groups: [
+      {
+        name: "About CCV",
+        routes: [
+          {
+            name: "Mission",
+            href: "/about#mission",
+          },
+          {
+            name: "Office of Information Technology",
+            href: "/about#office-of-information-technology",
+          },
+          {
+            name: "Our Teams",
+            href: "/about#our-teams",
+          },
+          {
+            name: "People",
+            href: "/about#people",
+          },
+          {
+            name: "Opportunities",
+            href: "/about#opportunities",
+          },
+          {
+            name: "Events",
+            href: "https://events.brown.edu/ccv/month",
+          },
+          {
+            name: "Facilities Statement",
+            href: "/about#facilities-statement",
+          },
+          {
+            name: "Diversity Statement",
+            href: "/about#diversity-statement",
+          },
+        ],
+      },
+    ],
+  },
+]
 
 const navItems = [
   {
