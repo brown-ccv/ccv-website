@@ -29,6 +29,7 @@ interface RouteItem {
 interface NavigationProps {
   routes: RouteItem[]
   parentTitle: string
+  parentHref: string
 }
 
 type Route = {
@@ -54,7 +55,7 @@ const routes: NavSection[] = [
     groups: [
       {
         name: "Research Support & Consulting",
-        routes:= [
+        routes: [
           {
             name: "Project Consulting",
             href: "/services/consulting",
@@ -109,7 +110,7 @@ const routes: NavSection[] = [
             name: "Virtual Machine Hosting",
             href: "/services/vm",
             description: "Brown-hosted Windows and Linux servers",
-            icon: FaDesktop
+            icon: FaDesktop,
           },
           {
             name: "Hardware Rates",
