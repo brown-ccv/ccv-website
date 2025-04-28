@@ -28,32 +28,31 @@ export default async function Home() {
       <div className="w-full">
         <div className="relative w-full flex flex-col">
         <div className="bg-blue-navbar">
-          <Hero image={"static/images/hero-landing.jpeg"}>
-            {/* Hero content */}
-            <div className="relative flex-1 flex items-start w-full px-24 overflow-hidden">
-              {/* Removed w-full here to prevent spillover */}
-              <div className="absolute top-[12%] flex flex-col max-w-full text-white space-y-6">
-                <TextAnimate className="font-bold text-7xl">
-                  Center for Computation and Visualization
-                </TextAnimate>
+            <Hero image={"static/images/ccv-original.png"}>
+                  <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
+                    <div className="absolute top-[12%] flex flex-col text-white space-y-6">
+                      <TextAnimate className="font-bold text-6xl md:text-8xl">
+                        Center for Computation and Visualization
+                      </TextAnimate>
 
-                <p className="text-2xl font-normal">
-                  Advancing computational research with scientific and computing
-                  expertise.
-                </p>
+                      <p className="text-4xl font-semibold">
+                        Advancing computational research with scientific and computing
+                        expertise.
+                      </p>
 
-                <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
-                  <Button
-                    variant="secondary_filled"
-                    className="h-[55px] min-w-[155px] self-start"
-                  >
-                    Work with Us
-                  </Button>
-                  <ScrollButton id="events" variant="secondary_outlined">View Events</ScrollButton>
-                </div>
-              </div>
-            </div>
-          </Hero>
+                      <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
+                        <Button
+                          variant="primary_filled"
+                          className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
+                        >
+                          Work with Us
+                        </Button>
+                        <ScrollButton id="events" variant="secondary_filled" className="h-[55px] min-w-[155px] self-start text-2xl font-semibold">View Events</ScrollButton>
+                      </div>
+                    </div>
+                  </div>
+              </Hero>
+
         </div>
           <HeroCard />
           <ImpactBanner />
