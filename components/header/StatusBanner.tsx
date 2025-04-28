@@ -18,7 +18,7 @@ export default function StatusBanner({ children, isOperational }: { children: Re
       <div className="flex flex-1 justify-end">
       <Button
         variant="icon_only"
-        size="icon-sm"
+        size="icon"
         aria-label="Dismiss banner"
         onClick={() => setIsOpen(false)}
         className="

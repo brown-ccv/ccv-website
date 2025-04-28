@@ -1,51 +1,55 @@
-import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
-import "@/app/globals.css"
-import Navbar from "@/components/header/Navbar"
-import Header from "@/components/header/Header"
-import { HeroHome } from "@/components/HeroHome"
-import Footer from "@/components/Footer"
+import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import "@/app/globals.css";
+import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
+import { ReactNode } from "react";
+import { getOpenIssues } from "@/lib/getOpenIssues";
+import { unstable_cache } from "next/cache";
 
-const inter = Inter({ subsets: ["latin"] })
+const getCachedOpenIssues = unstable_cache(
+  getOpenIssues,
+  ["open-issues"],
+  { revalidate: 60 }
+);
 
+const inter = Inter({ subsets: ["latin"] });
 const sourceSans = Source_Sans_3({
   subsets: ["latin"],
   weight: ["400", "600", "700"],
   variable: "--font-sans",
   display: "swap",
-})
-
+});
 const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
   weight: ["200", "300", "400", "700"],
   variable: "--font-serif",
   display: "swap",
-})
+});
 
 export const metadata = {
   title: "CCV",
   description: "Center for Computation & Visualization",
-}
+};
 
-export default async function RootLayout({
+export default async function RootLayoutWrapper({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: ReactNode;
+}) {
+  const issues = await getCachedOpenIssues()
+
   return (
     <html
       lang="en"
       className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}
     >
-      <head></head>
-      <body className={`${inter.className}`}>
-        <div className="bg-white flex flex-col justify-between">
-          {/* <Header />
-          <Navbar />
-          <HeroHome /> */}
-          <div className="bg-white w-full flex-grow">{children}</div>
-          <Footer />
-        </div>
+      <head />
+      <body
+        className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}
+      >
+        <LayoutWithStatusBanner issues={issues}>
+          {children}
+        </LayoutWithStatusBanner>
       </body>
     </html>
-  )
+  );
 }
