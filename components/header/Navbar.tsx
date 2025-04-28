@@ -397,3 +397,5 @@ const NavigationLinks: React.FC<NavigationProps> = ({
 }
 
 export default Navbar
+export { navItems, NavigationLinks }
+export type { RouteItem, NavigationProps }
