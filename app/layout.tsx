@@ -1,9 +1,12 @@
 import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import "@/app/globals.css";
-import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
 import { ReactNode } from "react";
 import { getOpenIssues } from "@/lib/getOpenIssues";
 import { unstable_cache } from "next/cache";
+import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
+import BrownBanner from "@/components/BrownBanner";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const getCachedOpenIssues = unstable_cache(
   getOpenIssues,
@@ -49,6 +52,10 @@ export default async function RootLayoutWrapper({
         <LayoutWithStatusBanner issues={issues}>
           {children}
         </LayoutWithStatusBanner>
+        <BrownBanner />
+        <Navbar />
+        <div className="flex-grow">{children}</div>
+        <Footer />
       </body>
     </html>
   );

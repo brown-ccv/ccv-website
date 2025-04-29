@@ -3,9 +3,6 @@
 import { usePathname } from "next/navigation";
 import "@/app/globals.css";
 import StatusBanner from "@/components/StatusBanner";
-import Footer from "@/components/Footer";
-import BrownBanner from "@/components/BrownBanner";
-import Navbar from "@/components/Navbar";
 import { Button } from "@/components/ui/button";
 
 interface LayoutWithStatusBannerProps {
@@ -22,7 +19,7 @@ export default function LayoutWithStatusBanner({
   const repoNames = issues.map((repo) => repo.name).join(", ");
 
   return (
-    <div className="min-h-screen bg-white" style={{ zoom: 0.93 }}>
+    <div>
       {showStatusBanner && (
         <StatusBanner>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
@@ -60,10 +57,6 @@ export default function LayoutWithStatusBanner({
           </div>
         </StatusBanner>
       )}
-      <BrownBanner />
-      <Navbar />
-      <div className="flex-grow">{children}</div>
-      <Footer />
     </div>
   );
 }
