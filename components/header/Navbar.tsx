@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
@@ -280,88 +280,105 @@ const navItems = [
 
 export const Navbar: React.FC = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
+  const navbarRef = useRef<HTMLElement>(null)
+  const [scroll, setScroll] = useState(false)
 
   const handleSearchToggle = () => {
     setIsSearchExpanded(!isSearchExpanded)
   }
 
+  // useEffect(() => {
+  //   window.addEventListener("scroll", () => {
+  //     setScroll(window.scrollY > 25);
+  //   });
+  // });
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      setScroll(window.scrollY > 25);
+    });
+  }, []);
+
   return (
-    <nav className="content-wrapper h-[131px] bg-blue-navbar">
-      <div className="flex items-center justify-between h-full">
-        <div className="flex items-center space-x-4">
-          {/* Logo Section */}
-          <div className="flex items-center space-x-3">
-            <Link href={"/"}>
-              <CCVLogo width={105} />
-            </Link>
+    // <header className={`headerMain ${scroll ? "sticky" : ""}`}>
+    <header ref={navbarRef} className={`headerMain ${scroll ? "sticky" : ""}`}>
+      <nav className="content-wrapper h-[131px] bg-blue-navbar">
+        <div className="flex items-center justify-between h-full">
+          <div className="flex items-center space-x-4">
+            {/* Logo Section */}
+            <div className="flex items-center space-x-3">
+              <Link href={"/"}>
+                <CCVLogo width={105} />
+              </Link>
+            </div>
+
+            {/* Navigation Menu for Desktop */}
+            <NavigationMenu.Root className="hidden lg:block">
+              <NavigationMenu.List className="flex list-none space-x-5">
+                {navItems.map((item) => {
+                  return (
+                    <NavigationMenu.Item key={item.href}>
+                      <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-xl transition-colors hover:text-white focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-white/50 data-[state=open]:bg-white/50">
+                        {item.name}
+                        <FaChevronDown
+                          className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
+                          aria-hidden="true"
+                        />
+                      </NavigationMenu.Trigger>
+                      {item.routes && (
+                        <NavigationLinks
+                          routes={item.routes}
+                          parentHref={item.href}
+                          parentTitle={item.name}
+                        />
+                      )}
+                    </NavigationMenu.Item>
+                  )
+                })}
+              </NavigationMenu.List>
+            </NavigationMenu.Root>
           </div>
 
-          {/* Navigation Menu for Desktop */}
-          <NavigationMenu.Root className="hidden lg:block">
-            <NavigationMenu.List className="flex list-none space-x-5">
-              {navItems.map((item) => {
-                return (
-                  <NavigationMenu.Item key={item.href}>
-                    <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-xl transition-colors hover:text-white focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-white/50 data-[state=open]:bg-white/50">
-                      {item.name}
-                      <FaChevronDown
-                        className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
-                        aria-hidden="true"
-                      />
-                    </NavigationMenu.Trigger>
-                    {item.routes && (
-                      <NavigationLinks
-                        routes={item.routes}
-                        parentHref={item.href}
-                        parentTitle={item.name}
-                      />
-                    )}
-                  </NavigationMenu.Item>
-                )
-              })}
-            </NavigationMenu.List>
-          </NavigationMenu.Root>
-        </div>
+          <div className="flex items-center space-x-8">
+            {/* Help and Docs links */}
+            <div className="flex items-center text-white">
+              <FiHelpCircle className="text-3xl mr-3" />
+              <span className="text-xl">Help</span>
+            </div>
 
-        <div className="flex items-center space-x-8">
-          {/* Help and Docs links */}
-          <div className="flex items-center text-white">
-            <FiHelpCircle className="text-3xl mr-3" />
-            <span className="text-xl">Help</span>
-          </div>
+            <div className="flex items-center text-white">
+              <FiFileText size="" className="text-3xl mr-3" />
+              <span className="text-xl">Docs</span>
+            </div>
 
-          <div className="flex items-center text-white">
-            <FiFileText size="" className="text-3xl mr-3" />
-            <span className="text-xl">Docs</span>
-          </div>
-
-          {/* SearchIcon button and input */}
-          <div className="relative">
-            {isSearchExpanded ? (
-              <div className="flex items-center">
+            {/* SearchIcon button and input */}
+            <div className="relative">
+              {isSearchExpanded ? (
+                <div className="flex items-center">
+                  <Button
+                    variant="secondary_filled"
+                    className="flex items-center justify-center"
+                    iconOnly={<FaSearch />}
+                    size="icon"
+                    onClick={handleSearchToggle}
+                  >
+                    <FaSearch />
+                  </Button>
+                </div>
+              ) : (
                 <Button
                   variant="secondary_filled"
                   className="flex items-center justify-center"
                   iconOnly={<FaSearch />}
                   size="icon"
                   onClick={handleSearchToggle}
-                >
-                  <FaSearch />
-                </Button>
-              </div>
-            ) : (
-              <Button
-                variant="secondary_filled"
-                className="flex items-center justify-center"
-                iconOnly={<FaSearch />}
-                size="icon"
-                onClick={handleSearchToggle}
-              ></Button>
-            )}
+                ></Button>
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+    </header>
+    
   )
 }
 
