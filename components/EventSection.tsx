@@ -32,6 +32,27 @@ interface EventSectionProps {
   currentDate: Date
 }
 
+const EventCard = () => {
+  return (
+    <Card className="max-w-xs w-full border-none shadow-none my-auto">
+      <CardContent className="mb-6 mt-6">
+        <CCVBars />
+        <h3 className="flex items-center font-semibold text-black text-[32px]">
+          <FaCalendarAlt className="mr-3" /> Events
+        </h3>
+        <p className="font-serif italic text-black text-xl mt-3 mb-3">
+          What’s next at CCV
+        </p>
+        <Button className="h-[55px] font-semibold" variant="primary_filled">
+          <a href={events_url} target="_blank" rel="noopener noreferrer">
+            View All Events
+          </a>
+        </Button>
+      </CardContent>
+    </Card>
+  )
+}
+
 export function EventSection({
   streamedDataFuture,
   streamedDataPast,
@@ -48,8 +69,8 @@ export function EventSection({
   return (
     <section className="content-wrapper m-0">
       {/* — Tabs — */}
-      <div className="hidden min-h-8 relative lg:block mb-4">
-        <div className="toggle-btn space-x-10">
+      <div className="hidden min-h-8 relative lg:block mb-5">
+        <div className="toggle-btn space-x-10 text-xl font-semibold">
           {CAL_VIEW_ARRAY.map((item) => {
             return (
               <p
@@ -72,33 +93,11 @@ export function EventSection({
       </div>
 
       {/* — Upcoming view — */}
-      {view === "Upcoming" && (
-        <div className="grid grid-cols-1 [@media(min-width:1400px)]:grid-cols-[auto_1fr] gap-6 pt-4">
+      {view === "Upcoming" ? (
+        <div className="grid grid-cols-1 [@media(min-width:1400px)]:grid-cols-[auto_1fr] gap-6">
           {/* Left: Events card */}
           <div className="justify-self-start [@media(min-width:1400px)]:justify-self-center">
-            <Card className="max-w-xs w-full border-none shadow-none my-auto">
-              <CardContent className="mb-6 mt-6">
-                <CCVBars />
-                <h3 className="flex items-center font-semibold text-black text-[32px]">
-                  <FaCalendarAlt className="mr-3" /> Events
-                </h3>
-                <p className="font-serif italic text-black text-xl mt-3 mb-3">
-                  What’s next at CCV
-                </p>
-                <Button
-                  className="h-[55px] font-semibold"
-                  variant="primary_filled"
-                >
-                  <a
-                    href={events_url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View All Events
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
+            <EventCard />
           </div>
 
           {/* Right: event cards grid */}
@@ -115,27 +114,33 @@ export function EventSection({
             </div>
           </div>
         </div>
-      )}
+      ) : (
+        <div className="grid grid-cols-1 [@media(min-width:1400px)]:grid-cols-[auto_1fr] gap-6">
+          {/* Left: Events card */}
+          <div className="justify-self-start [@media(min-width:1400px)]:justify-self-center">
+            <EventCard />
+          </div>
+          {/* — Weekly view — */}
+          {view === "Weekly" && (
+            <div className="h-0 min-h-[1000px]">
+              <CalendarWeekly
+                today={today}
+                currentDate={currentDate}
+                events={dataPast.concat(dataFuture)}
+              />
+            </div>
+          )}
 
-      {/* — Weekly view — */}
-      {view === "Weekly" && (
-        <div className="h-0 min-h-[768px] pt-4">
-          <CalendarWeekly
-            today={today}
-            currentDate={currentDate}
-            events={dataPast.concat(dataFuture)}
-          />
-        </div>
-      )}
-
-      {/* — Monthly view — */}
-      {view === "Monthly" && (
-        <div className="pt-4">
-          <CalendarMonth
-            today={today}
-            currentDate={currentDate}
-            events={dataPast.concat(dataFuture)}
-          />
+          {/* — Monthly view — */}
+          {view === "Monthly" && (
+            <div className="h-0 min-h-[1000px]">
+              <CalendarMonth
+                today={today}
+                currentDate={currentDate}
+                events={dataPast.concat(dataFuture)}
+              />
+            </div>
+          )}
         </div>
       )}
     </section>
