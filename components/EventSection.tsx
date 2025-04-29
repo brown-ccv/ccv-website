@@ -1,7 +1,7 @@
 // components/EventSection.tsx
 "use client"
 
-import { use, useState } from "react"
+import { JSX, Key, use, useState } from "react"
 import CalendarEvent from "@/components/calendar/CalendarEvent"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
@@ -12,7 +12,14 @@ import { Button } from "@/components/ui/button"
 
 const events_url = "https://events.brown.edu/ccv/all"
 
-export interface DataProps { }
+export interface DataProps {
+  date_utc: string
+  date2_utc: string
+  date_iso: string
+  date_time: string
+  title: string
+  url: string
+}
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -32,9 +39,11 @@ export function EventSection({
   currentDate,
 }: EventSectionProps): JSX.Element {
   const dataFuture = use(streamedDataFuture)
-  const dataPast   = use(streamedDataPast)
-  const [view, setView] = useState<"Upcoming"|"Weekly"|"Monthly">("Upcoming")
-  const CAL_VIEW_ARRAY = ["Upcoming","Weekly","Monthly"] as const
+  const dataPast = use(streamedDataPast)
+  const [view, setView] = useState<"Upcoming" | "Weekly" | "Monthly">(
+    "Upcoming"
+  )
+  const CAL_VIEW_ARRAY = ["Upcoming", "Weekly", "Monthly"] as const
 
   return (
     <section className="content-wrapper m-0">
@@ -76,8 +85,15 @@ export function EventSection({
                 <p className="font-serif italic text-black text-xl mt-3 mb-3">
                   What’s next at CCV
                 </p>
-                <Button className="h-[55px] font-semibold" variant="primary_filled">
-                  <a href={events_url} target="_blank" rel="noopener noreferrer">
+                <Button
+                  className="h-[55px] font-semibold"
+                  variant="primary_filled"
+                >
+                  <a
+                    href={events_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     View All Events
                   </a>
                 </Button>
@@ -88,9 +104,14 @@ export function EventSection({
           {/* Right: event cards grid */}
           <div>
             <div className="grid grid-cols-1 md:grid-cols-2 [@media(min-width:1400px)]:grid-cols-4 gap-6">
-              {dataFuture?.slice(0, 4).map((e, i) => (
-                <CalendarEvent key={i} {...e} />
-              ))}
+              {dataFuture
+                ?.slice(0, 4)
+                .map(
+                  (
+                    e: JSX.IntrinsicAttributes & DataProps,
+                    i: Key | null | undefined
+                  ) => <CalendarEvent key={i} {...e} />
+                )}
             </div>
           </div>
         </div>
