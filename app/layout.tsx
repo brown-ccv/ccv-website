@@ -38,7 +38,7 @@ export default async function RootLayoutWrapper({
 }: {
   children: ReactNode;
 }) {
-  const issues = await getCachedOpenIssues()
+  const issues = await getCachedOpenIssues();
 
   return (
     <html
@@ -49,11 +49,14 @@ export default async function RootLayoutWrapper({
       <body
         className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}
       >
-        <LayoutWithStatusBanner issues={issues} />
-        <BrownBanner />
-        <Navbar />
-        <div className="flex-grow">{children}</div>
-        <Footer />
+        <div className="relative">
+        {/* CSS - with position: sticky on the Navbar, it will initially flow normally. When the user scrolls to the point where the Navbar would move out of the viewport of its containing block (<div className="relative"> in this case), it will become fixed to the top: 0 of that containing block. */}
+          <LayoutWithStatusBanner issues={issues} />
+          <BrownBanner />
+          <Navbar />
+          <div className="flex-grow">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
@@ -18,7 +18,6 @@ import {
   FaFileImport,
   FaDesktop,
 } from "react-icons/fa"
-import { usePathname } from "next/navigation"
 
 interface RouteItem {
   name: string
@@ -195,73 +194,92 @@ const routes: NavSection[] = [
   },
 ]
 
+const navItems = [
+  {
+    name: "Services",
+    href: "/services",
+    routes: [
+      { name: "Classroom", href: "/services/classroom" },
+      { name: "Computing", href: "/services/computing" },
+      {
+        name: "Campus File Storage and Transfer",
+        href: "/services/file-storage-and-transfer",
+      },
+      { name: "Rates", href: "/services/rates" },
+      { name: "Visualization Systems", href: "/services/visualization" },
+      { name: "Consulting", href: "/services/consulting" },
+    ],
+  },
+  {
+    name: "Portfolio",
+    href: "/portfolio",
+    routes: [
+      { name: "Collaborations", href: "#" },
+      {
+        name: "Software",
+        href: "/our-work/software",
+      },
+      {
+        name: "Workshops and Talks",
+        href: "/our-work/workshops-and-talks",
+      },
+      {
+        name: "Publications",
+        href: "https://publications.ccv.brown.edu",
+      },
+    ],
+  },
+  {
+    name: "Blog",
+    href: "/blog",
+    routes: [],
+  },
+  {
+    name: "About",
+    href: "/about",
+    routes: [
+      { name: "Mission", href: "/about#mission" },
+      {
+        name: "Office of Information Technology",
+        href: "/about#office-of-information-technology",
+      },
+      {
+        name: "Our Teams",
+        href: "/about#our-teams",
+      },
+      {
+        name: "People",
+        href: "/about#people",
+      },
+      {
+        name: "Opportunities",
+        href: "/about#opportunities",
+      },
+      {
+        name: "Events",
+        href: "https://events.brown.edu/ccv/month",
+      },
+      {
+        name: "Facilities Statement",
+        href: "/about#facilities-statement",
+      },
+      {
+        name: "Diversity Statement",
+        href: "/about#diversity-statement",
+      },
+    ],
+  },
+]
+
 export const Navbar: React.FC = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
-  const navbarRef = useRef<HTMLElement>(null)
-  const [scroll, setScroll] = useState(false)
-  const pathname = usePathname()
-  const [threshold, setThreshold] = useState(0)
-  const navbarHeight = useRef<number>(0) // Ref to store navbar height
-  const statusBannerRef = useRef<HTMLElement | null>(null)
-  const brownBannerRef = useRef<HTMLElement | null>(null)
 
   const handleSearchToggle = () => {
     setIsSearchExpanded(!isSearchExpanded)
   }
 
-  useEffect(() => {
-    statusBannerRef.current = document.querySelector("#status-banner") as HTMLElement | null
-    brownBannerRef.current = document.querySelector("#brown-banner") as HTMLElement | null
-  }, [])
-
-  useEffect(() => {
-    const calculateThreshold = () => {
-      let newThreshold = 0
-      if (pathname === "/") {
-        newThreshold += statusBannerRef.current?.offsetHeight || 0
-        newThreshold += brownBannerRef.current?.offsetHeight || 0
-      } else {
-        newThreshold += brownBannerRef.current?.offsetHeight || 0
-      }
-      setThreshold(newThreshold > 0 ? newThreshold : 0)
-    }
-
-    if (typeof window !== 'undefined') {
-      calculateThreshold()
-
-      const handleScroll = () => {
-        setScroll(window.scrollY > threshold)
-      }
-
-      handleScroll()
-      window.addEventListener("scroll", handleScroll)
-      window.addEventListener("resize", calculateThreshold)
-
-      return () => {
-        window.removeEventListener("scroll", handleScroll)
-        window.removeEventListener("resize", calculateThreshold)
-      }
-    }
-  }, [pathname])
-
-  useEffect(() => {
-    if (navbarRef.current) {
-      navbarHeight.current = navbarRef.current.offsetHeight
-    }
-  }, []) // Get initial navbar height
-
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      if (scroll) {
-        document.body.classList.add("sticky-nav-active")
-      } else {
-        document.body.classList.remove("sticky-nav-active")
-      }
-    }
-  }, [scroll])
-
   return (
-    <header ref={navbarRef} className={`headerMain ${scroll ? "sticky" : ""}`}>
+    <header className={`sticky top-0 z-50`}>
       <nav className="content-wrapper h-[131px] bg-blue-navbar">
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center space-x-4">
@@ -275,26 +293,24 @@ export const Navbar: React.FC = () => {
             {/* Navigation Menu for Desktop */}
             <NavigationMenu.Root className="hidden lg:block">
               <NavigationMenu.List className="flex list-none space-x-5">
-                {navItems.map((item) => {
-                  return (
-                    <NavigationMenu.Item key={item.href}>
-                      <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-xl transition-colors hover:text-white focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-white/50 data-[state=open]:bg-white/50">
-                        {item.name}
-                        <FaChevronDown
-                          className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
-                          aria-hidden="true"
-                        />
-                      </NavigationMenu.Trigger>
-                      {item.routes && (
-                        <NavigationLinks
-                          routes={item.routes}
-                          parentHref={item.href}
-                          parentTitle={item.name}
-                        />
-                      )}
-                    </NavigationMenu.Item>
-                  )
-                })}
+                {navItems.map((item) => (
+                  <NavigationMenu.Item key={item.href}>
+                    <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-xl transition-colors hover:text-white focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-white/50 data-[state=open]:bg-white/50">
+                      {item.name}
+                      <FaChevronDown
+                        className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
+                        aria-hidden="true"
+                      />
+                    </NavigationMenu.Trigger>
+                    {item.routes && (
+                      <NavigationLinks
+                        routes={item.routes}
+                        parentHref={item.href}
+                        parentTitle={item.name}
+                      />
+                    )}
+                  </NavigationMenu.Item>
+                ))}
               </NavigationMenu.List>
             </NavigationMenu.Root>
           </div>
