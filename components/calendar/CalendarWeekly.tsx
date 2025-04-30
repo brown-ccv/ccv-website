@@ -23,6 +23,7 @@ import {
 
 import { CalendarProps } from "@/components/calendar/types"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
+import { ClockIcon } from "@heroicons/react/20/solid"
 
 export interface weekProps {
   id: string
@@ -92,14 +93,14 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           className={`flex items-center justify-center py-3 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
-          ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-yellow-50" : "bg-white"}`}
+          ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-50" : "bg-white"}`}
           onClick={() => {
             setSelectedDate(cloneDate)
           }}
         >
-          <span>
+          <span className="text-neutral-900 font-semibold text-lg">
             {day}
-            <span className="mx-2 items-center justify-center font-semibold text-gray-900">
+            <span className="mx-2 items-center justify-center">
               {format(thisDate, "d")}
             </span>
           </span>
@@ -131,13 +132,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         new Date(yearEvent, monthEvent, dateEvent)
       )
 
-      const calColor =
-        event.title === "CCV Office Hours"
-          ? "bg-50 hover:bg-300"
-          : event.title ===
-              "COBRE CBC Computational Biology Walk-in Office hours"
-            ? "bg-50 hover:bg-300"
-            : "bg-keppel-50 hover:bg-keppel-500"
+      const calColor = "bg-sunglow-300 hover:bg-sunglow-200"
 
       return (
         <li
@@ -150,12 +145,11 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           <a
             href={event.url}
             target={"_blank"}
-            className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5`}
+            className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-sm md:text-md lg:text-xl leading-5`}
           >
-            <p className="order-1 font-semibold text-700">
-              {event.title}
-            </p>
-            <p className="weekly-datetime">
+            <p className="font-semibold text-blue-500">{event.title}</p>
+            <p className="weekly-datetime text-keppel-700 flex items-center py-2">
+              <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />
               <time dateTime={event.date_utc}>{event.date_time}</time>
             </p>
           </a>
@@ -222,7 +216,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 {DAY_COLUMN_ARRAY.map(({ day, key }) => (
                   <div
                     key={key}
-                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-sunglow-yellow-50" : ""}`}
+                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-sunglow-100 bg-opacity-30" : ""}`}
                   />
                 ))}
               </div>

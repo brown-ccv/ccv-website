@@ -18,17 +18,19 @@ const CalendarEvent: React.FC<DataProps> = ({
     date
   return (
     <div className="bg-gray-50 p-4 space-y-2">
-      <div className="text-neutral-900 font-semibold text-sm">{normalDate}</div>
+      <div className="text-lg md:text-xl text-neutral-900 font-semibold">
+        {normalDate}
+      </div>
       <div>
         <a
-          className="text-2xl font-bold text-500 no-underline hover:underline leading-6"
+          className="text-xl md:text-2xl font-bold text-blue-500 no-underline hover:underline leading-6"
           href={url}
           target="_blank"
         >
           {title}
         </a>
       </div>
-      <div className="flex items-center text-keppel-500 text-sm">
+      <div className="md:text-lg md:text-xl flex items-center text-keppel-700">
         <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />
         {date_time}
       </div>
