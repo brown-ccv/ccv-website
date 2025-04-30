@@ -103,7 +103,7 @@ export function EventSection({
       {/* Large Screen Layout (Desktop) */}
       <div className="hidden lg:grid lg:grid-cols-[auto_1fr] gap-6">
         {/* Left: Events card */}
-        <div className="justify-self-start">
+        <div className="justify-self-start mt-9">
           <EventCard />
         </div>
 
