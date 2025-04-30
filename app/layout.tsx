@@ -1,29 +1,60 @@
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import React from "react"
-import Header from "@/components/header/Header"
-import Footer from "@/components/Footer"
+import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google";
+import "@/app/globals.css";
+import { ReactNode } from "react";
+import { getOpenIssues } from "@/lib/getOpenIssues";
+import { unstable_cache } from "next/cache";
+import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
+import BrownBanner from "@/components/BrownBanner";
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] })
+const getCachedOpenIssues = unstable_cache(
+  getOpenIssues,
+  ["open-issues"],
+  { revalidate: 60 }
+);
 
-export const metadata: Metadata = {
+const inter = Inter({ subsets: ["latin"] });
+const sourceSans = Source_Sans_3({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  variable: "--font-sans",
+  display: "swap",
+});
+const sourceSerif = Source_Serif_4({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "700"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+export const metadata = {
   title: "CCV",
   description: "Center for Computation & Visualization",
-}
+};
 
-export default function RootLayout({
+export default async function RootLayoutWrapper({
   children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+}: {
+  children: ReactNode;
+}) {
+  const issues = await getCachedOpenIssues()
+
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        <main>{children}</main>
+    <html
+      lang="en"
+      className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}
+    >
+      <head />
+      <body
+        className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}
+      >
+        <LayoutWithStatusBanner issues={issues} />
+        <BrownBanner />
+        <Navbar />
+        <div className="flex-grow">{children}</div>
         <Footer />
       </body>
     </html>
-  )
+  );
 }

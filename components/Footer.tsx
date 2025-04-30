@@ -1,62 +1,114 @@
-import Link from "next/link"
-import LogoBrown from "@/components/assets/LogoBrown"
-import LogoCcv from "@/components/assets/LogoCcv"
-import { navigation } from "@/components/NavItems"
+import CCVLogo from "@/components/assets/CCVLogo"
+import { FaArrowRight } from "react-icons/fa"
+import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
 
-export default function Footer() {
+// Footer link component
+interface FooterLinkProps {
+  href: string
+  label: string
+}
+
+const FooterLink = ({ href, label }: FooterLinkProps) => {
   return (
-    <footer aria-labelledby="footer-heading" className="w-full bg-neutral-50">
-      <h2 id="footer-heading" className="sr-only">
-        Footer
-      </h2>
-      <div className="mx-auto max-w-7xl px-6 pb-8 pt-8 sm:pt-24 lg:px-8 lg:pt-16">
-        <div className="xl:grid xl:grid-cols-2 xl:gap-8">
-          <div className="space-y-8">
-            <div className="flex w-2/3 gap-3.5">
-              <LogoBrown />
-              <LogoCcv />
+    <li>
+      <a
+        href={href}
+        className="flex items-center text-sm tracking-wider uppercase transition-colors duration-300 text-sunglow-400 hover:text-white"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {label}
+        <FaArrowRight className="block ml-2" />
+      </a>
+    </li>
+  )
+}
+
+// Footer link section component
+interface FooterSectionProps {
+  links: Array<{ href: string; label: string }>
+  className?: string
+  listClassName?: string
+}
+
+const FooterSection = ({ links, className = "" }: FooterSectionProps) => {
+  return (
+    <div className={"mb-10 w-full border-b border-stone-500 " + className}>
+      <ul className="flex flex-col gap-x-0 gap-y-4 justify-center mb-8 w-full sm:flex-wrap sm:gap-x-8 sm:gap-y-4 sm:flex-row">
+        {links.map((link, index) => (
+          <FooterLink key={index} href={link.href} label={link.label} />
+        ))}
+      </ul>
+    </div>
+  )
+}
+
+// Footer component based on Brown University's footer
+const Footer = () => {
+  const quickNavLinks = [
+    { href: "https://www.brown.edu/about/visit", label: "Visit Brown" },
+    {
+      href: "https://www.brown.edu/Facilities/Facilities_Management/maps/",
+      label: "Campus Map",
+    },
+    { href: "https://www.brown.edu/a-z", label: "A to Z" },
+    { href: "https://www.brown.edu/about/contact-us", label: "Contact Us" },
+  ]
+
+  const footerNavLinks = [
+    { href: "https://www.brown.edu/news", label: "News" },
+    { href: "https://events.brown.edu/", label: "Events" },
+    { href: "https://dps.brown.edu/", label: "Campus Safety" },
+    {
+      href: "https://www.brown.edu/website-accessibility",
+      label: "Accessibility",
+    },
+    { href: "https://www.brown.edu/careers", label: "Careers at Brown" },
+  ]
+
+  return (
+    <footer className="flex flex-col justify-start items-start sm:justify-center sm:items-center w-full bg-gradient-to-b from-gradient-light to-gradient-dark text-neutral-800">
+      <div className="px-6 py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
+        <div className="flex flex-col justify-start items-start mb-8 space-y-2 sm:justify-center sm:items-center md:mb-16">
+          <div className="text-xs tracking-widest uppercase text-cream">
+            Brown University
+          </div>
+          <div className="flex flex-col space-x-0 space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8">
+            <div className="font-serif text-base text-white sm:text-lg xl:text-xl">
+              <MdLocationPin className="inline-block mr-2 text-stone-400" />
+              Providence, RI 02912
+            </div>
+            <div className="font-serif text-base text-white sm:text-lg xl:text-xl">
+              <MdOutlinePhoneInTalk className="inline-block mr-2 text-stone-400" />
+              401-863-1000
             </div>
           </div>
+        </div>
+        <div className="flex flex-col w-full text-sunglow-400">
+          {/* Quick Navigation */}
+          <FooterSection links={quickNavLinks} />
 
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 xl:col-span-2">
-            {navigation.map((contents) => {
-              return (
-                <div key={contents.href}>
-                  <p className="text-sm font-semibold leading-6 text-gray-900">
-                    {contents.title}
-                  </p>
-                  <ul role="list" className="mt-6 space-y-2">
-                    <li>
-                      <Link
-                        href={contents.href}
-                        className="text-sm leading-6 text-secondary-blue-700 hover:text-black hover:border-b-2"
-                      >
-                        Explore {contents.title}
-                      </Link>
-                    </li>
-                    {contents.routes.map((item) => (
-                      <li key={item.title}>
-                        <a
-                          href={item.href}
-                          className="text-sm leading-6 text-secondary-blue-700 hover:text-black hover:border-b-2"
-                        >
-                          {item.title}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )
-            })}
-          </div>
+          {/* Footer Navigation */}
+          <FooterSection links={footerNavLinks} className="lg:border-b-0" />
+        </div>
+        <div className="flex flex-row w-full sm:justify-center sm:items-center">
+          <a
+            href="https://alumni-friends.brown.edu/giving"
+            className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-black"
+          >
+            Give to Brown
+            <FaArrowRight className="inline-block ml-2 text-sunglow-400 group-hover:text-black" />
+          </a>
         </div>
       </div>
-      <div className="mt-16 border-t border-gray-900/10 pt-8 sm:mt-20 lg:mt-16">
-        <p className="mb-8 text-xs text-center leading-5 text-gray-500">
-          &copy; 2024 Center for Computation and Visualization, Brown University
-          | 180 George St, Providence RI 02906
-        </p>
+
+      {/* Copyright Section */}
+      <div className="content-wrapper flex flex-row items-center justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
+        <div>&copy; Brown University</div>
+        <CCVLogo />
       </div>
     </footer>
   )
 }
+
+export default Footer

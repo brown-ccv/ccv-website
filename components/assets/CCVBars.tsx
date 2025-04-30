@@ -1,0 +1,15 @@
+import Image from "next/image"
+import CCVBarsImage from "@/assets/CCVBars.png"
+import { cn } from "@/lib/utils"
+
+export default function CCVBars({ className }: { className?: string }) {
+  return (
+    <Image
+      className={cn("mb-4", className)}
+      src={CCVBarsImage}
+      alt="CCVBars"
+      width={100}
+      height={50}
+    />
+  )
+}

@@ -107,9 +107,12 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         <li key={self.crypto.randomUUID()}>
           <TooltipProvider>
             <Tooltip>
-              <TooltipTrigger className="rounded-md max-w-[100%] px-2 hover:bg-neutral-50">
+              <TooltipTrigger
+                asChild
+                className="rounded-md max-w-full px-2 hover:bg-neutral-50"
+              >
                 <a href={event.url} target="_blank">
-                  <p className="flex-auto min-w-0 truncate font-medium text-secondary-blue-700">
+                  <p className="flex-auto min-w-0 truncate text-lg text-blue-500 font-semibold">
                     {event.title}
                   </p>
                 </a>
@@ -119,7 +122,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                 <a
                   href={event.url}
                   target="_blank"
-                  className="flex gap-1 text-secondary-blue-500"
+                  className="flex gap-1 text-blue-500"
                 >
                   <p className="font-semibold hover:underline">{event.title}</p>
                   <ArrowTopRightOnSquareIcon
@@ -130,10 +133,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
 
                 <time
                   dateTime={event.date_utc}
-                  className="hidden flex-none text-primary-500 group-hover:text-secondary-blue-500 group-hover:font-semibold xl:flex xl:items-center"
+                  className="hidden flex-none text-keppel-700 group-hover:text-keppel-700 group-hover:font-semibold xl:flex xl:items-center"
                 >
                   <ClockIcon
-                    className="mr-1 h-4 w-4 text-primary-500"
+                    className="mr-1 h-4 w-4 text-keppel-700"
                     aria-hidden="true"
                   />
                   {event.date_time}
@@ -155,7 +158,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             <a
               href={event.url}
               target="_blank"
-              className="flex gap-1 text-secondary-blue-500"
+              className="flex gap-1 text-blue-500"
             >
               <p className="font-semibold hover:underline">{event.title}</p>
               <ArrowTopRightOnSquareIcon
@@ -165,10 +168,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             </a>
             <time
               dateTime={event.date_utc}
-              className="mt-2 flex items-center text-primary-500"
+              className="mt-2 flex items-center text-keppel-500"
             >
               <ClockIcon
-                className="mr-2 h-5 w-5 text-primary-500"
+                className="mr-2 h-5 w-5 text-keppel-500"
                 aria-hidden="true"
               />
               {event.date_time}
@@ -206,8 +209,8 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             dateTime={day.dateString}
             className={
               day.isToday
-                ? "flex h-6 w-6 items-center justify-center rounded-full bg-secondary-yellow-500 font-semibold"
-                : undefined
+                ? "flex h-9 w-9 items-center justify-center rounded-full bg-sunglow-400 font-semibold text-lg"
+                : "flex h-9 w-9 items-center justify-center text-lg"
             }
           >
             {day.dayOfMonth}
@@ -242,7 +245,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             isSameDay(day.date, selectedDate) && "text-white",
             !isSameDay(day.date, selectedDate) &&
               day.isToday &&
-              "text-secondary-blue-500 bg-secondary-yellow-500",
+              "text-blue-500 bg-sunglow-400",
             !isSameDay(day.date, selectedDate) &&
               day.isCurrentMonth &&
               !day.isToday &&
@@ -260,7 +263,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               isSameDay(day.date, selectedDate) &&
                 "flex h-6 w-6 items-center justify-center rounded-full",
               day.isToday &&
-                "flex h-6 w-6 items-center justify-center rounded-full bg-secondary-yellow-500",
+                "flex h-6 w-6 items-center justify-center rounded-full bg-sunglow-400",
               isSameDay(day.date, selectedDate) &&
                 !day.isToday &&
                 "bg-gray-900",
@@ -275,7 +278,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               {validDayEvents.map((event) => (
                 <span
                   key={event.id}
-                  className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-secondary-blue-700"
+                  className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-700"
                 />
               ))}
             </span>
@@ -309,7 +312,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             : numberOfWeeks === 5
               ? "lg:grid-rows-5"
               : "lg:grid-rows-6",
-          "hidden w-full lg:grid lg:grid-cols-7 lg:gap-px"
+          "hidden w-full lg:grid lg:grid-cols-7 lg:gap-[3px]"
         )}
       >
         {month}
@@ -330,7 +333,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         Click on a date to see a list of its events!
       </p>
       <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">
-        <div className="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs/6 font-semibold text-gray-700 lg:flex-none">
+        <div className="grid grid-cols-7 gap-[3px] border-b border-gray-300 bg-gray-200 text-center text-lg font-semibold text-gray-700 lg:flex-none">
           <div className="bg-white py-2">
             S<span className="sr-only sm:not-sr-only">un</span>
           </div>
