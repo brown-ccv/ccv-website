@@ -23,6 +23,7 @@ import {
 
 import { CalendarProps } from "@/components/calendar/types"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
+import { ClockIcon } from "@heroicons/react/20/solid"
 
 export interface weekProps {
   id: string
@@ -131,7 +132,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         new Date(yearEvent, monthEvent, dateEvent)
       )
 
-      const calColor = "bg-keppel-100 hover:bg-keppel-300"
+      const calColor = "bg-sunglow-300 hover:bg-sunglow-200"
 
       return (
         <li
@@ -146,10 +147,11 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             target={"_blank"}
             className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-sm md:text-md lg:text-xl leading-5`}
           >
-            <p className="weekly-datetime">
+            <p className="font-semibold text-blue-500">{event.title}</p>
+            <p className="weekly-datetime text-keppel-700 flex items-center py-2">
+              <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />
               <time dateTime={event.date_utc}>{event.date_time}</time>
             </p>
-            <p className="font-semibold text-blue-500 py-2">{event.title}</p>
           </a>
         </li>
       )
@@ -214,7 +216,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 {DAY_COLUMN_ARRAY.map(({ day, key }) => (
                   <div
                     key={key}
-                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-sunglow-50 bg-opacity-30" : ""}`}
+                    className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${day === 7 ? "w-8" : ""} ${day === todayRow && isSameDay(activeDate, currentDate) ? "bg-sunglow-100 bg-opacity-30" : ""}`}
                   />
                 ))}
               </div>

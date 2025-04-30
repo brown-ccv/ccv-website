@@ -133,10 +133,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
 
                 <time
                   dateTime={event.date_utc}
-                  className="hidden flex-none text-keppel-500 group-hover:text-keppel-500 group-hover:font-semibold xl:flex xl:items-center"
+                  className="hidden flex-none text-keppel-700 group-hover:text-keppel-700 group-hover:font-semibold xl:flex xl:items-center"
                 >
                   <ClockIcon
-                    className="mr-1 h-4 w-4 text-keppel-500"
+                    className="mr-1 h-4 w-4 text-keppel-700"
                     aria-hidden="true"
                   />
                   {event.date_time}
