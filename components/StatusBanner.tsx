@@ -12,7 +12,7 @@ export default function StatusBanner({ children, isOperational }: { children: Re
   return (
     <div
       className={`relative isolate w-full flex items-center gap-x-6 overflow-hidden px-4 py-2.5 sm:px-3.5 sm:before:flex-1 
-      ${isOperational ? "bg-keppel-500 bg-opacity-50" : "bg-red-university"}`}
+      ${isOperational ? "bg-keppel-500 text-black" : "bg-red-university text-white"}`}
     >
       {children}
       <div className="flex flex-1 justify-end">
@@ -23,11 +23,8 @@ export default function StatusBanner({ children, isOperational }: { children: Re
         onClick={() => setIsOpen(false)}
         className="
           bg-transparent
-          text-white
-
           hover:bg-white
-          hover:text-red-university
-
+          hover:text-black
           active:bg-neutral-50
         "
         iconOnly={

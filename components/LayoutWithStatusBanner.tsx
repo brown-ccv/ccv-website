@@ -6,26 +6,23 @@ import StatusBanner from "@/components/StatusBanner";
 import { Button } from "@/components/ui/button";
 
 interface LayoutWithStatusBannerProps {
-  children: React.ReactNode;
   issues: any[];
 }
 
-export default function LayoutWithStatusBanner({
-  children,
-  issues,
-}: LayoutWithStatusBannerProps) {
+export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBannerProps) {
   const pathname = usePathname();
   const showStatusBanner = pathname === "/";
-  const repoNames = issues.map((repo) => repo.name).join(", ");
+  const repoNames = issues.map((repo) => repo.name).join(", "); 
+  const isOperational = issues.length === 0;
 
   return (
     <div>
       {showStatusBanner && (
-        <StatusBanner>
+        <StatusBanner isOperational={isOperational}>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
             {issues.length > 0 ? (
               <>
-                <p className="text-xl text-white">
+                <p className="text-xl">
                   <strong>Service Disruption:</strong> {repoNames}
                 </p>
                 <Button variant="secondary_filled" size="md">
@@ -40,10 +37,10 @@ export default function LayoutWithStatusBanner({
               </>
             ) : (
               <>
-                <p className="text-base text-gray-900">
+                <p className="text-xl">
                   All Services Operational
                 </p>
-                <Button variant="secondary_filled" size="sm">
+                <Button variant="secondary_filled" size="md">
                   <a
                     href="https://status.ccv.brown.edu/"
                     target="_blank"

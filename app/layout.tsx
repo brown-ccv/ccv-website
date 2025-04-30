@@ -49,9 +49,7 @@ export default async function RootLayoutWrapper({
       <body
         className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}
       >
-        <LayoutWithStatusBanner issues={issues}>
-          {children}
-        </LayoutWithStatusBanner>
+        <LayoutWithStatusBanner issues={issues} />
         <BrownBanner />
         <Navbar />
         <div className="flex-grow">{children}</div>
