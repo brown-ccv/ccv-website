@@ -1,8 +1,6 @@
-// components/EventSection.tsx
 "use client"
 
-import { JSX, Key, use, useState } from "react"
-import CalendarEvent from "@/components/calendar/CalendarEvent"
+import { JSX, use, useState } from "react"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
@@ -33,6 +31,12 @@ interface EventSectionProps {
   currentDate: Date
 }
 
+interface ToggleButtonProps {
+  item: "Upcoming" | "Weekly" | "Monthly"
+  view: "Upcoming" | "Weekly" | "Monthly"
+  setView: (view: "Upcoming" | "Weekly" | "Monthly") => void
+}
+
 const EventCard = () => {
   return (
     <Card className="w-full border-none shadow-none my-auto lg:max-w-xs">
@@ -51,6 +55,23 @@ const EventCard = () => {
         </Button>
       </CardContent>
     </Card>
+  )
+}
+
+const ToggleButton = ({ item, view, setView }: ToggleButtonProps) => {
+  return (
+    <p
+      id={item}
+      key={item}
+      className={classNames(
+        view === item ? "selected" : "",
+        "inline-block m-0 rounded-[13px] py-2 px-3 cursor-pointer"
+      )}
+      role="button"
+      onClick={() => setView(item)}
+    >
+      {item}
+    </p>
   )
 }
 
@@ -91,22 +112,14 @@ export function EventSection({
           {/* Toggle Buttons */}
           <div className="relative mb-12 self-end">
             <div className="toggle-btn space-x-10 text-xl font-semibold absolute right-0 flex">
-              {CAL_VIEW_ARRAY.map((item) => {
-                return (
-                  <p
-                    id={item}
-                    key={item}
-                    className={classNames(
-                      view === item ? "selected" : "",
-                      "inline-block m-0 rounded-[13px] py-2 px-3 cursor-pointer"
-                    )}
-                    role="button"
-                    onClick={() => setView(item)}
-                  >
-                    {item}
-                  </p>
-                )
-              })}
+              {CAL_VIEW_ARRAY.map((item) => (
+                <ToggleButton
+                  key={item}
+                  item={item}
+                  view={view}
+                  setView={setView}
+                />
+              ))}
             </div>
           </div>
 
