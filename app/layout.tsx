@@ -1,6 +1,13 @@
 import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
 import "@/app/globals.css"
 import Footer from "@/components/Footer"
+{/* remove */}
+import BrownBanner from "@/components/header/BrownBanner"
+import StatusBanner from "@/components/header/StatusBanner"
+import Navbar from "@/components/header/Navbar"
+import { Button } from "@/components/ui/button"
+import getOpenIssues from "@/components/header/utils"
+{/* remove */}
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -28,6 +35,11 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  {/* remove */}
+    const repositories = await getOpenIssues()
+    const issues = repositories.filter((repo) => repo.openIssues.length > 0)
+    const repoNames = issues.map((repo) => repo.name).join(", ")
+    {/* remove */}
   return (
     <html
       lang="en"
@@ -41,7 +53,30 @@ export default async function RootLayout({
         >
           <div className="flex flex-col justify-between min-h-screen">
             <div className="flex-grow">{children}</div>
-            <Footer />
+            {/* remove */}
+            <StatusBanner id="status-banner">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+            <p className="text-base text-white">
+              <strong>Service Disruption:</strong> {repoNames}
+            </p>
+            <Button 
+              variant="secondary_filled" 
+              size="sm"
+            >
+              <a 
+                href="https://status.ccv.brown.edu/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
+                View Incidents
+              </a>
+            </Button>
+          </div>
+        </StatusBanner>
+            < BrownBanner id="brown-banner" />
+            < Navbar />
+            {/* remove */}
+            < Footer />
           </div>
         </div>
       </body>

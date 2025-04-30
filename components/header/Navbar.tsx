@@ -18,6 +18,7 @@ import {
   FaFileImport,
   FaDesktop,
 } from "react-icons/fa"
+import { usePathname } from "next/navigation"
 
 interface RouteItem {
   name: string
@@ -282,24 +283,68 @@ export const Navbar: React.FC = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
   const navbarRef = useRef<HTMLElement>(null)
   const [scroll, setScroll] = useState(false)
+  const pathname = usePathname()
+  const [threshold, setThreshold] = useState(0)
+  const navbarHeight = useRef<number>(0) // Ref to store navbar height
+  const statusBannerRef = useRef<HTMLElement | null>(null)
+  const brownBannerRef = useRef<HTMLElement | null>(null)
 
   const handleSearchToggle = () => {
     setIsSearchExpanded(!isSearchExpanded)
   }
 
-  // useEffect(() => {
-  //   window.addEventListener("scroll", () => {
-  //     setScroll(window.scrollY > 25);
-  //   });
-  // });
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      setScroll(window.scrollY > 25);
-    });
-  }, []);
+    statusBannerRef.current = document.querySelector("#status-banner") as HTMLElement | null
+    brownBannerRef.current = document.querySelector("#brown-banner") as HTMLElement | null
+  }, [])
+
+  useEffect(() => {
+    const calculateThreshold = () => {
+      let newThreshold = 0
+      if (pathname === "/") {
+        newThreshold += statusBannerRef.current?.offsetHeight || 0
+        newThreshold += brownBannerRef.current?.offsetHeight || 0
+      } else {
+        newThreshold += brownBannerRef.current?.offsetHeight || 0
+      }
+      setThreshold(newThreshold > 0 ? newThreshold : 0)
+    }
+
+    if (typeof window !== 'undefined') {
+      calculateThreshold()
+
+      const handleScroll = () => {
+        setScroll(window.scrollY > threshold)
+      }
+
+      handleScroll()
+      window.addEventListener("scroll", handleScroll)
+      window.addEventListener("resize", calculateThreshold)
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll)
+        window.removeEventListener("resize", calculateThreshold)
+      }
+    }
+  }, [pathname])
+
+  useEffect(() => {
+    if (navbarRef.current) {
+      navbarHeight.current = navbarRef.current.offsetHeight
+    }
+  }, []) // Get initial navbar height
+
+  useEffect(() => {
+    if (typeof document !== 'undefined') {
+      if (scroll) {
+        document.body.classList.add("sticky-nav-active")
+      } else {
+        document.body.classList.remove("sticky-nav-active")
+      }
+    }
+  }, [scroll])
 
   return (
-    // <header className={`headerMain ${scroll ? "sticky" : ""}`}>
     <header ref={navbarRef} className={`headerMain ${scroll ? "sticky" : ""}`}>
       <nav className="content-wrapper h-[131px] bg-blue-navbar">
         <div className="flex items-center justify-between h-full">
@@ -378,7 +423,6 @@ export const Navbar: React.FC = () => {
         </div>
       </nav>
     </header>
-    
   )
 }
 

@@ -80,6 +80,8 @@
   }
 }
 
+/* CSS */
+
 @keyframes fadeInDown {
   0% {
     opacity: 0;
@@ -91,11 +93,16 @@
   }
 }
 
-.sticky {
+.headerMain.sticky {
   position: fixed;
   top: 0;
   width: 100%;
   animation-duration: 0.7s;
   animation-name: fadeInDown;
   animation-timing-function: ease-out;
+  z-index: 50; /* Add a z-index higher than HeroCard's z-10 */
+}
+
+body.sticky-nav-active {
+  padding-top: 131px; /* Set this to the height of your navbar */
 }

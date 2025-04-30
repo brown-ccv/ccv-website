@@ -4,7 +4,11 @@ import { FaComments } from "react-icons/fa"
 import Image from "next/image"
 import OITLogo from "@/assets/oit-logo.png"
 
-export const BrownBanner: React.FC = () => {
+interface BrownBannerProps {
+  id?: string
+}
+
+export const BrownBanner: React.FC<BrownBannerProps> = ({ id }) => {
   return (
     <header className="content-wrapper bg-white flex items-center py-4">
       <div className="flex flex-row items-center w-full">
