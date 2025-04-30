@@ -66,20 +66,20 @@ const routes: NavSection[] = [
           },
           {
             name: "User Support",
-            href: "/services/usersupport",
+            href: "/services/user-support",
             description: "We help with compute infrastructure",
             icon: FaUserCheck,
           },
           {
             name: "Classroom Support",
-            href: "/services/classroomsupport",
+            href: "/services/classroom-support",
             description:
               "We provide technology and training for teaching with code",
             icon: FaUserGraduate,
           },
           {
             name: "Service Rates",
-            href: "/services/servicerates",
+            href: "/services/rates",
             description: "Learn about the cost of our services",
             icon: FaDollarSign,
           },
@@ -103,19 +103,19 @@ const routes: NavSection[] = [
           },
           {
             name: "Campus File Storage and Transfer",
-            href: "/services/filestoreage",
+            href: "/services/file-storeage",
             description: "Brown’s storage options",
             icon: FaFileImport,
           },
           {
             name: "Virtual Machine Hosting",
-            href: "/services/vm",
+            href: "/services/virtual-machine-hosting",
             description: "Brown-hosted Windows and Linux servers",
             icon: FaDesktop,
           },
           {
             name: "Hardware Rates",
-            href: "/services/hardwarerates",
+            href: "/services/hardware-rates",
             description: "Learn about the cost of our hardware services",
             icon: FaDollarSign,
           },
@@ -127,26 +127,21 @@ const routes: NavSection[] = [
     name: "Portfolio",
     groups: [
       {
-        name: "Our Work",
+        name: "",
         routes: [
           {
-            name: "Portfolio",
-            href: "/portfolio",
-            description: "",
-          },
-          {
             name: "Collaborations",
-            href: "#",
+            href: "/portfolio/collaborations",
             description: "",
           },
           {
             name: "Software",
-            href: "/our-work/software",
+            href: "/portfolio/software",
             description: "",
           },
           {
             name: "Workshops and Talks",
-            href: "/our-work/workshops-and-talks",
+            href: "/portfolio/workshops-and-talks",
             description: "",
           },
           {
@@ -162,118 +157,39 @@ const routes: NavSection[] = [
     name: "About",
     groups: [
       {
-        name: "About CCV",
+        name: "",
         routes: [
           {
-            name: "Mission",
-            href: "/about#mission",
+            name: "About Us",
+            href: "/about/about-us",
+            description:"",
           },
           {
-            name: "Office of Information Technology",
-            href: "/about#office-of-information-technology",
+            name: "Contact Us",
+            href: "/about/contact",
+            description:"",
           },
           {
-            name: "Our Teams",
-            href: "/about#our-teams",
-          },
-          {
-            name: "People",
-            href: "/about#people",
-          },
-          {
-            name: "Opportunities",
-            href: "/about#opportunities",
-          },
-          {
-            name: "Events",
-            href: "https://events.brown.edu/ccv/month",
-          },
-          {
-            name: "Facilities Statement",
-            href: "/about#facilities-statement",
-          },
-          {
-            name: "Diversity Statement",
-            href: "/about#diversity-statement",
+            name: "Careers",
+            href: "/about/careers",
+            description:"",
           },
         ],
       },
     ],
   },
-]
-
-const navItems = [
-  {
-    name: "Services",
-    href: "/services",
-    routes: [
-      { name: "Classroom", href: "/services/classroom" },
-      { name: "Computing", href: "/services/computing" },
-      {
-        name: "Campus File Storage and Transfer",
-        href: "/services/file-storage-and-transfer",
-      },
-      { name: "Rates", href: "/services/rates" },
-      { name: "Visualization Systems", href: "/services/visualization" },
-      { name: "Consulting", href: "/services/consulting" },
-    ],
-  },
-  {
-    name: "Portfolio",
-    href: "/portfolio",
-    routes: [
-      { name: "Collaborations", href: "#" },
-      {
-        name: "Software",
-        href: "/our-work/software",
-      },
-      {
-        name: "Workshops and Talks",
-        href: "/our-work/workshops-and-talks",
-      },
-      {
-        name: "Publications",
-        href: "https://publications.ccv.brown.edu",
-      },
-    ],
-  },
   {
     name: "Blog",
-    href: "/blog",
-    routes: [],
-  },
-  {
-    name: "About",
-    href: "/about",
-    routes: [
-      { name: "Mission", href: "/about#mission" },
+    groups: [
       {
-        name: "Office of Information Technology",
-        href: "/about#office-of-information-technology",
-      },
-      {
-        name: "Our Teams",
-        href: "/about#our-teams",
-      },
-      {
-        name: "People",
-        href: "/about#people",
-      },
-      {
-        name: "Opportunities",
-        href: "/about#opportunities",
-      },
-      {
-        name: "Events",
-        href: "https://events.brown.edu/ccv/month",
-      },
-      {
-        name: "Facilities Statement",
-        href: "/about#facilities-statement",
-      },
-      {
-        name: "Diversity Statement",
-        href: "/about#diversity-statement",
+        name: "",
+        routes: [
+          {
+            name: "Blog",
+            href: "/blog",
+            description:"",
+          },
+        ],
       },
     ],
   },
