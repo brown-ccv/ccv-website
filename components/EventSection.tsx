@@ -5,6 +5,7 @@ import { JSX, Key, use, useState } from "react"
 import CalendarEvent from "@/components/calendar/CalendarEvent"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
+import UpcomingEvents from "@/components/calendar/UpcomingEvents"
 import { Card, CardContent } from "@/components/ui/card"
 import CCVBars from "@/components/assets/CCVBars"
 import { FaCalendarAlt } from "react-icons/fa"
@@ -74,16 +75,7 @@ export function EventSection({
           <div className="justify-self-start">
             <EventCard />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {dataFuture
-              ?.slice(0, 4)
-              .map(
-                (
-                  e: JSX.IntrinsicAttributes & DataProps,
-                  i: Key | null | undefined
-                ) => <CalendarEvent key={i} {...e} />
-              )}
-          </div>
+          <UpcomingEvents events={dataFuture} />
         </div>
       </div>
 
@@ -120,18 +112,7 @@ export function EventSection({
 
           {/* Conditional rendering of views */}
           <div className="mt-1">
-            {view === "Upcoming" && (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {dataFuture
-                  ?.slice(0, 4)
-                  .map(
-                    (
-                      e: JSX.IntrinsicAttributes & DataProps,
-                      i: Key | null | undefined
-                    ) => <CalendarEvent key={i} {...e} />
-                  )}
-              </div>
-            )}
+            {view === "Upcoming" && <UpcomingEvents events={dataFuture} />}
 
             {view === "Weekly" && (
               <div className="h-0 min-h-[1000px]">
