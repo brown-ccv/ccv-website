@@ -12,11 +12,14 @@ import { Button } from "@/components/ui/button"
 const events_url = "https://events.brown.edu/ccv/all"
 
 export interface DataProps {
+  id: number
+  date: string
   date_utc: string
   date2_utc: string
   date_iso: string
   date_time: string
   title: string
+  description_long: string
   url: string
 }
 
