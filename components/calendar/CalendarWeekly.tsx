@@ -131,13 +131,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         new Date(yearEvent, monthEvent, dateEvent)
       )
 
-      const calColor =
-        event.title === "CCV Office Hours"
-          ? "bg-keppel-100 hover:bg-keppel-300"
-          : event.title ===
-              "COBRE CBC Computational Biology Walk-in Office hours"
-            ? "bg-keppel-100 hover:bg-keppel-300"
-            : "bg-keppel-100 hover:bg-keppel-300"
+      const calColor = "bg-keppel-100 hover:bg-keppel-300"
 
       return (
         <li
