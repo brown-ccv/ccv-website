@@ -13,7 +13,7 @@ export const BrownBanner: React.FC = () => {
         </a>
         <div className="ml-6 w-full flex flex-row justify-between items-center">
           <h1 className="py-7 pl-6 h-full sm:text-xl lg:text-2xl font-semibold border-l border-black md:block hidden md:visible">
-            Center for Computation and Visualization
+            Computational Biology Core
           </h1>
           <Button
             variant="primary_outlined"
@@ -23,8 +23,8 @@ export const BrownBanner: React.FC = () => {
             hover:bg-red-university hover:text-white hover:border-red-university
             whitespace-nowrap w-fit px-4 py-4"
           >
-            <a 
-              href="mailto:ccv-support@brown.edu" 
+            <a
+              href="mailto:cbc-help.brown.edu"
               className="flex items-center justify-center w-full h-full"
             >
               <MessagesSquareIcon className="mr-2" />
