@@ -32,7 +32,7 @@ export const HeroCard: React.FC = () => {
           <div className="flex justify-center items-start gap-8 lg:gap-20 flex-wrap">
             {heroCards.map((card, index) => (
               <div key={index} className="max-w-lg">
-                <div className="inline-flex items-center py-4">
+                <div className="inline-flex items-center pb-4">
                   <div className="relative">
                     <CCVBars />
                     <h3 className="font-semibold text-black text-2xl tracking-tight leading-tight">
