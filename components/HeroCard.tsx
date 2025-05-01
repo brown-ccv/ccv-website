@@ -26,16 +26,13 @@ export const HeroCard: React.FC = () => {
   return (
     <div className="z-10 mt-6 md:-mt-[170px] mb-[120px] px-6 lg:px-8 flex justify-center relative">
       <Card
-        className={cn(
-          cardVariants({ variant: "elevated" }),
-          "w-7/8 relative"
-        )}
+        className={cn(cardVariants({ variant: "elevated" }), "w-7/8 relative")}
       >
         <CardContent className="p-10">
-          <div className="flex justify-center items-start gap-20 flex-wrap">
+          <div className="flex justify-center items-start gap-8 lg:gap-20 flex-wrap">
             {heroCards.map((card, index) => (
               <div key={index} className="max-w-sm">
-                <div className="inline-flex items-center gap-2 py-8">
+                <div className="inline-flex items-center py-4">
                   <div className="relative">
                     <CCVBars />
                     <h3 className="font-semibold text-black text-2xl tracking-tight leading-tight">
@@ -52,4 +49,3 @@ export const HeroCard: React.FC = () => {
     </div>
   )
 }
-
