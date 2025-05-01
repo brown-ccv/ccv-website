@@ -41,7 +41,7 @@ export default async function Home() {
 
                   <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
                     <Button
-                      variant="primary_filled"
+                      variant="secondary_filled"
                       className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
                     >
                       <a
@@ -54,7 +54,7 @@ export default async function Home() {
                     </Button>
                     <ScrollButton
                       id="events"
-                      variant="secondary_filled"
+                      variant="secondary_outlined"
                       className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
                     >
                       View Events
