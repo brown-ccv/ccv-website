@@ -1,4 +1,4 @@
-import CCVLogo from "@/components/assets/CCVLogo"
+import CBCLogo from "@/components/assets/CBCLogo"
 import { FaArrowRight } from "react-icons/fa"
 import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
 
@@ -105,7 +105,7 @@ const Footer = () => {
       {/* Copyright Section */}
       <div className="content-wrapper flex flex-row items-center justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
         <div>&copy; Brown University</div>
-        <CCVLogo />
+        <CBCLogo width={40} fillColor="white" />
       </div>
     </footer>
   )
