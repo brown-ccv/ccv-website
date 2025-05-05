@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button"
 import { MessagesSquareIcon } from "lucide-react"
 import Image from "next/image"
 import OITLogo from "@/assets/oit-logo.png"
+import CBCLogo from "@/components/assets/CBCLogo"
 
 export const BrownBanner: React.FC = () => {
   return (
@@ -12,7 +13,8 @@ export const BrownBanner: React.FC = () => {
           <Image src={OITLogo} alt="OIT Logo" width={200} height={0} priority />
         </a>
         <div className="ml-6 w-full flex flex-row justify-between items-center">
-          <h1 className="py-7 pl-6 h-full sm:text-xl lg:text-2xl font-semibold border-l border-black md:block hidden md:visible">
+          <h1 className="py-7 pl-6 h-full sm:text-xl lg:text-2xl font-semibold border-l border-black hidden md:flex items-center md:visible space-x-4">
+            <CBCLogo width={50} />
             Computational Biology Core
           </h1>
           <Button
