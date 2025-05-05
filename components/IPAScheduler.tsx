@@ -11,11 +11,11 @@ const request_access_url =
 
 export const IPAScheduler = () => {
   return (
-    <section className="mt-24 mb-24">
+    <section className="mt-12 mb-12 md:mt-24 md:mb-24">
       <div className="flex justify-center items-center h-full w-full mx-2 px-4 sm:px-8 lg:px-24">
-        <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-[2880px] gap-8 sm:gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-start justify-center w-full max-w-[2880px] gap-8 sm:gap-12 lg:gap-20">
           {/* Text Content */}
-          <div className="w-full max-w-[721px] space-y-6 -mt-24">
+          <div className="w-full max-w-[721px] space-y-6 mt-0 md:mt-28">
             <Card className="border-none shadow-none">
               <CardTitle className="text-2xl p-6">
                 <CCVBars />
