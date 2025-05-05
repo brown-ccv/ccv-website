@@ -2,7 +2,6 @@
 
 import React from "react"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
-import { SectionHeader } from "@/components/ui/section-header"
 import { GiDna2 } from "react-icons/gi"
 import CCVBars from "@/components/assets/CCVBars"
 import { Button } from "@/components/ui/button"
@@ -13,7 +12,6 @@ const request_access_url =
 export const IPAScheduler = () => {
   return (
     <section className="mt-24 mb-24">
-      {/* <SectionHeader title="Ingenuity Pathway Analysis (IPA)" align="center" /> */}
       <div className="flex justify-center items-center h-full w-full mx-2 px-4 sm:px-8 lg:px-24">
         <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-[2880px] gap-8 sm:gap-12 lg:gap-20">
           {/* Text Content */}
