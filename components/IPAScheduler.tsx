@@ -15,7 +15,7 @@ export const IPAScheduler = () => {
       <div className="flex justify-center items-center h-full w-full mx-2 px-4 sm:px-8 lg:px-24">
         <div className="flex flex-col lg:flex-row items-center justify-center w-full max-w-[2880px] gap-8 sm:gap-12 lg:gap-20">
           {/* Text Content */}
-          <div className="w-full max-w-[721px] space-y-6">
+          <div className="w-full max-w-[721px] space-y-6 -mt-24">
             <Card className="border-none shadow-none">
               <CardTitle className="text-2xl p-6">
                 <CCVBars />
