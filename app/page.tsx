@@ -3,6 +3,7 @@ import { Hero } from "@/components/Hero"
 import { HeroCard } from "@/components/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import { FeaturedCarousel } from "@/components/FeaturedCarousel"
+import { IPAScheduler } from "@/components/IPAScheduler"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
@@ -67,6 +68,7 @@ export default async function Home() {
           <HeroCard />
           {/* <ImpactBanner /> */}
           {/* <FeaturedCarousel /> */}
+          <IPAScheduler />
         </div>
         <div id="events" className="py-12 w-full bg-gray-100">
           <Suspense fallback={<Spinner />}>
