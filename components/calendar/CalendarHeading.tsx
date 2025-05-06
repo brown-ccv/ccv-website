@@ -18,8 +18,8 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
   todayButtonFunction,
 }) => {
   return (
-    <header className="flex items-center justify-between border border-gray-200 px-6 py-4 mt-3 mb-2 bg-gray-50 rounded-md lg:flex-none">
-      <h1 className="text-base font-semibold text-700">
+    <header className="flex items-center justify-between border border-gray-200 px-6 py-4 mt-0 mb-2 bg-gray-50 rounded-md lg:flex-none">
+      <h1 className="text-base font-semibold text-blue-500 text-xl">
         <time dateTime={date.toISOString()}>
           {`${ALL_MONTHS[date.getMonth()]} ${date.getFullYear()}`}
         </time>
@@ -36,7 +36,7 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
           </button>
           <button
             type="button"
-            className="hidden border border-gray-300 px-3.5 text-sm font-semibold text-gray-900 hover:bg-gray-50 focus:relative md:block"
+            className="hidden border border-gray-300 px-3.5 text-xl font-semibold text-neutral-900 hover:bg-gray-50 focus:relative md:block"
             onClick={() => todayButtonFunction()}
           >
             Today
@@ -47,7 +47,7 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
             className="flex h-9 w-12 items-center justify-center rounded-r-md border-y border-r border-gray-300 pl-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pl-0 md:hover:bg-gray-50"
             onClick={() => nextButtonFunction()}
           >
-            <span className="sr-only">Next {srButtonText}</span>
+            <span className="sr-only text-xl">Next {srButtonText}</span>
             <ChevronRightIcon className="h-5 w-5" aria-hidden="true" />
           </button>
         </div>

@@ -33,7 +33,7 @@
 /* Apply zoom on all screen sizes */
 @media {
   body {
-    zoom: 0.75;
+    zoom: 1;
   }
 }
 
