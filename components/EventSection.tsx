@@ -5,7 +5,7 @@ import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
 import { Card, CardContent } from "@/components/ui/card"
-import CCVBars from "@/components/assets/CCVBars"
+import CBCBars from "@/components/assets/CBCBars"
 import { FaCalendarAlt } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 
@@ -44,7 +44,7 @@ const EventCard = () => {
   return (
     <Card className="w-full border-none shadow-none my-auto lg:max-w-xs">
       <CardContent className="mb-6 mt-6">
-        <CCVBars />
+        <CBCBars />
         <h3 className="flex items-center font-semibold text-black text-[32px]">
           <FaCalendarAlt className="mr-3" /> Events
         </h3>

@@ -3,7 +3,7 @@
 import React from "react"
 import { Card, CardContent, CardTitle } from "@/components/ui/card"
 import { GiDna2 } from "react-icons/gi"
-import CCVBars from "@/components/assets/CCVBars"
+import CBCBars from "@/components/assets/CBCBars"
 import { Button } from "@/components/ui/button"
 
 const request_access_url =
@@ -18,7 +18,7 @@ export const IPAScheduler = () => {
           <div className="w-full max-w-[721px] space-y-6 mt-0 md:mt-28">
             <Card className="border-none shadow-none">
               <CardTitle className="text-2xl p-6">
-                <CCVBars />
+                <CBCBars />
                 <h3 className="flex items-center text-[32px] pt-3">
                   <GiDna2 className="mr-3" /> Ingenuity Pathway Analysis
                   Scheduler
