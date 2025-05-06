@@ -5,6 +5,7 @@ import { getOpenIssues } from "@/lib/getOpenIssues"
 import { unstable_cache } from "next/cache"
 import BrownBanner from "@/components/BrownBanner"
 import Navbar from "@/components/Navbar"
+import Acknowledgement from "@/components/Acknowledgement"
 import Footer from "@/components/Footer"
 
 const getCachedOpenIssues = unstable_cache(getOpenIssues, ["open-issues"], {
@@ -47,6 +48,7 @@ export default async function RootLayoutWrapper({
         <BrownBanner />
         <Navbar />
         <div className="flex-grow">{children}</div>
+        <Acknowledgement />
         <Footer />
       </body>
     </html>
