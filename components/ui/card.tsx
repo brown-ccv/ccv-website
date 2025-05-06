@@ -1,5 +1,6 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import Image from 'next/image';
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -72,6 +73,29 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
+  imagePath: string;
+}
+
+const CardWithImage: React.FC<Props> = ({ className, imagePath, ...props }) => {
+  return (
+    <Card className={className} {...props}>
+      <CardContent>
+        <Image
+          src={imagePath} // Path relative to the 'public' folder
+          alt="Card Image"
+          width={300} // Adjust as needed
+          height={200} // Adjust as needed
+          layout="responsive" // Or 'fixed', 'fill'
+          objectFit="cover" // Or other object-fit options
+        />
+        {/* Other content for your card */}
+      </CardContent>
+      {/* Optional CardHeader, CardFooter, etc. */}
+    </Card>
+  );
+};
+
 export {
   Card,
   CardHeader,
@@ -79,4 +103,5 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
+  CardWithImage,
 }
