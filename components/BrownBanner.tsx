@@ -16,7 +16,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = ({ id }) => {
           <Image src={OITLogo} alt="OIT Logo" width={200} height={0} priority />
         </a>
         <div className="ml-6 w-full flex flex-row justify-between items-center">
-          <h1 className="py-7 pl-6 h-full sm:text-xl lg:text-2xl font-semibold border-l border-black md:block hidden md:visible">
+          <h1 className="py-10 pl-6 h-full sm:text-xl lg:text-2xl font-semibold border-l border-black md:block hidden md:visible">
             Center for Computation and Visualization
           </h1>
           <Button

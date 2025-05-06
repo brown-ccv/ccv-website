@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from "react"
+import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
@@ -27,9 +27,11 @@ interface RouteItem {
 }
 
 interface NavigationProps {
-  routes: RouteItem[]
-  parentTitle: string
-  parentHref: string
+  groups: {
+    name: string;
+    routes: RouteItem[];
+  }[];
+  parentTitle: string;
 }
 
 type Route = {
@@ -194,83 +196,6 @@ const routes: NavSection[] = [
   },
 ]
 
-const navItems = [
-  {
-    name: "Services",
-    href: "/services",
-    routes: [
-      { name: "Classroom", href: "/services/classroom" },
-      { name: "Computing", href: "/services/computing" },
-      {
-        name: "Campus File Storage and Transfer",
-        href: "/services/file-storage-and-transfer",
-      },
-      { name: "Rates", href: "/services/rates" },
-      { name: "Visualization Systems", href: "/services/visualization" },
-      { name: "Consulting", href: "/services/consulting" },
-    ],
-  },
-  {
-    name: "Portfolio",
-    href: "/portfolio",
-    routes: [
-      { name: "Collaborations", href: "#" },
-      {
-        name: "Software",
-        href: "/our-work/software",
-      },
-      {
-        name: "Workshops and Talks",
-        href: "/our-work/workshops-and-talks",
-      },
-      {
-        name: "Publications",
-        href: "https://publications.ccv.brown.edu",
-      },
-    ],
-  },
-  {
-    name: "Blog",
-    href: "/blog",
-    routes: [],
-  },
-  {
-    name: "About",
-    href: "/about",
-    routes: [
-      { name: "Mission", href: "/about#mission" },
-      {
-        name: "Office of Information Technology",
-        href: "/about#office-of-information-technology",
-      },
-      {
-        name: "Our Teams",
-        href: "/about#our-teams",
-      },
-      {
-        name: "People",
-        href: "/about#people",
-      },
-      {
-        name: "Opportunities",
-        href: "/about#opportunities",
-      },
-      {
-        name: "Events",
-        href: "https://events.brown.edu/ccv/month",
-      },
-      {
-        name: "Facilities Statement",
-        href: "/about#facilities-statement",
-      },
-      {
-        name: "Diversity Statement",
-        href: "/about#diversity-statement",
-      },
-    ],
-  },
-]
-
 export const Navbar: React.FC = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
 
@@ -286,46 +211,58 @@ export const Navbar: React.FC = () => {
             {/* Logo Section */}
             <div className="flex items-center space-x-3">
               <Link href={"/"}>
-                <CCVLogo width={105} />
+                <CCVLogo width={120}/>
               </Link>
             </div>
 
             {/* Navigation Menu for Desktop */}
             <NavigationMenu.Root className="hidden lg:block">
               <NavigationMenu.List className="flex list-none space-x-5">
-                {navItems.map((item) => (
-                  <NavigationMenu.Item key={item.href}>
-                    <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-xl transition-colors hover:text-white focus:text-white focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-white/50 data-[state=open]:bg-white/50">
-                      {item.name}
-                      <FaChevronDown
-                        className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
-                        aria-hidden="true"
+                {routes.map((section) =>
+                  section.name === "Blog" ? (
+                    <NavigationMenu.Item key={section.name}>
+                      <NavigationMenu.Link
+                        href="/blog"
+                        className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                      >
+                        {section.name}
+                      </NavigationMenu.Link>
+                    </NavigationMenu.Item>
+                  ) : (
+                    <NavigationMenu.Item key={section.name}>
+                      <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                        {section.name}
+                        <FaChevronDown
+                          className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
+                          aria-hidden="true"
+                        />
+                      </NavigationMenu.Trigger>
+                      <NavigationSectionContent
+                        groups={section.groups}
+                        parentTitle={section.name}
                       />
-                    </NavigationMenu.Trigger>
-                    {item.routes && (
-                      <NavigationLinks
-                        routes={item.routes}
-                        parentHref={item.href}
-                        parentTitle={item.name}
-                      />
-                    )}
-                  </NavigationMenu.Item>
-                ))}
+                    </NavigationMenu.Item>
+                  )
+                )}
               </NavigationMenu.List>
             </NavigationMenu.Root>
           </div>
 
           <div className="flex items-center space-x-8">
             {/* Help and Docs links */}
-            <div className="flex items-center text-white">
-              <FiHelpCircle className="text-3xl mr-3" />
-              <span className="text-xl">Help</span>
-            </div>
+            <Link href="/help">
+              <div className="flex items-center text-white">
+                <FiHelpCircle className="text-3xl mr-3" />
+                <span className="text-2xl">Help</span>
+              </div>
+            </Link>
 
-            <div className="flex items-center text-white">
-              <FiFileText size="" className="text-3xl mr-3" />
-              <span className="text-xl">Docs</span>
-            </div>
+            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer">
+              <div className="flex items-center text-white">
+                <FiFileText size="" className="text-3xl mr-3" />
+                <span className="text-2xl">Docs</span>
+              </div>
+            </a>
 
             {/* SearchIcon button and input */}
             <div className="relative">
@@ -358,38 +295,53 @@ export const Navbar: React.FC = () => {
   )
 }
 
-const NavigationLinks: React.FC<NavigationProps> = ({
-  routes,
-  parentTitle,
-  parentHref,
-}) => {
+const NavigationSectionContent: React.FC<{
+  groups: RouteGroup[];
+  parentTitle: string;
+}> = ({ groups }) => {
+  const hasMultipleGroups = groups.length > 1;
+
   return (
-    <NavigationMenu.Content className="absolute top-[100%] z-50 w-max rounded-md shadow-md">
-      <ul className="list-none p-4 m-0 bg-neutral-50 flex flex-col gap-2">
-        <li className="p-2 hover:bg-white hover:text-black">
-          <NavigationMenu.Link
-            href={parentHref}
-            className="p-2 focus:outline-none focus:text-black"
+    <NavigationMenu.Content className="absolute top-full left-0 z-50 w-max rounded-md shadow-md bg-white">
+      <div className={`p-10 flex ${hasMultipleGroups ? 'space-x-8' : ''} ${hasMultipleGroups ? 'flex-grow' : ''}`}>
+        {groups.map((group, index) => (
+          <div
+            key={group.name}
+            className={`border-l border-black ${hasMultipleGroups ? 'flex-1' : ''}`}
           >
-            Explore {parentTitle}
-          </NavigationMenu.Link>
-        </li>
-        {routes.length > 0 &&
-          routes.map((route) => (
-            <li key={route.href} className="p-2  hover:text-black">
-              <NavigationMenu.Link
-                href={route.href}
-                className="p-2 focus:outline-none focus:text-black"
-              >
-                {route.name}
-              </NavigationMenu.Link>
-            </li>
-          ))}
-      </ul>
+            {group.name && <h3 className="text-2xl pl-10 mb-6 tracking-widest">{group.name.toUpperCase()}</h3>}
+            <ul className="list-none pl-10 flex flex-col gap-2">
+              {group.routes.map((route) => (
+                <li key={route.href} className="hover:bg-white hover:text-black pb-4">
+                  <NavigationMenu.Link
+                    href={route.href}
+                    className="flex items-center focus:outline-none focus:text-black"
+                  >
+                    {route.icon && (
+                      <div className="mr-4 h-[4rem] w-[4rem] bg-neutral-100/75 border text-white rounded-md flex items-center justify-center">
+                        <route.icon className="h-1/2 w-1/2"/>
+                      </div>
+                    )}
+                    <div className="flex flex-col">
+                      <span className="text-2xl font-semibold pb-1">{route.name}</span>
+                      {route.description && (
+                        <span className="text-lg text-neutral-500 italic mb-3">{route.description}</span>
+                      )}
+                    </div>
+                  </NavigationMenu.Link>
+                </li>
+              ))}
+            </ul>
+            {hasMultipleGroups && index < groups.length - 1 && (
+              <div className="h-full mx-4" />
+            )}
+          </div>
+        ))}
+      </div>
     </NavigationMenu.Content>
-  )
-}
+  );
+};
 
 export default Navbar
-export { navItems, NavigationLinks }
-export type { RouteItem, NavigationProps }
+export { routes }
+export type { RouteItem, NavigationProps, Route, RouteGroup, NavSection }
