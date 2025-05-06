@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
-import CCVLogo from "@/components/assets/CCVLogo"
+import CBCLogo from "@/components/assets/CBCLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import { FiHelpCircle, FiFileText } from "react-icons/fi"
@@ -110,7 +110,7 @@ export const Navbar: React.FC = () => {
           {/* Logo Section */}
           <div className="flex items-center space-x-3">
             <Link href={"/"}>
-              <CCVLogo width={105} />
+              <CBCLogo width={75} fillColor="white" />
             </Link>
           </div>
 

@@ -191,6 +191,7 @@ module.exports = {
         300: "#527da1",
         50: "#a3b8ca",
         navbar: "#060839",
+        cbc: "#27236a",
       },
       keppel: {
         800: "#0A6559",
