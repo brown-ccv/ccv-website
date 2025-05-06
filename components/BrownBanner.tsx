@@ -13,25 +13,25 @@ export const BrownBanner: React.FC<BrownBannerProps> = ({ id }) => {
     <header className="content-wrapper bg-white flex items-center py-4">
       <div className="flex flex-row items-center w-full">
         <a href="https://it.brown.edu">
-          <Image src={OITLogo} alt="OIT Logo" width={200} height={0} priority />
+          <Image src={OITLogo} alt="OIT Logo" width={250} height={0} priority />
         </a>
         <div className="ml-6 w-full flex flex-row justify-between items-center">
-          <h1 className="py-10 pl-6 h-full sm:text-xl lg:text-2xl font-semibold border-l border-black md:block hidden md:visible">
+          <h1 className="py-10 pl-6 h-full sm:text-2xl lg:text-3xl font-semibold border-l border-black md:block hidden md:visible">
             Center for Computation and Visualization
           </h1>
           <Button
             variant="primary_outlined"
             className="hidden md:flex h-[50px]
-            font-semibold rounded-none text-md
+            font-semibold rounded-none text-xl
             border-red-university text-red-university  
             hover:bg-red-university hover:text-white hover:border-red-university
             whitespace-nowrap w-fit px-4"
           >
             <a
               href="mailto:ccv-support@brown.edu"
-              className="flex items-center justify-center w-full h-full"
+              className="flex items-center justify-center w-full h-full text-lg"
             >
-              <FaComments className="mr-2" />
+              <FaComments className="mr-2 text-2xl" />
               Work with Us
             </a>
           </Button>
