@@ -302,20 +302,20 @@ const NavigationSectionContent: React.FC<{
   const hasMultipleGroups = groups.length > 1;
 
   return (
-    <NavigationMenu.Content className="absolute top-full left-0 z-50 w-max rounded-md shadow-md bg-white">
+    <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white">
       <div className={`p-10 flex ${hasMultipleGroups ? 'space-x-8' : ''} ${hasMultipleGroups ? 'flex-grow' : ''}`}>
         {groups.map((group, index) => (
           <div
-            key={group.name}
-            className={`border-l border-black ${hasMultipleGroups ? 'flex-1' : ''}`}
-          >
+          key={group.name}
+          className={`${hasMultipleGroups && index > 0 ? 'border-l border-black pl-10' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
+        >
             {group.name && <h3 className="text-2xl pl-10 mb-6 tracking-widest">{group.name.toUpperCase()}</h3>}
             <ul className="list-none pl-10 flex flex-col gap-2">
               {group.routes.map((route) => (
                 <li key={route.href} className="hover:bg-white hover:text-black pb-4">
                   <NavigationMenu.Link
                     href={route.href}
-                    className="flex items-center focus:outline-none focus:text-black"
+                    className="flex items-start focus:outline-none focus:text-black"
                   >
                     {route.icon && (
                       <div className="mr-4 h-[4rem] w-[4rem] bg-neutral-100/75 border text-white rounded-md flex items-center justify-center">
