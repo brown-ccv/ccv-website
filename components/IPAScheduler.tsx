@@ -15,7 +15,7 @@ export const IPAScheduler = () => {
       <div className="flex justify-center items-center h-full w-full mx-2 px-4 sm:px-8 lg:px-24">
         <div className="flex flex-col lg:flex-row items-start justify-center w-full max-w-[2880px] gap-8 sm:gap-12 lg:gap-20">
           {/* Text Content */}
-          <div className="w-full max-w-[721px] space-y-6 mt-0 md:mt-28">
+          <div className="w-full lg:max-w-[650px] space-y-6 mt-0 md:mt-28">
             <Card className="border-none shadow-none">
               <CardTitle className="text-2xl p-6">
                 <CBCBars />
@@ -24,7 +24,7 @@ export const IPAScheduler = () => {
                   Scheduler
                 </h3>
               </CardTitle>
-              <CardContent className="pt-4 space-y-4 text-xl">
+              <CardContent className="pt-4 space-y-4 text-lg lg:text-xl">
                 <p>
                   IPA helps you identify biological mechanisms and pathways
                   relevant to your research data. Visualize, analyze, and
@@ -77,7 +77,7 @@ export const IPAScheduler = () => {
           </div>
 
           {/* Calendar Embed */}
-          <Card className="h-full w-full max-w-[1440px] border-none shadow-none">
+          <Card className="h-full w-full lg:min-w-[800px] max-w-[1440px] border-none shadow-none">
             <CardContent className="p-0">
               <iframe
                 src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ0eowSuK_EFiBjR9YiMUALMFmO-m4lfu9784PpuSM6gy8OHVWb8dftEjMnrgQdYmvCeRn0vgUcQ?gv=true"
