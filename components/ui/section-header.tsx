@@ -1,5 +1,5 @@
 import React from "react"
-import CCVBars from "@/components/assets/CCVBars"
+import CBCBars from "@/components/assets/CBCBars"
 
 interface SectionHeaderProps {
   title: string
@@ -19,7 +19,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           isCentered ? "items-center" : "items-start"
         }`}
       >
-        <CCVBars />
+        <CBCBars />
         <h2 className="font-semibold text-black text-4xl tracking-tighter">
           {title}
         </h2>

@@ -1,7 +1,7 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { cardVariants } from "@/components/ui/variants"
-import CCVBars from "@/components/assets/CCVBars"
+import CBCBars from "@/components/assets/CBCBars"
 import { cn } from "@/lib/utils"
 
 const heroCards = [
@@ -34,7 +34,7 @@ export const HeroCard: React.FC = () => {
               <div key={index} className="max-w-lg">
                 <div className="inline-flex items-center pb-4">
                   <div className="relative">
-                    <CCVBars />
+                    <CBCBars />
                     <h3 className="font-semibold text-black text-2xl tracking-tight leading-tight">
                       {card.title}
                     </h3>
