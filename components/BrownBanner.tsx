@@ -26,7 +26,7 @@ export const BrownBanner: React.FC = () => {
             whitespace-nowrap w-fit px-4 py-4"
           >
             <a
-              href="mailto:cbc-help.brown.edu"
+              href="mailto:cbc-help@brown.edu"
               className="flex items-center justify-center w-full h-full"
             >
               <MessagesSquareIcon className="mr-2" />
