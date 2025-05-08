@@ -18,7 +18,7 @@ const heroCards = [
   {
     title: "Collaborative Growth",
     description:
-      "Beyond direct analysis, we cultivate scientific connections within the COBRE and equip the broader research community with essential training for long-term data analysis success across Brown University and its affiliates.",
+      "We cultivate scientific connections within the COBRE and equip the broader research community with essential training for long-term data analysis success across Brown University and its affiliates.",
   },
 ]
 
