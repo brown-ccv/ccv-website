@@ -49,7 +49,7 @@ const EventCard = () => {
           <FaCalendarAlt className="mr-3" /> Events
         </h3>
         <p className="font-serif italic text-black text-xl mt-3 mb-3">
-          What’s next at CCV
+          What’s next at CBC
         </p>
         <Button className="h-[55px] font-semibold" variant="primary_filled">
           <a href={events_url} target="_blank" rel="noopener noreferrer">
