@@ -334,29 +334,29 @@ const NavigationSectionContent: React.FC<{
 
   return (
     <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white xl:block hidden">
-      <div className={`p-10 flex ${hasMultipleGroups ? 'space-x-8' : ''} ${hasMultipleGroups ? 'flex-grow' : ''}`}>
+      <div className={`p-6 flex ${hasMultipleGroups ? 'space-x-8' : ''} ${hasMultipleGroups ? 'flex-grow' : ''}`}>
         {groups.map((group, index) => (
           <div
             key={group.name}
-            className={`${hasMultipleGroups && index > 0 ? 'border-l border-black pl-10' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
+            className={`${hasMultipleGroups && index > 0 ? 'border-l border-black pl-6' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
           >
-            {group.name && <h3 className="text-2xl mb-6 tracking-widest">{group.name.toUpperCase()}</h3>}
+            {group.name && <h3 className="text-xl mb-4 tracking-widest">{group.name.toUpperCase()}</h3>}
             <ul className="list-none flex flex-col gap-2">
               {group.routes.map((route) => (
-                <li key={route.href} className="hover:bg-white hover:text-black pb-4">
+                <li key={route.href} className="hover:bg-neutral-50 focus:bg-neutral-100 pb-2">
                   <NavigationMenu.Link
                     href={route.href}
-                    className="flex items-start focus:outline-none focus:text-black"
+                    className="flex items-start focus:outline-none"
                   >
                     {route.icon && (
-                      <div className="mr-4 h-[4rem] w-[4rem] bg-neutral-100/75 border text-white rounded-md flex items-center justify-center">
+                      <div className="mr-2 h-[4rem] w-[4rem] bg-neutral-100/75 border text-white rounded-md flex items-center justify-center">
                         <route.icon className="h-1/2 w-1/2"/>
                       </div>
                     )}
                     <div className="flex flex-col">
-                      <span className="text-2xl font-semibold pb-1">{route.name}</span>
+                      <span className="text-xl font-semibold pb-1">{route.name}</span>
                       {route.description && (
-                        <span className="max-w-[550px] text-lg text-neutral-500 italic mb-3">{route.description}</span>
+                        <span className="max-w-[550px] text-md text-neutral-500 italic mb-3">{route.description}</span>
                       )}
                     </div>
                   </NavigationMenu.Link>
