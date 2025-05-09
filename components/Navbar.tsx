@@ -201,8 +201,9 @@ export const Navbar: React.FC = () => {
 
         {/* Navigation Menu for Desktop */}
         <NavigationMenu.Root className="relative z-10 flex w-screen justify-between">
-          {/* Logo Section */}
-          <NavigationMenu.List className="m-0 flex list-none rounded-md p-8">
+
+          <NavigationMenu.List className="m-0 flex list-none rounded-md p-8 items-center">
+          {/* CCV Logo */}
             <NavigationMenu.Item>
               <NavigationMenu.Link href={"/"}>
                 <CCVLogo width={120}/>
@@ -234,7 +235,7 @@ export const Navbar: React.FC = () => {
             </NavigationMenu.Item>
           </NavigationMenu.List>
 
-          <NavigationMenu.List className="m-0 flex list-none rounded-md p-8">
+          <NavigationMenu.List className="m-0 flex list-none rounded-md p-8 items-center">
             {/* Help */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
