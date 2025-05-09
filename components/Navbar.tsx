@@ -223,7 +223,7 @@ export const Navbar: React.FC = () => {
 
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
-              <Button variant="secondary_filled" className="text-white" onClick={toggleMobileMenu}>
+              <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
                 <FiMenu className="h-6 w-6" />
               </Button>
             </div>
@@ -274,7 +274,7 @@ export const Navbar: React.FC = () => {
             </a>
 
             {/* SearchIcon button and input */}
-            <div className="relative">
+            <div className="relative hidden lg:flex">
               {isSearchExpanded ? (
                 <div className="flex items-center">
                   <Button
@@ -302,25 +302,24 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-blue-navbar shadow-md z-40 p-4">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-sunglow-400 shadow-md z-40 p-4">
             {routes.map((section) => (
               <div key={section.name} className="mb-4">
                 {section.name === "Blog" ? (
-                  <Link href="/blog" className="block text-white text-xl py-2">
-                    {section.name}
+                  <Link href="/blog" className="block text-blue-navbar font-semibold text-xl py-2 tracking-widest">
+                    {section.name.toUpperCase()}
                   </Link>
                 ) : (
                   <>
-                    <button onClick={() => { /* Implement toggle for submenu if needed */ }} className="flex items-center justify-between w-full text-white text-xl py-2">
-                      {section.name}
-                      <FaChevronDown className="h-4 w-4" /> {/* Add indicator for submenu */}
+                    <button onClick={() => { /* Implement toggle for submenu if needed */ }} className="flex items-center justify-between w-full font-semibold text-blue-navbar  tracking-widest text-xl py-2">
+                      {section.name.toUpperCase()}
+                      <FaChevronDown className="h-4 w-4" />
                     </button>
-                    {/* Render submenu items here if needed */}
                     <div className="ml-4">
                       {section.groups.map(group => (
                         <div key={group.name}>
                           {group.routes.map(route => (
-                            <Link key={route.href} href={route.href} className="block text-white text-lg py-1">
+                            <Link key={route.href} href={route.href} className="block text-blue-navbar text-lg py-1">
                               {route.name}
                             </Link>
                           ))}
@@ -332,11 +331,11 @@ export const Navbar: React.FC = () => {
               </div>
             ))}
             <div className="mt-4">
-              <Link href="/help" className="block text-white text-xl py-2">
-                Help
+              <Link href="/help" className="block text-blue-navbar font-semibold text-xl py-2 tracking-widest">
+                HELP
               </Link>
-              <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-white text-xl py-2">
-                Docs
+              <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-blue-navbar font-semibold text-xl py-2 tracking-widest">
+                DOCS
               </a>
             </div>
           </div>
