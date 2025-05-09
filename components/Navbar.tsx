@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
-import { FiHelpCircle, FiFileText, FiMenu } from "react-icons/fi"
+import { FiHelpCircle, FiFileText, FiMenu, FiChevronDown as FiChevronDownIcon } from "react-icons/fi"
 
 import {
   FaChevronDown,
@@ -184,10 +184,19 @@ const routes: NavSection[] = [
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [openSubmenus, setOpenSubmenus] = useState<string[]>([]); // Array to track open submenus
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
   }
+
+  const toggleSubmenu = (sectionName: string) => {
+    if (openSubmenus.includes(sectionName)) {
+      setOpenSubmenus(openSubmenus.filter(name => name !== sectionName));
+    } else {
+      setOpenSubmenus([...openSubmenus, sectionName]);
+    }
+  };
 
   return (
     <header className={`sticky top-0 z-50`}>
@@ -204,8 +213,8 @@ export const Navbar: React.FC = () => {
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-1 ml-6 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                  {section.name.toUpperCase()}
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                  {section.name}
                   <FaChevronDown
                     className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
                     aria-hidden="true"
@@ -220,9 +229,9 @@ export const Navbar: React.FC = () => {
 
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-6 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/blog">
-                BLOG
+                Blog
               </NavigationMenu.Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>
@@ -231,18 +240,18 @@ export const Navbar: React.FC = () => {
             {/* Help */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/help">
-                <FiHelpCircle className="text-2xl font-semibold mr-3"/>HELP
+                <FiHelpCircle className="text-3xl mr-3"/>Help
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
             {/* Documentation */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="https://docs.ccv.brown.edu/documentation">
-                <FiFileText size="" className="text-2xl font-semibold mr-3" />DOCS
+                <FiFileText size="" className="text-3xl mr-3" />Docs
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
@@ -278,30 +287,35 @@ export const Navbar: React.FC = () => {
                   </Link>
                 ) : (
                   <>
-                    <button onClick={() => { /* Implement toggle for submenu if needed */ }} className="flex items-center justify-between w-full font-semibold text-sunglow-400 tracking-widest text-2xl py-6 px-6">
+                    <button
+                      onClick={() => toggleSubmenu(section.name)}
+                      className="flex items-center justify-between w-full font-semibold text-sunglow-400 tracking-widest text-2xl py-6 px-6"
+                    >
                       {section.name.toUpperCase()}
-                      <FaChevronDown className="h-4 w-4" />
+                      <FiChevronDownIcon className={`h-4 w-4 transition-transform ${openSubmenus.includes(section.name) ? 'rotate-180' : ''}`} />
                     </button>
-                    <div className="ml-6">
-                      {section.groups.map(group => (
-                        <div className="py-2" key={group.name}>
-                          {group.routes.map(route => (
-                            <Link key={route.href} href={route.href} className="block text-white text-xl py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-                              {route.name}
-                            </Link>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
+                    {openSubmenus.includes(section.name) && (
+                      <div className="ml-6">
+                        {section.groups.map(group => (
+                          <div className="py-2" key={group.name}>
+                            {group.routes.map(route => (
+                              <Link key={route.href} href={route.href} className="block text-white text-xl py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+                                {route.name}
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </>
                 )}
               </div>
             ))}
             <div className="mt-4">
-              <Link href="/help" className="block text-white font-semibold text-xl py-2 tracking-widest">
+              <Link href="/help" className="block text-sunglow-400 font-semibold text-2xl tracking-widest py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
                 HELP
               </Link>
-              <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-white font-semibold text-xl py-2 tracking-widest">
+              <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-sunglow-400 font-semibold text-2xl tracking-widest py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
                 DOCS
               </a>
             </div>
