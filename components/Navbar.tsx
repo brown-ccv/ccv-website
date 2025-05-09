@@ -192,84 +192,80 @@ export const Navbar: React.FC = () => {
   return (
     <header className={`sticky top-0 z-50`}>
       <nav className="bg-blue-navbar">
-        <div className="">
-          <div className="">
-            {/* Mobile Menu Button */}
-            {/* <div className="lg:hidden">
-              <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
-                <FiMenu className="h-6 w-6" />
+        {/* Mobile Menu Button */}
+        {/* <div className="lg:hidden">
+          <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
+            <FiMenu className="h-6 w-6" />
+          </Button>
+        </div> */}
+
+        {/* Navigation Menu for Desktop */}
+        <NavigationMenu.Root className="relative z-10 flex w-screen justify-between">
+          {/* Logo Section */}
+          <NavigationMenu.List className="m-0 flex list-none rounded-md p-8">
+            <NavigationMenu.Item>
+              <NavigationMenu.Link href={"/"}>
+                <CCVLogo width={120}/>
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+
+            {routes.map((section) =>
+              <NavigationMenu.Item key={section.name}>
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                  {section.name}
+                  <FaChevronDown
+                    className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
+                    aria-hidden="true"
+                  />
+                </NavigationMenu.Trigger>
+                <NavigationSectionContent
+                  groups={section.groups}
+                  parentTitle={section.name}
+                />
+              </NavigationMenu.Item>
+            )}
+
+            <NavigationMenu.Item>
+              <NavigationMenu.Link
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                href="/blog">
+                Blog
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          </NavigationMenu.List>
+
+          <NavigationMenu.List className="m-0 flex list-none rounded-md p-8">
+            {/* Help */}
+            <NavigationMenu.Item>
+              <NavigationMenu.Link
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                href="/help">
+                <FiHelpCircle className="text-3xl mr-3"/>Help
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+
+            {/* Documentation */}
+            <NavigationMenu.Item>
+              <NavigationMenu.Link
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                href="https://docs.ccv.brown.edu/documentation">
+                <FiFileText size="" className="text-3xl mr-3" />Docs
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+
+            {/* Search */}
+            <NavigationMenu.Item>
+              <Button
+                variant="secondary_filled"
+                className="flex items-center justify-center"
+                iconOnly={<FaSearch />}
+                size="icon"
+              >
+                <FaSearch />
               </Button>
-            </div> */}
-
-            {/* Navigation Menu for Desktop */}
-            <NavigationMenu.Root className="relative z-10 flex w-screen justify-between">
-              {/* Logo Section */}
-              <NavigationMenu.List className="m-0 flex list-none rounded-md p-8">
-                <NavigationMenu.Item>
-                  <NavigationMenu.Link href={"/"}>
-                    <CCVLogo width={120}/>
-                  </NavigationMenu.Link>
-                </NavigationMenu.Item>
-
-                {routes.map((section) =>
-                  <NavigationMenu.Item key={section.name}>
-                    <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                      {section.name}
-                      <FaChevronDown
-                        className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
-                        aria-hidden="true"
-                      />
-                    </NavigationMenu.Trigger>
-                    <NavigationSectionContent
-                      groups={section.groups}
-                      parentTitle={section.name}
-                    />
-                  </NavigationMenu.Item>
-                )}
-
-                <NavigationMenu.Item>
-                  <NavigationMenu.Link
-                    className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
-                    href="/blog">
-                    Blog
-                  </NavigationMenu.Link>
-                </NavigationMenu.Item>
-              </NavigationMenu.List>
-
-              <NavigationMenu.List className="m-0 flex list-none rounded-md p-8">
-                {/* Help */}
-                <NavigationMenu.Item>
-                  <NavigationMenu.Link
-                    className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
-                    href="/help">
-                    <FiHelpCircle className="text-3xl mr-3"/>Help
-                  </NavigationMenu.Link>
-                </NavigationMenu.Item>
-
-                {/* Documentation */}
-                <NavigationMenu.Item>
-                  <NavigationMenu.Link
-                    className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
-                    href="https://docs.ccv.brown.edu/documentation">
-                    <FiFileText size="" className="text-3xl mr-3" />Docs
-                  </NavigationMenu.Link>
-                </NavigationMenu.Item>
-
-                {/* Search */}
-                <NavigationMenu.Item>
-                  <Button
-                    variant="secondary_filled"
-                    className="flex items-center justify-center"
-                    iconOnly={<FaSearch />}
-                    size="icon"
-                  >
-                    <FaSearch />
-                  </Button>
-                </NavigationMenu.Item>
-              </NavigationMenu.List>
-            </NavigationMenu.Root>
-          </div>
-        </div>
+            </NavigationMenu.Item>
+          </NavigationMenu.List>
+        </NavigationMenu.Root>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
