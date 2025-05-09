@@ -271,22 +271,22 @@ export const Navbar: React.FC = () => {
         {isMobileMenuOpen && (
           <div className="lg:hidden absolute top-full left-0 w-full bg-neutral-900 shadow-md z-40 p-4">
             {routes.map((section) => (
-              <div key={section.name} className="mb-4">
+              <div key={section.name} className="mb-4 outline-double">
                 {section.name === "Blog" ? (
                   <Link href="/blog" className="block text-white font-semibold text-2xl py-2 tracking-widest">
                     {section.name.toUpperCase()}
                   </Link>
                 ) : (
                   <>
-                    <button onClick={() => { /* Implement toggle for submenu if needed */ }} className="flex items-center justify-between w-full font-semibold text-white  tracking-widest text-2xl py-6">
+                    <button onClick={() => { /* Implement toggle for submenu if needed */ }} className="flex items-center justify-between w-full font-semibold text-sunglow-400 tracking-widest text-2xl py-6 px-6">
                       {section.name.toUpperCase()}
                       <FaChevronDown className="h-4 w-4" />
                     </button>
-                    <div className="ml-4">
+                    <div className="ml-6">
                       {section.groups.map(group => (
-                        <div key={group.name}>
+                        <div className="py-2" key={group.name}>
                           {group.routes.map(route => (
-                            <Link key={route.href} href={route.href} className="block text-white text-xl py-2">
+                            <Link key={route.href} href={route.href} className="block text-white text-xl py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
                               {route.name}
                             </Link>
                           ))}
