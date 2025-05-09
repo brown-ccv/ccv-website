@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button"
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
-import { FiHelpCircle, FiFileText } from "react-icons/fi"
+import { FiHelpCircle, FiFileText, FiMenu } from "react-icons/fi"
+
 import {
   FaChevronDown,
   FaSearch,
@@ -198,9 +199,14 @@ const routes: NavSection[] = [
 
 export const Navbar: React.FC = () => {
   const [isSearchExpanded, setIsSearchExpanded] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const handleSearchToggle = () => {
     setIsSearchExpanded(!isSearchExpanded)
+  }
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
   return (
@@ -213,6 +219,13 @@ export const Navbar: React.FC = () => {
               <Link href={"/"}>
                 <CCVLogo width={120}/>
               </Link>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <div className="lg:hidden">
+              <Button variant="secondary_filled" className="text-white" onClick={toggleMobileMenu}>
+                <FiMenu className="h-6 w-6" />
+              </Button>
             </div>
 
             {/* Navigation Menu for Desktop */}
@@ -250,18 +263,14 @@ export const Navbar: React.FC = () => {
 
           <div className="flex items-center space-x-8">
             {/* Help and Docs links */}
-            <Link href="/help">
-              <div className="flex items-center text-white">
-                <FiHelpCircle className="text-3xl mr-3" />
-                <span className="text-2xl">Help</span>
-              </div>
+            <Link href="/help" className="hidden lg:flex items-center text-white">
+              <FiHelpCircle className="text-3xl mr-3" />
+              <span className="text-2xl">Help</span>
             </Link>
 
-            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer">
-              <div className="flex items-center text-white">
-                <FiFileText size="" className="text-3xl mr-3" />
-                <span className="text-2xl">Docs</span>
-              </div>
+            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="hidden lg:flex items-center text-white">
+              <FiFileText size="" className="text-3xl mr-3" />
+              <span className="text-2xl">Docs</span>
             </a>
 
             {/* SearchIcon button and input */}
@@ -290,6 +299,48 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden absolute top-full left-0 w-full bg-blue-navbar shadow-md z-40 p-4">
+            {routes.map((section) => (
+              <div key={section.name} className="mb-4">
+                {section.name === "Blog" ? (
+                  <Link href="/blog" className="block text-white text-xl py-2">
+                    {section.name}
+                  </Link>
+                ) : (
+                  <>
+                    <button onClick={() => { /* Implement toggle for submenu if needed */ }} className="flex items-center justify-between w-full text-white text-xl py-2">
+                      {section.name}
+                      <FaChevronDown className="h-4 w-4" /> {/* Add indicator for submenu */}
+                    </button>
+                    {/* Render submenu items here if needed */}
+                    <div className="ml-4">
+                      {section.groups.map(group => (
+                        <div key={group.name}>
+                          {group.routes.map(route => (
+                            <Link key={route.href} href={route.href} className="block text-white text-lg py-1">
+                              {route.name}
+                            </Link>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                )}
+              </div>
+            ))}
+            <div className="mt-4">
+              <Link href="/help" className="block text-white text-xl py-2">
+                Help
+              </Link>
+              <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-white text-xl py-2">
+                Docs
+              </a>
+            </div>
+          </div>
+        )}
       </nav>
     </header>
   )
@@ -302,15 +353,15 @@ const NavigationSectionContent: React.FC<{
   const hasMultipleGroups = groups.length > 1;
 
   return (
-    <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white">
+    <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white lg:block hidden"> {/* Hide on mobile by default */}
       <div className={`p-10 flex ${hasMultipleGroups ? 'space-x-8' : ''} ${hasMultipleGroups ? 'flex-grow' : ''}`}>
         {groups.map((group, index) => (
           <div
-          key={group.name}
-          className={`${hasMultipleGroups && index > 0 ? 'border-l border-black pl-10' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
-        >
-            {group.name && <h3 className="text-2xl pl-10 mb-6 tracking-widest">{group.name.toUpperCase()}</h3>}
-            <ul className="list-none pl-10 flex flex-col gap-2">
+            key={group.name}
+            className={`${hasMultipleGroups && index > 0 ? 'border-l border-black pl-10' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
+          >
+            {group.name && <h3 className="text-2xl mb-6 tracking-widest">{group.name.toUpperCase()}</h3>}
+            <ul className="list-none flex flex-col gap-2">
               {group.routes.map((route) => (
                 <li key={route.href} className="hover:bg-white hover:text-black pb-4">
                   <NavigationMenu.Link
@@ -325,16 +376,13 @@ const NavigationSectionContent: React.FC<{
                     <div className="flex flex-col">
                       <span className="text-2xl font-semibold pb-1">{route.name}</span>
                       {route.description && (
-                        <span className="text-lg text-neutral-500 italic mb-3">{route.description}</span>
+                        <span className="max-w-[550px] text-lg text-neutral-500 italic mb-3">{route.description}</span>
                       )}
                     </div>
                   </NavigationMenu.Link>
                 </li>
               ))}
             </ul>
-            {hasMultipleGroups && index < groups.length - 1 && (
-              <div className="h-full mx-4" />
-            )}
           </div>
         ))}
       </div>
