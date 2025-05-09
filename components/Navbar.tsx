@@ -338,25 +338,25 @@ const NavigationSectionContent: React.FC<{
         {groups.map((group, index) => (
           <div
             key={group.name}
-            className={`${hasMultipleGroups && index > 0 ? 'border-l border-black pl-6' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
+            className={`${hasMultipleGroups && index > 0 ? 'border-l border-neutral-700 pl-6' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
           >
-            {group.name && <h3 className="text-xl mb-4 tracking-widest">{group.name.toUpperCase()}</h3>}
+            {group.name && <h3 className="text-xl mb-4 tracking-widest max-w-[425px]">{group.name.toUpperCase()}</h3>}
             <ul className="list-none flex flex-col gap-2">
               {group.routes.map((route) => (
-                <li key={route.href} className="hover:bg-neutral-50 focus:bg-neutral-100 pb-2">
+                <li key={route.href} className="hover:bg-neutral-50 focus:bg-neutral-100 p-2">
                   <NavigationMenu.Link
                     href={route.href}
                     className="flex items-start focus:outline-none"
                   >
                     {route.icon && (
-                      <div className="mr-2 h-[4rem] w-[4rem] bg-neutral-100/75 border text-white rounded-md flex items-center justify-center">
+                      <div className="mr-2 h-[4rem] w-[4rem] bg-neutral-100/75 text-white rounded-md flex items-center justify-center">
                         <route.icon className="h-1/2 w-1/2"/>
                       </div>
                     )}
                     <div className="flex flex-col">
                       <span className="text-xl font-semibold pb-1">{route.name}</span>
                       {route.description && (
-                        <span className="max-w-[550px] text-md text-neutral-500 italic mb-3">{route.description}</span>
+                        <span className="max-w-[425px] text-md text-neutral-500 italic mb-3">{route.description}</span>
                       )}
                     </div>
                   </NavigationMenu.Link>
