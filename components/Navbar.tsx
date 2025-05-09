@@ -207,7 +207,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Navigation Menu for Desktop */}
-        <NavigationMenu.Root className="relative z-10 flex w-screen justify-between items-center">
+        <NavigationMenu.Root className="hidden lg:flex relative z-10 w-screen justify-between items-center">
           <NavigationMenu.List className="m-0 flex list-none rounded-md items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
