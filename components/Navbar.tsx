@@ -191,14 +191,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className={`sticky top-0 z-50`}>
-      <nav className="bg-blue-navbar flex px-8">
-        {/* Mobile Menu Button */}
-        {/* <div className="lg:hidden">
-          <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
-            <FiMenu className="h-6 w-6" />
-          </Button>
-        </div> */}
-
+      <nav className="bg-blue-navbar flex px-8 items-center justify-between">
         {/* CCV Logo */}
         <div className="flex items-center py-4 lg:py-8">
           <Link href={"/"}>
@@ -266,6 +259,13 @@ export const Navbar: React.FC = () => {
             </NavigationMenu.Item>
           </NavigationMenu.List>
         </NavigationMenu.Root>
+
+        {/* Mobile Menu Hamburger Button */}
+        <div className="lg:hidden">
+          <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
+            <FiMenu className="h-6 w-6" />
+          </Button>
+        </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
