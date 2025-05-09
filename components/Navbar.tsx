@@ -179,22 +179,7 @@ const routes: NavSection[] = [
         ],
       },
     ],
-  },
-  {
-    name: "Blog",
-    groups: [
-      {
-        name: "",
-        routes: [
-          {
-            name: "Blog",
-            href: "/blog",
-            description:"",
-          },
-        ],
-      },
-    ],
-  },
+  }
 ]
 
 export const Navbar: React.FC = () => {
@@ -230,32 +215,30 @@ export const Navbar: React.FC = () => {
                     <CCVLogo width={120}/>
                   </NavigationMenu.Link>
                 </NavigationMenu.Item>
+
                 {routes.map((section) =>
-                  section.name === "Blog" ? (
-                    <NavigationMenu.Item key={section.name}>
-                      <NavigationMenu.Link
-                        href="/blog"
-                        className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                      >
-                        {section.name}
-                      </NavigationMenu.Link>
-                    </NavigationMenu.Item>
-                  ) : (
-                    <NavigationMenu.Item key={section.name}>
-                      <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                        {section.name}
-                        <FaChevronDown
-                          className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
-                          aria-hidden="true"
-                        />
-                      </NavigationMenu.Trigger>
-                      <NavigationSectionContent
-                        groups={section.groups}
-                        parentTitle={section.name}
+                  <NavigationMenu.Item key={section.name}>
+                    <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                      {section.name}
+                      <FaChevronDown
+                        className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
+                        aria-hidden="true"
                       />
-                    </NavigationMenu.Item>
-                  )
+                    </NavigationMenu.Trigger>
+                    <NavigationSectionContent
+                      groups={section.groups}
+                      parentTitle={section.name}
+                    />
+                  </NavigationMenu.Item>
                 )}
+
+                <NavigationMenu.Item>
+                  <NavigationMenu.Link
+                    className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                    href="/blog">
+                    Blog
+                  </NavigationMenu.Link>
+                </NavigationMenu.Item>
               </NavigationMenu.List>
             </NavigationMenu.Root>
           </div>
