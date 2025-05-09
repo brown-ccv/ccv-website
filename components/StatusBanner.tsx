@@ -4,7 +4,13 @@ import { XMarkIcon } from "@heroicons/react/20/solid"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 
-export default function StatusBanner({ children, isOperational }: { children: React.ReactNode; isOperational?: boolean }) {
+interface StatusBannerProps {
+  children: React.ReactNode;
+  isOperational?: boolean;
+  id?: string;
+}
+
+export default function StatusBanner({ children, isOperational, id }: StatusBannerProps) {
   const [isOpen, setIsOpen] = useState(true)
 
   if (!isOpen) return null
