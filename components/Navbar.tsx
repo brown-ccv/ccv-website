@@ -209,7 +209,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Navigation Menu for Desktop */}
-        <NavigationMenu.Root className="hidden lg:flex relative z-10 w-screen justify-between items-stretch">
+        <NavigationMenu.Root className="xl:flex hidden relative z-10 w-screen justify-between items-stretch">
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
@@ -270,7 +270,7 @@ export const Navbar: React.FC = () => {
         </NavigationMenu.Root>
 
         {/* Mobile Menu Hamburger Button */}
-        <div className="lg:hidden flex items-center">
+        <div className="xl:hidden flex items-center">
           <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
             <FiMenu className="h-6 w-6" />
           </Button>
@@ -278,7 +278,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-neutral-900 shadow-md z-40 p-4 overflow-y-auto max-h-screen">
+          <div className="xl:hidden absolute top-full left-0 w-full bg-neutral-900 shadow-md z-40 p-4 overflow-y-auto max-h-screen">
             {routes.map((section) => (
               <div key={section.name} className="mb-4 outline-double">
                 {section.name === "Blog" ? (
@@ -333,7 +333,7 @@ const NavigationSectionContent: React.FC<{
   const hasMultipleGroups = groups.length > 1;
 
   return (
-    <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white lg:block hidden"> {/* Hide on mobile by default */}
+    <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white xl:block hidden">
       <div className={`p-10 flex ${hasMultipleGroups ? 'space-x-8' : ''} ${hasMultipleGroups ? 'flex-grow' : ''}`}>
         {groups.map((group, index) => (
           <div
