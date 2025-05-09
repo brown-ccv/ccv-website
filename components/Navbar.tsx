@@ -213,8 +213,8 @@ export const Navbar: React.FC = () => {
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                  {section.name}
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                  {section.name.toUpperCase()}
                   <FaChevronDown
                     className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
                     aria-hidden="true"
@@ -229,9 +229,9 @@ export const Navbar: React.FC = () => {
 
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/blog">
-                Blog
+                BLOG
               </NavigationMenu.Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>
@@ -240,18 +240,18 @@ export const Navbar: React.FC = () => {
             {/* Help */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/help">
-                <FiHelpCircle className="text-3xl mr-3"/>Help
+                <FiHelpCircle className="text-3xl mr-3"/>HELP
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
             {/* Documentation */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="https://docs.ccv.brown.edu/documentation">
-                <FiFileText size="" className="text-3xl mr-3" />Docs
+                <FiFileText size="" className="text-3xl mr-3" />DOCS
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
@@ -278,7 +278,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-neutral-900 shadow-md z-40 p-4">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-neutral-900 shadow-md z-40 p-4 overflow-y-auto max-h-screen">
             {routes.map((section) => (
               <div key={section.name} className="mb-4 outline-double">
                 {section.name === "Blog" ? (
