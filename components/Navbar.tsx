@@ -191,9 +191,9 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className={`sticky top-0 z-50`}>
-      <nav className="content-wrapper h-[131px] bg-blue-navbar">
-        <div className="flex items-center justify-between h-full">
-          <div className="flex items-center space-x-4">
+      <nav className="bg-blue-navbar">
+        <div className="">
+          <div className="">
             {/* Mobile Menu Button */}
             {/* <div className="lg:hidden">
               <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
@@ -202,9 +202,9 @@ export const Navbar: React.FC = () => {
             </div> */}
 
             {/* Navigation Menu for Desktop */}
-            <NavigationMenu.Root className="hidden lg:block">
+            <NavigationMenu.Root className="relative z-10 flex w-screen justify-between">
               {/* Logo Section */}
-              <NavigationMenu.List className="flex list-none space-x-5">
+              <NavigationMenu.List className="m-0 flex list-none rounded-md p-8">
                 <NavigationMenu.Item>
                   <NavigationMenu.Link href={"/"}>
                     <CCVLogo width={120}/>
