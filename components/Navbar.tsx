@@ -191,7 +191,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className={`sticky top-0 z-50`}>
-      <nav className="bg-blue-navbar flex px-8 items-center justify-between">
+      <nav className="bg-blue-navbar flex px-8 justify-between">
         {/* CCV Logo */}
         <div className="flex items-center py-4 lg:py-8">
           <Link href={"/"}>
@@ -200,8 +200,8 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Navigation Menu for Desktop */}
-        <NavigationMenu.Root className="hidden lg:flex relative z-10 w-screen justify-between items-center">
-          <NavigationMenu.List className="m-0 flex list-none rounded-md items-center">
+        <NavigationMenu.Root className="hidden lg:flex relative z-10 w-screen justify-between items-stretch">
+          <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
                 <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
@@ -227,7 +227,7 @@ export const Navbar: React.FC = () => {
             </NavigationMenu.Item>
           </NavigationMenu.List>
 
-          <NavigationMenu.List className="m-0 flex list-none rounded-md items-center">
+          <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {/* Help */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
@@ -261,7 +261,7 @@ export const Navbar: React.FC = () => {
         </NavigationMenu.Root>
 
         {/* Mobile Menu Hamburger Button */}
-        <div className="lg:hidden">
+        <div className="lg:hidden flex items-center">
           <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
             <FiMenu className="h-6 w-6" />
           </Button>
