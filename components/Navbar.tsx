@@ -214,23 +214,22 @@ export const Navbar: React.FC = () => {
       <nav className="content-wrapper h-[131px] bg-blue-navbar">
         <div className="flex items-center justify-between h-full">
           <div className="flex items-center space-x-4">
-            {/* Logo Section */}
-            <div className="flex items-center space-x-3">
-              <Link href={"/"}>
-                <CCVLogo width={120}/>
-              </Link>
-            </div>
-
             {/* Mobile Menu Button */}
-            <div className="lg:hidden">
+            {/* <div className="lg:hidden">
               <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
                 <FiMenu className="h-6 w-6" />
               </Button>
-            </div>
+            </div> */}
 
             {/* Navigation Menu for Desktop */}
             <NavigationMenu.Root className="hidden lg:block">
+              {/* Logo Section */}
               <NavigationMenu.List className="flex list-none space-x-5">
+                <NavigationMenu.Item>
+                  <NavigationMenu.Link href={"/"}>
+                    <CCVLogo width={120}/>
+                  </NavigationMenu.Link>
+                </NavigationMenu.Item>
                 {routes.map((section) =>
                   section.name === "Blog" ? (
                     <NavigationMenu.Item key={section.name}>
