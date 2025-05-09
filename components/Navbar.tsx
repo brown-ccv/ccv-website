@@ -191,7 +191,7 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className={`sticky top-0 z-50`}>
-      <nav className="bg-blue-navbar">
+      <nav className="bg-blue-navbar flex px-8">
         {/* Mobile Menu Button */}
         {/* <div className="lg:hidden">
           <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
@@ -199,20 +199,19 @@ export const Navbar: React.FC = () => {
           </Button>
         </div> */}
 
+        {/* CCV Logo */}
+        <div className="flex items-center py-4 lg:py-8">
+          <Link href={"/"}>
+            <CCVLogo width={120}/>
+          </Link>
+        </div>
+
         {/* Navigation Menu for Desktop */}
-        <NavigationMenu.Root className="relative z-10 flex w-screen justify-between">
-
-          <NavigationMenu.List className="m-0 flex list-none rounded-md p-8 items-center">
-          {/* CCV Logo */}
-            <NavigationMenu.Item>
-              <NavigationMenu.Link href={"/"}>
-                <CCVLogo width={120}/>
-              </NavigationMenu.Link>
-            </NavigationMenu.Item>
-
+        <NavigationMenu.Root className="relative z-10 flex w-screen justify-between items-center">
+          <NavigationMenu.List className="m-0 flex list-none rounded-md items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
                   {section.name}
                   <FaChevronDown
                     className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
@@ -228,18 +227,18 @@ export const Navbar: React.FC = () => {
 
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
                 href="/blog">
                 Blog
               </NavigationMenu.Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>
 
-          <NavigationMenu.List className="m-0 flex list-none rounded-md p-8 items-center">
+          <NavigationMenu.List className="m-0 flex list-none rounded-md items-center">
             {/* Help */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
                 href="/help">
                 <FiHelpCircle className="text-3xl mr-3"/>Help
               </NavigationMenu.Link>
@@ -248,7 +247,7 @@ export const Navbar: React.FC = () => {
             {/* Documentation */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
                 href="https://docs.ccv.brown.edu/documentation">
                 <FiFileText size="" className="text-3xl mr-3" />Docs
               </NavigationMenu.Link>
