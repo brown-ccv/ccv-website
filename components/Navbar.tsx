@@ -183,12 +183,7 @@ const routes: NavSection[] = [
 ]
 
 export const Navbar: React.FC = () => {
-  const [isSearchExpanded, setIsSearchExpanded] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const handleSearchToggle = () => {
-    setIsSearchExpanded(!isSearchExpanded)
-  }
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -240,45 +235,39 @@ export const Navbar: React.FC = () => {
                   </NavigationMenu.Link>
                 </NavigationMenu.Item>
               </NavigationMenu.List>
-            </NavigationMenu.Root>
-          </div>
 
-          <div className="flex items-center space-x-8">
-            {/* Help and Docs links */}
-            <Link href="/help" className="hidden lg:flex items-center text-white">
-              <FiHelpCircle className="text-3xl mr-3" />
-              <span className="text-2xl">Help</span>
-            </Link>
+              <NavigationMenu.List className="m-0 flex list-none rounded-md p-8">
+                {/* Help */}
+                <NavigationMenu.Item>
+                  <NavigationMenu.Link
+                    className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                    href="/help">
+                    <FiHelpCircle className="text-3xl mr-3"/>Help
+                  </NavigationMenu.Link>
+                </NavigationMenu.Item>
 
-            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="hidden lg:flex items-center text-white">
-              <FiFileText size="" className="text-3xl mr-3" />
-              <span className="text-2xl">Docs</span>
-            </a>
+                {/* Documentation */}
+                <NavigationMenu.Item>
+                  <NavigationMenu.Link
+                    className="inline-flex h-9 items-center justify-center gap-2 px-4 py-2 text-white text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50" 
+                    href="https://docs.ccv.brown.edu/documentation">
+                    <FiFileText size="" className="text-3xl mr-3" />Docs
+                  </NavigationMenu.Link>
+                </NavigationMenu.Item>
 
-            {/* SearchIcon button and input */}
-            <div className="relative hidden lg:flex">
-              {isSearchExpanded ? (
-                <div className="flex items-center">
+                {/* Search */}
+                <NavigationMenu.Item>
                   <Button
                     variant="secondary_filled"
                     className="flex items-center justify-center"
                     iconOnly={<FaSearch />}
                     size="icon"
-                    onClick={handleSearchToggle}
                   >
                     <FaSearch />
                   </Button>
-                </div>
-              ) : (
-                <Button
-                  variant="secondary_filled"
-                  className="flex items-center justify-center"
-                  iconOnly={<FaSearch />}
-                  size="icon"
-                  onClick={handleSearchToggle}
-                ></Button>
-              )}
-            </div>
+                </NavigationMenu.Item>
+              </NavigationMenu.List>
+            </NavigationMenu.Root>
           </div>
         </div>
 
