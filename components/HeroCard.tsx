@@ -18,20 +18,23 @@ const heroCards = [
   {
     title: "Collaborative Growth",
     description:
-      "Beyond direct analysis, we cultivate scientific connections within the COBRE and equip the broader research community with essential training for long-term data analysis success across Brown University and its affiliates.",
+      "We cultivate scientific connections within the COBRE and equip the broader research community with essential training for long-term data analysis success across Brown University and its affiliates.",
   },
 ]
 
 export const HeroCard: React.FC = () => {
   return (
-    <div className="z-10 mt-6 md:-mt-[170px] mb-[50px] px-6 lg:px-8 flex justify-center relative">
+    <div className="z-10 mt-6 md:-mt-[170px] mb-[50px] px-0 lg:px-6 flex justify-center relative">
       <Card
-        className={cn(cardVariants({ variant: "elevated" }), "w-7/8 relative")}
+        className={cn(cardVariants({ variant: "elevated" }), "w-full md:w-3/4")}
       >
         <CardContent className="py-10 px-2 lg:px-12">
-          <div className="flex justify-center items-start gap-8 lg:gap-20 flex-wrap">
+          <div className="flex justify-center items-start gap-8 lg:gap-12 xl:gap-24 flex-wrap">
             {heroCards.map((card, index) => (
-              <div key={index} className="max-w-lg">
+              <div
+                key={index}
+                className="w-full px-4 md:px-0 md:w-5/6 lg:w-1/4"
+              >
                 <div className="inline-flex items-center pb-4">
                   <div className="relative">
                     <CBCBars />
