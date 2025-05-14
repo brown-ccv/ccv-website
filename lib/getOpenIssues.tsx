@@ -17,7 +17,7 @@ function filterPRs(issues: GitHubIssue[]): GitHubIssue[] {
 async function getSecret() {
   const client = new SecretManagerServiceClient();
   const [secret] = await client.accessSecretVersion({
-    name: "projects/ccv-website-next/secrets/myGithubToken/versions/latest",
+    name: "projects/cbc-website-next/secrets/myGithubToken/versions/latest",
   });
 
   if (!secret.payload?.data) {
