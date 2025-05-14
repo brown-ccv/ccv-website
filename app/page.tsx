@@ -36,8 +36,7 @@ export default async function Home() {
                   </TextAnimate>
 
                   <p className="text-2xl md:text-4xl font-semibold">
-                    Supporting Brown's biological research using high-throughput
-                    DNA/RNA sequencing data.
+                    {`Supporting Brown's biological research using high-throughput DNA/RNA sequencing data.`}
                   </p>
 
                   <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
