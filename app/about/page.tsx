@@ -3,7 +3,6 @@ import { getWorkdayData } from "@/app/about/queries"
 import { UserPlusIcon } from "@heroicons/react/24/solid"
 import { SectionHeader } from "@/components/ui/section-header"
 import Spinner from "@/components/assets/Spinner"
-import Link from "next/link"
 import React, { Suspense } from "react"
 
 export default async function About() {
@@ -12,7 +11,6 @@ export default async function About() {
     return (
       <div>
         <SectionHeader
-          href={"#opportunities"}
           title={"Opportunities"}
           icon={<UserPlusIcon className="h-7 w-7" />}
         />
@@ -26,7 +24,6 @@ export default async function About() {
     return (
       <div>
         <SectionHeader
-          href={"#opportunities"}
           title={"Opportunities"}
           icon={<UserPlusIcon className="h-7 w-7" />}
         />

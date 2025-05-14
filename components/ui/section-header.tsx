@@ -3,6 +3,7 @@ import CBCBars from "@/components/assets/CBCBars"
 
 interface SectionHeaderProps {
   title: string
+  icon?: React.ReactNode
   align?: "left" | "center"
 }
 
