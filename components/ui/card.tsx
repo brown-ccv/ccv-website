@@ -81,8 +81,6 @@ interface CardWithImageProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, name, title, ...props }) => {
-  const imageWidth = 300;
-  const imageHeight = 200;
 
   return (
     <Card className={cn(className, "overflow-hidden", cardVariants({ variant: "people" }),)}>
@@ -91,14 +89,14 @@ const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, nam
           <Image
             src={imagePath}
             alt={name}
-            width={imageWidth}
-            height={imageHeight}
+            width="300"
+            height="300"
             objectFit="cover"
-            className="rounded-t-xl w-full"
+            className="rounded-full w-full"
           />
         </div>
-        <div className="p-4 sm:p-6">
-          <CardTitle className="text-2xl text-center">{name}</CardTitle>
+        <div>
+          <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
           <CardDescription className="text-xl italic text-center">{title}</CardDescription>
         </div>
       </CardContent>

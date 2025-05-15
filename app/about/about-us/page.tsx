@@ -108,7 +108,7 @@ export default async function AboutUs() {
         {/* People */}
         <div className="content-wrapper py-16 sm:py-24">
           <SectionHeader title="People" align="center"></SectionHeader>
-          <div className="flex flex-wrap justify-between gap-x-6 gap-y-8">
+          <div className="flex flex-wrap justify-center gap-y-8">
             {people.map((person) => (
               <div
                 key={person.name}
