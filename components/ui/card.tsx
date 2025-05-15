@@ -1,6 +1,7 @@
 import React from "react"
 import { cn } from "@/lib/utils"
 import Image from 'next/image';
+import { cardVariants } from "@/components/ui/variants"
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -35,7 +36,7 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("font-semibold leading-none tracking-tight text-lg sm:text-xl", className)}
+    className={cn("font-semibold leading-none tracking-tight text-lg", className)}
     {...props}
   />
 ))
@@ -76,15 +77,16 @@ CardFooter.displayName = "CardFooter"
 interface CardWithImageProps extends React.HTMLAttributes<HTMLDivElement> {
   imagePath: string;
   name: string;
+  title: string;
 }
 
-const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, name, ...props }) => {
+const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, name, title, ...props }) => {
   const imageWidth = 300;
   const imageHeight = 200;
 
   return (
-    <Card className={cn(className, "overflow-hidden")}>
-      <CardContent className="p-0">
+    <Card className={cn(className, "overflow-hidden", cardVariants({ variant: "people" }),)}>
+      <CardContent>
         <div className="relative">
           <Image
             src={imagePath}
@@ -96,7 +98,8 @@ const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, nam
           />
         </div>
         <div className="p-4 sm:p-6">
-          <CardTitle>{name}</CardTitle>
+          <CardTitle className="text-2xl text-center">{name}</CardTitle>
+          <CardDescription className="text-xl italic text-center">{title}</CardDescription>
         </div>
       </CardContent>
     </Card>

@@ -7,46 +7,55 @@ import { Card, CardContent, CardWithImage } from "@/components/ui/card"
 const people = [
   {
     name: "Ashley Lee",
+    title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
   {
     name: "Ashley Lee",
+    title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
   {
     name: "Ashley Lee",
+    title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
   {
     name: "Ashley Lee",
+    title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
   {
     name: "Ashley Lee",
+    title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
   {
     name: "Ashley Lee",
+    title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
   {
     name: "Ashley Lee",
+    title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
   {
     name: "Ashley Lee",
+    title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
   {
     name: "Ashley Lee",
+    title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
@@ -98,13 +107,13 @@ export default async function AboutUs() {
 
         {/* People */}
         <div className="content-wrapper py-16 sm:py-24">
-          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">People</h2>
-          <div className="flex flex-wrap justify-start gap-x-6 gap-y-8">
+          <SectionHeader title="People" align="center"></SectionHeader>
+          <div className="flex flex-wrap justify-between gap-x-6 gap-y-8">
             {people.map((person) => (
               <div
                 key={person.name}
               >
-                <CardWithImage imagePath={person.image} name={person.name}  />
+                <CardWithImage imagePath={person.image} name={person.name} title={person.title} />
               </div>
             ))}
           </div>
