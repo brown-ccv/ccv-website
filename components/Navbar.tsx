@@ -202,7 +202,7 @@ export const Navbar: React.FC = () => {
     <header className={`sticky top-0 z-50`}>
       <nav className="bg-blue-navbar flex px-8 justify-between">
         {/* CCV Logo */}
-        <div className="flex items-center py-4 lg:py-8">
+        <div className="flex items-center py-4 lg:py-8 px-12">
           <Link href={"/"}>
             <CCVLogo width={120}/>
           </Link>
@@ -213,7 +213,7 @@ export const Navbar: React.FC = () => {
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-4 text-white text-xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-6 text-white text-xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
                   {section.name.toUpperCase()}
                   <FaChevronDown
                     className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
@@ -228,8 +228,9 @@ export const Navbar: React.FC = () => {
             )}
 
             <NavigationMenu.Item>
+              {/* Blog */}
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-6 text-white font-semibold text-xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/blog">
                 BLOG
               </NavigationMenu.Link>
