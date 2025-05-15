@@ -22,7 +22,7 @@ const people = [
   },
 ]
 
-export default async function ClassroomSupport() {
+export default async function AboutUs() {
     return (
       <div className="w-full">
         <div className="relative w-full flex flex-col">
@@ -67,14 +67,15 @@ export default async function ClassroomSupport() {
         </section>
 
         {/* People */}
-        <section className="content-wrapper py-24">
+        <section className="content-wrapper py-24 flex flex-wrap justify-center">
           <SectionHeader title="People" align="center" />
+          <div>
             <Card className="w-full border-none shadow-none rounded-none">
               <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
                 {people.map((person) => {
                   return (
                     <Card key={person.name}>
-                      <CardWithImage imagePath={person.image} className="max-w-sm">
+                      <CardWithImage imagePath={person.image} className="">
                         {person.name}
                       </CardWithImage>
                     </Card>
@@ -82,8 +83,8 @@ export default async function ClassroomSupport() {
                 })}
               </CardContent>
             </Card>
-          </section>
-
+          </div>
+        </section>
       </div>
     )
   }
