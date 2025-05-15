@@ -20,6 +20,36 @@ const people = [
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
   },
+  {
+    name: "Ashley Lee",
+    href: "/ashley-lee",
+    image: "/images/people/ashley_main.jpg",
+  },
+  {
+    name: "Ashley Lee",
+    href: "/ashley-lee",
+    image: "/images/people/ashley_main.jpg",
+  },
+  {
+    name: "Ashley Lee",
+    href: "/ashley-lee",
+    image: "/images/people/ashley_main.jpg",
+  },
+  {
+    name: "Ashley Lee",
+    href: "/ashley-lee",
+    image: "/images/people/ashley_main.jpg",
+  },
+  {
+    name: "Ashley Lee",
+    href: "/ashley-lee",
+    image: "/images/people/ashley_main.jpg",
+  },
+  {
+    name: "Ashley Lee",
+    href: "/ashley-lee",
+    image: "/images/people/ashley_main.jpg",
+  },
 ]
 
 export default async function AboutUs() {
@@ -67,24 +97,18 @@ export default async function AboutUs() {
         </section>
 
         {/* People */}
-        <section className="content-wrapper py-24 flex flex-wrap justify-center">
-          <SectionHeader title="People" align="center" />
-          <div>
-            <Card className="w-full border-none shadow-none rounded-none">
-              <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-                {people.map((person) => {
-                  return (
-                    <Card key={person.name}>
-                      <CardWithImage imagePath={person.image} className="">
-                        {person.name}
-                      </CardWithImage>
-                    </Card>
-                  )
-                })}
-              </CardContent>
-            </Card>
+        <div className="content-wrapper py-16 sm:py-24">
+          <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8">People</h2>
+          <div className="flex flex-wrap justify-start gap-x-6 gap-y-8">
+            {people.map((person) => (
+              <div
+                key={person.name}
+              >
+                <CardWithImage imagePath={person.image} name={person.name}  />
+              </div>
+            ))}
           </div>
-        </section>
+        </div>
       </div>
     )
   }
