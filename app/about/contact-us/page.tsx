@@ -88,8 +88,8 @@ export default async function ContactUs() {
           </CardContent>
         </Card>
 
-        <div className="content-wrapper py-16 sm:py-24">
-          <div className="flex flex-wrap justify-center gap-y-8 gap-x-6">
+        <div className="content-wrapper py-16 sm:py-24 flex justify-center">
+          <div className="flex flex-wrap justify-center gap-y-8 gap-x-6 w-full md:w-1/2">
             {contactUs.map((card) => (
               <div
                   key={card.title}
