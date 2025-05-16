@@ -1,5 +1,7 @@
-import * as React from "react"
+import React from "react"
 import { cn } from "@/lib/utils"
+import Image from 'next/image';
+import { cardVariants } from "@/components/ui/variants"
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -22,7 +24,7 @@ const CardHeader = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-6", className)}
+    className={cn("flex flex-col space-y-1.5 p-4 sm:p-6 font-semibold text-3xl", className)}
     {...props}
   />
 ))
@@ -34,7 +36,7 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("font-semibold leading-none tracking-tight", className)}
+    className={cn("font-semibold leading-none tracking-tight text-lg", className)}
     {...props}
   />
 ))
@@ -56,7 +58,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
+  <div ref={ref} className={cn("p-4 sm:p-6", className)} {...props} />
 ))
 CardContent.displayName = "CardContent"
 
@@ -66,11 +68,40 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center p-6 pt-0", className)}
+    className={cn("flex items-center p-4 sm:p-6", className)}
     {...props}
   />
 ))
 CardFooter.displayName = "CardFooter"
+
+interface CardWithImageProps extends React.HTMLAttributes<HTMLDivElement> {
+  imagePath: string;
+  name: string;
+  title: string;
+}
+
+const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, name, title, ...props }) => {
+  return (
+    <Card className={cn(className, "overflow-hidden", cardVariants({ variant: "people" }),)}>
+      <CardContent>
+        <div className="relative">
+          <Image
+            src={imagePath}
+            alt={name}
+            width="300"
+            height="300"
+            objectFit="cover"
+            className="rounded-full w-full"
+          />
+        </div>
+        <div>
+          <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
+          <CardDescription className="text-xl italic text-center">{title}</CardDescription>
+        </div>
+      </CardContent>
+    </Card>
+  );
+};
 
 export {
   Card,
@@ -79,4 +110,5 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
+  CardWithImage,
 }
