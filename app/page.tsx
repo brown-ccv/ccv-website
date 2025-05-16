@@ -43,11 +43,11 @@ export default async function Home() {
                       <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
                         <Button
                           variant="primary_filled"
-                          className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
+                          size="xxl"
                         >
                           Work with Us
                         </Button>
-                        <ScrollButton id="events" variant="secondary_filled" className="h-[55px] min-w-[155px] self-start text-2xl font-semibold">View Events</ScrollButton>
+                        <ScrollButton id="events" variant="secondary_filled" size="xxl">View Events</ScrollButton>
                       </div>
                     </div>
                   </div>
