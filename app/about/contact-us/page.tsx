@@ -75,7 +75,7 @@ export default async function ContactUs() {
               {officeHours.map((card) => (
                 <div
                     key={card.title}
-                    className="flex-grow max-w-sm" // Add max-w-sm
+                    className="flex-grow max-w-md"
                 >
                     <div className="inline-flex items-center gap-2 py-8 w-full h-full">
                         <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
