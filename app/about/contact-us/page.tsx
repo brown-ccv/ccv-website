@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
+import { FaEnvelopeOpenText, FaTicketAlt, FaBookReader, FaSlack } from "react-icons/fa"
+
 
 const officeHours = [
   {
@@ -20,6 +22,37 @@ const officeHours = [
     subtitle: "Join us remotely or in-person.",
     description: "FRIDAYS <br/><br/> 10am - 12pm",
     buttonText: "Find Zoom Link",
+    href: "/ashley-lee",
+  }
+]
+
+const contactUs = [
+  {
+    title: "Email",
+    icon: <FaEnvelopeOpenText/>, 
+    description: "Inquire about resources, support, or a potential collaboration for a research project.",
+    buttonText: "Find Zoom Link",
+    href: "/ashley-lee",
+  },
+  {
+    title: "Submit a Ticket",
+    icon: <FaTicketAlt/>, 
+    description: "Open a ticket with our user services team. We will respond as soon as possible.",
+    buttonText: "Submit a Ticket",
+    href: "/ashley-lee",
+  },
+  {
+    title: "Documentation",
+    icon: <FaBookReader/>, 
+    description: "View Documentation for CCV Services, such as for Stronghold, Oscar, or Globus.",
+    buttonText: "View the Docs",
+    href: "/ashley-lee",
+  },
+  {
+    title: "CCV Slack",
+    icon: <FaSlack/>,
+    description: "CCV Share is a collection of Slack channels where CCV Staff and the ocmmunity will be available to discuss your questions.",
+    buttonText: "Join the Slack",
     href: "/ashley-lee",
   }
 ]
@@ -54,6 +87,32 @@ export default async function ContactUs() {
             </p>
           </CardContent>
         </Card>
+
+        <div className="content-wrapper py-16 sm:py-24">
+          <div className="flex flex-wrap justify-center gap-y-8 gap-x-6">
+            {contactUs.map((card) => (
+              <div
+                  key={card.title}
+                  className="flex-grow max-w-md"
+              >
+                <div className="inline-flex items-center gap-2 py-8 w-full h-full">
+                  <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
+                    <CardContent className="flex flex-col h-full px-6 mx-2">
+                      <div className="relative border-b border-neutral-300">
+                        <CardHeader className="flex flex-row gap-4 items-center">{card.icon}{card.title}</CardHeader>
+                      </div>
+                      <CardTitle className="text-lg py-6 px-6 flex-grow">{card.description}</CardTitle>
+                      <div className="px-6 mt-auto">
+                        <Button variant="primary_filled" size="xl">{card.buttonText}</Button>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
       </section>
 
       {/* Office Hours */}
@@ -71,29 +130,29 @@ export default async function ContactUs() {
         <div>
 
         <div className="content-wrapper py-16 sm:py-24">
-            <div className="flex flex-wrap justify-center gap-y-8 gap-x-6">
-              {officeHours.map((card) => (
-                <div
-                    key={card.title}
-                    className="flex-grow max-w-md"
-                >
-                    <div className="inline-flex items-center gap-2 py-8 w-full h-full">
-                        <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
-                            <CardContent className="flex flex-col h-full">
-                                <div className="relative border-b border-neutral-900 px-6 flex justify-center">
-                                    <CardHeader className="text-center">{card.title}</CardHeader>
-                                </div>
-                                <CardDescription className="pt-4 text-xl text-center">{card.subtitle}</CardDescription>
-                                <CardTitle className="text-lg py-6 text-center flex-grow" dangerouslySetInnerHTML={{ __html: card.description }} />
-                                <div className="flex justify-center mt-auto">
-                                    <Button variant="primary_filled" size="xl">{card.buttonText}</Button>
-                                </div>
-                            </CardContent>
-                        </Card>
-                    </div>
-                </div>
-              ))}
-            </div>
+          <div className="flex flex-wrap justify-center gap-y-8 gap-x-6">
+            {officeHours.map((card) => (
+              <div
+                  key={card.title}
+                  className="flex-grow max-w-md"
+              >
+                  <div className="inline-flex items-center gap-2 py-8 w-full h-full">
+                      <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
+                          <CardContent className="flex flex-col h-full">
+                              <div className="relative border-b border-neutral-900 px-4 flex justify-center">
+                                  <CardHeader className="text-center">{card.title}</CardHeader>
+                              </div>
+                              <CardDescription className="pt-4 text-xl text-center">{card.subtitle}</CardDescription>
+                              <CardTitle className="text-lg py-6 text-center flex-grow" dangerouslySetInnerHTML={{ __html: card.description }} />
+                              <div className="flex justify-center mt-auto">
+                                  <Button variant="primary_filled" size="xl">{card.buttonText}</Button>
+                              </div>
+                          </CardContent>
+                      </Card>
+                  </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         </div>
