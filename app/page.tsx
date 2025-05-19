@@ -11,6 +11,7 @@ import Spinner from "@/components/assets/Spinner";
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { Button } from "@/components/ui/button"
 import { ScrollButton } from "@/components/ui/scroll-button"
+import { SectionHeader } from "@/components/ui/section-header"
 
 export default async function Home() {
 
@@ -55,6 +56,9 @@ export default async function Home() {
         </div>
           <HeroCard />
           <ImpactBanner />
+          <section className="content-wrapper pt-24 px-36">
+            <SectionHeader title="Featured Projects" align="center" />
+          </section>
           <FeaturedCarousel />
         </div>
         <div

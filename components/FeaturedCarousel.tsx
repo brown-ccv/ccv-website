@@ -5,7 +5,6 @@ import { Badge } from "@/components/ui/badge"
 import { getColorForTag } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { SectionHeader } from "@/components/ui/section-header"
 import Provident from "@/components/assets/Provident"
 import BrownLogo from "@/components/assets/BrownLogo"
 import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react"
@@ -40,8 +39,7 @@ export const FeaturedCarousel: React.FC = () => {
     )
 
   return (
-    <section className="mt-24 mb-24">
-      <SectionHeader title="Featured Projects" align="center" />
+    <section className="mt-12 mb-24">
 
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[100px]">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-20">
