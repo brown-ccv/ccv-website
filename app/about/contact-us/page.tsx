@@ -102,7 +102,7 @@ export default async function ContactUs() {
                       <div className="relative border-b border-neutral-300">
                         <CardHeader className="flex flex-row gap-4 items-center">{card.icon}{card.title}</CardHeader>
                       </div>
-                      <CardTitle className="text-lg py-6 px-6 flex-grow">{card.description}</CardTitle>
+                      <CardTitle className="text-lg px-6 flex-grow">{card.description}</CardTitle>
                       <div className="px-6 mt-auto">
                         <Button variant="primary_filled" size="xl">{card.buttonText}</Button>
                       </div>
@@ -143,7 +143,7 @@ export default async function ContactUs() {
                                   <CardHeader className="text-center">{card.title}</CardHeader>
                               </div>
                               <CardDescription className="pt-6 text-xl text-center">{card.subtitle}</CardDescription>
-                              <CardTitle className="text-lg py-6 text-center flex-grow" dangerouslySetInnerHTML={{ __html: card.description }} />
+                              <CardTitle className="text-lg text-center flex-grow" dangerouslySetInnerHTML={{ __html: card.description }} />
                               <div className="flex justify-center mt-auto">
                                   <Button variant="primary_filled" size="xl">{card.buttonText}</Button>
                               </div>

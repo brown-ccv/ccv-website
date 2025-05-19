@@ -19,13 +19,13 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
     <div>
       {showStatusBanner && (
         <StatusBanner isOperational={isOperational}>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
+          <div className="flex flex-wrap items-center gap-x-4">
             {issues.length > 0 ? (
               <>
-                <p className="text-xl">
+                <p className="text-lg">
                   <strong>Service Disruption:</strong> {repoNames}
                 </p>
-                <Button variant="secondary_filled" size="md">
+                <Button variant="secondary_filled" size="sm" className="text-md">
                   <a
                     href="https://status.ccv.brown.edu/"
                     target="_blank"
@@ -37,10 +37,10 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
               </>
             ) : (
               <>
-                <p className="text-xl">
+                <p className="text-lg">
                   All Services Operational
                 </p>
-                <Button variant="secondary_filled" size="md">
+                <Button variant="secondary_filled" size="md" className="my-0">
                   <a
                     href="https://status.ccv.brown.edu/"
                     target="_blank"

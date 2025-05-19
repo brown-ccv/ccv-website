@@ -40,14 +40,14 @@ export default async function Home() {
                         expertise.
                       </p>
 
-                      <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
+                      <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-16">
                         <Button
                           variant="primary_filled"
-                          size="xxl"
+                          size="xl"
                         >
                           Work with Us
                         </Button>
-                        <ScrollButton id="events" variant="secondary_filled" size="xxl">View Events</ScrollButton>
+                        <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
                       </div>
                     </div>
                   </div>

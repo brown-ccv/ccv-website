@@ -1,6 +1,8 @@
 export async function getWorkdayData() {
-  const myHeaders = new Headers()
-  myHeaders.append("Content-Type", "application/json")
+  await new Promise(resolve => setTimeout(resolve, 3000)); // 3-second delay
+
+    const myHeaders = new Headers()
+    myHeaders.append("Content-Type", "application/json")
   myHeaders.append(
     "Cookie",
     "PLAY_SESSION=9365d69619d226b22f74256e51894a0476197a1f-instance=vps-prod-tvvtdnej.prod-vps.pr501.cust.pdx.wd; __cf_bm=zYtKNPBpg6veqmLc2qdk_TeHEGdGWIcSRG9tdtkQNbQ-1721323439-1.0.1.1-TApbCV1fQKTtEauZKvZ5XnXrZQJL7dcML6ixA3AycoiBMROa.iAzMq_K.5E7iaZfCj9.WhQQlmYfAxW8wdwZgQ; __cflb=02DiuHJZe28xXz6hQKLf1exjNbMDM5uxekNnt7kFV7LUC; _cfuvid=hqIGrDcFihah5EiFO0c_HEM4gIPwkeWCOxjMxNqjR20-1721323439159-0.0.1.1-604800000; wd-browser-id=fc0f0b1d-4547-488d-b353-99c751c61dae; wday_vps_cookie=1122671626.53810.0000"
@@ -22,5 +24,5 @@ export async function getWorkdayData() {
     }
   )
   const json = await response.json()
-  return json
+  return json.jobPostings
 }
