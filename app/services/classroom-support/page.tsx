@@ -2,10 +2,37 @@ import React from "react"
 import { Hero } from "@/components/Hero"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Button } from "@/components/ui/button"
-import { FeaturedCarousel } from "@/components/FeaturedCarousel";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
+import { Card, CardContent } from "@/components/ui/card"
 import { TextAnimate } from "@/components/magicui/text-animate"
+import { UserIcon } from "@heroicons/react/24/solid"
+import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
+
+
+const featuredCarouselData: FeaturedCarouselItem[] = [
+  {
+    title: "PROVIDENT",
+    category: "Public Health",
+    description:
+      "A web app to support the PROVIDENT research study looking to prevent drug-related deaths in neighborhoods across Rhode Island.",
+    image: "/images/featured-carousel/provident.png",
+    websiteUrl: "https://provident-study.org",
+    viewMoreUrl: "/provident",
+  },
+  {
+    title: "PROJECT 2",
+    category: "Economics",
+    description: "Hello world.",
+    image: "/images/featured-carousel/provident.png",
+  },
+]
+
+const publicHealthProfile = {
+  icon: <UserIcon className="w-6 h-6" />,
+  name: "Brown School of Public Health",
+  organization: "People, Place and Health Collective",
+  websiteUrl: "https://provident-study.org",
+  viewMoreUrl: "/provident",
+};
 
 export default async function ClassroomSupport() {
     return (
@@ -37,7 +64,7 @@ export default async function ClassroomSupport() {
             </p>
           </CardContent>
         </Card>
-        <FeaturedCarousel />
+        <FeaturedCarousel carouselData={featuredCarouselData} profileCardData={publicHealthProfile}/>
       </section>
 
       {/* Student Accounts */}

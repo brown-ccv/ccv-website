@@ -1,46 +1,54 @@
-"use client"
+"use client";
 
-import React, { useState } from "react"
-import { Badge } from "@/components/ui/badge"
-import { getColorForTag } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import Provident from "@/components/assets/Provident"
-import BrownLogo from "@/components/assets/BrownLogo"
-import { ChevronLeftIcon, ChevronRightIcon, UserIcon } from "lucide-react"
-import { ProfileCard } from "@/components/ProfileCard"
+import React, { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { getColorForTag } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
+import Image from "next/image"
 
-const featuredCarouselData = [
-  {
-    title: "PROVIDENT",
-    category: "Public Health",
-    description:
-      "A web app to support the PROVIDENT research study looking to prevent drug-related deaths in neighborhoods across Rhode Island.",
-    image: Provident,
-  },
-  {
-    title: "PROJECT 2",
-    category: "Economics",
-    description: "Hello world.",
-    image: BrownLogo,
-  },
-]
 
-export const FeaturedCarousel: React.FC = () => {
-  const [idx, setIdx] = useState(0)
-  const { title, category, description, image: ImageComp } =
-    featuredCarouselData[idx]
+export interface FeaturedCarouselItem {
+  title: string;
+  category: string;
+  description: string;
+  image: string;
+  websiteUrl?: string;
+  viewMoreUrl?: string;
+}
+interface FeaturedCarouselProps {
+  carouselData: FeaturedCarouselItem[];
+  profileCardData: {
+    icon?: React.ReactNode;
+    name: string;
+    organization: string;
+  };
+}
+
+export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
+  carouselData,
+  profileCardData,
+}) => {
+  const [idx, setIdx] = useState(0);
+  const currentItem = carouselData[idx];
+  const { title, category, description, image, websiteUrl, viewMoreUrl } =
+    currentItem;
+  const { icon, name, organization } = profileCardData;
 
   const prev = () =>
-    setIdx((i) => (i === 0 ? featuredCarouselData.length - 1 : i - 1))
+    setIdx((i) => (i === 0 ? carouselData.length - 1 : i - 1));
   const next = () =>
-    setIdx((i) =>
-      i === featuredCarouselData.length - 1 ? 0 : i + 1
-    )
+    setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1));
 
   return (
     <section className="mt-12 mb-24">
-
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[100px]">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-20">
           {/* Text Content */}
@@ -52,32 +60,42 @@ export const FeaturedCarousel: React.FC = () => {
               {category}
             </Badge>
             <h3 className="text-[28px] font-semibold">{title}</h3>
-            <ProfileCard
-              icon={<UserIcon className="w-6 h-6" />}
-              name="Brown School of Public Health"
-              organization="People, Place and Health Collective"
-            />
+            <Card className="border-none shadow-none bg-transparent">
+              <CardContent className="flex items-center p-0">
+                {icon && <div className="w-6 h-6 mr-3">{icon}</div>}
+                <div>
+                  <CardTitle className="text-lg leading-snug">{name}</CardTitle>
+                  <CardDescription>{organization}</CardDescription>
+                </div>
+              </CardContent>
+            </Card>
             <p className="text-xl font-normal text-gray-800">{description}</p>
             <div className="flex flex-wrap gap-4">
-              <Button
-                variant="primary_filled"
-                className="h-[55px] w-[155px] font-semibold text-xl self-start"
-              >
-                Website
-              </Button>
-              <Button
-                variant="primary_outlined"
-                className="h-[55px] w-[155px] font-semibold text-xl self-start"
-              >
-                View More
-              </Button>
+              {websiteUrl && (
+                <Button
+                  variant="primary_filled"
+                  className="h-[55px] w-[155px] font-semibold text-xl self-start"
+                  onClick={() => window.open(websiteUrl, "_blank")}
+                >
+                  Website
+                </Button>
+              )}
+              {viewMoreUrl && (
+                <Button
+                  variant="primary_outlined"
+                  className="h-[55px] w-[155px] font-semibold text-xl self-start"
+                  onClick={() => window.open(viewMoreUrl, "_blank")}
+                >
+                  View More
+                </Button>
+              )}
             </div>
           </div>
 
           {/* Image */}
           <Card className="w-full max-w-[721px] min-h-[443px] border-none shadow-none">
             <CardContent className="flex items-center justify-center p-0 h-full">
-              <ImageComp className="max-w-full max-h-full" />
+              <Image src={image} alt={title} width="600" height="600" className="max-w-full max-h-full object-contain" />
             </CardContent>
           </Card>
         </div>
@@ -97,12 +115,13 @@ export const FeaturedCarousel: React.FC = () => {
 
           {/* Pagination Dots */}
           <div className="flex justify-center gap-2">
-            {featuredCarouselData.map((_, i) => (
+            {carouselData.map((_, i) => (
               <div
                 key={i}
                 className={`${
                   i === idx ? "w-4" : "w-[9px]"
-                } h-[9px] bg-gray-300 rounded-full`}
+                } h-[9px] bg-gray-300 rounded-full cursor-pointer`}
+                onClick={() => setIdx(i)}
               />
             ))}
           </div>
@@ -118,8 +137,7 @@ export const FeaturedCarousel: React.FC = () => {
             <ChevronRightIcon className="h-8 w-8" strokeWidth={2.5} />
           </Button>
         </div>
-
       </div>
     </section>
-  )
-}
+  );
+};
