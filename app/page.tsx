@@ -13,7 +13,6 @@ import { Button } from "@/components/ui/button"
 import { ScrollButton } from "@/components/ui/scroll-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { UserIcon } from "@heroicons/react/24/solid"
-import ProvidentImage from '@/assets/FeaturedCarousel/Provident.png'
 
 
 const featuredCarouselData: FeaturedCarouselItem[] = [

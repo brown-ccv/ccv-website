@@ -38,8 +38,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 }) => {
   const [idx, setIdx] = useState(0);
   const currentItem = carouselData[idx];
-  const { title, category, description, image, websiteUrl, viewMoreUrl } =
-    currentItem;
+  const { title, category, description, image, websiteUrl, viewMoreUrl } = currentItem;
   const { icon, name, organization } = profileCardData;
 
   const prev = () =>
@@ -50,9 +49,9 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   return (
     <section className="mt-12 mb-24">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[100px]">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-20 md:flex-col"> {/* Stack at medium */}
           {/* Text Content */}
-          <div className="w-full max-w-[721px] space-y-6">
+          <div className="w-full max-w-[721px] space-y-6 md:w-full">
             <Badge
               color={getColorForTag(category)}
               className="rounded-full font-semibold text-xs"
@@ -92,12 +91,17 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </div>
           </div>
 
-          {/* Image */}
-          <Card className="w-full max-w-[721px] min-h-[443px] border-none shadow-none">
-            <CardContent className="flex items-center justify-center p-0 h-full">
-              <Image src={image} alt={title} width="600" height="600" className="max-w-full max-h-full object-contain" />
-            </CardContent>
-          </Card>
+
+          <div className="w-full max-w-[721px] space-y-6 md:w-full">
+            <Image
+              src={image}
+              alt={title}
+              width={550}
+              height={400}
+              className="object-contain"
+              style={{ width: '550px', height: '400px' }}
+            />
+          </div>
         </div>
 
         {/* Pagination + Chevrons */}
