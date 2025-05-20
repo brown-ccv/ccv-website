@@ -1,81 +1,78 @@
-import React from "react"
-import Image from "next/image"
-import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/text-animate"
-import { SectionHeader } from "@/components/ui/section-header"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { cn } from "@/lib/utils"
-import { cardVariants } from "@/components/ui/variants"
-import { FaEnvelopeOpenText, FaTicketAlt, FaBookReader, FaSlack, FaMapMarkerAlt } from "react-icons/fa"
+import React from "react";
+import Image from "next/image";
+import { Hero } from "@/components/Hero";
+import { TextAnimate } from "@/components/magicui/text-animate";
+import { SectionHeader } from "@/components/ui/section-header";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { cardVariants } from "@/components/ui/variants";
+import { FaEnvelopeOpenText, FaTicketAlt, FaBookReader, FaSlack, FaMapMarkerAlt } from "react-icons/fa";
 
 const officeHours = [
   {
     title: "Computational Biology Core",
     subtitle: "Join us remotely.",
     description: "TUESDAYS <br/><br/> 11am - 12pm <br/><br/><br/> WEDNESDAYS <br/><br/> 3pm - 4pm",
-    buttonText: "Find Zoom Link",
-    href: "https://events.brown.edu/ccv/week",
+    buttonLinks: [{ text: "Find Zoom Link", href: "https://events.brown.edu/ccv/week" }],
   },
   {
     title: "Center for Computation and Visualization",
     subtitle: "Join us remotely or in-person.",
     description: "FRIDAYS <br/><br/> 10am - 12pm",
-    buttonText: "Find Zoom Link",
-    href: "https://events.brown.edu/ccv/week",
-  }
-]
+    buttonLinks: [{ text: "Find Zoom Link", href: "https://events.brown.edu/ccv/week" }],
+  },
+];
 
 const contactUs = [
   {
     title: "Email",
-    icon: <FaEnvelopeOpenText/>, 
+    icon: <FaEnvelopeOpenText />,
     description: "Inquire about resources, support, or a potential collaboration for a research project.",
-    buttonText: "Email Us",
-    href: "mailto:support@ccv.brown.edu",
+    buttonLinks: [{ text: "Email Us", href: "mailto:support@ccv.brown.edu" }],
   },
   {
     title: "Submit a Ticket",
-    icon: <FaTicketAlt/>, 
+    icon: <FaTicketAlt />,
     description: "Open a ticket with our user services team. We will respond as soon as possible.",
-    buttonText: "Submit a Ticket",
-    href: "mailto:support@ccv.brown.edu",
+    buttonLinks: [{ text: "Submit a Ticket", href: "mailto:support@ccv.brown.edu" }],
   },
   {
     title: "Documentation",
-    icon: <FaBookReader/>, 
+    icon: <FaBookReader />,
     description: "View Documentation for CCV Services, such as for Stronghold, Oscar, or Globus.",
-    buttonText: "View the Docs",
-    href: "https://docs.ccv.brown.edu/documentation",
+    buttonLinks: [{ text: "View the Docs", href: "https://docs.ccv.brown.edu/documentation" }],
   },
   {
     title: "CCV Slack",
-    icon: <FaSlack/>,
+    icon: <FaSlack />,
     description: "CCV Share is a collection of Slack channels where CCV Staff and the ocmmunity will be available to discuss your questions.",
-    buttonText: "Join the Slack",
-    href: "https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU",
-  }
-]
+    buttonLinks: [
+      { text: "Join the Slack", href: "https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU" },
+      { text: "Terms of Services", href: "/assets/Terms_of_Service_Slack.pdf" },
+    ],
+  },
+];
 
 export default async function ContactUs() {
-    return (
-      <div className="w-full">
-        <div className="relative w-full flex flex-col">
-          <div className="bg-purple-900">
-            <Hero image={"/images/hero-subroutes.jpeg"}>
-                  <div className="relative flex-1 flex items-start w-full px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-                    <div className="absolute top-[12%] flex flex-col text-white space-y-6 w-[80vw]">
-                      <TextAnimate className="font-bold text-6xl md:text-8xl">
-                        Contact Us
-                      </TextAnimate>
-                      <p className="text-4xl font-semibold leading-[1.5]">
-                        The Center for Computation and Visualization is available to help you in multiple ways. We strive to keep our documentation up to date so you can always find what you need. In addition, you can reach out to us using the channels listed here.
-                      </p>
-                    </div>
-                  </div>
-              </Hero>
+  return (
+    <div className="w-full">
+      <div className="relative w-full flex flex-col">
+        <div className="bg-purple-900">
+          <Hero image={"/images/hero-subroutes.jpeg"}>
+            <div className="relative flex-1 flex items-start w-full px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
+              <div className="absolute top-[12%] flex flex-col text-white space-y-6 w-[80vw]">
+                <TextAnimate className="font-bold text-6xl md:text-8xl">
+                  Contact Us
+                </TextAnimate>
+                <p className="text-4xl font-semibold leading-[1.5]">
+                  The Center for Computation and Visualization is available to help you in multiple ways. We strive to keep our documentation up to date so you can always find what you need. In addition, you can reach out to us using the channels listed here.
+                </p>
+              </div>
             </div>
+          </Hero>
         </div>
+      </div>
 
       {/* Contact Us */}
       <section className="content-wrapper py-24 px-6 lg:px-36">
@@ -92,8 +89,8 @@ export default async function ContactUs() {
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
             {contactUs.map((card) => (
               <div
-                  key={card.title}
-                  className="flex-grow max-w-lg"
+                key={card.title}
+                className="flex-grow max-w-lg"
               >
                 <div className="inline-flex items-center gap-2 w-full h-full">
                   <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
@@ -101,11 +98,17 @@ export default async function ContactUs() {
                       <div className="relative border-b border-neutral-300">
                         <CardHeader className="flex flex-row gap-4 items-center">{card.icon}{card.title}</CardHeader>
                       </div>
-                      <CardTitle className="text-lg px-6 flex-grow">{card.description}</CardTitle>
-                      <div className="px-6 mt-auto">
-                        <Button variant="primary_filled" size="xl">
-                          <a href={card.href} target="_blank" rel="noopener noreferrer">{card.buttonText}</a>
-                        </Button>
+                      <CardDescription className="text-lg px-6 flex-grow pt-4">{card.description}</CardDescription>
+                      <div className="px-6 flex flex-col gap-2">
+                        {card.buttonLinks && card.buttonLinks.map((link, index) => (
+                          <Button
+                            key={index}
+                            variant="primary_filled"
+                            size="xl"
+                          >
+                            <a href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>
+                          </Button>
+                        ))}
                       </div>
                     </CardContent>
                   </Card>
@@ -129,33 +132,35 @@ export default async function ContactUs() {
           </CardContent>
         </Card>
         <div>
-
-        <section className="content-wrapper">
-          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
-            {officeHours.map((card) => (
-              <div
+          <section className="content-wrapper">
+            <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
+              {officeHours.map((card) => (
+                <div
                   key={card.title}
                   className="flex-grow max-w-md"
-              >
+                >
                   <div className="inline-flex items-center gap-2 py-8 w-full h-full">
-                      <Card className={cn("overflow-hidden flex flex-col w-full h-full", cardVariants({ variant: "default" }))}>
-                          <CardContent className="flex flex-col h-full">
-                              <div className="relative border-b border-neutral-900 px-4 flex justify-center">
-                                  <CardHeader className="text-center">{card.title}</CardHeader>
-                              </div>
-                              <CardDescription className="pt-6 text-xl text-center">{card.subtitle}</CardDescription>
-                              <CardTitle className="text-lg text-center flex-grow" dangerouslySetInnerHTML={{ __html: card.description }} />
-                              <div className="flex justify-center mt-auto">
-                                  <Button variant="primary_filled" size="xl">{card.buttonText}</Button>
-                              </div>
-                          </CardContent>
-                      </Card>
+                    <Card className={cn("overflow-hidden flex flex-col w-full h-full", cardVariants({ variant: "default" }))}>
+                      <CardContent className="flex flex-col h-full">
+                        <div className="relative border-b border-neutral-900 px-4 flex justify-center">
+                          <CardHeader className="text-center">{card.title}</CardHeader>
+                        </div>
+                        <CardDescription className="pt-6 text-xl text-center">{card.subtitle}</CardDescription>
+                        <CardTitle className="text-lg text-center flex-grow" dangerouslySetInnerHTML={{ __html: card.description }} />
+                        <div className="flex justify-center mt-auto">
+                          {card.buttonLinks && card.buttonLinks.map((link, index) => (
+                            <Button key={index} variant="primary_filled" size="xl">
+                              <a href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>
+                            </Button>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
                   </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
+                </div>
+              ))}
+            </div>
+          </section>
         </div>
       </section>
 
@@ -173,7 +178,7 @@ export default async function ContactUs() {
                 Today, it hosts the Center for Computation and Visualization, supporting research at Brown.
               </p>
             </div>
-            <div className="w-full xl:w-1/2 relative hidden xxl:block min-w-[800px]"> 
+            <div className="w-full xl:w-1/2 relative hidden xxl:block min-w-[800px]">
               <Image
                 src={"/images/about/ccv-map.png"}
                 alt="BrowserWindow"
@@ -188,5 +193,5 @@ export default async function ContactUs() {
         </Card>
       </div>
     </div>
-  )
+  );
 }
