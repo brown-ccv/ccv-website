@@ -218,8 +218,8 @@ export const Navbar: React.FC = () => {
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-6 text-white text-xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
-                  {section.name.toUpperCase()}
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-6 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                  {section.name}
                   <FaChevronDown
                     className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
                     aria-hidden="true"
@@ -235,9 +235,9 @@ export const Navbar: React.FC = () => {
             <NavigationMenu.Item>
               {/* Blog */}
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-6 text-white font-semibold text-xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-6 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/blog">
-                BLOG
+                Blog
               </NavigationMenu.Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>
@@ -246,18 +246,18 @@ export const Navbar: React.FC = () => {
             {/* Help */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/help">
-                <FiHelpCircle className="text-3xl mr-3"/>HELP
+                <FiHelpCircle className="text-3xl mr-3"/>Help
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
             {/* Documentation */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="https://docs.ccv.brown.edu/documentation">
-                <FiFileText size="" className="text-3xl mr-3" />DOCS
+                <FiFileText size="" className="text-3xl mr-3" />Docs
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
@@ -289,7 +289,7 @@ export const Navbar: React.FC = () => {
               <div key={section.name} className="mb-4 outline-double">
                 {section.name === "Blog" ? (
                   <Link href="/blog" className="block text-white font-semibold text-2xl py-2 tracking-widest">
-                    {section.name.toUpperCase()}
+                    {section.name}
                   </Link>
                 ) : (
                   <>
@@ -297,7 +297,7 @@ export const Navbar: React.FC = () => {
                       onClick={() => toggleSubmenu(section.name)}
                       className="flex items-center justify-between w-full font-semibold text-sunglow-400 tracking-widest text-2xl py-6 px-6"
                     >
-                      {section.name.toUpperCase()}
+                      {section.name}
                       <FiChevronDownIcon className={`h-4 w-4 transition-transform ${openSubmenus.includes(section.name) ? 'rotate-180' : ''}`} />
                     </button>
                     {openSubmenus.includes(section.name) && (
@@ -319,10 +319,10 @@ export const Navbar: React.FC = () => {
             ))}
             <div className="mt-4">
               <Link href="/help" className="block text-sunglow-400 font-semibold text-2xl tracking-widest py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-                HELP
+                Help
               </Link>
               <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-sunglow-400 font-semibold text-2xl tracking-widest py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-                DOCS
+                Docs
               </a>
             </div>
           </div>
@@ -346,7 +346,7 @@ const NavigationSectionContent: React.FC<{
             key={group.name}
             className={`${hasMultipleGroups && index > 0 ? 'border-l border-neutral-700 pl-6' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
           >
-            {group.name && <h3 className="text-xl mb-4 tracking-widest max-w-[425px]">{group.name.toUpperCase()}</h3>}
+            {group.name && <h3 className="text-xl mb-4 pl-2 tracking-widest max-w-[425px]">{group.name.toUpperCase()}</h3>}
             <ul className="list-none flex flex-col gap-2">
               {group.routes.map((route) => (
                 <li key={route.href} className="hover:bg-neutral-50 focus:bg-neutral-100 p-2">
