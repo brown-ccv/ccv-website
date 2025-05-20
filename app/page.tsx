@@ -24,22 +24,26 @@ const featuredCarouselData: FeaturedCarouselItem[] = [
     image: "/images/featured-carousel/provident.png",
     websiteUrl: "https://provident-study.org",
     viewMoreUrl: "/provident",
+    profile: "Brown School of Public Health",
   },
   {
     title: "PROJECT 2",
     category: "Economics",
     description: "Hello world.",
     image: "/images/featured-carousel/provident.png",
+    profile: "Brown School of Public Health",
   },
 ]
 
-const publicHealthProfile = {
-  icon: <UserIcon className="w-6 h-6" />,
-  name: "Brown School of Public Health",
-  organization: "People, Place and Health Collective",
-  websiteUrl: "https://provident-study.org",
-  viewMoreUrl: "/provident",
-};
+const profiles = [
+  {
+    icon: <UserIcon className="w-6 h-6" />,
+    name: "Brown School of Public Health",
+    organization: "People, Place and Health Collective",
+    websiteUrl: "https://provident-study.org",
+    viewMoreUrl: "/provident",
+  }
+]
 
 
 export default async function Home() {
@@ -88,7 +92,7 @@ export default async function Home() {
           <section className="content-wrapper pt-24 px-36">
             <SectionHeader title="Featured Projects" align="center" />
           </section>
-          <FeaturedCarousel carouselData={featuredCarouselData} profileCardData={publicHealthProfile}/>
+          <FeaturedCarousel carouselData={featuredCarouselData} profiles={profiles}/>
         </div>
         <div
           id="events"

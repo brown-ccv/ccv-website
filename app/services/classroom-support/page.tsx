@@ -17,40 +17,54 @@ const featuredCarouselData: FeaturedCarouselItem[] = [
     image: "/images/featured-carousel/provident.png",
     websiteUrl: "https://provident-study.org",
     viewMoreUrl: "/provident",
+    profile: "Brown School of Public Health"
   },
   {
     title: "INTRO TO OSCAR",
     category: "HPC",
     description: "Description of Oscar needed.",
     image: "/images/featured-carousel/provident.png",
+    profile: "High Performance Computing"
   },
   {
     title: "FUNDAMENTALS OF HIGH-PERFORMANCE COMPUTING",
     category: "HPC",
     description: "Description of hpc needed.",
     image: "/images/featured-carousel/provident.png",
+    profile: "Brown School of Public Health"
   },
   {
     title: "USING MATLAB ON OSCAR",
     category: "Statistics",
     description: "Description of Matlab needed.",
     image: "/images/featured-carousel/provident.png",
+    profile: "Brown School of Public Health"
   },
   {
     title: "INTO TO STATISTICAL ANALYSIS WITH R ON OSCAR",
     category: "Statistics",
     description: "Description of R needed.",
     image: "/images/featured-carousel/provident.png",
+    profile: "High Performance Computing"
   },
 ]
 
-const publicHealthProfile = {
+const profiles = [
+  {
   icon: <UserIcon className="w-6 h-6" />,
   name: "Brown School of Public Health",
   organization: "People, Place and Health Collective",
   websiteUrl: "https://provident-study.org",
   viewMoreUrl: "/provident",
-};
+  },
+  {
+    icon: <UserIcon className="w-6 h-6" />,
+    name: "High Performance Computing",
+    organization: "Center for Computation and Visualization",
+    websiteUrl: "https://ccv.brown.edu",
+    viewMoreUrl: "/about/us",
+  },
+]
 
 export default async function ClassroomSupport() {
     return (
@@ -82,7 +96,7 @@ export default async function ClassroomSupport() {
             </p>
           </CardContent>
         </Card>
-        <FeaturedCarousel carouselData={featuredCarouselData} profileCardData={publicHealthProfile}/>
+        <FeaturedCarousel carouselData={featuredCarouselData} profiles={profiles} />
       </section>
 
       {/* Student Accounts */}

@@ -11,8 +11,8 @@ import {
   CardDescription,
 } from "@/components/ui/card";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import Image from "next/image"
-
+import Image from "next/image";
+import { UserIcon } from "@heroicons/react/24/solid";
 
 export interface FeaturedCarouselItem {
   title: string;
@@ -21,24 +21,36 @@ export interface FeaturedCarouselItem {
   image: string;
   websiteUrl?: string;
   viewMoreUrl?: string;
+  profile: string; // Added profile property
 }
+
+interface Profile {
+  icon?: React.ReactNode;
+  name: string;
+  organization: string;
+  websiteUrl?: string;
+  viewMoreUrl?: string;
+}
+
 interface FeaturedCarouselProps {
   carouselData: FeaturedCarouselItem[];
-  profileCardData: {
-    icon?: React.ReactNode;
-    name: string;
-    organization: string;
-  };
+  profiles: Profile[]; // Receive the profiles array as a prop
 }
 
 export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   carouselData,
-  profileCardData,
+  profiles,
 }) => {
   const [idx, setIdx] = useState(0);
   const currentItem = carouselData[idx];
-  const { title, category, description, image, websiteUrl, viewMoreUrl } = currentItem;
-  const { icon, name, organization } = profileCardData;
+  const { title, category, description, image, websiteUrl, viewMoreUrl, profile: profileName } = currentItem;
+
+  const currentProfile = profiles.find((p) => p.name === profileName);
+  const { icon, name, organization } = currentProfile || {
+    icon: null,
+    name: "",
+    organization: "",
+  };
 
   const prev = () =>
     setIdx((i) => (i === 0 ? carouselData.length - 1 : i - 1));
@@ -49,7 +61,6 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
     <section className="mt-12 mb-24 sm:mx-2">
       <div className="w-full max-w-[2040px] px-2">
         <div className="flex flex-col xl:flex-row items-start justify-center gap-8">
-
           {/* Text Content */}
           <div className="w-full max-w-[700px] space-y-6 pt-4">
             <Badge
