@@ -49,9 +49,10 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   return (
     <section className="mt-12 mb-24">
       <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[100px]">
-        <div className="flex flex-col lg:flex-row items-center justify-center gap-8 sm:gap-12 lg:gap-20 md:flex-col"> {/* Stack at medium */}
+        <div className="flex flex-col xl:flex-row items-center justify-center gap-8">
+
           {/* Text Content */}
-          <div className="w-full max-w-[721px] space-y-6 md:w-full">
+          <div className="w-full max-w-[700px] space-y-6 lg:w-full">
             <Badge
               color={getColorForTag(category)}
               className="rounded-full font-semibold text-xs"
@@ -91,15 +92,14 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </div>
           </div>
 
-
-          <div className="w-full max-w-[721px] space-y-6 md:w-full">
+          <div className="w-full max-w-[600px] space-y-6 lg:w-full">
             <Image
               src={image}
               alt={title}
-              width={550}
+              width={600}
               height={400}
-              className="object-contain"
-              style={{ width: '550px', height: '400px' }}
+              className="object-contain min-w-[550px] "
+              style={{ width: '550px', height: '500px' }}
             />
           </div>
         </div>
