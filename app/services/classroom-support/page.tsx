@@ -55,7 +55,7 @@ export default async function ClassroomSupport() {
       </div>
 
       {/* In Class Tutorials */}
-      <section className="content-wrapper py-24 px-36">
+      <section className="content-wrapper py-24 px-14 lg:px-36">
         <SectionHeader title="In-Class Tutorials" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -68,7 +68,7 @@ export default async function ClassroomSupport() {
       </section>
 
       {/* Student Accounts */}
-      <section className="content-wrapper py-24 px-36 bg-neutral-50">
+      <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
         <SectionHeader title="Student Accounts" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -93,7 +93,7 @@ export default async function ClassroomSupport() {
       </section>
 
       {/* Computational Notebooks */}
-      <section className="content-wrapper py-24 px-36">
+      <section className="content-wrapper py-24 px-14 lg:px-36">
         <SectionHeader title="Computational Notebooks" align="center" />
 
         <Card className="w-full border-none shadow-none rounded-none">

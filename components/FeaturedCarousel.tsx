@@ -47,25 +47,25 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
     setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1));
 
   return (
-    <section className="mt-12 mb-24">
-      <div className="w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-[100px]">
+    <section className="mt-12 mb-24 sm:mx-2">
+      <div className="w-full max-w-[2040px] px-2">
         <div className="flex flex-col xl:flex-row items-center justify-center gap-8">
 
           {/* Text Content */}
-          <div className="w-full max-w-[700px] space-y-6 lg:w-full">
+          <div className="w-full max-w-[700px] space-y-6">
             <Badge
               color={getColorForTag(category)}
-              className="rounded-full font-semibold text-xs"
+              className="rounded-full font-semibold text-sm"
             >
               {category}
             </Badge>
-            <h3 className="text-[28px] font-semibold">{title}</h3>
+            <h3 className="text-3xl font-semibold">{title}</h3>
             <Card className="border-none shadow-none bg-transparent">
               <CardContent className="flex items-center p-0">
                 {icon && <div className="w-6 h-6 mr-3">{icon}</div>}
                 <div>
-                  <CardTitle className="text-lg leading-snug">{name}</CardTitle>
-                  <CardDescription>{organization}</CardDescription>
+                  <CardTitle className="text-xl leading-snug">{name}</CardTitle>
+                  <CardDescription className="text-md">{organization}</CardDescription>
                 </div>
               </CardContent>
             </Card>
@@ -92,14 +92,14 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </div>
           </div>
 
-          <div className="w-full max-w-[600px] space-y-6 lg:w-full">
+          <div className="w-full max-w-[700px] space-y-6 lg:w-full hidden lg:block">
             <Image
               src={image}
               alt={title}
               width={600}
               height={400}
-              className="object-contain min-w-[550px] "
-              style={{ width: '550px', height: '500px' }}
+              className="object-contain min-w-[700px] xs:hidden"
+              style={{ width: '700px', height: '500px' }}
             />
           </div>
         </div>
