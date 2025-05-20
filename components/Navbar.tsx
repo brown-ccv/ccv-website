@@ -207,7 +207,7 @@ export const Navbar: React.FC = () => {
     <header className={`sticky top-0 z-50`}>
       <nav className="bg-blue-navbar flex px-8 justify-between">
         {/* CCV Logo */}
-        <div className="flex items-center py-4 lg:py-8 px-12">
+        <div className="flex items-center py-8 px-6 xl:px-10">
           <Link href={"/"}>
             <CCVLogo width={120}/>
           </Link>
@@ -218,10 +218,10 @@ export const Navbar: React.FC = () => {
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-1 xl:px-4 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 xl:px-6 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
                   {section.name}
                   <FaChevronDown
-                    className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
+                    className="relative top-[1px] ml-0 xl:ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
                     aria-hidden="true"
                   />
                 </NavigationMenu.Trigger>
@@ -235,7 +235,7 @@ export const Navbar: React.FC = () => {
             <NavigationMenu.Item>
               {/* Blog */}
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-6 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/blog">
                 Blog
               </NavigationMenu.Link>
@@ -246,18 +246,18 @@ export const Navbar: React.FC = () => {
             {/* Help */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/help">
-                <FiHelpCircle className="text-3xl mr-3"/>Help
+                <FiHelpCircle className="text-3xl mr-0"/>Help
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
             {/* Documentation */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="https://docs.ccv.brown.edu/documentation">
-                <FiFileText size="" className="text-3xl mr-3" />Docs
+                <FiFileText size="" className="text-3xl mr-0" />Docs
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
@@ -265,7 +265,7 @@ export const Navbar: React.FC = () => {
             <NavigationMenu.Item>
               <Button
                 variant="secondary_filled"
-                className="flex items-center justify-center"
+                className="flex items-center justify-center ml-6"
                 iconOnly={<FaSearch />}
                 size="icon"
               >
