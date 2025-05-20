@@ -1,4 +1,17 @@
 /** @type {import('tailwindcss').Config} */
+
+function getCustomColors(config) {
+  const colors = config.theme?.colors || {};
+  const customColorNames = [];
+
+  for (const key in colors) {
+    if (!['inherit', 'current', 'transparent', 'black', 'white', 'slate', 'gray', 'zinc', 'stone', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'].includes(key) && !/^\d+$/.test(key)) {
+      customColorNames.push(key);
+    }
+  }
+  return customColorNames;
+}
+
 module.exports = {
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",

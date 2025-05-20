@@ -32,7 +32,7 @@ const featuredCarouselData: FeaturedCarouselItem[] = [
   },
   {
     title: "USING MATLAB ON OSCAR",
-    category: "Statisics",
+    category: "Statistics",
     description: "Description of Matlab needed.",
     image: "/images/featured-carousel/provident.png",
   },
