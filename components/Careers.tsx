@@ -53,7 +53,7 @@ export function Workday({ data }: { data: Promise<any> }) {
           </a>
         ))
       ) : (
-        <p className="text-xl">
+        <p className="text-2xl">
           There are no positions open at the moment. Check back with us in the future. We appreciate your interest!
         </p>
       )}
