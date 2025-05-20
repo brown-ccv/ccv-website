@@ -214,11 +214,11 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Navigation Menu for Desktop */}
-        <NavigationMenu.Root className="xl:flex hidden relative z-10 w-screen justify-between items-stretch">
+        <NavigationMenu.Root className="hidden lg:flex relative z-10 w-screen justify-between items-stretch">
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-6 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 md:px-1 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
                   {section.name}
                   <FaChevronDown
                     className="relative top-[1px] ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
@@ -276,7 +276,7 @@ export const Navbar: React.FC = () => {
         </NavigationMenu.Root>
 
         {/* Mobile Menu Hamburger Button */}
-        <div className="xl:hidden flex items-center">
+        <div className="lg:hidden flex items-center">
           <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
             <FiMenu className="h-6 w-6" />
           </Button>
@@ -284,7 +284,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="xl:hidden absolute top-full left-0 w-full bg-neutral-900 shadow-md z-40 p-4 overflow-y-auto max-h-screen">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-neutral-900 shadow-md z-40 p-4 overflow-y-auto max-h-screen">
             {routes.map((section) => (
               <div key={section.name} className="mb-4 outline-double">
                 {section.name === "Blog" ? (
