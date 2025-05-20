@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { cn } from "@/lib/utils"
 import Image from 'next/image';
 import { cardVariants } from "@/components/ui/variants"
@@ -74,35 +74,6 @@ const CardFooter = React.forwardRef<
 ))
 CardFooter.displayName = "CardFooter"
 
-interface CardWithImageProps extends React.HTMLAttributes<HTMLDivElement> {
-  imagePath: string;
-  name: string;
-  title: string;
-}
-
-const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, name, title, ...props }) => {
-  return (
-    <Card className={cn(className, "overflow-hidden", cardVariants({ variant: "people" }),)}>
-      <CardContent>
-        <div className="relative">
-          <Image
-            src={imagePath}
-            alt={name}
-            width="300"
-            height="300"
-            objectFit="cover"
-            className="rounded-full w-full"
-          />
-        </div>
-        <div>
-          <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
-          <CardDescription className="text-xl italic text-center">{title}</CardDescription>
-        </div>
-      </CardContent>
-    </Card>
-  );
-};
-
 export {
   Card,
   CardHeader,
@@ -110,5 +81,4 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
-  CardWithImage,
 }

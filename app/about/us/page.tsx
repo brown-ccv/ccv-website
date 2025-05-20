@@ -2,7 +2,8 @@ import React from "react"
 import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { SectionHeader } from "@/components/ui/section-header"
-import { Card, CardContent, CardWithImage } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
+import { CardWithImage } from "@/components/ui/people-card"
 
 const people = [
   {
@@ -10,54 +11,63 @@ const people = [
     title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
+    hover: "/images/people/ashley_hover.jpg",
   },
   {
     name: "Ashley Lee",
     title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
+    hover: "/images/people/ashley_hover.jpg",
   },
   {
     name: "Ashley Lee",
     title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
+    hover: "/images/people/ashley_hover.jpg",
   },
   {
     name: "Ashley Lee",
     title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
+    hover: "/images/people/ashley_hover.jpg",
   },
   {
     name: "Ashley Lee",
     title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
+    hover: "/images/people/ashley_hover.jpg",
   },
   {
     name: "Ashley Lee",
     title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
+    hover: "/images/people/ashley_hover.jpg",
   },
   {
     name: "Ashley Lee",
     title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
+    hover: "/images/people/ashley_hover.jpg",
   },
   {
     name: "Ashley Lee",
     title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
+    hover: "/images/people/ashley_hover.jpg",
   },
   {
     name: "Ashley Lee",
     title: "Senior Research Software Engineer",
     href: "/ashley-lee",
     image: "/images/people/ashley_main.jpg",
+    hover: "/images/people/ashley_hover.jpg",
   },
 ]
 
@@ -113,7 +123,7 @@ export default async function AboutUs() {
               <div
                 key={person.name}
               >
-                <CardWithImage imagePath={person.image} name={person.name} title={person.title} />
+                <CardWithImage imagePath={person.image} hoverImagePath={person.hover} name={person.name} title={person.title} />
               </div>
             ))}
           </div>
