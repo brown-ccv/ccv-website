@@ -15,7 +15,6 @@ export interface ButtonProps
 export const ScrollButton = ( {id, children, ...props}: ButtonProps ) => {
     return (
         <Button
-            className="h-[55px] min-w-[155px] self-start"
             onClick={() => scrollToID(id)}
             {...props}
         >

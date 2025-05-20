@@ -28,9 +28,9 @@ export default async function Home() {
       <div className="w-full">
         <div className="relative w-full flex flex-col">
         <div className="bg-blue-navbar">
-            <Hero image={"static/images/ccv-original.png"}>
+            <Hero image={"/images/ccv-original.png"}>
                   <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-                    <div className="absolute top-[12%] flex flex-col text-white space-y-6">
+                    <div className="absolute top-[12%] flex flex-col text-white space-y-6  w-[80vw]">
                       <TextAnimate className="font-bold text-6xl md:text-8xl">
                         Center for Computation and Visualization
                       </TextAnimate>
@@ -40,19 +40,18 @@ export default async function Home() {
                         expertise.
                       </p>
 
-                      <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-20">
+                      <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-16">
                         <Button
                           variant="primary_filled"
-                          className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
+                          size="xl"
                         >
                           Work with Us
                         </Button>
-                        <ScrollButton id="events" variant="secondary_filled" className="h-[55px] min-w-[155px] self-start text-2xl font-semibold">View Events</ScrollButton>
+                        <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
                       </div>
                     </div>
                   </div>
               </Hero>
-
         </div>
           <HeroCard />
           <ImpactBanner />
