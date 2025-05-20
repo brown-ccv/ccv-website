@@ -122,7 +122,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             size="icon"
             aria-label="previous project"
             onClick={prev}
-            className="w-[40px] h-[40px]"
+            className="w-[40px] h-[40px] text-neutral-300 border-neutral-300"
           >
             <ChevronLeftIcon className="h-8 w-8" strokeWidth={2.5} />
           </Button>
@@ -146,7 +146,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             size="icon"
             aria-label="next project"
             onClick={next}
-            className="w-[40px] h-[40px]"
+            className="w-[40px] h-[40px] text-neutral-300 border-neutral-300"
           >
             <ChevronRightIcon className="h-8 w-8" strokeWidth={2.5} />
           </Button>

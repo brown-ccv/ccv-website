@@ -69,6 +69,7 @@ const profiles = [
 export default async function ClassroomSupport() {
     return (
       <div className="w-full">
+        
         <div className="relative w-full flex flex-col">
           <div className="bg-purple-900">
             <Hero image={"/images/hero-subroutes.jpeg"}>
@@ -82,9 +83,9 @@ export default async function ClassroomSupport() {
                   </p>
                 </div>
               </div>
-          </Hero>
+            </Hero>
+          </div>
         </div>
-      </div>
 
       {/* In Class Tutorials */}
       <section className="content-wrapper pt-24 px-14 lg:px-36">
@@ -162,7 +163,6 @@ export default async function ClassroomSupport() {
             </div>
           </CardContent>
         </Card>
-
       </section>
     </div>
   )

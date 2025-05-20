@@ -18,13 +18,14 @@ interface PositionProps {
   bulletFields: string[]
 }
 
-export function Opportunities({ data }: { data: Promise<any> }) {
-  const opportunities = use(data)
+export function Workday({ data }: { data: Promise<any> }) {
+  const careers = use(data)
+  console.log(careers)
 
   return (
     <>
-      {opportunities.jobPostings.length > 0 &&
-        opportunities.jobPostings.map((position: PositionProps) => (
+      {careers.length > 0 ? (
+        careers.map((position: PositionProps) => (
           <a
             key={position.externalPath}
             href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
@@ -50,7 +51,12 @@ export function Opportunities({ data }: { data: Promise<any> }) {
               </CardContent>
             </Card>
           </a>
-        ))}
+        ))
+      ) : (
+        <p className="text-2xl">
+          There are no positions open at the moment. Check back with us in the future. We appreciate your interest!
+        </p>
+      )}
     </>
   )
 }
