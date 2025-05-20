@@ -4,11 +4,13 @@ import CCVBars from "@/components/assets/CCVBars"
 interface SectionHeaderProps {
   title: string
   align?: "left" | "center"
+  bars?: boolean
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   align = "center",
+  bars = true,
 }) => {
   const isCentered = align === "center"
 
@@ -19,7 +21,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           isCentered ? "items-center" : "items-start"
         }`}
       >
-        <CCVBars />
+        {bars ? <CCVBars /> : null}
         <h2 className="font-semibold text-black text-4xl tracking-tighter">
           {title}
         </h2>

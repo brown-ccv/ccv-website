@@ -2,7 +2,7 @@
 import { Hero } from "@/components/Hero";
 import { HeroCard } from "@/components/HeroCard";
 import { ImpactBanner } from "@/components/ImpactBanner";
-import { FeaturedCarousel } from "@/components/FeaturedCarousel";
+import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 import EventSection from "@/components/EventSection";
 import { getEventData } from "@/app/queries";
 import { getStringDate } from "@/components/calendar/utils";
@@ -11,6 +11,40 @@ import Spinner from "@/components/assets/Spinner";
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { Button } from "@/components/ui/button"
 import { ScrollButton } from "@/components/ui/scroll-button"
+import { SectionHeader } from "@/components/ui/section-header"
+import { UserIcon } from "@heroicons/react/24/solid"
+
+
+const featuredCarouselData: FeaturedCarouselItem[] = [
+  {
+    title: "PROVIDENT",
+    category: "Public Health",
+    description:
+      "A web app to support the PROVIDENT research study looking to prevent drug-related deaths in neighborhoods across Rhode Island.",
+    image: "/images/featured-carousel/provident.png",
+    websiteUrl: "https://provident-study.org",
+    viewMoreUrl: "/provident",
+    profile: "Brown School of Public Health",
+  },
+  {
+    title: "PROJECT 2",
+    category: "Economics",
+    description: "Hello world.",
+    image: "/images/featured-carousel/provident.png",
+    profile: "Brown School of Public Health",
+  },
+]
+
+const profiles = [
+  {
+    icon: <UserIcon className="w-6 h-6" />,
+    name: "Brown School of Public Health",
+    organization: "People, Place and Health Collective",
+    websiteUrl: "https://provident-study.org",
+    viewMoreUrl: "/provident",
+  }
+]
+
 
 export default async function Home() {
 
@@ -55,7 +89,10 @@ export default async function Home() {
         </div>
           <HeroCard />
           <ImpactBanner />
-          <FeaturedCarousel />
+          <section className="content-wrapper pt-24 px-36">
+            <SectionHeader title="Featured Projects" align="center" />
+          </section>
+          <FeaturedCarousel carouselData={featuredCarouselData} profiles={profiles}/>
         </div>
         <div
           id="events"
