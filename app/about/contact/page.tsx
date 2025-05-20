@@ -16,14 +16,14 @@ const officeHours = [
     subtitle: "Join us remotely.",
     description: "TUESDAYS <br/><br/> 11am - 12pm <br/><br/><br/> WEDNESDAYS <br/><br/> 3pm - 4pm",
     buttonText: "Find Zoom Link",
-    href: "/ashley-lee",
+    href: "https://events.brown.edu/ccv/week",
   },
   {
     title: "Center for Computation and Visualization",
     subtitle: "Join us remotely or in-person.",
     description: "FRIDAYS <br/><br/> 10am - 12pm",
     buttonText: "Find Zoom Link",
-    href: "/ashley-lee",
+    href: "https://events.brown.edu/ccv/week",
   }
 ]
 
@@ -32,29 +32,29 @@ const contactUs = [
     title: "Email",
     icon: <FaEnvelopeOpenText/>, 
     description: "Inquire about resources, support, or a potential collaboration for a research project.",
-    buttonText: "Find Zoom Link",
-    href: "/ashley-lee",
+    buttonText: "Email Us",
+    href: "mailto:support@ccv.brown.edu",
   },
   {
     title: "Submit a Ticket",
     icon: <FaTicketAlt/>, 
     description: "Open a ticket with our user services team. We will respond as soon as possible.",
     buttonText: "Submit a Ticket",
-    href: "/ashley-lee",
+    href: "mailto:support@ccv.brown.edu",
   },
   {
     title: "Documentation",
     icon: <FaBookReader/>, 
     description: "View Documentation for CCV Services, such as for Stronghold, Oscar, or Globus.",
     buttonText: "View the Docs",
-    href: "/ashley-lee",
+    href: "https://docs.ccv.brown.edu/documentation",
   },
   {
     title: "CCV Slack",
     icon: <FaSlack/>,
     description: "CCV Share is a collection of Slack channels where CCV Staff and the ocmmunity will be available to discuss your questions.",
     buttonText: "Join the Slack",
-    href: "/ashley-lee",
+    href: "https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU",
   }
 ]
 
