@@ -79,7 +79,7 @@ export default async function ContactUs() {
         </div>
 
       {/* Contact Us */}
-      <section className="content-wrapper py-24 px-36">
+      <section className="content-wrapper py-24 px-14 lg:px-36">
         <SectionHeader title="Contact Us" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -89,12 +89,12 @@ export default async function ContactUs() {
           </CardContent>
         </Card>
 
-        <div className="content-wrapper flex justify-center">
+        <div className="content-wrapper flex justify-center px-40">
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
             {contactUs.map((card) => (
               <div
                   key={card.title}
-                  className="flex-grow max-w-md"
+                  className="flex-grow max-w-lg"
               >
                 <div className="inline-flex items-center gap-2 w-full h-full">
                   <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
@@ -116,7 +116,7 @@ export default async function ContactUs() {
       </section>
 
       {/* Office Hours */}
-      <section className="content-wrapper py-24 px-36 bg-gray-100">
+      <section className="content-wrapper py-24 px-14 lg:px-36 bg-gray-100">
         <SectionHeader title="Office Hours" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
