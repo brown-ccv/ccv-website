@@ -30,16 +30,16 @@
   }
 }
 
-a {
-  @apply text-keppel-700;
+p > a {
+  @apply text-keppel-600;
 }
 
-a:hover {
-  @apply text-keppel-300;
+p > a:hover {
+  @apply text-keppel-200;
 }
 
-a:focus {
-  @apply text-keppel-300 outline-2 outline-keppel-300;
+p > a:focus {
+  @apply text-keppel-200 outline-2 outline-keppel-200;
 }
 
 /* Apply zoom on all screen sizes */

@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
 import { FaEnvelopeOpenText, FaTicketAlt, FaBookReader, FaSlack, FaMapMarkerAlt } from "react-icons/fa"
 
-
 const officeHours = [
   {
     title: "Computational Biology Core",
@@ -104,7 +103,9 @@ export default async function ContactUs() {
                       </div>
                       <CardTitle className="text-lg px-6 flex-grow">{card.description}</CardTitle>
                       <div className="px-6 mt-auto">
-                        <Button variant="primary_filled" size="xl">{card.buttonText}</Button>
+                        <Button variant="primary_filled" size="xl">
+                          <a href={card.href} target="_blank" rel="noopener noreferrer">{card.buttonText}</a>
+                        </Button>
                       </div>
                     </CardContent>
                   </Card>
