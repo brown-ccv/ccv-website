@@ -10,18 +10,36 @@ import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCar
 
 const featuredCarouselData: FeaturedCarouselItem[] = [
   {
-    title: "PROVIDENT",
-    category: "Public Health",
+    title: "INTRO TO LINUX",
+    category: "Linux",
     description:
-      "A web app to support the PROVIDENT research study looking to prevent drug-related deaths in neighborhoods across Rhode Island.",
+      "Description of intro to linux needed.",
     image: "/images/featured-carousel/provident.png",
     websiteUrl: "https://provident-study.org",
     viewMoreUrl: "/provident",
   },
   {
-    title: "PROJECT 2",
-    category: "Economics",
-    description: "Hello world.",
+    title: "INTRO TO OSCAR",
+    category: "HPC",
+    description: "Description of Oscar needed.",
+    image: "/images/featured-carousel/provident.png",
+  },
+  {
+    title: "FUNDAMENTALS OF HIGH-PERFORMANCE COMPUTING",
+    category: "HPC",
+    description: "Description of hpc needed.",
+    image: "/images/featured-carousel/provident.png",
+  },
+  {
+    title: "USING MATLAB ON OSCAR",
+    category: "Statisics",
+    description: "Description of Matlab needed.",
+    image: "/images/featured-carousel/provident.png",
+  },
+  {
+    title: "INTO TO STATISTICAL ANALYSIS WITH R ON OSCAR",
+    category: "Statistics",
+    description: "Description of R needed.",
     image: "/images/featured-carousel/provident.png",
   },
 ]

@@ -49,10 +49,10 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   return (
     <section className="mt-12 mb-24 sm:mx-2">
       <div className="w-full max-w-[2040px] px-2">
-        <div className="flex flex-col xl:flex-row items-center justify-center gap-8">
+        <div className="flex flex-col xl:flex-row items-start justify-center gap-8">
 
           {/* Text Content */}
-          <div className="w-full max-w-[700px] space-y-6">
+          <div className="w-full max-w-[700px] space-y-6 pt-4">
             <Badge
               color={getColorForTag(category)}
               className="rounded-full font-semibold text-sm"
