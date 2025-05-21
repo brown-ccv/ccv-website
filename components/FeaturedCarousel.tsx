@@ -12,7 +12,6 @@ import {
 } from "@/components/ui/card";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
-import { UserIcon } from "@heroicons/react/24/solid";
 
 export interface FeaturedCarouselItem {
   title: string;
@@ -21,7 +20,7 @@ export interface FeaturedCarouselItem {
   image: string;
   websiteUrl?: string;
   viewMoreUrl?: string;
-  profile: string; // Added profile property
+  profile: string;
 }
 
 interface Profile {
@@ -34,7 +33,7 @@ interface Profile {
 
 interface FeaturedCarouselProps {
   carouselData: FeaturedCarouselItem[];
-  profiles: Profile[]; // Receive the profiles array as a prop
+  profiles: Profile[]; 
 }
 
 export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
@@ -122,7 +121,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             size="icon"
             aria-label="previous project"
             onClick={prev}
-            className="w-[40px] h-[40px] text-neutral-300 border-neutral-300"
+            className="w-[40px] h-[40px] text-neutral-300 border-neutral-300 mr-0"
           >
             <ChevronLeftIcon className="h-8 w-8" strokeWidth={2.5} />
           </Button>

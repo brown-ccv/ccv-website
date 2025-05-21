@@ -6,6 +6,7 @@ import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 
 export default async function Careers() { 
   try {
@@ -35,9 +36,9 @@ export default async function Careers() {
             <Workday data={data} />
           </Suspense>
           <Button size="xl" variant="primary_filled">
-            <a href={"/about/contact-us"} target="_blank" rel="noopener noreferrer">
+            <Link href={"/about/contact"}>
               Contact Us
-            </a>
+            </Link>
           </Button>
         </section>
       </div>
