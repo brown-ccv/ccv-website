@@ -22,21 +22,21 @@ export default function StatusBanner({ children, isOperational, id }: StatusBann
     >
       {children}
       <div className="flex flex-1 justify-end">
-      <Button
-        variant="icon_only"
-        size="icon"
-        aria-label="Dismiss banner"
-        onClick={() => setIsOpen(false)}
-        className="
-          bg-transparent
-          hover:bg-white
-          hover:text-black
-          active:bg-neutral-50
-        "
-        iconOnly={
-          <XMarkIcon aria-hidden="true" className="h-5 w-5" />
-        }
-      />
+        <Button
+          variant="icon_only"
+          size="icon"
+          aria-label="Dismiss banner"
+          onClick={() => setIsOpen(false)}
+          className="
+            bg-transparent
+            hover:bg-white
+            hover:text-black
+            active:bg-neutral-50
+          "
+          iconOnly={
+            <XMarkIcon aria-hidden="true" className="h-5 w-5" />
+          }
+        />
       </div>
     </div>
   )
