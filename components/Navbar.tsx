@@ -340,29 +340,29 @@ const NavigationSectionContent: React.FC<{
 
   return (
     <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white hidden lg:block">
-      <div className={`p-6 flex flex-col xl:flex-row ${hasMultipleGroups ? 'space-x-8' : ''}`}>
+      <div className={`p-2 sm:p-4 md:p-6 flex flex-col xl:flex-row ${hasMultipleGroups ? 'space-x-8' : ''}`}>
         {groups.map((group, index) => (
           <div
             key={group.name}
-            className={`${hasMultipleGroups && index > 0 ? 'border-t border-l-0 xl:border-l xl:border-t-0 border-neutral-700 py-6 xl:pt-0 xl:pl-6' : ''} ${hasMultipleGroups && index == 0 ? 'pb-2' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
+            className={`${hasMultipleGroups && index > 0 ? 'border-t border-l-0 xl:border-l xl:border-t-0 border-neutral-700 py-1 xl:py-0 xl:pl-6' : ''} ${hasMultipleGroups && index < 1 ? 'py-1 px-6 xl:py-0 xl:px-0' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
           >
-            {group.name && <h3 className="text-xl mb-4 pl-2 tracking-widest max-w-[425px]">{group.name.toUpperCase()}</h3>}
-            <ul className="list-none flex flex-col gap-2">
+            {group.name && <h3 className="text-xl mb-2 sm:mb-3 md:mb-4 pl-2 tracking-widest max-w-[425px]">{group.name.toUpperCase()}</h3>}
+            <ul className="list-none flex flex-col gap-1 sm:gap-1.5 md:gap-2">
               {group.routes.map((route) => (
-                <li key={route.href} className="hover:bg-neutral-50 focus:bg-neutral-100 p-2">
+                <li key={route.href} className="hover:bg-neutral-50 focus:bg-neutral-100 p-1 sm:p-1.5 md:p-2">
                   <NavigationMenu.Link
                     href={route.href}
                     className="flex items-start focus:outline-none"
                   >
                     {route.icon && (
-                      <div className="mr-2 h-[4rem] w-[4rem] bg-neutral-100/75 text-white rounded-md flex items-center justify-center">
+                      <div className="mr-1 sm:mr-1.5 md:mr-2 h-[2rem] sm:h-[3rem] md:h-[4rem] w-[2rem] sm:w-[3rem] md:w-[4rem] bg-neutral-100/75 text-white rounded-md flex items-center justify-center">
                         <route.icon className="h-1/2 w-1/2"/>
                       </div>
                     )}
                     <div className="flex flex-col">
-                      <span className="text-xl font-semibold pb-1">{route.name}</span>
+                      <span className="text-lg sm:text-xl font-semibold pb-0.5 sm:pb-0.75 md:pb-1">{route.name}</span>
                       {route.description && (
-                        <span className="max-w-[425px] text-md text-neutral-500 italic mb-3">{route.description}</span>
+                        <span className="max-w-[425px] text-sm sm:text-md text-neutral-500 italic mb-1 sm:mb-1.5 md:mb-3">{route.description}</span>
                       )}
                     </div>
                   </NavigationMenu.Link>
