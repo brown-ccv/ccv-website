@@ -76,7 +76,7 @@ const routes: NavSection[] = [
           },
           {
             name: "Classroom Support",
-            href: "/services/classroom-support",
+            href: "/services/classroom",
             description:
               "We provide technology and training for teaching with code",
             icon: FaUserGraduate,
@@ -165,7 +165,7 @@ const routes: NavSection[] = [
         routes: [
           {
             name: "About Us",
-            href: "/about/about-us",
+            href: "/about/us",
             description:"",
             icon: FaUser,
           },
