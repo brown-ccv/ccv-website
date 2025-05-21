@@ -39,7 +39,7 @@ p > a:hover {
 }
 
 p > a:focus {
-  @apply text-keppel-200 outline-2 outline-keppel-200;
+  @apply text-keppel-700 outline-2 outline-keppel-700;
 }
 
 /* Apply zoom on all screen sizes */

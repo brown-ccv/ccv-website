@@ -79,7 +79,9 @@ export default async function Home() {
                           variant="primary_filled"
                           size="xl"
                         >
-                          Work with Us
+                          <a href="mailto:ccv-support@brown.edu">
+                            Work with Us
+                          </a>
                         </Button>
                         <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
                       </div>
