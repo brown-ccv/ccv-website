@@ -42,7 +42,7 @@ interface ToggleButtonProps {
 
 const EventCard = () => {
   return (
-    <Card className="w-full border-none shadow-none my-auto lg:max-w-xs">
+    <Card className="w-full border-none shadow-none my-auto xl:max-w-xs">
       <CardContent className="mb-6 mt-6">
         <CCVBars />
         <h3 className="flex items-center font-semibold text-black text-[32px]">
@@ -94,7 +94,7 @@ export function EventSection({
   return (
     <section className="content-wrapper m-0">
       {/* Small Screen Layout (Mobile/Tablet) */}
-      <div className="lg:hidden">
+      <div className="xl:hidden">
         <div className="grid grid-cols-1 gap-6">
           <div className="justify-self-start">
             <EventCard />
@@ -104,7 +104,7 @@ export function EventSection({
       </div>
 
       {/* Large Screen Layout (Desktop) */}
-      <div className="hidden lg:grid lg:grid-cols-[auto_1fr] gap-6">
+      <div className="hidden xl:grid xl:grid-cols-[auto_1fr] gap-6">
         {/* Left: Events card */}
         <div className="justify-self-start mt-9">
           <EventCard />
