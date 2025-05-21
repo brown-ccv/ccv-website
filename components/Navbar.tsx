@@ -339,12 +339,12 @@ const NavigationSectionContent: React.FC<{
   const hasMultipleGroups = groups.length > 1;
 
   return (
-    <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white xl:block hidden">
-      <div className={`p-6 flex ${hasMultipleGroups ? 'space-x-8' : ''} ${hasMultipleGroups ? 'flex-grow' : ''}`}>
+    <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white hidden lg:block">
+      <div className={`p-6 flex flex-col xl:flex-row ${hasMultipleGroups ? 'space-x-8' : ''}`}>
         {groups.map((group, index) => (
           <div
             key={group.name}
-            className={`${hasMultipleGroups && index > 0 ? 'border-l border-neutral-700 pl-6' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
+            className={`${hasMultipleGroups && index > 0 ? 'border-t border-l-0 xl:border-l xl:border-t-0 border-neutral-700 py-6 xl:pt-0 xl:pl-6' : ''} ${hasMultipleGroups && index == 0 ? 'pb-2' : ''} ${hasMultipleGroups ? 'flex-1' : ''}`}
           >
             {group.name && <h3 className="text-xl mb-4 pl-2 tracking-widest max-w-[425px]">{group.name.toUpperCase()}</h3>}
             <ul className="list-none flex flex-col gap-2">
