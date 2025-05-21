@@ -256,7 +256,7 @@ export const Navbar: React.FC = () => {
             <NavigationMenu.Item>
               <NavigationMenu.Link
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                href="https://docs.ccv.brown.edu/documentation">
+                href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer">
                 <FiFileText size="" className="text-3xl mr-0" />Docs
               </NavigationMenu.Link>
             </NavigationMenu.Item>
