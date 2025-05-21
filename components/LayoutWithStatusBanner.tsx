@@ -40,7 +40,7 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
                 <p className="text-lg">
                   All Services Operational
                 </p>
-                <Button variant="secondary_filled" size="md" className="my-0">
+                <Button variant="secondary_filled" size="sm" className="text-lg">
                   <a
                     href="https://status.ccv.brown.edu/"
                     target="_blank"
