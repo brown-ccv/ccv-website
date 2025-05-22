@@ -7,6 +7,17 @@ import Spinner from "@/components/assets/Spinner"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { getAllContent } from '@/lib/content-utils/get-all-content'
+import { readContentFile } from '@/lib/content-utils/read-content-file'
+import path from 'path'
+
+export async function getStaticPaths() {
+  const filenames = await getAllContent(path.join('content', 'about', 'careers'));
+  return {
+    paths: filenames.map((filename) => ({ params: { slug: filename.slug } })),
+    fallback: false,
+  };
+}
 
 export default async function Careers() { 
   try {
@@ -22,7 +33,7 @@ export default async function Careers() {
                     Careers
                   </TextAnimate>
                   <p className="text-4xl font-semibold leading-[1.5]">
-                    Text tbd.
+                    { getStaticPaths()}
                   </p>
                 </div>
               </div>
