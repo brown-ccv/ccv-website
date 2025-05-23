@@ -1,5 +1,5 @@
 import React, { Suspense } from "react"
-import { Workday } from "@/components/Careers"
+import { Workday } from "@/components/Workday"
 import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { getWorkdayData } from "@/app/about/queries"
@@ -7,21 +7,32 @@ import Spinner from "@/components/assets/Spinner"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { getAllContent } from '@/lib/content-utils/get-all-content'
-import { readContentFile } from '@/lib/content-utils/read-content-file'
-import path from 'path'
+import { parseMarkdownWithFrontmatter } from '@/lib/content-utils'
+import fs from 'fs/promises';
 
-export async function getStaticPaths() {
-  const filenames = await getAllContent(path.join('content', 'about', 'careers'));
+interface CareersFrontmatter {
+  description?: string;
+}
+
+interface MarkdownResult {
+  data: CareersFrontmatter;
+  content: string;
+}
+
+async function readMarkdownFileWithFrontmatter(filePath: string): Promise<MarkdownResult> {
+  const fileContent = await fs.readFile(filePath, 'utf8');
+  const parsed = await parseMarkdownWithFrontmatter(fileContent);
   return {
-    paths: filenames.map((filename) => ({ params: { slug: filename.slug } })),
-    fallback: false,
+    data: parsed.data as CareersFrontmatter, // Explicitly cast the data
+    content: parsed.content,
   };
 }
 
 export default async function Careers() { 
   try {
+    const res = await readMarkdownFileWithFrontmatter('content/about/careers.md');
     const data = getWorkdayData()
+
     return (
       <div className="w-full">
         <div className="relative w-full flex flex-col">
@@ -33,7 +44,8 @@ export default async function Careers() {
                     Careers
                   </TextAnimate>
                   <p className="text-4xl font-semibold leading-[1.5]">
-                    { getStaticPaths()}
+                    {res?.data?.description}
+                    {res.content}
                   </p>
                 </div>
               </div>
