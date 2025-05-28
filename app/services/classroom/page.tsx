@@ -92,9 +92,17 @@ export default async function ClassroomSupport() {
         <SectionHeader title="In-Class Tutorials" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
-            <p className="text-black text-xl pb-8">
-              CCV offers a variety of tutorials to provide students with experience using Brown's HPC systems. CCV staff members provide students with an overview of the topic and guide them through a series of hands-on activities. Tutorials can range from the basics of using HPC systems to the use of specific applications on Brown's HPC systems.
-            </p>
+            <div>
+              <p className="text-black text-xl pb-4">
+                CCV offers a variety of tutorials to provide students with experience using Brown's HPC systems. CCV staff members provide students with an overview of the topic and guide them through a series of hands-on activities. Tutorials can range from the basics of using HPC systems to the use of specific applications on Brown's HPC systems.
+              </p>
+              <Button variant="primary_filled" size="lg">
+                <a href="https://docs.ccv.brown.edu/oscar/account-types" target="_blank" rel="noopener noreferrer">Learn More</a>
+              </Button>
+              <Button variant="primary_filled" size="lg">
+                <a href="mailto:support@ccv.brown.edu" target="_blank" rel="noopener noreferrer">Request Student Accounts</a>
+              </Button>
+            </div>
           </CardContent>
         </Card>
         <FeaturedCarousel carouselData={featuredCarouselData} profiles={profiles} />
@@ -146,7 +154,9 @@ export default async function ClassroomSupport() {
                     <p >
                       Google Colab comes bundled with most Python-specific software libraries, and it supports real-time collaboration. It integrates with Google Drive and should be sufficient for most classroom or workshop needs.
                     </p>
-                    <Button variant="primary_filled" size="lg">Learn More</Button>
+                    <Button variant="primary_filled" size="lg">
+                      <a href="https://colab.google" target="_blank" rel="noopener noreferrer">Learn More</a>
+                    </Button>
                 </div>
               </CardContent>
             </Card>
@@ -158,8 +168,12 @@ export default async function ClassroomSupport() {
               <p className="text-black text-xl">
                 For more advanced needs, Brown’s JupyterHub may be a good fit for your needs. If you are an instructor, CCV can provide access to JupyterHub for your class or workshop, and Digital Learning and Design (DLD) can assist with integrating computational assignments into curricula. The implementation is supported by Brown OIT; please follow the link below to request an instance for your class. OIT staff will respond to your request to begin the setup process. We ask that requests for JupyterHub be made at least two months in advance of expected course deployment.
               </p>
-              <Button variant="primary_filled" size="lg">Learn More</Button>
-              <Button variant="primary_filled" size="lg">Request Help</Button>
+              <Button variant="primary_filled" size="lg">
+                <a href="https://docs.ccv.brown.edu/jupyterhub" target="_blank" rel="noopener noreferrer">Documentation</a>
+              </Button>
+              <Button variant="primary_filled" size="lg">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSct9rFCxLhPIezHI-RYRyEuSnvHrPZLMuUSFRTriIyd_3TAfA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Request a Hub</a>
+              </Button>
             </div>
           </CardContent>
         </Card>
