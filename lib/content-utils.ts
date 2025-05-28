@@ -1,22 +1,10 @@
 import fs from 'fs/promises';
 import path from 'path';
-import { unified } from 'unified';
-import remarkParse from 'remark-parse';
-import remarkFrontmatter from 'remark-frontmatter';
-import yaml from 'js-yaml';
+import matter from 'front-matter';
+import MarkdownIt from 'markdown-it';
 
 const contentDirectory = path.join(process.cwd(), 'content');
-
-export async function parseMarkdownWithFrontmatter(markdown: string): Promise<{ data: Record<string, any>; content: string }> {
-  const result = await unified()
-    .use(remarkParse)
-    .use(remarkFrontmatter, ['yaml'])
-    .process(markdown);
-
-    console.log('Parsed Markdown Result:', result); // Add this line
-
-  return { data: result.data || {}, content: String(result.value) };
-}
+const md = new MarkdownIt();
 
 export async function readContentFile(filePath: string): Promise<{ data: Record<string, any>; content: string } | undefined> {
   try {
@@ -24,16 +12,20 @@ export async function readContentFile(filePath: string): Promise<{ data: Record<
     const extension = path.extname(filePath).toLowerCase();
 
     if (extension === '.md') {
-      return await parseMarkdownWithFrontmatter(fileContent); // Await the parsing
+      const parsed = matter(fileContent);
+      return { data: parsed.attributes as Record<string, any> || {}, content: md.render(parsed.body) };
     } else if (extension === '.yaml' || extension === '.yml') {
-      const data = yaml.load(fileContent) as Record<string, any>;
-      return { data, content: '' };
+      // dynamically import js-yaml to decrease bundle size and initial load times, 
+      // also can help isolate dependencies and prevent unexpected interactions between parts of code
+      // change if many yaml files and dependency issue isn't a problem
+      const yaml = (await import('js-yaml')).load(fileContent) as Record<string, any>;
+      return { data: yaml, content: '' };
     }
   } catch (error) {
     console.error('Error reading or parsing file:', filePath, error);
-    return undefined; // Handle potential file reading errors
+    return undefined;
   }
-  return undefined; // For other file types
+  return undefined; // for other filetypes besides yaml and md
 }
 
 export async function getAllContent(contentFolder: string) {
