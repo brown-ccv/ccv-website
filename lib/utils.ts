@@ -9,22 +9,32 @@ export function cn(...inputs: ClassValue[]) {
 export const tagColors = [
   "keppel",
   "sunglow",
-  "purple",
-  "sky",
-  "amber",
-  "emerald",
+  "purple", 
   "blue",
-  "rose",
-  "cyan",
-  "lime",
+  "pink",
+  "red",
 ] as const
 
 export type TagColor = typeof tagColors[number]
 
+// Create a map to store tag-to-color assignments
+const tagColorMap: Record<string, TagColor> = {};
+
 export const getColorForTag = (tag: string): TagColor => {
-  const hash = Array.from(tag).reduce((acc, char) => acc + char.charCodeAt(0), 0)
-  return tagColors[hash % tagColors.length]
-}
+  // If the tag already has an assigned color, return it
+  if (tagColorMap[tag]) {
+    return tagColorMap[tag];
+  }
+
+  // If not, generate a color based on the tag
+  const hash = Array.from(tag).reduce((acc, char) => acc + char.charCodeAt(0), 0);
+  const color = tagColors[hash % tagColors.length];
+
+  // Store the assignment in the map
+  tagColorMap[tag] = color;
+
+  return color;
+};
 
 export const scrollToID = (targetId: string) => {
   const targetElement = document.getElementById(targetId)

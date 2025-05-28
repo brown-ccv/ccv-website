@@ -38,7 +38,7 @@ export default async function RootLayoutWrapper({
 }: {
   children: ReactNode;
 }) {
-  const issues = await getCachedOpenIssues()
+  const issues = await getCachedOpenIssues();
 
   return (
     <html
@@ -49,11 +49,13 @@ export default async function RootLayoutWrapper({
       <body
         className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}
       >
-        <LayoutWithStatusBanner issues={issues} />
-        <BrownBanner />
-        <Navbar />
-        <div className="flex-grow">{children}</div>
-        <Footer />
+        <div>
+          <LayoutWithStatusBanner issues={issues} />
+          <BrownBanner />
+          <Navbar />
+          <div className="flex-grow">{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
