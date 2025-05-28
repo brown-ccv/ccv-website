@@ -7,25 +7,33 @@ import yaml from 'js-yaml';
 
 const contentDirectory = path.join(process.cwd(), 'content');
 
-export async function parseMarkdownWithFrontmatter(markdown: string) {
+export async function parseMarkdownWithFrontmatter(markdown: string): Promise<{ data: Record<string, any>; content: string }> {
   const result = await unified()
     .use(remarkParse)
     .use(remarkFrontmatter, ['yaml'])
     .process(markdown);
 
-  return { data: result.data, content: String(result.value) };
+    console.log('Parsed Markdown Result:', result); // Add this line
+
+  return { data: result.data || {}, content: String(result.value) };
 }
 
-export async function readContentFile(filePath: string) {
-  const fileContent = await fs.readFile(filePath, 'utf8');
-  const extension = path.extname(filePath).toLowerCase();
+export async function readContentFile(filePath: string): Promise<{ data: Record<string, any>; content: string } | undefined> {
+  try {
+    const fileContent = await fs.readFile(filePath, 'utf8');
+    const extension = path.extname(filePath).toLowerCase();
 
-  if (extension === '.md') {
-    return parseMarkdownWithFrontmatter(fileContent);
-  } else if (extension === '.yaml' || extension === '.yml') {
-    const data = yaml.load(fileContent) as Record<string, any>;
-    return { data, content: '' };
+    if (extension === '.md') {
+      return await parseMarkdownWithFrontmatter(fileContent); // Await the parsing
+    } else if (extension === '.yaml' || extension === '.yml') {
+      const data = yaml.load(fileContent) as Record<string, any>;
+      return { data, content: '' };
+    }
+  } catch (error) {
+    console.error('Error reading or parsing file:', filePath, error);
+    return undefined; // Handle potential file reading errors
   }
+  return undefined; // For other file types
 }
 
 export async function getAllContent(contentFolder: string) {
@@ -44,7 +52,7 @@ export async function getAllContent(contentFolder: string) {
         };
       }
       // Handle the case where readContentFile might have failed or returned undefined
-      return null;
+      return undefined;
     })
   ).then(results => results.filter(Boolean) as { slug: string; [key: string]: any; content: string }[]);
 }

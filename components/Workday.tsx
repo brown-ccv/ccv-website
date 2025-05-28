@@ -1,6 +1,6 @@
 "use client"
 
-import React, { use } from "react"
+import React from "react"
 import {
   MapPinIcon,
   ArrowRightIcon,
@@ -18,13 +18,12 @@ interface PositionProps {
   bulletFields: string[]
 }
 
-export function Workday({ data }: { data: Promise<any> }) {
-  const careers = use(data)
-  console.log(careers)
+export function Workday({ data }: { data: any[] }) {
+  const careers = data
 
   return (
     <>
-      {careers.length > 0 ? (
+      {careers && careers.length > 0 ? (
         careers.map((position: PositionProps) => (
           <a
             key={position.externalPath}
@@ -58,5 +57,5 @@ export function Workday({ data }: { data: Promise<any> }) {
         </p>
       )}
     </>
-  )
+  );
 }
