@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
-import CCVLogo from "@/components/assets/CCVLogo"
+import CBCLogo from "@/components/assets/CBCLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
@@ -179,7 +179,7 @@ export const Navbar: React.FC = () => {
         {/* CCV Logo */}
         <div className="flex items-center py-8 px-6 xl:px-10">
           <Link href={"/"}>
-            <CCVLogo width={120} />
+            <CBCLogo width={75} fillColor="white" />
           </Link>
         </div>
 
