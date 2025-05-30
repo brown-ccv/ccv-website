@@ -7,9 +7,8 @@ import Spinner from "@/components/assets/Spinner";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { readContentFile } from '@/lib/content-utils';
 
-export default async function Careers() {
+export default async function AboutLayout() {
   try {
     const workdayData = await getWorkdayData();
 

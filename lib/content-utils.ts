@@ -39,7 +39,7 @@ export async function getAllContent(contentFolder: string) {
       if (parsed) {
         return {
           slug: filename.replace(/\.(md|yaml|yml)$/, ''),
-          ...parsed.data,
+          frontmatter: parsed.data,
           content: parsed.content,
         };
       }
