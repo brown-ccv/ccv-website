@@ -1,0 +1,41 @@
+officeHours:
+  - title: "Computational Biology Core"
+    subtitle: "Join us remotely."
+    description: "<br/> TUESDAYS <br/> 11am - 12pm <br/><br/><br/> WEDNESDAYS <br/> 3pm - 4pm"
+    buttonLinks:
+      - text: "Find Zoom Link"
+        href: "https://events.brown.edu/ccv/week"
+  - title: "Center for Computation and Visualization"
+    subtitle: "Join us remotely or in-person."
+    description: "<br/> FRIDAYS <br/> 10am - 12pm"
+    buttonLinks:
+      - text: "Find Zoom Link"
+        href: "https://events.brown.edu/ccv/week"
+
+contactUs:
+  - title: "Email"
+    icon: "FaEnvelopeOpenText"
+    description: "Inquire about resources, support, or a potential collaboration for a research project."
+    buttonLinks:
+      - text: "Email Us"
+        href: "mailto:support@ccv.brown.edu"
+  - title: "Submit a Ticket"
+    icon: "FaTicketAlt"
+    description: "Open a ticket with our user services team. We will respond as soon as possible."
+    buttonLinks:
+      - text: "Submit a Ticket"
+        href: "mailto:support@ccv.brown.edu"
+  - title: "Documentation"
+    icon: "FaBookReader"
+    description: "View Documentation for CCV Services, such as for Stronghold, Oscar, or Globus."
+    buttonLinks:
+      - text: "View the Docs"
+        href: "https://docs.ccv.brown.edu/documentation"
+  - title: "CCV Slack"
+    icon: "FaSlack"
+    description: "CCV Share is a collection of Slack channels where CCV Staff and the ocmmunity will be available to discuss your questions."
+    buttonLinks:
+      - text: "Join the Slack"
+        href: "https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU"
+      - text: "Terms of Services"
+        href: "/assets/Terms_of_Service_Slack.pdf"

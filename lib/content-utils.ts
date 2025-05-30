@@ -7,25 +7,19 @@ const contentDirectory = path.join(process.cwd(), 'content');
 const md = new MarkdownIt();
 
 export async function readContentFile(filePath: string): Promise<{ data: Record<string, any>; content: string } | undefined> {
-  try {
-    const fileContent = await fs.readFile(filePath, 'utf8');
-    const extension = path.extname(filePath).toLowerCase();
+  const fileContent = await fs.readFile(filePath, 'utf8');
+  const extension = path.extname(filePath).toLowerCase();
 
-    if (extension === '.md') {
-      const parsed = matter(fileContent);
-      return { data: parsed.attributes as Record<string, any> || {}, content: md.render(parsed.body) };
-    } else if (extension === '.yaml' || extension === '.yml') {
-      // dynamically import js-yaml to decrease bundle size and initial load times, 
-      // also can help isolate dependencies and prevent unexpected interactions between parts of code
-      // change if many yaml files and dependency issue isn't a problem
-      const yaml = (await import('js-yaml')).load(fileContent) as Record<string, any>;
-      return { data: yaml, content: '' };
-    }
-  } catch (error) {
-    console.error('Error reading or parsing file:', filePath, error);
-    return undefined;
+  if (extension === '.md') {
+    const parsed = matter(fileContent);
+    return { data: parsed.attributes as Record<string, any> || {}, content: md.render(parsed.body) };
+  } else if (extension === '.yaml' || extension === '.yml') {
+    // dynamically import js-yaml to decrease bundle size and initial load times, 
+    // also can help isolate dependencies and prevent unexpected interactions between parts of code
+    // change if many yaml files and dependency issue isn't a problem
+    const yaml = (await import('js-yaml')).load(fileContent) as Record<string, any>;
+    return { data: yaml, content: '' };
   }
-  return undefined; // for other filetypes besides yaml and md
 }
 
 export async function getAllContent(contentFolder: string) {
@@ -36,17 +30,27 @@ export async function getAllContent(contentFolder: string) {
     filenames.map(async (filename) => {
       const filePath = path.join(folderPath, filename);
       const parsed = await readContentFile(filePath);
+      const extension = path.extname(filename).toLowerCase();
+      const slug = filename.replace(/\.(md|yaml|yml)$/, '');
+
       if (parsed) {
-        return {
-          slug: filename.replace(/\.(md|yaml|yml)$/, ''),
-          frontmatter: parsed.data,
-          content: parsed.content,
-        };
+        if (extension === '.md') {
+          return {
+            slug,
+            data: parsed.data || {},
+            content: parsed.content,
+          };
+        } else if (extension === '.yaml' || extension === '.yml') {
+          return {
+            slug,
+            data: parsed.data || {},
+            content: '',
+          };
+        }
       }
-      // Handle the case where readContentFile might have failed or returned undefined
       return undefined;
     })
-  ).then(results => results.filter(Boolean) as { slug: string; [key: string]: any; content: string }[]);
+  ).then(results => results.filter(Boolean) as ({ slug: string; data: Record<string, any>; content: string })[]);
 }
 
 // separate slugify utility

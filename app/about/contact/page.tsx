@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import { Hero } from "@/components/Hero";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -7,52 +6,24 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { cardVariants } from "@/components/ui/variants";
-import { FaEnvelopeOpenText, FaTicketAlt, FaBookReader, FaSlack, FaMapMarkerAlt } from "react-icons/fa";
+import { getAllContent } from "@/lib/content-utils"
+import Icon from "@/components/ui/render-icon";
 
-const officeHours = [
-  {
-    title: "Computational Biology Core",
-    subtitle: "Join us remotely.",
-    description: "TUESDAYS <br/><br/> 11am - 12pm <br/><br/><br/> WEDNESDAYS <br/><br/> 3pm - 4pm",
-    buttonLinks: [{ text: "Find Zoom Link", href: "https://events.brown.edu/ccv/week" }],
-  },
-  {
-    title: "Center for Computation and Visualization",
-    subtitle: "Join us remotely or in-person.",
-    description: "FRIDAYS <br/><br/> 10am - 12pm",
-    buttonLinks: [{ text: "Find Zoom Link", href: "https://events.brown.edu/ccv/week" }],
-  },
-];
+interface ContactTypes {
+  title: string;
+  icon?: string;
+  description: string;
+  buttonLinks?: { text: string; href: string }[];
+}
+interface OfficeHoursTypes {
+  title: string;
+  subtitle: string;
+  description: string;
+  buttonLinks?: { text: string; href: string }[];
+}
 
-const contactUs = [
-  {
-    title: "Email",
-    icon: <FaEnvelopeOpenText />,
-    description: "Inquire about resources, support, or a potential collaboration for a research project.",
-    buttonLinks: [{ text: "Email Us", href: "mailto:support@ccv.brown.edu" }],
-  },
-  {
-    title: "Submit a Ticket",
-    icon: <FaTicketAlt />,
-    description: "Open a ticket with our user services team. We will respond as soon as possible.",
-    buttonLinks: [{ text: "Submit a Ticket", href: "mailto:support@ccv.brown.edu" }],
-  },
-  {
-    title: "Documentation",
-    icon: <FaBookReader />,
-    description: "View Documentation for CCV Services, such as for Stronghold, Oscar, or Globus.",
-    buttonLinks: [{ text: "View the Docs", href: "https://docs.ccv.brown.edu/documentation" }],
-  },
-  {
-    title: "CCV Slack",
-    icon: <FaSlack />,
-    description: "CCV Share is a collection of Slack channels where CCV Staff and the ocmmunity will be available to discuss your questions.",
-    buttonLinks: [
-      { text: "Join the Slack", href: "https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU" },
-      { text: "Terms of Services", href: "/assets/Terms_of_Service_Slack.pdf" },
-    ],
-  },
-];
+const folderContent = await getAllContent('/about')
+const pageContent = folderContent.find(item => item.slug === 'contact')
 
 export default async function ContactUs() {
   return (
@@ -66,7 +37,7 @@ export default async function ContactUs() {
                   Contact Us
                 </TextAnimate>
                 <p className="text-4xl font-semibold leading-[1.5]">
-                  The Center for Computation and Visualization is available to help you in multiple ways. We strive to keep our documentation up to date so you can always find what you need. In addition, you can reach out to us using the channels listed here.
+                The Center for Computation and Visualization is available to help you in multiple ways. We strive to keep our documentation up to date so you can always find what you need. In addition, you can reach out to us using the channels listed here.
                 </p>
               </div>
             </div>
@@ -87,7 +58,7 @@ export default async function ContactUs() {
 
         <div className="content-wrapper flex justify-center px-40">
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
-            {contactUs.map((card) => (
+            {pageContent?.data?.contactUs?.map((card: ContactTypes) => (
               <div
                 key={card.title}
                 className="flex-grow max-w-lg"
@@ -96,7 +67,10 @@ export default async function ContactUs() {
                   <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
                     <CardContent className="flex flex-col h-full px-6 mx-2">
                       <div className="relative border-b border-neutral-300">
-                        <CardHeader className="flex flex-row gap-4 items-center">{card.icon}{card.title}</CardHeader>
+                        <CardHeader className="flex flex-row gap-4 items-center">
+                          <Icon iconName={card.icon}></Icon>
+                          {card.title}
+                        </CardHeader>
                       </div>
                       <CardDescription className="text-lg px-6 flex-grow pt-4">{card.description}</CardDescription>
                       <div className="px-6 flex flex-col gap-2">
@@ -134,7 +108,7 @@ export default async function ContactUs() {
         <div>
           <section className="content-wrapper">
             <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
-              {officeHours.map((card) => (
+              {pageContent?.data?.officeHours?.map((card: OfficeHoursTypes) => (
                 <div
                   key={card.title}
                   className="flex-grow max-w-md"
