@@ -64,69 +64,22 @@ const routes: NavSection[] = [
     name: "Services",
     groups: [
       {
-        name: "Research Support & Consulting",
+        name: "",
         routes: [
           {
-            name: "Project Consulting",
+            name: "Data Analysis",
+            href: "/services/analysis",
+            description: "",
+          },
+          {
+            name: "Consulting",
             href: "/services/consulting",
-            description:
-              "We help with: Computational Biology, AI / Machine Learning, Software Engineering, Scientific Visualization, and more",
-            icon: FaComments,
+            description: "",
           },
           {
-            name: "User Support",
-            href: "/services/user-support",
-            description: "We help with compute infrastructure",
-            icon: FaUserCheck,
-          },
-          {
-            name: "Classroom Support",
-            href: "/services/classroom-support",
-            description:
-              "We provide technology and training for teaching with code",
-            icon: FaUserGraduate,
-          },
-          {
-            name: "Service Rates",
-            href: "/services/rates",
-            description: "Learn about the cost of our services",
-            icon: FaDollarSign,
-          },
-        ],
-      },
-      {
-        name: "Compute Infrastructure",
-        routes: [
-          {
-            name: "Oscar",
-            href: "/services/oscar",
-            description: "Brown’s high-performance computing cluster",
-            icon: FaCloud,
-          },
-          {
-            name: "Stronghold",
-            href: "/services/stronghold",
-            description:
-              "Brown’s highly secure computing & storage environment",
-            icon: FaWindowRestore,
-          },
-          {
-            name: "Campus File Storage and Transfer",
-            href: "/services/file-storeage",
-            description: "Brown’s storage options",
-            icon: FaFileImport,
-          },
-          {
-            name: "Virtual Machine Hosting",
-            href: "/services/virtual-machine-hosting",
-            description: "Brown-hosted Windows and Linux servers",
-            icon: FaDesktop,
-          },
-          {
-            name: "Hardware Rates",
-            href: "/services/hardware-rates",
-            description: "Learn about the cost of our hardware services",
-            icon: FaDollarSign,
+            name: "DevOps",
+            href: "/services/devops",
+            description: "",
           },
         ],
       },
@@ -172,19 +125,31 @@ const routes: NavSection[] = [
             name: "About Us",
             href: "/about/about-us",
             description: "",
-            icon: FaUser,
-          },
-          {
-            name: "Contact Us",
-            href: "/about/contact",
-            description: "",
-            icon: FaComments,
           },
           {
             name: "Careers",
             href: "/about/careers",
             description: "",
-            icon: FaUserPlus,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Resources",
+    groups: [
+      {
+        name: "",
+        routes: [
+          {
+            name: "Office Hours",
+            href: "/officehours",
+            description: "",
+          },
+          {
+            name: "IPA Scheduler",
+            href: "/ipa",
+            description: "",
           },
         ],
       },
