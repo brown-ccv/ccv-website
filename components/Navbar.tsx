@@ -201,16 +201,6 @@ export const Navbar: React.FC = () => {
                 />
               </NavigationMenu.Item>
             ))}
-
-            <NavigationMenu.Item>
-              {/* Blog */}
-              <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                href="/blog"
-              >
-                Blog
-              </NavigationMenu.Link>
-            </NavigationMenu.Item>
           </NavigationMenu.List>
 
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
