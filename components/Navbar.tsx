@@ -5,27 +5,9 @@ import { Button } from "@/components/ui/button"
 import CBCLogo from "@/components/assets/CBCLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
-import {
-  FiHelpCircle,
-  FiFileText,
-  FiMenu,
-  FiChevronDown as FiChevronDownIcon,
-} from "react-icons/fi"
+import { FiMenu, FiChevronDown as FiChevronDownIcon } from "react-icons/fi"
 
-import {
-  FaChevronDown,
-  FaSearch,
-  FaUser,
-  FaUserCheck,
-  FaUserPlus,
-  FaUserGraduate,
-  FaComments,
-  FaDollarSign,
-  FaCloud,
-  FaWindowRestore,
-  FaFileImport,
-  FaDesktop,
-} from "react-icons/fa"
+import { FaChevronDown, FaSearch } from "react-icons/fa"
 
 interface RouteItem {
   name: string
