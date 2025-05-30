@@ -6,11 +6,7 @@ import { getWorkdayData } from "@/app/about/queries";
 import Spinner from "@/components/assets/Spinner";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
-import { getAllContent } from "@/lib/content-utils"
 import Link from "next/link";
-
-const folderContent = await getAllContent('/about')
-const pageContent = folderContent.find(item => item.slug === 'careers')
 
 export default async function AboutLayout() {
   try {
