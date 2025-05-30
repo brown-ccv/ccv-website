@@ -274,22 +274,6 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            <div className="mt-4">
-              <Link
-                href="/help"
-                className="block text-sunglow-400 font-semibold text-2xl tracking-widest py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
-              >
-                Help
-              </Link>
-              <a
-                href="https://docs.ccv.brown.edu/documentation"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block text-sunglow-400 font-semibold text-2xl tracking-widest py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
-              >
-                Docs
-              </a>
-            </div>
           </div>
         )}
       </nav>
