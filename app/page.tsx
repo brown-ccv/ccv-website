@@ -67,7 +67,9 @@ export default async function Home() {
           <HeroCard />
           {/* <ImpactBanner /> */}
           {/* <FeaturedCarousel /> */}
-          <IPAScheduler />
+          <div id="ipa-scheduler">
+            <IPAScheduler />
+          </div>
         </div>
         <div id="events" className="py-12 w-full bg-gray-100">
           <Suspense fallback={<Spinner />}>
