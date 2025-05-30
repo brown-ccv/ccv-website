@@ -69,17 +69,17 @@ const routes: NavSection[] = [
           {
             name: "Data Analysis",
             href: "/services/analysis",
-            description: "",
+            description: "*Coming soon*",
           },
           {
             name: "Consulting",
             href: "/services/consulting",
-            description: "",
+            description: "*Coming soon*",
           },
           {
             name: "DevOps",
             href: "/services/devops",
-            description: "",
+            description: "*Coming soon*",
           },
         ],
       },
@@ -94,22 +94,22 @@ const routes: NavSection[] = [
           {
             name: "Collaborations",
             href: "/portfolio/collaborations",
-            description: "",
+            description: "*Coming soon*",
           },
           {
             name: "Software",
             href: "/portfolio/software",
-            description: "",
+            description: "*Coming soon*",
           },
           {
             name: "Workshops and Talks",
             href: "/portfolio/workshops-and-talks",
-            description: "",
+            description: "*Coming soon*",
           },
           {
             name: "Publications",
             href: "https://publications.ccv.brown.edu",
-            description: "",
+            description: "*Coming soon*",
           },
         ],
       },
@@ -124,12 +124,12 @@ const routes: NavSection[] = [
           {
             name: "About Us",
             href: "/about/about-us",
-            description: "",
+            description: "*Coming soon*",
           },
           {
             name: "Careers",
             href: "/about/careers",
-            description: "",
+            description: "*Coming soon*",
           },
         ],
       },
@@ -144,12 +144,12 @@ const routes: NavSection[] = [
           {
             name: "Office Hours",
             href: "/officehours",
-            description: "",
+            description: "*Coming soon*",
           },
           {
             name: "IPA Scheduler",
             href: "/ipa",
-            description: "",
+            description: "*Coming soon*",
           },
         ],
       },
