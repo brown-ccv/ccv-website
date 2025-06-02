@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsx lib/build-utils.ts && next build",
     "start": "next start",
     "lint": "next lint",
-    "copy-images": "ts-node lib/build-utils.js"
+    "copy-images": "tsx lib/build-utils.ts"
   },
   "dependencies": {
     "@google-cloud/secret-manager": "^5.6.0",
@@ -54,6 +54,7 @@
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.10",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
     "typescript": "^5"
   }
 }
