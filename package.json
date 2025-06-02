@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "copy-images": "node scripts/copy-images.js"
+    "copy-images": "ts-node lib/build-utils.js"
   },
   "dependencies": {
     "@google-cloud/secret-manager": "^5.6.0",
@@ -42,6 +42,7 @@
     "unified": "^11.0.5"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
     "@types/js-yaml": "^4.0.9",
     "@types/markdown-it": "^14.1.2",
     "@types/node": "^20",
@@ -52,6 +53,7 @@
     "eslint-config-prettier": "^8.10.0",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.10",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }

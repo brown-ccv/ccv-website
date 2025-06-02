@@ -1,7 +1,7 @@
 import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google";
 import "@/app/globals.css";
 import { ReactNode } from "react";
-import { getOpenIssues } from "@/lib/getOpenIssues";
+import { getOpenIssues } from "@/lib/get-open-issues";
 import { unstable_cache } from "next/cache";
 import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
 import BrownBanner from "@/components/BrownBanner";

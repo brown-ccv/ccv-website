@@ -93,7 +93,7 @@ export default async function ClassroomSupport() {
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
             <p className="text-black text-xl pb-8">
-              CCV offers a variety of tutorials to provide students with experience using Brown's HPC systems. CCV staff members provide students with an overview of the topic and guide them through a series of hands-on activities. Tutorials can range from the basics of using HPC systems to the use of specific applications on Brown's HPC systems.
+              CCV offers a variety of tutorials to provide students with experience using Brown&apos;s HPC systems. CCV staff members provide students with an overview of the topic and guide them through a series of hands-on activities. Tutorials can range from the basics of using HPC systems to the use of specific applications on Brown&apos;s HPC systems.
             </p>
           </CardContent>
         </Card>
@@ -133,7 +133,7 @@ export default async function ClassroomSupport() {
           <CardContent className="mx-auto flex items-center px-6">
             <div>
               <p className="text-black text-xl pb-8">
-                Computational Notebooks provide a convenient, cloud-hosted way to serve Jupyter Notebooks for multiple users. Notebooks are launched within a pre-configured computing environment so that users do not need to install any software packages. This set-up free environment is ideal for courses and workshops where instructors intend for students to begin coding with minimal obstacles. Jupyter’s flexibility allows instructors to pick the preferred language for a particular context, including Python, Julia, R and many more.
+                Computational Notebooks provide a convenient, cloud-hosted way to serve Jupyter Notebooks for multiple users. Notebooks are launched within a pre-configured computing environment so that users do not need to install any software packages. This set-up free environment is ideal for courses and workshops where instructors intend for students to begin coding with minimal obstacles. Jupyter&apos;s flexibility allows instructors to pick the preferred language for a particular context, including Python, Julia, R and many more.
               </p>
             </div>
             </CardContent>
@@ -156,7 +156,7 @@ export default async function ClassroomSupport() {
             <div>
               <h1 className="text-3xl font-semibold pb-8">Brown JupyterLab</h1>
               <p className="text-black text-xl">
-                For more advanced needs, Brown’s JupyterHub may be a good fit for your needs. If you are an instructor, CCV can provide access to JupyterHub for your class or workshop, and Digital Learning and Design (DLD) can assist with integrating computational assignments into curricula. The implementation is supported by Brown OIT; please follow the link below to request an instance for your class. OIT staff will respond to your request to begin the setup process. We ask that requests for JupyterHub be made at least two months in advance of expected course deployment.
+                For more advanced needs, Brown&apos;s JupyterHub may be a good fit for your needs. If you are an instructor, CCV can provide access to JupyterHub for your class or workshop, and Digital Learning and Design (DLD) can assist with integrating computational assignments into curricula. The implementation is supported by Brown OIT; please follow the link below to request an instance for your class. OIT staff will respond to your request to begin the setup process. We ask that requests for JupyterHub be made at least two months in advance of expected course deployment.
               </p>
               <Button variant="primary_filled" size="lg">Learn More</Button>
               <Button variant="primary_filled" size="lg">Request Help</Button>
