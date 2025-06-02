@@ -1,75 +1,27 @@
 import React from "react"
+import path from 'path'
 import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"
+import { getAllContent } from "@/lib/content-utils"
 
-const people = [
-  {
-    name: "Ashley Lee",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/ashley_main.jpg",
-    hover: "/images/people/ashley_hover.jpg",
-  },
-  {
-    name: "Ashley Lee",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/ashley_main.jpg",
-    hover: "/images/people/ashley_hover.jpg",
-  },
-  {
-    name: "Ashley Lee",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/ashley_main.jpg",
-    hover: "/images/people/ashley_hover.jpg",
-  },
-  {
-    name: "Ashley Lee",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/ashley_main.jpg",
-    hover: "/images/people/ashley_hover.jpg",
-  },
-  {
-    name: "Ashley Lee",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/ashley_main.jpg",
-    hover: "/images/people/ashley_hover.jpg",
-  },
-  {
-    name: "Ashley Lee",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/ashley_main.jpg",
-    hover: "/images/people/ashley_hover.jpg",
-  },
-  {
-    name: "Ashley Lee",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/ashley_main.jpg",
-    hover: "/images/people/ashley_hover.jpg",
-  },
-  {
-    name: "Ashley Lee",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/ashley_main.jpg",
-    hover: "/images/people/ashley_hover.jpg",
-  },
-  {
-    name: "Ashley Lee",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/ashley_main.jpg",
-    hover: "/images/people/ashley_hover.jpg",
-  },
-]
+interface peopleTypes{
+  name: string;
+  type: string;
+  team: string;
+  subteam: string;
+  title: string;
+  github_username: string;
+  brown_directory_uuid: string;
+  bio: string;
+  image: string;
+}
+
+const folderContent = await getAllContent('/about')
+const pageContent = folderContent.find(item => item.slug === 'us')
+function imagePath(imageName: string) {return path.join('/content/images/people/', imageName)}
 
 export default async function AboutUs() {
     return (
@@ -119,11 +71,11 @@ export default async function AboutUs() {
         <div className="content-wrapper py-16 sm:py-24">
           <SectionHeader title="People" align="center"></SectionHeader>
           <div className="flex flex-wrap justify-center gap-y-8">
-            {people.map((person) => (
+            {pageContent?.data?.map((person: peopleTypes) => (
               <div
                 key={person.name}
               >
-                <CardWithImage imagePath={person.image} hoverImagePath={person.hover} name={person.name} title={person.title} />
+                <CardWithImage imagePath={imagePath(person?.image)} hoverImagePath={imagePath(person?.image.replace('main', 'hover'))} name={person?.name} title={person?.title} />
               </div>
             ))}
           </div>
