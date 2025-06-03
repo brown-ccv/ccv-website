@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
@@ -189,11 +189,20 @@ const routes: NavSection[] = [
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [openSubmenus, setOpenSubmenus] = useState<string[]>([]); // Array to track open submenus
+  const [openSubmenus, setOpenSubmenus] = useState<string[]>([]);
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
+    // Prevent body scrolling when mobile menu is open
+    document.body.style.overflow = isMobileMenuOpen ? 'auto' : 'hidden';
   }
+
+  // Effect to clean up body overflow style when component unmounts
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'auto'; // ensures body scrolling is re-enabled
+    };
+  }, []);
 
   const toggleSubmenu = (sectionName: string) => {
     if (openSubmenus.includes(sectionName)) {
@@ -206,7 +215,6 @@ export const Navbar: React.FC = () => {
   return (
     <header className={`sticky top-0 z-50`}>
       <nav className="bg-blue-navbar flex px-8 justify-between">
-        {/* CCV Logo */}
         <div className="flex items-center py-8 px-6 xl:px-10">
           <Link href={"/"}>
             <CCVLogo width={120}/>
@@ -282,9 +290,24 @@ export const Navbar: React.FC = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu Content */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-neutral-700 shadow-md z-40 overflow-y-auto max-h-screen">
+          <div
+            className="
+              absolute
+              left-0 
+              w-full 
+              max-h-screen
+              lg:hidden
+              top-full
+              bg-neutral-700
+              shadow-md
+              z-40
+              overflow-y-auto
+              h-screen
+              pb-4
+            "
+          >
             {routes.map((section) => (
               <div key={section.name}>
                 <button
