@@ -3,7 +3,6 @@ import path from 'path';
 import matter from 'front-matter';
 import MarkdownIt from 'markdown-it';
 
-const contentDirectory = path.join(process.cwd(), 'content');
 const md = new MarkdownIt();
 
 export async function readContentFile(filePath: string): Promise<{ data: Record<string, any>; content: string } | undefined> {
@@ -22,8 +21,8 @@ export async function readContentFile(filePath: string): Promise<{ data: Record<
   }
 }
 
-export async function getAllContent(contentFolder: string) {
-  const folderPath = path.join(contentDirectory, contentFolder);
+export async function readContentFolder(contentFolder: string) {
+  const folderPath = path.join('content', contentFolder);
   const filenames = await fs.readdir(folderPath);
 
   return Promise.all(

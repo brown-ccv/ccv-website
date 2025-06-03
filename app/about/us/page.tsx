@@ -5,7 +5,7 @@ import { TextAnimate } from "@/components/magicui/text-animate"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"
-import { getAllContent } from "@/lib/content-utils"
+import { readContentFile } from "@/lib/content-utils"
 
 interface peopleTypes{
   name: string;
@@ -19,9 +19,11 @@ interface peopleTypes{
   image: string;
 }
 
-const folderContent = await getAllContent('/about')
-const pageContent = folderContent.find(item => item.slug === 'us')
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
+
+const fileName = 'us.yaml'
+const filePath = path.join('content/about', fileName);
+const pageContent = await readContentFile(filePath);
 
 export default async function AboutUs() {
     return (

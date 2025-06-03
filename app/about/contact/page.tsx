@@ -1,4 +1,5 @@
 import React from "react";
+import path from 'path';
 import { Hero } from "@/components/Hero";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -6,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { cardVariants } from "@/components/ui/variants";
-import { getAllContent } from "@/lib/content-utils"
+import { readContentFile } from "@/lib/content-utils"
 import Icon from "@/components/ui/render-icon";
 
 interface ContactTypes {
@@ -22,8 +23,9 @@ interface OfficeHoursTypes {
   buttonLinks?: { text: string; href: string }[];
 }
 
-const folderContent = await getAllContent('/about')
-const pageContent = folderContent.find(item => item.slug === 'contact')
+const fileName = 'contact.yaml'
+const filePath = path.join('content/about', fileName);
+const pageContent = await readContentFile(filePath);
 
 export default async function ContactUs() {
   return (
