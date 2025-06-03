@@ -131,29 +131,6 @@ export default async function AboutUs() {
           ))}
         </div>
       </div>
-
-      {/* Diversity Statement */}
-      <section className="content-wrapper py-24 bg-gray-100">
-        <SectionHeader title="Diversity Statement" align="center" />
-        <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-            <p className="text-black text-xl">
-              CCV embraces a community enriched and enhanced by diverse
-              dimensions, including race, ethnicity and national origins,
-              disability status, gender and gender identity, sexuality, class
-              and religion. We believe diversity brings innovation and progress.
-              We are especially committed to increasing the representation of
-              those populations that have been historically underrepresented in
-              STEM.
-              <br />
-              <br />
-              We are committed to attracting, recruiting and retaining a diverse
-              team. We especially encourage individuals from underrepresented
-              groups to join our community.
-            </p>
-          </CardContent>
-        </Card>
-      </section>
     </div>
   )
 }
