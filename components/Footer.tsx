@@ -1,4 +1,5 @@
 import CCVLogo from "@/components/assets/CCVLogo"
+import { CarbonBadge } from "@/components/CarbonBadge"
 import { FaArrowRight } from "react-icons/fa"
 import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
 
@@ -103,9 +104,12 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="content-wrapper flex flex-row items-center justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
-        <div>&copy; Brown University</div>
-        <CCVLogo />
+      <div className="content-wrapper flex flex-row items-start justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
+        <div className="flex flex-col-reverse gap-4 items-start">
+          <div>&copy; Brown University</div>
+          <CCVLogo />
+        </div>
+        <CarbonBadge />
       </div>
     </footer>
   )
