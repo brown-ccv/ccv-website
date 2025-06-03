@@ -94,40 +94,6 @@ export default async function AboutUs() {
         </div>
       </div>
 
-      {/* Intro to OIT */}
-      <section className="content-wrapper py-24">
-        <SectionHeader
-          title="Office of Information Technology"
-          align="center"
-        />
-        <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-            <p className="text-black text-xl">
-              The Center for Computation and Visualization (CCV) is a center
-              within the University's central IT organization, which is the{" "}
-              <a
-                href="https://it.brown.edu"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Office of Information Technology (OIT)
-              </a>
-              . In addition to building and maintaining the University's{" "}
-              <a
-                href="https://it.brown.edu/tools-services"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                hundreds of enterprise software, systems, and hardware
-              </a>
-              , OIT is also responsible for driving the technological progress
-              that enables scientific research. Executing on the University's
-              research mission is the key role that CCV plays in OIT.
-            </p>
-          </CardContent>
-        </Card>
-      </section>
-
       {/* Our Mission */}
       <section className="content-wrapper py-24 bg-gray-100">
         <SectionHeader title="Our Mission" align="center" />
