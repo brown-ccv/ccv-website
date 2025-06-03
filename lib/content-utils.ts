@@ -52,8 +52,3 @@ export async function getAllContent(contentFolder: string) {
     })
   ).then(results => results.filter(Boolean) as ({ slug: string; data: Record<string, any>; content: string })[]);
 }
-
-// separate slugify utility
-export function slugify(filename: string): string {
-  return filename.replace(/\s+/g, '-').replace(/\.[^.]+$/, '').toLowerCase();
-}
