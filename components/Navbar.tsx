@@ -284,47 +284,40 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-full left-0 w-full bg-neutral-900 shadow-md z-40 p-4 overflow-y-auto max-h-screen">
+          <div className="lg:hidden absolute top-full left-0 w-full bg-neutral-700 shadow-md z-40 overflow-y-auto max-h-screen">
             {routes.map((section) => (
-              <div key={section.name} className="mb-4 outline-double">
-                {section.name === "Blog" ? (
-                  <Link href="/blog" className="block text-white font-semibold text-2xl py-2 tracking-widest">
-                    {section.name}
-                  </Link>
-                ) : (
-                  <>
-                    <button
-                      onClick={() => toggleSubmenu(section.name)}
-                      className="flex items-center justify-between w-full font-semibold text-sunglow-400 tracking-widest text-2xl py-6 px-6"
-                    >
-                      {section.name}
-                      <FiChevronDownIcon className={`h-4 w-4 transition-transform ${openSubmenus.includes(section.name) ? 'rotate-180' : ''}`} />
-                    </button>
-                    {openSubmenus.includes(section.name) && (
-                      <div className="ml-6">
-                        {section.groups.map(group => (
-                          <div className="py-2" key={group.name}>
-                            {group.routes.map(route => (
-                              <Link key={route.href} href={route.href} className="block text-white text-xl py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-                                {route.name}
-                              </Link>
-                            ))}
-                          </div>
+              <div key={section.name} className="mb-4">
+                <button
+                  onClick={() => toggleSubmenu(section.name)}
+                  className="flex items-center justify-between w-full text-sunglow-400 font-semibold text-3xl py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+                >
+                  {section.name}
+                  <FiChevronDownIcon className={`h-8 w-8 transition-transform ${openSubmenus.includes(section.name) ? 'rotate-180' : ''}`} />
+                </button>
+                {openSubmenus.includes(section.name) && (
+                  <div className="ml-6">
+                    {section.groups.map(group => (
+                      <div className="py-2" key={group.name}>
+                        {group.routes.map(route => (
+                          <Link key={route.href} href={route.href} className="block text-white text-xl py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+                            {route.name}
+                          </Link>
                         ))}
                       </div>
-                    )}
-                  </>
+                    ))}
+                  </div>
                 )}
               </div>
             ))}
-            <div className="mt-4">
-              <Link href="/help" className="block text-sunglow-400 font-semibold text-2xl tracking-widest py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-                Help
-              </Link>
-              <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-sunglow-400 font-semibold text-2xl tracking-widest py-6 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-                Docs
-              </a>
-            </div>
+            <Link href="/blog" className="flex text-sunglow-400 font-semibold text-3xl py-7 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+              Blog
+            </Link>
+            <Link href="/help" className="block text-sunglow-400 font-semibold text-3xl py-7 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+              Help
+            </Link>
+            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-sunglow-400 font-semibold text-3xl py-7 pl-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+              Docs
+            </a>
           </div>
         )}
       </nav>
