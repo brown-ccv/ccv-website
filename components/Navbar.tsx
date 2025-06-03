@@ -277,7 +277,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu Hamburger Button */}
         <div className="lg:hidden flex items-center">
-          <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-none" onClick={toggleMobileMenu}>
+          <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-2xl" onClick={toggleMobileMenu}>
             <FiMenu className="h-6 w-6" />
           </Button>
         </div>
