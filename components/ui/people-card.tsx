@@ -20,7 +20,7 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePa
 
   return (
     <Card
-      className={cn("overflow-hidden", cardVariants({ variant: "people" }), "w-[350px]", "h-[550px]", "flex-shrink-0")}
+      className={cn("overflow-hidden", cardVariants({ variant: "people" }), "w-[400px]", "h-[600px]", "flex-shrink-0")}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -29,8 +29,8 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePa
           <Image
             src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
             alt={name}
-            width="400"
-            height="400"
+            width="500"
+            height="500"
             className="rounded-full transition-opacity duration-300"
           />
         </div>
