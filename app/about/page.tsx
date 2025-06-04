@@ -136,7 +136,10 @@ export default async function AboutUs() {
           <SectionHeader title="Careers" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex justify-center items-center px-6 py-10">
-              <p className="text-gray text-2xl italic">*Coming soon!*</p>
+              <p className="text-neutral-700 text-2xl italic">
+                There are no positions open at the moment. Check back with us in
+                the future. We appreciate your interest!
+              </p>
             </CardContent>
           </Card>
         </section>
