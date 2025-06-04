@@ -106,11 +106,11 @@ const routes: NavSection[] = [
           {
             name: "About Us",
             href: "/about",
-            description: "*Coming soon*",
+            description: "",
           },
           {
             name: "Careers",
-            href: "/about/careers",
+            href: "/about/#careers",
             description: "*Coming soon*",
           },
         ],
@@ -125,12 +125,12 @@ const routes: NavSection[] = [
         routes: [
           {
             name: "Office Hours",
-            href: "#events",
+            href: "/#events",
             description: "",
           },
           {
             name: "IPA Scheduler",
-            href: "#ipa-scheduler",
+            href: "/#ipa-scheduler",
             description: "",
           },
         ],
