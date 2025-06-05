@@ -107,7 +107,7 @@ const routes: NavSection[] = [
           },
           {
             name: "Campus File Storage and Transfer",
-            href: "/services/file-storeage",
+            href: "/services/file-storage",
             description: "Brown’s storage options",
             icon: FaFileImport,
           },
