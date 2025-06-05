@@ -165,7 +165,7 @@ const routes: NavSection[] = [
         routes: [
           {
             name: "About Us",
-            href: "/about/about-us",
+            href: "/about/us",
             description:"",
             icon: FaUser,
           },
