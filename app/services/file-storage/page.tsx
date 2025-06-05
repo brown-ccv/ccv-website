@@ -14,7 +14,7 @@ export default async function FileStorage() {
                         File Storage and Transfer
                       </TextAnimate>
                       <p className="text-4xl font-semibold">
-                        Text tbd.
+                        Several services at Brown allow you to share and store files. This guide will let you compare the options and decide which are right for you.
                       </p>
                     </div>
                   </div>
