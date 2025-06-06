@@ -22,31 +22,37 @@ interface FileContentItem {
 const folderContent: FileContentItem[] = await readContentFolder('services/storage') as FileContentItem[];
 
 export default async function Storage() {
-    return (
-      <div className="w-full">
-        <div className="relative w-full flex flex-col">
-          <div className="bg-purple-900">
-            <Hero image={"/images/hero-subroutes.jpeg"}>
-              <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-                <div className="absolute top-[12%] flex flex-col text-white space-y-6">
-                  <TextAnimate className="font-bold text-6xl md:text-8xl">
-                    Storage and Transfer
-                  </TextAnimate>
-                  <p className="text-4xl font-semibold">
-                    Several services at Brown allow you to share and store files. This guide will let you compare the options and decide which are right for you.
-                  </p>
-                </div>
+  return (
+    <div className="w-full">
+      <div className="relative w-full flex flex-col">
+        <div className="bg-purple-900">
+          <Hero image={"/images/hero-subroutes.jpeg"}>
+            <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
+              <div className="absolute top-[12%] flex flex-col text-white space-y-6">
+                <TextAnimate className="font-bold text-6xl md:text-8xl">
+                  Storage and Transfer
+                </TextAnimate>
+                <p className="text-4xl font-semibold">
+                  Several services at Brown allow you to share and store files. This guide will let you compare the options and decide which are right for you.
+                </p>
               </div>
-            </Hero>
-          </div>
+            </div>
+          </Hero>
         </div>
+      </div>
 
-        <div className="content-wrapper py-16 sm:py-24 px-14 lg:px-36">
-          {folderContent.map((fileContentItem: FileContentItem) => (
-            <section key={fileContentItem.slug} className="mb-12">
+      <div>
+        {folderContent.map((fileContentItem: FileContentItem, index: number) => {
+          const isEven = index % 2 === 0;
+          const sectionBgClass = isEven ? 'bg-white' : 'bg-neutral-50';
+          const sectionPaddingClass = "py-16 sm:py-24";
+
+          return(
+            <section key={fileContentItem.slug} className={`${sectionBgClass} ${sectionPaddingClass} mb-12`} >
+              <div className="px-14 lg:px-36">
               <SectionHeader title={fileContentItem.data.title} align="center" />
               <Card className="w-full border-none shadow-none rounded-none">
-                <CardContent className="mx-auto flex flex-col items-start pb-8">
+                <CardContent className="flex flex-col items-start pb-8">
                   <div className="prose text-xl">
                     <Markdown 
                       rehypePlugins={[rehypeRaw]} 
@@ -70,9 +76,12 @@ export default async function Storage() {
                   )}
                 </CardContent>
               </Card>
+              </div>
+              
             </section>
-          ))}
-        </div>
+          );
+        })}
       </div>
-    )
+    </div>
+  )
 }
