@@ -1109,5 +1109,8 @@ module.exports = {
       50: "50",
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require('@tailwindcss/typography')
+  ],
 }

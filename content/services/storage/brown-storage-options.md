@@ -13,13 +13,13 @@ links:
 
 Several services at Brown allow you to share and store files. These different storage services each have their own relative benefits and features. You can explore the differences with our comparison tool using the link below.
 
-* Campus File Storage Non-replicated / Research Services
+- Campus File Storage Non-replicated / Research Services
     File Services for Research provides Brown University research departments with a location in which files can be stored, backed up, and shared with members of the Brown community using Brown ID’s and groups. Space is allocated to each research lab or PI with an ITHelp request, and security groups are required to define access to the data. The data is protected locally via snapshots but doesn’t have geo-redundancy (secondary copy).
-    * Best for: Brown faculty and staff researchers looking to store, share and protect research data.
-    * Accessibility: The data is accessible on Brown's campus networks (including VPN and wireless). Also accessible directly from High Performance Computing Cluster (Oscar).
-    * Sharing: The data can be shared with both Brown and non-Brown collaborators via Globus.
-    * Limitations: No geo-redundancy (secondary copy)
-    * Rate: $50/TB/Year when storing above free/grant allocations
+    - Best for: Brown faculty and staff researchers looking to store, share and protect research data.
+    - Accessibility: The data is accessible on Brown's campus networks (including VPN and wireless). Also accessible directly from High Performance Computing Cluster (Oscar).
+    - Sharing: The data can be shared with both Brown and non-Brown collaborators via Globus.
+    - Limitations: No geo-redundancy (secondary copy)
+    - Rate: $50/TB/Year when storing above free/grant allocations
 
 - Campus File Storage Replicated / Research Services
     File Services for Research provides Brown University research departments with a location in which files can be stored, backed up, and shared with members of the Brown community using Brown ID’s and groups. Space is allocated to each research lab or PI with an ITHelp request, and security groups are required to define access to the data. The data is replicated daily to our disaster recovery site for True geo-redundant data protection. The data is accessible on Brown's campus networks (including VPN and wireless).

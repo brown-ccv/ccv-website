@@ -41,12 +41,12 @@ export default async function Storage() {
           </div>
         </div>
 
-        <div className="content-wrapper py-16 sm:py-24 px-14 lg:px-36">
+        <div className="content-wrapper py-16 sm:py-24">
           {folderContent.map((fileContentItem: FileContentItem) => (
             <section key={fileContentItem.slug} className="mb-12">
               <SectionHeader title={fileContentItem.data.title} align="center" />
               <Card className="w-full border-none shadow-none rounded-none">
-                <CardContent className="mx-auto flex flex-col items-center px-6">
+                <CardContent className="mx-auto flex flex-col items-start prose text-xl pb-8 max-w-prose">
                   <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>{fileContentItem.content}</Markdown>
                   {fileContentItem.data.links && fileContentItem.data.links.length > 0 && (
                     <div className="mt-4 flex flex-row gap-2 w-full items-start">
