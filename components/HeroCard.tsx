@@ -26,7 +26,7 @@ export const HeroCard: React.FC = () => {
   return (
     <div className="z-10 mt-6 md:-mt-[170px] mb-[50px] px-0 lg:px-6 flex justify-center relative">
       <Card
-        className={cn(cardVariants({ variant: "elevated" }), "w-full md:w-3/4")}
+        className={cn(cardVariants({ variant: "default" }), "w-full md:w-3/4")}
       >
         <CardContent className="py-10 px-2 lg:px-12">
           <div className="flex justify-center items-start gap-8 lg:gap-12 xl:gap-24 flex-wrap">
