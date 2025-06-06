@@ -1,5 +1,5 @@
 ---
-title: Hibernate
+title: Brown Storage Options
 links: 
   - text: "Compare Storage Options"
     href: "https://ccv.brown.edu/storage/"
