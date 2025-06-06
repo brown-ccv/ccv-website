@@ -1,8 +1,11 @@
 import React from "react"
 import Link from "next/link"
+import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
-import { Card, CardContent, CardHeader, CardDescription } from "@/components/ui/card"
+import { Card, CardContent  } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { readContentFolder } from "@/lib/content-utils"
@@ -38,15 +41,15 @@ export default async function Storage() {
           </div>
         </div>
 
-        <div className="content-wrapper py-16 sm:py-24">
+        <div className="content-wrapper py-16 sm:py-24 px-14 lg:px-36">
           {folderContent.map((fileContentItem: FileContentItem) => (
             <section key={fileContentItem.slug} className="mb-12">
               <SectionHeader title={fileContentItem.data.title} align="center" />
               <Card className="w-full border-none shadow-none rounded-none">
                 <CardContent className="mx-auto flex flex-col items-center px-6">
-                  {fileContentItem.content}
+                  <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>{fileContentItem.content}</Markdown>
                   {fileContentItem.data.links && fileContentItem.data.links.length > 0 && (
-                    <div className="mt-4 px-6 flex flex-row gap-2">
+                    <div className="mt-4 flex flex-row gap-2 w-full items-start">
                       {fileContentItem.data.links.map((link, index) => (
                         <Button
                           key={index}
