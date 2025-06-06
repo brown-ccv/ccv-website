@@ -24,54 +24,54 @@ export default async function FileStorage() {
           </div>
         </div>
 
-              {/* Contact Us */}
-      <section className="content-wrapper py-24 px-6 lg:px-36">
-        <SectionHeader title="Contact Us" align="center" />
-        <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex items-center px-6">
-            <p className="text-black text-xl pb-8">
-              The Center for Computation and Visualization (CCV) is a center within the University&apos;s central IT organization, which is the Office of Information Technology (OIT). In addition to building and maintaining the University&apos;s hundreds of enterprise software, systems, and hardware, OIT is also responsible for driving the technological progress that enables scientific research. Executing on the University&apos;s research mission is the key role that CCV plays in OIT.
-            </p>
-          </CardContent>
-        </Card>
+        {/* Contact Us */}
+        <section className="content-wrapper py-24 px-6 lg:px-36">
+          <SectionHeader title="Contact Us" align="center" />
+          <Card className="w-full border-none shadow-none rounded-none">
+            <CardContent className="mx-auto flex items-center px-6">
+              <p className="text-black text-xl pb-8">
+                The Center for Computation and Visualization (CCV) is a center within the University&apos;s central IT organization, which is the Office of Information Technology (OIT). In addition to building and maintaining the University&apos;s hundreds of enterprise software, systems, and hardware, OIT is also responsible for driving the technological progress that enables scientific research. Executing on the University&apos;s research mission is the key role that CCV plays in OIT.
+              </p>
+            </CardContent>
+          </Card>
 
-        <div className="content-wrapper flex justify-center px-40">
-          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
-            {pageContent?.data?.contactUs?.map((card: ContactTypes) => (
-              <div
-                key={card.title}
-                className="flex-grow max-w-lg"
-              >
-                <div className="inline-flex items-center gap-2 w-full h-full">
-                  <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
-                    <CardContent className="flex flex-col h-full px-6 mx-2">
-                      <div className="relative border-b border-neutral-300">
-                        <CardHeader className="flex flex-row gap-4 items-center">
-                          <Icon iconName={card.icon}></Icon>
-                          {card.title}
-                        </CardHeader>
-                      </div>
-                      <CardDescription className="text-lg px-6 flex-grow pt-4">{card.description}</CardDescription>
-                      <div className="px-6 flex flex-col gap-2">
-                        {card.buttonLinks && card.buttonLinks.map((link, index) => (
-                          <Button
-                            key={index}
-                            variant="primary_filled"
-                            size="xl"
-                          >
-                            <a href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>
-                          </Button>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
+          <div className="content-wrapper flex justify-center px-40">
+            <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
+              {pageContent?.data?.contactUs?.map((card: ContactTypes) => (
+                <div
+                  key={card.title}
+                  className="flex-grow max-w-lg"
+                >
+                  <div className="inline-flex items-center gap-2 w-full h-full">
+                    <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
+                      <CardContent className="flex flex-col h-full px-6 mx-2">
+                        <div className="relative border-b border-neutral-300">
+                          <CardHeader className="flex flex-row gap-4 items-center">
+                            <Icon iconName={card.icon}></Icon>
+                            {card.title}
+                          </CardHeader>
+                        </div>
+                        <CardDescription className="text-lg px-6 flex-grow pt-4">{card.description}</CardDescription>
+                        <div className="px-6 flex flex-col gap-2">
+                          {card.buttonLinks && card.buttonLinks.map((link, index) => (
+                            <Button
+                              key={index}
+                              variant="primary_filled"
+                              size="xl"
+                            >
+                              <a href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>
+                            </Button>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-      
+        </section>
+
       </div>
     )
   }
