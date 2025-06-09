@@ -14,7 +14,7 @@ export default async function AboutLayout() {
 
     return (
       <div className="w-full">
-        <div className="bg-purple-900">
+        <div className="bg-blue-navbar">
             <Hero image={"/images/hero/about-3.png"}>
                 <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
                     <div className="absolute top-[12%] flex flex-col text-white space-y-6 w-[80vw]">
