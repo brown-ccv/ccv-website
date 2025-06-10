@@ -1,3 +1,7 @@
+# Each element of this file has a title, icon, and description property. New elements begin with a hyphen (-).
+# Supported icon types are from sets: https://react-icons.github.io/react-icons/icons/fa/ and
+# https://react-icons.github.io/react-icons/icons/fi/
+
 dataAnalysis:
   - title: Experimental Design and Power Analysis
     icon: FaTools
@@ -6,34 +10,43 @@ dataAnalysis:
   - title: Benchmarking
     icon: FaRuler
     description: >
-      Use public and internal data for simulation studies to provide  comprehensive prediction of possible outcomes to ensure efficient use of technologies.
+      Use public and internal data for simulation studies to provide  comprehensive prediction of possible outcomes to 
+      ensure efficient use of technologies.
   - title: Technology Assessment
     icon: FaToolbox
     description: >
-      Provide guidance on technologies; for example, selection of single end/paired-end sequencing, multiplexing, sequencing depth, sample pooling etc.
+      Provide guidance on technologies; for example, selection of single end/paired-end sequencing, multiplexing, 
+      sequencing depth, sample pooling etc.
 
 softwareDevelopment:
   - title: Application Development
     icon: FaDev
     description: >
-      The CBC and CCV can assist with the design, development, and optimization of custom software applications tailored to specific genomic research questions. This includes developing new tools for data analysis, visualization, or experimental design.
+      The CBC and CCV can assist with the design, development, and optimization of custom software applications 
+      tailored to specific genomic research questions. This includes developing new tools for data analysis, 
+      visualization, or experimental design.
   - title: Web Apps
     icon: FaGlobe
     description: >
-      We offer expertise in creating interactive web-based tools and applications for sharing  data, visualizing results, or providing user-friendly interfaces.
+      We offer expertise in creating interactive web-based tools and applications for sharing  data, visualizing 
+      results, or providing user-friendly interfaces.
   - title: Packaging and Distribution
     icon: FaBox
     description: >
-      We can help with packaging your tools, managing dependencies, and facilitating their distribution to the wider scientific community.
+      We can help with packaging your tools, managing dependencies, and facilitating their distribution to the wider 
+      scientific community.
   - title: Reproducibility
     icon: FaShareAlt
     description: >
-      We can provide guidance and implement strategies for reproducible research workflows, including containerization, version control, and documentation.
+      We can provide guidance and implement strategies for reproducible research workflows, including containerization, 
+      version control, and documentation.
   - title: Data Storage and Processing Pipelines
     icon: FaDatabase
     description: >
-      We design and implement robust and scalable data storage solutions and processing pipelines optimized for large-scale genomic datasets, ensuring efficient data handling from raw reads to final analysis.
+      We design and implement robust and scalable data storage solutions and processing pipelines optimized for 
+      large-scale genomic datasets, ensuring efficient data handling from raw reads to final analysis.
   - title: HPC Optimization
     icon: FaMicrochip
     description: >
-      As part of the CCV, the CBC can leverage and optimize your genomic analyses to run efficiently on high-performance computing clusters, ensuring rapid processing of large datasets and complex simulations.
+      As part of the CCV, the CBC can leverage and optimize your genomic analyses to run efficiently on high-performance 
+      computing clusters, ensuring rapid processing of large datasets and complex simulations.
