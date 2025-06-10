@@ -91,19 +91,17 @@ export default async function AboutUs() {
       </div>
 
       {/* Careers */}
-      <div id="careers">
-        <section className="content-wrapper py-24 bg-gray-100">
-          <SectionHeader title="Careers" align="center" />
-          <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex justify-center items-center px-6 py-10">
-              <p className="text-neutral-700 text-2xl italic">
-                There are no positions open at the moment. Check back with us in
-                the future. We appreciate your interest!
-              </p>
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+      <section id="careers" className="content-wrapper py-24 bg-gray-100">
+        <SectionHeader title="Careers" align="center" />
+        <Card className="w-full border-none shadow-none rounded-none">
+          <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex justify-center items-center px-6 py-10">
+            <p className="text-neutral-700 text-2xl italic">
+              There are no positions open at the moment. Check back with us in
+              the future. We appreciate your interest!
+            </p>
+          </CardContent>
+        </Card>
+      </section>
     </div>
   )
 }
