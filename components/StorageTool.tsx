@@ -42,7 +42,7 @@ export default function StorageTool({ pageContent, questions, initialSelectedAns
                     </div>
                     <div className="flex justify-center items-center">
                         <Button onClick={handleReset} variant="primary_filled" size="lg">
-                        Reset Filters
+                        Reset Questions
                         </Button>
                     </div>
                 </div>
