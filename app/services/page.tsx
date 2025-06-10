@@ -70,7 +70,7 @@ export default async function ContactUs() {
             </p>
           </CardContent>
         </Card>
-        <div className="flex flex-row flex-wrap gap-4 pt-2">
+        <div className="flex flex-row flex-wrap gap-4 pt-2 pl-6">
           <Button
             variant="primary_filled"
             className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
