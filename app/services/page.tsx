@@ -140,6 +140,68 @@ export default async function ContactUs() {
           </div>
         </div>
       </section>
+
+      {/* Software Development */}
+      <section
+        id="#softwareDevelopment"
+        className="content-wrapper py-16 px-6 lg:px-36"
+      >
+        <SectionHeader
+          title="Software Development and Infrastructure"
+          align="center"
+        />
+        <Card className="w-full border-none shadow-none rounded-none">
+          <CardContent className="mx-auto flex items-center px-6">
+            <p className="text-black text-md md:text-xl pb-8">
+              As part of Brown University's Center for Computation and
+              Visualization (CCV), the CBC is uniquely equipped to meet the
+              specialized software development and infrastructure needs of
+              genomic research. We combine the CBC's deep biological and
+              computational expertise with the CCV's research software
+              engineering and high-performance computing (HPC) capabilities.
+              This synergy provides comprehensive support tailored to genomic
+              data analysis, empowering your research with cutting-edge software
+              solutions, efficient data processing pipelines, and reliable
+              computational infrastructure.
+            </p>
+          </CardContent>
+        </Card>
+
+        <div className="content-wrapper flex justify-center px-0 md:px-40">
+          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 w-full">
+            {pageContent?.data?.softwareDevelopment?.map(
+              (card: SoftwareDevelopmentTypes) => (
+                <div key={card.title} className="flex-grow max-w-lg">
+                  <div className="inline-flex items-center gap-2 w-full h-full">
+                    <Card
+                      className={cn(
+                        "overflow-hidden flex flex-col w-full h-full",
+                        cardVariants({ variant: "default" })
+                        // "shadow-none"
+                      )}
+                    >
+                      <CardContent className="flex flex-col h-full">
+                        <div className="relative border-b border-neutral-300">
+                          <CardHeader className="flex flex-row gap-4 items-center text-lg md:text-xl font-semibold">
+                            <Icon
+                              iconName={card.icon}
+                              className="text-3xl"
+                            ></Icon>
+                            {card.title}
+                          </CardHeader>
+                        </div>
+                        <CardDescription className="text-md md:text-lg px-6 flex-grow pt-4">
+                          {card.description}
+                        </CardDescription>
+                      </CardContent>
+                    </Card>
+                  </div>
+                </div>
+              )
+            )}
+          </div>
+        </div>
+      </section>
     </div>
   )
 }
