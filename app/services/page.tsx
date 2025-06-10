@@ -210,12 +210,11 @@ export default async function ContactUs() {
           </div>
         </div>
         <Card className="w-full border-none shadow-none rounded-none pt-10">
-          <CardContent className="max-w-[1440px] mx-auto flex flex-col content-center">
+          <CardContent className="max-w-[1440px] mx-auto flex flex-col content-center gap-4">
             <p className="text-black text-md md:text-xl pb-4">
               Have an idea of how a collaboration with CBC can help achieve your
               computational research goals? We’d love to hear from you.
             </p>
-
             <Button
               variant="primary_filled"
               className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
