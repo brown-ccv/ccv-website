@@ -38,7 +38,9 @@ jobs:
         run: npm ci
 
       - name: Print config
-        run: npx tsc --showConfig
+        run: |
+          npx tsc --showConfig > tsconfig_output.txt
+          cat tsconfig_output.txt
 
       - name: 🔎 Typecheck
         run: npm run typecheck
