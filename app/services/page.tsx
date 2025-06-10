@@ -56,7 +56,7 @@ export default async function ContactUs() {
       <section className="content-wrapper py-16 px-6 lg:px-36">
         <SectionHeader title="Office Hours and Support" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex items-center px-6">
+          <CardContent className="max-w-[1440px] mx-auto flex flex-col content-center px-6">
             <p className="text-black text-md md:text-xl pb-2">
               Need help with your project or using Brown’s computing resources?
               The CBC holds Computational Biology office hours twice weekly and
@@ -68,22 +68,22 @@ export default async function ContactUs() {
               Need more specialized support beyond office hours? Request a
               consultation with us.
             </p>
+            <div className="flex flex-row flex-wrap gap-4 pt-10">
+              <Button
+                variant="primary_filled"
+                className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
+              >
+                <a href="/#events">View Office Hours</a>
+              </Button>
+              <Button
+                variant="primary_filled"
+                className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
+              >
+                <a href="mailto:cbc-help@brown.edu">Request Support</a>
+              </Button>
+            </div>
           </CardContent>
         </Card>
-        <div className="flex flex-row flex-wrap gap-4 pt-2 pl-6">
-          <Button
-            variant="primary_filled"
-            className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
-          >
-            <a href="/#events">View Office Hours</a>
-          </Button>
-          <Button
-            variant="primary_filled"
-            className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
-          >
-            <a href="mailto:cbc-help@brown.edu">Request Support</a>
-          </Button>
-        </div>
       </section>
 
       {/* Data Analysis */}
@@ -93,7 +93,7 @@ export default async function ContactUs() {
       >
         <SectionHeader title="Data Analysis" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex items-center px-6">
+          <CardContent className="max-w-[1440px] mx-auto flex items-center px-6">
             <p className="text-black text-md md:text-xl pb-8">
               The Center for Computation and Visualization (CCV) is a center
               within the University&apos;s central IT organization, which is the
@@ -139,7 +139,7 @@ export default async function ContactUs() {
             ))}
           </div>
         </div>
-        <div className="pl-6 pt-10">
+        <div className="p-6 pt-10 max-w-[1440px] mx-auto px-6">
           <Button
             variant="primary_filled"
             className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
@@ -159,7 +159,7 @@ export default async function ContactUs() {
           align="center"
         />
         <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex items-center px-6">
+          <CardContent className="max-w-[1440px] mx-auto flex items-center px-6">
             <p className="text-black text-md md:text-xl pb-8">
               As part of Brown University's Center for Computation and
               Visualization (CCV), the CBC is uniquely equipped to meet the
@@ -210,20 +210,19 @@ export default async function ContactUs() {
           </div>
         </div>
         <Card className="w-full border-none shadow-none rounded-none pt-10">
-          <CardContent className="mx-auto flex items-center">
+          <CardContent className="max-w-[1440px] mx-auto flex flex-col content-center">
             <p className="text-black text-md md:text-xl pb-4">
               Have an idea of how a collaboration with CBC can help achieve your
               computational research goals? We’d love to hear from you.
             </p>
-          </CardContent>
-          <div className="pl-6">
+
             <Button
               variant="primary_filled"
               className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
             >
               <a href="mailto:cbc-help@brown.edu">Contact Us</a>
             </Button>
-          </div>
+          </CardContent>
         </Card>
       </section>
     </div>
