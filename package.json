@@ -7,6 +7,7 @@
     "build": "tsx lib/build-utils.ts && next build",
     "start": "next start",
     "lint": "next lint",
+    "typecheck": "tsc --noEmit",
     "copy-images": "tsx lib/build-utils.ts"
   },
   "dependencies": {
