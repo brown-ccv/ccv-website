@@ -139,6 +139,14 @@ export default async function ContactUs() {
             ))}
           </div>
         </div>
+        <div className="pl-6 pt-10">
+          <Button
+            variant="primary_filled"
+            className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
+          >
+            <a href="mailto:cbc-help@brown.edu">Contact Us</a>
+          </Button>
+        </div>
       </section>
 
       {/* Software Development */}
