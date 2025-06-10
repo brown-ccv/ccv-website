@@ -22,5 +22,5 @@ export async function getWorkdayData() {
     }
   )
   const json = await response.json()
-  return json
+  return json.jobPostings
 }
