@@ -88,7 +88,7 @@ export default async function ContactUs() {
 
       {/* Data Analysis */}
       <section
-        id="#dataAnalysis"
+        id="data-analysis"
         className="content-wrapper py-16 px-6 lg:px-36 bg-gray-100"
       >
         <SectionHeader title="Data Analysis" align="center" />
@@ -151,11 +151,11 @@ export default async function ContactUs() {
 
       {/* Software Development */}
       <section
-        id="#softwareDevelopment"
+        id="software-development"
         className="content-wrapper py-16 px-6 lg:px-36"
       >
         <SectionHeader
-          title="Software Development and Infrastructure"
+          title="Software Development & Infrastructure"
           align="center"
         />
         <Card className="w-full border-none shadow-none rounded-none">
