@@ -116,6 +116,7 @@ export const cardVariants = cva(
     variants: {
       variant: {
         default: "shadow-lg border border-neutral-200",
+        shadowless: "shadow-none border border-neutral-200",
         people: "border-none shadow-none",
       },
     },

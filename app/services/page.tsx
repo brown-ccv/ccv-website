@@ -115,7 +115,7 @@ export default async function ContactUs() {
                   <Card
                     className={cn(
                       "overflow-hidden flex flex-col w-full h-full",
-                      cardVariants({ variant: "default" })
+                      cardVariants({ variant: "shadowless" })
                       // "shadow-none"
                     )}
                   >
@@ -184,7 +184,7 @@ export default async function ContactUs() {
                     <Card
                       className={cn(
                         "overflow-hidden flex flex-col w-full h-full",
-                        cardVariants({ variant: "default" })
+                        cardVariants({ variant: "shadowless" })
                         // "shadow-none"
                       )}
                     >
