@@ -1,3 +1,9 @@
+# Each element of this file has a name, type, team, title, github_username,
+# brown_directory_uuid, bio, and image property.
+# New elements begin with a hyphen (-).
+# Images should be stored in the content/images/about/people directory and
+# resized to a square aspect ratio.
+
 - name: David Rand, PhD
   type: Full Time
   team: Leadership
