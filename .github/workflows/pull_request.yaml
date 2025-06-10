@@ -37,5 +37,8 @@ jobs:
       - name: 📥 Install Dependencies
         run: npm ci
 
+      - name: Print config
+        run: npx tsc --showConfig
+
       - name: 🔎 Typecheck
         run: npm run typecheck
