@@ -53,11 +53,11 @@ export default async function ContactUs() {
       </div>
 
       {/* Office Hours and Support */}
-      <section className="content-wrapper py-24 px-6 lg:px-36">
+      <section className="content-wrapper py-16 px-6 lg:px-36">
         <SectionHeader title="Office Hours and Support" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
-            <p className="text-black text-xl pb-2">
+            <p className="text-black text-md md:text-xl pb-2">
               Need help with your project or using Brown’s computing resources?
               The CBC holds Computational Biology office hours twice weekly and
               is present at weekly Center for Computation and Visualization
@@ -73,13 +73,13 @@ export default async function ContactUs() {
         <div className="flex flex-row flex-wrap gap-4 pt-2">
           <Button
             variant="primary_filled"
-            className="h-[55px] min-w-[155px] self-start md:text-2xl"
+            className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
           >
             <a href="/#events">View Office Hours</a>
           </Button>
           <Button
             variant="primary_filled"
-            className="h-[55px] min-w-[155px] self-start md:text-2xl"
+            className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
           >
             <a href="mailto:cbc-help@brown.edu">Request Support</a>
           </Button>
@@ -89,12 +89,12 @@ export default async function ContactUs() {
       {/* Data Analysis */}
       <section
         id="#dataAnalysis"
-        className="content-wrapper py-24 px-6 lg:px-36"
+        className="content-wrapper py-16 px-6 lg:px-36 bg-gray-100"
       >
         <SectionHeader title="Data Analysis" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
-            <p className="text-black text-xl pb-8">
+            <p className="text-black text-md md:text-xl pb-8">
               The Center for Computation and Visualization (CCV) is a center
               within the University&apos;s central IT organization, which is the
               Office of Information Technology (OIT). In addition to building
@@ -107,21 +107,21 @@ export default async function ContactUs() {
           </CardContent>
         </Card>
 
-        <div className="content-wrapper flex justify-center px-40">
-          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
+        <div className="content-wrapper flex justify-center px-0 md:px-40">
+          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 w-full">
             {pageContent?.data?.dataAnalysis?.map((card: DataAnalysisTypes) => (
               <div key={card.title} className="flex-grow max-w-lg">
                 <div className="inline-flex items-center gap-2 w-full h-full">
                   <Card
                     className={cn(
                       "overflow-hidden flex flex-col w-full h-full",
-                      cardVariants({ variant: "default" }),
-                      "h-full"
+                      cardVariants({ variant: "default" })
+                      // "shadow-none"
                     )}
                   >
                     <CardContent className="flex flex-col h-full">
                       <div className="relative border-b border-neutral-300">
-                        <CardHeader className="flex flex-row gap-4 items-center text-xl font-semibold">
+                        <CardHeader className="flex flex-row gap-4 items-center text-lg md:text-xl font-semibold">
                           <Icon
                             iconName={card.icon}
                             className="text-3xl"
@@ -129,7 +129,7 @@ export default async function ContactUs() {
                           {card.title}
                         </CardHeader>
                       </div>
-                      <CardDescription className="text-lg px-6 flex-grow pt-4">
+                      <CardDescription className="text-md md:text-lg px-6 flex-grow pt-4">
                         {card.description}
                       </CardDescription>
                     </CardContent>
