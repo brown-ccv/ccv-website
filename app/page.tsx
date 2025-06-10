@@ -44,13 +44,7 @@ export default async function Home() {
                       variant="secondary_filled"
                       className="h-[55px] min-w-[155px] self-start text-2xl font-semibold"
                     >
-                      <a
-                        href="mailto:cbc-help@brown.edu"
-                        // className="flex items-center justify-center w-full h-full"
-                      >
-                        Work with Us
-                      </a>
-                      {/* Work with Us */}
+                      <a href="mailto:cbc-help@brown.edu">Work with Us</a>
                     </Button>
                     <ScrollButton
                       id="events"

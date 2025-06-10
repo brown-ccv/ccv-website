@@ -4,9 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "tsx lib/build-utils.ts && next build",
     "start": "next start",
     "lint": "next lint",
+    "copy-images": "tsx lib/build-utils.ts",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -24,7 +25,11 @@
     "class-variance-authority": "^0.7.0",
     "date-fns": "^3.6.0",
     "firebase": "^10.12.5",
+    "front-matter": "^4.0.2",
+    "fs-extra": "^11.3.0",
+    "js-yaml": "^4.1.0",
     "lucide-react": "^0.485.0",
+    "markdown-it": "^14.1.0",
     "motion": "^12.9.2",
     "next": "14.2.18",
     "octokit": "^4.0.2",
@@ -35,6 +40,9 @@
     "tailwindcss": "^3.4.10"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/js-yaml": "^4.0.9",
+    "@types/markdown-it": "^14.1.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -43,6 +51,8 @@
     "eslint-config-prettier": "^8.10.0",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.10",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.19.4",
     "typescript": "^5"
   }
 }

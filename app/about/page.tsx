@@ -1,75 +1,31 @@
 import React from "react"
+import path from "path"
 import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"
+import { readContentFile } from "@/lib/content-utils"
 
-const people = [
-  {
-    name: "David Rand, PhD",
-    title: "Co-Director, Department of Ecology and Evolutionary Biology",
-    href: "/david-rand",
-    image: "/images/people/david_main.jpg",
-    hover: "/images/people/david_main.jpg",
-  },
-  {
-    name: "Zhijin Wu, PhD",
-    title: "Co-Director, Department of Biostatistics",
-    href: "/ashley-lee",
-    image: "/images/people/zhijin_main.jpg",
-    hover: "/images/people/zhijin_main.jpg",
-  },
-  {
-    name: "Paul Stey, PhD",
-    title: "Assistant CIO Research Software Engineering and Data Science",
-    href: "/ashley-lee",
-    image: "/images/people/stey_main.jpg",
-    hover: "/images/people/stey_hover.jpg",
-  },
-  {
-    name: "Ashok Ragavendran, PhD",
-    title: "Associate Director of Computational Biology and Data Science",
-    href: "/ashley-lee",
-    image: "/images/people/ashok_main.jpg",
-    hover: "/images/people/ashok_hover.jpg",
-  },
-  {
-    name: "August Guang, PhD",
-    title: "Lead Genomics Data Scientist",
-    href: "/ashley-lee",
-    image: "/images/people/august_main.jpg",
-    hover: "/images/people/august_hover.jpg",
-  },
-  {
-    name: "Eric Salomaki, PhD",
-    title: "Senior Genomics Data Scientist",
-    href: "/ashley-lee",
-    image: "/images/people/eric_main.jpg",
-    hover: "/images/people/eric_hover.jpg",
-  },
-  {
-    name: "Jordan Lawson, PhD",
-    title: "Senior Research Software Engineer",
-    href: "/ashley-lee",
-    image: "/images/people/jordan_main.jpg",
-    hover: "/images/people/jordan_hover.jpg",
-  },
-  {
-    name: "Joselynn Wallace, PhD",
-    title: "Senior Genomics Data Scientist",
-    href: "/ashley-lee",
-    image: "/images/people/joselynn_main.jpg",
-    hover: "/images/people/joselynn_hover.jpg",
-  },
-  {
-    name: "Paul Cao, PhD",
-    title: "Genomics Data Scientist",
-    href: "/ashley-lee",
-    image: "/images/people/cao_main.png",
-    hover: "/images/people/cao_hover.png",
-  },
-]
+interface peopleTypes {
+  name: string
+  type: string
+  team: string
+  subteam: string
+  title: string
+  github_username: string
+  brown_directory_uuid: string
+  bio: string
+  image: string
+}
+
+function imagePath(imageName: string) {
+  return path.join("/images/people", imageName)
+}
+
+const fileName = "people.yaml"
+const filePath = path.join("content/about", fileName)
+const pageContent = await readContentFile(filePath)
 
 export default async function AboutUs() {
   return (
@@ -116,34 +72,36 @@ export default async function AboutUs() {
       {/* People */}
       <div className="content-wrapper py-16 sm:py-24">
         <SectionHeader title="People" align="center"></SectionHeader>
-        <div className="flex flex-wrap justify-center gap-y-8">
-          {people.map((person) => (
-            <div key={person.name}>
-              <CardWithImage
-                imagePath={person.image}
-                hoverImagePath={person.hover}
-                name={person.name}
-                title={person.title}
-              />
-            </div>
-          ))}
+        <div className="flex justify-center">
+          <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
+            {pageContent?.data?.map((person: peopleTypes) => (
+              <div key={person.name}>
+                <CardWithImage
+                  imagePath={imagePath(person?.image)}
+                  hoverImagePath={imagePath(
+                    person?.image.replace("main", "hover")
+                  )}
+                  name={person?.name}
+                  title={person?.title}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Careers */}
-      <div id="careers">
-        <section className="content-wrapper py-24 bg-gray-100">
-          <SectionHeader title="Careers" align="center" />
-          <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex justify-center items-center px-6 py-10">
-              <p className="text-neutral-700 text-2xl italic">
-                There are no positions open at the moment. Check back with us in
-                the future. We appreciate your interest!
-              </p>
-            </CardContent>
-          </Card>
-        </section>
-      </div>
+      <section id="careers" className="content-wrapper py-24 bg-gray-100">
+        <SectionHeader title="Careers" align="center" />
+        <Card className="w-full border-none shadow-none rounded-none">
+          <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex justify-center items-center px-6 py-10">
+            <p className="text-neutral-700 text-2xl italic">
+              There are no positions open at the moment. Check back with us in
+              the future. We appreciate your interest!
+            </p>
+          </CardContent>
+        </Card>
+      </section>
     </div>
   )
 }
