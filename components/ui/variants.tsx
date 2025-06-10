@@ -60,10 +60,12 @@ export const buttonVariants = cva(
       },
 
       size: {
-        default: "h-9 px-6 text-xl",
-        sm: "h-8 px-3 text-xs",
-        md: "h-8 px-6 text-md",
-        lg: "h-10 px-8 text-2xl",
+        default: "h-9 px-6 py-6 text-xl",
+        sm: "h-8 px-3 py-3 text-xs",
+        md: "h-8 px-6 py-6 text-md",
+        lg: "h-10 px-8 py-8 text-2xl",
+        xl: "h-14 px-8 py-8 text-2xl",
+        xxl: "h-16 px-10 py-10 text-3xl",
         // big circle for icon-only
         icon: "h-12 w-12 p-0 text-xl",
         // small circle for icon-only
@@ -113,10 +115,9 @@ export const cardVariants = cva(
   {
     variants: {
       variant: {
-        default: "border bg-card text-card-foreground shadow",
-        elevated: "shadow-lg border border-neutral-200 ",
-        ghost: "border-none bg-transparent shadow-none",
-        outlined: "border border-gray-300",
+        default: "shadow-lg border border-neutral-200",
+        shadowless: "shadow-none border border-neutral-200",
+        people: "border-none shadow-none",
       },
     },
     defaultVariants: {

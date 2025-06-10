@@ -49,19 +49,16 @@ const routes: NavSection[] = [
         name: "",
         routes: [
           {
+            name: "Support",
+            href: "/services",
+          },
+          {
             name: "Data Analysis",
-            href: "/services/analysis",
-            description: "*Coming soon*",
+            href: "/services/#data-analysis",
           },
           {
-            name: "Consulting",
-            href: "/services/consulting",
-            description: "*Coming soon*",
-          },
-          {
-            name: "DevOps",
-            href: "/services/devops",
-            description: "*Coming soon*",
+            name: "Software Development & Infrastructure",
+            href: "/services/#software-development",
           },
         ],
       },
@@ -105,13 +102,11 @@ const routes: NavSection[] = [
         routes: [
           {
             name: "About Us",
-            href: "/about/about-us",
-            description: "*Coming soon*",
+            href: "/about",
           },
           {
             name: "Careers",
-            href: "/about/careers",
-            description: "*Coming soon*",
+            href: "/about/#careers",
           },
         ],
       },
@@ -125,12 +120,12 @@ const routes: NavSection[] = [
         routes: [
           {
             name: "Office Hours",
-            href: "#events",
+            href: "/#events",
             description: "",
           },
           {
             name: "IPA Scheduler",
-            href: "#ipa-scheduler",
+            href: "/#ipa-scheduler",
             description: "",
           },
         ],
