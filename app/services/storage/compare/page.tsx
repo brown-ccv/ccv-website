@@ -6,8 +6,8 @@ import { readContentFile } from "@/lib/content-utils"
 import StorageTool from "@/components/StorageTool"
 import { PageContentData, Question, SelectedAnswers, YAMLQuestionConfig } from '@/lib/storage-types'
 
-const fileName = 'storage.yaml'
-const filePath = path.join(process.cwd(), 'content/services', fileName);
+const fileName = 'storage-tool.yaml'
+const filePath = path.join(process.cwd(), 'content/services/storage', fileName);
 const rawPageContent = await readContentFile(filePath);
 const pageContent: PageContentData | null = rawPageContent ? (rawPageContent.data as PageContentData) : null;
 

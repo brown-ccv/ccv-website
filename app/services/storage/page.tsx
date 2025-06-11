@@ -1,5 +1,5 @@
 import React from "react"
-import Link from "next/link"
+import Link from "next/link" // Ensure Link is imported
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -63,15 +63,26 @@ export default async function Storage() {
                   </div>
                   {fileContentItem.data.links && fileContentItem.data.links.length > 0 && (
                     <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
-                      {fileContentItem.data.links.map((link, index) => (
-                        <Button
-                          key={index}
-                          variant="primary_filled"
-                          size="xl"
-                        >
-                          <Link href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</Link>
-                        </Button>
-                      ))}
+                      {fileContentItem.data.links.map((link, index) => {
+                        // determine if the link is external
+                        const isExternal = link.href.startsWith('http://') || link.href.startsWith('https://');
+
+                        return (
+                          <Button
+                            key={index}
+                            variant="primary_filled"
+                            size="xl"
+                          >
+                            <Link 
+                              href={link.href} 
+                              // conditionally apply target and rel props
+                              {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                            >
+                              {link.text}
+                            </Link>
+                          </Button>
+                        );
+                      })}
                     </div>
                   )}
                 </CardContent>
