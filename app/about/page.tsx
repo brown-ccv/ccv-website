@@ -9,8 +9,6 @@ import { readContentFile } from "@/lib/content-utils"
 import { Workday } from "@/components/Workday"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
 
 interface peopleTypes {
   name: string
