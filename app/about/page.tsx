@@ -110,12 +110,6 @@ export default async function AboutUs() {
               <Suspense fallback={<Spinner />}>
                 <Workday data={workdayData} />
               </Suspense>
-              <Button
-                variant="primary_filled"
-                className="h-[55px] min-w-[155px] self-start text-lg md:text-2xl"
-              >
-                <a href="mailto:cbc-help@brown.edu">Contact Us</a>
-              </Button>
             </CardContent>
           </Card>
         </section>
