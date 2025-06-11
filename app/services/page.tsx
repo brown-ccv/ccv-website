@@ -44,7 +44,8 @@ export default async function ContactUs() {
                 </TextAnimate>
                 <p className="text-4xl font-semibold leading-[1.5]">
                   From office hours to collaborations, the CBC provides a range
-                  of services to support Brown's genomic research community.
+                  of services to support Brown&apos;s genomic research
+                  community.
                 </p>
               </div>
             </div>
@@ -58,11 +59,11 @@ export default async function ContactUs() {
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="max-w-[1440px] mx-auto flex flex-col content-center px-6">
             <p className="text-black text-md md:text-xl pb-2">
-              Need help with your project or using Brown’s computing resources?
-              The CBC holds Computational Biology office hours twice weekly and
-              is present at weekly Center for Computation and Visualization
-              (CCV) office hours. Check our events schedule for upcoming times
-              and locations.
+              Need help with your project or using Brown&apos;s computing
+              resources? The CBC holds Computational Biology office hours twice
+              weekly and is present at weekly Center for Computation and
+              Visualization (CCV) office hours. Check our events schedule for
+              upcoming times and locations.
               <br />
               <br />
               Need more specialized support beyond office hours? Request a
@@ -161,11 +162,11 @@ export default async function ContactUs() {
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="max-w-[1440px] mx-auto flex items-center px-6">
             <p className="text-black text-md md:text-xl pb-8">
-              As part of Brown University's Center for Computation and
+              As part of Brown University&apos;s Center for Computation and
               Visualization (CCV), the CBC is uniquely equipped to meet the
               specialized software development and infrastructure needs of
-              genomic research. We combine the CBC's deep biological and
-              computational expertise with the CCV's research software
+              genomic research. We combine the CBC&apos;s deep biological and
+              computational expertise with the CCV&apos;s research software
               engineering and high-performance computing (HPC) capabilities.
               This synergy provides comprehensive support tailored to genomic
               data analysis, empowering your research with cutting-edge software
