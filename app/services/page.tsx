@@ -95,14 +95,10 @@ export default async function ContactUs() {
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="max-w-[1440px] mx-auto flex items-center px-6">
             <p className="text-black text-md md:text-xl pb-8">
-              The Center for Computation and Visualization (CCV) is a center
-              within the University&apos;s central IT organization, which is the
-              Office of Information Technology (OIT). In addition to building
-              and maintaining the University&apos;s hundreds of enterprise
-              software, systems, and hardware, OIT is also responsible for
-              driving the technological progress that enables scientific
-              research. Executing on the University&apos;s research mission is
-              the key role that CCV plays in OIT.
+              The core provides assistance in experimental design and data
+              processing pipelines for high-throughput datasets, particularly
+              for DNA/RNA sequencing data. Our assistance falls broadly into the
+              categories outlined below.
             </p>
           </CardContent>
         </Card>
