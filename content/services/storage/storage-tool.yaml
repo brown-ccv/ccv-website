@@ -59,7 +59,7 @@ services:
       - name: storage_warmth
         class: warm
 
-  - name: campus_file_storage_non-replicated
+  - name: "Campus File Storage Non-replicated"
     description: |
       File Services for Research provides Brown University research departments with a location in which 
       files can be stored, backed up, and shared with members of the Brown community using Brown ID’s and groups. 
@@ -228,7 +228,7 @@ services:
       - name: storage_warmth
         class: cold
 
-  - name: LabArchives
+  - name: Lab_Archives
     description: |
       LabArchives is a cloud-based electronic lab notebook that can be used by researchers, instructors, and
       students for input and organization of laboratory data, information sharing, and collaboration, and for

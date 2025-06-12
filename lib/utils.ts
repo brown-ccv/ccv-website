@@ -40,3 +40,15 @@ export const scrollToID = (targetId: string) => {
   const targetElement = document.getElementById(targetId)
   return targetElement?.scrollIntoView({ behavior: "smooth" })
 }
+
+export const humanize = (str: string | null | undefined): string => {
+  if (typeof str !== 'string' || str === null) {
+    return '';
+  }
+  const cleanStr = str.replace(/_/g, ' ');
+  if (cleanStr.length === 0) {
+    return '';
+  }
+  const upperFirst = cleanStr.charAt(0).toUpperCase() + cleanStr.slice(1);
+  return upperFirst;
+};

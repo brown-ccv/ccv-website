@@ -4,7 +4,7 @@ import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { readContentFile } from "@/lib/content-utils"
 import StorageTool from "@/components/StorageTool"
-import { PageContentData, Question, SelectedAnswers, YAMLQuestionConfig } from '@/lib/storage-types'
+import { PageContentData, Question, SelectedAnswers, YAMLQuestionConfig, YAMLServiceConfig } from '@/lib/storage-types'
 
 const fileName = 'storage-tool.yaml'
 const filePath = path.join(process.cwd(), 'content/services/storage', fileName);
@@ -13,19 +13,17 @@ const pageContent: PageContentData | null = rawPageContent ? (rawPageContent.dat
 
 let questions: Question[] = [];
 let initialSelectedAnswers: SelectedAnswers = {};
+let yamlQuestionsConfig: YAMLQuestionConfig[] = [];
 
 if (pageContent) {
   // map questions in yaml to format expected in form component
   questions = pageContent.questions.map((question: YAMLQuestionConfig) => {
     const questionId = question.affected_category;
-
     const options = question.answers.map(ans => ({
       label: ans.answer,
       value: ans.answer,
     }));
-
     initialSelectedAnswers[questionId] = question.default_answer;
-
     return {
       id: questionId,
       question: question.question,
@@ -53,7 +51,13 @@ export default function CompareStorageOptions() {
               </Hero>
             </div>
         </div>
-        <StorageTool pageContent={pageContent} questions={questions} initialSelectedAnswers={initialSelectedAnswers}></StorageTool>
+        <StorageTool
+          pageContent={pageContent}
+          questions={questions}
+          initialSelectedAnswers={initialSelectedAnswers}
+          services={pageContent?.services || []}
+          yamlQuestionsConfig={yamlQuestionsConfig}
+        />
       </div>
     )
   }
