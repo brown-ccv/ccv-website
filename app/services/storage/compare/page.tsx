@@ -13,9 +13,12 @@ const pageContent: PageContentData | null = rawPageContent ? (rawPageContent.dat
 
 let questions: Question[] = [];
 let initialSelectedAnswers: SelectedAnswers = {};
-let yamlQuestionsConfig: YAMLQuestionConfig[] = [];
+let rawYamlQuestionsConfig: YAMLQuestionConfig[] = []; // Renamed for clarity
 
 if (pageContent) {
+  // Populate the raw YAML questions config directly
+  rawYamlQuestionsConfig = pageContent.questions; // <--- FIX IS HERE
+
   // map questions in yaml to format expected in form component
   questions = pageContent.questions.map((question: YAMLQuestionConfig) => {
     const questionId = question.affected_category;
@@ -53,10 +56,10 @@ export default function CompareStorageOptions() {
         </div>
         <StorageTool
           pageContent={pageContent}
-          questions={questions}
+          questions={questions} // These are the mapped questions for the form
           initialSelectedAnswers={initialSelectedAnswers}
           services={pageContent?.services || []}
-          yamlQuestionsConfig={yamlQuestionsConfig}
+          yamlQuestionsConfig={rawYamlQuestionsConfig} // <--- Pass the now populated array
         />
       </div>
     )

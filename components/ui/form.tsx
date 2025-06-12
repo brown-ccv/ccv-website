@@ -6,13 +6,13 @@ import { Question } from '@/lib/storage-types'
     [key: string]: string; 
   }
   
-  interface QuestionFormProps {
+  interface FormProps {
     selectedAnswers: SelectedAnswers;
     onAnswerChange: (questionId: string, answer: string) => void;
     questions: Question[];
   }
   
-  const QuestionForm: React.FC<QuestionFormProps> = ({ selectedAnswers, onAnswerChange, questions }) => {
+  const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions }) => {
     return (
       <div className="space-y-2 px-8 pb-8  bg-white rounded-lg shadow-md">
         {questions.map((q) => (
@@ -38,4 +38,4 @@ import { Question } from '@/lib/storage-types'
     );
   };
 
-export default QuestionForm;
+export default Form;

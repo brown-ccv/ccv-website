@@ -29,7 +29,6 @@ import { LuDatabaseBackup } from "react-icons/lu";
 
 
 // --- Helper Mappings for Icons and Colors ---
-// icon mapping for feature names (used in row headers and cell content)
 const FeatureIcons: Record<string, React.ElementType> = {
   'relative_speed': SlSpeedometer,
   'security': FaShieldAlt,
@@ -49,122 +48,100 @@ const FeatureIcons: Record<string, React.ElementType> = {
   'storage': MdSdStorage,
 };
 
-// color mapping for feature class values (used in cell content)
 const ClassColors: Record<string, string> = {
-  // general levels
-  'high': 'text-red-university',
-  'medium': 'text-amber-600',
-  'low': 'text-keppel-600',
-
-  // temperature
-  'hot': 'text-red-university',
-  'warm': 'text-sunglow-400',
-  'cold': 'text-cyan-500',
-
-  // speed
-  'fastest': 'text-keppel-600',
-  'faster': 'text-amber-600',
-  'fast': 'text-sunglow-400',
-  'slow': 'text-red-university',
-
-  // security risk levels
-  '0': 'text-keppel-600',
-  '1': 'text-sunglow-400',
-  '2': 'text-amber-600',
-  '3': 'text-red-university',
-
-  // booleans
-  'true': 'text-keppel-600',
-  'false': 'text-red-university',
-  'True': 'text-keppel-600',
-  'False': 'text-red-university',
-
-  // sharing
-  'easy': 'text-keppel-600',
-  'complex': 'text-red-university',
-  'partial': 'text-sunglow-400',
-
-  // cost
-  'low cost': 'text-keppel-600',
-  'medium cost': 'text-sunglow-400',
-  'high cost': 'text-red-university',
-
-  // capacity
-  'small': 'text-cyan-500',
-  'large': 'text-sunglow-400',
-  '4 gb': 'text-red-university',
-  '1 tb': 'text-amber-600',
-  '1 tb +': 'text-sunglow-400',
-  '2 tb +': 'text-sunglow-400',
-  'unlimited': 'text-keppel-600',
-  '4 tb': 'text-sunglow-400',
-  '128 tb': 'text-keppel-600',
-
+  'high': 'text-red-university', 'medium': 'text-amber-600', 'low': 'text-keppel-600',
+  'hot': 'text-red-university', 'warm': 'text-sunglow-400', 'cold': 'text-cyan-500',
+  'fastest': 'text-keppel-600', 'faster': 'text-amber-600', 'fast': 'text-sunglow-400', 'slow': 'text-red-university',
+  '0': 'text-keppel-600', '1': 'text-sunglow-400', '2': 'text-amber-600', '3': 'text-red-university',
+  'true': 'text-keppel-600', 'false': 'text-red-university', 'True': 'text-keppel-600', 'False': 'text-red-university',
+  'easy': 'text-keppel-600', 'complex': 'text-red-university', 'partial': 'text-sunglow-400',
+  'low cost': 'text-keppel-600', 'medium cost': 'text-sunglow-400', 'high cost': 'text-red-university',
+  'small': 'text-cyan-500', 'large': 'text-sunglow-400', '4 gb': 'text-red-university', '1 tb': 'text-amber-600',
+  '1 tb +': 'text-sunglow-400', '2 tb +': 'text-sunglow-400', 'unlimited': 'text-keppel-600', '4 tb': 'text-sunglow-400', '128 tb': 'text-keppel-600',
   'default': 'text-neutral-800',
 };
 
 // --- Core Filtering Logic ---
-// this function determines if a service column should be visually disabled/grayed out
 const getColumnDisabledState = (
   service: YAMLServiceConfig,
   currentSelectedAnswers: SelectedAnswers,
   yamlQuestionsConfig: YAMLQuestionConfig[] 
 ): boolean => {
-  // service column is disabled if it fails *any* active filter condition
+  // A service column is disabled if it fails *any* active filter condition.
   for (const questionId in currentSelectedAnswers) {
     if (currentSelectedAnswers.hasOwnProperty(questionId)) {
       const selectedAnswerValue = currentSelectedAnswers[questionId];
 
-      // if no answer is selected for this question, it means this filter is not active, so skip it.
+      // IMPORTANT: If 'selectedAnswerValue' can be an empty string and means 'no filter',
+      // uncomment the line below. Otherwise, default answers will act as filters.
       // if (!selectedAnswerValue) continue;
 
-      // 1. find the full YAML question configuration for the current `questionId` (which is `affected_category`)
       const yamlQuestion = yamlQuestionsConfig.find(q => q.affected_category === questionId);
       if (!yamlQuestion) {
-        // if the question ID from the form doesn't match any in YAML, it's a configuration issue.
-        // for robustness, we'll continue, effectively not filtering by this invalid question.
-        console.warn(`Question ID '${questionId}' from selectedAnswers not found in yamlQuestionsConfig.`);
-        continue;
+        console.warn(`[Filtering] Question ID '${questionId}' from selectedAnswers not found in yamlQuestionsConfig.`);
+        continue; // Skip this filter if question config is missing
       }
 
-      // 2. find the specific answer object from the YAML question that matches the selected form answer
       const selectedYAMLAnswerOption = yamlQuestion.answers.find(ans => ans.answer === selectedAnswerValue);
       if (!selectedYAMLAnswerOption) {
-        // if the selected answer value from the form doesn't match an option in YAML.
-        console.warn(`Selected answer value '${selectedAnswerValue}' for question '${questionId}' not found in YAML options.`);
-        continue;
+        console.warn(`[Filtering] Selected answer value '${selectedAnswerValue}' for question '${questionId}' not found in YAML options.`, { selectedAnswerValue, yamlQuestion });
+        continue; // Skip this filter if selected answer option is missing
       }
 
-      const allowedCategoryClasses = selectedYAMLAnswerOption.category_classes; // e.g., [2, 3] or ['True']
+      const allowedCategoryClasses = selectedYAMLAnswerOption.category_classes;
 
-      // 3. Find the service's feature that corresponds to this `affected_category` (questionId)
       const serviceFeature = service.features.find(f => f.name === questionId);
 
-      // 4. Check if the service's feature passes the filter
-      // If the service does not have this feature, or its 'class' is not a string, it fails the filter.
-      if (!serviceFeature || typeof serviceFeature.class !== 'string') {
-        // If a service lacks a feature that a filter is applied to, it should be greyed out.
-        // Example: If a user filters by 'DOI Provided: Yes', and a service doesn't have 'DOI_provided' feature at all, it fails.
-        return true; // Mark service as disabled
+      // Determine if the selected answer implies a *strict requirement* for the feature.
+      // For example, if "DOI provided: Yes" is selected, the service *must* have and match the DOI feature.
+      // If "DOI provided: No" or "Any" is selected, it's not strict; a service lacking the feature might still pass.
+      const nonStrictAnswers = ['no risk', 'no', 'any', 'not sure', 'less than 1 tb']; // Add more as needed, in lowercase
+      const isStrictFilter = !nonStrictAnswers.includes(String(selectedAnswerValue).toLowerCase());
+
+      console.groupCollapsed(`[Filtering Debug] Service: ${service.name}, Filter: ${questionId}`);
+      console.log(`Selected Answer: '${selectedAnswerValue}' (Strict: ${isStrictFilter})`);
+      console.log(`Allowed Classes (from YAML): [${allowedCategoryClasses.map(c => String(c).toLowerCase()).join(', ')}]`);
+      
+      if (!serviceFeature) {
+        // Case 1: Service does not have the feature (e.g., a service might not have a 'doi_provided' feature).
+        if (isStrictFilter) {
+          // If the filter is strict (e.g., 'Yes' for DOI, 'Hot' for warmth), and service lacks feature,
+          // then this service fails this filter.
+          console.log(`-> DISABLED: Service lacks feature '${questionId}' required by strict filter.`);
+          console.groupEnd();
+          return true; // Service is disabled
+        }
+        // If the filter is not strict (e.g., 'No' for DOI, 'Any' for warmth), and service lacks feature,
+        // it implicitly passes *this specific* filter, so we continue to the next one.
+        console.log(`-> PASSED (by default, lacking feature): Filter '${questionId}' is not strict.`);
+        console.groupEnd();
+        continue; 
       }
 
-      // Normalize the service's feature class to a lowercase string for robust comparison.
-      // This handles cases where YAML might have "True" and feature.class is "true".
+      // Case 2: Service *does* have the feature, now check if its class matches the allowed classes.
+      // Normalize the service's feature class (can be string, number, boolean) to a lowercase string for robust comparison.
       const serviceFeatureClassNormalized = String(serviceFeature.class).toLowerCase();
+      console.log(`Service Feature Class: '${serviceFeature.name}: ${serviceFeatureClassNormalized}'`);
 
-      // Check if the service's feature.class is present in the `allowedCategoryClasses`
       const passesThisSpecificFilter = allowedCategoryClasses.some(allowedClass => {
-        // Convert each allowed class to a lowercase string for comparison,
-        // as `category_classes` can contain numbers, booleans, or strings.
+        // Ensure both values are converted to lowercase strings for a robust comparison.
         return String(allowedClass).toLowerCase() === serviceFeatureClassNormalized;
       });
 
       if (!passesThisSpecificFilter) {
-        return true; // This service fails the current filter, so the entire column is disabled.
+        // If the feature class doesn't match the allowed classes, the service fails this filter.
+        console.log(`-> DISABLED: Feature '${questionId}' with class '${serviceFeatureClassNormalized}' does NOT match allowed classes.`);
+        console.groupEnd();
+        return true; // Service is disabled
       }
+      
+      console.log(`-> PASSED: Feature '${questionId}' with class '${serviceFeatureClassNormalized}' matches allowed classes.`);
+      console.groupEnd();
     }
   }
-  return false; // If the service passes all active filters, it's not disabled.
+  // If the service passed all active filters, it's not disabled.
+  console.log(`[Filtering Debug] Service: ${service.name} PASSED ALL FILTERS. Showing.`);
+  return false; 
 };
 
 // --- Main Table Component ---
@@ -241,14 +218,16 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, yamlQuestionsC
           return (
             <div className={cn("flex flex-col items-center justify-center p-2 min-h-[80px]", cellContentClasses)}>
               <div className={cn("flex gap-2 font-semibold text-xl")}>
-                <IconComponent className={cn("text-2xl", valueColor)} />
+                {/* Conditionally render IconComponent to avoid errors if it's undefined */}
+                {IconComponent && <IconComponent className={cn("text-2xl", valueColor)} />}
                 <span>
                   {(() => {
                     const featureClassValue = feature.class;
-                    if (typeof featureClassValue === 'boolean') {
-                      return featureClassValue ? 'Yes' : 'No';
+                    // Handle boolean-like values for 'Yes'/'No' display
+                    if (typeof featureClassValue === 'boolean' || String(featureClassValue).toLowerCase() === 'true' || String(featureClassValue).toLowerCase() === 'false') {
+                      return String(featureClassValue).toLowerCase() === 'true' ? 'Yes' : 'No';
                     }
-                    return String(featureClassValue);
+                    return String(featureClassValue); // Otherwise, display as-is
                   })()}
                 </span>
               </div>
