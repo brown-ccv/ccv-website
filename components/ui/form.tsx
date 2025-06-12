@@ -1,6 +1,9 @@
 import React from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Question } from '@/lib/storage-types'
+import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
   
   interface SelectedAnswers {
     [key: string]: string; 
@@ -14,12 +17,17 @@ import { Question } from '@/lib/storage-types'
   
   const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions }) => {
     return (
-      <div className="space-y-2 px-8 pb-8  bg-white rounded-lg shadow-md">
+      <div className="space-y-2 px-8 pb-8  bg-white rounded-lg shadow-md max-w-[600px]">
         {questions.map((q) => (
           <div key={q.id}>
-            <h2 className="pt-6 pb-2 font-medium text-black text-2xl tracking-tighter">
+            <div className="pt-6 pb-2 font-medium text-black text-2xl">
+              <Markdown 
+                rehypePlugins={[rehypeRaw]} 
+                remarkPlugins={[remarkGfm]}
+              >
                 {`${q.question}`}
-            </h2>
+              </Markdown>
+            </div>
             <RadioGroup
               value={selectedAnswers[q.id]}
               onValueChange={(value) => onAnswerChange(q.id, value)}

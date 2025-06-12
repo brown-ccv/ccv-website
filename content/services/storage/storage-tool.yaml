@@ -419,7 +419,8 @@ services:
         class: cold
 
 questions:
-  - question: What is the risk classification of your data?
+  - question: What is the [risk classification](https://it.brown.edu/computing-policies/risk-classifications) of your data? If you
+      have any questions or need help, please reach out to the [Information Security Group](mailto:isg@brown.edu).
     information: |
       **[Brown Data Risk Classification](https://it.brown.edu/computing-policies/risk-classifications)** is a 
       system Brown has developed to classify its information assets into one of four risk-based categories

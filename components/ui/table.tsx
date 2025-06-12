@@ -72,10 +72,6 @@ const getColumnDisabledState = (
     if (currentSelectedAnswers.hasOwnProperty(questionId)) {
       const selectedAnswerValue = currentSelectedAnswers[questionId];
 
-      // IMPORTANT: If 'selectedAnswerValue' can be an empty string and means 'no filter',
-      // uncomment the line below. Otherwise, default answers will act as filters.
-      if (!selectedAnswerValue) continue;
-
       const yamlQuestion = yamlQuestionsConfig.find(q => q.affected_category === questionId);
       if (!yamlQuestion) {
         console.warn(`[Filtering] Question ID '${questionId}' from selectedAnswers not found in yamlQuestionsConfig.`);
