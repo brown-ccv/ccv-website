@@ -451,7 +451,8 @@ questions:
       - answer: Level 3
         category_classes:
           - 3
-  - question: Would you like a DOI auto-generated for your data?
+  - question: Would you like a DOI auto-generated for your data? The [Brown University Library](https://repository.library.brown.edu/studio/doi/) will help students, 
+      faculty, and staff obtain a DOI for digital assets.
     information: |
       A digital object identifier (DOI) is unique and persistent identifier used to identify 
       a physical, digital, or abstract object (e.g., journal article, research report, or data
@@ -525,7 +526,7 @@ questions:
           - unlimited
           - 1 TB +
           - 2 TB +
-  - question: Do you need access to your data from Oscar?
+  - question: Do you need access to your data from [Oscar](https://docs.ccv.brown.edu/oscar/)?
     information:
     affected_category: access_from_oscar
     default_answer: No
