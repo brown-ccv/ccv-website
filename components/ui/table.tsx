@@ -74,7 +74,7 @@ const getColumnDisabledState = (
 
       // IMPORTANT: If 'selectedAnswerValue' can be an empty string and means 'no filter',
       // uncomment the line below. Otherwise, default answers will act as filters.
-      // if (!selectedAnswerValue) continue;
+      if (!selectedAnswerValue) continue;
 
       const yamlQuestion = yamlQuestionsConfig.find(q => q.affected_category === questionId);
       if (!yamlQuestion) {
