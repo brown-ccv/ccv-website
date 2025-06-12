@@ -16,7 +16,6 @@ let initialSelectedAnswers: SelectedAnswers = {};
 let rawYamlQuestionsConfig: YAMLQuestionConfig[] = [];
 
 if (pageContent) {
-  // Populate the raw YAML questions config directly
   rawYamlQuestionsConfig = pageContent.questions;
 
   // map questions in yaml to format expected in form component

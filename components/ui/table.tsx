@@ -50,14 +50,20 @@ const FeatureIcons: Record<string, React.ElementType> = {
 
 const ClassColors: Record<string, string> = {
   'high': 'text-red-university', 'medium': 'text-amber-600', 'low': 'text-keppel-600',
+  '0': 'text-keppel-600', '1': 'text-sunglow-400', '2': 'text-amber-600', '3': 'text-red-university',
+  'true': 'text-keppel-600', 'false': 'text-red-university',
+  'easy': 'text-keppel-600', 'complex': 'text-red-university', 'partial': 'text-sunglow-400',
+
+  'low cost': 'text-keppel-600', 'medium cost': 'text-sunglow-400', 'high cost': 'text-red-university',
+
   'hot': 'text-red-university', 'warm': 'text-sunglow-400', 'cold': 'text-cyan-500',
   'fastest': 'text-keppel-600', 'faster': 'text-amber-600', 'fast': 'text-sunglow-400', 'slow': 'text-red-university',
-  '0': 'text-keppel-600', '1': 'text-sunglow-400', '2': 'text-amber-600', '3': 'text-red-university',
-  'true': 'text-keppel-600', 'false': 'text-red-university', 'True': 'text-keppel-600', 'False': 'text-red-university',
-  'easy': 'text-keppel-600', 'complex': 'text-red-university', 'partial': 'text-sunglow-400',
-  'low cost': 'text-keppel-600', 'medium cost': 'text-sunglow-400', 'high cost': 'text-red-university',
-  'small': 'text-cyan-500', 'large': 'text-sunglow-400', '4 gb': 'text-red-university', '1 tb': 'text-amber-600',
-  '1 tb +': 'text-sunglow-400', '2 tb +': 'text-sunglow-400', 'unlimited': 'text-keppel-600', '4 tb': 'text-sunglow-400', '128 tb': 'text-keppel-600',
+
+  'small': 'text-cyan-500', 'large': 'text-sunglow-400', 
+  '4 gb': 'text-red-university', '1 tb': 'text-amber-600',
+  '1 tb +': 'text-sunglow-400', '2 tb +': 'text-sunglow-400', '4 tb': 'text-sunglow-400', 
+  '128 tb': 'text-keppel-600', 'unlimited': 'text-keppel-600', 
+
   'default': 'text-neutral-800',
 };
 
@@ -67,7 +73,7 @@ const getColumnDisabledState = (
   currentSelectedAnswers: SelectedAnswers,
   yamlQuestionsConfig: YAMLQuestionConfig[] 
 ): boolean => {
-  // A service column is disabled if it fails *any* active filter condition.
+  // service column is disabled if it fails *any* active filter condition.
   for (const questionId in currentSelectedAnswers) {
     if (currentSelectedAnswers.hasOwnProperty(questionId)) {
       const selectedAnswerValue = currentSelectedAnswers[questionId];
@@ -89,9 +95,7 @@ const getColumnDisabledState = (
       const serviceFeature = service.features.find(f => f.name === questionId);
 
       // Determine if the selected answer implies a *strict requirement* for the feature.
-      // For example, if "DOI provided: Yes" is selected, the service *must* have and match the DOI feature.
-      // If "DOI provided: No" or "Any" is selected, it's not strict; a service lacking the feature might still pass.
-      const nonStrictAnswers = ['no risk', 'no', 'any', 'not sure', 'less than 1 tb']; // Add more as needed, in lowercase
+      const nonStrictAnswers = ['no risk', 'no', 'any', 'not sure', 'less than 1 tb']; 
       const isStrictFilter = !nonStrictAnswers.includes(String(selectedAnswerValue).toLowerCase());
 
       console.groupCollapsed(`[Filtering Debug] Service: ${service.name}, Filter: ${questionId}`);
@@ -99,28 +103,25 @@ const getColumnDisabledState = (
       console.log(`Allowed Classes (from YAML): [${allowedCategoryClasses.map(c => String(c).toLowerCase()).join(', ')}]`);
       
       if (!serviceFeature) {
-        // Case 1: Service does not have the feature (e.g., a service might not have a 'doi_provided' feature).
+        // Case 1: Service does not have the feature
         if (isStrictFilter) {
-          // If the filter is strict (e.g., 'Yes' for DOI, 'Hot' for warmth), and service lacks feature,
-          // then this service fails this filter.
           console.log(`-> DISABLED: Service lacks feature '${questionId}' required by strict filter.`);
           console.groupEnd();
-          return true; // Service is disabled
+          return true;
         }
-        // If the filter is not strict (e.g., 'No' for DOI, 'Any' for warmth), and service lacks feature,
-        // it implicitly passes *this specific* filter, so we continue to the next one.
+        // If the filter is not strict and service lacks feature,
+        // it implicitly passes *this specific* filter, so we continue to the next one
         console.log(`-> PASSED (by default, lacking feature): Filter '${questionId}' is not strict.`);
         console.groupEnd();
         continue; 
       }
 
       // Case 2: Service *does* have the feature, now check if its class matches the allowed classes.
-      // Normalize the service's feature class (can be string, number, boolean) to a lowercase string for robust comparison.
       const serviceFeatureClassNormalized = String(serviceFeature.class).toLowerCase();
       console.log(`Service Feature Class: '${serviceFeature.name}: ${serviceFeatureClassNormalized}'`);
 
+      // Normalize the service's feature class (can be string, number, boolean) to a lowercase string
       const passesThisSpecificFilter = allowedCategoryClasses.some(allowedClass => {
-        // Ensure both values are converted to lowercase strings for a robust comparison.
         return String(allowedClass).toLowerCase() === serviceFeatureClassNormalized;
       });
 
@@ -128,14 +129,13 @@ const getColumnDisabledState = (
         // If the feature class doesn't match the allowed classes, the service fails this filter.
         console.log(`-> DISABLED: Feature '${questionId}' with class '${serviceFeatureClassNormalized}' does NOT match allowed classes.`);
         console.groupEnd();
-        return true; // Service is disabled
+        return true;
       }
       
       console.log(`-> PASSED: Feature '${questionId}' with class '${serviceFeatureClassNormalized}' matches allowed classes.`);
       console.groupEnd();
     }
   }
-  // If the service passed all active filters, it's not disabled.
   console.log(`[Filtering Debug] Service: ${service.name} PASSED ALL FILTERS. Showing.`);
   return false; 
 };
@@ -172,7 +172,6 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, yamlQuestionsC
       ),
       cell: info => {
         const featureName = humanize(info.getValue());
-        // ensure featureName is treated as string for icon lookup
         return (
           <div className="flex items-center gap-2 px-4 py-2 font-medium text-neutral-900 min-h-[80px] uppercase tracking-wider">
             <span>{featureName}</span>
@@ -184,7 +183,6 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, yamlQuestionsC
     });
 
     const serviceColumns: ColumnDef<TableRow, any>[] = services.map(service => {
-      // Determine disabled state for this service column based on current filters
       const isDisabled = getColumnDisabledState(service, selectedAnswers, yamlQuestionsConfig);
       const columnClass = isDisabled ? 'opacity-30 grayscale' : ''; 
       
@@ -198,15 +196,14 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, yamlQuestionsC
         cell: info => {
           const feature = info.getValue() as YAMLFeatureConfig | undefined;
 
-          // combine columnClass with cell-specific classes
-          // this ensures that the cell content is also affected by the column's disabled state
+          // combine columnClass with cell-specific classes 
+          // so cell content is also affected by the column's disabled state
           const cellContentClasses = cn("px-4 py-2 text-start", columnClass);
 
           if (!feature) {
             return <div className={cellContentClasses}>-</div>;
           }
 
-          // safely convert feature.class to lowercase string for color lookup
           const featureClassLower = String(feature.class).toLowerCase();
           const IconComponent = FeatureIcons[feature.name.toLowerCase()];
           const valueColor = ClassColors[featureClassLower] || ClassColors['default'];

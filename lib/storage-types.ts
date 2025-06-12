@@ -10,24 +10,13 @@ export interface SelectedAnswers {
 
 export interface Feature {
   name: string;
-  class: string | boolean | number; // 'fast', true, 2, '1 TB +' etc.
-  notes?: string[]; // Optional array of strings
-}
-  
-export interface StorageService {
-  name: string;
-  description: string;
-  features: Feature[];
-  Limitations?: string;
-  Rate?: string;
-  "More info"?: string; // use string literal for property name with space
-  Accessibility?: string;
-  Sharing?: string;
+  class: string | boolean | number;
+  notes?: string[]; 
 }
 
 export interface YAMLQuestionAnswer {
   answer: string;
-  category_classes: (string | boolean | number)[]; // e.g., [0, 1, 2, 3] or ['True', 'False']
+  category_classes: (string | boolean | number)[];
 }
 
 export interface YAMLQuestionConfig {
@@ -54,7 +43,7 @@ export interface YAMLServiceConfig {
 
 export interface TableRow {
   featureName: string;
-  [key: string]: YAMLFeatureConfig | undefined | string; // Allow 'string' for featureName itself
+  [key: string]: YAMLFeatureConfig | undefined | string;
 }
   
 export interface TableProps {

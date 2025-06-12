@@ -12,7 +12,7 @@ interface StorageToolProps {
     questions: Question[];
     initialSelectedAnswers: SelectedAnswers;
     services: YAMLServiceConfig[];
-    yamlQuestionsConfig: YAMLQuestionConfig[]; // Prop for raw YAML questions
+    yamlQuestionsConfig: YAMLQuestionConfig[];
 }
 
 export default function StorageTool({ pageContent, questions, initialSelectedAnswers, services, yamlQuestionsConfig }: StorageToolProps) {
