@@ -1,14 +1,8 @@
 "use client"
 
 import React from "react"
-import {
-  MapPinIcon,
-  ArrowRightIcon,
-} from "@heroicons/react/24/solid"
-import {
-  Card,
-  CardContent,
-} from "@/components/ui/card"
+import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
+import { Card, CardContent } from "@/components/ui/card"
 
 interface PositionProps {
   title: string
@@ -18,9 +12,7 @@ interface PositionProps {
   bulletFields: string[]
 }
 
-export function Workday({ data }: { data: any[] }) {
-  const careers = data
-
+export function Workday({ careers }: { careers: any[] }) {
   return (
     <>
       {careers && careers.length > 0 ? (
@@ -53,9 +45,10 @@ export function Workday({ data }: { data: any[] }) {
         ))
       ) : (
         <p className="text-2xl">
-          There are no positions open at the moment. Check back with us in the future. We appreciate your interest!
+          There are no positions open at the moment. Check back with us in the
+          future. We appreciate your interest!
         </p>
       )}
     </>
-  );
+  )
 }
