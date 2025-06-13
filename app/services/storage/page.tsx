@@ -64,7 +64,7 @@ export default async function Storage() {
                   {fileContentItem.data.links && fileContentItem.data.links.length > 0 && (
                     <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
                       {fileContentItem.data.links.map((link, index) => {
-                        // determine if the link is external
+                        console.log(link.href)
                         const isExternal = link.href.startsWith('http://') || link.href.startsWith('https://');
 
                         return (
@@ -75,7 +75,6 @@ export default async function Storage() {
                           >
                             <Link 
                               href={link.href} 
-                              // conditionally apply target and rel props
                               {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                             >
                               {link.text}

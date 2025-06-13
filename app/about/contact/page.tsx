@@ -23,9 +23,7 @@ interface OfficeHoursTypes {
   buttonLinks?: { text: string; href: string }[];
 }
 
-const fileName = 'contact.yaml'
-const filePath = path.join('content/about', fileName);
-const pageContent = await readContentFile(filePath);
+const pageContent = await readContentFile('content/about/contact.yaml');
 
 export default async function ContactUs() {
   return (
