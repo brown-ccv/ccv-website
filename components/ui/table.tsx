@@ -212,7 +212,7 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, yamlQuestionsC
             <div className={cn("flex flex-col items-center justify-center p-2 min-h-[80px]", cellContentClasses)}>
               <div className={cn("flex gap-2 font-semibold text-xl")}>
                 {/* Conditionally render IconComponent to avoid errors if it's undefined */}
-                {IconComponent && <IconComponent className={cn("text-2xl", valueColor)} />}
+                {IconComponent ? <IconComponent className={cn("text-2xl", valueColor)} /> : null}
                 <span>
                   {(() => {
                     const featureClassValue = feature.class;
