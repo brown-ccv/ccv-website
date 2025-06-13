@@ -6,6 +6,13 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
 
+/**
+ * generates a color for each unique tag in a list
+ *
+ * @param {tag} str The tag to be assigned a color
+ */
+
+// Possible tag colors
 export const tagColors = [
   "keppel",
   "sunglow",
@@ -36,11 +43,22 @@ export const getColorForTag = (tag: string): TagColor => {
   return color;
 };
 
+/**
+ * Scrolls to an html element, often used with a button click
+ *
+ * @param {targetId} str ID in html element to scroll to
+ */
 export const scrollToID = (targetId: string) => {
   const targetElement = document.getElementById(targetId)
   return targetElement?.scrollIntoView({ behavior: "smooth" })
 }
 
+/**
+ * Cleans up strings, removing underscores and uppercases first letter
+ * Type safe for none strings (that may get passed in through content)
+ *
+ * @param {string} str The string to be cleaned
+ */
 export const humanize = (str: string | null | undefined): string => {
   if (typeof str !== 'string' || str === null) {
     return '';
