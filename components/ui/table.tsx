@@ -254,25 +254,22 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, yamlQuestionsC
   return (
     <div className="overflow-x-auto rounded-lg shadow-md border border-neutral-200 w-full">
       <table className="min-w-full divide-y divide-neutral-200">
-        <thead className="bg-white">
+      <thead className="bg-white">
           {table.getHeaderGroups().map(headerGroup => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map(header => (
                 <th
                   key={header.id}
-                  colSpan={header.colSpan}
                   className={cn(
                     "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider",
                     header.column.getCanSort() ? 'cursor-pointer select-none' : ''
                   )}
                   style={{ width: header.getSize() }}
                 >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                      )}
+                  {flexRender(
+                      header.column.columnDef.header,
+                      header.getContext()
+                  )}
                 </th>
               ))}
             </tr>
