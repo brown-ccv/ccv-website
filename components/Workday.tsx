@@ -23,7 +23,7 @@ export function Workday({ data }: { data: any[] }) {
 
   return (
     <>
-      {careers && careers.length > 0 ? (
+      {careers?.length > 0 ? (
         careers.map((position: PositionProps) => (
           <a
             key={position.externalPath}
