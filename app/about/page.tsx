@@ -106,7 +106,7 @@ export default async function AboutUs() {
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex flex-col content-center gap-8">
               <Suspense fallback={<Spinner />}>
-                <Workday data={workdayData} />
+                <Workday careers={workdayData} />
               </Suspense>
             </CardContent>
           </Card>
