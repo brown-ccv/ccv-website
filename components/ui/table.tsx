@@ -24,9 +24,7 @@ import { MdSdStorage } from "react-icons/md";
 import { AiOutlineCluster } from "react-icons/ai";
 import { SiDoi } from "react-icons/si";
 import { SiCanvas } from "react-icons/si";
-import { BsDatabaseFillLock } from "react-icons/bs";
 import { LuDatabaseBackup } from "react-icons/lu";
-
 
 // --- Helper Mappings for Icons and Colors ---
 const FeatureIcons: Record<string, React.ElementType> = {
@@ -36,8 +34,7 @@ const FeatureIcons: Record<string, React.ElementType> = {
   'sharing': FaShareSquare,
   'capacity': FaHdd,
   'doi_provided': SiDoi,
-  'data_protection_snapshots': LuDatabaseBackup,
-  'data_protection_replication': BsDatabaseFillLock,
+  'data_protection': LuDatabaseBackup,
   'canvas_integration': SiCanvas,
   'brown_network_required': FaWifi,
   'access_from_oscar': AiOutlineCluster,
@@ -61,8 +58,8 @@ const ClassColors: Record<string, string> = {
 
   'small': 'text-cyan-500', 'large': 'text-sunglow-400', 
   '4 gb': 'text-red-university', '1 tb': 'text-amber-600',
-  '1 tb +': 'text-sunglow-400', '2 tb +': 'text-sunglow-400', '4 tb': 'text-sunglow-400', 
-  '128 tb': 'text-keppel-600', 'unlimited': 'text-keppel-600', 
+  '1 tb +': 'text-sunglow-400', '2 tb +': 'text-sunglow-400', '4 tb': 'text-sunglow-400', '128 tb': 'text-sunglow-400', 
+  '8 eb': 'text-keppel-600', '9 eb': 'text-keppel-600', 'unlimited': 'text-keppel-600', 
 
   'default': 'text-neutral-800',
 };

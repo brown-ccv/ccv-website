@@ -4,11 +4,9 @@ import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { readContentFile } from "@/lib/content-utils"
 import StorageTool from "@/components/StorageTool"
-import { PageContentData, Question, SelectedAnswers, YAMLQuestionConfig, YAMLServiceConfig } from '@/lib/storage-types'
+import { PageContentData, Question, SelectedAnswers, YAMLQuestionConfig } from '@/lib/storage-types'
 
-const fileName = 'storage-tool.yaml'
-const filePath = path.join(process.cwd(), 'content/services/storage', fileName);
-const rawPageContent = await readContentFile(filePath);
+const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');
 const pageContent: PageContentData | null = rawPageContent ? (rawPageContent.data as PageContentData) : null;
 
 let questions: Question[] = [];
@@ -30,11 +28,34 @@ if (pageContent) {
       id: questionId,
       question: question.question,
       options: options,
+      more_info: question.more_info,
+      information: question.information,
     };
+  });
+
+  // --- Sort questions to match the table's feature order ---
+  // 1. Get unique feature names from services and sort them alphabetically
+  const uniqueFeatureNames = new Set<string>();
+  pageContent.services.forEach(service => {
+    service.features.forEach(feature => uniqueFeatureNames.add(feature.name));
+  });
+  const sortedFeatureNames = Array.from(uniqueFeatureNames).sort();
+
+  // 2. Create a map for quick lookup of the sorted index
+  const featureOrderMap = new Map<string, number>();
+  sortedFeatureNames.forEach((name, index) => {
+    featureOrderMap.set(name, index);
+  });
+
+  // 3. Sort the questions array based on the determined feature order
+  questions.sort((a, b) => {
+    const orderA = featureOrderMap.get(a.id) ?? Infinity; // Use Infinity for questions not found in features
+    const orderB = featureOrderMap.get(b.id) ?? Infinity;
+    return orderA - orderB;
   });
 }
 
-export default function CompareStorageOptions() {  
+export default function CompareStorageOptions() {
     return (
       <div className="w-full">
         <div className="relative w-full flex flex-col">

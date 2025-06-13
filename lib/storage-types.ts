@@ -2,6 +2,8 @@ export interface Question {
   id: string; // corresponds to affected_category
   question: string;
   options: { label: string; value: string }[];
+  more_info?: YAMLQuestionInfo[];
+  information?: string;
 }
 
 export interface SelectedAnswers {
@@ -11,7 +13,7 @@ export interface SelectedAnswers {
 export interface Feature {
   name: string;
   class: string | boolean | number;
-  notes?: string[]; 
+  notes?: string[];
 }
 
 export interface YAMLQuestionAnswer {
@@ -19,8 +21,14 @@ export interface YAMLQuestionAnswer {
   category_classes: (string | boolean | number)[];
 }
 
+export interface YAMLQuestionInfo {
+  text: string;
+  href?: string;
+}
+
 export interface YAMLQuestionConfig {
   question: string;
+  more_info?: YAMLQuestionInfo[];
   information?: string;
   affected_category: string;
   default_answer: string;
@@ -36,7 +44,7 @@ export interface YAMLFeatureConfig {
 export interface YAMLServiceConfig {
   name: string;
   features: YAMLFeatureConfig[];
-  category_classes?: { 
+  category_classes?: {
     [key: string]: string;
   };
 }
@@ -45,7 +53,7 @@ export interface TableRow {
   featureName: string;
   [key: string]: YAMLFeatureConfig | undefined | string;
 }
-  
+
 export interface TableProps {
   services: YAMLServiceConfig[];
   selectedAnswers: SelectedAnswers;
@@ -60,4 +68,4 @@ export interface PageContentData {
   storage_tool_header?: string;
   services: YAMLServiceConfig[]
   questions: YAMLQuestionConfig[];
-  }
+}

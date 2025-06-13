@@ -427,7 +427,10 @@ services:
         class: cold
 
 questions:
-  - question: What is the risk classification of your data?
+  - question: Data Risk
+    more_info:
+      - text: Brown Risk Classifications
+        href: https://it.brown.edu/computing-policies/risk-classifications
     information: |
       **[Brown Data Risk Classification](https://it.brown.edu/computing-policies/risk-classifications)** is a 
       system Brown has developed to classify its information assets into one of four risk-based categories
@@ -458,7 +461,10 @@ questions:
       - answer: Level 3
         category_classes:
           - 3
-  - question: Would you like a DOI auto-generated for your data?
+  - question: Auto-generated DOI
+    more_info:
+      - text: Brown University Library
+        href: https://repository.library.brown.edu/studio/doi/
     information: |
       A digital object identifier (DOI) is unique and persistent identifier used to identify 
       a physical, digital, or abstract object (e.g., journal article, research report, or data
@@ -477,7 +483,7 @@ questions:
         category_classes:
           - True
           - False
-  - question: Do you need snapshots or replication of your data?
+  - question: Snapshots or Data Replication
     information: |
       Many storage services offer the ability to take "snapshots" or backup copies of your 
       data. As the terms suggests, these amount to duplicate copies—frozen at a given point
@@ -497,7 +503,7 @@ questions:
         category_classes:
           - True
           - False
-  - question: Is integration with Canvas required?
+  - question: Canvas Integration
     information: |
       Are you using these data for teaching purposes, and if so, do you need your students
       to be able to access the data from with the Canvas learning management system?
@@ -511,7 +517,7 @@ questions:
         category_classes:
           - True
           - False
-  - question: How much data do you have?
+  - question: Data Size
     information: |
       Most of the storage services the University offers can accommodate very large data 
       sets. But there are fewer options once your data grows to exceptionally large sized. 
@@ -532,7 +538,10 @@ questions:
           - unlimited
           - 1 TB +
           - 2 TB +
-  - question: Do you need access to your data from Oscar?
+  - question: Oscar Access
+    more_info:
+      - text: Oscar Documentation
+        href: https://docs.ccv.brown.edu/oscar/getting-started
     information:
     affected_category: access_from_oscar
     default_answer: No
@@ -546,7 +555,7 @@ questions:
           - True
           - False
           - partial
-  - question: Do you need to share data via a link?
+  - question: Shareable Link
     information:
     affected_category: shareable_link
     default_answer: No
@@ -558,7 +567,14 @@ questions:
         category_classes:
           - True
           - False
-  - question: Do your data require "hot" or "cold" storage?
+  - question: Access Frequency
+    more_info:
+      - text: | 
+          <b>Hot:</b> accessed frequently for active model fitting or analysis
+      - text: |
+          <b>Warm:</b> accessed occasionally for reading and writing
+      - text: |
+          <b>Cold:</b> accessed effectively never for grant/funding obligations or archival storage
     information: |
       The "warmth" of a data set is essentially the frequency with which it needs to be accessed 
       or updated. A "hot" data set is one that you are actively working with as part of your model
