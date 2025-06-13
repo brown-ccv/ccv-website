@@ -21,9 +21,7 @@ interface peopleTypes{
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
-const fileName = 'us.yaml'
-const filePath = path.join('content/about', fileName);
-const pageContent = await readContentFile(filePath);
+const pageContent = await readContentFile('content/about/us.yaml');
 
 export default async function AboutUs() {
     return (
