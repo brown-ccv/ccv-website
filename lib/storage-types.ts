@@ -1,19 +1,7 @@
-export interface Question {
-  id: string; // corresponds to affected_category
-  question: string;
-  options: { label: string; value: string }[];
-  more_info?: YAMLQuestionInfo[];
-  information?: string;
-}
-
-export interface SelectedAnswers {
-  [key: string]: string;
-}
-
-export interface Feature {
+export interface ServiceFeature {
   name: string;
   class: string | boolean | number;
-  notes?: string[];
+  notes?: string;
 }
 
 export interface YAMLQuestionAnswer {
@@ -35,23 +23,30 @@ export interface YAMLQuestionConfig {
   answers: YAMLQuestionAnswer[];
 }
 
-export interface YAMLFeatureConfig {
-  name: string;
-  class: string;
-  notes?: string;
-}
-
 export interface YAMLServiceConfig {
   name: string;
-  features: YAMLFeatureConfig[];
+  description?: string;
+  features: ServiceFeature[];
   category_classes?: {
     [key: string]: string;
   };
 }
 
+export interface Question {
+  id: string; // corresponds to affected_category
+  question: string;
+  options: { label: string; value: string }[];
+  more_info?: YAMLQuestionInfo[];
+  information?: string;
+}
+
+export interface SelectedAnswers {
+  [key: string]: string;
+}
+
 export interface TableRow {
   featureName: string;
-  [key: string]: YAMLFeatureConfig | undefined | string;
+  [key: string]: ServiceFeature | undefined | string;
 }
 
 export interface TableProps {
@@ -60,12 +55,13 @@ export interface TableProps {
   yamlQuestionsConfig: YAMLQuestionConfig[];
 }
 
-// top level structure of storage.yaml
-// readContentFile()'s `data` property will contain this
+// Top-level structure of content file
 export interface PageContentData {
   title?: string;
   description?: string;
+  icon?: string;
+  links?: { text: string; target: string }[];
   storage_tool_header?: string;
-  services: YAMLServiceConfig[]
+  services: YAMLServiceConfig[];
   questions: YAMLQuestionConfig[];
 }

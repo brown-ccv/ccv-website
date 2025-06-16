@@ -1,5 +1,4 @@
 import React from "react"
-import path from 'path'
 import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { readContentFile } from "@/lib/content-utils"
@@ -49,7 +48,7 @@ if (pageContent) {
 
   // 3. Sort the questions array based on the determined feature order
   questions.sort((a, b) => {
-    const orderA = featureOrderMap.get(a.id) ?? Infinity; // Use Infinity for questions not found in features
+    const orderA = featureOrderMap.get(a.id) ?? Infinity; // Infinity for questions not found in features
     const orderB = featureOrderMap.get(b.id) ?? Infinity;
     return orderA - orderB;
   });
