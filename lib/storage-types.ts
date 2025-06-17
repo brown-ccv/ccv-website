@@ -1,50 +1,67 @@
-export interface Feature {
-    name: string;
-    class: string | boolean | number; // 'fast', true, 2, '1 TB +' etc.
-    notes?: string[]; // Optional array of strings
-  }
-  
-  export interface StorageService {
-    name: string;
-    description: string;
-    features: Feature[];
-    Limitations?: string;
-    Rate?: string;
-    "More info"?: string; // use string literal for property name with space
-    Accessibility?: string;
-    Sharing?: string;
-  }
-  
-  export interface YAMLQuestionAnswer {
-    answer: string;
-    category_classes: (string | boolean | number)[]; // e.g., [0, 1, 2, 3] or ['True', 'False']
-  }
-  
-  export interface YAMLQuestionConfig {
-    question: string;
-    information?: string;
-    affected_category: string;
-    default_answer: string;
-    answers: YAMLQuestionAnswer[];
-  }
-  
-  // top level structure of storage.yaml
-  // readContentFile()'s `data` property will contain this
-  export interface PageContentData {
-    title: string;
-    description: string;
-    storage_tool_header: string;
-    services: StorageService[];
-    questions: YAMLQuestionConfig[];
-  }
-  
-  export interface Question {
-    id: string;
-    question: string;
-    options: { label: string; value: string }[];
-  }
+export interface ServiceFeature {
+  name: string;
+  class: string | boolean | number;
+  notes?: string;
+}
 
-  // for StorageTool's internal state
-  export interface SelectedAnswers {
+export interface YAMLQuestionAnswer {
+  answer: string;
+  category_classes: (string | boolean | number)[];
+}
+
+export interface YAMLQuestionInfo {
+  text: string;
+  href?: string;
+}
+
+export interface YAMLQuestionConfig {
+  question: string;
+  more_info?: YAMLQuestionInfo[];
+  information?: string;
+  affected_category: string;
+  default_answer: string;
+  answers: YAMLQuestionAnswer[];
+}
+
+export interface YAMLServiceConfig {
+  name: string;
+  description?: string;
+  features: ServiceFeature[];
+  category_classes?: {
     [key: string]: string;
-  }
+  };
+}
+
+export interface Question {
+  id: string; // corresponds to affected_category
+  question: string;
+  options: { label: string; value: string }[];
+  more_info?: YAMLQuestionInfo[];
+  information?: string;
+}
+
+export interface SelectedAnswers {
+  [key: string]: string;
+}
+
+export interface TableRow {
+  featureName: string;
+  [key: string]: ServiceFeature | undefined | string;
+}
+
+export interface TableProps {
+  services: YAMLServiceConfig[];
+  selectedAnswers: SelectedAnswers;
+  yamlQuestionsConfig: YAMLQuestionConfig[];
+}
+
+// Top-level structure of content file
+export interface PageContentData {
+  title?: string;
+  description?: string;
+  icon?: string;
+  links?: { text: string; target: string }[];
+  storage_tool_header?: string;
+  services: YAMLServiceConfig[];
+  questions: YAMLQuestionConfig[];
+}

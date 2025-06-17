@@ -2,7 +2,7 @@
 title: Brown Storage Options
 links: 
   - text: "Compare Storage Options"
-    href: "https://ccv.brown.edu/storage/"
+    href: "storage/compare"
   - text: "Request Storage"
     href: "https://brown.atlassian.net/servicedesk/customer/portal/16/user/login?destination=portal%2F16%2Fgroup%2F55%2Fcreate%2F217"
   - text: "Request Quota Change"
