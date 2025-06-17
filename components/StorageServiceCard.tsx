@@ -2,7 +2,6 @@
 import React from 'react';
 import { YAMLServiceConfig, YAMLQuestionConfig, SelectedAnswers, ServiceFeature } from '@/lib/storage-types';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import CCVBars from "@/components/assets/CCVBars"
 import { cn, humanize } from "@/lib/utils"
 
 // --- Import Icons ---
@@ -32,6 +31,7 @@ import {
     'capacity': FaHdd,
     'doi_provided': SiDoi,
     'data_protection': LuDatabaseBackup,
+    'secondary_site_backup': LuDatabaseBackup,
     'canvas_integration': SiCanvas,
     'brown_network_required': FaWifi,
     'access_from_oscar': AiOutlineCluster,
@@ -111,8 +111,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({ service, yamlQuestionsConfig,
     <Card className={cn("w-full bg-white")}>
         <div className={cn("transition-opacity duration-300", isDisabled ? 'opacity-30 grayscale' : '')}>
             <CardHeader className="flex items-center justify-center">
-                <CCVBars className="pt-6" />
-                <CardTitle className="text-2xl" >{humanize(service.name)}</CardTitle>
+                <CardTitle className="text-2xl pt-4">{humanize(service.name)}</CardTitle>
             </CardHeader>
             <CardContent className="space-y-3 text-lg mx-6 mb-4">
                 {service.features.map((feature) => {

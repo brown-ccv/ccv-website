@@ -1,6 +1,3 @@
-// src/components/ui/Table.tsx
-"use client"; // If this component is used in a client-side context
-
 import React, { useMemo } from 'react';
 import { cn, humanize } from '@/lib/utils';
 import { YAMLServiceConfig, SelectedAnswers, TableRow, YAMLQuestionConfig, ServiceFeature, TableProps } from '@/lib/storage-types'
@@ -27,7 +24,7 @@ import { AiOutlineCluster } from "react-icons/ai";
 import { SiDoi } from "react-icons/si";
 import { SiCanvas } from "react-icons/si";
 import { LuDatabaseBackup } from "react-icons/lu";
-import ServiceCard from '@/components/ServiceCard';
+import ServiceCard from '@/components/StorageServiceCard';
 
 // --- Helper Mappings for Icons and Colors ---
 const FeatureIcons: Record<string, React.ElementType> = {
@@ -38,6 +35,7 @@ const FeatureIcons: Record<string, React.ElementType> = {
   'capacity': FaHdd,
   'doi_provided': SiDoi,
   'data_protection': LuDatabaseBackup,
+  'secondary_site_backup': LuDatabaseBackup,
   'canvas_integration': SiCanvas,
   'brown_network_required': FaWifi,
   'access_from_oscar': AiOutlineCluster,
@@ -241,10 +239,9 @@ const tableData: TableRow[] = useMemo(() => {
                   <th
                     key={header.id}
                     className={cn(
-                      "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider",
+                      "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider min-w-[175px]",
                       header.column.getCanSort() ? 'cursor-pointer select-none' : ''
                     )}
-                    style={{ width: header.getSize() }}
                   >
                     {flexRender(
                         header.column.columnDef.header,
@@ -280,7 +277,7 @@ const tableData: TableRow[] = useMemo(() => {
             service={service}
             yamlQuestionsConfig={yamlQuestionsConfig}
             selectedAnswers={selectedAnswers}
-            isDisabled={getColumnDisabledState(service, selectedAnswers, yamlQuestionsConfig)} // Pass isDisabled
+            isDisabled={getColumnDisabledState(service, selectedAnswers, yamlQuestionsConfig)}
           />
         ))}
       </div>

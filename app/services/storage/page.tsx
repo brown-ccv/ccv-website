@@ -1,5 +1,5 @@
 import React from "react"
-import Link from "next/link" // Ensure Link is imported
+import Link from "next/link"
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -64,9 +64,7 @@ export default async function Storage() {
                   {fileContentItem.data.links && fileContentItem.data.links.length > 0 && (
                     <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
                       {fileContentItem.data.links.map((link, index) => {
-                        console.log(link.href)
                         const isExternal = link.href.startsWith('http://') || link.href.startsWith('https://');
-
                         return (
                           <Button
                             key={index}

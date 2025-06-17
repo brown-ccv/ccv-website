@@ -4,7 +4,7 @@ import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import Form from "@/components/ui/form"
-import Table from "@/components/ui/table"
+import Table from "@/components/StorageTable"
 import { PageContentData, Question, SelectedAnswers, YAMLQuestionConfig, YAMLServiceConfig } from '@/lib/storage-types'
 
 interface StorageToolProps {
