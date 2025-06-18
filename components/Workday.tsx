@@ -44,7 +44,7 @@ export function Workday({ careers }: { careers: any[] }) {
           </a>
         ))
       ) : (
-        <p className="text-2xl">
+        <p className="lg:text-2xl">
           There are no positions open at the moment. Check back with us in the
           future. We appreciate your interest!
         </p>
