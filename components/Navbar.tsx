@@ -105,6 +105,14 @@ const routes: NavSection[] = [
             href: "/about",
           },
           {
+            name: "Mission",
+            href: "/about/#mission",
+          },
+          {
+            name: "People",
+            href: "/about/#people",
+          },
+          {
             name: "Careers",
             href: "/about/#careers",
           },
