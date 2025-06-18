@@ -122,11 +122,14 @@ export default async function AboutUs() {
         </section>
 
         {/* Our Mission */}
-        <section className="content-wrapper py-24 bg-gray-100">
+        <section
+          id="mission"
+          className="content-wrapper py-12 lg:py-24 bg-gray-100"
+        >
           <SectionHeader title="Our Mission" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-              <p className="text-black text-xl">
+            <CardContent className="max-w-[1440px] mx-auto flex items-center px-2 py-4 lg:px-6 lg:py-10">
+              <p className="text-black md:text-xl">
                 The primary mission of the Computational Biology Core (CBC) is
                 to provide support to junior investigators in the analysis and
                 interpretation of high-throughput DNA/RNA sequencing datasets,
@@ -144,9 +147,9 @@ export default async function AboutUs() {
         </section>
 
         {/* People */}
-        <div className="content-wrapper py-16 sm:py-24">
+        <div id="people" className="content-wrapper py-12 lg:py-24">
           <SectionHeader title="People" align="center"></SectionHeader>
-          <div className="flex justify-center">
+          <div className="flex justify-center py-4 lg:py-10">
             <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
               {pageContent?.data?.map((person: peopleTypes) => (
                 <div key={person.name}>
@@ -167,11 +170,11 @@ export default async function AboutUs() {
         {/* Careers */}
         <section
           id="careers"
-          className="content-wrapper py-24 px-36 bg-gray-100"
+          className="content-wrapper py-12 lg:py-24 bg-gray-100"
         >
           <SectionHeader title="Careers" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex flex-col content-center gap-8">
+            <CardContent className="max-w-[1440px] mx-auto flex flex-col content-center gap-8">
               <Suspense fallback={<Spinner />}>
                 <Workday careers={workdayData} />
               </Suspense>
