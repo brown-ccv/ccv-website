@@ -1,5 +1,4 @@
 import React from "react";
-import path from 'path';
 import { Hero } from "@/components/Hero";
 import { TextAnimate } from "@/components/magicui/text-animate";
 import { SectionHeader } from "@/components/ui/section-header";
@@ -23,9 +22,7 @@ interface OfficeHoursTypes {
   buttonLinks?: { text: string; href: string }[];
 }
 
-const fileName = 'contact.yaml'
-const filePath = path.join('content/about', fileName);
-const pageContent = await readContentFile(filePath);
+const pageContent = await readContentFile('content/about/contact.yaml');
 
 export default async function ContactUs() {
   return (

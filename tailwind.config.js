@@ -1108,6 +1108,49 @@ module.exports = {
       40: "40",
       50: "50",
     },
+    extend: {
+      typography: ({ theme }) => ({
+        DEFAULT: {
+          css: { // overriding prose's styling for markdown - use !important to override
+            'a': {
+              color: theme('colors.keppel.600'),
+              '&:hover': {
+                color: theme('colors.keppel.200'),
+              },
+              '&:focus': {
+                color: theme('colors.keppel.700'),
+                outline: '2px solid',
+                outlineColor: theme('colors.keppel.700'),
+              },
+            },
+            '&': {
+              maxWidth: 'none !important', 
+            },
+            'p': {
+              marginTop: theme('spacing.4'), // equivalent to mt-4
+              marginBottom: theme('spacing.4'), // equivalent to mb-4
+            },
+            'h1': {
+                marginTop: '0 !important', 
+            },
+            'p, ul, ol, pre, td, th, blockquote, h1, h2, h3, h4, h5, h6': {
+              maxWidth: 'none !important', 
+            },
+            'ul': {
+                listStyleType: 'disc',
+                paddingLeft: theme('spacing.6'), // pl-6
+            },
+            'ol': {
+                listStyleType: 'decimal',
+                paddingLeft: theme('spacing.6'), // pl-6
+            },
+          },
+        },
+      }),
+    },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require('@tailwindcss/typography')
+  ],
 }
