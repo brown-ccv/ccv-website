@@ -152,9 +152,9 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className={`sticky top-0 z-50`}>
-      <nav className="bg-blue-navbar flex px-8 justify-between">
-        {/* CCV Logo */}
-        <div className="flex items-center py-8 px-6 xl:px-10">
+      <nav className="bg-blue-navbar flex px-0 lg:px-8 lg:justify-between">
+        {/* CBC Logo */}
+        <div className="hidden lg:flex items-center py-8 px-6 xl:px-10">
           <Link href={"/"}>
             <CBCLogo width={75} fillColor="white" />
           </Link>
@@ -195,12 +195,30 @@ export const Navbar: React.FC = () => {
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
-        {/* Mobile Menu Hamburger Button */}
-        <div className="lg:hidden flex items-center">
+        {/* Mobile Header and Menu Hamburger Button */}
+        <div className="flex flex-1 flex-row items-center justify-between py-4 px-4 lg:hidden">
+          <div className="flex flex-row items-center pl-2 gap-x-3">
+            <Link href={"/"}>
+              <CBCLogo width={60} fillColor="white" />
+            </Link>
+            <div className="flex flex-col">
+              <h1 className="text-lg md:text-xl font-semibold text-white">
+                Computational Biology Core
+              </h1>
+              <a
+                href="https://sites.brown.edu/computational-biology-of-human-disease/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm md:text-md md:ml-3 text-white font-semibold hover:underline mt-0.5"
+              >
+                COBRE-Center for Computational Biology of Human Disease
+              </a>
+            </div>
+          </div>
           <Button
             variant="secondary_filled"
             size="icon"
-            className="text-blue-navbar rounded-none"
+            className="text-blue-navbar rounded-none ml-2"
             onClick={toggleMobileMenu}
           >
             <FiMenu className="h-6 w-6" />
