@@ -6,22 +6,12 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"
 import { readContentFile } from "@/lib/content-utils"
-
-interface peopleTypes{
-  name: string;
-  type: string;
-  team: string;
-  subteam: string;
-  title: string;
-  github_username: string;
-  brown_directory_uuid: string;
-  bio: string;
-  image: string;
-}
+import { PeopleTypes, PageContentData } from "@/lib/about-types"
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
-const pageContent = await readContentFile('content/about/us.yaml');
+const loadedContent = await readContentFile<PageContentData>('content/about/us.yaml');
+const pageContent: PageContentData = loadedContent.data;
 
 export default async function AboutUs() {
     return (
@@ -72,7 +62,7 @@ export default async function AboutUs() {
           <SectionHeader title="People" align="center"></SectionHeader>
             <div className="flex justify-center">
               <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
-              {pageContent?.data?.map((person: peopleTypes) => (
+              {pageContent?.people.map((person: PeopleTypes) => (
                 <div key={person.name}>
                   <CardWithImage 
                     imagePath={imagePath(person?.image)} 
