@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"
 import { readContentFile } from "@/lib/content-utils"
 
-interface peopleTypes{
+interface Person{
   name: string;
   type: string;
   team: string;
@@ -19,9 +19,14 @@ interface peopleTypes{
   image: string;
 }
 
+interface PageContent {
+  data: Person[],
+  content: string
+}
+
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
-const pageContent = await readContentFile('content/about/us.yaml');
+const pageContent: PageContent = await readContentFile('content/about/us.yaml') as PageContent;
 
 export default async function AboutUs() {
     return (
@@ -72,7 +77,7 @@ export default async function AboutUs() {
           <SectionHeader title="People" align="center"></SectionHeader>
             <div className="flex justify-center">
               <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
-              {pageContent?.data?.map((person: peopleTypes) => (
+              {pageContent?.data?.map((person: Person) => (
                 <div key={person.name}>
                   <CardWithImage 
                     imagePath={imagePath(person?.image)} 
