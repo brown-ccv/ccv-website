@@ -34,7 +34,7 @@ export default function StorageTool({ pageContent, questions, initialSelectedAns
             <section className="content-wrapper py-24 px-8 bg-neutral-50">
                 <SectionHeader title="Compare Storage Options" align="center" />
                 <div className="flex px-8 flex-col items-start pb-8">
-                    <h2 className="text-2xl font-bold text-gray-800 mx-12 my-12">{pageContent?.storage_tool_header}</h2>
+                    <h2 className="text-2xl font-bold text-gray-800 mx-36 px-24 my-12">{pageContent?.storage_tool_header}</h2>
                     <div className="w-full mt-0 flex flex-col xl:flex-row gap-4">
                         <div>
                             <Form
