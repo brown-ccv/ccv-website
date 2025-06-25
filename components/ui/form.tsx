@@ -1,6 +1,6 @@
 import React from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { QuestionsConfig, SelectedAnswers, FormQuestions } from '@/lib/storage-types'
+import { SelectedAnswers, FormQuestions } from '@/lib/storage-types'
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -34,35 +34,6 @@ const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions 
             </Markdown>
             )
           }
-
-          {/* {question.information && question.information.length > 0 && (
-            <div className="text-md">
-              <ul className="pb-0">
-                {question.information.map((infoItem, index) => (
-                  <div key={index} className="flex items-center space-x-2 py-1">
-                    {infoItem.href ? (
-                      <p>
-                        <a
-                          href={infoItem.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {infoItem.text}
-                        </a>
-                      </p>
-                    ) : (
-                      <Markdown
-                        rehypePlugins={[rehypeRaw]}
-                        remarkPlugins={[remarkGfm]}
-                      >
-                        {infoItem.text}
-                      </Markdown>
-                    )}
-                  </div>
-                ))}
-              </ul>
-            </div>
-          )} */}
 
           <RadioGroup
             value={selectedAnswers[question.id]}

@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { readContentFile } from "@/lib/content-utils"
 import StorageTool from "@/components/StorageTool"
-import { PageContentData, QuestionsConfig, SelectedAnswers, FormQuestions, ServiceConfig } from '@/lib/storage-types'
+import { PageContentData, QuestionsConfig, SelectedAnswers, FormQuestions } from '@/lib/storage-types'
 
 export default async function CompareStorageOptions() {
   const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');

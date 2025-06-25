@@ -11,32 +11,7 @@ interface ServiceCardProps {
     isDisabled: boolean;
   }
 
-const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, questionsConfig, selectedAnswers, isDisabled }) => {
-
-  // Helper to determine if a service feature's class matches the current selected answer
-  // const matchesSelectedAnswer = (featureName: string, featureClass: string | boolean | number): boolean => {
-  //   const selectedValue = selectedAnswers[featureName];
-  //   if (!selectedValue) {
-  //     return true; // No filter for this feature, so it matches
-  //   }
-
-  //   const questionConfig = questionsConfig.find(question => question.affected_feature === featureName);
-  //   if (!questionConfig) {
-  //     return true; // No question config for this feature, cannot filter, so consider it a match
-  //   }
-
-  //   const selectedAnswerOption = questionConfig.answers.find(ans => ans.answer === selectedValue);
-  //   if (!selectedAnswerOption) {
-  //     return true; // Selected answer option not found, cannot filter, so consider it a match
-  //   }
-
-  //   const serviceFeatureClassNormalized = String(featureClass).toLowerCase();
-
-  //   // Check if the service's feature class matches any of the allowed categories for the selected answer
-  //   return selectedAnswerOption.matching_feature_values.some(allowedValue =>
-  //     String(allowedValue).toLowerCase() === serviceFeatureClassNormalized
-  //   );
-  // };
+const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, isDisabled }) => {
 
   // Helper to format the display value of a feature class
   const formatFeatureDisplayValue = (feature: ServiceFeature): string => {
