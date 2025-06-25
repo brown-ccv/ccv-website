@@ -3,6 +3,7 @@ import { cn, humanize } from '@/lib/utils';
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import Link from 'next/link'
 import { ServiceConfig, SelectedAnswers, TableRow, QuestionsConfig, ServiceFeature, featureIcons, featureColorMap  } from '@/lib/storage-types'
 import {
   createColumnHelper,
@@ -125,14 +126,23 @@ const tableData: TableRow[] = useMemo(() => {
       return columnHelper.accessor(service.name, {
         id: service.name,
         header: () => (
-          <div className={cn("flex flex-col items-start justify-start text-center px-2 py-2", columnClass)}>
+          <Link href={`/services/storage#${service.name}`} className={cn("flex flex-col items-start justify-start text-center px-2 py-2", columnClass)}>
             <div className="font-semibold">{humanize(service.name)}</div>
-          </div>
+          </Link>
         ),
         cell: info => {
           const feature = info.getValue() as ServiceFeature;
           const featureNameFromRow = info.row.original.featureName;
           const cellContentClasses = cn("px-4 py-2 text-start", columnClass);
+
+          if (feature === undefined) {
+            return (
+              <div className={cn("flex flex-col items-center justify-center p-2 min-h-[80px]", cellContentClasses)}>
+                <span className="text-neutral-400 text-3xl">-</span>
+              </div>
+            );
+          }
+
           const featureClassLower = String(feature?.value).toLowerCase();
           const IconComponent = featureIcons[featureNameFromRow.toLowerCase()];
           const valueColor = featureColorMap[featureClassLower] || featureColorMap['default'];
@@ -202,12 +212,13 @@ const tableData: TableRow[] = useMemo(() => {
           <thead className="bg-white">
             {table.getHeaderGroups().map(headerGroup => (
               <tr key={headerGroup.id}>
-                {headerGroup.headers.map(header => (
+                {headerGroup.headers.map((header, index) => (
                   <th
                     key={header.id}
                     className={cn(
                       "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider min-w-[175px]",
-                      header.column.getCanSort() ? 'cursor-pointer select-none' : ''
+                      header.column.getCanSort() ? 'cursor-pointer select-none' : '',
+                      index < headerGroup.headers.length - 1 && 'border-r border-neutral-200'
                     )}
                   >
                     {flexRender(
@@ -222,8 +233,11 @@ const tableData: TableRow[] = useMemo(() => {
           <tbody className="bg-white divide-y divide-neutral-200">
             {table.getRowModel().rows.map(row => (
               <tr key={row.id}>
-                {row.getVisibleCells().map(cell => (
-                  <td key={cell.id} className="py-2">
+                {row.getVisibleCells().map((cell, index) => (
+                  <td key={cell.id}                     className={cn(
+                    "py-2",
+                    index < row.getVisibleCells().length - 1 && 'border-r border-neutral-200'
+                  )}>
                     {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()

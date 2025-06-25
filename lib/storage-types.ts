@@ -6,7 +6,7 @@ import {
   FaHdd,
   FaWifi,
   FaExchangeAlt,
-  FaShieldAlt
+  FaShieldAlt,
 } from 'react-icons/fa';
 import { FaFile } from "react-icons/fa6";
 import { SlSpeedometer } from "react-icons/sl";
@@ -14,7 +14,8 @@ import { MdSdStorage } from "react-icons/md";
 import { AiOutlineCluster } from "react-icons/ai";
 import { SiDoi } from "react-icons/si";
 import { SiCanvas } from "react-icons/si";
-import { LuDatabaseBackup } from "react-icons/lu";
+import { MdOutlineFlipCameraIos } from "react-icons/md";
+import { LuDatabaseBackup } from "react-icons/lu"
 
 // --- Helper Mappings for Icons and Feature Value Colors ---
 export const featureIcons: Record<string, React.ElementType> = {
@@ -24,8 +25,8 @@ export const featureIcons: Record<string, React.ElementType> = {
   'sharing': FaShareSquare,
   'capacity': FaHdd,
   'doi_provided': SiDoi,
-  'data_protection_snapshots': LuDatabaseBackup,
-  'data_projection_replication': LuDatabaseBackup,
+  'data_protection_snapshots': MdOutlineFlipCameraIos,
+  'data_protection_replication': LuDatabaseBackup,
   'canvas_integration': SiCanvas,
   'brown_network_required': FaWifi,
   'access_from_oscar': AiOutlineCluster,
