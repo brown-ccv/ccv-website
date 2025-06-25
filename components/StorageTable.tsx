@@ -3,6 +3,7 @@ import { cn, humanize } from '@/lib/utils';
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import Link from 'next/link'
 import { ServiceConfig, SelectedAnswers, TableRow, QuestionsConfig, ServiceFeature, featureIcons, featureColorMap  } from '@/lib/storage-types'
 import {
   createColumnHelper,
@@ -125,9 +126,9 @@ const tableData: TableRow[] = useMemo(() => {
       return columnHelper.accessor(service.name, {
         id: service.name,
         header: () => (
-          <div className={cn("flex flex-col items-start justify-start text-center px-2 py-2", columnClass)}>
+          <Link href={`/services/storage#${service.name}`} className={cn("flex flex-col items-start justify-start text-center px-2 py-2", columnClass)}>
             <div className="font-semibold">{humanize(service.name)}</div>
-          </div>
+          </Link>
         ),
         cell: info => {
           const feature = info.getValue() as ServiceFeature;

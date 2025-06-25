@@ -61,7 +61,7 @@ export default async function Storage() {
           const sectionBgColor = isEven ? 'bg-white' : 'bg-neutral-50';
 
           return(
-            <section key={serviceSection.name} id={serviceSection.name} className={`${sectionBgColor} py-16 sm:py-24 mb-12`} >
+            <section key={serviceSection.name} id={serviceSection.name} className={`${sectionBgColor} py-16 sm:py-24 `} >
               <div className="px-14 lg:px-36">
               <SectionHeader title={humanize(serviceSection.name)} align="center" />
               <Card className="w-full border-none shadow-none rounded-none">
