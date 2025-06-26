@@ -79,27 +79,60 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) =
   const columnHelper = createColumnHelper<TableRow>();
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
-const tableData: TableRow[] = useMemo(() => {
-  const uniqueFeatureNames = new Set<string>();
-  services.forEach(service => {
+  // --- FEATURE SORTING LOGIC ---
+  const sortedFeatureNames = useMemo(() => {
+    const featureNamesFromForm = questions.map(q => q.affected_feature);
+    const uniqueServiceFeatureNames = new Set<string>();
+    services.forEach(service => {
       service.features?.forEach(feature => {
-          uniqueFeatureNames.add(feature.name);
+        uniqueServiceFeatureNames.add(feature.name);
       });
-  });
+    });
 
-  // TODO: sort the table rows by questions first, then other features alphabetically
-  const orderedFeatureNames = Array.from(uniqueFeatureNames).sort();
+    const featuresNotInForm: string[] = [];
+    const featuresInFormOrder: string[] = [];
 
-  return orderedFeatureNames.map(featureName => {
+    // Separate features: those in the form, and those not
+    Array.from(uniqueServiceFeatureNames).forEach(featureName => {
+      if (featureNamesFromForm.includes(featureName)) {
+        featuresInFormOrder.push(featureName);
+      } else {
+        featuresNotInForm.push(featureName);
+      }
+    });
+
+    // Sort features that are in the form based on their order in questions
+    featuresInFormOrder.sort((a, b) => {
+      const indexA = featureNamesFromForm.indexOf(a);
+      const indexB = featureNamesFromForm.indexOf(b);
+      return indexA - indexB;
+    });
+
+    // Sort features not in the form alphabetically
+    featuresNotInForm.sort((a, b) => a.localeCompare(b));
+
+    // Combine them: form features first, then others alphabetically
+    return [...featuresInFormOrder, ...featuresNotInForm];
+  }, [services, questions]);
+
+  // Filter to services that have features key (most of them)
+  const servicesWithFeatures = useMemo(() => {
+    return services.filter(service => service.features !== undefined);
+  }, [services]); 
+
+  const tableData: TableRow[] = useMemo(() => {
+    // Create rows
+    return sortedFeatureNames.map(featureName => {
       const row: TableRow = { featureName: featureName };
-      services.forEach(service => {
-          row[service.name] = service.features?.find(f => f.name === featureName);
+      // Create columns
+      servicesWithFeatures.forEach(service => {
+        row[service.name] = service.features?.find(f => f.name === featureName);
       });
       return row;
-  });
-}, [services]);
+    });
+  }, [servicesWithFeatures, sortedFeatureNames]);
 
-  // 2. define columns for TanStack Table (memoized for performance)
+  // Define columns for TanStack Table (memoized for performance)
   const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
     const featureNameColumn: ColumnDef<TableRow, any> = columnHelper.accessor('featureName', {
       id: 'featureName',
@@ -120,7 +153,7 @@ const tableData: TableRow[] = useMemo(() => {
       size: 200,
     });
 
-    const serviceColumns: ColumnDef<TableRow, any>[] = services.map(service => {
+    const serviceColumns: ColumnDef<TableRow, any>[] = servicesWithFeatures.map(service => {
       // Determine if the *entire service column* should be disabled (grayed out)
       const isDisabled = getColumnDisabledState(service, selectedAnswers, questions);
       const columnClass = isDisabled ? 'opacity-30 grayscale' : '';
@@ -137,6 +170,7 @@ const tableData: TableRow[] = useMemo(() => {
           const featureNameFromRow = info.row.original.featureName;
           const cellContentClasses = cn("px-4 py-2 text-start", columnClass);
 
+          // check if a service does not have *specific* feature (undefined). if so, put a dash in that cell
           if (feature === undefined) {
             return (
               <div className={cn("flex flex-col items-center justify-center p-2 min-h-[80px]", cellContentClasses)}>
@@ -193,7 +227,7 @@ const tableData: TableRow[] = useMemo(() => {
     });
 
     return [featureNameColumn, ...serviceColumns];
-  }, [columnHelper, services, selectedAnswers, questions]);
+  }, [columnHelper, servicesWithFeatures, selectedAnswers, questions]);
 
   const table = useReactTable({
     data: tableData,
@@ -220,24 +254,22 @@ const tableData: TableRow[] = useMemo(() => {
     <>
       {/* Desktop View - Table */}
       <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md border border-neutral-200">       
-        <div className="relative" ref={tableContainerRef}>
-          <div className="flex justify-end p-2 border-b border-neutral-200 bg-white">
-            <TableScrollButton
-              onClick={() => scrollTable('left')}
-              className="mr-2"
-              aria-label="Scroll left"
-            >
-              &lt;
-            </TableScrollButton>
-            <TableScrollButton
-              onClick={() => scrollTable('right')}
-              aria-label="Scroll right"
-            >
-              &gt;
-            </TableScrollButton>
-          </div>
+        <div className="flex justify-end border-b border-neutral-200 bg-white">
+          <TableScrollButton
+            onClick={() => scrollTable('left')}
+            className="mr-2"
+            aria-label="Scroll left"
+          >
+            &lt;
+          </TableScrollButton>
+          <TableScrollButton
+            onClick={() => scrollTable('right')}
+            aria-label="Scroll right"
+          >
+            &gt;
+          </TableScrollButton>
         </div>
-        <div ref={tableContainerRef} className="overflow-x-scroll force-scrollbar">
+        <div ref={tableContainerRef} className="overflow-x-scroll overflow-y-auto force-scrollbar h-[calc(100vh-200px)]">
           <table className="min-w-full divide-y divide-neutral-200">
             <thead className="bg-white">
               {table.getHeaderGroups().map(headerGroup => (
@@ -248,7 +280,9 @@ const tableData: TableRow[] = useMemo(() => {
                       className={cn(
                         "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider min-w-[175px]",
                         header.column.getCanSort() ? 'cursor-pointer select-none' : '',
-                        index < headerGroup.headers.length - 1 && 'border-r border-neutral-200'
+                        index < headerGroup.headers.length - 1 && 'border border-neutral-200',
+                        'sticky top-0 bg-white',
+                        header.id === 'featureName' ? 'z-30 left-0' : 'z-20',
                       )}
                     >
                       {flexRender(
@@ -264,9 +298,10 @@ const tableData: TableRow[] = useMemo(() => {
               {table.getRowModel().rows.map(row => (
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell, index) => (
-                    <td key={cell.id}                     className={cn(
+                    <td key={cell.id} className={cn(
                       "py-2",
-                      index < row.getVisibleCells().length - 1 && 'border-r border-neutral-200'
+                      index < row.getVisibleCells().length - 1 && 'border-y border border-neutral-200',
+                      cell.column.id === 'featureName' && 'sticky left-0 z-10 bg-white border border-neutral-200'
                     )}>
                       {flexRender(
                           cell.column.columnDef.cell,
