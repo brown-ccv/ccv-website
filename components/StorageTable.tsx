@@ -207,7 +207,7 @@ const tableData: TableRow[] = useMemo(() => {
   return (
     <>
       {/* Desktop View - Table */}
-      <div className="hidden lg:block w-full overflow-x-auto rounded-lg shadow-md border border-neutral-200">
+      <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md border border-neutral-200 force-scrollbar">
         <table className="min-w-full divide-y divide-neutral-200">
           <thead className="bg-white">
             {table.getHeaderGroups().map(headerGroup => (
