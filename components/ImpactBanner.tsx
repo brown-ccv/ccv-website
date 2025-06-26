@@ -1,4 +1,4 @@
-import React from "react"
+import React, { type JSX } from "react";
 import { Card, CardContent } from "@/components/ui/card"
 
 export const ImpactBanner = (): JSX.Element => {

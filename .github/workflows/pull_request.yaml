@@ -1,0 +1,69 @@
+name: 🧪 Testing
+on: pull_request
+
+jobs:
+  build: 
+    name: Build
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
+      GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: 📥 Install Dependencies
+        run: npm ci
+
+      - name: 🔑 Set up Google Cloud Credentials
+        id: 'auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - name: 🏗️ Build
+        run: npm run build
+
+  lint:
+    name: ⬣ ESLint
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: 📥 Install Dependencies
+        run: npm ci
+
+      - name: 🔬 Lint
+        run: npm run lint --max-warnings=0
+
+  typecheck:
+    name: ʦ TypeScript
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⬇️ Checkout repo
+        uses: actions/checkout@v4
+
+      - name: ⎔ Setup node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: 📥 Install Dependencies
+        run: npm ci
+
+      - name: 🔎 Typecheck
+        run: npm run typecheck
