@@ -8,33 +8,52 @@ import { TextAnimate } from "@/components/magicui/text-animate"
 import { Card, CardContent  } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
-import { readContentFolder } from "@/lib/content-utils"
+import { readContentFile } from "@/lib/content-utils"
+import { PageContentData, ServiceConfig, ServiceLink } from "@/lib/storage-types"
+import { humanize } from "@/lib/utils"
 
-interface FileContentItem {
-  slug: string;
-  data: {
-    title: string;
-    links?: { text: string; href: string }[];
-  };
-  content: string;
-}
-
-const folderContent: FileContentItem[] = await readContentFolder('services/storage') as FileContentItem[];
+const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');
+const pageContent: PageContentData | null = rawPageContent ? (rawPageContent.data as PageContentData) : null;
+const heroLinks: ServiceLink[] = pageContent?.links || [];
 
 export default async function Storage() {
   return (
     <div className="w-full">
       <div className="relative w-full flex flex-col">
         <div className="bg-purple-900">
-          <Hero image={"/images/hero-subroutes.jpeg"}>
+          <Hero image={"/images/hero/hero.jpeg"}>
             <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
               <div className="absolute top-[12%] flex flex-col text-white space-y-6">
                 <TextAnimate className="font-bold text-6xl md:text-8xl">
-                  Storage and Transfer
+                  {pageContent?.title || ''}
                 </TextAnimate>
                 <p className="text-4xl font-semibold">
-                  Several services at Brown allow you to share and store files. This guide will let you compare the options and decide which are right for you.
+                  {pageContent?.description}
                 </p>
+                <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
+                <Button variant="primary_filled" size="xl">
+                  <Link href="/services/storage/compare">
+                    Compare Storage Options
+                  </Link>
+                </Button>
+                {heroLinks.map((link, index) => {
+                  return (
+                    <Button
+                      key={index}
+                      variant="secondary_filled"
+                      size="xl"
+                    >
+                      <Link 
+                        href={link.target} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        {link.text}
+                      </Link>
+                    </Button>
+                  );
+                })}
+              </div>
               </div>
             </div>
           </Hero>
@@ -42,15 +61,14 @@ export default async function Storage() {
       </div>
 
       <div>
-        {folderContent.map((fileContentItem: FileContentItem, index: number) => {
+        {pageContent?.services.map((serviceSection: ServiceConfig, index: number) => {
           const isEven = index % 2 === 0;
-          const sectionBgClass = isEven ? 'bg-white' : 'bg-neutral-50';
-          const sectionPaddingClass = "py-16 sm:py-24";
+          const sectionBgColor = isEven ? 'bg-white' : 'bg-neutral-50';
 
           return(
-            <section key={fileContentItem.slug} className={`${sectionBgClass} ${sectionPaddingClass} mb-12`} >
+            <section key={serviceSection.name} id={serviceSection.name} className={`${sectionBgColor} py-16 sm:py-24 `} >
               <div className="px-14 lg:px-36">
-              <SectionHeader title={fileContentItem.data.title} align="center" />
+              <SectionHeader title={humanize(serviceSection.name)} align="center" />
               <Card className="w-full border-none shadow-none rounded-none">
                 <CardContent className="flex flex-col items-start pb-8">
                   <div className="prose text-xl">
@@ -58,13 +76,13 @@ export default async function Storage() {
                       rehypePlugins={[rehypeRaw]} 
                       remarkPlugins={[remarkGfm]}
                     >
-                      {fileContentItem.content}
+                      {serviceSection.description}
                     </Markdown>
                   </div>
-                  {fileContentItem.data.links && fileContentItem.data.links.length > 0 && (
+                  {serviceSection.links && serviceSection.links.length > 0 && (
                     <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
-                      {fileContentItem.data.links.map((link, index) => {
-                        const isExternal = link.href.startsWith('http://') || link.href.startsWith('https://');
+                      {serviceSection.links.map((link, index) => {
+                        const isExternal = link.target.startsWith('http://') || link.target.startsWith('https://');
                         return (
                           <Button
                             key={index}
@@ -72,7 +90,7 @@ export default async function Storage() {
                             size="xl"
                           >
                             <Link 
-                              href={link.href} 
+                              href={link.target} 
                               {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                             >
                               {link.text}

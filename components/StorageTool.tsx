@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
 import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import Form from "@/components/ui/form"
 import Table from "@/components/StorageTable"
-import { PageContentData, Question, SelectedAnswers, YAMLQuestionConfig, YAMLServiceConfig } from '@/lib/storage-types'
+import { PageContentData, SelectedAnswers, QuestionsConfig, ServiceConfig, FormQuestions } from '@/lib/storage-types'
 
 interface StorageToolProps {
     pageContent: PageContentData | null;
-    questions: Question[];
+    questions: FormQuestions[];
     initialSelectedAnswers: SelectedAnswers;
-    services: YAMLServiceConfig[];
-    yamlQuestionsConfig: YAMLQuestionConfig[];
+    services: ServiceConfig[];
+    questionsConfig: QuestionsConfig[];
 }
 
-export default function StorageTool({ pageContent, questions, initialSelectedAnswers, services, yamlQuestionsConfig }: StorageToolProps) {
+export default function StorageTool({ pageContent, questions, initialSelectedAnswers, services, questionsConfig }: StorageToolProps) {
     const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(initialSelectedAnswers);
   
     const handleAnswerChange = (questionId: string, answer: string) => {
@@ -34,8 +34,8 @@ export default function StorageTool({ pageContent, questions, initialSelectedAns
             <section className="content-wrapper py-24 px-8 bg-neutral-50">
                 <SectionHeader title="Compare Storage Options" align="center" />
                 <div className="flex px-8 flex-col items-start pb-8">
-                    <h2 className="text-2xl font-bold text-gray-800 mx-12 my-12">{pageContent?.storage_tool_header}</h2>
-                    <div className="w-full mt-0 flex flex-col xl:flex-row gap-4">
+                    <h2 className="text-2xl font-bold text-gray-800 mx-24 my-12">{pageContent?.storage_tool_header}</h2>
+                    <div className="w-full mt-0 flex flex-col xl:flex-row gap-4 items-center">
                         <div>
                             <Form
                                 selectedAnswers={selectedAnswers}
@@ -49,7 +49,7 @@ export default function StorageTool({ pageContent, questions, initialSelectedAns
                         <Table
                           services={services}
                           selectedAnswers={selectedAnswers}
-                          yamlQuestionsConfig={yamlQuestionsConfig}
+                          questions={questionsConfig}
                         />              
                     </div>
                 </div>

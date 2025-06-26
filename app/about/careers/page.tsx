@@ -28,7 +28,6 @@ export default async function AboutLayout() {
                 </div>
             </Hero>
         </div>
-
         <section className="content-wrapper py-24 px-36 bg-gray-100">
           <SectionHeader title="Opportunities" align="center" />
           <Suspense fallback={<Spinner />}>
