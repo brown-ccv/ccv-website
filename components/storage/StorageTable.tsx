@@ -12,7 +12,7 @@ import {
   useReactTable,
   ColumnDef,
 } from '@tanstack/react-table';
-import StorageServiceCard from '@/components/StorageServiceCard';
+import StorageServiceCard from '@/components/storage/StorageServiceCard';
 
 export interface TableProps {
   services: ServiceConfig[];

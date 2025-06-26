@@ -3,8 +3,8 @@
 import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
-import Form from "@/components/ui/form"
-import Table from "@/components/StorageTable"
+import Form from "@/components/storage/StorageForm"
+import Table from "@/components/storage/StorageTable"
 import { PageContentData, SelectedAnswers, QuestionsConfig, ServiceConfig, FormQuestions } from '@/lib/storage-types'
 
 interface StorageToolProps {
