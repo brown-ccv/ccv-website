@@ -8,29 +8,10 @@ import { cn } from "@/lib/utils";
 import { cardVariants } from "@/components/ui/variants";
 import { readContentFile } from "@/lib/content-utils"
 import Icon from "@/components/ui/render-icon";
+import { ContactUsTypes, OfficeHoursTypes, PageContentData } from "@/lib/about-types";
 
-interface Contact {
-  title: string;
-  icon?: string;
-  description: string;
-  buttonLinks?: { text: string; href: string }[];
-}
-interface OfficeHours {
-  title: string;
-  subtitle: string;
-  description: string;
-  buttonLinks?: { text: string; href: string }[];
-}
-
-interface PageContent {
-  data: {
-    contactUs: Contact[];
-    officeHours: OfficeHours[];
-  },
-  content: string
-}
-
-const pageContent: PageContent = await readContentFile('content/about/contact.yaml') as PageContent;
+const loadedContent = await readContentFile<PageContentData>('content/about/contact.yaml');
+const pageContent: PageContentData = loadedContent.data;
 
 export default async function ContactUs() {
   return (
@@ -65,7 +46,7 @@ export default async function ContactUs() {
 
         <div className="content-wrapper flex justify-center px-40">
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
-            {pageContent?.data?.contactUs?.map((card: Contact) => (
+            {pageContent?.contactUs?.map((card: ContactUsTypes) => (
               <div
                 key={card.title}
                 className="flex-grow max-w-lg"
@@ -115,7 +96,7 @@ export default async function ContactUs() {
         <div>
           <section className="content-wrapper">
             <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
-              {pageContent?.data?.officeHours?.map((card: OfficeHours) => (
+              {pageContent?.officeHours?.map((card: OfficeHoursTypes) => (
                 <div
                   key={card.title}
                   className="flex-grow max-w-md"
