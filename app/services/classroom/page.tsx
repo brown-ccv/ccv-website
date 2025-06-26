@@ -69,23 +69,22 @@ const profiles = [
 export default async function ClassroomSupport() {
     return (
       <div className="w-full">
-        
         <div className="relative w-full flex flex-col">
           <div className="bg-purple-900">
             <Hero image={"/images/hero/hero.jpeg"}>
-              <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-                <div className="absolute top-[12%] flex flex-col text-white space-y-6">
-                  <TextAnimate className="font-bold text-6xl md:text-8xl">
-                    Classroom Support
-                  </TextAnimate>
-                  <p className="text-4xl font-semibold">
-                    CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code
-                  </p>
-                </div>
+            <div className="relative inset-x-0 flex-1 flex items-start w-full bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
+              <div className="absolute top-[12%] flex flex-col text-white space-y-6 px-12 md:px-24 w-[80vw]">
+                <TextAnimate className="font-bold text-6xl md:text-8xl">
+                  Classroom Support
+                </TextAnimate>
+                <p className="text-4xl font-semibold">
+                  CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code
+                </p>
               </div>
-            </Hero>
-          </div>
+            </div>
+          </Hero>
         </div>
+      </div>
 
       {/* In Class Tutorials */}
       <section className="content-wrapper pt-24 px-14 lg:px-36">
