@@ -79,25 +79,52 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) =
   const columnHelper = createColumnHelper<TableRow>();
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
-const tableData: TableRow[] = useMemo(() => {
-  const uniqueFeatureNames = new Set<string>();
-  services.forEach(service => {
+  // --- FEATURE SORTING LOGIC ---
+  const sortedFeatureNames = useMemo(() => {
+    const featureNamesFromForm = questions.map(q => q.affected_feature);
+    const uniqueServiceFeatureNames = new Set<string>();
+    services.forEach(service => {
       service.features?.forEach(feature => {
-          uniqueFeatureNames.add(feature.name);
+        uniqueServiceFeatureNames.add(feature.name);
       });
-  });
+    });
 
-  // TODO: sort the table rows by questions first, then other features alphabetically
-  const orderedFeatureNames = Array.from(uniqueFeatureNames).sort();
+    const featuresNotInForm: string[] = [];
+    const featuresInFormOrder: string[] = [];
 
-  return orderedFeatureNames.map(featureName => {
+    // Separate features: those in the form, and those not
+    Array.from(uniqueServiceFeatureNames).forEach(featureName => {
+      if (featureNamesFromForm.includes(featureName)) {
+        featuresInFormOrder.push(featureName);
+      } else {
+        featuresNotInForm.push(featureName);
+      }
+    });
+
+    // Sort features that are in the form based on their order in questions
+    featuresInFormOrder.sort((a, b) => {
+      const indexA = featureNamesFromForm.indexOf(a);
+      const indexB = featureNamesFromForm.indexOf(b);
+      return indexA - indexB;
+    });
+
+    // Sort features not in the form alphabetically
+    featuresNotInForm.sort((a, b) => a.localeCompare(b));
+
+    // Combine them: form features first, then others alphabetically
+    return [...featuresInFormOrder, ...featuresNotInForm];
+  }, [services, questions]);
+
+  const tableData: TableRow[] = useMemo(() => {
+    // Use the newly sortedFeatureNames
+    return sortedFeatureNames.map(featureName => {
       const row: TableRow = { featureName: featureName };
       services.forEach(service => {
-          row[service.name] = service.features?.find(f => f.name === featureName);
+        row[service.name] = service.features?.find(f => f.name === featureName);
       });
       return row;
-  });
-}, [services]);
+    });
+  }, [services, sortedFeatureNames]);
 
   // 2. define columns for TanStack Table (memoized for performance)
   const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
