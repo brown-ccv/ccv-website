@@ -12,7 +12,7 @@ export const Hero = ({
   children,
   height,
 }: HeroProps) => {
-  const defaultHeight = "h-[clamp(800px,50vh,60vh)]";
+  const defaultHeight = "h-[clamp(750px,50vh,60vh)]";
   const effectiveHeight = height || defaultHeight;
   const baseClasses = "w-full bg-cover bg-center relative flex flex-col overflow-hidden m-0 p-0";
 
