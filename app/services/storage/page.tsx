@@ -30,7 +30,7 @@ export default async function Storage() {
                 <p className="text-4xl font-semibold">
                   {pageContent?.description}
                 </p>
-                <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
+                <div className="mt-4 flex flex-col md:flex-row flex-wrap gap-2 w-full items-start not-prose">
                   <Button variant="primary_filled" size="xl">
                     <Link href="/services/storage/compare">
                       Compare Storage Options
