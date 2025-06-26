@@ -31,11 +31,16 @@ export default async function Storage() {
                   {pageContent?.description}
                 </p>
                 <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
+                <Button variant="primary_filled" size="xl">
+                  <Link href="/services/storage/compare">
+                    Compare Storage Options
+                  </Link>
+                </Button>
                 {heroLinks.map((link, index) => {
                   return (
                     <Button
                       key={index}
-                      variant="primary_filled"
+                      variant="secondary_filled"
                       size="xl"
                     >
                       <Link 
