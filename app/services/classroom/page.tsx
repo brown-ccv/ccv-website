@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { UserIcon } from "@heroicons/react/24/solid"
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
+import { readContentFolder, ContentLinks, MarkdownFrontmatter } from "@/lib/content-utils"
 
 
 const featuredCarouselData: FeaturedCarouselItem[] = [
@@ -66,74 +67,101 @@ const profiles = [
   },
 ]
 
+interface ClassroomSectionData extends MarkdownFrontmatter {
+  slug: string;
+  content: string;
+  links?: ContentLinks[];
+}
+
 export default async function ClassroomSupport() {
+
+  const sectionData = await readContentFolder<ClassroomSectionData>('content/services/classroom')
+
+  // Create a map for easy lookup by slug
+  const sectionsMap = new Map(sectionData.map(section => [section.slug, section]));
+
+  // Retrieve individual section data using their slugs
+  // You can define the order here explicitly
+  const inClassTutorials = sectionsMap.get('in-class-tutorials');
+  const studentAccounts = sectionsMap.get('student-accounts');
+  const computationalNotebooks = sectionsMap.get('computational-notebooks');
+
+  if (!inClassTutorials || !studentAccounts || !computationalNotebooks) {
+    // You could also throw an error here to catch it during build/development
+    // throw new Error("Required Classroom Support content files are missing.");
     return (
-      <div className="w-full">
-        <div className="relative w-full flex flex-col">
-          <div className="bg-purple-900">
-            <Hero image={"/images/hero/hero.jpeg"}>
-            <div className="relative inset-x-0 flex-1 flex items-start w-full bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-              <div className="absolute top-[12%] flex flex-col text-white space-y-6 px-12 md:px-24 w-[80vw]">
-                <TextAnimate className="font-bold text-6xl md:text-8xl">
-                  Classroom Support
-                </TextAnimate>
-                <p className="text-4xl font-semibold">
-                  CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code
-                </p>
-              </div>
-            </div>
-          </Hero>
-        </div>
+      <div className="flex justify-center items-center h-screen text-xl text-gray-700">
+        Error: Essential classroom support content could not be loaded.
       </div>
+    );
+  }
 
-      {/* In Class Tutorials */}
-      <section className="content-wrapper pt-24 px-14 lg:px-36">
-        <SectionHeader title="In-Class Tutorials" align="center" />
-        <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex items-center px-6">
-            <p className="text-black text-xl pb-8">
-              CCV offers a variety of tutorials to provide students with experience using Brown&apos;s HPC systems. CCV staff members provide students with an overview of the topic and guide them through a series of hands-on activities. Tutorials can range from the basics of using HPC systems to the use of specific applications on Brown&apos;s HPC systems.
-            </p>
-          </CardContent>
-        </Card>
-        <FeaturedCarousel carouselData={featuredCarouselData} profiles={profiles} />
-      </section>
-
-      {/* Student Accounts */}
-      <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
-        <SectionHeader title="Student Accounts" align="center" />
-        <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex items-center px-6">
-            <div className="text-black text-xl" >
-              <p className="pb-8">
-                CCV provides access to HPC resources for classes, workshops, demonstrations, and other instructional uses. We do ask that you follow these guidelines to help us better support your class.
+  return (
+    <div className="w-full">
+      <div className="relative w-full flex flex-col">
+        <div className="bg-purple-900">
+          <Hero image={"/images/hero/hero.jpeg"}>
+          <div className="relative inset-x-0 flex-1 flex items-start w-full bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
+            <div className="absolute top-[12%] flex flex-col text-white space-y-6 px-12 md:px-24 w-[80vw]">
+              <TextAnimate className="font-bold text-6xl md:text-8xl">
+                Classroom Support
+              </TextAnimate>
+              <p className="text-4xl font-semibold">
+                CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code
               </p>
-              <ul className="pl-10 py-6">
-                <li className="py-2">
-                * Provide at least two week’s notice for new account requests and software requests. List all the names and emails of users (students, TAs, instructors) as well as the course number.
-                </li>
-                <li className="py-2">
-                * The instructor and/or TA(s) are responsible for all software setup.
-                </li>
-                <li className="py-2">
-                * Oscar is a shared resource, so access nodes and speed cannot be guaranteed.
-                </li>
-              </ul>
-              <Button variant="primary_filled" size="lg">
-              <a href="https://docs.ccv.brown.edu/oscar/account-types" target="_blank" rel="noopener noreferrer">Learn More</a>
-            </Button>
-            <Button variant="primary_filled" size="lg">
-              <a href="mailto:support@ccv.brown.edu" target="_blank" rel="noopener noreferrer">Request Student Accounts</a>
-            </Button>
             </div>
-          </CardContent>
-        </Card>        
-      </section>
+          </div>
+        </Hero>
+      </div>
+    </div>
 
-      {/* Computational Notebooks */}
-      <section className="content-wrapper py-24 px-14 lg:px-36">
-        <SectionHeader title="Computational Notebooks" align="center" />
+    {/* In Class Tutorials */}
+    <section className="content-wrapper pt-24 px-14 lg:px-36">
+      <SectionHeader title="In-Class Tutorials" align="center" />
+      <Card className="w-full border-none shadow-none rounded-none">
+        <CardContent className="mx-auto flex items-center px-6">
+           <div className="prose text-xl">
+              <div dangerouslySetInnerHTML={{ __html: inClassTutorials.content }} />
+          </div>
+        </CardContent>
+      </Card>
+      <FeaturedCarousel carouselData={featuredCarouselData} profiles={profiles} />
+    </section>
 
+    {/* Student Accounts */}
+    <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+      <SectionHeader title="Student Accounts" align="center" />
+      <Card className="w-full border-none shadow-none rounded-none">
+        <CardContent className="mx-auto flex items-center px-6">
+          <div className="text-black text-xl" >
+            <p className="pb-8">
+              CCV provides access to HPC resources for classes, workshops, demonstrations, and other instructional uses. We do ask that you follow these guidelines to help us better support your class.
+            </p>
+            <ul className="pl-10 py-6">
+              <li className="py-2">
+              * Provide at least two week’s notice for new account requests and software requests. List all the names and emails of users (students, TAs, instructors) as well as the course number.
+              </li>
+              <li className="py-2">
+              * The instructor and/or TA(s) are responsible for all software setup.
+              </li>
+              <li className="py-2">
+              * Oscar is a shared resource, so access nodes and speed cannot be guaranteed.
+              </li>
+            </ul>
+          <Button variant="primary_filled" size="lg">
+            <a href="https://docs.ccv.brown.edu/oscar/account-types" target="_blank" rel="noopener noreferrer">Learn More</a>
+          </Button>
+          <Button variant="primary_filled" size="lg">
+            <a href="mailto:support@ccv.brown.edu" target="_blank" rel="noopener noreferrer">Request Student Accounts</a>
+          </Button>
+          </div>
+        </CardContent>
+      </Card>        
+    </section>
+
+    {/* Computational Notebooks */}
+    <section className="content-wrapper py-24 px-14 lg:px-36">
+      <SectionHeader title="Computational Notebooks" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
             <div>
@@ -141,24 +169,22 @@ export default async function ClassroomSupport() {
                 Computational Notebooks provide a convenient, cloud-hosted way to serve Jupyter Notebooks for multiple users. Notebooks are launched within a pre-configured computing environment so that users do not need to install any software packages. This set-up free environment is ideal for courses and workshops where instructors intend for students to begin coding with minimal obstacles. Jupyter&apos;s flexibility allows instructors to pick the preferred language for a particular context, including Python, Julia, R and many more.
               </p>
             </div>
+          </CardContent>
+        </Card>
+        <Card className="w-full border-none shadow-none rounded-none">
+          <CardContent className="mx-auto flex items-center px-6">
+            <div className="text-black text-xl pb-8">
+              <h1 className="text-3xl font-semibold pb-8">Google Colab</h1>
+                <p >
+                  Google Colab comes bundled with most Python-specific software libraries, and it supports real-time collaboration. It integrates with Google Drive and should be sufficient for most classroom or workshop needs.
+                </p>
+                <Button variant="primary_filled" size="lg">
+                  <a href="https://colab.google" target="_blank" rel="noopener noreferrer">Learn More</a>
+                </Button>
+              </div>
             </CardContent>
-            </Card>
-
-            <Card className="w-full border-none shadow-none rounded-none">
-              <CardContent className="mx-auto flex items-center px-6">
-                <div className="text-black text-xl pb-8">
-                  <h1 className="text-3xl font-semibold pb-8">Google Colab</h1>
-                    <p >
-                      Google Colab comes bundled with most Python-specific software libraries, and it supports real-time collaboration. It integrates with Google Drive and should be sufficient for most classroom or workshop needs.
-                    </p>
-                    <Button variant="primary_filled" size="lg">
-                      <a href="https://colab.google" target="_blank" rel="noopener noreferrer">Learn More</a>
-                    </Button>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="w-full border-none shadow-none rounded-none">
+          </Card>
+          <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="mx-auto flex items-center px-6">
             <div>
               <h1 className="text-3xl font-semibold pb-8">Brown JupyterLab</h1>
