@@ -4,7 +4,8 @@ import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
-import { TableScrollButton } from '@/components/storage/StorageTableScrollButton';
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import { Button } from '@/components/ui/button';
 import { ServiceConfig, SelectedAnswers, TableRow, QuestionsConfig, ServiceFeature, featureIcons, featureColorMap  } from '@/lib/storage-types'
 import {
   createColumnHelper,
@@ -220,20 +221,23 @@ const tableData: TableRow[] = useMemo(() => {
     <>
       {/* Desktop View - Table */}
       <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md border border-neutral-200">       
-        <div className="flex justify-end border-b border-neutral-200 bg-white">
-          <TableScrollButton
-            onClick={() => scrollTable('left')}
-            className="mr-2"
-            aria-label="Scroll left"
-          >
-            &lt;
-          </TableScrollButton>
-          <TableScrollButton
-            onClick={() => scrollTable('right')}
-            aria-label="Scroll right"
-          >
-            &gt;
-          </TableScrollButton>
+        <div className="relative" ref={tableContainerRef}>
+          <div className="flex justify-end p-2 border-b border-neutral-200 bg-white">
+            <Button
+              onClick={() => scrollTable('left')}
+              aria-label="Scroll left"
+              variant="secondary_filled"
+              size="icon"
+              iconOnly={<FaChevronLeft/>} 
+            />
+            <Button
+              onClick={() => scrollTable('right')}
+              aria-label="Scroll right"
+              variant="secondary_filled"
+              size="icon"
+              iconOnly={<FaChevronRight />}
+            />
+          </div>
         </div>
         <div ref={tableContainerRef} className="overflow-x-scroll overflow-y-auto force-scrollbar h-[calc(100vh-200px)]">
           <table className="min-w-full divide-y divide-neutral-200">
