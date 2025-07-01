@@ -222,7 +222,7 @@ const tableData: TableRow[] = useMemo(() => {
       {/* Desktop View - Table */}
       <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md border border-neutral-200">       
         <div className="relative" ref={tableContainerRef}>
-          <div className="flex justify-end p-2 border-b border-neutral-200 bg-white">
+          <div className="flex justify-end px-2 border-b border-neutral-200 bg-white">
             <Button
               onClick={() => scrollTable('left')}
               aria-label="Scroll left"
@@ -240,7 +240,7 @@ const tableData: TableRow[] = useMemo(() => {
           </div>
         </div>
         <div ref={tableContainerRef} className="overflow-x-scroll overflow-y-auto force-scrollbar h-[calc(100vh-200px)]">
-          <table className="min-w-full divide-y divide-neutral-200">
+          <table className="min-w-full">
             <thead className="bg-white">
               {table.getHeaderGroups().map(headerGroup => (
                 <tr key={headerGroup.id}>
@@ -264,14 +264,13 @@ const tableData: TableRow[] = useMemo(() => {
                 </tr>
               ))}
             </thead>
-            <tbody className="bg-white divide-y divide-neutral-200">
+            <tbody className="bg-white">
               {table.getRowModel().rows.map(row => (
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell, index) => (
                     <td key={cell.id} className={cn(
-                      "py-2",
                       index < row.getVisibleCells().length - 1 && 'border-y border border-neutral-200',
-                      cell.column.id === 'featureName' && 'sticky left-0 z-10 bg-white border border-neutral-200'
+                      cell.column.id === 'featureName' && 'sticky left-0 z-10 bg-white'
                     )}>
                       {flexRender(
                           cell.column.columnDef.cell,
