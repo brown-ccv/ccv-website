@@ -2,7 +2,7 @@ import React from "react"
 import { Hero } from "@/components/Hero"
 import { TextAnimate } from "@/components/magicui/text-animate"
 import { readContentFile } from "@/lib/content-utils"
-import StorageTool from "@/components/StorageTool"
+import StorageTool from "@/components/storage/StorageTool"
 import { PageContentData, QuestionsConfig, SelectedAnswers, FormQuestions } from '@/lib/storage-types'
 
 export default async function CompareStorageOptions() {

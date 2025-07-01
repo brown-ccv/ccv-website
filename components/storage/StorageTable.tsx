@@ -1,9 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { cn, humanize } from '@/lib/utils';
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import { Button } from '@/components/ui/button';
 import { ServiceConfig, SelectedAnswers, TableRow, QuestionsConfig, ServiceFeature, featureIcons, featureColorMap  } from '@/lib/storage-types'
 import {
   createColumnHelper,
@@ -12,7 +14,7 @@ import {
   useReactTable,
   ColumnDef,
 } from '@tanstack/react-table';
-import StorageServiceCard from '@/components/StorageServiceCard';
+import StorageServiceCard from '@/components/storage/StorageServiceCard';
 
 export interface TableProps {
   services: ServiceConfig[];
@@ -76,6 +78,7 @@ const getColumnDisabledState = (
 // --- Main Table Component ---
 const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) => {
   const columnHelper = createColumnHelper<TableRow>();
+  const tableContainerRef = useRef<HTMLDivElement>(null);
 
 const tableData: TableRow[] = useMemo(() => {
   const uniqueFeatureNames = new Set<string>();
@@ -204,50 +207,80 @@ const tableData: TableRow[] = useMemo(() => {
     }
   });
 
+  const scrollTable = (direction: 'left' | 'right') => {
+    if (tableContainerRef.current) {
+      const scrollAmount = 300;
+      tableContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <>
       {/* Desktop View - Table */}
-      <div className="hidden lg:block w-full overflow-x-auto rounded-lg shadow-md border border-neutral-200">
-        <table className="min-w-full divide-y divide-neutral-200">
-          <thead className="bg-white">
-            {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header, index) => (
-                  <th
-                    key={header.id}
-                    className={cn(
-                      "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider min-w-[175px]",
-                      header.column.getCanSort() ? 'cursor-pointer select-none' : '',
-                      index < headerGroup.headers.length - 1 && 'border-r border-neutral-200'
-                    )}
-                  >
-                    {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                    )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody className="bg-white divide-y divide-neutral-200">
-            {table.getRowModel().rows.map(row => (
-              <tr key={row.id}>
-                {row.getVisibleCells().map((cell, index) => (
-                  <td key={cell.id}                     className={cn(
-                    "py-2",
-                    index < row.getVisibleCells().length - 1 && 'border-r border-neutral-200'
-                  )}>
-                    {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                    )}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md border border-neutral-200">       
+        <div className="relative" ref={tableContainerRef}>
+          <div className="flex justify-end p-2 border-b border-neutral-200 bg-white">
+            <Button
+              onClick={() => scrollTable('left')}
+              aria-label="Scroll left"
+              variant="secondary_filled"
+              size="icon"
+              iconOnly={<FaChevronLeft/>} 
+            />
+            <Button
+              onClick={() => scrollTable('right')}
+              aria-label="Scroll right"
+              variant="secondary_filled"
+              size="icon"
+              iconOnly={<FaChevronRight />}
+            />
+          </div>
+        </div>
+        <div ref={tableContainerRef} className="overflow-x-scroll force-scrollbar">
+          <table className="min-w-full divide-y divide-neutral-200">
+            <thead className="bg-white">
+              {table.getHeaderGroups().map(headerGroup => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header, index) => (
+                    <th
+                      key={header.id}
+                      className={cn(
+                        "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider min-w-[175px]",
+                        header.column.getCanSort() ? 'cursor-pointer select-none' : '',
+                        index < headerGroup.headers.length - 1 && 'border-r border-neutral-200'
+                      )}
+                    >
+                      {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody className="bg-white divide-y divide-neutral-200">
+              {table.getRowModel().rows.map(row => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map((cell, index) => (
+                    <td key={cell.id}                     className={cn(
+                      "py-2",
+                      index < row.getVisibleCells().length - 1 && 'border-r border-neutral-200'
+                    )}>
+                      {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Mobile View - Cards */}
