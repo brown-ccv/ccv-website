@@ -5,8 +5,6 @@ import { Button } from "@/components/ui/button"
 import CCVLogo from "@/components/assets/CCVLogo"
 import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
-import { FiHelpCircle, FiFileText, FiMenu, FiChevronDown as FiChevronDownIcon } from "react-icons/fi"
-
 import {
   FaChevronDown,
   FaSearch,
@@ -20,7 +18,10 @@ import {
   FaWindowRestore,
   FaFileImport,
   FaDesktop,
+  FaQuestionCircle,
+  FaBars,
 } from "react-icons/fa"
+import { FaFileLines } from "react-icons/fa6"
 
 interface RouteItem {
   name: string
@@ -256,7 +257,7 @@ export const Navbar: React.FC = () => {
               <NavigationMenu.Link
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/help">
-                <FiHelpCircle className="text-3xl mr-0"/>Help
+                <FaQuestionCircle className="text-2xl mr-0 stroke-[2.5]"/>Help
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
@@ -265,7 +266,7 @@ export const Navbar: React.FC = () => {
               <NavigationMenu.Link
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer">
-                <FiFileText size="" className="text-3xl mr-0" />Docs
+                <FaFileLines size="" className="text-2xl mr-0 stroke-[2.5]" />Docs
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
@@ -276,9 +277,7 @@ export const Navbar: React.FC = () => {
                 className="flex items-center justify-center ml-6"
                 iconOnly={<FaSearch />}
                 size="icon"
-              >
-                <FaSearch />
-              </Button>
+              />
             </NavigationMenu.Item>
           </NavigationMenu.List>
         </NavigationMenu.Root>
@@ -286,7 +285,7 @@ export const Navbar: React.FC = () => {
         {/* Mobile Menu Hamburger Button */}
         <div className="lg:hidden flex items-center">
           <Button variant="secondary_filled" size="icon" className="text-blue-navbar rounded-2xl" onClick={toggleMobileMenu}>
-            <FiMenu className="h-6 w-6" />
+            <FaBars className="h-6 w-6" />
           </Button>
         </div>
 
@@ -312,10 +311,10 @@ export const Navbar: React.FC = () => {
               <div key={section.name}>
                 <button
                   onClick={() => toggleSubmenu(section.name)}
-                  className="flex items-center justify-between w-full text-sunglow-400 font-semibold text-3xl py-7 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+                  className="flex items-center justify-between w-full text-sunglow-400 font-semibold text-2xl py-7 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
                 >
                   {section.name}
-                  <FiChevronDownIcon className={`h-8 w-8 transition-transform ${openSubmenus.includes(section.name) ? 'rotate-180' : ''}`} />
+                  <FaChevronDown className={`h-8 w-8 transition-transform ${openSubmenus.includes(section.name) ? 'rotate-180' : ''}`} />
                 </button>
                 {openSubmenus.includes(section.name) && (
                   <div className="ml-6">
@@ -332,13 +331,13 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            <Link href="/blog" className="flex text-sunglow-400 font-semibold text-3xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+            <Link href="/blog" className="flex text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
               Blog
             </Link>
-            <Link href="/help" className="block text-sunglow-400 font-semibold text-3xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+            <Link href="/help" className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
               Help
             </Link>
-            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-sunglow-400 font-semibold text-3xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-sunglow-400 font-semibold text-2xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
               Docs
             </a>
           </div>
