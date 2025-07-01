@@ -72,7 +72,7 @@ export interface ServiceConfig {
   name: string;
   description?: string;
   links?: ServiceLink[];
-  features: ServiceFeature[];
+  features?: ServiceFeature[];
 }
 
 // Form

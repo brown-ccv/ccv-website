@@ -80,29 +80,24 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) =
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
   // --- FEATURE SORTING LOGIC ---
-  const sortedFeatureNames = useMemo(() => {
-    const featureNamesFromForm = questions.map(q => q.affected_feature);
-    const uniqueServiceFeatureNames = new Set<string>();
-    services.forEach(service => {
-      service.features?.forEach(feature => {
-        uniqueServiceFeatureNames.add(feature.name);
-      });
-    });
+  // Extract feature names from the form questions once
+  const featureNamesFromForm = useMemo(() => {
+    return questions.map(q => q.affected_feature);
+  }, [questions]); // useMemo checks the questions array on every re-render and only runs map if it has changed
 
-    const featuresNotInForm: string[] = [];
-    const featuresInFormOrder: string[] = [];
+  const sortedFeatureNames = useMemo(() => {
 
     // Separate features: those in the form, and those not
-    Array.from(uniqueServiceFeatureNames).forEach(featureName => {
-      if (featureNamesFromForm.includes(featureName)) {
-        featuresInFormOrder.push(featureName);
-      } else {
-        featuresNotInForm.push(featureName);
-      }
-    });
+    const featuresInForm = featureNamesFromForm.filter(featureName =>
+      featureNamesFromForm.includes(featureName)
+    );
+
+    const featuresNotInForm = featureNamesFromForm.filter(featureName =>
+      !featureNamesFromForm.includes(featureName)
+    );
 
     // Sort features that are in the form based on their order in questions
-    featuresInFormOrder.sort((a, b) => {
+    featuresInForm.sort((a, b) => {
       const indexA = featureNamesFromForm.indexOf(a);
       const indexB = featureNamesFromForm.indexOf(b);
       return indexA - indexB;
@@ -112,21 +107,21 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) =
     featuresNotInForm.sort((a, b) => a.localeCompare(b));
 
     // Combine them: form features first, then others alphabetically
-    return [...featuresInFormOrder, ...featuresNotInForm];
-  }, [services, questions]);
+    return [...featuresInForm, ...featuresNotInForm];
+  }, [services, featureNamesFromForm]); // if services and the memoized featureNamesFromForm are the same, don't run this again at every re-render
 
   const tableData: TableRow[] = useMemo(() => {
-    // Use the newly sortedFeatureNames
     return sortedFeatureNames.map(featureName => {
       const row: TableRow = { featureName: featureName };
       services.forEach(service => {
+        // If a service doesn't have the feature, its value for that row will be 'undefined'
         row[service.name] = service.features?.find(f => f.name === featureName);
       });
       return row;
     });
   }, [services, sortedFeatureNames]);
 
-  // 2. define columns for TanStack Table (memoized for performance)
+  // --- DEFINE COLUMNS FOR TANSTACK TABLE ---
   const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
     const featureNameColumn: ColumnDef<TableRow, any> = columnHelper.accessor('featureName', {
       id: 'featureName',
