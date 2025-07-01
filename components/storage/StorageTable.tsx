@@ -4,7 +4,8 @@ import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
-import { TableScrollButton } from '@/components/storage/StorageTableScrollButton';
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import { Button } from '@/components/ui/button';
 import { ServiceConfig, SelectedAnswers, TableRow, QuestionsConfig, ServiceFeature, featureIcons, featureColorMap  } from '@/lib/storage-types'
 import {
   createColumnHelper,
@@ -222,19 +223,20 @@ const tableData: TableRow[] = useMemo(() => {
       <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md border border-neutral-200">       
         <div className="relative" ref={tableContainerRef}>
           <div className="flex justify-end p-2 border-b border-neutral-200 bg-white">
-            <TableScrollButton
+            <Button
               onClick={() => scrollTable('left')}
-              className="mr-2"
               aria-label="Scroll left"
-            >
-              &lt;
-            </TableScrollButton>
-            <TableScrollButton
+              variant="secondary_filled"
+              size="icon"
+              iconOnly={<FaChevronLeft/>} 
+            />
+            <Button
               onClick={() => scrollTable('right')}
               aria-label="Scroll right"
-            >
-              &gt;
-            </TableScrollButton>
+              variant="secondary_filled"
+              size="icon"
+              iconOnly={<FaChevronRight />}
+            />
           </div>
         </div>
         <div ref={tableContainerRef} className="overflow-x-scroll force-scrollbar">
