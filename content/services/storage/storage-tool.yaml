@@ -471,7 +471,7 @@ questions:
           - True
           - False
   - question: Data Snapshots or Replication
-    affected_feature: data_protection
+    affected_feature: data_protection_snapshots
     default_answer: No
     answers:
       - answer: Yes

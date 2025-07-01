@@ -81,34 +81,45 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) =
 
   // --- FEATURE SORTING LOGIC ---
   // Extract feature names from the form questions once
-  const featureNamesFromForm = useMemo(() => {
+  const featureNamesInForm = useMemo(() => {
     return questions.map(q => q.affected_feature);
   }, [questions]); // useMemo checks the questions array on every re-render and only runs map if it has changed
 
   const sortedFeatureNames = useMemo(() => {
+    // Get all unique feature names from all services because Globus does not have any features
+    const allServiceFeatures = new Set<string>();
+    services.forEach(service => {
+      service.features?.forEach(feature => {
+        allServiceFeatures.add(feature.name);
+      });
+    });
+
+    // Convert the Set to an Array for filtering and sorting
+    const allServiceFeatureNamesArray = Array.from(allServiceFeatures);
 
     // Separate features: those in the form, and those not
-    const featuresInForm = featureNamesFromForm.filter(featureName =>
-      featureNamesFromForm.includes(featureName)
+    const featuresInForm = allServiceFeatureNamesArray.filter(featureName =>
+      featureNamesInForm.includes(featureName)
     );
 
-    const featuresNotInForm = featureNamesFromForm.filter(featureName =>
-      !featureNamesFromForm.includes(featureName)
+    const featuresNotInForm = allServiceFeatureNamesArray.filter(featureName =>
+      !featureNamesInForm.includes(featureName)
     );
 
     // Sort features that are in the form based on their order in questions
     featuresInForm.sort((a, b) => {
-      const indexA = featureNamesFromForm.indexOf(a);
-      const indexB = featureNamesFromForm.indexOf(b);
+      const indexA = featureNamesInForm.indexOf(a);
+      const indexB = featureNamesInForm.indexOf(b);
       return indexA - indexB;
     });
 
     // Sort features not in the form alphabetically
     featuresNotInForm.sort((a, b) => a.localeCompare(b));
+    
 
     // Combine them: form features first, then others alphabetically
     return [...featuresInForm, ...featuresNotInForm];
-  }, [services, featureNamesFromForm]); // if services and the memoized featureNamesFromForm are the same, don't run this again at every re-render
+  }, [services, featureNamesInForm]); // if services and the memoized featureNamesInForm are the same, don't run this again at every re-render
 
   const tableData: TableRow[] = useMemo(() => {
     return sortedFeatureNames.map(featureName => {
