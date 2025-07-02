@@ -8,7 +8,6 @@ import { getEventData } from "@/app/queries";
 import { getStringDate } from "@/components/calendar/utils";
 import React, { Suspense } from "react";
 import Spinner from "@/components/assets/Spinner";
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { Button } from "@/components/ui/button"
 import { ScrollButton } from "@/components/ui/scroll-button"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -61,32 +60,24 @@ export default async function Home() {
     return (
       <div className="w-full">
         <div className="relative w-full flex flex-col">
-          <div className="bg-blue-navbar">
-            <Hero image={"/images/hero/ccv-original.png"} height="h-[1000px]">
-              <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-                <div className="absolute top-[12%] flex flex-col text-white space-y-6 w-[80vw]">
-                  <TextAnimate className="font-bold text-6xl md:text-8xl">
-                    Center for Computation and Visualization
-                  </TextAnimate>
-                  <p className="text-4xl font-semibold">
-                    Advancing computational research with scientific and computing
-                    expertise.
-                  </p>
-                  <div className="flex flex-row flex-wrap gap-4 pt-8 md:pt-16">
-                    <Button
-                      variant="primary_filled"
-                      size="xl"
-                    >
-                      <a href="mailto:ccv-support@brown.edu">
-                        Work with Us
-                      </a>
-                    </Button>
-                    <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
-                  </div>
-                </div>
-              </div>
+        <div className="bg-blue-navbar">
+            <Hero 
+              image={"/images/hero/ccv-original.png"}
+              title="Center for Computation and Visualization"
+              description="Advancing computational research with scientific and computing expertise."
+              titleClassName="font-bold text-6xl md:text-8xl"
+            >
+              <Button
+                variant="primary_filled"
+                size="xl"
+              >
+                <a href="mailto:ccv-support@brown.edu">
+                  Work with Us
+                </a>
+              </Button>
+              <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
             </Hero>
-          </div>
+        </div>
           <HeroCard />
           <ImpactBanner />
           <section className="content-wrapper pt-24 px-36">
