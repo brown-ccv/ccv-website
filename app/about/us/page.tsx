@@ -1,7 +1,6 @@
 import React from "react"
 import path from 'path'
 import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"

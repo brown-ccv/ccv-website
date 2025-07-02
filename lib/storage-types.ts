@@ -65,6 +65,7 @@ export interface ServiceFeature {
 export interface ServiceLink {
   text: string;
   target: string;
+  category?: string;
 }
 
 export interface ServiceConfig {

@@ -1,7 +1,6 @@
 import React, { Suspense } from "react"
 import { Workday } from "@/components/Workday"
 import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
 import { SectionHeader } from "@/components/ui/section-header"

@@ -1,6 +1,5 @@
 import React from "react";
 import { Hero } from "@/components/Hero";
-import { TextAnimate } from "@/components/magicui/text-animate";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
