@@ -7,7 +7,7 @@ import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
   FaChevronDown,
-  FaSearch,
+  // FaSearch,
   FaUser,
   FaUserCheck,
   FaUserPlus,
@@ -20,6 +20,10 @@ import {
   FaDesktop,
   FaQuestionCircle,
   FaBars,
+  FaHandshake,
+  FaCode,
+  FaChalkboardTeacher,
+  FaBook,
 } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
 
@@ -129,34 +133,38 @@ const routes: NavSection[] = [
     ],
   },
   {
-    name: "Portfolio",
-    groups: [
-      {
-        name: "",
-        routes: [
+            name: "Portfolio",
+        groups: [
           {
-            name: "Collaborations",
-            href: "/portfolio/collaborations",
-            description: "",
-          },
-          {
-            name: "Software",
-            href: "/portfolio/software",
-            description: "",
-          },
-          {
-            name: "Workshops and Talks",
-            href: "/portfolio/workshops-and-talks",
-            description: "",
-          },
-          {
-            name: "Publications",
-            href: "https://publications.ccv.brown.edu",
-            description: "",
+            name: "",
+            routes: [
+              {
+                name: "Collaborations",
+                href: "/portfolio/collaborations",
+                description: "*Coming Soon*",
+                icon: FaHandshake,
+              },
+              {
+                name: "Software",
+                href: "/portfolio/software",
+                description: "*Coming Soon*",
+                icon: FaCode,
+              },
+              {
+                name: "Workshops and Talks",
+                href: "/portfolio/workshops-and-talks",
+                description: "*Coming Soon*",
+                icon: FaChalkboardTeacher,
+              },
+              {
+                name: "Publications",
+                href: "https://publications.ccv.brown.edu",
+                description: "",
+                icon: FaBook,
+              },
+            ],
           },
         ],
-      },
-    ],
   },
   {
     name: "About",
@@ -241,18 +249,18 @@ export const Navbar: React.FC = () => {
               </NavigationMenu.Item>
             )}
 
-            <NavigationMenu.Item>
-              {/* Blog */}
-              <NavigationMenu.Link
+            {/* <NavigationMenu.Item> */}
+              {/* TODO: Add blog */}
+              {/* <NavigationMenu.Link
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/blog">
                 Blog
               </NavigationMenu.Link>
-            </NavigationMenu.Item>
+            </NavigationMenu.Item> */}
           </NavigationMenu.List>
 
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
-            {/* Help */}
+            {/* TODO: Where does Help link to? */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
@@ -270,15 +278,15 @@ export const Navbar: React.FC = () => {
               </NavigationMenu.Link>
             </NavigationMenu.Item>
 
-            {/* Search */}
-            <NavigationMenu.Item>
+            {/* TODO: Add search */}
+            {/* <NavigationMenu.Item>
               <Button
                 variant="secondary_filled"
                 className="flex items-center justify-center ml-6"
                 iconOnly={<FaSearch />}
                 size="icon"
               />
-            </NavigationMenu.Item>
+            </NavigationMenu.Item> */}
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
@@ -366,7 +374,7 @@ const NavigationSectionContent: React.FC<{
               {group.routes.map((route) => (
                 <li key={route.href} className="hover:bg-neutral-50 focus:bg-neutral-100 p-1 sm:p-1.5 md:p-2">
                   <NavigationMenu.Link
-                    href={route.href}
+                    href={route.href} target="_blank" rel="noopener noreferrer"
                     className="flex items-start focus:outline-none"
                   >
                     {route.icon && (
