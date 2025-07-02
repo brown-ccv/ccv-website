@@ -226,9 +226,9 @@ const tableData: TableRow[] = useMemo(() => {
   return (
     <>
       {/* Desktop View - Table */}
-      <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md border border-neutral-200">       
+      <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md">       
         <div className="relative" ref={tableContainerRef}>
-          <div className="flex justify-end p-2 border-b border-neutral-200 bg-white">
+          <div className="flex justify-end px-2 border-b border-neutral-200 bg-white sticky top-0 z-40">
             <Button
               onClick={() => scrollTable('left')}
               aria-label="Scroll left"
@@ -245,9 +245,9 @@ const tableData: TableRow[] = useMemo(() => {
             />
           </div>
         </div>
-        <div ref={tableContainerRef} className="overflow-x-scroll force-scrollbar">
-          <table className="min-w-full divide-y divide-neutral-200">
-            <thead className="bg-white">
+        <div ref={tableContainerRef} className="overflow-x-scroll overflow-y-auto force-scrollbar h-[calc(100vh-200px)]">
+          <table className="min-w-full border-separate" style={{ borderSpacing: 0 }}>
+            <thead className="bg-white sticky top-0 z-20 border-b border-neutral-200">
               {table.getHeaderGroups().map(headerGroup => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header, index) => (
@@ -256,7 +256,9 @@ const tableData: TableRow[] = useMemo(() => {
                       className={cn(
                         "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider min-w-[175px]",
                         header.column.getCanSort() ? 'cursor-pointer select-none' : '',
-                        index < headerGroup.headers.length - 1 && 'border-r border-neutral-200'
+                        index < headerGroup.headers.length - 1 && 'border border-neutral-200',
+                        'sticky top-0 bg-white border-b border-neutral-200',
+                        header.id === 'featureName' ? 'z-30 left-0' : 'z-20',
                       )}
                     >
                       {flexRender(
@@ -268,13 +270,13 @@ const tableData: TableRow[] = useMemo(() => {
                 </tr>
               ))}
             </thead>
-            <tbody className="bg-white divide-y divide-neutral-200">
+            <tbody className="bg-white">
               {table.getRowModel().rows.map(row => (
                 <tr key={row.id}>
                   {row.getVisibleCells().map((cell, index) => (
-                    <td key={cell.id}                     className={cn(
-                      "py-2",
-                      index < row.getVisibleCells().length - 1 && 'border-r border-neutral-200'
+                    <td key={cell.id} className={cn(
+                      index < row.getVisibleCells().length && 'border-y border border-neutral-200',
+                      cell.column.id === 'featureName' && 'sticky left-0 z-10 bg-white'
                     )}>
                       {flexRender(
                           cell.column.columnDef.cell,
