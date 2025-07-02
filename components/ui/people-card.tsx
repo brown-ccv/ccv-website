@@ -6,6 +6,8 @@ import Image from "next/image";
 import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { cardVariants } from "@/components/ui/variants";
+import * as Dialog from "@radix-ui/react-dialog";
+import { FaGithub, FaInfoCircle } from "react-icons/fa";
 
 interface CardWithImageProps {
   className?: string;
@@ -13,32 +15,109 @@ interface CardWithImageProps {
   hoverImagePath?: string;
   name: string;
   title: string;
+  personDetails?: {
+    name: string;
+    title: string;
+    team?: string;
+    subteam?: string;
+    type?: string;
+    github_username?: string;
+    brown_directory_uuid?: string;
+    bio?: string;
+    image?: string;
+  };
 }
 
-export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, hoverImagePath, name, title, ...props }) => {
+export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, hoverImagePath, name, title, personDetails, ...props }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
-    <Card
-      className={cn("overflow-hidden", cardVariants({ variant: "people" }), "w-[400px]", "h-[600px]", "flex-shrink-0")}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <CardContent className="flex flex-col h-full">
-        <div className="relative overflow-hidden">
-          <Image
-            src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
-            alt={name}
-            width="500"
-            height="500"
-            className="rounded-full transition-opacity duration-300 max-h-[350px] min-h-[350px] max-w-[350px]"
-          />
-        </div>
-        <div>
-          <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
-          <CardDescription className="text-xl italic text-center">{title}</CardDescription>
-        </div>
-      </CardContent>
-    </Card>
+    <Dialog.Root open={open} onOpenChange={setOpen}>
+      <Dialog.Trigger asChild>
+        <Card
+          className={cn("overflow-hidden cursor-pointer", cardVariants({ variant: "people" }), "w-[400px]", "h-[600px]", "flex-shrink-0")}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+          onClick={() => setOpen(true)}
+        >
+          <CardContent className="flex flex-col h-full">
+            <div className="relative overflow-hidden">
+              <Image
+                src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
+                alt={name}
+                width="500"
+                height="500"
+                className="rounded-full transition-opacity duration-300 max-h-[350px] min-h-[350px] max-w-[350px]"
+              />
+            </div>
+            <div>
+              <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
+              <CardDescription className="text-xl italic text-center">{title}</CardDescription>
+            </div>
+          </CardContent>
+        </Card>
+      </Dialog.Trigger>
+      <Dialog.Portal>
+        <Dialog.Overlay className="fixed inset-0 bg-black/40 z-50" />
+        <Dialog.Content className="fixed z-50 left-1/2 top-1/2 max-w-4xl w-[98vw] sm:w-[90vw] md:w-[80vw] lg:w-[60vw] -translate-x-1/2 -translate-y-1/2 bg-white rounded-xl shadow-lg p-6 flex flex-col gap-4 max-h-[95vh] overflow-y-auto">
+          <div className="flex flex-col items-center gap-2">
+            <Image
+              src={imagePath}
+              alt={name}
+              width={180}
+              height={180}
+              className="rounded-full border-4 border-neutral-200 shadow-md"
+            />
+            <Dialog.Title asChild>
+              <h2 className="text-3xl font-bold text-center mt-2">{personDetails?.name || name}</h2>
+            </Dialog.Title>
+            <div className="text-2xl text-neutral-700 text-center italic mb-2">{personDetails?.title || title}</div>
+            {personDetails?.team && (
+              <div className="text-lg text-neutral-500 text-center font-medium -mb-2">
+                {personDetails.team}
+              </div>
+            )}
+            {personDetails?.subteam && (
+              <div className="text-md text-neutral-400 text-center">
+                {personDetails.subteam}
+              </div>
+            )}
+            <div className="flex gap-4 mt-2">
+              {personDetails?.github_username && personDetails.github_username !== "" && (
+                <a
+                  href={`https://github.com/${personDetails.github_username}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="GitHub Profile"
+                  className="text-black hover:text-keppel-700 text-2xl"
+                >
+                  <FaGithub />
+                </a>
+              )}
+              {personDetails?.brown_directory_uuid && personDetails.brown_directory_uuid !== "" && (
+                <a
+                  href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="Brown Directory"
+                  className="text-black hover:text-keppel-700 text-2xl"
+                >
+                  <FaInfoCircle />
+                </a>
+              )}
+            </div>
+          </div>
+          {personDetails?.bio && (
+            <div className="mt-4 text-lg text-neutral-800">
+              {personDetails.bio}
+            </div>
+          )}
+          <Dialog.Close asChild>
+            <button className="mt-4 px-4 py-2 rounded-lg bg-keppel-700 text-white hover:bg-keppel-800 self-center text-lg font-semibold">Close</button>
+          </Dialog.Close>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 };
