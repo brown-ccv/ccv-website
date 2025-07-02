@@ -15,6 +15,7 @@ import {
   ColumnDef,
 } from '@tanstack/react-table';
 import StorageServiceCard from '@/components/storage/StorageServiceCard';
+import { getAllUniqueFeatureNames, sortFeatures } from '@/components/storage/utils';
 
 export interface TableProps {
   services: ServiceConfig[];
@@ -81,27 +82,32 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) =
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
 const tableData: TableRow[] = useMemo(() => {
-  const uniqueFeatureNames = new Set<string>();
-  services.forEach(service => {
-      service.features?.forEach(feature => {
-          uniqueFeatureNames.add(feature.name);
-      });
-  });
+  // Filter services to only include those with at least one feature
+  const servicesWithFeatures = services.filter(service => 
+    service.features && service.features.length > 0
+  );
 
-  // TODO: sort the table rows by questions first, then other features alphabetically
-  const orderedFeatureNames = Array.from(uniqueFeatureNames).sort();
+  // Use shared utility to get all unique feature names
+  const featureNames = getAllUniqueFeatureNames(servicesWithFeatures);
+  // Use improved sortFeatures utility
+  const orderedFeatureNames = sortFeatures(featureNames, questions);
 
   return orderedFeatureNames.map(featureName => {
       const row: TableRow = { featureName: featureName };
-      services.forEach(service => {
+      servicesWithFeatures.forEach(service => {
           row[service.name] = service.features?.find(f => f.name === featureName);
       });
       return row;
   });
-}, [services]);
+}, [services, questions]);
 
   // 2. define columns for TanStack Table (memoized for performance)
   const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
+    // Filter services to only include those with at least one feature
+    const servicesWithFeatures = services.filter(service => 
+      service.features && service.features.length > 0
+    );
+
     const featureNameColumn: ColumnDef<TableRow, any> = columnHelper.accessor('featureName', {
       id: 'featureName',
       header: () => (
@@ -121,7 +127,7 @@ const tableData: TableRow[] = useMemo(() => {
       size: 200,
     });
 
-    const serviceColumns: ColumnDef<TableRow, any>[] = services.map(service => {
+    const serviceColumns: ColumnDef<TableRow, any>[] = servicesWithFeatures.map(service => {
       // Determine if the *entire service column* should be disabled (grayed out)
       const isDisabled = getColumnDisabledState(service, selectedAnswers, questions);
       const columnClass = isDisabled ? 'opacity-30 grayscale' : '';
@@ -287,7 +293,9 @@ const tableData: TableRow[] = useMemo(() => {
 
       {/* Mobile View - Cards */}
       <div className="lg:hidden w-full flex flex-col gap-4">
-        {services.map((service) => (
+        {services
+          .filter(service => service.features && service.features.length > 0)
+          .map((service) => (
           <StorageServiceCard
             key={service.name}
             service={service}

@@ -4,6 +4,7 @@ import { ServiceConfig, QuestionsConfig, SelectedAnswers, ServiceFeature, featur
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge'
 import { cn, humanize } from "@/lib/utils"
+import { sortFeatures } from '@/components/storage/utils';
 
 interface ServiceCardProps {
     service: ServiceConfig;
@@ -12,7 +13,7 @@ interface ServiceCardProps {
     isDisabled: boolean;
   }
 
-const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, isDisabled }) => {
+const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, questionsConfig, isDisabled }) => {
 
   // Helper to format the display value of a feature class
   const formatFeatureDisplayValue = (feature: ServiceFeature): string => {
