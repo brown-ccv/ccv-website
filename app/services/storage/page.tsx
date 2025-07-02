@@ -21,41 +21,34 @@ export default async function Storage() {
     <div className="w-full">
       <div className="relative w-full flex flex-col">
         <div className="bg-purple-900">
-          <Hero image={"/images/hero/hero.jpeg"}>
-            <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-              <div className="absolute top-[12%] flex flex-col text-white space-y-6">
-                <TextAnimate className="font-bold text-6xl md:text-8xl">
-                  {pageContent?.title || ''}
-                </TextAnimate>
-                <p className="text-4xl font-semibold">
-                  {pageContent?.description}
-                </p>
-                <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
-                <Button variant="primary_filled" size="xl">
-                  <Link href="/services/storage/compare">
-                    Compare Storage Options
+          <Hero 
+            image={"/images/hero/hero.jpeg"}
+            title={pageContent?.title || ''}
+            description={pageContent?.description}
+            titleClassName="font-bold text-6xl md:text-8xl"
+          >
+            <Button variant="primary_filled" size="xl">
+              <Link href="/services/storage/compare">
+                Compare Storage Options
+              </Link>
+            </Button>
+            {heroLinks.map((link, index) => {
+              return (
+                <Button
+                  key={index}
+                  variant="secondary_filled"
+                  size="xl"
+                >
+                  <Link 
+                    href={link.target} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    {link.text}
                   </Link>
                 </Button>
-                {heroLinks.map((link, index) => {
-                  return (
-                    <Button
-                      key={index}
-                      variant="secondary_filled"
-                      size="xl"
-                    >
-                      <Link 
-                        href={link.target} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
-                        {link.text}
-                      </Link>
-                    </Button>
-                  );
-                })}
-              </div>
-              </div>
-            </div>
+              );
+            })}
           </Hero>
         </div>
       </div>
