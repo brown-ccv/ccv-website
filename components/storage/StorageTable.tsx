@@ -15,6 +15,7 @@ import {
   ColumnDef,
 } from '@tanstack/react-table';
 import StorageServiceCard from '@/components/storage/StorageServiceCard';
+import { getAllUniqueFeatureNames, sortFeatures } from '@/components/storage/utils';
 
 export interface TableProps {
   services: ServiceConfig[];
@@ -86,41 +87,10 @@ const tableData: TableRow[] = useMemo(() => {
     service.features && service.features.length > 0
   );
 
-  const uniqueFeatureNames = new Set<string>();
-  servicesWithFeatures.forEach(service => {
-      service.features?.forEach(feature => {
-          uniqueFeatureNames.add(feature.name);
-      });
-  });
-
-  // Sort features according to question order, then alphabetically
-  const sortFeatures = (featureNames: string[]): string[] => {
-    // Get the question order dynamically from questions
-    const questionOrder = questions.map(q => q.affected_feature);
-
-    return [...featureNames].sort((a, b) => {
-      const aIndex = questionOrder.indexOf(a);
-      const bIndex = questionOrder.indexOf(b);
-      
-      // If both features are in the question order, sort by their position
-      if (aIndex !== -1 && bIndex !== -1) {
-        return aIndex - bIndex;
-      }
-      
-      // If only one feature is in the question order, prioritize it
-      if (aIndex !== -1 && bIndex === -1) {
-        return -1;
-      }
-      if (aIndex === -1 && bIndex !== -1) {
-        return 1;
-      }
-      
-      // If neither feature is in the question order, sort alphabetically
-      return a.localeCompare(b);
-    });
-  };
-
-  const orderedFeatureNames = sortFeatures(Array.from(uniqueFeatureNames));
+  // Use shared utility to get all unique feature names
+  const featureNames = getAllUniqueFeatureNames(servicesWithFeatures);
+  // Use improved sortFeatures utility
+  const orderedFeatureNames = sortFeatures(featureNames, questions);
 
   return orderedFeatureNames.map(featureName => {
       const row: TableRow = { featureName: featureName };

@@ -3,6 +3,7 @@ import React from 'react';
 import { ServiceConfig, QuestionsConfig, SelectedAnswers, ServiceFeature, featureIcons, featureColorMap } from '@/lib/storage-types';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { cn, humanize } from "@/lib/utils"
+import { sortFeatures } from '@/components/storage/utils';
 
 interface ServiceCardProps {
     service: ServiceConfig;
@@ -24,33 +25,6 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, questionsConf
     return String(feature.value);
   };
 
-  // Helper to sort features according to question order, then alphabetically
-  const sortFeatures = (features: ServiceFeature[]): ServiceFeature[] => {
-    // Get the question order dynamically from questionsConfig
-    const questionOrder = questionsConfig.map(q => q.affected_feature);
-
-    return [...features].sort((a, b) => {
-      const aIndex = questionOrder.indexOf(a.name);
-      const bIndex = questionOrder.indexOf(b.name);
-      
-      // If both features are in the question order, sort by their position
-      if (aIndex !== -1 && bIndex !== -1) {
-        return aIndex - bIndex;
-      }
-      
-      // If only one feature is in the question order, prioritize it
-      if (aIndex !== -1 && bIndex === -1) {
-        return -1;
-      }
-      if (aIndex === -1 && bIndex !== -1) {
-        return 1;
-      }
-      
-      // If neither feature is in the question order, sort alphabetically
-      return a.name.localeCompare(b.name);
-    });
-  };
-
   return (
     <Card className={cn("w-full bg-white")}>
       <div className={cn("transition-opacity duration-300", isDisabled ? 'opacity-30 grayscale' : '')}>
@@ -58,7 +32,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, questionsConf
           <CardTitle className="text-2xl pt-4">{humanize(service.name)}</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-lg mx-6 mb-4">
-          {sortFeatures(service.features || []).map((feature) => {
+          {sortFeatures(service.features || [], questionsConfig).map((feature) => {
             const IconComponent = featureIcons[feature.name.toLowerCase()];
             const featureClassLower = String(feature.value).toLowerCase();
             const valueColor = featureColorMap[featureClassLower] || featureColorMap['default'];
