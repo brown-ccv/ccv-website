@@ -106,14 +106,14 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) =
       !featureNamesInForm.includes(featureName)
     );
 
-    // Sort features that are in the form based on their order in questions
+    // Sort features that are in services the same as the order of the questions in the form
     featuresInForm.sort((a, b) => {
       const indexA = featureNamesInForm.indexOf(a);
       const indexB = featureNamesInForm.indexOf(b);
       return indexA - indexB;
     });
 
-    // Sort features not in the form alphabetically
+    // Sort features that are not in the form alphabetically
     featuresNotInForm.sort((a, b) => a.localeCompare(b));
     
 
