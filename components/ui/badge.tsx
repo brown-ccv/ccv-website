@@ -37,7 +37,7 @@ type BadgeProps = React.HTMLAttributes<HTMLDivElement> &
 
 
 /**
- * Enhanced Badge component with automatic color determination
+ * Badge component with automatic color determination
  * 
  * @example
  * // Traditional usage with predefined colors
@@ -48,27 +48,8 @@ type BadgeProps = React.HTMLAttributes<HTMLDivElement> &
  * <Badge value="high" autoColor>High Priority</Badge>
  * <Badge value={true} autoColor>Available</Badge>
  * <Badge value="fast" autoColor>Fast Speed</Badge>
- * 
- * Utility Functions
- *
- * getBadgeStyling(value)
- *   Returns complete styling information for a feature value:
- *   import { getBadgeStyling } from '@/lib/utils';
- *   const styling = getBadgeStyling('high');
- *   // Returns: { backgroundColor: 'bg-red-university', textColor: 'text-white', className: 'bg-red-university text-white' }
- *
- * getTextColorForBackground(backgroundColor)
- *   Determines whether text should be white or black based on background color:
- *   import { getTextColorForBackground } from '@/lib/utils';
- *   const textColor = getTextColorForBackground('bg-keppel-600');
- *   // Returns: 'text-white'
- *
- * getBadgeBackgroundColor(value)
- *   Maps feature values to background colors:
- *   import { getBadgeBackgroundColor } from '@/lib/utils';
- *   const bgColor = getBadgeBackgroundColor('high');
- *   // Returns: 'bg-red-university'
- */
+ */ 
+
 export const Badge = ({ 
   color, 
   className, 
