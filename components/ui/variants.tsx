@@ -88,10 +88,10 @@ export const buttonVariants = cva(
   }
 );
 
-
-export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full", {
+export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap", {
   variants: {
     color: {
+      // Shared colors
       keppel: "bg-keppel-500 text-white",
       sunglow: "bg-sunglow-400 text-black",
       purple: "bg-purple-900 text-white", 
@@ -106,7 +106,6 @@ export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs f
 })
 
 export type BadgeProps = VariantProps<typeof badgeVariants>;
-
 
 export const cardVariants = cva(
   "rounded-xl bg-white text-black transition-shadow",
