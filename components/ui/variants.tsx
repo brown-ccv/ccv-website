@@ -89,15 +89,61 @@ export const buttonVariants = cva(
 );
 
 
-export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full", {
+export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap", {
   variants: {
     color: {
+      // Basic colors
       keppel: "bg-keppel-500 text-white",
       sunglow: "bg-sunglow-400 text-black",
       purple: "bg-purple-900 text-white", 
       blue: "bg-blue-500 text-white",
       red: "bg-red-university text-white", 
       pink: "bg-pink-500 text-white",
+      
+      // Storage-specific colors
+      'red-university': "bg-red-university text-white",
+      'amber-600': "bg-amber-600 text-white",
+      'keppel-600': "bg-keppel-600 text-white",
+      'sunglow-400': "bg-sunglow-400 text-black",
+      'cyan-500': "bg-cyan-500 text-white",
+      'neutral-200': "bg-neutral-200 text-black",
+      
+      // Semantic colors for feature values
+      high: "bg-red-university text-white",
+      medium: "bg-amber-600 text-white",
+      low: "bg-keppel-600 text-white",
+      
+      // Boolean values
+      true: "bg-keppel-600 text-white",
+      false: "bg-red-university text-white",
+      
+      // Complexity levels
+      easy: "bg-keppel-600 text-white",
+      complex: "bg-red-university text-white",
+      partial: "bg-sunglow-400 text-black",
+      
+      // Cost levels
+      'low-cost': "bg-keppel-600 text-white",
+      'medium-cost': "bg-sunglow-400 text-black",
+      'high-cost': "bg-red-university text-white",
+      
+      // Temperature levels
+      hot: "bg-red-university text-white",
+      warm: "bg-sunglow-400 text-black",
+      cold: "bg-cyan-500 text-white",
+      
+      // Speed levels
+      fastest: "bg-keppel-600 text-white",
+      faster: "bg-amber-600 text-white",
+      fast: "bg-sunglow-400 text-black",
+      slow: "bg-red-university text-white",
+      
+      // Size levels
+      small: "bg-cyan-500 text-white",
+      large: "bg-sunglow-400 text-black",
+      
+      // Default fallback
+      default: "bg-neutral-200 text-black",
     },
   },
   defaultVariants: {
