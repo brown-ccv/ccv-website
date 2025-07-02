@@ -25,6 +25,21 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, isDisabled })
     return String(feature.value);
   };
 
+  // Helper to render notes
+  const renderNotes = (notes: string[]) => {
+    if (!notes || notes.length === 0) return null;
+    
+    return (
+      <div className="ml-8 text-sm text-neutral-500 font-normal italic tracking-tight">
+        <ul className="list-disc list-inside space-y-0.5">
+          {notes.map((note, index) => (
+            <li key={index}>{note}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  };
+
   return (
     <Card className={cn("w-full bg-white")}>
       <div className={cn("transition-opacity duration-300", isDisabled ? 'opacity-30 grayscale' : '')}>
@@ -53,11 +68,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, isDisabled })
                 </div>
                 
                 {/* Notes row - appears below when there are notes */}
-                {feature.notes && (
-                  <div className="ml-8 text-sm text-neutral-500 font-normal italic tracking-tight">
-                    {feature.notes}
-                  </div>
-                )}
+                {feature.notes && renderNotes(feature.notes)}
               </div>
             );
           })}

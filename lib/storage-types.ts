@@ -59,7 +59,7 @@ export const featureColorMap: Record<string, string> = {
 export interface ServiceFeature {
   name: string;
   value: string | boolean | number;
-  notes?: string;
+  notes?: string[];
 }
 
 export interface ServiceLink {
