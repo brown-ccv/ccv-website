@@ -8,7 +8,6 @@ import { getEventData } from "@/app/queries";
 import { getStringDate } from "@/components/calendar/utils";
 import React, { Suspense } from "react";
 import Spinner from "@/components/assets/Spinner";
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { Button } from "@/components/ui/button"
 import { ScrollButton } from "@/components/ui/scroll-button"
 import { SectionHeader } from "@/components/ui/section-header"

@@ -1,4 +1,11 @@
 import { ReactNode } from "react"
+import { cn } from "@/lib/utils"
+
+export interface HeroProps {
+  image?: string;
+  children: ReactNode;
+  height?: string;
+}
 
 interface HeroProps {
   image: string

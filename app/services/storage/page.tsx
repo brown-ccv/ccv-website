@@ -20,7 +20,7 @@ export default async function Storage() {
   return (
     <div className="w-full">
       <div className="relative w-full flex flex-col">
-        <div className="bg-purple-900">
+        <div className="bg-blue-navbar">
           <Hero 
             image={"/images/hero/hero.jpeg"}
             title={pageContent?.title || ''}

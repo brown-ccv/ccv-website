@@ -3,7 +3,6 @@ import { Hero } from "@/components/Hero"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { UserIcon } from "@heroicons/react/24/solid"
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 
@@ -71,7 +70,7 @@ export default async function ClassroomSupport() {
       <div className="w-full">
         
         <div className="relative w-full flex flex-col">
-          <div className="bg-purple-900">
+          <div className="bg-blue-navbar">
             <Hero 
               image={"/images/hero/hero.jpeg"}
               title="Classroom Support"
