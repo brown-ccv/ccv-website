@@ -81,27 +81,63 @@ const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) =
   const tableContainerRef = useRef<HTMLDivElement>(null);
 
 const tableData: TableRow[] = useMemo(() => {
+  // Filter services to only include those with at least one feature
+  const servicesWithFeatures = services.filter(service => 
+    service.features && service.features.length > 0
+  );
+
   const uniqueFeatureNames = new Set<string>();
-  services.forEach(service => {
+  servicesWithFeatures.forEach(service => {
       service.features?.forEach(feature => {
           uniqueFeatureNames.add(feature.name);
       });
   });
 
-  // TODO: sort the table rows by questions first, then other features alphabetically
-  const orderedFeatureNames = Array.from(uniqueFeatureNames).sort();
+  // Sort features according to question order, then alphabetically
+  const sortFeatures = (featureNames: string[]): string[] => {
+    // Get the question order dynamically from questions
+    const questionOrder = questions.map(q => q.affected_feature);
+
+    return [...featureNames].sort((a, b) => {
+      const aIndex = questionOrder.indexOf(a);
+      const bIndex = questionOrder.indexOf(b);
+      
+      // If both features are in the question order, sort by their position
+      if (aIndex !== -1 && bIndex !== -1) {
+        return aIndex - bIndex;
+      }
+      
+      // If only one feature is in the question order, prioritize it
+      if (aIndex !== -1 && bIndex === -1) {
+        return -1;
+      }
+      if (aIndex === -1 && bIndex !== -1) {
+        return 1;
+      }
+      
+      // If neither feature is in the question order, sort alphabetically
+      return a.localeCompare(b);
+    });
+  };
+
+  const orderedFeatureNames = sortFeatures(Array.from(uniqueFeatureNames));
 
   return orderedFeatureNames.map(featureName => {
       const row: TableRow = { featureName: featureName };
-      services.forEach(service => {
+      servicesWithFeatures.forEach(service => {
           row[service.name] = service.features?.find(f => f.name === featureName);
       });
       return row;
   });
-}, [services]);
+}, [services, questions]);
 
   // 2. define columns for TanStack Table (memoized for performance)
   const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
+    // Filter services to only include those with at least one feature
+    const servicesWithFeatures = services.filter(service => 
+      service.features && service.features.length > 0
+    );
+
     const featureNameColumn: ColumnDef<TableRow, any> = columnHelper.accessor('featureName', {
       id: 'featureName',
       header: () => (
@@ -121,7 +157,7 @@ const tableData: TableRow[] = useMemo(() => {
       size: 200,
     });
 
-    const serviceColumns: ColumnDef<TableRow, any>[] = services.map(service => {
+    const serviceColumns: ColumnDef<TableRow, any>[] = servicesWithFeatures.map(service => {
       // Determine if the *entire service column* should be disabled (grayed out)
       const isDisabled = getColumnDisabledState(service, selectedAnswers, questions);
       const columnClass = isDisabled ? 'opacity-30 grayscale' : '';
@@ -285,7 +321,9 @@ const tableData: TableRow[] = useMemo(() => {
 
       {/* Mobile View - Cards */}
       <div className="lg:hidden w-full flex flex-col gap-4">
-        {services.map((service) => (
+        {services
+          .filter(service => service.features && service.features.length > 0)
+          .map((service) => (
           <StorageServiceCard
             key={service.name}
             service={service}
