@@ -3,7 +3,6 @@ import { Hero } from "@/components/Hero"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { UserIcon } from "@heroicons/react/24/solid"
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 
@@ -71,19 +70,13 @@ export default async function ClassroomSupport() {
       <div className="w-full">
         
         <div className="relative w-full flex flex-col">
-          <div className="bg-purple-900">
-            <Hero image={"/images/hero/hero.jpeg"}>
-              <div className="relative flex-1 flex items-start w-full px-6 md:px-24 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-                <div className="absolute top-[12%] flex flex-col text-white space-y-6">
-                  <TextAnimate className="font-bold text-6xl md:text-8xl">
-                    Classroom Support
-                  </TextAnimate>
-                  <p className="text-4xl font-semibold">
-                    CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code
-                  </p>
-                </div>
-              </div>
-            </Hero>
+          <div className="bg-blue-navbar">
+            <Hero 
+              image={"/images/hero/hero.jpeg"}
+              title="Classroom Support"
+              description="CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code"
+              titleClassName="font-bold text-6xl md:text-8xl"
+            />
           </div>
         </div>
 
@@ -111,7 +104,7 @@ export default async function ClassroomSupport() {
               </p>
               <ul className="pl-10 py-6">
                 <li className="py-2">
-                * Provide at least two week’s notice for new account requests and software requests. List all the names and emails of users (students, TAs, instructors) as well as the course number.
+                * Provide at least two week's notice for new account requests and software requests. List all the names and emails of users (students, TAs, instructors) as well as the course number.
                 </li>
                 <li className="py-2">
                 * The instructor and/or TA(s) are responsible for all software setup.
