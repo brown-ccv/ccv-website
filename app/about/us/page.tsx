@@ -63,6 +63,7 @@ export default async function AboutUs() {
                     hoverImagePath={imagePath(person?.image.replace('main', 'hover'))} 
                     name={person?.name} 
                     title={person?.title} 
+                    personDetails={person}
                   />
                 </div>
               ))}
