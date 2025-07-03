@@ -329,9 +329,15 @@ export const Navbar: React.FC = () => {
                     {section.groups.map(group => (
                       <div className="py-2" key={group.name}>
                         {group.routes.map(route => (
-                          <Link key={route.href} href={route.href} className="block text-white text-xl py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-                            {route.name}
-                          </Link>
+                          route.href === "https://publications.ccv.brown.edu" ? (
+                            <a key={route.href} href={route.href} target="_blank" rel="noopener noreferrer" onClick={toggleMobileMenu} className="block text-white text-xl py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+                              {route.name}
+                            </a>
+                          ) : (
+                            <Link key={route.href} href={route.href} onClick={toggleMobileMenu} className="block text-white text-xl py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+                              {route.name}
+                            </Link>
+                          )
                         ))}
                       </div>
                     ))}
@@ -339,13 +345,13 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            <Link href="/blog" className="flex text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+            <Link href="/blog" onClick={toggleMobileMenu} className="flex text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
               Blog
             </Link>
-            <Link href="/help" className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+            <Link href="/help" onClick={toggleMobileMenu} className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
               Help
             </Link>
-            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-sunglow-400 font-semibold text-2xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" onClick={toggleMobileMenu} className="block text-sunglow-400 font-semibold text-2xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
               Docs
             </a>
           </div>
@@ -374,7 +380,8 @@ const NavigationSectionContent: React.FC<{
               {group.routes.map((route) => (
                 <li key={route.href} className="hover:bg-neutral-50 focus:bg-neutral-100 p-1 sm:p-1.5 md:p-2">
                   <NavigationMenu.Link
-                    href={route.href} target="_blank" rel="noopener noreferrer"
+                    href={route.href}
+                    {...(route.href === "https://publications.ccv.brown.edu" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="flex items-start focus:outline-none"
                   >
                     {route.icon && (
