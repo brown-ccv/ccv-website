@@ -31,15 +31,15 @@
 }
 
 p > a {
-  @apply text-keppel-600;
+  @apply text-keppel-700;
 }
 
 p > a:hover {
-  @apply text-keppel-200;
+  @apply text-keppel-500;
 }
 
 p > a:focus {
-  @apply text-keppel-700 outline-2 outline-keppel-700;
+  @apply text-keppel-600 outline-2 outline-keppel-600;
 }
 
 /* Apply zoom on all screen sizes */

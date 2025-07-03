@@ -29,6 +29,11 @@ const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions 
             <Markdown
               rehypePlugins={[rehypeRaw]}
               remarkPlugins={[remarkGfm]}
+              components={{
+                a: ({ node, ...props }) => (
+                  <a {...props} className="text-keppel-700 hover:text-keppel-500 underline" />
+                ),
+              }}
             >
               {question.information}
             </Markdown>
