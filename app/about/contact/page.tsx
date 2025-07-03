@@ -28,7 +28,7 @@ export default async function ContactUs() {
       </div>
 
       {/* Contact Us */}
-      <section className="content-wrapper py-24 px-6 lg:px-36">
+      <section className="content-wrapper py-24 px-4 sm:px-6 md:px-14 lg:px-36">
         <SectionHeader title="Contact Us" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -76,7 +76,7 @@ export default async function ContactUs() {
       </section>
 
       {/* Office Hours */}
-      <section className="content-wrapper py-24 px-6 lg:px-36 bg-gray-100">
+      <section className="content-wrapper py-24 px-4 sm:px-6 md:px-14 lg:px-36 bg-gray-100">
         <SectionHeader title="Office Hours" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -121,10 +121,10 @@ export default async function ContactUs() {
       </section>
 
       {/* 180 George St */}
-      <div className="content-wrapper px-0 py-14">
+      <section className="content-wrapper p-0">
         <Card className="w-full shadow-none rounded-none border-none relative flex flex-col">
-          <CardContent className="mx-auto flex items-center">
-            <div className="w-full xl:w-full px-6 xl:px-36 xl:py-16">
+          <CardContent className="mx-auto flex flex-col xxl:flex-row items-start">
+            <div className="w-full xxl:w-1/2 px-4 sm:px-6 md:px-14 xxl:px-36 py-16">
               <SectionHeader title="180 George St" align="center" />
               <p className="text-black text-xl">
                 Our office is on Brown&apos;s main campus in Providence&apos;s College Hill neighborhood.
@@ -134,11 +134,12 @@ export default async function ContactUs() {
                 Today, it hosts the Center for Computation and Visualization, supporting research at Brown.
               </p>
             </div>
-            <div className="w-full xl:w-1/2 relative hidden xl:block min-w-[800px]">
+            <div className="w-full xxl:w-1/2 relative xxl:min-w-[800px]">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.109984207845!2d-71.40139708797392!3d41.82592977112757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4453b3f867125%3A0xe3d14e16820236d9!2s180%20George%20Street%2C%20180%20George%20St%2C%20Providence%2C%20RI%2002906!5e0!3m2!1sen!2sus!4v1747770863560!5m2!1sen!2sus"
                 width="100%"
-                height="700"
+                height="400"
+                className="h-[700px]"
                 style={{ border: 0 }}
                 allowFullScreen={true}
                 loading="lazy"
@@ -147,7 +148,7 @@ export default async function ContactUs() {
             </div>
           </CardContent>
         </Card>
-      </div>
+      </section>
     </div>
   );
 }
