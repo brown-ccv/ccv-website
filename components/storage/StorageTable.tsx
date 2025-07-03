@@ -111,13 +111,13 @@ const tableData: TableRow[] = useMemo(() => {
     const featureNameColumn: ColumnDef<TableRow, any> = columnHelper.accessor('featureName', {
       id: 'featureName',
       header: () => (
-        <div className="text-left px-4 py-2 font-semibold text-neutral-700">Feature</div>
+        <div className="text-left px-[4vw] sm:px-[3vw] py-2 font-semibold text-neutral-700">Feature</div>
       ),
       cell: info => {
         const featureName = humanize(info.getValue());
         const IconComponent = featureIcons[info.getValue().toLowerCase()];
         return (
-          <div className="flex items-center gap-2 px-4 py-2 font-medium text-neutral-900 min-h-[80px] uppercase tracking-wider">
+          <div className="flex items-center gap-2 px-[4vw] sm:px-[3vw] py-2 font-medium text-neutral-900 min-h-[80px] uppercase tracking-wider">
             {IconComponent ? <IconComponent className="text-2xl text-brown-700" /> : null}
             <span>{featureName}</span>
           </div>
@@ -142,7 +142,7 @@ const tableData: TableRow[] = useMemo(() => {
         cell: info => {
           const feature = info.getValue() as ServiceFeature;
           const featureNameFromRow = info.row.original.featureName;
-          const cellContentClasses = cn("px-4 py-2 text-start", columnClass);
+          const cellContentClasses = cn("px-[4vw] sm:px-[3vw] py-2 text-start", columnClass);
 
           if (feature === undefined) {
             return (

@@ -21,15 +21,15 @@ export const Hero = ({
 }: HeroProps) => {
   return (
     <div
-      className="w-full min-h-[clamp(1000px,50vh,60vh)] bg-cover bg-center relative flex flex-col overflow-hidden m-0 p-0"
+      className="w-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[clamp(1000px,50vh,60vh)] bg-cover bg-center relative flex flex-col m-0 p-0"
       style={{
         backgroundImage: `url(${image})`,
         backgroundSize: "cover",
       }}
     >
       {showGradient && (
-        <div className="relative flex-1 flex items-start w-full px-14 lg:px-36 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-          <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16">
+        <div className="relative flex-1 flex items-start w-full px-[4vw] sm:px-[3vw] md:px-[2vw] lg:px-36 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
+          <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16 overflow-hidden">
             {title && (
               <h1 className={titleClassName}>
                 {title}

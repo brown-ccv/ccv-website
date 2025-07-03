@@ -81,7 +81,7 @@ export default async function ClassroomSupport() {
         </div>
 
       {/* In Class Tutorials */}
-      <section className="content-wrapper pt-24 px-14 lg:px-36">
+              <section className="content-wrapper pt-24">
         <SectionHeader title="In-Class Tutorials" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -94,7 +94,7 @@ export default async function ClassroomSupport() {
       </section>
 
       {/* Student Accounts */}
-      <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+              <section className="content-wrapper py-24 bg-neutral-50">
         <SectionHeader title="Student Accounts" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -113,19 +113,21 @@ export default async function ClassroomSupport() {
                 * Oscar is a shared resource, so access nodes and speed cannot be guaranteed.
                 </li>
               </ul>
-              <Button variant="primary_filled" size="lg">
-              <a href="https://docs.ccv.brown.edu/oscar/account-types" target="_blank" rel="noopener noreferrer">Learn More</a>
-            </Button>
-            <Button variant="primary_filled" size="lg">
-              <a href="mailto:support@ccv.brown.edu" target="_blank" rel="noopener noreferrer">Request Student Accounts</a>
-            </Button>
+              <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                <Button variant="primary_filled" size="lg">
+                  <a href="https://docs.ccv.brown.edu/oscar/account-types" target="_blank" rel="noopener noreferrer">Learn More</a>
+                </Button>
+                <Button variant="primary_filled" size="lg">
+                  <a href="mailto:support@ccv.brown.edu" target="_blank" rel="noopener noreferrer">Request Student Accounts</a>
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>        
       </section>
 
       {/* Computational Notebooks */}
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+              <section className="content-wrapper py-24">
         <SectionHeader title="Computational Notebooks" align="center" />
 
         <Card className="w-full border-none shadow-none rounded-none">
@@ -145,9 +147,11 @@ export default async function ClassroomSupport() {
                     <p >
                       Google Colab comes bundled with most Python-specific software libraries, and it supports real-time collaboration. It integrates with Google Drive and should be sufficient for most classroom or workshop needs.
                     </p>
-                    <Button variant="primary_filled" size="lg">
-                      <a href="https://colab.google" target="_blank" rel="noopener noreferrer">Learn More</a>
-                    </Button>
+                    <div className="mt-6">
+                      <Button variant="primary_filled" size="lg">
+                        <a href="https://colab.google" target="_blank" rel="noopener noreferrer">Learn More</a>
+                      </Button>
+                    </div>
                 </div>
               </CardContent>
             </Card>
@@ -159,12 +163,14 @@ export default async function ClassroomSupport() {
               <p className="text-black text-xl">
                 For more advanced needs, Brown&apos;s JupyterHub may be a good fit for your needs. If you are an instructor, CCV can provide access to JupyterHub for your class or workshop, and Digital Learning and Design (DLD) can assist with integrating computational assignments into curricula. The implementation is supported by Brown OIT; please follow the link below to request an instance for your class. OIT staff will respond to your request to begin the setup process. We ask that requests for JupyterHub be made at least two months in advance of expected course deployment.
               </p>
-              <Button variant="primary_filled" size="lg">
-                <a href="https://docs.ccv.brown.edu/jupyterhub" target="_blank" rel="noopener noreferrer">Documentation</a>
-              </Button>
-              <Button variant="primary_filled" size="lg">
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSct9rFCxLhPIezHI-RYRyEuSnvHrPZLMuUSFRTriIyd_3TAfA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Request a Hub</a>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 mt-6">
+                <Button variant="primary_filled" size="lg">
+                  <a href="https://docs.ccv.brown.edu/jupyterhub" target="_blank" rel="noopener noreferrer">Documentation</a>
+                </Button>
+                <Button variant="primary_filled" size="lg">
+                  <a href="https://docs.google.com/forms/d/e/1FAIpQLSct9rFCxLhPIezHI-RYRyEuSnvHrPZLMuUSFRTriIyd_3TAfA/viewform?usp=sf_link" target="_blank" rel="noopener noreferrer">Request a Hub</a>
+                </Button>
+              </div>
             </div>
           </CardContent>
         </Card>

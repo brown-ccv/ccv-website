@@ -57,8 +57,8 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
     setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1));
 
   return (
-    <section className="mt-12 mb-24 sm:mx-2">
-      <div className="w-full max-w-[2040px] px-2">
+    <section className="mt-12 mb-24">
+      <div className="w-full max-w-[2040px]">
         <div className="flex flex-col xl:flex-row items-start justify-center gap-8">
           {/* Text Content */}
           <div className="w-full max-w-[700px] space-y-6 pt-4">
@@ -101,7 +101,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </div>
           </div>
 
-          <div className="w-full max-w-[700px] space-y-6 lg:w-full hidden lg:block">
+          <div className="w-full max-w-[700px] space-y-6 lg:w-full block">
             <Image
               src={image}
               alt={title}

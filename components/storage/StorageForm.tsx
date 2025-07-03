@@ -13,7 +13,7 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions }) => {
   return (
-    <div className="space-y-2 px-8 pb-8 bg-white rounded-lg shadow-md max-w-[800px]">
+    <div className="space-y-2 px-[4vw] sm:px-[3vw] md:px-8 pb-8 bg-white rounded-lg shadow-md max-w-[800px]">
       {questions.map((question) => (
         <div key={question.id}>
           <div className="pt-6 font-medium text-black text-2xl">
@@ -43,7 +43,7 @@ const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions 
           <RadioGroup
             value={selectedAnswers[question.id]}
             onValueChange={(value) => onAnswerChange(question.id, value)}
-            className="flex flex-col md:flex-row space-y-2 md:space-y-0 gap-x-4 px-4 pt-2"
+            className="flex flex-col md:flex-row space-y-2 md:space-y-0 gap-x-4 px-[4vw] sm:px-[3vw] pt-2"
           >
             {question.options.map((option) => (
               <div key={option.label} className="flex items-center space-x-2">

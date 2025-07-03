@@ -215,15 +215,15 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className={`sticky top-0 z-50`}>
-      <nav className="bg-blue-navbar flex px-8 justify-between">
-        <div className="flex items-center py-8 px-6 xl:px-10">
+      <nav className="bg-blue-navbar flex px-[4vw] sm:px-[3vw] justify-between">
+                  <div className="flex items-center py-8 px-[4vw] sm:px-[3vw] xl:px-10">
           <Link href={"/"}>
             <CCVLogo width={120}/>
           </Link>
         </div>
 
         {/* Navigation Menu for Desktop */}
-        <NavigationMenu.Root className="hidden lg:flex relative z-10 w-screen justify-between items-stretch">
+        <NavigationMenu.Root className="hidden lg:flex relative z-10 w-full justify-between items-stretch">
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) =>
               <NavigationMenu.Item key={section.name}>

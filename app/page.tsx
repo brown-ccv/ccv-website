@@ -80,7 +80,7 @@ export default async function Home() {
         </div>
           <HeroCard />
           <ImpactBanner />
-          <section className="content-wrapper pt-24 px-36">
+          <section className="content-wrapper pt-24">
             <SectionHeader title="Featured Projects" align="center" />
           </section>
           <FeaturedCarousel carouselData={featuredCarouselData} profiles={profiles}/>
