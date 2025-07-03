@@ -104,12 +104,14 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="content-wrapper flex flex-row items-start justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
-        <div className="flex flex-col-reverse gap-4 items-start">
-          <div>&copy; Brown University</div>
+      <div className="content-wrapper flex flex-col sm:flex-row items-center sm:items-start justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
+        <div className="flex flex-col gap-4 items-center sm:items-start order-1 sm:order-1">
           <CCVLogo />
+          <div>&copy; Brown University</div>
         </div>
-        <CarbonBadge />
+        <div className="order-2 sm:order-3 scale-75 sm:scale-100">
+          <CarbonBadge />
+        </div>
       </div>
     </footer>
   )
