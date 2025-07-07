@@ -7,34 +7,33 @@ import {
   FaWifi,
   FaExchangeAlt,
   FaShieldAlt,
+  FaFile,
+  FaNetworkWired,
+  FaCamera,
+  FaTachometerAlt,
+  FaChalkboardTeacher,
+  FaSyncAlt,
 } from 'react-icons/fa';
-import { FaFile } from "react-icons/fa6";
-import { SlSpeedometer } from "react-icons/sl";
-import { MdSdStorage } from "react-icons/md";
-import { AiOutlineCluster } from "react-icons/ai";
 import { SiDoi } from "react-icons/si";
-import { SiCanvas } from "react-icons/si";
-import { MdOutlineFlipCameraIos } from "react-icons/md";
-import { LuDatabaseBackup } from "react-icons/lu"
 
 // --- Helper Mappings for Icons and Feature Value Colors ---
 export const featureIcons: Record<string, React.ElementType> = {
-  'relative_speed': SlSpeedometer,
+  'relative_speed': FaTachometerAlt,
   'security': FaShieldAlt,
   'cost': FaDollarSign,
   'sharing': FaShareSquare,
   'capacity': FaHdd,
   'doi_provided': SiDoi,
-  'data_protection_snapshots': MdOutlineFlipCameraIos,
-  'data_protection_replication': LuDatabaseBackup,
-  'canvas_integration': SiCanvas,
+  'data_protection_snapshots': FaCamera,
+  'data_protection_replication': FaSyncAlt,
+  'canvas_integration': FaChalkboardTeacher,
   'brown_network_required': FaWifi,
-  'access_from_oscar': AiOutlineCluster,
+  'access_from_oscar': FaNetworkWired,
   'storage_warmth': FaThermometerHalf,
   'collaborative_edits': FaExchangeAlt,
   'shareable_link': FaShareSquare,
   'max_file_size': FaFile,
-  'storage': MdSdStorage,
+  'storage': FaHdd,
 };
 
 export const featureColorMap: Record<string, string> = {
@@ -60,12 +59,13 @@ export const featureColorMap: Record<string, string> = {
 export interface ServiceFeature {
   name: string;
   value: string | boolean | number;
-  notes?: string;
+  notes?: string[];
 }
 
 export interface ServiceLink {
   text: string;
   target: string;
+  category?: string;
 }
 
 export interface ServiceConfig {

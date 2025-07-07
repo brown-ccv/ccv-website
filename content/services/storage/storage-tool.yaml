@@ -2,12 +2,18 @@ title: Compare Storage Options
 description: |
   Several services at Brown allow you to share and store files. This guide will let you compare the options and decide which one(s) are right for you.
 links:
+  - text: "Knowledge Base/FAQ"
+    target: "https://brown.atlassian.net/servicedesk/customer/portal/16/article/2807496985"
+    category: "Documentation"
   - text: "Request Storage"
     target: "https://brown.atlassian.net/servicedesk/customer/portal/16/user/login?destination=portal%2F16%2Fgroup%2F55%2Fcreate%2F217"
+    category: "Support"
   - text: "Request Quota Change"
     target: "https://brown.atlassian.net/servicedesk/customer/portal/16/user/login?destination=portal%2F16%2Fgroup%2F55%2Fcreate%2F262"
+    category: "Support"
   - text: "Storage Help"
     target: "https://brown.atlassian.net/servicedesk/customer/portal/16/user/login?destination=portal%2F16%2Fgroup%2F55%2Fcreate%2F263"
+    category: "Support"
 
 storage_tool_header: |
   This tool lets you compare the available storage options at Brown.
@@ -65,7 +71,24 @@ services:
       - name: storage_warmth
         value: warm
 
-  - name: campus_file_storage_non-replicated
+  - name: Globus
+    description: |
+      [Globus](https://www.globus.org/data-transfer) is a secure, reliable, research data management service. With Globus, subscribers can move, share, and discover data via a single interface–whether your files live on a supercomputer, lab cluster, tape archive, public cloud or your laptop–you can manage this data from anywhere via just a web browser and using your existing identities. Transfers are facilitated through endpoints. Endpoints are data locations pointing to subscribers' specific datasets like a researcher's personal Google drive, research share or a folder on a computer.
+    links: 
+      - text: "Globus"
+        target: "https://docs.ccv.brown.edu/globus"
+
+  - name: "Campus File Storage / Department File Services"
+    description: |    
+      Departmental File Services provides University departments with a location in which files can be stored, backed up, and shared across the department. The service can be accessed by mapping the drive on your computer ( [Windows Explorer](https://ithelp.brown.edu/kb/articles/connect-to-departmental-file-services-on-windows) on PC or [Finder](https://ithelp.brown.edu/kb/articles/connect-to-departmental-file-services-with-macos) on a Mac). For researchers, please check out the "Campus File Storage replicated/non-replicated Research services" sections)
+      
+      - Best for: Backing up and sharing official department documents, ensuring the longevity of documents after the file authors leave Brown.
+      - Limitations: Can only be accessed on the Brown network or with VPN. Sharing is done via Brown AD groups; no sharing with people outside of Brown.
+    links:
+      - text: Support Documentation
+        target: https://ithelp.brown.edu/kb/37-department-file-services
+
+  - name: "Campus File Storage Non-Replicated / Research Services"
     description: |
       File Services for Research provides Brown University research departments with a location in which files can be stored, backed up, and shared with members of the Brown community using Brown ID’s and groups. Space is allocated to each research lab or PI with an ITHelp request , security groups are required to define access to the data. The data is protected locally via snapshots but doesn’t have geo-redundancy (secondary copy).
       
@@ -117,7 +140,7 @@ services:
       - name: storage_warmth
         value: hot
 
-  - name: campus_file_storage_replicated
+  - name: "Campus File Storage Replicated / Research Services"
     description: |
       File Services for Research provides Brown University research departments with a location in which files can be stored, backed up, and shared with members of the Brown community using Brown ID’s and groups.  Space is allocated to each research lab or PI with an ITHelp request , security groups are required to define access to the data.  The data is replicated daily to our disaster recovery site for True geo-redundant data protection.  The data is accessible on Brown's campus networks (including VPN and wireless).
       
@@ -415,22 +438,6 @@ services:
       - name: storage_warmth
         value: cold
 
-  - name: Campus File Storage / Department File Services
-    description: |
-      Departmental File Services provides University departments with a location in which files can be stored, backed up, and shared across the department. The service can be accessed by mapping the drive on your computer ( [Windows Explorer](https://ithelp.brown.edu/kb/articles/connect-to-departmental-file-services-on-windows) on PC or [Finder](https://ithelp.brown.edu/kb/articles/connect-to-departmental-file-services-with-macos) on a Mac), or by visiting [webfiles.brown.edu](https://ithelp.brown.edu/kb/articles/deprecation-of-oit-s-webfiles-brown-edu-service) in a web browser. (For researchers, please check out "Campus File Storage replicated/non-replicated / Research services " section)
-      
-      - Best for: Backing up and sharing official department documents, ensuring longevity of documents after file authors leave Brown.
-      - Limitations: Can only be accessed on the Brown network or with VPN. Not as easy to access as consumer services (no app, web access is a bit clunky).    Sharing is not easy: no sharing with people outside of Brown, no sharing with people who don't have access to the department folders.
-    links:
-      - text: Documentation
-        target: https://ithelp.brown.edu/kb/campus-file-storage
-      
-  - name: Globus
-    description: |
-      Globus is a secure, reliable, research data management service. With Globus, subscribers can move, share, and discover data via a single interface–whether your files live on a supercomputer, lab cluster, tape archive, public cloud or your laptop–you can manage this data from anywhere via just a web browser and using your existing identities. Transfers are facilitated through endpoints. Endpoints are data locations pointing to subscribers' specific datasets like a researcher's personal Google drive, research share or a folder on a computer.
-    links: 
-      - text: "Globus"
-        target: "https://docs.ccv.brown.edu/globus"
 
 questions:
   - question: Security Level

@@ -20,24 +20,46 @@ export default async function Storage() {
   return (
     <div className="w-full">
       <div className="relative w-full flex flex-col">
-        <div className="bg-purple-900">
-          <Hero image={"/images/hero/hero.jpeg"}>
-            <div className="relative inset-x-0 flex-1 flex items-start w-full bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-              <div className="absolute top-[12%] flex flex-col text-white space-y-6 px-12 md:px-24 w-[80vw]">
-                <TextAnimate className="font-bold text-6xl md:text-8xl">
-                  Campus Storage and Transfer
-                </TextAnimate>
-                <p className="text-4xl font-semibold">
-                  {pageContent?.description}
-                </p>
-                <div className="mt-4 flex flex-col md:flex-row flex-wrap gap-2 w-full items-start not-prose">
-                  <Button variant="primary_filled" size="xl">
-                    <Link href="/services/storage/compare">
-                      Compare Storage Options
-                    </Link>
-                  </Button>
-                  {heroLinks.map((link, index) => {
-                    return (
+        <div className="bg-blue-navbar">
+          <Hero 
+            image={"/images/hero/hero.jpeg"}
+            title={pageContent?.title || ''}
+            description={pageContent?.description}
+            titleClassName="font-bold text-6xl md:text-8xl"
+          >
+            <div className="flex flex-col w-full items-start not-prose">
+              {/* First row - Primary colored buttons */}
+              <div className="flex flex-row gap-2">
+                <Button variant="primary_filled" size="xl">
+                  <Link href="/services/storage/compare">
+                    Compare Storage Options
+                  </Link>
+                </Button>
+                {heroLinks
+                  .filter(link => link.category === 'Documentation')
+                  .map((link, index) => (
+                    <Button
+                      key={index}
+                      variant="primary_filled"
+                      size="xl"
+                    >
+                      <Link 
+                        href={link.target} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        {link.text}
+                      </Link>
+                    </Button>
+                  ))}
+              </div>
+              
+              {/* Second row - Secondary colored buttons */}
+              {heroLinks.filter(link => link.category === 'Support').length > 0 && (
+                <div className="flex flex-row gap-2">
+                  {heroLinks
+                    .filter(link => link.category === 'Support')
+                    .map((link, index) => (
                       <Button
                         key={index}
                         variant="secondary_filled"
@@ -51,14 +73,12 @@ export default async function Storage() {
                           {link.text}
                         </Link>
                       </Button>
-                    );
-                  })}
+                    ))}
                 </div>
-              </div>
+              )}
             </div>
           </Hero>
         </div>
-      </div>
       <div>
         {pageContent?.services.map((serviceSection: ServiceConfig, index: number) => {
           const isEven = index % 2 === 0;
@@ -102,10 +122,10 @@ export default async function Storage() {
                 </CardContent>
               </Card>
               </div>
-              
             </section>
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   )

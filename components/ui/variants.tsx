@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority"
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center flex-shrink-0 whitespace-nowrap w-auto mr-6 font-semibold rounded-full text-xl transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:h-4 [&_svg]:w-4",
+  "inline-flex items-center justify-center flex-shrink-0 whitespace-nowrap w-auto mr-6 font-semibold rounded-full text-xl transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none",
   {
     variants: {
       variant: {
@@ -66,10 +66,11 @@ export const buttonVariants = cva(
         lg: "h-10 px-8 py-8 text-2xl",
         xl: "h-14 px-8 py-8 text-2xl",
         xxl: "h-16 px-10 py-10 text-3xl",
-        // big circle for icon-only
-        icon: "h-12 w-12 p-0 text-xl",
+
+        // large icon-only
+        icon: "h-12 w-12 p-2 h-10 w-10",
         // small circle for icon-only
-        "icon-sm": "h-8 w-8 p-0",
+        "icon-sm": "h-8 w-8 p-2 h-8 w-8",
       },
 
       iconPosition: {
@@ -87,10 +88,10 @@ export const buttonVariants = cva(
   }
 );
 
-
-export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full", {
+export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap", {
   variants: {
     color: {
+      // Shared colors
       keppel: "bg-keppel-500 text-white",
       sunglow: "bg-sunglow-400 text-black",
       purple: "bg-purple-900 text-white", 
@@ -105,7 +106,6 @@ export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs f
 })
 
 export type BadgeProps = VariantProps<typeof badgeVariants>;
-
 
 export const cardVariants = cva(
   "rounded-xl bg-white text-black transition-shadow",

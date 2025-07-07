@@ -1,8 +1,7 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { readContentFile } from "@/lib/content-utils"
-import StorageTool from "@/components/StorageTool"
+import StorageTool from "@/components/storage/StorageTool"
 import { PageContentData, QuestionsConfig, SelectedAnswers, FormQuestions } from '@/lib/storage-types'
 
 export default async function CompareStorageOptions() {
@@ -56,18 +55,12 @@ export default async function CompareStorageOptions() {
     <div className="w-full">
       <div className="relative w-full flex flex-col">
         <div className="bg-blue-navbar">
-          <Hero image={"/images/hero-subroutes.jpeg"}>
-            <div className="relative flex-1 flex items-start w-full bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-              <div className="absolute top-[12%] inset-x-0 flex flex-col text-white space-y-6 px-12 md:px-24">
-                <TextAnimate className="font-bold text-6xl md:text-8xl">
-                  {pageContent?.title || ''}
-                </TextAnimate>
-                <p className="text-4xl font-semibold">
-                  {pageContent?.storage_tool_header}
-                </p>
-              </div>
-            </div>
-          </Hero>
+          <Hero 
+            image={"/images/hero-subroutes.jpeg"}
+            title={pageContent?.title || ''}
+            description={pageContent?.description}
+            titleClassName="font-bold text-6xl md:text-8xl"
+          />
         </div>
       </div>
       <StorageTool

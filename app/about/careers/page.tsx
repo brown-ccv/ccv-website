@@ -1,7 +1,6 @@
 import React, { Suspense } from "react"
 import { Workday } from "@/components/Workday"
 import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -15,18 +14,13 @@ export default async function AboutLayout() {
     return (
       <div className="w-full">
         <div className="bg-blue-navbar">
-          <Hero image={"/images/hero/about-kayaks.png"}>
-            <div className="relative inset-x-0 flex-1 flex items-start w-full bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-              <div className="absolute top-[12%] flex flex-col text-white space-y-6 px-12 md:px-24 w-[80vw]">
-                <TextAnimate className="font-bold text-6xl md:text-8xl">
-                  Careers
-                </TextAnimate>
-                <p className="text-4xl font-semibold leading-[1.5]">
-                  Description of Careers needed.
-                </p>
-              </div>
-            </div>
-          </Hero>
+            <Hero 
+              image={"/images/hero/about-kayaks.png"}
+              title="Careers"
+              description="Description of Careers needed."
+              titleClassName="font-bold text-6xl md:text-8xl"
+              descriptionClassName="text-4xl font-semibold leading-[1.5]"
+            />
         </div>
         <section className="content-wrapper py-24 px-36 bg-gray-100">
           <SectionHeader title="Opportunities" align="center" />

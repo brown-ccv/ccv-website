@@ -1,9 +1,11 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import { cn, humanize } from '@/lib/utils';
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
+import { Button } from '@/components/ui/button';
 import { ServiceConfig, SelectedAnswers, TableRow, QuestionsConfig, ServiceFeature, featureIcons, featureColorMap  } from '@/lib/storage-types'
 import {
   createColumnHelper,
@@ -12,7 +14,8 @@ import {
   useReactTable,
   ColumnDef,
 } from '@tanstack/react-table';
-import StorageServiceCard from '@/components/StorageServiceCard';
+import StorageServiceCard from '@/components/storage/StorageServiceCard';
+import { getAllUniqueFeatureNames, sortFeatures } from '@/components/storage/utils';
 
 export interface TableProps {
   services: ServiceConfig[];
@@ -76,29 +79,35 @@ const getColumnDisabledState = (
 // --- Main Table Component ---
 const Table: React.FC<TableProps> = ({ services, selectedAnswers, questions }) => {
   const columnHelper = createColumnHelper<TableRow>();
+  const tableContainerRef = useRef<HTMLDivElement>(null);
 
 const tableData: TableRow[] = useMemo(() => {
-  const uniqueFeatureNames = new Set<string>();
-  services.forEach(service => {
-      service.features?.forEach(feature => {
-          uniqueFeatureNames.add(feature.name);
-      });
-  });
+  // Filter services to only include those with at least one feature
+  const servicesWithFeatures = services.filter(service => 
+    service.features && service.features.length > 0
+  );
 
-  // TODO: sort the table rows by questions first, then other features alphabetically
-  const orderedFeatureNames = Array.from(uniqueFeatureNames).sort();
+  // Use shared utility to get all unique feature names
+  const featureNames = getAllUniqueFeatureNames(servicesWithFeatures);
+  // Use improved sortFeatures utility
+  const orderedFeatureNames = sortFeatures(featureNames, questions);
 
   return orderedFeatureNames.map(featureName => {
       const row: TableRow = { featureName: featureName };
-      services.forEach(service => {
+      servicesWithFeatures.forEach(service => {
           row[service.name] = service.features?.find(f => f.name === featureName);
       });
       return row;
   });
-}, [services]);
+}, [services, questions]);
 
   // 2. define columns for TanStack Table (memoized for performance)
   const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
+    // Filter services to only include those with at least one feature
+    const servicesWithFeatures = services.filter(service => 
+      service.features && service.features.length > 0
+    );
+
     const featureNameColumn: ColumnDef<TableRow, any> = columnHelper.accessor('featureName', {
       id: 'featureName',
       header: () => (
@@ -109,7 +118,7 @@ const tableData: TableRow[] = useMemo(() => {
         const IconComponent = featureIcons[info.getValue().toLowerCase()];
         return (
           <div className="flex items-center gap-2 px-4 py-2 font-medium text-neutral-900 min-h-[80px] uppercase tracking-wider">
-            {IconComponent ? <IconComponent className="text-2xl text-brown-700" /> : null}
+            {IconComponent ? <IconComponent className="w-6 h-6 text-brown-700 flex-shrink-0" /> : null}
             <span>{featureName}</span>
           </div>
         );
@@ -118,7 +127,7 @@ const tableData: TableRow[] = useMemo(() => {
       size: 200,
     });
 
-    const serviceColumns: ColumnDef<TableRow, any>[] = services.map(service => {
+    const serviceColumns: ColumnDef<TableRow, any>[] = servicesWithFeatures.map(service => {
       // Determine if the *entire service column* should be disabled (grayed out)
       const isDisabled = getColumnDisabledState(service, selectedAnswers, questions);
       const columnClass = isDisabled ? 'opacity-30 grayscale' : '';
@@ -150,7 +159,7 @@ const tableData: TableRow[] = useMemo(() => {
           return (
             <div className={cn("flex flex-col items-center justify-center p-2 min-h-[80px]", cellContentClasses)}>
               <div className={cn("flex gap-2 font-semibold text-xl")}>
-                {IconComponent ? <IconComponent className={cn("text-2xl", valueColor)} /> : null}
+                {IconComponent ? <IconComponent className={cn("w-6 h-6 flex-shrink-0", valueColor)} /> : null}
                 <span>
                   {(() => {
                     const featureClassValue = feature?.value;
@@ -204,55 +213,89 @@ const tableData: TableRow[] = useMemo(() => {
     }
   });
 
+  const scrollTable = (direction: 'left' | 'right') => {
+    if (tableContainerRef.current) {
+      const scrollAmount = 300;
+      tableContainerRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <>
       {/* Desktop View - Table */}
-      <div className="hidden lg:block w-full overflow-x-auto rounded-lg shadow-md border border-neutral-200">
-        <table className="min-w-full divide-y divide-neutral-200">
-          <thead className="bg-white">
-            {table.getHeaderGroups().map(headerGroup => (
-              <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header, index) => (
-                  <th
-                    key={header.id}
-                    className={cn(
-                      "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider min-w-[175px]",
-                      header.column.getCanSort() ? 'cursor-pointer select-none' : '',
-                      index < headerGroup.headers.length - 1 && 'border-r border-neutral-200'
-                    )}
-                  >
-                    {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
-                    )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </thead>
-          <tbody className="bg-white divide-y divide-neutral-200">
-            {table.getRowModel().rows.map(row => (
-              <tr key={row.id}>
-                {row.getVisibleCells().map((cell, index) => (
-                  <td key={cell.id}                     className={cn(
-                    "py-2",
-                    index < row.getVisibleCells().length - 1 && 'border-r border-neutral-200'
-                  )}>
-                    {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                    )}
-                  </td>
-                ))}
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md">       
+        <div className="relative" ref={tableContainerRef}>
+          <div className="flex justify-end px-2 border-b border-neutral-200 bg-white sticky top-0 z-40">
+            <Button
+              onClick={() => scrollTable('left')}
+              aria-label="Scroll left"
+              variant="secondary_filled"
+              size="icon"
+              iconOnly={<FaChevronLeft/>} 
+            />
+            <Button
+              onClick={() => scrollTable('right')}
+              aria-label="Scroll right"
+              variant="secondary_filled"
+              size="icon"
+              iconOnly={<FaChevronRight />}
+            />
+          </div>
+        </div>
+        <div ref={tableContainerRef} className="overflow-x-scroll overflow-y-auto force-scrollbar h-[calc(100vh-200px)]">
+          <table className="min-w-full border-separate" style={{ borderSpacing: 0 }}>
+            <thead className="bg-white sticky top-0 z-20 border-b border-neutral-200">
+              {table.getHeaderGroups().map(headerGroup => (
+                <tr key={headerGroup.id}>
+                  {headerGroup.headers.map((header, index) => (
+                    <th
+                      key={header.id}
+                      className={cn(
+                        "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider min-w-[175px]",
+                        header.column.getCanSort() ? 'cursor-pointer select-none' : '',
+                        index < headerGroup.headers.length - 1 && 'border border-neutral-200',
+                        'sticky top-0 bg-white border-b border-neutral-200',
+                        header.id === 'featureName' ? 'z-30 left-0' : 'z-20',
+                      )}
+                    >
+                      {flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                      )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody className="bg-white">
+              {table.getRowModel().rows.map(row => (
+                <tr key={row.id}>
+                  {row.getVisibleCells().map((cell, index) => (
+                    <td key={cell.id} className={cn(
+                      index < row.getVisibleCells().length && 'border-y border border-neutral-200',
+                      cell.column.id === 'featureName' && 'sticky left-0 z-10 bg-white'
+                    )}>
+                      {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                      )}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
 
       {/* Mobile View - Cards */}
       <div className="lg:hidden w-full flex flex-col gap-4">
-        {services.map((service) => (
+        {services
+          .filter(service => service.features && service.features.length > 0)
+          .map((service) => (
           <StorageServiceCard
             key={service.name}
             service={service}
