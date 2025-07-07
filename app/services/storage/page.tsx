@@ -11,6 +11,7 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { readContentFile } from "@/lib/content-utils"
 import { PageContentData, ServiceConfig, ServiceLink } from "@/lib/storage-types"
 import { humanize } from "@/lib/utils"
+import ExternalLink from "@/components/ui/external-link"
 
 const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');
 const pageContent: PageContentData | null = rawPageContent ? (rawPageContent.data as PageContentData) : null;
@@ -23,7 +24,7 @@ export default async function Storage() {
         <div className="bg-blue-navbar">
           <Hero 
             image={"/images/hero/hero.jpeg"}
-            title={pageContent?.title || ''}
+            title="Storage and Transfer"
             description={pageContent?.description}
             titleClassName="font-bold text-6xl md:text-8xl"
           >
@@ -43,13 +44,12 @@ export default async function Storage() {
                       variant="primary_filled"
                       size="xl"
                     >
-                      <Link 
+                      <ExternalLink 
                         href={link.target} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
+                        external={true}
                       >
                         {link.text}
-                      </Link>
+                      </ExternalLink>
                     </Button>
                   ))}
               </div>
@@ -65,13 +65,12 @@ export default async function Storage() {
                         variant="secondary_filled"
                         size="xl"
                       >
-                        <Link 
+                        <ExternalLink 
                           href={link.target} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
+                          external={true}
                         >
                           {link.text}
-                        </Link>
+                        </ExternalLink>
                       </Button>
                     ))}
                 </div>
@@ -108,12 +107,12 @@ export default async function Storage() {
                             variant="primary_filled"
                             size="xl"
                           >
-                            <Link 
+                            <ExternalLink 
                               href={link.target} 
-                              {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                              external={isExternal}
                             >
                               {link.text}
-                            </Link>
+                            </ExternalLink>
                           </Button>
                         );
                       })}

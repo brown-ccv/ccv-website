@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import "@/app/globals.css";
 import StatusBanner from "@/components/StatusBanner";
 import { Button } from "@/components/ui/button";
+import ExternalLink from "@/components/ui/external-link";
 
 interface LayoutWithStatusBannerProps {
   issues: any[];
@@ -26,13 +27,12 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
                   <strong>Service Disruption:</strong> {repoNames}
                 </p>
                 <Button variant="secondary_filled" size="sm" className="text-md">
-                  <a
+                  <ExternalLink
                     href="https://status.ccv.brown.edu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    external={true}
                   >
                     View Incidents
-                  </a>
+                  </ExternalLink>
                 </Button>
               </>
             ) : (
@@ -41,13 +41,12 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
                   All Services Operational
                 </p>
                 <Button variant="secondary_filled" size="sm" className="text-lg">
-                  <a
+                  <ExternalLink
                     href="https://status.ccv.brown.edu/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    external={true}
                   >
                     View Status
-                  </a>
+                  </ExternalLink>
                 </Button>
               </>
             )}
