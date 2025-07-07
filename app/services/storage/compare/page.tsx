@@ -6,50 +6,48 @@ import { PageContentData, QuestionsConfig, SelectedAnswers, FormQuestions } from
 
 export default async function CompareStorageOptions() {
   const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');
-  const pageContent: PageContentData | null = rawPageContent ? (rawPageContent.data as PageContentData) : null;
+  const pageContent: PageContentData = rawPageContent.data as PageContentData;
 
   let formQuestions: FormQuestions[] = [];
   let initialSelectedAnswers: SelectedAnswers = {};
   let rawQuestionsConfig: QuestionsConfig[] = [];
 
-  if (pageContent) {
-    if (pageContent.questions) {
-      rawQuestionsConfig = pageContent.questions;
+  if (pageContent.questions) {
+    rawQuestionsConfig = pageContent.questions;
 
-      formQuestions = pageContent.questions.map((question: QuestionsConfig) => {
-        const qid = question.affected_feature;
-        const options = question.answers.map(answer => ({
-          label: answer.answer,
-          value: answer.matching_feature_values,
-        }));
-        initialSelectedAnswers[qid] = question.default_answer;
-        return {
-          id: qid,
-          question: question.question,
-          options: options,
-          information: question.information,
-        };
-      });
-    }
-
-    // --- Sort questions to match the table's feature order ---
-    // 1. Get unique feature names from services and sort them alphabetically
-    const uniqueFeatureNames = new Set<string>();
-    pageContent?.services.forEach(service => {
-      if (service.features) {
-        service.features.forEach(feature => {
-          uniqueFeatureNames.add(feature.name)
-        });
+    formQuestions = pageContent.questions.map((question: QuestionsConfig) => {
+      const qid = question.affected_feature;
+      const options = question.answers.map(answer => ({
+        label: answer.answer,
+        value: answer.matching_feature_values,
+      }));
+      initialSelectedAnswers[qid] = question.default_answer;
+      return {
+        id: qid,
+        question: question.question,
+        options: options,
+        information: question.information,
       };
     });
-    const sortedFeatureNames = Array.from(uniqueFeatureNames).sort();
-
-    // 2. Create a map for quick lookup of the sorted index
-    const featureOrderMap = new Map<string, number>();
-    sortedFeatureNames.forEach((name, index) => {
-      featureOrderMap.set(name, index);
-    });
   }
+
+  // --- Sort questions to match the table's feature order ---
+  // 1. Get unique feature names from services and sort them alphabetically
+  const uniqueFeatureNames = new Set<string>();
+  pageContent.services.forEach(service => {
+    if (service.features) {
+      service.features.forEach(feature => {
+        uniqueFeatureNames.add(feature.name)
+      });
+    };
+  });
+  const sortedFeatureNames = Array.from(uniqueFeatureNames).sort();
+
+  // 2. Create a map for quick lookup of the sorted index
+  const featureOrderMap = new Map<string, number>();
+  sortedFeatureNames.forEach((name, index) => {
+    featureOrderMap.set(name, index);
+  });
 
   return (
     <div className="w-full">
@@ -57,8 +55,8 @@ export default async function CompareStorageOptions() {
         <div className="bg-blue-navbar">
           <Hero 
             image={"/images/hero-subroutes.jpeg"}
-            title={pageContent?.title || ''}
-            description={pageContent?.description}
+            title={pageContent.title}
+            description={pageContent.description}
             titleClassName="font-bold text-6xl md:text-8xl"
           />
         </div>
@@ -67,7 +65,7 @@ export default async function CompareStorageOptions() {
         pageContent={pageContent}
         questions={formQuestions}
         initialSelectedAnswers={initialSelectedAnswers}
-        services={pageContent?.services || []}
+        services={pageContent.services}
         questionsConfig={rawQuestionsConfig}
       />
     </div>

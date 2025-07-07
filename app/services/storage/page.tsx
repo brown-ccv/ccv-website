@@ -4,7 +4,6 @@ import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { Card, CardContent  } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
@@ -13,8 +12,8 @@ import { PageContentData, ServiceConfig, ServiceLink } from "@/lib/storage-types
 import { humanize } from "@/lib/utils"
 
 const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');
-const pageContent: PageContentData | null = rawPageContent ? (rawPageContent.data as PageContentData) : null;
-const heroLinks: ServiceLink[] = pageContent?.links || [];
+const pageContent: PageContentData = rawPageContent.data as PageContentData;
+const heroLinks: ServiceLink[] = pageContent.links || [];
 
 export default async function Storage() {
   return (
@@ -23,8 +22,8 @@ export default async function Storage() {
         <div className="bg-blue-navbar">
           <Hero 
             image={"/images/hero/hero.jpeg"}
-            title={pageContent?.title || ''}
-            description={pageContent?.description}
+            title={pageContent.title}
+            description={pageContent.description}
             titleClassName="font-bold text-6xl md:text-8xl"
           >
             <div className="flex flex-col w-full items-start not-prose">
@@ -80,7 +79,7 @@ export default async function Storage() {
           </Hero>
         </div>
       <div>
-        {pageContent?.services.map((serviceSection: ServiceConfig, index: number) => {
+        {pageContent.services.map((serviceSection: ServiceConfig, index: number) => {
           const isEven = index % 2 === 0;
           const sectionBgColor = isEven ? 'bg-white' : 'bg-neutral-50';
 

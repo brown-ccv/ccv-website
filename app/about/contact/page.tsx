@@ -1,4 +1,7 @@
 import React from "react";
+import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 import { Hero } from "@/components/Hero";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
@@ -102,7 +105,14 @@ export default async function ContactUs() {
                           <CardHeader className="text-center">{card.title}</CardHeader>
                         </div>
                         <CardDescription className="pt-6 text-xl text-center">{card.subtitle}</CardDescription>
-                        <CardTitle className="text-lg text-center flex-grow" dangerouslySetInnerHTML={{ __html: card.description }} />
+                        <CardTitle className="text-lg text-center flex-grow">
+                          <Markdown 
+                            rehypePlugins={[rehypeRaw]} 
+                            remarkPlugins={[remarkGfm]}
+                          >
+                            {card.description}
+                          </Markdown>
+                        </CardTitle>
                         <div className="flex justify-center mt-auto">
                           {card.buttonLinks && card.buttonLinks.map((link, index) => (
                             <Button key={index} variant="primary_filled" size="xl">
