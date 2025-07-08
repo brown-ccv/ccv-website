@@ -1,0 +1,25 @@
+title: "Research Data Storage"
+description: |
+  CCV provides a variety of storage options for research data.
+
+sections:
+  - name: "basic"
+    title: "Basic"
+    content: |
+      **Location:** Oscar | Campus Files | Stronghold
+      **Storage Allocation:** 1TB
+      **Cost:** $0/year
+
+  - name: "unreplicated"
+    title: "Unreplicated"
+    content: |
+      **Location:** Oscar | Campus Files | Stronghold
+      **Storage Allocation:** Up to 10TB
+      **Cost:** $50/TB/year
+
+  - name: "replicated"
+    title: "Replicated"
+    content: |
+      **Location:** Campus Files
+      **Storage Allocation:** Up to 10TB
+      **Cost:** $100/TB/year
