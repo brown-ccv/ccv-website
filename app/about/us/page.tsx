@@ -82,25 +82,6 @@ export default async function AboutUs() {
         </section>
 
         {/* People */}
-        {/* <div className="content-wrapper py-16 sm:py-24">
-          <SectionHeader title="People" align="center"></SectionHeader>
-            <div className="flex justify-center">
-              <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
-              {pageContent?.people.map((person: PeopleTypes) => (
-                <div key={person.name}>
-                  <CardWithImage 
-                    imagePath={imagePath(person?.image)} 
-                    hoverImagePath={imagePath(person?.image.replace('main', 'hover'))} 
-                    name={person?.name} 
-                    title={person?.title} 
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </div> */}
-
-        {/* People */}
         <div id="people" className="content-wrapper py-12 lg:py-24">
           <SectionHeader title="People" align="center"></SectionHeader>
           <div className="flex justify-center py-4 lg:py-10">
