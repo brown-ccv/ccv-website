@@ -21,7 +21,6 @@ export function Workday({ careers }: { careers: any[] }) {
           <ExternalLink
             key={position.externalPath}
             href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
-            external={true}
             className="block m-4"
           >
             <Card className="hover:shadow-lg transition-shadow">

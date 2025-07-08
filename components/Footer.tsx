@@ -15,7 +15,6 @@ const FooterLink = ({ href, label }: FooterLinkProps) => {
     <li>
       <ExternalLink
         href={href}
-        external={true}
         className="flex items-center text-sm tracking-wider uppercase transition-colors duration-300 text-sunglow-400 hover:text-white"
       >
         {label}
@@ -95,7 +94,6 @@ const Footer = () => {
         <div className="flex flex-row w-full sm:justify-center sm:items-center">
           <ExternalLink
             href="https://alumni-friends.brown.edu/giving"
-            external={true}
             className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-black"
           >
             Give to Brown

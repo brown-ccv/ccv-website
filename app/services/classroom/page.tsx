@@ -115,10 +115,10 @@ export default async function ClassroomSupport() {
                 </li>
               </ul>
               <Button variant="primary_filled" size="lg">
-              <ExternalLink href="https://docs.ccv.brown.edu/oscar/account-types" external={true}>Learn More</ExternalLink>
+              <ExternalLink href="https://docs.ccv.brown.edu/oscar/account-types">Learn More</ExternalLink>
             </Button>
             <Button variant="primary_filled" size="lg">
-              <ExternalLink href="mailto:support@ccv.brown.edu" external={true}>Request Student Accounts</ExternalLink>
+              <ExternalLink href="mailto:support@ccv.brown.edu">Request Student Accounts</ExternalLink>
             </Button>
             </div>
           </CardContent>
@@ -147,7 +147,7 @@ export default async function ClassroomSupport() {
                       Google Colab comes bundled with most Python-specific software libraries, and it supports real-time collaboration. It integrates with Google Drive and should be sufficient for most classroom or workshop needs.
                     </p>
                     <Button variant="primary_filled" size="lg">
-                      <ExternalLink href="https://colab.google" external={true}>Learn More</ExternalLink>
+                      <ExternalLink href="https://colab.google">Learn More</ExternalLink>
                     </Button>
                 </div>
               </CardContent>
@@ -161,10 +161,10 @@ export default async function ClassroomSupport() {
                 For more advanced needs, Brown&apos;s JupyterHub may be a good fit for your needs. If you are an instructor, CCV can provide access to JupyterHub for your class or workshop, and Digital Learning and Design (DLD) can assist with integrating computational assignments into curricula. The implementation is supported by Brown OIT; please follow the link below to request an instance for your class. OIT staff will respond to your request to begin the setup process. We ask that requests for JupyterHub be made at least two months in advance of expected course deployment.
               </p>
               <Button variant="primary_filled" size="lg">
-                <ExternalLink href="https://docs.ccv.brown.edu/jupyterhub" external={true}>Documentation</ExternalLink>
+                <ExternalLink href="https://docs.ccv.brown.edu/jupyterhub">Documentation</ExternalLink>
               </Button>
               <Button variant="primary_filled" size="lg">
-                <ExternalLink href="https://docs.google.com/forms/d/e/1FAIpQLSct9rFCxLhPIezHI-RYRyEuSnvHrPZLMuUSFRTriIyd_3TAfA/viewform?usp=sf_link" external={true}>Request a Hub</ExternalLink>
+                <ExternalLink href="https://docs.google.com/forms/d/e/1FAIpQLSct9rFCxLhPIezHI-RYRyEuSnvHrPZLMuUSFRTriIyd_3TAfA/viewform?usp=sf_link">Request a Hub</ExternalLink>
               </Button>
             </div>
           </CardContent>

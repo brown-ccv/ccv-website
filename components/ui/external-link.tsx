@@ -9,7 +9,7 @@ type ExternalLinkProps = React.PropsWithChildren<{
 };
 
 export const ExternalLink: React.FC<ExternalLinkProps> = ({
-  external = false,
+  external = true,
   href,
   children,
   className = '',
