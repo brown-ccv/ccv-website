@@ -18,12 +18,6 @@ contactUs:
       buttonLinks:
         - text: "Submit a Ticket"
           href: "mailto:support@ccv.brown.edu"
-    - title: "Documentation"
-      icon: "FaBookReader"
-      description: "View Documentation for CCV Services, such as for Stronghold, Oscar, or Globus."
-      buttonLinks:
-        - text: "View the Docs"
-          href: "https://docs.ccv.brown.edu/documentation"
     - title: "CCV Slack"
       icon: "FaSlack"
       description: "CCV Share is a collection of Slack channels where CCV Staff and the community will be available to discuss your questions."
