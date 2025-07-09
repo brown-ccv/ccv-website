@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollButton } from "@/components/ui/scroll-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { readContentFile } from "@/lib/content-utils";
+import ExternalLink from "@/components/ui/external-link";
 
 export default async function Home() {
   // Load featured carousel data from YAML
