@@ -26,7 +26,7 @@ import {
   FaBook,
 } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
-import ExternalLink from "./ui/external-link"
+import ExternalLink from "@/components/ui/external-link"
 
 interface RouteItem {
   name: string
