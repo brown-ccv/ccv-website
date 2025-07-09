@@ -91,41 +91,6 @@ export default async function ContactUs() {
             </p>
           </CardContent>
         </Card>
-<<<<<<< HEAD
-        <div>
-          <section className="content-wrapper">
-            <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
-              {pageContent?.officeHours?.map((card: OfficeHoursTypes) => (
-                <div
-                  key={card.title}
-                  className="flex-grow max-w-md"
-                >
-                  <div className="inline-flex items-center gap-2 py-8 w-full h-full">
-                    <Card className={cn("overflow-hidden flex flex-col w-full h-full", cardVariants({ variant: "default" }))}>
-                      <CardContent className="flex flex-col h-full">
-                        <div className="relative border-b border-neutral-900 px-4 flex justify-center">
-                          <CardHeader className="text-center">{card.title}</CardHeader>
-                        </div>
-                        <CardDescription className="pt-6 text-xl text-center">{card.subtitle}</CardDescription>
-                        <CardTitle className="text-lg text-center flex-grow">
-                          <Markdown 
-                            rehypePlugins={[rehypeRaw]} 
-                            remarkPlugins={[remarkGfm]}
-                          >
-                            {card.description}
-                          </Markdown>
-                        </CardTitle>
-                        <div className="flex justify-center mt-auto">
-                          {card.buttonLinks && card.buttonLinks.map((link, index) => (
-                            <Button key={index} variant="primary_filled" size="xl">
-                              <ExternalLink href={link.href} external={true}>{link.text}</ExternalLink>
-                            </Button>
-                          ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-=======
         <section className="content-wrapper">
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
             {pageContent?.officeHours?.map((card: OfficeHoursTypes) => (
@@ -157,7 +122,6 @@ export default async function ContactUs() {
                       </div>
                     </CardContent>
                   </Card>
->>>>>>> 227faca0f3f8cc05df6e247c5de25eee294a6171
                 </div>
               </div>
             ))}
