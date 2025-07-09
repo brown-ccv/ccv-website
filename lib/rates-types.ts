@@ -8,6 +8,12 @@ export interface RatesCard {
   name: string;
   title: string;
   content: string;
+  category?: string;
+}
+
+export interface RatesCategory {
+  name: string;
+  description: string;
 }
 
 export interface RatesSectionData {
@@ -18,4 +24,5 @@ export interface RatesSectionData {
   notes?: string;
   links?: ContentLinks[];
   sections?: RatesCard[];
+  categories?: RatesCategory[];
 }
