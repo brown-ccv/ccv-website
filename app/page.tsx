@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button"
 import { ScrollButton } from "@/components/ui/scroll-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { UserIcon } from "@heroicons/react/24/solid"
+import ExternalLink from "@/components/ui/external-link"
 
 
 const featuredCarouselData: FeaturedCarouselItem[] = [
@@ -71,9 +72,9 @@ export default async function Home() {
                 variant="primary_filled"
                 size="xl"
               >
-                <a href="mailto:ccv-support@brown.edu">
+                <ExternalLink href="mailto:ccv-support@brown.edu" external={true}>
                   Work with Us
-                </a>
+                </ExternalLink>
               </Button>
               <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
             </Hero>

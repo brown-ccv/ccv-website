@@ -25,6 +25,7 @@ import {
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
+import ExternalLink from "@/components/ui/external-link"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -111,17 +112,17 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                 asChild
                 className="rounded-md max-w-full px-2 hover:bg-neutral-50"
               >
-                <a href={event.url} target="_blank">
+                <ExternalLink href={event.url} external={true}>
                   <p className="flex-auto min-w-0 truncate text-lg text-blue-500 font-semibold">
                     {event.title}
                   </p>
-                </a>
+                </ExternalLink>
               </TooltipTrigger>
               <TooltipContent>
                 <p className="font-semibold pb-2">{event.date}</p>
-                <a
+                <ExternalLink
                   href={event.url}
-                  target="_blank"
+                  external={true}
                   className="flex gap-1 text-blue-500"
                 >
                   <p className="font-semibold hover:underline">{event.title}</p>
@@ -129,7 +130,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                     className="mr-2 h-3 w-3"
                     aria-hidden="true"
                   />
-                </a>
+                </ExternalLink>
 
                 <time
                   dateTime={event.date_utc}
@@ -155,9 +156,9 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           className="group flex p-4 pr-6 focus-within:bg-gray-50 hover:bg-gray-50"
         >
           <div className="flex-auto">
-            <a
+            <ExternalLink
               href={event.url}
-              target="_blank"
+              external={true}
               className="flex gap-1 text-blue-500"
             >
               <p className="font-semibold hover:underline">{event.title}</p>
@@ -165,7 +166,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                 className="mr-2 h-4 w-4"
                 aria-hidden="true"
               />
-            </a>
+            </ExternalLink>
             <time
               dateTime={event.date_utc}
               className="mt-2 flex items-center text-keppel-500"

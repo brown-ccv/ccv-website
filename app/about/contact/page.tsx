@@ -8,6 +8,7 @@ import { cardVariants } from "@/components/ui/variants";
 import { readContentFile } from "@/lib/content-utils"
 import Icon from "@/components/ui/render-icon";
 import { ContactUsTypes, OfficeHoursTypes, PageContentData } from "@/lib/about-types";
+import ExternalLink from "@/components/ui/external-link";
 
 const loadedContent = await readContentFile<PageContentData>('content/about/contact.yaml');
 const pageContent: PageContentData = loadedContent.data;
@@ -62,7 +63,7 @@ export default async function ContactUs() {
                             variant="primary_filled"
                             size="xl"
                           >
-                            <a href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>
+                            <ExternalLink href={link.href} external={true}>{link.text}</ExternalLink>
                           </Button>
                         ))}
                       </div>
@@ -106,7 +107,7 @@ export default async function ContactUs() {
                         <div className="flex justify-center mt-auto">
                           {card.buttonLinks && card.buttonLinks.map((link, index) => (
                             <Button key={index} variant="primary_filled" size="xl">
-                              <a href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>
+                              <ExternalLink href={link.href} external={true}>{link.text}</ExternalLink>
                             </Button>
                           ))}
                         </div>

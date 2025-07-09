@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"
 import { readContentFile } from "@/lib/content-utils"
 import { PeopleTypes, PageContentData } from "@/lib/about-types"
+import ExternalLink from "@/components/ui/external-link"
 import fs from "fs/promises"
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
@@ -63,7 +64,7 @@ export default async function AboutUs() {
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
               <p className="text-black text-xl">
-                The Center for Computation and Visualization (CCV) is a center within the University&apos;s central IT organization, which is the <a href="https://it.brown.edu" target="_blank" rel="noopener noreferrer">Office of Information Technology (OIT)</a>. In addition to building and maintaining the University&apos;s <a href="https://it.brown.edu/tools-services" target="_blank" rel="noopener noreferrer">hundreds of enterprise software, systems, and hardware</a>, OIT is also responsible for driving the technological progress that enables scientific research. Executing on the University&apos;s research mission is the key role that CCV plays in OIT.
+                The Center for Computation and Visualization (CCV) is a center within the University&apos;s central IT organization, which is the <ExternalLink href="https://it.brown.edu" external={true}>Office of Information Technology (OIT)</ExternalLink>. In addition to building and maintaining the University&apos;s <ExternalLink href="https://it.brown.edu/tools-services" external={true}>hundreds of enterprise software, systems, and hardware</ExternalLink>, OIT is also responsible for driving the technological progress that enables scientific research. Executing on the University&apos;s research mission is the key role that CCV plays in OIT.
               </p>
             </CardContent>
           </Card>

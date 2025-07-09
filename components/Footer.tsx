@@ -2,6 +2,7 @@ import CCVLogo from "@/components/assets/CCVLogo"
 import { CarbonBadge } from "@/components/CarbonBadge"
 import { FaArrowRight } from "react-icons/fa"
 import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
+import ExternalLink from "@/components/ui/external-link"
 
 // Footer link component
 interface FooterLinkProps {
@@ -12,15 +13,13 @@ interface FooterLinkProps {
 const FooterLink = ({ href, label }: FooterLinkProps) => {
   return (
     <li>
-      <a
+      <ExternalLink
         href={href}
         className="flex items-center text-sm tracking-wider uppercase transition-colors duration-300 text-sunglow-400 hover:text-white"
-        target="_blank"
-        rel="noopener noreferrer"
       >
         {label}
         <FaArrowRight className="block ml-2" />
-      </a>
+      </ExternalLink>
     </li>
   )
 }
@@ -93,13 +92,13 @@ const Footer = () => {
           <FooterSection links={footerNavLinks} className="lg:border-b-0" />
         </div>
         <div className="flex flex-row w-full sm:justify-center sm:items-center">
-          <a
+          <ExternalLink
             href="https://alumni-friends.brown.edu/giving"
             className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-black"
           >
             Give to Brown
             <FaArrowRight className="inline-block ml-2 text-sunglow-400 group-hover:text-black" />
-          </a>
+          </ExternalLink>
         </div>
       </div>
 
