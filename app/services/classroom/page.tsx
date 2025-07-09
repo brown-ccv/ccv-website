@@ -8,7 +8,10 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 import { readContentFolder, ContentLinks, MarkdownFrontmatter, YamlContentData, readContentFile } from "@/lib/content-utils"
+<<<<<<< HEAD
 import ExternalLink from "@/components/ui/external-link"
+=======
+>>>>>>> 227faca0f3f8cc05df6e247c5de25eee294a6171
 
 interface ClassroomSectionData extends MarkdownFrontmatter {
   slug: string;
@@ -25,9 +28,6 @@ export default async function ClassroomSupport() {
   const inClassTutorials = sectionsMap.get('in-class-tutorials')!;
   const studentAccounts = sectionsMap.get('student-accounts')!;
   const computationalNotebooks = sectionsMap.get('computational-notebooks')!;
-
-  // Check if computational notebooks is YAML-based
-  const isComputationalNotebooksYaml = computationalNotebooks.data.sections !== undefined;
 
   // Load featured carousel data from YAML
   const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>('content/services/classroom/featured-carousel.yaml');
@@ -107,54 +107,30 @@ export default async function ClassroomSupport() {
       <Card className="w-full border-none shadow-none rounded-none">
         <CardContent className="mx-auto flex flex-col px-6">
           <div className="prose text-xl">
-            {isComputationalNotebooksYaml ? (
-              <>
-                {/* Description */}
-                {(computationalNotebooks.data as YamlContentData).description && (
-                  <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                    {(computationalNotebooks.data as YamlContentData).description!}
-                  </Markdown>
-                )}
-                
-                {/* Sections */}
-                {(computationalNotebooks.data as YamlContentData).sections?.map((section) => (
-                  <div key={section.name}>
-                    {/* Section content */}
-                    <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                      {section.title ? `## ${section.title}\n\n${section.content}` : section.content}
-                    </Markdown>
-                    
-                    {/* Section buttons */}
-                    {section.links && section.links.length > 0 && (
-                      <div className="flex gap-4 mt-6 not-prose">
-                        {section.links.map((link: ContentLinks, linkIndex: number) => (
-                          <Button 
-                            key={`${section.name}-${linkIndex}`} 
-                            variant={section.name === 'google-colab' ? 'primary_filled' : 'secondary_filled'} 
-                            size="lg"
-                          >
-                            <a href={link.target} target="_blank" rel="noopener noreferrer">
-                              {link.text}
-                            </a>
-                          </Button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </>
-            ) : (
-              // Fallback to old markdown approach for backward compatibility
-              <>
+            {/* Description */}
+            {(computationalNotebooks.data as YamlContentData).description && (
+              <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                {(computationalNotebooks.data as YamlContentData).description!}
+              </Markdown>
+            )}
+            
+            {/* Sections */}
+            {(computationalNotebooks.data as YamlContentData).sections?.map((section) => (
+              <div key={section.name}>
+                {/* Section content */}
                 <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                  {computationalNotebooks.content}
+                  {section.title ? `## ${section.title}\n\n${section.content}` : section.content}
                 </Markdown>
                 
-                {/* Default buttons */}
-                {computationalNotebooks.data.links && computationalNotebooks.data.links.filter(link => link.category === "Default").length > 0 && (
+                {/* Section buttons */}
+                {section.links && section.links.length > 0 && (
                   <div className="flex gap-4 mt-6 not-prose">
-                    {computationalNotebooks.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
-                      <Button key={`default-${index}`} variant="primary_filled" size="lg">
+                    {section.links.map((link: ContentLinks, linkIndex: number) => (
+                      <Button 
+                        key={`${section.name}-${linkIndex}`} 
+                        variant={section.name === 'google-colab' ? 'primary_filled' : 'secondary_filled'} 
+                        size="lg"
+                      >
                         <a href={link.target} target="_blank" rel="noopener noreferrer">
                           {link.text}
                         </a>
@@ -162,8 +138,8 @@ export default async function ClassroomSupport() {
                     ))}
                   </div>
                 )}
-              </>
-            )}
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>
