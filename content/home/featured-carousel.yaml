@@ -1,25 +1,18 @@
 carousel:
   - title: "PROVIDENT"
-    category: "Public Health"
-    description: "A web app to support the PROVIDENT research study looking to prevent drug-related deaths in neighborhoods across Rhode Island."
+    category: ["Public Health", "Web Development"]
+    description: "Dashboard that showcases the PROVIDENT model that makes predictions about which neighborhoods are at the highest risk for future overdoses. Intervention municipalities received predictions from the PROVIDENT model in the randomized trial. Organizations plan and track their interventions and their effects on the overdose data using neighborhood assessment and planning forms."
     image: "/images/featured-carousel/provident.png"
-    profile:
-      name: "Brown School of Public Health"
-      organization: "People, Place and Health Collective"
-      icon: "FaUser"
+    organizations:
+      - name: "Brown School of Public Health"
+        organization: "People, Place and Health Collective"
+        pi: "Brandon Marshall"
+        pm: "Max Krieger"
+        icon: "FaUser"
+      - name: "Rhode Island Department of Health"
+        organization: "RIDOH"
+        icon: "FaUser"
     buttons:
       - text: "Website"
         url: "https://provident-study.org"
         variant: "primary_filled"
-  - title: "PROJECT 2"
-    category: "Economics"
-    description: "Hello world."
-    image: "/images/featured-carousel/provident.png"
-    profile:
-      name: "High Performance Computing"
-      organization: "Center for Computation and Visualization"
-      icon: "FaUser"
-    buttons:
-      - text: "Website"
-        url: "https://provident-study.org"
-        variant: "primary_filled" 
