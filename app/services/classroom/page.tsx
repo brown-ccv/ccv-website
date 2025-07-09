@@ -8,16 +8,12 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 import { readContentFolder, ContentLinks, MarkdownFrontmatter, YamlContentData, readContentFile } from "@/lib/content-utils"
-
+import ExternalLink from "@/components/ui/external-link"
 
 interface ClassroomSectionData extends MarkdownFrontmatter {
   slug: string;
   content: string;
   links?: ContentLinks[];
-}
-
-interface YamlClassroomSectionData extends YamlContentData {
-  slug: string;
 }
 
 export default async function ClassroomSupport() {

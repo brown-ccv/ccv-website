@@ -7,7 +7,7 @@ import Link from "next/link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
   FaChevronDown,
-  FaSearch,
+  // FaSearch,
   FaUser,
   FaUserCheck,
   FaUserPlus,
@@ -20,14 +20,20 @@ import {
   FaDesktop,
   FaQuestionCircle,
   FaBars,
+  FaHandshake,
+  FaCode,
+  FaChalkboardTeacher,
+  FaBook,
 } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
+import ExternalLink from "./ui/external-link"
 
 interface RouteItem {
   name: string
   href: string
   description?: string
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  external?: boolean
 }
 
 interface NavigationProps {
@@ -43,6 +49,7 @@ type Route = {
   href: string
   description?: string
   icon?: React.ComponentType<React.SVGProps<SVGSVGElement>>
+  external?: boolean
 }
 
 type RouteGroup = {
@@ -90,20 +97,20 @@ const routes: NavSection[] = [
           {
             name: "Oscar",
             href: "/services/oscar",
-            description: "Brown’s high-performance computing cluster",
+            description: "Brown's high-performance computing cluster",
             icon: FaCloud,
           },
           {
             name: "Stronghold",
             href: "/services/stronghold",
             description:
-              "Brown’s highly secure computing & storage environment",
+              "Brown's highly secure computing & storage environment",
             icon: FaWindowRestore,
           },
           {
             name: "Storage and Transfer",
             href: "/services/storage",
-            description: "Brown’s storage options",
+            description: "Brown's storage options",
             icon: FaFileImport,
           },
           {
@@ -123,34 +130,39 @@ const routes: NavSection[] = [
     ],
   },
   {
-    name: "Portfolio",
-    groups: [
-      {
-        name: "",
-        routes: [
+            name: "Portfolio",
+        groups: [
           {
-            name: "Collaborations",
-            href: "/portfolio/collaborations",
-            description: "",
-          },
-          {
-            name: "Software",
-            href: "/portfolio/software",
-            description: "",
-          },
-          {
-            name: "Workshops and Talks",
-            href: "/portfolio/workshops-and-talks",
-            description: "",
-          },
-          {
-            name: "Publications",
-            href: "https://publications.ccv.brown.edu",
-            description: "",
+            name: "",
+            routes: [
+              {
+                name: "Collaborations",
+                href: "/portfolio/collaborations",
+                description: "*Coming Soon*",
+                icon: FaHandshake,
+              },
+              {
+                name: "Software",
+                href: "/portfolio/software",
+                description: "*Coming Soon*",
+                icon: FaCode,
+              },
+              {
+                name: "Workshops and Talks",
+                href: "/portfolio/workshops-and-talks",
+                description: "*Coming Soon*",
+                icon: FaChalkboardTeacher,
+              },
+              {
+                name: "Publications",
+                href: "https://publications.ccv.brown.edu",
+                description: "",
+                icon: FaBook,
+                external: true,
+              },
+            ],
           },
         ],
-      },
-    ],
   },
   {
     name: "About",
@@ -235,18 +247,18 @@ export const Navbar: React.FC = () => {
               </NavigationMenu.Item>
             )}
 
-            <NavigationMenu.Item>
-              {/* Blog */}
-              <NavigationMenu.Link
+            {/* <NavigationMenu.Item> */}
+              {/* TODO: Add blog */}
+              {/* <NavigationMenu.Link
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
                 href="/blog">
                 Blog
               </NavigationMenu.Link>
-            </NavigationMenu.Item>
+            </NavigationMenu.Item> */}
           </NavigationMenu.List>
 
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
-            {/* Help */}
+            {/* TODO: Where does Help link to? */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
@@ -257,22 +269,24 @@ export const Navbar: React.FC = () => {
 
             {/* Documentation */}
             <NavigationMenu.Item>
-              <NavigationMenu.Link
+              <ExternalLink
+                href="https://docs.ccv.brown.edu/documentation"
+                external={true}
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer">
+              >
                 <FaFileLines size="" className="text-2xl mr-0 stroke-[2.5]" />Docs
-              </NavigationMenu.Link>
+              </ExternalLink>
             </NavigationMenu.Item>
 
-            {/* Search */}
-            <NavigationMenu.Item>
+            {/* TODO: Add search */}
+            {/* <NavigationMenu.Item>
               <Button
                 variant="secondary_filled"
                 className="flex items-center justify-center ml-6"
                 iconOnly={<FaSearch />}
                 size="icon"
               />
-            </NavigationMenu.Item>
+            </NavigationMenu.Item> */}
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
@@ -315,9 +329,15 @@ export const Navbar: React.FC = () => {
                     {section.groups.map(group => (
                       <div className="py-2" key={group.name}>
                         {group.routes.map(route => (
-                          <Link key={route.href} href={route.href} className="block text-white text-xl py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-                            {route.name}
-                          </Link>
+                                                     <ExternalLink
+                             key={route.href}
+                             href={route.href}
+                             external={route.external}
+                             onClick={toggleMobileMenu}
+                             className="block text-white text-xl py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+                           >
+                             {route.name}
+                           </ExternalLink>
                         ))}
                       </div>
                     ))}
@@ -325,15 +345,20 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            <Link href="/blog" className="flex text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-              Blog
-            </Link>
-            <Link href="/help" className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-              Help
-            </Link>
-            <a href="https://docs.ccv.brown.edu/documentation" target="_blank" rel="noopener noreferrer" className="block text-sunglow-400 font-semibold text-2xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-              Docs
-            </a>
+                         <ExternalLink href="/blog" onClick={toggleMobileMenu} className="flex text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+               Blog
+             </ExternalLink>
+             <ExternalLink href="/help" onClick={toggleMobileMenu} className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+               Help
+             </ExternalLink>
+             <ExternalLink
+               href="https://docs.ccv.brown.edu/documentation"
+               external
+               onClick={toggleMobileMenu}
+               className="block text-sunglow-400 font-semibold text-2xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+             >
+               Docs
+             </ExternalLink>
           </div>
         )}
       </nav>
@@ -361,6 +386,7 @@ const NavigationSectionContent: React.FC<{
                 <li key={route.href} className="hover:bg-neutral-50 focus:bg-neutral-100 p-1 sm:p-1.5 md:p-2">
                   <NavigationMenu.Link
                     href={route.href}
+                    {...(route.href === "https://publications.ccv.brown.edu" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     className="flex items-start focus:outline-none"
                   >
                     {route.icon && (

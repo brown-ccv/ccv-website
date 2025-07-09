@@ -99,7 +99,7 @@ people:
     github_username:
     brown_directory_uuid: 1b81a653-ade8-4850-97ea-682644b714d0
     bio: ""
-    image: jarrod_main.png
+    image:
   - name: Timothy Poli
     type: Full Time
     team: CCV Operations
@@ -107,7 +107,7 @@ people:
     github_username: ""
     brown_directory_uuid: 6ad65e2c-ba76-358a-dd69-9ab5508b3d8b
     bio: ""
-    image: timothy_main.png
+    image:
   - name: Michael Antonelli
     type: Full Time
     team: CCV Operations
@@ -115,7 +115,7 @@ people:
     github_username: ""
     brown_directory_uuid: ddb582f2-d4fd-4d8a-adf1-4c4e37902ddd
     bio: ""
-    image: michael_main.png
+    image:
   - name: Paul Koussa
     type: Full Time
     team: Leadership
@@ -123,7 +123,7 @@ people:
     github_username: ""
     brown_directory_uuid: c67a6c91-53f3-3502-8fcb-006770f4d76e
     bio: ""
-    image: koussa_main.png
+    image:
   - name: Paulo S Baptista
     type: Full Time
     team: CCV Operations
@@ -173,7 +173,7 @@ people:
     github_username: paulcao-brown
     brown_directory_uuid: ec11f732-efa0-4fa8-9cd2-030b45cb2929
     bio: ""
-    image: cao_main.png
+    image:
   - name: Jordan Lawson
     type: Full Time
     team: Advanced Research Computing
@@ -262,7 +262,7 @@ people:
     github_username: jashlu
     brown_directory_uuid: 534e9bc2-bf24-444f-a568-710c0193c2ec
     bio: ""
-    image: joshua_main.png
+    image:
   - name: Robert Gemma, Jr.
     type: Full Time
     team: Advanced Research Computing

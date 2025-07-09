@@ -42,9 +42,9 @@ export default async function Home() {
                 variant="primary_filled"
                 size="xl"
               >
-                <a href="mailto:ccv-support@brown.edu">
+                <ExternalLink href="mailto:ccv-support@brown.edu" external={true}>
                   Work with Us
-                </a>
+                </ExternalLink>
               </Button>
               <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
             </Hero>

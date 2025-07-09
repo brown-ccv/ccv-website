@@ -6,11 +6,42 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"
 import { readContentFile } from "@/lib/content-utils"
 import { PeopleTypes, PageContentData } from "@/lib/about-types"
+import ExternalLink from "@/components/ui/external-link"
+import fs from "fs/promises"
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
 const loadedContent = await readContentFile<PageContentData>('content/about/us.yaml');
 const pageContent: PageContentData = loadedContent.data;
+
+async function getImagePaths(imageName: string | null) {
+  const defaultPath = "/logos/ccv-logo.svg"
+
+  // If imageName is null, undefined, or empty, return default
+  if (!imageName) {
+    return { main: defaultPath, hover: defaultPath }
+  }
+
+  const mainPath = imagePath(imageName)
+  const hoverName = imageName.replace("main", "hover")
+  const hoverPath = imagePath(hoverName)
+
+  // Check if the main image exists
+  // If it doesn't, return the default path for both main and hover
+  try {
+    await fs.access(path.join("public", mainPath))
+  } catch {
+    return { main: defaultPath, hover: defaultPath }
+  }
+
+  // Check if the hover image exists
+  try {
+    await fs.access(path.join("public", hoverPath))
+    return { main: mainPath, hover: hoverPath }
+  } catch {
+    return { main: mainPath, hover: mainPath }
+  }
+}
 
 export default async function AboutUs() {
     return (
@@ -33,7 +64,7 @@ export default async function AboutUs() {
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
               <p className="text-black text-xl">
-                The Center for Computation and Visualization (CCV) is a center within the University&apos;s central IT organization, which is the <a href="https://it.brown.edu" target="_blank" rel="noopener noreferrer">Office of Information Technology (OIT)</a>. In addition to building and maintaining the University&apos;s <a href="https://it.brown.edu/tools-services" target="_blank" rel="noopener noreferrer">hundreds of enterprise software, systems, and hardware</a>, OIT is also responsible for driving the technological progress that enables scientific research. Executing on the University&apos;s research mission is the key role that CCV plays in OIT.
+                The Center for Computation and Visualization (CCV) is a center within the University&apos;s central IT organization, which is the <ExternalLink href="https://it.brown.edu" external={true}>Office of Information Technology (OIT)</ExternalLink>. In addition to building and maintaining the University&apos;s <ExternalLink href="https://it.brown.edu/tools-services" external={true}>hundreds of enterprise software, systems, and hardware</ExternalLink>, OIT is also responsible for driving the technological progress that enables scientific research. Executing on the University&apos;s research mission is the key role that CCV plays in OIT.
               </p>
             </CardContent>
           </Card>
@@ -52,21 +83,27 @@ export default async function AboutUs() {
         </section>
 
         {/* People */}
-        <div className="content-wrapper py-16 sm:py-24">
+        <div id="people" className="content-wrapper py-12 lg:py-24">
           <SectionHeader title="People" align="center"></SectionHeader>
-            <div className="flex justify-center">
-              <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
-              {pageContent?.people.map((person: PeopleTypes) => (
-                <div key={person.name}>
-                  <CardWithImage 
-                    imagePath={imagePath(person?.image)} 
-                    hoverImagePath={imagePath(person?.image.replace('main', 'hover'))} 
-                    name={person?.name} 
-                    title={person?.title}
-                    personDetails={person}
-                  />
-                </div>
-              ))}
+          <div className="flex justify-center py-4 lg:py-10">
+            <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
+              {pageContent?.people &&
+                (await Promise.all(
+                  pageContent.people.map(async (person: PeopleTypes) => {
+                    const { main, hover } = await getImagePaths(person.image)
+                    return (
+                      <div key={person.name}>
+                        <CardWithImage
+                          imagePath={main}
+                          hoverImagePath={hover}
+                          name={person?.name}
+                          title={person?.title}
+                        />
+                      </div>
+                    )
+                  })
+                ))}
+
             </div>
           </div>
         </div>
