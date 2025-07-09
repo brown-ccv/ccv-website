@@ -10,6 +10,7 @@ import { readContentFolder } from "@/lib/content-utils"
 import { cardVariants } from "@/components/ui/variants";
 import { cn } from "@/lib/utils";
 import { RatesSectionData, RatesCard, ContentLinks, RatesCategory } from "@/lib/rates-types";
+import ExternalLink from "@/components/ui/external-link"
 
 export default async function Rates() {
 
@@ -89,9 +90,9 @@ export default async function Rates() {
           <div className="flex gap-4 mt-6 justify-center">
             {oscar.data.links.filter(link => link.category === "Default").map((link: ContentLinks) => (
               <Button key={link.text} variant="primary_filled" size="lg">
-                <a href={link.target} target="_blank" rel="noopener noreferrer">
+                <ExternalLink href={link.target}>
                   {link.text}
-                </a>
+                </ExternalLink>
               </Button>
             ))}
           </div>
@@ -201,9 +202,9 @@ export default async function Rates() {
           <div className="flex gap-4 mt-6 justify-center">
             {researchDataStorage.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
               <Button key={`research-${index}`} variant="primary_filled" size="lg">
-                <a href={link.target} target="_blank" rel="noopener noreferrer">
+                <ExternalLink href={link.target}>
                   {link.text}
-                </a>
+                </ExternalLink>
               </Button>
             ))}
           </div>
