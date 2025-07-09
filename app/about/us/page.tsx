@@ -102,6 +102,7 @@ export default async function AboutUs() {
                     )
                   })
                 ))}
+
             </div>
           </div>
         </div>
