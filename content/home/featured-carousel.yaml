@@ -1,12 +1,12 @@
 carousel:
   - title: "PROVIDENT"
     category: ["Public Health", "Web Development"]
-    description: "Dashboard that showcases the PROVIDENT model that makes predictions about which neighborhoods are at the highest risk for future overdoses. Intervention municipalities received predictions from the PROVIDENT model in the randomized trial. Organizations plan and track their interventions and their effects on the overdose data using neighborhood assessment and planning forms."
-    image: "/images/featured-carousel/provident.png"
+    description: "A dashboard that showcases the PROVIDENT model that makes predictions about which neighborhoods are at the highest risk for future overdoses. Intervention municipalities received predictions from the PROVIDENT model in the randomized trial. Organizations plan and track their interventions and their effects on the overdose data using neighborhood assessment and planning forms."
+    image: "/images/home/featured-carousel/provident.png"
     organizations:
       - name: "Brown School of Public Health"
         organization: "People, Place and Health Collective"
-        pi: "Brandon Marshall"
+        pi: ["Brandon Marshall"]
         pm: "Max Krieger"
         icon: "FaUser"
       - name: "Rhode Island Department of Health"
@@ -15,4 +15,80 @@ carousel:
     buttons:
       - text: "Website"
         url: "https://provident-study.org"
+        variant: "primary_filled"
+
+  - title: "Mesoamerican Migration Project"
+    category: ["Sociology", "Web Development"]
+    description: |
+      This project serves as a public-facing website to see/download data files from MMP-led research projects. The main goal of this project is to move all assets from Princeton to Brown and to create a more responsive website that the PI can later edit.  
+      Two phases of the project:  
+      1. Facelift of the old site  
+      2. Data storage and PI edit  
+    image: "/images/home/featured-carousel/mmp.png"
+    organizations:
+      - name: "Department of Sociology"
+        organization: "Population Studies and Training Center"
+        pi: ["David Lindstrom"]
+        icon: "FaUser"
+      - name: "Center for Demographic, Urban and Environmental Studies"
+        organization: "El Colegio de México"
+        pi: ["Silvia Giorguli Saucedo", "Jéssica Natalie Nájera Aguirre"]
+        icon: "FaUser"
+    buttons:
+      - text: "Website"
+        url: "https://mmp.research.brown.edu/mmp"
+        variant: "primary_filled"
+
+  - title: "Collider Parts Database"
+    category: ["Sociology", "Web Development"]
+    description: |
+      Tracks the construction of particle detector “modules” across 4 different research institutions.  
+      The database records each change to a module to create a detailed history.  
+      Includes information about each change, when it happened, and who made the change.  
+      Users can search the database, build modules, and upload images taken during production.  
+      The application uses a reusable component-based JavaScript frontend and deployed with a serverless cloud-based backend.  
+    image: "/images/home/featured-carousel/collider.png"
+    organizations:
+      - name: "Department of Physics"
+        organization: "Brown University"
+        pi: ["Ulrich Heintz"]
+        icon: "FaUser"
+    buttons:
+      - text: "Website"
+        url: "https://collider-parts-db.web.app/"
+        variant: "primary_filled"
+
+  - title: "Gearshift Fellowship"
+    category: ["Web Development"]
+    description: |
+      The Gearshift Fellowship is a car driving game where players take the role of a driver. The purpose of the game is to complete different missions and collect as many reward points as possible in the setting of 5 missions, each with different goals/challenges.  
+      The game is developed using HTML, CSS, and Javascript. The experiment running the game and facilitating data recording is built on jsPsych, a JavaScript framework used in web-based behavioral experiments.  
+      Honeycomb, an open-source repository that integrates cognitive science and web development practices to create deployable psychophysiological tasks compatible with lab equipment recordings.  
+    image: "/images/home/featured-carousel/gearshift.gif"
+    organizations:
+      - name: "TODO"
+        organization: "Brown University"
+        pi: ["TODO"]
+        icon: "FaUser"
+    buttons:
+      - text: "Website"
+        url: "TODO"
+        variant: "primary_filled"
+
+  - title: "Ice Floe Tracker"
+    category: ["Data Science"]
+    description: |
+      Publish code written for a research project:  
+      As an open source package anyone could use, using a programming language more commonly used in the field of study (climate science).  
+      Allow analysing much larger datasets using Brown’s supercomputer.  
+      Support a future grant application with new data.  
+    image: "/images/home/featured-carousel/icefloe.png"
+    organizations:
+      - name: "Department of Engineering"
+        organization: "Brown University"
+        pi: ["Monica Martinez Wilhelmus"]
+        icon: "FaUser"
+    buttons:
+      - text: "Wilhelmus Lab"
+        url: "https://wilhelmuslab.me/"
         variant: "primary_filled"

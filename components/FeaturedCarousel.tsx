@@ -22,7 +22,7 @@ export interface FeaturedCarouselItem {
   organizations?: {
     name: string;
     organization: string;
-    pi?: string;
+    pi?: string[];
     pm?: string;
     icon?: string;
   }[];
@@ -83,13 +83,19 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                     <div>
                       <div className="text-xl leading-snug font-semibold">{org.name}</div>
                       <div className="text-md text-gray-600">{org.organization}</div>
-                      {(org.pi || org.pm) && (
-                        <div className="text-sm text-gray-600 mt-1">
-                          {org.pi && <span>PI: {org.pi}</span>}
-                          {org.pi && org.pm && <span className="mx-2">•</span>}
-                          {org.pm && <span>PM: {org.pm}</span>}
-                        </div>
-                      )}
+                                              {(org.pi && org.pi.length > 0) && (
+                          <div className="text-sm text-gray-600 mt-1">
+                            <span>PI: </span>
+                            {org.pi?.map((pi, piIndex) => (
+                              <span key={piIndex}>
+                                {pi}
+                                {piIndex < (org.pi?.length || 0) - 1 && <span>, </span>}
+                              </span>
+                            ))}
+                            {org.pm && <span className="mx-2">•</span>}
+                            {org.pm && <span>PM: {org.pm}</span>}
+                          </div>
+                        )}
                     </div>
                   </div>
                 ))}
