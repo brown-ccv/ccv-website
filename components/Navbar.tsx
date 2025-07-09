@@ -26,7 +26,7 @@ import {
   FaBook,
 } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
-import ExternalLink from "./ui/external-link"
+import ExternalLink from "@/components/ui/external-link"
 
 interface RouteItem {
   name: string
@@ -89,12 +89,6 @@ const routes: NavSection[] = [
               "We provide technology and training for teaching with code",
             icon: FaUserGraduate,
           },
-          {
-            name: "Service Rates",
-            href: "/services/rates",
-            description: "Learn about the cost of our services",
-            icon: FaDollarSign,
-          },
         ],
       },
       {
@@ -126,9 +120,9 @@ const routes: NavSection[] = [
             icon: FaDesktop,
           },
           {
-            name: "Hardware Rates",
-            href: "/services/hardware-rates",
-            description: "Learn about the cost of our hardware services",
+            name: "Rates",
+            href: "/services/rates",
+            description: "Learn about the cost of our services",
             icon: FaDollarSign,
           },
         ],

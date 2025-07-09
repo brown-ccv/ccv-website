@@ -12,44 +12,35 @@ import {
 } from "@/components/ui/card";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
+import Icon from "@/components/ui/render-icon";
 
 export interface FeaturedCarouselItem {
   title: string;
   category: string;
   description: string;
   image: string;
-  websiteUrl?: string;
-  viewMoreUrl?: string;
-  profile: string;
-}
-
-interface Profile {
-  icon?: React.ReactNode;
-  name: string;
-  organization: string;
-  websiteUrl?: string;
-  viewMoreUrl?: string;
+  profile?: {
+    name: string;
+    organization: string;
+    icon?: string;
+  };
+  buttons?: {
+    text: string;
+    url: string;
+    variant: "primary_filled" | "primary_outlined" | "secondary_filled" | "secondary_outlined";
+  }[];
 }
 
 interface FeaturedCarouselProps {
   carouselData: FeaturedCarouselItem[];
-  profiles: Profile[]; 
 }
 
 export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   carouselData,
-  profiles,
 }) => {
   const [idx, setIdx] = useState(0);
   const currentItem = carouselData[idx];
-  const { title, category, description, image, websiteUrl, viewMoreUrl, profile: profileName } = currentItem;
-
-  const currentProfile = profiles.find((p) => p.name === profileName);
-  const { icon, name, organization } = currentProfile || {
-    icon: null,
-    name: "",
-    organization: "",
-  };
+  const { title, category, description, image, profile, buttons } = currentItem;
 
   const prev = () =>
     setIdx((i) => (i === 0 ? carouselData.length - 1 : i - 1));
@@ -69,36 +60,34 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
               {category}
             </Badge>
             <h3 className="text-3xl font-semibold">{title}</h3>
-            <Card className="border-none shadow-none bg-transparent">
-              <CardContent className="flex items-center p-0">
-                {icon && <div className="w-6 h-6 mr-3">{icon}</div>}
-                <div>
-                  <CardTitle className="text-xl leading-snug">{name}</CardTitle>
-                  <CardDescription className="text-md">{organization}</CardDescription>
-                </div>
-              </CardContent>
-            </Card>
+            {profile && (
+              <Card className="border-none shadow-none bg-transparent">
+                <CardContent className="flex items-center p-0">
+                  <div className="w-6 h-6 mr-3">
+                    <Icon iconName={profile.icon} className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-xl leading-snug">{profile.name}</CardTitle>
+                    <CardDescription className="text-md">{profile.organization}</CardDescription>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
             <p className="text-xl font-normal text-gray-800">{description}</p>
-            <div className="flex flex-wrap gap-4">
-              {websiteUrl && (
-                <Button
-                  variant="primary_filled"
-                  className="h-[55px] w-[155px] font-semibold text-xl self-start"
-                  onClick={() => window.open(websiteUrl, "_blank")}
-                >
-                  Website
-                </Button>
-              )}
-              {viewMoreUrl && (
-                <Button
-                  variant="primary_outlined"
-                  className="h-[55px] w-[155px] font-semibold text-xl self-start"
-                  onClick={() => window.open(viewMoreUrl, "_blank")}
-                >
-                  View More
-                </Button>
-              )}
-            </div>
+            {buttons && buttons.length > 0 && (
+              <div className="flex flex-wrap gap-4">
+                {buttons.map((button, index) => (
+                  <Button
+                    key={index}
+                    variant={button.variant}
+                    className="h-[55px] px-6 font-semibold text-xl self-start whitespace-nowrap"
+                    onClick={() => window.open(button.url, "_blank")}
+                  >
+                    {button.text}
+                  </Button>
+                ))}
+              </div>
+            )}
           </div>
 
           <div className="w-full max-w-[700px] space-y-6 lg:w-full hidden lg:block">

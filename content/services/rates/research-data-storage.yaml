@@ -1,0 +1,35 @@
+title: "Research Data Storage"
+
+sections:
+  - name: "basic"
+    title: "Basic"
+    category: "default"
+    content: |
+      **Location:** Oscar | Campus Files | Stronghold  
+      **Storage Allocation:** 1TB  
+      **Cost:** $0/year  
+
+  - name: "unreplicated"
+    title: "Unreplicated"
+    category: "additional"
+    content: |
+      **Location:** Oscar | Campus Files | Stronghold  
+      **Storage Allocation:** Up to 10TB  
+      **Cost:** $50/TB/year  
+
+  - name: "replicated"
+    title: "Replicated"
+    category: "additional"
+    content: |
+      **Location:** Campus Files  
+      **Storage Allocation:** Up to 10TB  
+      **Cost:** $100/TB/year  
+
+categories:
+  - name: "default"
+    description: "CCV provides a variety of storage options for research data. For Brown Faculty members, the default storage option is 1TB."
+
+  - name: "additional"
+    description: |
+      **Additional Storage Allocation Costs:**  
+      When awarded a new grant, Brown faculty members may request an additional storage space by providing CCV with the active grant number.  
