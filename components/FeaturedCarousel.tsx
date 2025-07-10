@@ -13,7 +13,7 @@ import remarkGfm from 'remark-gfm'
 
 export interface FeaturedCarouselItem {
   title: string;
-  category: string[];
+  categories: string[];
   description: string;
   image: string;
   organizations?: {
