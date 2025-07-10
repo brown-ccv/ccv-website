@@ -46,9 +46,6 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   const next = () =>
     setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1));
 
-  // Handle multiple categories
-  const categories = Array.isArray(category) ? category : [category];
-
   return (
     <section className="mt-12 mb-24 sm:mx-2">
       <div className="w-full max-w-[2040px] px-2">
