@@ -4,12 +4,6 @@ import React, { useState, useRef } from "react";
 import { Badge } from "@/components/ui/badge";
 import { getColorForTag } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
 import Icon from "@/components/ui/render-icon";
@@ -19,7 +13,7 @@ import remarkGfm from 'remark-gfm'
 
 export interface FeaturedCarouselItem {
   title: string;
-  category: string | string[];
+  category: string[];
   description: string;
   image: string;
   organizations?: {
