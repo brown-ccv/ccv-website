@@ -39,7 +39,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 }) => {
   const [idx, setIdx] = useState(0);
   const currentItem = carouselData[idx];
-  const { title, category, description, image, organizations, buttons } = currentItem;
+  const { title, categories, description, image, organizations, buttons } = currentItem;
 
   const prev = () =>
     setIdx((i) => (i === 0 ? carouselData.length - 1 : i - 1));
