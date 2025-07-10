@@ -18,12 +18,13 @@ carousel:
         variant: "primary_filled"
 
   - title: "Mesoamerican Migration Project"
-    category: ["Sociology", "Web Development"]
+    category: ["Sociology", "Web Development", "Migration"]
     description: |
-      This project serves as a public-facing website to see/download data files from MMP-led research projects. The main goal of this project is to move all assets from Princeton to Brown and to create a more responsive website that the PI can later edit.  
+      This project serves as a public-facing website to see/download data files from MMP-led research projects. The main goal of this project is to move all assets from Princeton to Brown and to create a more responsive website that the PI can later edit. 
+
       Two phases of the project:  
-      1. Facelift of the old site  
-      2. Data storage and PI edit  
+        - Facelift of the old site  
+        - Data storage and PI edit  
     image: "/images/home/featured-carousel/mmp.png"
     organizations:
       - name: "Department of Sociology"
@@ -40,13 +41,13 @@ carousel:
         variant: "primary_filled"
 
   - title: "Collider Parts Database"
-    category: ["Sociology", "Web Development"]
+    category: ["Web Development", "Particle Physics"]
     description: |
-      Tracks the construction of particle detector “modules” across 4 different research institutions.  
-      The database records each change to a module to create a detailed history.  
-      Includes information about each change, when it happened, and who made the change.  
-      Users can search the database, build modules, and upload images taken during production.  
-      The application uses a reusable component-based JavaScript frontend and deployed with a serverless cloud-based backend.  
+      Tracks the construction of particle detector modulesacross 4 different research institutions.
+
+      The database records each change to a module to create a detailed history.
+
+      Includes information about each change, when it happened, and who made the change.
     image: "/images/home/featured-carousel/collider.png"
     organizations:
       - name: "Department of Physics"
@@ -59,10 +60,12 @@ carousel:
         variant: "primary_filled"
 
   - title: "Gearshift Fellowship"
-    category: ["Web Development"]
+    category: ["Web Development", "jsPsych", "Cognitive Science"]
     description: |
       The Gearshift Fellowship is a car driving game where players take the role of a driver. The purpose of the game is to complete different missions and collect as many reward points as possible in the setting of 5 missions, each with different goals/challenges.  
+
       The game is developed using HTML, CSS, and Javascript. The experiment running the game and facilitating data recording is built on jsPsych, a JavaScript framework used in web-based behavioral experiments.  
+
       Honeycomb, an open-source repository that integrates cognitive science and web development practices to create deployable psychophysiological tasks compatible with lab equipment recordings.  
     image: "/images/home/featured-carousel/gearshift.gif"
     organizations:
@@ -70,17 +73,16 @@ carousel:
         organization: "Brown University"
         pi: ["TODO"]
         icon: "FaUser"
-    buttons:
-      - text: "Website"
-        url: "TODO"
-        variant: "primary_filled"
 
   - title: "Ice Floe Tracker"
-    category: ["Data Science"]
+    category: ["Data Science", "Julia", "HPC"]
     description: |
       Publish code written for a research project:  
-      As an open source package anyone could use, using a programming language more commonly used in the field of study (climate science).  
+        - As an open source package anyone could use,
+        - using a programming language more commonly used in the field of study (climate science). 
+
       Allow analysing much larger datasets using Brown’s supercomputer.  
+
       Support a future grant application with new data.  
     image: "/images/home/featured-carousel/icefloe.png"
     organizations:
@@ -91,4 +93,54 @@ carousel:
     buttons:
       - text: "Wilhelmus Lab"
         url: "https://wilhelmuslab.me/"
+        variant: "primary_filled"
+
+  - title: "SOMA Pain Manager"
+    category: ["Mobile Applications", "React Native", "Pain Management"]
+    description: |
+      TODO
+    image: "/images/home/featured-carousel/soma.webp"
+    organizations:
+      - name: "Carney Institute for Brain Science, Center for Digital Health"
+        organization: "Brown University"
+        pi: ["Frederike Petzschner"]
+        icon: "FaUser"
+    buttons:
+      - text: "Website"
+        url: "https://somatheapp.com/"
+        variant: "primary_filled"
+
+  - title: "MAPPS"
+    category: ["Mobile Applications", "React Native", "Infection Modeling"]
+    description: |
+      We understand pandemic infection spread models from the virus side. Less is known about human behavior. Can we design agents based on human behavior to enhance existing models?
+
+      * Indoor position tracking of study participants using off-the-shelf components.
+      * Phones detected and reported what Bluetooth beacons they could see.
+      * The app was developed using React Native and Firebase.
+    image: "/images/home/featured-carousel/MAPPS.png"
+    organizations:
+      - name: "Pandemic Center, School of Public Health"
+        organization: "Brown University"
+        pi: ["Mark Lurie"]
+        icon: "FaUser"
+    buttons:
+      - text: "In the News"
+        url: "https://www.brown.edu/news/2023-11-08/mapps"
+        variant: "primary_filled"
+
+  - title: "Unsupervised Cell Segmentation in 3D Data"
+    category: ["3D Visualization", "Image Processing", "Neuroscience"]
+    description: |
+      - Implement a pipeline and develop an application to assist researchers in identifying, labeling, and counting cells in mouse brain scans.
+      - Utilize Pre-trained deep learning models to analyze 3D image data, automatically segment cells, and generate structured results. This approach reduces manual effort, accelerates research workflows, and improves consistency by minimizing human bias in segmentation and labeling. 
+    image: "/images/home/featured-carousel/cell-segmentation.png"
+    organizations:
+      - name: "Department of Neuroscience"
+        organization: "Brown University"
+        pi: ["Alexander Jaworski"]
+        icon: "FaUser"
+    buttons:
+      - text: "In the News"
+        url: "https://www.brown.edu/news/2023-11-08/mapps"
         variant: "primary_filled"

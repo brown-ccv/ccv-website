@@ -13,6 +13,9 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import Image from "next/image";
 import Icon from "@/components/ui/render-icon";
+import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 export interface FeaturedCarouselItem {
   title: string;
@@ -101,7 +104,14 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 ))}
               </div>
             )}
-            <p className="text-xl font-normal text-gray-800">{description}</p>
+            <div className="text-xl font-normal text-gray-800">
+              <Markdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+              >
+                {description}
+              </Markdown>
+            </div>
             {buttons && buttons.length > 0 && (
               <div className="flex flex-wrap gap-4">
                 {buttons.map((button, index) => (
