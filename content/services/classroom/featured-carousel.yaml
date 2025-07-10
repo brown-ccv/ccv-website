@@ -1,6 +1,6 @@
 carousel:
   - title: "Introduction to Linux"
-    category: ["Linux"]
+    categories: ["Linux"]
     description: "A practical introduction to the Linux operating system and shell scripting in Bash. Topics covered include: basic Linux commands for maneuvering within the file system and manipulating files, working with environment variables and paths, and basic shell scripting in Bash (variables, loops, pipes, etc.)."
     image: "/images/services/classroom/featured-carousel/linux.jpg"
     buttons:
