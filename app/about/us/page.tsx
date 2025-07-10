@@ -7,6 +7,9 @@ import { CardWithImage } from "@/components/ui/people-card"
 import { readContentFile } from "@/lib/content-utils"
 import { PeopleTypes, PageContentData } from "@/lib/about-types"
 import fs from "fs/promises"
+import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
@@ -50,7 +53,7 @@ export default async function AboutUs() {
             <Hero 
               image={"/images/hero/about-kayaks.png"}
               title="About Us"
-              description={pageContent.description}
+              description="The Center for Computation and Visualization provides high-performance computing and visualization services to the Brown community. We also collaborate with researchers on projects across vast range of disciplines."
               titleClassName="font-bold text-6xl md:text-8xl"
               descriptionClassName="text-4xl font-semibold leading-[1.5]"
             />
@@ -59,24 +62,28 @@ export default async function AboutUs() {
 
         {/* Intro to OIT */}
         <section className="content-wrapper py-24">
-          <SectionHeader title={pageContent.introToOIT?.title || "Office of Information Technology"} align="center" />
+          <SectionHeader title="Office of Information Technology" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-              <p className="text-black text-xl">
-                {pageContent.introToOIT?.description}
-              </p>
+              <div className="prose prose-lg max-w-none text-black text-xl">
+                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                  {pageContent.introToOIT?.description || ''}
+                </Markdown>
+              </div>
             </CardContent>
           </Card>
         </section>
 
         {/* Our Mission */}
         <section className="content-wrapper py-24 bg-gray-100">
-          <SectionHeader title={pageContent.mission?.title || "Our Mission"} align="center" />
+          <SectionHeader title="Our Mission" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-              <p className="text-black text-xl">
-                {pageContent.mission?.description}
-              </p>
+              <div className="prose prose-lg max-w-none text-black text-xl">
+                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                  {pageContent.mission?.description || ''}
+                </Markdown>
+              </div>
             </CardContent>
           </Card>
         </section>
@@ -97,6 +104,7 @@ export default async function AboutUs() {
                           hoverImagePath={hover}
                           name={person?.name}
                           title={person?.title}
+                          personDetails={person}
                         />
                       </div>
                     )
@@ -109,12 +117,14 @@ export default async function AboutUs() {
 
       {/* Diversity Statement */}
       <section className="content-wrapper py-24 bg-gray-100">
-      <SectionHeader title={pageContent.diversityStatement?.title || "Diversity Statement"} align="center" />
+      <SectionHeader title="Diversity Statement" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-            <p className="text-black text-xl whitespace-pre-line">
-              {pageContent.diversityStatement?.description}
-            </p>
+            <div className="text-black text-xl whitespace-pre-line prose prose-lg max-w-none">
+              <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                {pageContent.diversityStatement?.description || ''}
+              </Markdown>
+            </div>
           </CardContent>
         </Card>
       </section>
