@@ -15,13 +15,21 @@ export const ExternalLink: React.FC<ExternalLinkProps> = ({
   className = '',
   ...props
 }) => {
+  // Default keppel styling for external links
+  const defaultClass = "text-keppel-700 hover:text-keppel-500 underline";
+  const combinedClass = external
+    ? className
+      ? `${defaultClass} ${className}`
+      : defaultClass
+    : className;
+
   if (external) {
     return (
       <a
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className={className}
+        className={combinedClass}
         {...props}
       >
         {children}

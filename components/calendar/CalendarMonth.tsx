@@ -163,7 +163,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             >
               <p className="font-semibold hover:underline">{event.title}</p>
               <ArrowTopRightOnSquareIcon
-                className="mr-2 h-4 w-4"
+                className="mr-2 h-3 w-3"
                 aria-hidden="true"
               />
             </ExternalLink>

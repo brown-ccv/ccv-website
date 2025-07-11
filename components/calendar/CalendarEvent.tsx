@@ -24,9 +24,9 @@ const CalendarEvent: React.FC<DataProps> = ({
       </div>
       <div>
         <ExternalLink
-          className="text-xl md:text-2xl font-bold text-blue-500 no-underline hover:underline leading-6"
           href={url}
           external={true}
+          className="text-xl md:text-2xl font-bold text-blue-500 no-underline hover:underline leading-6"
         >
           {title}
         </ExternalLink>

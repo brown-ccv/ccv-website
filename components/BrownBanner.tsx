@@ -31,7 +31,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = ({ id }) => {
             <ExternalLink
               href="mailto:ccv-support@brown.edu"
               external={true}
-              className="flex items-center justify-center w-full h-full text-lg"
+              className="flex items-center justify-center w-full h-full text-lg text-red-university hover:text-white"
             >
               <FaComments className="mr-2 text-2xl" />
               Work with Us
