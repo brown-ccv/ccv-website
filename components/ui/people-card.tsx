@@ -100,7 +100,7 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePa
                   <ExternalLink
                     href={`https://github.com/${personDetails.github_username}`}
                     title="GitHub Profile"
-                    className="text-black text-2xl"
+                    className="text-2xl"
                   >
                     <FaGithub />
                   </ExternalLink>
@@ -109,7 +109,7 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePa
                   <ExternalLink
                     href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
                     title="Brown Directory"
-                    className="text-black text-2xl"
+                    className="text-2xl"
                   >
                     <FaInfoCircle />
                   </ExternalLink>
