@@ -44,7 +44,7 @@ export default async function ContactUs() {
 
         <div className="content-wrapper flex justify-center px-40">
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
-            {pageContent?.contactUs?.map((card: ContactUsTypes) => (
+            {pageContent?.contactUs?.cards?.map((card: ContactUsTypes) => (
               <div
                 key={card.title}
                 className="flex-grow max-w-lg"
@@ -93,7 +93,7 @@ export default async function ContactUs() {
         </Card>
         <section className="content-wrapper">
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
-            {pageContent?.officeHours?.map((card: OfficeHoursTypes) => (
+            {pageContent?.officeHours?.cards?.map((card: OfficeHoursTypes) => (
               <div
                 key={card.title}
                 className="flex-grow max-w-md"

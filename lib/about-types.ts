@@ -11,6 +11,21 @@ export interface PeopleTypes{
   image: string;
 }
 
+export interface IntroToOITSection {
+  title: string;
+  description: string;
+}
+
+export interface MissionSection {
+  title: string;
+  description: string;
+}
+
+export interface DiversityStatementSection {
+  title: string;
+  description: string;
+}
+
 // --- about/contact
 export interface ContactUsTypes {
   title: string;
@@ -26,11 +41,29 @@ export interface OfficeHoursTypes {
   buttonLinks?: { text: string; href: string }[];
 }
 
+export interface ContactUsSection {
+  description: string;
+  cards: ContactUsTypes[];
+}
+
+export interface OfficeHoursSection {
+  description: string;
+  cards: OfficeHoursTypes[];
+}
+
+export interface LocationSection {
+  description: string;
+}
+
 // --- generic
 export interface PageContentData {
     title?: string;
     description?: string;
-    contactUs: ContactUsTypes[];
-    officeHours: OfficeHoursTypes[];
+    introToOIT?: IntroToOITSection;
+    mission?: MissionSection;
+    diversityStatement?: DiversityStatementSection;
+    contactUs: ContactUsSection;
+    officeHours: OfficeHoursSection;
+    location: LocationSection;
     people: PeopleTypes[];
   }

@@ -6,8 +6,10 @@ import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"
 import { readContentFile } from "@/lib/content-utils"
 import { PeopleTypes, PageContentData } from "@/lib/about-types"
-import ExternalLink from "@/components/ui/external-link"
 import fs from "fs/promises"
+import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
@@ -63,9 +65,11 @@ export default async function AboutUs() {
           <SectionHeader title="Office of Information Technology" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-              <p className="text-black text-xl">
-                The Center for Computation and Visualization (CCV) is a center within the University&apos;s central IT organization, which is the <ExternalLink href="https://it.brown.edu" external={true}>Office of Information Technology (OIT)</ExternalLink>. In addition to building and maintaining the University&apos;s <ExternalLink href="https://it.brown.edu/tools-services" external={true}>hundreds of enterprise software, systems, and hardware</ExternalLink>, OIT is also responsible for driving the technological progress that enables scientific research. Executing on the University&apos;s research mission is the key role that CCV plays in OIT.
-              </p>
+              <div className="prose prose-lg max-w-none text-black text-xl">
+                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                  {pageContent.introToOIT?.description || ''}
+                </Markdown>
+              </div>
             </CardContent>
           </Card>
         </section>
@@ -75,9 +79,11 @@ export default async function AboutUs() {
           <SectionHeader title="Our Mission" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-              <p className="text-black text-xl">
-                We envision an environment where computational best practices, innovative solutions, and expert knowledge combine to build advanced tools for research and to enable new discoveries. Our mission is to provide the scientific and technical computing expertise required to advance computational research and support Brown's academic mission. In practice, this frequently means partnering with researchers for projects that may span weeks, months, or years. In some cases, these partnerships can involve researchers using grant funds as partial support of one of our research software engineers or data scientists. We have a team of data scientists and research software engineers with a huge variety of scientific backgrounds (e.g., Engineering, Physics, Computer Vision, Biology, Psychology, Statistics, Applied Math, Computer Science, etc.), so we can closely calibrate a person with a project.
-              </p>
+              <div className="prose prose-lg max-w-none text-black text-xl">
+                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                  {pageContent.mission?.description || ''}
+                </Markdown>
+              </div>
             </CardContent>
           </Card>
         </section>
@@ -98,6 +104,7 @@ export default async function AboutUs() {
                           hoverImagePath={hover}
                           name={person?.name}
                           title={person?.title}
+                          personDetails={person}
                         />
                       </div>
                     )
@@ -113,11 +120,11 @@ export default async function AboutUs() {
       <SectionHeader title="Diversity Statement" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-            <p className="text-black text-xl">
-              CCV embraces a community enriched and enhanced by diverse dimensions, including race, ethnicity and national origins, disability status, gender and gender identity, sexuality, class and religion. We believe diversity brings innovation and progress. We are especially committed to increasing the representation of those populations that have been historically underrepresented in STEM.
-              <br/><br/>
-              We are committed to attracting, recruiting and retaining a diverse team. We especially encourage individuals from underrepresented groups to join our community.
-            </p>
+            <div className="text-black text-xl whitespace-pre-line prose prose-lg max-w-none">
+              <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                {pageContent.diversityStatement?.description || ''}
+              </Markdown>
+            </div>
           </CardContent>
         </Card>
       </section>
