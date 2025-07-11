@@ -32,7 +32,7 @@ const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions 
               remarkPlugins={[remarkGfm]}
               components={{
                 a: ({ node, href, ...props }) => (
-                  <ExternalLink href={href || '#'} {...props} />
+                  <ExternalLink href={href!} {...props} />
                 ),
               }}
             >
