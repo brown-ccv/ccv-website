@@ -11,6 +11,21 @@ export interface PeopleTypes{
   image: string;
 }
 
+export interface IntroToOITSection {
+  title: string;
+  description: string;
+}
+
+export interface MissionSection {
+  title: string;
+  description: string;
+}
+
+export interface DiversityStatementSection {
+  title: string;
+  description: string;
+}
+
 // --- about/contact
 export interface ContactUsTypes {
   title: string;
@@ -44,6 +59,9 @@ export interface LocationSection {
 export interface PageContentData {
     title?: string;
     description?: string;
+    introToOIT?: IntroToOITSection;
+    mission?: MissionSection;
+    diversityStatement?: DiversityStatementSection;
     contactUs: ContactUsSection;
     officeHours: OfficeHoursSection;
     location: LocationSection;
