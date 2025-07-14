@@ -62,7 +62,7 @@ carousel:
     organizations:
       - name: "TODO"
         organization: "Brown University"
-        pi: ["TODO"]
+        pi: ["Nadja Ging-Jehli"]
         icon: "FaUser"
     buttons:
       - text: "Website"
