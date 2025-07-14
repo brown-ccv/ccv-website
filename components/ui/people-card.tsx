@@ -9,6 +9,9 @@ import { cardVariants } from "@/components/ui/variants";
 import * as Dialog from "@radix-ui/react-dialog";
 import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa";
 import ExternalLink from "@/components/ui/external-link";
+import Markdown from 'react-markdown';
+import rehypeRaw from 'rehype-raw'
+import remarkGfm from 'remark-gfm'
 
 interface CardWithImageProps {
   className?: string;

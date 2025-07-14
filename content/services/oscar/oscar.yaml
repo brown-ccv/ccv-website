@@ -1,0 +1,32 @@
+title: Oscar
+description: |
+  Oscar is Brown University's high performance computing cluster for both research and classes. Oscar is maintained by CCV.
+
+sectionTitle: "Overview"
+
+subsections:
+  - title: "Overview"
+    description: |
+      The high-performance computing (HPC) resources at CCV equip the Brown research community with the tools they need to perform complex numerical simulations, modeling, and data analysis. Oscar, CCV's primary research computing cluster, consists of more than 300 multi-core nodes sharing a high-performance interconnect and file system. For more technical details, please see the system overview.
+    links:
+      - text: "View System Hardware"
+        href: "https://docs.ccv.brown.edu/oscar/system-overview"
+  - title: "Software Packages"
+    description: |
+      A large collection of software is available on Oscar, and CCV staff can help acquire and install most applications upon request.  
+  
+  
+      **Some Popular Software Packages Available on Oscar**
+      - MATLAB
+      - R
+      - Python
+      - CUDA
+      - Perl
+      - Julia
+      - TensorFlow
+      - Blender
+      - Paraview
+      - ...and more
+    links:
+      - text: "Request an Account"
+        href: "https://brown.co1.qualtrics.com/jfe/form/SV_0GtBE8kWJpmeG4B"

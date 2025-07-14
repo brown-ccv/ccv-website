@@ -24,7 +24,7 @@ export default async function ContactUs() {
           <Hero 
             image={"/images/hero/about-kayaks.png"}
             title="Contact Us"
-            description="The Center for Computation and Visualization is available to help you in multiple ways. We strive to keep our documentation up to date so you can always find what you need. In addition, you can reach out to us using the channels listed here."
+            description={pageContent.description}
             titleClassName="font-bold text-6xl md:text-8xl"
             descriptionClassName="text-4xl font-semibold leading-[1.5]"
           />
@@ -37,14 +37,14 @@ export default async function ContactUs() {
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
             <p className="text-black text-xl pb-8">
-              The Center for Computation and Visualization (CCV) is a center within the University&apos;s central IT organization, which is the Office of Information Technology (OIT). In addition to building and maintaining the University&apos;s hundreds of enterprise software, systems, and hardware, OIT is also responsible for driving the technological progress that enables scientific research. Executing on the University&apos;s research mission is the key role that CCV plays in OIT.
+              {pageContent.contactUs.description}
             </p>
           </CardContent>
         </Card>
 
         <div className="content-wrapper flex justify-center px-40">
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
-            {pageContent?.contactUs?.map((card: ContactUsTypes) => (
+            {pageContent?.contactUs?.cards?.map((card: ContactUsTypes) => (
               <div
                 key={card.title}
                 className="flex-grow max-w-lg"
@@ -85,15 +85,13 @@ export default async function ContactUs() {
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
             <p className="text-black text-xl">
-              The Center for Computation and Visualization (CCV) staff members will be available to answer questions about Brown&apos;s research computing resources (Oscar, Stronghold, Globus) and help high-performance computing (HPC) issues.
-              <br/><br/>
-              The Computational Biology Core (CBC) staff are available at office hours to provide help with experimental design, data processing pipelines, and data analysis of high-throughput sequencing data. While we specialize in computational biology, all are welcome to join us with their questions.
+              {pageContent.officeHours.description}
             </p>
           </CardContent>
         </Card>
         <section className="content-wrapper">
           <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
-            {pageContent?.officeHours?.map((card: OfficeHoursTypes) => (
+            {pageContent?.officeHours?.cards?.map((card: OfficeHoursTypes) => (
               <div
                 key={card.title}
                 className="flex-grow max-w-md"
@@ -138,11 +136,7 @@ export default async function ContactUs() {
             <div className="w-full xl:w-full px-6 xl:px-36 xl:py-16">
               <SectionHeader title="180 George St" align="center" />
               <p className="text-black text-xl">
-                Our office is on Brown&apos;s main campus in Providence&apos;s College Hill neighborhood.
-                <br/><br/>
-                Built in 1960 and dedicated to Thomas J. Watson in 1961, the building was designed by architect Philip Johnson to house the IBM 7070 computer.
-                <br/><br/>
-                Today, it hosts the Center for Computation and Visualization, supporting research at Brown.
+                {pageContent.location.description}
               </p>
             </div>
             <div className="w-full xl:w-1/2 relative hidden xl:block min-w-[800px]">
