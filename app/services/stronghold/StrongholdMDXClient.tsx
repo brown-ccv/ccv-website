@@ -2,20 +2,30 @@
 
 import StrongholdContent from "@/app/content/services/stronghold/stronghold.mdx";
 import { MDXProvider } from "@mdx-js/react";
-import { SectionHeader } from "@/components/ui/section-header";
-import { Button } from "@/components/ui/button";
-import { ExternalLink } from "@/components/ui/external-link";
+import { 
+  SectionHeader, 
+  Button, 
+  ExternalLink,
+  StyledSection,
+  StyledHeading,
+  StyledButton 
+} from "@/components/ui/mdx-styled-components";
 
 const components = {
   SectionHeader,
   Button,
   ExternalLink,
+  StyledSection,
+  StyledHeading,
+  StyledButton,
 };
 
 export default function StrongholdMDXClient() {
   return (
     <MDXProvider components={components}>
-      <StrongholdContent />
+      <div className="prose prose-lg text-xl max-w-none">
+        <StrongholdContent />
+      </div>
     </MDXProvider>
   );
 } 
