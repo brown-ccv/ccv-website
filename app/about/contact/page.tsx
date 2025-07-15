@@ -130,29 +130,36 @@ export default async function ContactUs() {
       </section>
 
       {/* 180 George St */}
-      <div className="content-wrapper px-0 py-14">
-        <Card className="w-full shadow-none rounded-none border-none relative flex flex-col">
-          <CardContent className="mx-auto flex items-center">
-            <div className="w-full xl:w-full px-6 xl:px-36 xl:py-16">
-              <SectionHeader title="180 George St" align="center" />
-              <p className="text-black text-xl">
-                {pageContent.location.description}
-              </p>
-            </div>
-            <div className="w-full xl:w-1/2 relative hidden xl:block min-w-[800px]">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.109984207845!2d-71.40139708797392!3d41.82592977112757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4453b3f867125%3A0xe3d14e16820236d9!2s180%20George%20Street%2C%20180%20George%20St%2C%20Providence%2C%20RI%2002906!5e0!3m2!1sen!2sus!4v1747770863560!5m2!1sen!2sus"
-                width="100%"
-                height="700"
-                style={{ border: 0 }}
-                allowFullScreen={true}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-          </CardContent>
-        </Card>
-      </div>
+      <section className="content-wrapper py-24 px-6 lg:px-36">
+        <div className="flex flex-col xl:flex-row gap-4">
+          <Card className="w-full xl:w-1/2 shadow-none rounded-none border-none">
+            <CardContent className="flex items-center">
+              <div className="w-full m-0 p-0">
+                <SectionHeader title="180 George St" align="center" />
+                <p className="text-black text-xl">
+                  {pageContent.location.description}
+                </p>
+              </div>
+            </CardContent>
+          </Card>
+          <div className="w-full xl:w-1/2">
+            <iframe
+              className="
+                w-full
+                -mt-2 xl:-my-24 block
+                xl:w-[calc(100%+9rem)]
+                xl:-mr-36
+              "
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2973.109984207845!2d-71.40139708797392!3d41.82592977112757!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e4453b3f867125%3A0xe3d14e16820236d9!2s180%20George%20Street%2C%20180%20George%20St%2C%20Providence%2C%20RI%2002906!5e0!3m2!1sen!2sus!4v1747770863560!5m2!1sen!2sus"
+              height="700"
+              style={{ border: 0 }}
+              allowFullScreen={true}
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
