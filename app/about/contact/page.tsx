@@ -114,7 +114,9 @@ export default async function ContactUs() {
                       <div className="flex justify-center mt-auto">
                         {card.buttonLinks && card.buttonLinks.map((link, index) => (
                           <Button key={index} variant="primary_filled" size="xl">
-                            <a href={link.href} target="_blank" rel="noopener noreferrer">{link.text}</a>
+                            <ExternalLink href={link.href}>
+                              {link.text}
+                            </ExternalLink>
                           </Button>
                         ))}
                       </div>

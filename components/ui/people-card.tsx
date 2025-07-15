@@ -1,5 +1,4 @@
-// components/ui/card-with-image.tsx
-"use client";
+"use client"
 
 import React, { useState } from "react";
 import Image from "next/image";
@@ -9,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { cardVariants } from "@/components/ui/variants";
 import * as Dialog from "@radix-ui/react-dialog";
 import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa";
+import ExternalLink from "@/components/ui/external-link";
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -100,26 +100,22 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePa
               )}
               <div className="flex gap-4 mt-2">
                 {personDetails?.github_username && personDetails.github_username !== "" && (
-                  <a
+                  <ExternalLink
                     href={`https://github.com/${personDetails.github_username}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     title="GitHub Profile"
                     className="text-black hover:text-keppel-700 text-2xl"
                   >
                     <FaGithub />
-                  </a>
+                  </ExternalLink>
                 )}
                 {personDetails?.brown_directory_uuid && personDetails.brown_directory_uuid !== "" && (
-                  <a
+                  <ExternalLink
                     href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
                     title="Brown Directory"
                     className="text-black hover:text-keppel-700 text-2xl"
                   >
                     <FaInfoCircle />
-                  </a>
+                  </ExternalLink>
                 )}
               </div>
             </div>

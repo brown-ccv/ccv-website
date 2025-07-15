@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 import { readContentFolder, ContentLinks, MarkdownFrontmatter, YamlContentData, readContentFile } from "@/lib/content-utils"
+import ExternalLink from "@/components/ui/external-link"
 
 interface ClassroomSectionData extends MarkdownFrontmatter {
   slug: string;
@@ -58,9 +59,9 @@ export default async function ClassroomSupport() {
             <div className="flex gap-4 mt-6 not-prose">
               {inClassTutorials.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
                 <Button key={`default-${index}`} variant="primary_filled" size="lg">
-                  <a href={link.target} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink href={link.target}>
                     {link.text}
-                  </a>
+                  </ExternalLink>
                 </Button>
               ))}
             </div>
@@ -86,9 +87,9 @@ export default async function ClassroomSupport() {
             <div className="flex gap-4 mt-6 not-prose">
               {studentAccounts.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
                 <Button key={`default-${index}`} variant="primary_filled" size="lg">
-                  <a href={link.target} target="_blank" rel="noopener noreferrer">
+                  <ExternalLink href={link.target}>
                     {link.text}
-                  </a>
+                  </ExternalLink>
                 </Button>
               ))}
             </div>
@@ -127,9 +128,9 @@ export default async function ClassroomSupport() {
                         variant={section.name === 'google-colab' ? 'primary_filled' : 'secondary_filled'} 
                         size="lg"
                       >
-                        <a href={link.target} target="_blank" rel="noopener noreferrer">
+                        <ExternalLink href={link.target}>
                           {link.text}
-                        </a>
+                        </ExternalLink>
                       </Button>
                     ))}
                   </div>
