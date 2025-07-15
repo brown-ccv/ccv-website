@@ -28,7 +28,7 @@ export const Hero = ({
       }}
     >
       {showGradient && (
-        <div className="relative flex-1 flex items-start w-full px-14 lg:px-36 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
+        <div className="relative flex-1 flex items-start w-full pl-14 pr-24 lg:pl-36 lg:pr-96 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
           <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16">
             {title && (
               <h1 className={titleClassName}>
