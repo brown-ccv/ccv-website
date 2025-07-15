@@ -13,7 +13,7 @@ import remarkGfm from 'remark-gfm'
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
-const loadedContent = await readContentFile<PageContentData>('content/about/us.yaml');
+  const loadedContent = await readContentFile<PageContentData>('app/content/about/us.yaml');
 const pageContent: PageContentData = loadedContent.data;
 
 async function getImagePaths(imageName: string | null) {
