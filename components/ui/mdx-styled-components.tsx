@@ -18,7 +18,7 @@ export const StyledButton = ({ children, href, ...props }: any) => {
   const buttonClassName = buttonVariants({ variant: "primary_filled", size: "lg" });
   
   return (
-    <ExternalLink href={href} className={`${buttonClassName} no-underline m-8`} {...props}>
+    <ExternalLink href={href} className={`${buttonClassName} no-underline m-8 styled-button`} {...props}>
       {children}
     </ExternalLink>
   );

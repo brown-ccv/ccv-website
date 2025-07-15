@@ -23,7 +23,7 @@ const components = {
 export default function StrongholdMDXClient() {
   return (
     <MDXProvider components={components}>
-      <div className="prose prose-lg text-xl max-w-none">
+      <div className="prose prose-lg text-xl max-w-none [&_.styled-button]:!text-2xl">
         <StrongholdContent />
       </div>
     </MDXProvider>
