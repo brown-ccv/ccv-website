@@ -1,0 +1,2 @@
+export const title = "Stronghold"
+export const description = "Stronghold is a secure computing and storage environment that enables Brown researchers to analyze sensitive data while complying with regulatory or contractual requirements." 
