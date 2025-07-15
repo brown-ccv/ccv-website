@@ -258,11 +258,10 @@ export const Navbar: React.FC = () => {
           </NavigationMenu.List>
 
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
-            {/* TODO: Where does Help link to? */}
             <NavigationMenu.Item>
               <NavigationMenu.Link
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                href="/help">
+                href="/about/contact">
                 <FaQuestionCircle className="text-2xl mr-0 stroke-[2.5]"/>Help
               </NavigationMenu.Link>
             </NavigationMenu.Item>
@@ -348,7 +347,7 @@ export const Navbar: React.FC = () => {
                          <ExternalLink href="/blog" onClick={toggleMobileMenu} className="flex text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
                Blog
              </ExternalLink>
-             <ExternalLink href="/help" onClick={toggleMobileMenu} className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+             <ExternalLink href="/about/contact" onClick={toggleMobileMenu} className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
                Help
              </ExternalLink>
              <ExternalLink

@@ -1,25 +1,138 @@
 carousel:
   - title: "PROVIDENT"
-    category: "Public Health"
-    description: "A web app to support the PROVIDENT research study looking to prevent drug-related deaths in neighborhoods across Rhode Island."
-    image: "/images/featured-carousel/provident.png"
-    profile:
-      name: "Brown School of Public Health"
-      organization: "People, Place and Health Collective"
-      icon: "FaUser"
+    categories: ["Public Health", "Web Development"]
+    description: "A dashboard that showcases the PROVIDENT model that makes predictions about which neighborhoods are at the highest risk for future overdoses. Intervention municipalities received predictions from the PROVIDENT model in the randomized trial. Organizations plan and track their interventions and their effects on the overdose data using neighborhood assessment and planning forms."
+    image: "/images/home/featured-carousel/provident.png"
+    organizations:
+      - name: "Brown School of Public Health"
+        organization: "People, Place and Health Collective"
+        pi: ["Brandon Marshall"]
+        pm: "Max Krieger"
+        icon: "FaUser"
+      - name: "Rhode Island Department of Health"
+        organization: "RIDOH"
+        icon: "FaUser"
     buttons:
       - text: "Website"
         url: "https://provident-study.org"
         variant: "primary_filled"
-  - title: "PROJECT 2"
-    category: "Economics"
-    description: "Hello world."
-    image: "/images/featured-carousel/provident.png"
-    profile:
-      name: "High Performance Computing"
-      organization: "Center for Computation and Visualization"
-      icon: "FaUser"
+
+  - title: "Mesoamerican Migration Project"
+    categories: ["Sociology", "Web Development", "Migration"]
+    description: "This project serves as a public-facing website to see/download data files from MMP-led research projects. The main goal of this project is to move all assets from Princeton to Brown and to create a more responsive website that the PI can later edit.\n\nTwo phases of the project:\n\n- Facelift of the old site\n- Data storage and PI edit"
+    image: "/images/home/featured-carousel/mmp.png"
+    organizations:
+      - name: "Department of Sociology"
+        organization: "Population Studies and Training Center"
+        pi: ["David Lindstrom"]
+        icon: "FaUser"
+      - name: "Center for Demographic, Urban and Environmental Studies"
+        organization: "El Colegio de México"
+        pi: ["Silvia Giorguli Saucedo", "Jéssica Natalie Nájera Aguirre"]
+        icon: "FaUser"
     buttons:
       - text: "Website"
-        url: "https://provident-study.org"
-        variant: "primary_filled" 
+        url: "https://mmp.research.brown.edu/mmp"
+        variant: "primary_filled"
+
+  - title: "Collider Parts Database"
+    categories: ["Web Development", "Particle Physics"]
+    description: |
+      An app that tracks the construction of particle detector modules across 4 different research institutions. The database records include information about each change, when it happened, and who made the change. Users can search the database, build modules, and upload images taken during production. The application uses a reusable component-based JavaScript frontend and deployed with a serverless cloud-based backend.
+    image: "/images/home/featured-carousel/collider.png"
+    organizations:
+      - name: "Department of Physics"
+        organization: "Brown University"
+        pi: ["Ulrich Heintz"]
+        icon: "FaUser"
+    buttons:
+      - text: "Website"
+        url: "https://collider-parts-db.web.app/"
+        variant: "primary_filled"
+
+  - title: "Gearshift Fellowship"
+    categories: ["Web Development", "jsPsych", "Cognitive Science"]
+    description: |
+      The Gearshift Fellowship is a car driving game where players take the role of a driver. The purpose of the game is to complete different missions and collect as many reward points as possible in the setting of 5 missions, each with different goals/challenges.
+
+      The game is developed using HTML, CSS, and Javascript. The experiment running the game and facilitating data recording is built on jsPsych, a JavaScript framework used in web-based behavioral experiments.
+
+      Honeycomb, an open-source repository that integrates cognitive science and web development practices to create deployable psychophysiological tasks compatible with lab equipment recordings.
+    image: "/images/home/featured-carousel/gearshift.gif"
+    organizations:
+      - name: "Cognitive and Psychological Sciences"
+        organization: "Brown University"
+        pi: ["Nadja Ging-Jehli"]
+        icon: "FaUser"
+    buttons:
+      - text: "Website"
+        url: "TODO"
+        variant: "primary_filled"
+
+  - title: "Ice Floe Tracker"
+    categories: ["Data Science", "Julia", "HPC"]
+    description: |
+      Publish code written for a research project:
+
+      - As an open source package anyone could use
+      - Using a programming language more commonly used in the field of study (climate science)
+
+      Allow analysing much larger datasets using Brown's supercomputer.
+
+      Support a future grant application with new data.
+    image: "/images/home/featured-carousel/icefloe.png"
+    organizations:
+      - name: "Department of Engineering"
+        organization: "Brown University"
+        pi: ["Monica Martinez Wilhelmus"]
+        icon: "FaUser"
+    buttons:
+      - text: "Wilhelmus Lab"
+        url: "https://wilhelmuslab.me/"
+        variant: "primary_filled"
+
+  - title: "SOMA Pain Manager"
+    categories: ["Mobile Applications", "React Native", "Pain Management"]
+    description: |
+      TODO
+    image: "/images/home/featured-carousel/soma.webp"
+    organizations:
+      - name: "Carney Institute for Brain Science, Center for Digital Health"
+        organization: "Brown University"
+        pi: ["Frederike Petzschner"]
+        icon: "FaUser"
+    buttons:
+      - text: "Website"
+        url: "https://somatheapp.com/"
+        variant: "primary_filled"
+
+  - title: "MAPPS"
+    categories: ["Mobile Applications", "React Native", "Infection Modeling"]
+    description: |
+      We understand pandemic infection spread models from the virus side. Less is known about human behavior. Can we design agents based on human behavior to enhance existing models?
+
+      - Indoor position tracking of study participants using off-the-shelf components
+      - Phones detected and reported what Bluetooth beacons they could see
+      - The app was developed using React Native and Firebase
+    image: "/images/home/featured-carousel/MAPPS.png"
+    organizations:
+      - name: "Pandemic Center, School of Public Health"
+        organization: "Brown University"
+        pi: ["Mark Lurie"]
+        icon: "FaUser"
+    buttons:
+      - text: "In the News"
+        url: "https://www.brown.edu/news/2023-11-08/mapps"
+        variant: "primary_filled"
+
+  - title: "Unsupervised Cell Segmentation in 3D Data"
+    categories: ["3D Visualization", "Image Processing", "Neuroscience"]
+    description: |
+      - Implement a pipeline and develop an application to assist researchers in identifying, labeling, and counting cells in mouse brain scans
+      - Utilize Pre-trained deep learning models to analyze 3D image data, automatically segment cells, and generate structured results. This approach reduces manual effort, accelerates research workflows, and improves consistency by minimizing human bias in segmentation and labeling
+    image: "/images/home/featured-carousel/cell-segmentation.png"
+    organizations:
+      - name: "Department of Neuroscience"
+        organization: "Brown University"
+        pi: ["Alexander Jaworski"]
+        icon: "FaUser"
