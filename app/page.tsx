@@ -16,7 +16,7 @@ import ExternalLink from "@/components/ui/external-link";
 
 export default async function Home() {
   // Load featured carousel data from YAML
-  const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>("content/home/featured-carousel.yaml");
+  const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>("app/content/home/featured-carousel.yaml");
   const featuredCarouselData = featuredCarouselRaw.data.carousel;
 
   try {
