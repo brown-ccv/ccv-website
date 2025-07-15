@@ -15,9 +15,11 @@ export default function Stronghold() {
           />
         </div>
       </div>
-      <div className="prose">
-        <StrongholdMDXClient />
-      </div>
+      <section className="content-wrapper py-24 px-6 lg:px-36">
+        <div className="prose">
+          <StrongholdMDXClient />
+        </div>
+      </section>
     </div>
   );
 }
