@@ -27,53 +27,33 @@ export default async function Storage() {
             description={pageContent?.description}
             titleClassName="font-bold text-6xl md:text-8xl"
           >
-            <div className="flex flex-col w-full items-start not-prose">
-              {/* First row - Primary colored buttons */}
-              <div className="flex flex-row gap-2">
-                <Button variant="primary_filled" size="xl">
+            <div className="flex flex-col items-start not-prose">
+              <div className="flex flex-col xl:flex-row flex-wrap gap-2 w-full items-start not-prose">
+                <Button
+                  variant="primary_filled"
+                  size="xl"
+                  className="w-full xl:w-auto"
+                >
                   <Link href="/services/storage/compare">
                     Compare Storage Options
                   </Link>
                 </Button>
-                {heroLinks
-                  .filter(link => link.category === 'Documentation')
-                  .map((link, index) => (
-                    <Button
-                      key={index}
-                      variant="primary_filled"
-                      size="xl"
+                {heroLinks.map((link, index) => (
+                  <Button
+                    key={index}
+                    variant={link.category === 'Support' ? "secondary_filled" : "primary_filled"}
+                    size="xl"
+                    className="w-full xl:w-auto"
+                  >
+                    <ExternalLink 
+                      href={link.target} 
+                      external={true}
                     >
-                      <ExternalLink 
-                        href={link.target} 
-                        external={true}
-                      >
-                        {link.text}
-                      </ExternalLink>
-                    </Button>
-                  ))}
+                      {link.text}
+                    </ExternalLink>
+                  </Button>
+                ))}
               </div>
-              
-              {/* Second row - Secondary colored buttons */}
-              {heroLinks.filter(link => link.category === 'Support').length > 0 && (
-                <div className="flex flex-row gap-2">
-                  {heroLinks
-                    .filter(link => link.category === 'Support')
-                    .map((link, index) => (
-                      <Button
-                        key={index}
-                        variant="secondary_filled"
-                        size="xl"
-                      >
-                        <ExternalLink 
-                          href={link.target} 
-                          external={true}
-                        >
-                          {link.text}
-                        </ExternalLink>
-                      </Button>
-                    ))}
-                </div>
-              )}
             </div>
           </Hero>
         </div>
