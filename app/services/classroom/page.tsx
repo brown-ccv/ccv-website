@@ -17,7 +17,7 @@ interface ClassroomSectionData extends MarkdownFrontmatter {
 
 export default async function ClassroomSupport() {
 
-  const sectionData = await readContentFolder<ClassroomSectionData>('content/services/classroom')
+  const sectionData = await readContentFolder<ClassroomSectionData>('app/content/services/classroom')
   const sectionsMap = new Map(sectionData.map(section => [section.slug, section]));
 
   // retrieve section data using their slugs - can be ordered here
@@ -26,7 +26,7 @@ export default async function ClassroomSupport() {
   const computationalNotebooks = sectionsMap.get('computational-notebooks')!;
 
   // Load featured carousel data from YAML
-  const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>('content/services/classroom/featured-carousel.yaml');
+  const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>('app/content/services/classroom/featured-carousel.yaml');
   const featuredCarouselData = featuredCarouselRaw.data.carousel;
 
   return (

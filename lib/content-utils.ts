@@ -104,7 +104,7 @@ export async function readContentFileRaw<TData>(
  * Each file is returned as an object containing its slug, frontmatter data, and raw markdown content (if Markdown).
  * Assumes all files in the folder are valid .md or .yaml/.yml and will be successfully processed.
  *
- * @param folderRelativePath The relative path to the content folder from `process.cwd()` (e.g., 'content/services/classroom').
+ * @param folderRelativePath The relative path to the content folder from `process.cwd()` (e.g., 'app/content/services/classroom').
  * @returns A promise resolving to an array of parsed content objects.
  */
 export async function readContentFolder<TData extends MarkdownFrontmatter = MarkdownFrontmatter>(
