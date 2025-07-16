@@ -302,16 +302,15 @@ export const Navbar: React.FC = () => {
             className="
               absolute
               left-0 
-              w-full 
-              max-h-screen
-              lg:hidden
               top-full
+              w-full 
+              lg:hidden
               bg-neutral-700
               shadow-md
               z-40
+              h-[calc(100vh-100px)]
               overflow-y-auto
-              h-screen
-              pb-4
+              pb-40
             "
           >
             {routes.map((section) => (
