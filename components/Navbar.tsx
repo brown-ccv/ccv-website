@@ -130,39 +130,38 @@ const routes: NavSection[] = [
     ],
   },
   {
-            name: "Portfolio",
-        groups: [
+    name: "Portfolio",
+    groups: [
+      {
+        name: "",
+        routes: [
           {
-            name: "",
-            routes: [
-              {
-                name: "Collaborations",
-                href: "/portfolio/collaborations",
-                description: "*Coming Soon*",
-                icon: FaHandshake,
-              },
-              {
-                name: "Software",
-                href: "/portfolio/software",
-                description: "*Coming Soon*",
-                icon: FaCode,
-              },
-              {
-                name: "Workshops and Talks",
-                href: "/portfolio/workshops-and-talks",
-                description: "*Coming Soon*",
-                icon: FaChalkboardTeacher,
-              },
-              {
-                name: "Publications",
-                href: "https://publications.ccv.brown.edu",
-                description: "",
-                icon: FaBook,
-                external: true,
-              },
-            ],
+            name: "Collaborations",
+            href: "/portfolio/collaborations",
+            description: "*Coming Soon*",
+            icon: FaHandshake,
+          },
+          {
+            name: "Software",
+            href: "/portfolio/software",
+            description: "*Coming Soon*",
+            icon: FaCode,
+          },
+          {
+            name: "Workshops and Talks",
+            href: "/portfolio/workshops-and-talks",
+            description: "*Coming Soon*",
+            icon: FaChalkboardTeacher,
+          },
+          {
+            name: "Publications",
+            href: "https://publications.ccv.brown.edu",
+            description: "",
+            icon: FaBook,
           },
         ],
+      },
+    ],
   },
   {
     name: "About",
@@ -259,11 +258,12 @@ export const Navbar: React.FC = () => {
 
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             <NavigationMenu.Item>
-              <NavigationMenu.Link
+              <Link
+                href="/about/contact"
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                href="/about/contact">
+              >
                 <FaQuestionCircle className="text-2xl mr-0 stroke-[2.5]"/>Help
-              </NavigationMenu.Link>
+              </Link>
             </NavigationMenu.Item>
 
             {/* Documentation */}
@@ -302,16 +302,15 @@ export const Navbar: React.FC = () => {
             className="
               absolute
               left-0 
-              w-full 
-              max-h-screen
-              lg:hidden
               top-full
+              w-full 
+              lg:hidden
               bg-neutral-700
               shadow-md
               z-40
+              h-[calc(100vh-100px)]
               overflow-y-auto
-              h-screen
-              pb-4
+              pb-40
             "
           >
             {routes.map((section) => (
@@ -328,15 +327,36 @@ export const Navbar: React.FC = () => {
                     {section.groups.map(group => (
                       <div className="py-2" key={group.name}>
                         {group.routes.map(route => (
-                                                     <ExternalLink
-                             key={route.href}
-                             href={route.href}
-                             external={route.external}
-                             onClick={toggleMobileMenu}
-                             className="block text-white text-xl py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
-                           >
-                             {route.name}
-                           </ExternalLink>
+                          route.href.startsWith('http') ? (
+                            <ExternalLink
+                              key={route.href}
+                              href={route.href}
+                              external={true}
+                              onClick={toggleMobileMenu}
+                              className="block text-white py-6 px-6 mr-6 hover:text-neutral-900 hover:bg-sunglow-400 active:bg-sunglow-200"
+                            >
+                              <div className="text-xl">{route.name}</div>
+                              {route.description && (
+                                <div className="text-sm mt-1">
+                                  {route.description}
+                                </div>
+                              )}
+                            </ExternalLink>
+                          ) : (
+                            <Link
+                              key={route.href}
+                              href={route.href}
+                              onClick={toggleMobileMenu}
+                              className="block text-white py-6 px-6 mr-6 hover:text-neutral-900 hover:bg-sunglow-400 active:bg-sunglow-200"
+                            >
+                              <div className="text-xl">{route.name}</div>
+                              {route.description && (
+                                <div className="text-sm mt-1">
+                                  {route.description}
+                                </div>
+                              )}
+                            </Link>
+                          )
                         ))}
                       </div>
                     ))}
@@ -344,12 +364,9 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-                         <ExternalLink href="/blog" onClick={toggleMobileMenu} className="flex text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-               Blog
-             </ExternalLink>
-             <ExternalLink href="/about/contact" onClick={toggleMobileMenu} className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
+             <Link href="/about/contact" onClick={toggleMobileMenu} className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
                Help
-             </ExternalLink>
+             </Link>
              <ExternalLink
                href="https://docs.ccv.brown.edu/documentation"
                external
@@ -373,7 +390,7 @@ const NavigationSectionContent: React.FC<{
 
   return (
     <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white hidden lg:block">
-      <div className={`p-2 sm:p-4 md:p-6 flex flex-col xl:flex-row ${hasMultipleGroups ? 'space-x-8' : ''}`}>
+      <div className={`p-2 sm:p-4 md:p-6 flex flex-col xl:flex-row ${hasMultipleGroups ? 'space-x-8' : ''} max-h-[80vh] overflow-y-auto`}>
         {groups.map((group, index) => (
           <div
             key={group.name}
