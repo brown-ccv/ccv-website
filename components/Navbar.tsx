@@ -328,15 +328,20 @@ export const Navbar: React.FC = () => {
                     {section.groups.map(group => (
                       <div className="py-2" key={group.name}>
                         {group.routes.map(route => (
-                                                     <ExternalLink
-                             key={route.href}
-                             href={route.href}
-                             external={route.external}
-                             onClick={toggleMobileMenu}
-                             className="block text-white text-xl py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
-                           >
-                             {route.name}
-                           </ExternalLink>
+                          <ExternalLink
+                            key={route.href}
+                            href={route.href}
+                            external={route.external}
+                            onClick={toggleMobileMenu}
+                            className="block text-white py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+                          >
+                            <div className="text-xl">{route.name}</div>
+                            {route.description && (
+                              <div className="text-gray-400 text-sm mt-1">
+                                {route.description}
+                              </div>
+                            )}
+                          </ExternalLink>
                         ))}
                       </div>
                     ))}
@@ -344,9 +349,6 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-                         <ExternalLink href="/blog" onClick={toggleMobileMenu} className="flex text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
-               Blog
-             </ExternalLink>
              <ExternalLink href="/about/contact" onClick={toggleMobileMenu} className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200">
                Help
              </ExternalLink>
