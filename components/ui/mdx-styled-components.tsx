@@ -35,7 +35,7 @@ export const StyledHero = ({ image, title, description, children, ...props }: an
           image={image}
           title={title}
           description={description}
-          titleClassName="font-bold text-6xl md:text-8xl"
+          titleClassName="font-bold text-6xl md:text-8xl text-white"
           {...props}
         >
           {children}
