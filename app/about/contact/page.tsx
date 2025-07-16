@@ -13,7 +13,7 @@ import Icon from "@/components/ui/render-icon";
 import { ContactUsTypes, OfficeHoursTypes, PageContentData } from "@/lib/about-types";
 import ExternalLink from "@/components/ui/external-link";
 
-const loadedContent = await readContentFile<PageContentData>('content/about/contact.yaml');
+  const loadedContent = await readContentFile<PageContentData>('app/content/about/contact.yaml');
 const pageContent: PageContentData = loadedContent.data;
 
 export default async function ContactUs() {

@@ -2,7 +2,7 @@ import fs from 'fs-extra';
 import path from 'path';
 
 async function copyImages(): Promise<void> {
-  const sourceDir: string = path.join(process.cwd(), 'content', 'images');
+  const sourceDir: string = path.join(process.cwd(), 'app', 'content', 'images');
   const targetDir: string = path.join(process.cwd(), 'public', 'images');
 
   try {

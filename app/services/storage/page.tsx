@@ -12,7 +12,7 @@ import { PageContentData, ServiceConfig, ServiceLink } from "@/lib/storage-types
 import { humanize } from "@/lib/utils"
 import ExternalLink from "@/components/ui/external-link"
 
-const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');
+const rawPageContent = await readContentFile('app/content/services/storage/storage-tool.yaml');
 const pageContent: PageContentData = rawPageContent.data as PageContentData;
 const heroLinks: ServiceLink[] = pageContent.links || [];
 

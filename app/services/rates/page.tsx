@@ -14,7 +14,7 @@ import ExternalLink from "@/components/ui/external-link"
 
 export default async function Rates() {
 
-  const sectionData = await readContentFolder<RatesSectionData>('content/services/rates')
+  const sectionData = await readContentFolder<RatesSectionData>('app/content/services/rates')
   const sectionsMap = new Map(sectionData.map(section => [section.slug, section]));
 
   // retrieve section data using their slugs - can be ordered here
