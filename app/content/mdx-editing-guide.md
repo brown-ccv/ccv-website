@@ -1,21 +1,13 @@
-# MDX Editing Guide for Non-Coders
-
-This guide helps non-technical users edit MDX content files.
+# MDX Editing Guide
 
 ## What is MDX?
 
-MDX files combine regular text (like a Word document) with special components (like buttons and headings). They're used for website content that needs to look good and be interactive.
-
-## Basic Structure
-
-Every MDX file starts with metadata at the top:
-
-```mdx
-export const title = "Your Page Title"
-export const description = "A brief description of the page"
-```
+MDX files combine regular text with components (like buttons and headings). They're used for website content that needs to look good and be interactive beyond what regular markdown can offer.
 
 ## Available Components
+All available components and their usage can be found in `/components/ui/mdx-styled-components.tsx`. 
+
+## Commonly Used Components and Markdown Formatting
 
 ### Headings
 ```mdx
@@ -49,9 +41,6 @@ console.log("Hello World");
 ## Example MDX File
 
 ```mdx
-export const title = "My Service"
-export const description = "Description of my service"
-
 <StyledHeading
   title="Welcome to My Service"
   align="center"
@@ -59,7 +48,7 @@ export const description = "Description of my service"
 
 This is the main content of the page. You can write normal text here.
 
-<StyledButton href="https://docs.example.com">
+<StyledButton href="https://ccv.brown.edu">
   Read Documentation
 </StyledButton>
 
@@ -73,15 +62,6 @@ This is the main content of the page. You can write normal text here.
 ## Tips
 
 1. **Keep it simple** - Use the styled components provided
+  - ❌ Don't use HTML tags directly
+  - ❌ Don't add complex styling or classes
 2. **Test your changes** - Run `npm run dev` to see your changes
-3. **Ask for help** - If something doesn't look right, ask a developer
-4. **Don't delete the exports** - The `export const` lines at the top are required
-
-## Common Mistakes to Avoid
-
-- ❌ Don't delete the `export const` lines at the top
-- ❌ Don't use HTML tags directly (use the styled components instead)
-- ❌ Don't add complex styling or classes
-- ✅ Do use the provided styled components
-- ✅ Do write clear, simple content
-- ✅ Do test your changes before committing 
