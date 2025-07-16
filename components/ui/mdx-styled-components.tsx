@@ -6,9 +6,11 @@ import { Hero } from "@/components/Hero";
 
 // Styled wrapper components for MDX content
 export const StyledSection = ({ children, className = "", ...props }: any) => (
-  <div className={`prose prose-lg text-xl max-w-none ${className}`} {...props}>
-    {children}
-  </div>
+  <section className="content-wrapper py-24 px-6 lg:px-36">
+    <div className={`prose prose-lg text-xl max-w-none ${className}`} {...props}>
+      {children}
+    </div>
+  </section>
 );
 
 export const StyledHeading = ({ children, ...props }: any) => (
@@ -41,7 +43,7 @@ export const StyledHero = ({ image, title, description, children, ...props }: an
       </div>
     </div>
   </div>
-);
+);  
 
 // Export the original components as well for flexibility
 export { SectionHeader, Button, ExternalLink, Hero }; 
