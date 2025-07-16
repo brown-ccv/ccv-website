@@ -158,7 +158,6 @@ const routes: NavSection[] = [
             href: "https://publications.ccv.brown.edu",
             description: "",
             icon: FaBook,
-            external: true,
           },
         ],
       },
@@ -328,7 +327,7 @@ export const Navbar: React.FC = () => {
                     {section.groups.map(group => (
                       <div className="py-2" key={group.name}>
                         {group.routes.map(route => (
-                          route.external ? (
+                          route.href.startsWith('http') ? (
                             <ExternalLink
                               key={route.href}
                               href={route.href}
