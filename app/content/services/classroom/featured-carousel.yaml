@@ -3,6 +3,7 @@ carousel:
     categories: ["Linux"]
     description: "A practical introduction to the Linux operating system and shell scripting in Bash. Topics covered include: basic Linux commands for maneuvering within the file system and manipulating files, working with environment variables and paths, and basic shell scripting in Bash (variables, loops, pipes, etc.)."
     image: "/images/services/classroom/featured-carousel/linux.jpg"
+    attribution: "Photo by <a href='https://opencode.md/en/news/why-use-linux/'>open{code}.md</a>. Tux image created by <a href='lewing@isc.tamu.edu'>Larry Ewing</a> and <a href='https://web.archive.org/web/20190927022731/https://isc.tamu.edu/~lewing/gimp/'>The GIMP</a>."
     buttons:
       - text: "View Recorded Session"
         url: "https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=71a75ae2-d067-4679-a7b7-b2f001520f47"
@@ -18,7 +19,7 @@ carousel:
   - title: "Fundamentals of High-Performance Computing"
     categories: ["HPC"]
     description: "An introduction to GPUs, the architectures available on Oscar, submitting, running, and evaluating jobs. Using nvidia ngc containers on Oscar for deep learning, installing or building python packages, and using docker to make changes."
-    image: "/images/services/classroom/featured-carousel/gpu.png"
+    image: "/images/services/classroom/featured-carousel/gpu.jpeg"
     buttons:
       - text: "View Recorded Session"
         url: "https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7c3d989c-013f-4911-9ba5-b2fa00f24991"
@@ -26,7 +27,8 @@ carousel:
   - title: "Using MATLAB on Oscar"
     categories: ["Statistics"]
     description: "An introduction to MATLAB, a programming language for numerical computation and visualization. Topics covered include: basic MATLAB commands, working with arrays and matrices, plotting data, and using functions."
-    image: "/images/services/classroom/featured-carousel/matlab.png"
+    image: "/images/services/classroom/featured-carousel/matlab.jpeg"
+    attribution: "Photo by <a href='https://creativecommons.org/licenses/by-sa/4.0/'>Jschlosser</a>."
     buttons:
       - text: "View Recorded Session"
         url: "https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=88fa9718-0367-4f27-95ae-b2fa010dddd6"
@@ -35,6 +37,7 @@ carousel:
     categories: ["Statistics"]
     description: "An introduction to R, a programming language for statistical computing and graphics. Topics covered include: basic R commands, working with data frames, plotting data, and using functions."
     image: "/images/services/classroom/featured-carousel/r.png" 
+    attribution: "Photo by <a href='https://creativecommons.org/licenses/by-sa/4.0/'>cdhowe</a>."
     buttons:
       - text: "View Notebook"
         url: "https://github.com/compbiocore/ccv_bootcamp_R"

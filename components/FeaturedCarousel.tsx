@@ -16,6 +16,7 @@ export interface FeaturedCarouselItem {
   categories: string[];
   description: string;
   image: string;
+  attribution?: string;
   organizations?: {
     name: string;
     organization: string;
@@ -49,9 +50,9 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   return (
     <section className="mt-12 mb-24 sm:mx-2">
       <div className="w-full max-w-[2040px] px-2">
-        <div className="flex flex-col xl:flex-row items-start justify-center gap-8">
+        <div className="flex flex-col xl:flex-row items-start justify-center gap-8 h-[600px] relative">
           {/* Text Content */}
-          <div className="w-full max-w-[700px] space-y-6 pt-4">
+          <div className="w-full max-w-[700px] space-y-6 pt-4 flex flex-col justify-between h-full">
             {/* Categories */}
             <div className="flex flex-wrap gap-2">
               {categories.map((cat, index) => (
@@ -95,7 +96,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 ))}
               </div>
             )}
-            <div className="text-xl font-normal text-gray-800 prose prose-lg max-w-none">
+            <div className="text-xl font-normal text-gray-800 prose prose-lg max-w-none flex-1">
               <Markdown
                 remarkPlugins={[remarkGfm]}
                 rehypePlugins={[rehypeRaw]}
@@ -104,7 +105,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
               </Markdown>
             </div>
             {buttons && buttons.length > 0 && (
-              <div className="flex flex-wrap gap-4">
+              <div className="flex flex-wrap gap-4 mt-auto">
                 {buttons.map((button, index) => (
                   <Button
                     key={index}
@@ -119,15 +120,29 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             )}
           </div>
 
-          <div className="w-full max-w-[700px] space-y-6 lg:w-full hidden lg:block">
-            <Image
-              src={image}
-              alt={title}
-              width={600}
-              height={400}
-              className="object-contain min-w-[700px] xs:hidden"
-              style={{ width: '700px', height: '500px' }}
-            />
+          <div className="w-full max-w-[700px] space-y-6 lg:w-full lg:block h-full flex flex-col justify-start relative">
+            <div>
+              <Image
+                src={image}
+                alt={title}
+                width={600}
+                height={400}
+                className="object-contain min-w-[700px] xs:hidden"
+                style={{ width: '700px', height: '500px' }}
+              />
+            </div>
+            
+            {/* Attribution positioned at bottom-right of this div */}
+            {currentItem.attribution && (
+              <div className="absolute bottom-0 right-0 text-sm text-gray-600">
+                <Markdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}
+                >
+                  {currentItem.attribution}
+                </Markdown>
+              </div>
+            )}
           </div>
         </div>
 
