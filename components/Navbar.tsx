@@ -333,11 +333,11 @@ export const Navbar: React.FC = () => {
                             href={route.href}
                             external={route.external}
                             onClick={toggleMobileMenu}
-                            className="block text-white py-6 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+                            className="block text-white py-6 px-6 mr-6 hover:text-neutral-900 hover:bg-sunglow-400 active:bg-sunglow-200"
                           >
                             <div className="text-xl">{route.name}</div>
                             {route.description && (
-                              <div className="text-gray-400 text-sm mt-1">
+                              <div className="text-sm mt-1">
                                 {route.description}
                               </div>
                             )}
