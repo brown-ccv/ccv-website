@@ -11,7 +11,7 @@ import ExternalLink from "@/components/ui/external-link";
 
 export default async function Oscar() {
 
-  const pageContentData = await readContentFile<OscarData>('content/services/oscar/oscar.yaml')
+  const pageContentData = await readContentFile<OscarData>('app/content/services/oscar/oscar.yaml')
   
   return (
     <div className="w-full">
