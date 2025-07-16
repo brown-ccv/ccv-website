@@ -19,7 +19,7 @@ carousel:
   - title: "Fundamentals of High-Performance Computing"
     categories: ["HPC"]
     description: "An introduction to GPUs, the architectures available on Oscar, submitting, running, and evaluating jobs. Using nvidia ngc containers on Oscar for deep learning, installing or building python packages, and using docker to make changes."
-    image: "/images/services/classroom/featured-carousel/gpu.png"
+    image: "/images/services/classroom/featured-carousel/gpu.jpeg"
     buttons:
       - text: "View Recorded Session"
         url: "https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=7c3d989c-013f-4911-9ba5-b2fa00f24991"
