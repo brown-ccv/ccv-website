@@ -25,7 +25,7 @@ contactUs:
         - text: "Join the Slack"
           href: "https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU"
         - text: "Terms of Services"
-          href: "/assets/Terms_of_Service_Slack.pdf"
+          href: "/images/Terms_of_Service_Slack.pdf"
 
 officeHours:
   description: |
