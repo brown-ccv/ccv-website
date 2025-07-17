@@ -1,16 +1,18 @@
 import createMDX from '@next/mdx'
-import remarkGFM from 'remark-gfm'
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   basePath: "",
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  turbopack: {
+    resolveExtensions: ['.mdx', '.tsx', '.ts', '.jsx', '.js', '.mjs', '.json'],
+  },
 }
 
 const withMDX = createMDX({
-  extension: /\.(md|mdx)$/,
   options: {
-    remarkPlugins: [remarkGFM]
+    remarkPlugins: ['remark-gfm'],
+    rehypePlugins: ['rehype-raw']
   },
 })
 
