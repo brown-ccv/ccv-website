@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev",
     "build": "tsx lib/build-utils.ts && next build",
     "start": "next start",
     "lint": "next lint",
@@ -35,7 +35,7 @@
     "lucide-react": "^0.523.0",
     "markdown-it": "^14.1.0",
     "motion": "^12.9.2",
-    "next": "15.3.4",
+    "next": "^15.1.0",
     "octokit": "^5.0.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -49,6 +49,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",
+    "@mdx-js/loader": "^3.1.0",
     "@types/fs-extra": "^11.0.4",
     "@types/js-yaml": "^4.0.9",
     "@types/markdown-it": "^14.1.2",
