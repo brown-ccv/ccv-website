@@ -18,7 +18,6 @@ export default async function Oscar() {
       <div className="relative w-full flex flex-col">
         <div className="bg-blue-navbar">
           <Hero 
-            image={"/images/hero/hero.jpeg"}
             title={pageContentData.data.title}
             description={pageContentData.data.description}
             titleClassName="font-bold text-6xl md:text-8xl"

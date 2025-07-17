@@ -54,7 +54,6 @@ export default async function CompareStorageOptions() {
       <div className="relative w-full flex flex-col">
         <div className="bg-blue-navbar">
           <Hero 
-            image={"/images/hero-subroutes.jpeg"}
             title={pageContent.title}
             description={pageContent.description}
             titleClassName="font-bold text-6xl md:text-8xl"

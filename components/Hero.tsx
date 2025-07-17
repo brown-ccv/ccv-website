@@ -1,7 +1,7 @@
 import { ReactNode } from "react"
 
 interface HeroProps {
-  image: string
+  image?: string
   title?: string
   description?: string
   children?: ReactNode
