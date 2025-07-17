@@ -1,9 +1,5 @@
-"use client"
-
-import React, { useState } from "react"
+import React from "react"
 import { cn } from "@/lib/utils"
-import Image from 'next/image';
-import { cardVariants } from "@/components/ui/variants"
 
 const Card = React.forwardRef<
   HTMLDivElement,
