@@ -5,7 +5,6 @@ export default async function Consulting() {
   return (
     <div className="w-full">
       <Hero 
-        image={"/images/hero/hero.jpeg"}
         title="Consulting"
         description="Text tbd."
       />

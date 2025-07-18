@@ -33,7 +33,6 @@ export default async function ClassroomSupport() {
   return (
     <div className="w-full">
       <Hero 
-        image={"/images/hero/hero.jpeg"}
         title="Classroom Support"
         description="CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code"
       />

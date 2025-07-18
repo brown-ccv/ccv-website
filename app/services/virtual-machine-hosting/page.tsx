@@ -5,7 +5,6 @@ export default async function VirtualMachineHosting() {
   return (
     <div className="w-full">
       <Hero 
-        image={"/images/hero/hero.jpeg"}
         title="Virtual Machine Hosting"
         description="Text tbd."
       />

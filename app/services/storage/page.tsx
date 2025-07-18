@@ -20,7 +20,6 @@ export default async function Storage() {
   return (
     <div>
       <Hero 
-        image={"/images/hero/hero.jpeg"}
         title="Storage and Transfer"
         description={pageContent?.description}
       >

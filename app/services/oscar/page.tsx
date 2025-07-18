@@ -16,7 +16,6 @@ export default async function Oscar() {
   return (
     <div className="w-full">
       <Hero 
-        image={"/images/hero/hero.jpeg"}
         title={pageContentData.data.title}
         description={pageContentData.data.description}
       />
