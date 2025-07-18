@@ -17,7 +17,7 @@ export default async function AboutLayout() {
           image={"/images/hero/about-kayaks.png"}
           title="Careers"
         />
-        <section className="content-wrapper py-24 px-36 bg-gray-100">
+        <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
           <SectionHeader title="Opportunities" align="center" />
           <Suspense fallback={<Spinner />}>
             <Workday careers={workdayData} />

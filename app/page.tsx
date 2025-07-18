@@ -48,13 +48,13 @@ export default async function Home() {
         </Hero>
         <HeroCard />
         <ImpactBanner />
-        <section className="content-wrapper pt-24 px-36">
+        <section className="content-wrapper pt-24 px-14 lg:px-36">
           <SectionHeader title="Featured Projects" align="center" />
+          <FeaturedCarousel carouselData={featuredCarouselData} />
         </section>
-        <FeaturedCarousel carouselData={featuredCarouselData} />
         <div
           id="events"
-          className="py-12 w-full bg-gray-100"
+          className="py-12 w-full bg-neutral-50"
         >
           <Suspense fallback={<Spinner />}>
             <EventSection
