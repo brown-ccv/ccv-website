@@ -16,8 +16,12 @@ export const LinkButton = ({ children, href, ...props }: any) => {
   const buttonClassName = buttonVariants({ variant: "primary_filled", size: "lg" });
   
   return (
-    <div className="inline-block my-4 not-prose">
-      <ExternalLink href={href} className={`${buttonClassName}`} {...props}>
+    <div className="inline-block not-prose">
+      <ExternalLink 
+        href={href} 
+        className={`${buttonClassName} my-4`}
+        {...props}
+      >
         {children}
       </ExternalLink>
     </div>
