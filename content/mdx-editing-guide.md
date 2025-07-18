@@ -24,8 +24,6 @@ Just write normal text like this. You can use **bold** and *italic* formatting.
 
 ```mdx
 
-<ContentSection> {/* DO NOT REMOVE THIS LINE */}
-
 <SectionHeader
   title="Welcome to My Service"
   align="center"
@@ -33,9 +31,9 @@ Just write normal text like this. You can use **bold** and *italic* formatting.
 
 This is the main content of the page. You can write normal text here.
 
-<StyledButton href="https://ccv.brown.edu">
+<LinkButton href="https://ccv.brown.edu">
   Read Documentation
-</StyledButton>
+</LinkButton>
 
 ## Key Features
 
@@ -43,14 +41,11 @@ This is the main content of the page. You can write normal text here.
 - **Feature 2** - Description of feature 2
 - **Feature 3** - Description of feature 3
 
-</ContentSection> {/* DO NOT REMOVE THIS LINE */}
-
 ```
 
 ## Tips
 
-1. **Keep it simple** - Use the styled components provided
+1. **Keep it simple** - Use the styled components provided and create an issue on github to request a custom component.
   - ❌ Don't use HTML tags directly
   - ❌ Don't add complex styling or classes
-2. **Put all content except `<Hero />` within `<ContentSection></ContentSection>`** - It is needed for page formatting
-3. **Test your changes** - Run `npm run dev` to see your changes
+2. **Test your changes** - Run `npm run dev` to see your changes
