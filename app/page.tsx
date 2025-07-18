@@ -16,7 +16,7 @@ import ExternalLink from "@/components/ui/external-link";
 
 export default async function Home() {
   // Load featured carousel data from YAML
-  const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>("app/content/home/featured-carousel.yaml");
+  const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>("content/home/featured-carousel.yaml");
   const featuredCarouselData = featuredCarouselRaw.data.carousel;
 
   try {
@@ -31,32 +31,27 @@ export default async function Home() {
 
     return (
       <div className="w-full">
-        <div className="relative w-full flex flex-col">
-          <div className="bg-blue-navbar">
-            <Hero 
-              image={"/images/hero/ccv-original.png"}
-              title="Center for Computation and Visualization"
-              description="Advancing computational research with scientific and computing expertise."
-              titleClassName="font-bold text-6xl md:text-8xl"
-            >
-              <Button
-                variant="primary_filled"
-                size="xl"
-              >
-                <ExternalLink href="mailto:ccv-support@brown.edu" external={true}>
-                  Work with Us
-                </ExternalLink>
-              </Button>
-              <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
-            </Hero>
-          </div>
-          <HeroCard />
-          <ImpactBanner />
-          <section className="content-wrapper pt-24 px-36">
-            <SectionHeader title="Featured Projects" align="center" />
-          </section>
-          <FeaturedCarousel carouselData={featuredCarouselData} />
-        </div>
+        <Hero 
+          image={"/images/hero/ccv-original.png"}
+          title="Center for Computation and Visualization"
+          description="Advancing computational research with scientific and computing expertise."
+        >
+          <Button
+            variant="primary_filled"
+            size="xl"
+          >
+            <ExternalLink href="mailto:ccv-support@brown.edu" external={true}>
+              Work with Us
+            </ExternalLink>
+          </Button>
+          <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
+        </Hero>
+        <HeroCard />
+        <ImpactBanner />
+        <section className="content-wrapper pt-24 px-36">
+          <SectionHeader title="Featured Projects" align="center" />
+        </section>
+        <FeaturedCarousel carouselData={featuredCarouselData} />
         <div
           id="events"
           className="py-12 w-full bg-gray-100"

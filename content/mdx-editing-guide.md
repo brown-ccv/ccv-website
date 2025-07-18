@@ -2,27 +2,13 @@
 
 ## What is MDX?
 
-MDX files combine regular text with components (like buttons and headings). They're used for website content that needs to look good and be interactive beyond what regular markdown can offer.
+MDX files combine regular text and Markdown formatting with React components (like buttons and section headers).
 
 ## Available Components
-All available components and their usage can be found in `/components/ui/mdx-styled-components.tsx`. 
 
-## Commonly Used Components and Markdown Formatting
+All available components can be found in `mdx-components.tsx`. 
 
-### Headings
-```mdx
-<StyledHeading
-  title="Your Section Title"
-  align="center"
-/>
-```
-
-### Buttons
-```mdx
-<StyledButton href="https://example.com">
-  Click here
-</StyledButton>
-```
+## Commonly Used Markdown Formatting
 
 ### Regular Text
 Just write normal text like this. You can use **bold** and *italic* formatting.
@@ -32,16 +18,15 @@ Just write normal text like this. You can use **bold** and *italic* formatting.
 - Like this
 - And this
 
-### Code Examples
-```javascript
-// You can include code blocks
-console.log("Hello World");
-```
+[Follow this link to learn more about Markdown.](https://www.markdownguide.org/cheat-sheet/)
 
 ## Example MDX File
 
 ```mdx
-<StyledHeading
+
+<ContentSection> {/* DO NOT REMOVE THIS LINE */}
+
+<SectionHeader
   title="Welcome to My Service"
   align="center"
 />
@@ -57,6 +42,9 @@ This is the main content of the page. You can write normal text here.
 - **Feature 1** - Description of feature 1
 - **Feature 2** - Description of feature 2
 - **Feature 3** - Description of feature 3
+
+</ContentSection> {/* DO NOT REMOVE THIS LINE */}
+
 ```
 
 ## Tips
@@ -64,4 +52,5 @@ This is the main content of the page. You can write normal text here.
 1. **Keep it simple** - Use the styled components provided
   - ❌ Don't use HTML tags directly
   - ❌ Don't add complex styling or classes
-2. **Test your changes** - Run `npm run dev` to see your changes
+2. **Put all content except `<Hero />` within `<ContentSection></ContentSection>`** - It is needed for page formatting
+3. **Test your changes** - Run `npm run dev` to see your changes

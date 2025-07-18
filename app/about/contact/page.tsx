@@ -13,23 +13,17 @@ import Icon from "@/components/ui/render-icon";
 import { ContactUsTypes, OfficeHoursTypes, PageContentData } from "@/lib/about-types";
 import ExternalLink from "@/components/ui/external-link";
 
-  const loadedContent = await readContentFile<PageContentData>('app/content/about/contact.yaml');
+  const loadedContent = await readContentFile<PageContentData>('content/about/contact.yaml');
 const pageContent: PageContentData = loadedContent.data;
 
 export default async function ContactUs() {
   return (
     <div className="w-full">
-      <div className="relative w-full flex flex-col">
-        <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero/about-kayaks.png"}
-            title="Contact Us"
-            description={pageContent.description}
-            titleClassName="font-bold text-6xl md:text-8xl"
-            descriptionClassName="text-4xl font-semibold leading-[1.5]"
-          />
-        </div>
-      </div>
+      <Hero 
+        image={"/images/hero/about-kayaks.png"}
+        title="Contact Us"
+        description={pageContent.description}
+      />
 
       {/* Contact Us */}
       <section className="content-wrapper py-24 px-6 lg:px-36">

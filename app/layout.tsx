@@ -28,11 +28,6 @@ const sourceSerif = Source_Serif_4({
   display: "swap",
 });
 
-export const metadata = {
-  title: "CCV",
-  description: "Center for Computation & Visualization",
-};
-
 export default async function RootLayoutWrapper({
   children,
 }: {

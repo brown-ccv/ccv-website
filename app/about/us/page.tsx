@@ -13,7 +13,7 @@ import remarkGfm from 'remark-gfm'
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
-  const loadedContent = await readContentFile<PageContentData>('app/content/about/us.yaml');
+  const loadedContent = await readContentFile<PageContentData>('content/about/us.yaml');
 const pageContent: PageContentData = loadedContent.data;
 
 async function getImagePaths(imageName: string | null) {
@@ -48,17 +48,11 @@ async function getImagePaths(imageName: string | null) {
 export default async function AboutUs() {
     return (
       <div className="w-full">
-        <div className="relative w-full flex flex-col">
-          <div className="bg-blue-navbar">
-            <Hero 
-              image={"/images/hero/about-kayaks.png"}
-              title="About Us"
-              description="The Center for Computation and Visualization provides high-performance computing and visualization services to the Brown community. We also collaborate with researchers on projects across vast range of disciplines."
-              titleClassName="font-bold text-6xl md:text-8xl"
-              descriptionClassName="text-4xl font-semibold leading-[1.5]"
-            />
-          </div>
-        </div>
+        <Hero 
+          image={"/images/hero/about-kayaks.png"}
+          title="About Us"
+          description="The Center for Computation and Visualization provides high-performance computing and visualization services to the Brown community. We also collaborate with researchers on projects across vast range of disciplines."
+        />
 
         {/* Intro to OIT */}
         <section className="content-wrapper py-24">
