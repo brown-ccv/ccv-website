@@ -1,10 +1,13 @@
 import { Hero } from "@/components/Hero";
-import StrongholdContent, { title, description } from "@/content/services/stronghold.mdx";
+import StrongholdContent from "@/content/services/stronghold.mdx";
+import { getMDXMetadata } from "@/lib/mdx-utils";
 
 export default function Stronghold() {
+  const metadata = getMDXMetadata('content/services/stronghold.mdx');
+  
   return (
     <div>
-      <Hero title={title} description={description} />
+      <Hero title={metadata.title} description={metadata.description} />
       <section className="content-wrapper py-24 px-14 lg:px-36">
         <div className='prose prose-lg text-xl max-w-none'>
         <StrongholdContent />
