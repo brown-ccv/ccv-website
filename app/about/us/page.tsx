@@ -92,7 +92,7 @@ export default async function AboutUs() {
         <div id="people" className="content-wrapper py-12 lg:py-24">
           <SectionHeader title="People" align="center"></SectionHeader>
           <div className="flex justify-center py-4 lg:py-10">
-            <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
+            <div className="flex flex-wrap justify-center sm:gap-y-0 md:gap-y-6 xs:w-1/2">
               {pageContent?.people &&
                 (await Promise.all(
                   pageContent.people.map(async (person: PeopleTypes) => {

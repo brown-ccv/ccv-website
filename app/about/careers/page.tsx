@@ -21,7 +21,7 @@ export default async function AboutLayout() {
               descriptionClassName="text-4xl font-semibold leading-[1.5]"
             />
         </div>
-        <section className="content-wrapper py-24 px-36 bg-gray-100">
+        <section className="content-wrapper py-24 bg-gray-100">
           <SectionHeader title="Opportunities" align="center" />
           <Suspense fallback={<Spinner />}>
             <Workday careers={workdayData} />
