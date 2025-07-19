@@ -4,6 +4,7 @@ import { SelectedAnswers, FormQuestions } from '@/lib/storage-types'
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import ExternalLink from '@/components/ui/external-link'
 
 interface FormProps {
   selectedAnswers: SelectedAnswers;
@@ -30,8 +31,8 @@ const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions 
               rehypePlugins={[rehypeRaw]}
               remarkPlugins={[remarkGfm]}
               components={{
-                a: ({ node, ...props }) => (
-                  <a {...props} className="text-keppel-700 hover:text-keppel-500 underline" />
+                a: ({ node, href, ...props }) => (
+                  <ExternalLink href={href!} {...props} />
                 ),
               }}
             >

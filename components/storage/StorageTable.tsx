@@ -118,7 +118,7 @@ const tableData: TableRow[] = useMemo(() => {
         const IconComponent = featureIcons[info.getValue().toLowerCase()];
         return (
           <div className="flex items-center gap-2 px-[4vw] sm:px-[3vw] py-2 font-medium text-neutral-900 min-h-[80px] uppercase tracking-wider">
-            {IconComponent ? <IconComponent className="text-2xl text-brown-700" /> : null}
+            {IconComponent ? <IconComponent className="w-6 h-6 text-brown-700 flex-shrink-0" /> : null}
             <span>{featureName}</span>
           </div>
         );
@@ -159,7 +159,7 @@ const tableData: TableRow[] = useMemo(() => {
           return (
             <div className={cn("flex flex-col items-center justify-center p-2 min-h-[80px]", cellContentClasses)}>
               <div className={cn("flex gap-2 font-semibold text-xl")}>
-                {IconComponent ? <IconComponent className={cn("text-2xl", valueColor)} /> : null}
+                {IconComponent ? <IconComponent className={cn("w-6 h-6 flex-shrink-0", valueColor)} /> : null}
                 <span>
                   {(() => {
                     const featureClassValue = feature?.value;

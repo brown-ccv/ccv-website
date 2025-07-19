@@ -40,3 +40,8 @@ next-env.d.ts
 
 # anima
 /.anima/
+
+/public/images/people/*
+
+# Generated MDX metadata files
+**/*.metadata.ts

@@ -4,17 +4,17 @@ import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { Hero } from "@/components/Hero"
-import { TextAnimate } from "@/components/magicui/text-animate"
 import { Card, CardContent  } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { readContentFile } from "@/lib/content-utils"
 import { PageContentData, ServiceConfig, ServiceLink } from "@/lib/storage-types"
 import { humanize } from "@/lib/utils"
+import ExternalLink from "@/components/ui/external-link"
 
-const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');
-const pageContent: PageContentData | null = rawPageContent ? (rawPageContent.data as PageContentData) : null;
-const heroLinks: ServiceLink[] = pageContent?.links || [];
+const rawPageContent = await readContentFile('app/content/services/storage/storage-tool.yaml');
+const pageContent: PageContentData = rawPageContent.data as PageContentData;
+const heroLinks: ServiceLink[] = pageContent.links || [];
 
 export default async function Storage() {
   return (
@@ -23,64 +23,42 @@ export default async function Storage() {
         <div className="bg-blue-navbar">
           <Hero 
             image={"/images/hero/hero.jpeg"}
-            title={pageContent?.title || ''}
+            title="Storage and Transfer"
             description={pageContent?.description}
             titleClassName="font-bold text-6xl md:text-8xl"
           >
-            <div className="flex flex-col w-full items-start not-prose">
-              {/* First row - Primary colored buttons */}
-              <div className="flex flex-row gap-2">
-                <Button variant="primary_filled" size="xl">
+            <div className="flex flex-col items-start not-prose">
+              <div className="flex flex-col xl:flex-row flex-wrap gap-2 w-full items-start not-prose">
+                <Button
+                  variant="primary_filled"
+                  size="xl"
+                  className="w-full xl:w-auto"
+                >
                   <Link href="/services/storage/compare">
                     Compare Storage Options
                   </Link>
                 </Button>
-                {heroLinks
-                  .filter(link => link.category === 'Documentation')
-                  .map((link, index) => (
-                    <Button
-                      key={index}
-                      variant="primary_filled"
-                      size="xl"
+                {heroLinks.map((link, index) => (
+                  <Button
+                    key={index}
+                    variant={link.category === 'Support' ? "secondary_filled" : "primary_filled"}
+                    size="xl"
+                    className="w-full xl:w-auto"
+                  >
+                    <ExternalLink 
+                      href={link.target} 
+                      external={true}
                     >
-                      <Link 
-                        href={link.target} 
-                        target="_blank" 
-                        rel="noopener noreferrer"
-                      >
-                        {link.text}
-                      </Link>
-                    </Button>
-                  ))}
+                      {link.text}
+                    </ExternalLink>
+                  </Button>
+                ))}
               </div>
-              
-              {/* Second row - Secondary colored buttons */}
-              {heroLinks.filter(link => link.category === 'Support').length > 0 && (
-                <div className="flex flex-row gap-2">
-                  {heroLinks
-                    .filter(link => link.category === 'Support')
-                    .map((link, index) => (
-                      <Button
-                        key={index}
-                        variant="secondary_filled"
-                        size="xl"
-                      >
-                        <Link 
-                          href={link.target} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                        >
-                          {link.text}
-                        </Link>
-                      </Button>
-                    ))}
-                </div>
-              )}
             </div>
           </Hero>
         </div>
       <div>
-        {pageContent?.services.map((serviceSection: ServiceConfig, index: number) => {
+        {pageContent.services.map((serviceSection: ServiceConfig, index: number) => {
           const isEven = index % 2 === 0;
           const sectionBgColor = isEven ? 'bg-white' : 'bg-neutral-50';
 
@@ -108,12 +86,12 @@ export default async function Storage() {
                             variant="primary_filled"
                             size="xl"
                           >
-                            <Link 
+                            <ExternalLink 
                               href={link.target} 
-                              {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                              external={isExternal}
                             >
                               {link.text}
-                            </Link>
+                            </ExternalLink>
                           </Button>
                         );
                       })}

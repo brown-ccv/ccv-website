@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import CCVBars from "@/components/assets/CCVBars"
 import { FaCalendarAlt } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
+import ExternalLink from "@/components/ui/external-link"
 
 const events_url = "https://events.brown.edu/ccv/all"
 
@@ -52,9 +53,9 @@ const EventCard = () => {
           What’s next at CCV
         </p>
         <Button className="h-[55px] font-semibold" variant="primary_filled">
-          <a href={events_url} target="_blank" rel="noopener noreferrer">
+          <ExternalLink href={events_url} external={true}>
             View All Events
-          </a>
+          </ExternalLink>
         </Button>
       </CardContent>
     </Card>
