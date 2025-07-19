@@ -35,7 +35,6 @@ export default async function ClassroomSupport() {
       <div className="relative w-full flex flex-col">
         <div className="bg-blue-navbar">
           <Hero 
-            image={"/images/hero/hero.jpeg"}
             title="Classroom Support"
             description="CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code"
             titleClassName="font-bold text-6xl md:text-8xl"

@@ -1,19 +1,9 @@
-import React from "react"
-import { Hero } from "@/components/Hero"
+import StrongholdContent from "@/app/content/services/stronghold.mdx";
 
-export default async function Stronghold() {
+export default function Stronghold() {
   return (
-    <div className="w-full">
-      <div className="relative w-full flex flex-col">
-        <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero/hero.jpeg"}
-            title="Stronghold"
-            description="Text tbd."
-            titleClassName="font-bold text-6xl md:text-8xl"
-          />
-        </div>
-      </div>
+    <div className="prose prose-lg text-xl max-w-none [&_.styled-button]:!text-2xl">
+      <StrongholdContent />
     </div>
-  )
+  );
 }
