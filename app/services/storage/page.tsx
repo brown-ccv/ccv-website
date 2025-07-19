@@ -21,8 +21,7 @@ export default async function Storage() {
     <div className="w-full">
       <div className="relative w-full flex flex-col">
         <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero/hero.jpeg"}
+          <Hero  
             title="Storage and Transfer"
             description={pageContent?.description}
             titleClassName="font-bold text-6xl md:text-8xl"

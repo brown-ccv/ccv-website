@@ -28,7 +28,6 @@ export default async function Rates() {
       <div className="relative w-full flex flex-col">
         <div className="bg-blue-navbar">
           <Hero 
-            image={"/images/hero/hero.jpeg"}
             title="Rates"
             description="We provide services with limited resources at no cost to all members affiliated with Brown. For advanced computing that requires extra resources, we charge a monthly fee."
             titleClassName="font-bold text-6xl md:text-8xl"
