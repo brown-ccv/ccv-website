@@ -6,7 +6,7 @@ MDX files combine regular text and Markdown formatting with React components (li
 
 ## Available Components
 
-All available components can be found in `mdx-components.tsx`. 
+All available components are in the `/components` folder. To make them accessible in `.mdx` files, add them to `/mdx-components.tsx`. Import the component(s) at the top of the file and add it to the Global MDX Components section at the bottom. To request a new custom component, please add an issue to [github](https://github.com/brown-ccv/ccv-website/issues).
 
 ## Commonly Used Markdown Formatting
 
