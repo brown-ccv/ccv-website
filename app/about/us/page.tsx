@@ -13,7 +13,7 @@ import remarkGfm from 'remark-gfm'
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
-  const loadedContent = await readContentFile<PageContentData>('app/content/about/us.yaml');
+  const loadedContent = await readContentFile<PageContentData>('content/about/us.yaml');
 const pageContent: PageContentData = loadedContent.data;
 
 async function getImagePaths(imageName: string | null) {
@@ -47,21 +47,15 @@ async function getImagePaths(imageName: string | null) {
 
 export default async function AboutUs() {
     return (
-      <div className="w-full">
-        <div className="relative w-full flex flex-col">
-          <div className="bg-blue-navbar">
-            <Hero 
-              image={"/images/hero/about-kayaks.png"}
-              title="About Us"
-              description="The Center for Computation and Visualization provides high-performance computing and visualization services to the Brown community. We also collaborate with researchers on projects across vast range of disciplines."
-              titleClassName="font-bold text-6xl md:text-8xl"
-              descriptionClassName="text-4xl font-semibold leading-[1.5]"
-            />
-          </div>
-        </div>
+      <div>
+        <Hero 
+          image={"/images/hero/about-kayaks.png"}
+          title="About Us"
+          description="The Center for Computation and Visualization provides high-performance computing and visualization services to the Brown community. We also collaborate with researchers on projects across vast range of disciplines."
+        />
 
         {/* Intro to OIT */}
-        <section className="content-wrapper py-24">
+        <section className="content-wrapper py-24 px-14 lg:px-36">
           <SectionHeader title="Office of Information Technology" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
@@ -75,7 +69,7 @@ export default async function AboutUs() {
         </section>
 
         {/* Our Mission */}
-        <section className="content-wrapper py-24 bg-gray-100">
+        <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
           <SectionHeader title="Our Mission" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
@@ -89,7 +83,7 @@ export default async function AboutUs() {
         </section>
 
         {/* People */}
-        <div id="people" className="content-wrapper py-12 lg:py-24">
+        <div id="people" className="content-wrapper py-24 px-14">
           <SectionHeader title="People" align="center"></SectionHeader>
           <div className="flex justify-center py-4 lg:py-10">
             <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
@@ -116,7 +110,7 @@ export default async function AboutUs() {
         </div>
 
       {/* Diversity Statement */}
-      <section className="content-wrapper py-24 bg-gray-100">
+      <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
       <SectionHeader title="Diversity Statement" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
