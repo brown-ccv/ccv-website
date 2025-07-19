@@ -3,7 +3,7 @@ import { Hero } from "@/components/Hero"
 
 export default async function Consulting() {
   return (
-    <div className="w-full">
+    <div>
       <Hero 
         title="Consulting"
         description="Text tbd."

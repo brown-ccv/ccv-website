@@ -18,7 +18,7 @@ const pageContent: PageContentData = loadedContent.data;
 
 export default async function ContactUs() {
   return (
-    <div className="w-full">
+    <div>
       <Hero 
         image={"/images/hero/about-kayaks.png"}
         title="Contact Us"

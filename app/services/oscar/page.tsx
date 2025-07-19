@@ -14,7 +14,7 @@ export default async function Oscar() {
   const pageContentData = await readContentFile<OscarData>('content/services/oscar/oscar.yaml')
   
   return (
-    <div className="w-full">
+    <div>
       <Hero 
         title={pageContentData.data.title}
         description={pageContentData.data.description}

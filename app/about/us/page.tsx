@@ -47,7 +47,7 @@ async function getImagePaths(imageName: string | null) {
 
 export default async function AboutUs() {
     return (
-      <div className="w-full">
+      <div>
         <Hero 
           image={"/images/hero/about-kayaks.png"}
           title="About Us"

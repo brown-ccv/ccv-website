@@ -30,7 +30,7 @@ export default async function Home() {
     const pastDates = getEventData(`-2 months${today}`);
 
     return (
-      <div className="w-full">
+      <div>
         <Hero 
           image={"/images/hero/ccv-original.png"}
           title="Center for Computation and Visualization"

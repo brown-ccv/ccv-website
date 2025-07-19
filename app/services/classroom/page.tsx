@@ -31,7 +31,7 @@ export default async function ClassroomSupport() {
   const featuredCarouselData = featuredCarouselRaw.data.carousel;
 
   return (
-    <div className="w-full">
+    <div>
       <Hero 
         title="Classroom Support"
         description="CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code"

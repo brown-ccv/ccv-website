@@ -12,7 +12,7 @@ export default async function AboutLayout() {
     const workdayData = await getWorkdayData()
 
     return (
-      <div className="w-full">
+      <div>
         <Hero 
           image={"/images/hero/about-kayaks.png"}
           title="Careers"

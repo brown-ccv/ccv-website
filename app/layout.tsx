@@ -48,7 +48,7 @@ export default async function RootLayoutWrapper({
           <LayoutWithStatusBanner issues={issues} />
           <BrownBanner />
           <Navbar />
-          <div className="flex-grow">{children}</div>
+          <div className="flex-grow w-full">{children}</div>
           <Footer />
         </div>
       </body>

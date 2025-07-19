@@ -24,7 +24,7 @@ export default async function Rates() {
   const researchDataStorage = sectionsMap.get('research-data-storage')!;
 
   return (  
-    <div className="w-full">
+    <div>
       <Hero 
         title="Rates"
         description="We provide services with limited resources at no cost to all members affiliated with Brown. For advanced computing that requires extra resources, we charge a monthly fee."

@@ -50,7 +50,7 @@ export default async function CompareStorageOptions() {
   });
 
   return (
-    <div className="w-full">
+    <div>
         <Hero 
           image={"/images/hero-subroutes.jpeg"}
           title={pageContent.title}
