@@ -31,12 +31,12 @@ export const Hero = ({
         <div className="relative flex-1 flex items-start w-full px-[4vw] sm:px-[3vw] md:px-[2vw] lg:px-36 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
           <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16 overflow-hidden">
             {title && (
-              <h1 className={titleClassName}>
+              <h1 className={`${titleClassName} text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl break-words`}>
                 {title}
               </h1>
             )}
             {description && (
-              <p className={descriptionClassName}>
+              <p className={`${descriptionClassName} break-words`}>
                 {description}
               </p>
             )}
