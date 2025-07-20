@@ -26,7 +26,7 @@ export default async function Oscar() {
         </div>
       </div>
 
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+      <section className="content-wrapper py-24">
         <SectionHeader title={pageContentData.data.sectionTitle} align="center" />
         
         {/* Subsections and buttons */}
@@ -46,7 +46,7 @@ export default async function Oscar() {
               {subsection.links && (
                 <div className="flex flex-wrap gap-4 mt-6">
                   {subsection.links.map((link) => (
-                    <Button variant="primary_filled" size="lg" key={link.text}>
+                    <Button variant="primary_filled" size="md" className="lg:text-xl lg:h-10 lg:px-6" key={link.text}>
                       <ExternalLink href={link.href} external={true}>
                         {link.text}
                       </ExternalLink>
