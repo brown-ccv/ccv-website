@@ -31,8 +31,8 @@ export default async function Storage() {
               <div className="flex flex-col xl:flex-row flex-wrap gap-2 w-full items-start not-prose">
                 <Button
                   variant="primary_filled"
-                  size="xl"
-                  className="w-full xl:w-auto"
+                  size="md"
+                  className="w-full xl:w-auto lg:text-xl lg:h-14 lg:px-8"
                 >
                   <Link href="/services/storage/compare">
                     Compare Storage Options
@@ -42,8 +42,8 @@ export default async function Storage() {
                   <Button
                     key={index}
                     variant={link.category === 'Support' ? "secondary_filled" : "primary_filled"}
-                    size="xl"
-                    className="w-full xl:w-auto"
+                    size="md"
+                    className="w-full xl:w-auto lg:text-xl lg:h-14 lg:px-8"
                   >
                     <ExternalLink 
                       href={link.target} 
@@ -77,14 +77,15 @@ export default async function Storage() {
                     </Markdown>
                   </div>
                   {serviceSection.links && serviceSection.links.length > 0 && (
-                    <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
+                    <div className="mt-4 flex flex-wrap gap-2 w-full items-start not-prose">
                       {serviceSection.links.map((link, index) => {
                         const isExternal = link.target.startsWith('http://') || link.target.startsWith('https://');
                         return (
                           <Button
                             key={index}
                             variant="primary_filled"
-                            size="xl"
+                            size="md"
+                            className="lg:text-xl lg:h-14 lg:px-8"
                           >
                             <ExternalLink 
                               href={link.target} 
