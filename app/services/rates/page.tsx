@@ -37,7 +37,7 @@ export default async function Rates() {
       </div>
 
       {/* Oscar */}
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+      <section className="content-wrapper py-24">
         <SectionHeader title={oscar.data.title} align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -47,8 +47,8 @@ export default async function Rates() {
           </CardContent>
         </Card>
 
-        <section className="content-wrapper flex justify-center px-40">
-          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
+        <section className="content-wrapper flex justify-center">
+          <div className="flex flex-wrap justify-center gap-6">
             {oscar.data.sections?.map((section: RatesCard) => (
               <div
                 key={section.name}
@@ -89,7 +89,7 @@ export default async function Rates() {
         {oscar.data.links && oscar.data.links.filter(link => link.category === "Default").length > 0 && (
           <div className="flex gap-4 mt-6 justify-center">
             {oscar.data.links.filter(link => link.category === "Default").map((link: ContentLinks) => (
-              <Button key={link.text} variant="primary_filled" size="lg">
+              <Button key={link.text} variant="primary_filled" size="md" className="lg:text-xl lg:h-10 lg:px-6">
                 <ExternalLink href={link.target}>
                   {link.text}
                 </ExternalLink>
@@ -100,7 +100,7 @@ export default async function Rates() {
       </section>
 
       {/* Purchasing a Condo */}
-      <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+      <section className="content-wrapper py-24 bg-neutral-50">
         <SectionHeader title={purchasingCondo.data.title} align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex flex-col px-6">
@@ -114,7 +114,7 @@ export default async function Rates() {
       </section>
 
       {/* Research Data Storage */}
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+      <section className="content-wrapper py-24">
         <SectionHeader title={researchDataStorage.data.title} align="center" />
 
         {/* Default Category */}
@@ -126,12 +126,12 @@ export default async function Rates() {
               </p>
             </div>
             <div className="content-wrapper px-0">
-              <div className="flex flex-wrap gap-y-6 gap-x-6">
-                {researchDataStorage.data.sections?.filter(section => section.category === "default").map((section: RatesCard) => (
-                  <div
-                    key={section.name}
-                    className="w-96"
-                  >
+                          <div className="flex flex-wrap gap-6">
+              {researchDataStorage.data.sections?.filter(section => section.category === "default").map((section: RatesCard) => (
+                <div
+                  key={section.name}
+                  className="w-96"
+                >
                     <div className="inline-flex items-center p-6 w-full h-full">
                       <Card className={cn("overflow-hidden flex flex-col w-full h-full p-4", cardVariants({ variant: "default" }))}>
                         <CardContent className="flex flex-col h-full">
@@ -167,12 +167,12 @@ export default async function Rates() {
               </div>
             </div>
             <div className="content-wrapper px-0">
-              <div className="flex flex-wrap gap-y-6 gap-x-6">
-                {researchDataStorage.data.sections?.filter(section => section.category === "additional").map((section: RatesCard) => (
-                  <div
-                    key={section.name}
-                    className="w-96"
-                  >
+                          <div className="flex flex-wrap gap-6">
+              {researchDataStorage.data.sections?.filter(section => section.category === "additional").map((section: RatesCard) => (
+                <div
+                  key={section.name}
+                  className="w-96"
+                >
                     <div className="inline-flex items-center p-6 w-full h-full">
                       <Card className={cn("overflow-hidden flex flex-col w-full h-full p-4", cardVariants({ variant: "default" }))}>
                         <CardContent className="flex flex-col h-full">
@@ -201,7 +201,7 @@ export default async function Rates() {
         {researchDataStorage.data.links && researchDataStorage.data.links.filter(link => link.category === "Default").length > 0 && (
           <div className="flex gap-4 mt-6 justify-center">
             {researchDataStorage.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
-              <Button key={`research-${index}`} variant="primary_filled" size="lg">
+              <Button key={`research-${index}`} variant="primary_filled" size="md" className="lg:text-xl lg:h-10 lg:px-6">
                 <ExternalLink href={link.target}>
                   {link.text}
                 </ExternalLink>
@@ -212,7 +212,7 @@ export default async function Rates() {
       </section>
 
       {/* Pooled Storage Allocations */}
-      <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+      <section className="content-wrapper py-24 bg-neutral-50">
         <SectionHeader title={pooledStorageAllocations.data.title} align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex flex-col px-6">
