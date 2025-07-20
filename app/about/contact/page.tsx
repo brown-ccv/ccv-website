@@ -43,7 +43,7 @@ export default async function ContactUs() {
         </Card>
 
         <div className="content-wrapper flex justify-center px-[4vw] sm:px-[3vw] md:px-[2vw] lg:px-40">
-          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6 xs:w-1/2">
+          <div className="flex flex-wrap justify-center gap-6">
             {pageContent?.contactUs?.cards?.map((card: ContactUsTypes) => (
               <div
                 key={card.title}
@@ -64,7 +64,8 @@ export default async function ContactUs() {
                           <Button
                             key={index}
                             variant="primary_filled"
-                            size="xl"
+                            size="md"
+                            className="lg:text-xl lg:h-14 lg:px-8"
                           >
                             <ExternalLink href={link.href} external={true}>{link.text}</ExternalLink>
                           </Button>
@@ -90,7 +91,7 @@ export default async function ContactUs() {
           </CardContent>
         </Card>
         <section className="content-wrapper">
-          <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {pageContent?.officeHours?.cards?.map((card: OfficeHoursTypes) => (
               <div
                 key={card.title}
@@ -113,7 +114,7 @@ export default async function ContactUs() {
                       </CardTitle>
                       <div className="flex justify-center mt-auto">
                         {card.buttonLinks && card.buttonLinks.map((link, index) => (
-                          <Button key={index} variant="primary_filled" size="xl">
+                          <Button key={index} variant="primary_filled" size="md" className="lg:text-xl lg:h-14 lg:px-8">
                             <ExternalLink href={link.href}>
                               {link.text}
                             </ExternalLink>
