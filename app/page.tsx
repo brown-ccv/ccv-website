@@ -41,13 +41,14 @@ export default async function Home() {
             >
               <Button
                 variant="primary_filled"
-                size="xl"
+                size="md"
+                className="lg:text-xl lg:h-14 lg:px-8"
               >
                 <ExternalLink href="mailto:ccv-support@brown.edu" external={true}>
                   Work with Us
                 </ExternalLink>
               </Button>
-              <ScrollButton id="events" variant="secondary_filled" size="xl">View Events</ScrollButton>
+              <ScrollButton id="events" variant="secondary_filled" size="md" className="lg:text-xl lg:h-14 lg:px-8">View Events</ScrollButton>
             </Hero>
           </div>
           <HeroCard />
