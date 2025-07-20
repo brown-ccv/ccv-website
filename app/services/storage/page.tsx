@@ -32,7 +32,7 @@ export default async function Storage() {
                 <Button
                   variant="primary_filled"
                   size="md"
-                  className="w-full xl:w-auto lg:text-xl lg:h-14 lg:px-8"
+                  className="w-fit lg:text-xl lg:h-14 lg:px-8"
                 >
                   <Link href="/services/storage/compare">
                     Compare Storage Options
@@ -43,7 +43,7 @@ export default async function Storage() {
                     key={index}
                     variant={link.category === 'Support' ? "secondary_filled" : "primary_filled"}
                     size="md"
-                    className="w-full xl:w-auto lg:text-xl lg:h-14 lg:px-8"
+                    className="w-fit lg:text-xl lg:h-14 lg:px-8"
                   >
                     <ExternalLink 
                       href={link.target} 
