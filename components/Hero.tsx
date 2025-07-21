@@ -23,8 +23,14 @@ export const Hero = ({
     <div
       className="w-full min-h-[clamp(1000px,50vh,60vh)] bg-cover bg-center relative flex flex-col overflow-hidden m-0 p-0"
       style={{
-        backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
+        backgroundImage: `
+          radial-gradient(circle at 0% 0%, #060839 0%, transparent 70%),
+          radial-gradient(circle at 100% 100%, #060839 0%, transparent 70%),
+          linear-gradient(135deg, #060839 0%, #8B5CF6 30%, #EC4899 70%, #060839 100%),
+          url(${image})
+        `,
+        backgroundSize: "cover, cover, cover, cover",
+        backgroundBlendMode: "multiply, multiply, overlay, normal",
       }}
     >
       {showGradient && (
