@@ -49,7 +49,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
     return (
     <section className="mt-12 mb-24">
-      <div className="w-full max-w-[2040px] px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1400px] px-4 sm:px-6 lg:px-8 mx-auto">
         {/* Carousel Container with Visual Distinction */}
         <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 lg:p-8 relative">
           {/* Navigation Buttons */}
@@ -160,8 +160,8 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </div>
 
             {/* Desktop Image Only */}
-            <div className="hidden xl:block w-full max-w-[700px] space-y-6 lg:w-full h-full flex flex-col justify-start relative">
-              <div>
+            <div className="hidden xl:block w-full max-w-[700px] lg:w-full h-full flex-col justify-center relative xl:ml-auto">
+              <div className="min-w-[700px]">
                 <Image
                   src={image}
                   alt={title}
