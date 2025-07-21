@@ -20,13 +20,13 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
     <div>
       {showStatusBanner && (
         <StatusBanner isOperational={isOperational}>
-          <div className="flex flex-wrap items-center gap-x-4">
+          <div className="flex items-center gap-x-4 min-w-0">
             {issues.length > 0 ? (
               <>
-                <p className="text-lg">
+                <p className="text-xs sm:text-sm md:text-lg">
                   <strong>Service Disruption:</strong> {repoNames}
                 </p>
-                <Button variant="secondary_filled" size="sm" className="text-md">
+                <Button variant="secondary_filled" size="sm" className="text-xs sm:text-sm md:text-md m-0">
                   <ExternalLink
                     href="https://status.ccv.brown.edu/"
                     external={true}
@@ -37,10 +37,10 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
               </>
             ) : (
               <>
-                <p className="text-lg">
+                <p className="text-xs sm:text-sm md:text-lg whitespace-nowrap">
                   All Services Operational
                 </p>
-                <Button variant="secondary_filled" size="sm" className="text-lg">
+                <Button variant="secondary_filled" size="sm" className="text-xs sm:text-sm md:text-lg m-0">
                   <ExternalLink
                     href="https://status.ccv.brown.edu/"
                     external={true}

@@ -17,11 +17,13 @@ export default function StatusBanner({ children, isOperational, id }: StatusBann
 
   return (
     <div
-              className={`relative isolate w-full flex items-center gap-x-6 overflow-hidden h-[55px] px-6 sm:px-8 sm:before:flex-1 
+      className={`relative isolate w-full flex items-center justify-between gap-x-1 sm:gap-x-4 md:gap-x-6 overflow-hidden h-[55px] px-4 sm:px-6 md:px-8 
       ${isOperational ? "bg-keppel-500 text-black" : "bg-red-university text-white"}`}
     >
-      {children}
-      <div className="flex flex-1 justify-end">
+      <div className="flex-1 min-w-0 pr-2 sm:pr-4">
+        {children}
+      </div>
+      <div className="flex-shrink-0">
         <Button
           variant="icon_only"
           size="icon"
@@ -32,9 +34,11 @@ export default function StatusBanner({ children, isOperational, id }: StatusBann
             hover:bg-white
             hover:text-black
             active:bg-neutral-50
+            w-8 h-8
+            sm:w-10 sm:h-10
           "
           iconOnly={
-            <XMarkIcon aria-hidden="true" className="h-5 w-5" />
+            <XMarkIcon aria-hidden="true" className="h-4 w-4 sm:h-5 sm:w-5" />
           }
         />
       </div>
