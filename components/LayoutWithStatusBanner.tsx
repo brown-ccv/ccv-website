@@ -20,7 +20,7 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
     <div>
       {showStatusBanner && (
         <StatusBanner isOperational={isOperational}>
-          <div className="flex items-center gap-x-4 min-w-0">
+          <div className="flex items-center justify-center gap-x-4 min-w-0 w-full">
             {issues.length > 0 ? (
               <>
                 <p className="text-xs sm:text-sm md:text-lg">
