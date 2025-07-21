@@ -44,9 +44,7 @@ export const Hero = ({
           <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16">
                           {title && (
                 <TextAnimate
-                  as="h1"
                   duration={1}
-                  animation="slideLeft"
                   by="character"
                   className={titleClassName}
                 >
