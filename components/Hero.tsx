@@ -26,12 +26,11 @@ export const Hero = ({
         backgroundImage: `
           radial-gradient(circle at 0% 0%, #060839 0%, transparent 85%),
           radial-gradient(circle at 100% 100%, #060839 0%, transparent 85%),
-          radial-gradient(circle at 50% 50%, #060839 0%, transparent 40%),
-          linear-gradient(135deg, #060839 0%, #8B5CF6 40%, #EC4899 60%, #060839 100%),
+          radial-gradient(circle at 70% 30%, #EC4899 0%, #8B5CF6 50%, transparent 70%),
           url(${image})
         `,
-        backgroundSize: "cover, cover, cover, cover, cover",
-        backgroundBlendMode: "multiply, multiply, multiply, overlay, normal",
+        backgroundSize: "cover, cover, cover, cover",
+        backgroundBlendMode: "multiply, multiply, overlay, normal",
       }}
     >
       {showGradient && (
