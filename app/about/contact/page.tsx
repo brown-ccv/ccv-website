@@ -25,7 +25,7 @@ export default async function ContactUs() {
             image={"/images/hero/about-kayaks.png"}
             title="Contact Us"
             description={pageContent.description}
-            titleClassName="font-bold text-6xl md:text-8xl"
+
             descriptionClassName="text-4xl font-semibold leading-[1.5]"
           />
         </div>
@@ -42,7 +42,7 @@ export default async function ContactUs() {
           </CardContent>
         </Card>
 
-        <div className="content-wrapper flex justify-center px-[4vw] sm:px-[3vw] md:px-[2vw] lg:px-40">
+        <div className="content-wrapper flex justify-center px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40">
           <div className="flex flex-wrap justify-center gap-6">
             {pageContent?.contactUs?.cards?.map((card: ContactUsTypes) => (
               <div
@@ -131,7 +131,7 @@ export default async function ContactUs() {
       </section>
 
       {/* 180 George St */}
-      <section className="content-wrapper py-24 px-6 lg:px-36">
+      <section className="content-wrapper py-24 px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40">
         <div className="flex flex-col xl:flex-row gap-4">
           <Card className="w-full xl:w-1/2 shadow-none rounded-none border-none">
             <CardContent className="flex items-center">

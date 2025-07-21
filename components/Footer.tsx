@@ -68,7 +68,7 @@ const Footer = () => {
 
   return (
     <footer className="flex flex-col justify-start items-start sm:justify-center sm:items-center w-full bg-gradient-to-b from-gradient-light to-gradient-dark text-neutral-800">
-              <div className="px-[4vw] sm:px-[3vw] py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
+              <div className="px-6 sm:px-8 py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
         <div className="flex flex-col justify-start items-start mb-8 space-y-2 sm:justify-center sm:items-center md:mb-16">
           <div className="text-xs tracking-widest uppercase text-cream">
             Brown University
@@ -94,7 +94,7 @@ const Footer = () => {
         <div className="flex flex-row w-full sm:justify-center sm:items-center">
           <ExternalLink
             href="https://alumni-friends.brown.edu/giving"
-            className="group flex justify-center items-center px-[4vw] sm:px-[3vw] py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-black"
+            className="group flex justify-center items-center px-6 sm:px-8 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-black"
           >
             Give to Brown
             <FaArrowRight className="inline-block ml-2 text-sunglow-400 group-hover:text-black" />

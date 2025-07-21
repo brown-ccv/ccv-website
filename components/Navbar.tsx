@@ -220,8 +220,8 @@ export const Navbar: React.FC = () => {
 
   return (
     <header className={`sticky top-0 z-50`}>
-      <nav className="bg-blue-navbar flex px-[4vw] sm:px-[3vw] justify-between">
-                  <div className="flex items-center py-8 px-[4vw] sm:px-[3vw] xl:px-10">
+            <nav className="bg-blue-navbar flex px-6 sm:px-8 justify-between">
+        <div className="flex items-center py-8 px-6 sm:px-8 xl:px-10">
           <Link href={"/"}>
             <CCVLogo width={120}/>
           </Link>

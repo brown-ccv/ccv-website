@@ -10,7 +10,7 @@ export default async function UserSupport() {
             image={"/images/hero/hero.jpeg"}
             title="User Support"
             description="Text tbd."
-            titleClassName="font-bold text-6xl md:text-8xl"
+
           />
         </div>
       </div>

@@ -57,7 +57,7 @@ export default async function CompareStorageOptions() {
             image={"/images/hero-subroutes.jpeg"}
             title={pageContent.title}
             description={pageContent.description}
-            titleClassName="font-bold text-6xl md:text-8xl"
+
           />
         </div>
       </div>

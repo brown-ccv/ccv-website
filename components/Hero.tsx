@@ -1,4 +1,5 @@
 import { ReactNode } from "react"
+import { TextAnimate } from "./magicui/text-animate"
 
 interface HeroProps {
   image: string
@@ -16,8 +17,8 @@ export const Hero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "font-bold text-6xl md:text-8xl",
-  descriptionClassName = "text-4xl font-semibold"
+  titleClassName = "font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl",
+  descriptionClassName = "text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold"
 }: HeroProps) => {
   return (
     <div
@@ -28,12 +29,19 @@ export const Hero = ({
       }}
     >
       {showGradient && (
-        <div className="relative flex-1 flex items-start w-full px-[4vw] sm:px-[3vw] md:px-[2vw] lg:px-36 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
-          <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16 overflow-hidden">
+        <div className="relative flex-1 flex items-start w-full px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
+          <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16 overflow-hidden max-w-[1400px]">
             {title && (
-              <h1 className={`${titleClassName} text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-8xl break-words`}>
+              <TextAnimate
+                as="h1"
+                className={`${titleClassName} break-words`}
+                animation="fadeIn"
+                by="word"
+                delay={0.2}
+                duration={0.5}
+              >
                 {title}
-              </h1>
+              </TextAnimate>
             )}
             {description && (
               <p className={`${descriptionClassName} break-words`}>

@@ -37,7 +37,7 @@ export default async function Home() {
               image={"/images/hero/ccv-original.png"}
               title="Center for Computation and Visualization"
               description="Advancing computational research with scientific and computing expertise."
-              titleClassName="font-bold text-6xl md:text-8xl"
+  
             >
               <Button
                 variant="primary_filled"

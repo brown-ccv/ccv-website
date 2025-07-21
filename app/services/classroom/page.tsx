@@ -38,7 +38,7 @@ export default async function ClassroomSupport() {
             image={"/images/hero/hero.jpeg"}
             title="Classroom Support"
             description="CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code"
-            titleClassName="font-bold text-6xl md:text-8xl"
+
           />
         </div>
       </div>

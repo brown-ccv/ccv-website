@@ -59,7 +59,7 @@ p > a:focus {
 
   @layer components {
     .content-wrapper {
-      @apply w-full px-[4vw] sm:px-[3vw] md:px-[2vw] lg:px-14;
+      @apply w-full px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40;
     }
   }
 }

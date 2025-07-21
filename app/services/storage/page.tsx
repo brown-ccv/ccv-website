@@ -25,7 +25,7 @@ export default async function Storage() {
             image={"/images/hero/hero.jpeg"}
             title="Storage and Transfer"
             description={pageContent?.description}
-            titleClassName="font-bold text-6xl md:text-8xl"
+
           >
             <div className="flex flex-col items-start not-prose">
               <div className="flex flex-col xl:flex-row flex-wrap gap-2 w-full items-start not-prose">
@@ -64,7 +64,7 @@ export default async function Storage() {
 
           return(
             <section key={serviceSection.name} id={serviceSection.name} className={`${sectionBgColor} py-16 sm:py-24 `} >
-              <div className="px-[4vw] sm:px-[3vw] md:px-[2vw] lg:px-36">
+              <div className="px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40">
               <SectionHeader title={humanize(serviceSection.name)} align="center" />
               <Card className="w-full border-none shadow-none rounded-none">
                 <CardContent className="flex flex-col items-start pb-8">

@@ -17,7 +17,7 @@ export default async function AboutLayout() {
             <Hero 
               image={"/images/hero/about-kayaks.png"}
               title="Careers"
-              titleClassName="font-bold text-6xl md:text-8xl"
+  
               descriptionClassName="text-4xl font-semibold leading-[1.5]"
             />
         </div>

@@ -21,7 +21,7 @@ export default async function Oscar() {
             image={"/images/hero/hero.jpeg"}
             title={pageContentData.data.title}
             description={pageContentData.data.description}
-            titleClassName="font-bold text-6xl md:text-8xl"
+
           />
         </div>
       </div>

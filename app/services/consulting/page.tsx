@@ -10,7 +10,7 @@ export default async function Consulting() {
             image={"/images/hero/hero.jpeg"}
             title="Consulting"
             description="Text tbd."
-            titleClassName="font-bold text-6xl md:text-8xl"
+
           />
         </div>
       </div>
