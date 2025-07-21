@@ -14,7 +14,7 @@ interface FormProps {
 
 const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions }) => {
   return (
-    <div className="space-y-2 px-8 pb-8 bg-white rounded-lg shadow-md max-w-[800px]">
+    <div className="space-y-2 px-8 pb-8 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl max-w-[800px] border border-neutral-300">
       {questions.map((question) => (
         <div key={question.id}>
           <div className="pt-6 font-medium text-black text-2xl">
