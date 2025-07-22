@@ -28,11 +28,6 @@ const sourceSerif = Source_Serif_4({
   display: "swap",
 });
 
-export const metadata = {
-  title: "CCV",
-  description: "Center for Computation & Visualization",
-};
-
 export default async function RootLayoutWrapper({
   children,
 }: {
@@ -53,7 +48,7 @@ export default async function RootLayoutWrapper({
           <LayoutWithStatusBanner issues={issues} />
           <BrownBanner />
           <Navbar />
-          <div className="flex-grow">{children}</div>
+          <div className="flex-grow w-full">{children}</div>
           <Footer />
         </div>
       </body>

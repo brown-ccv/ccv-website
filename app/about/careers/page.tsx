@@ -12,16 +12,12 @@ export default async function AboutLayout() {
     const workdayData = await getWorkdayData()
 
     return (
-      <div className="w-full">
-        <div className="bg-blue-navbar">
-            <Hero 
-              image={"/images/hero/about-kayaks.png"}
-              title="Careers"
-              titleClassName="font-bold text-6xl md:text-8xl"
-              descriptionClassName="text-4xl font-semibold leading-[1.5]"
-            />
-        </div>
-        <section className="content-wrapper py-24 px-36 bg-gray-100">
+      <div>
+        <Hero 
+          image={"/images/hero/about-kayaks.png"}
+          title="Careers"
+        />
+        <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
           <SectionHeader title="Opportunities" align="center" />
           <Suspense fallback={<Spinner />}>
             <Workday careers={workdayData} />
