@@ -1,4 +1,7 @@
+"use client"
+
 import { ReactNode } from "react"
+import { TextAnimate } from "@/components/magicui/text-animate"
 
 interface HeroProps {
   image: string
@@ -23,17 +26,32 @@ export const Hero = ({
     <div
       className="w-full min-h-[clamp(1000px,50vh,60vh)] bg-cover bg-center relative flex flex-col overflow-hidden m-0 p-0"
       style={{
-        backgroundImage: `url(${image})`,
-        backgroundSize: "cover",
+        backgroundImage: `
+          radial-gradient(circle at 0% 0%, #060839 0%, transparent 85%),
+          radial-gradient(circle at 100% 100%, #060839 0%, transparent 85%),
+          radial-gradient(circle at 70% 30%, #EC4899 0%, #8B5CF6 50%, transparent 70%),
+          radial-gradient(circle at 30% 70%, #00b398 0%, transparent 60%),
+          radial-gradient(ellipse at 50% 50%, #04c8a6 0%, transparent 40%),
+          linear-gradient(135deg, #00b398 0%, transparent 30%, transparent 70%, #EC4899 100%),
+          url(${image})
+        `,
+        backgroundSize: "cover, cover, cover, cover, cover, cover, cover",
+        backgroundBlendMode: "multiply, multiply, overlay, soft-light, overlay, overlay, normal",
       }}
     >
       {showGradient && (
         <div className="relative flex-1 flex items-start w-full pl-6 pr-6 md:pl-14 md:pr-14 lg:pl-36 lg:pr-96 bg-gradient-to-t from-black/0 via-black/10 to-black/65 z-5">
           <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16">
             {title && (
-              <h1 className={titleClassName}>
+              <TextAnimate
+                as="h1"
+                duration={1}
+                animation="slideLeft"
+                by="character"
+                className={titleClassName}
+              >
                 {title}
-              </h1>
+              </TextAnimate>
             )}
             {description && (
               <p className={descriptionClassName}>
