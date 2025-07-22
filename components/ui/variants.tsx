@@ -7,14 +7,14 @@ export const buttonVariants = cva(
       variant: {
         // ————————————————————— Primary Filled —————————————————————
         primary_filled: [
-          "bg-keppel-700 text-white shadow-sm",
+          "bg-keppel-700 text-white",
           "hover:bg-keppel-500",
           "focus-visible:ring-2 focus-visible:ring-keppel-600",
           "active:bg-keppel-600",
         ].join(" "),
         // ————————————————————— Secondary Filled ————————————————————
         secondary_filled: [
-          "bg-sunglow-400 text-black shadow-sm",
+          "bg-sunglow-400 text-black",
           "hover:bg-sunglow-200",
           "focus-visible:ring-2 focus-visible:ring-sunglow-300",
           "active:bg-sunglow-300",
@@ -35,7 +35,7 @@ export const buttonVariants = cva(
         ].join(" "),
         // ————————————————————— Black Filled ——————————————————————
         black_filled: [
-          "bg-neutral-900 text-white shadow-sm",
+          "bg-neutral-900 text-white",
           "hover:bg-neutral-700",
           "focus-visible:ring-2 focus-visible:ring-neutral-900",
           "active:bg-neutral-800",
@@ -43,7 +43,7 @@ export const buttonVariants = cva(
         // ——————————————————— Icon Only (filled, for black icon buttons) ———————————————————
         icon_only: [
           "inline-flex items-center justify-center rounded-full",
-          "bg-neutral-900 text-white shadow-sm",
+          "bg-neutral-900 text-white",
           "hover:bg-neutral-700",
           "focus-visible:ring-2 focus-visible:ring-neutral-900",
           "active:bg-neutral-800",
@@ -112,8 +112,8 @@ export const cardVariants = cva(
   {
     variants: {
       variant: {
-        default: "shadow-lg border border-neutral-200",
-        people: "border-none shadow-none",
+        default: "border border-neutral-300 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl",
+        people: "border-none",
       },
     },
     defaultVariants: {

@@ -1,9 +1,5 @@
-"use client"
-
-import React, { useState } from "react"
+import React from "react"
 import { cn } from "@/lib/utils"
-import Image from 'next/image';
-import { cardVariants } from "@/components/ui/variants"
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -12,7 +8,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-xl border bg-card text-card-foreground shadow",
+      "rounded-2xl border bg-gradient-to-br from-white to-neutral-50/30 text-card-foreground",
       className,
     )}
     {...props}
