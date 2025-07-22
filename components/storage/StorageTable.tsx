@@ -226,7 +226,7 @@ const tableData: TableRow[] = useMemo(() => {
   return (
     <>
       {/* Desktop View - Table */}
-      <div className="hidden lg:block w-full overflow-x-scroll rounded-lg shadow-md">       
+      <div className="hidden lg:block w-full overflow-x-scroll rounded-2xl bg-gradient-to-br from-white to-neutral-50/30 border border-neutral-300">       
         <div className="relative" ref={tableContainerRef}>
           <div className="flex justify-end px-2 border-b border-neutral-200 bg-white sticky top-0 z-40">
             <Button
