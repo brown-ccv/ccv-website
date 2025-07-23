@@ -40,7 +40,7 @@ export default async function Oscar() {
               {subsection.links && (
                 <div className="flex flex-wrap gap-4 mt-6">
                   {subsection.links.map((link) => (
-                    <Button variant="primary_filled" size="md" className="lg:text-xl lg:h-10 lg:px-6" key={link.text}>
+                    <Button variant="primary_filled" size="lg" key={link.text}>
                       <ExternalLink href={link.href} external={true}>
                         {link.text}
                       </ExternalLink>

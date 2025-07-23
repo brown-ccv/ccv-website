@@ -27,8 +27,8 @@ export default async function Storage() {
           <div className="flex flex-col xl:flex-row flex-wrap gap-2 w-full items-start not-prose">
             <Button
               variant="primary_filled"
-              size="xl"
-              className="w-fit lg:text-xl lg:h-14 lg:px-8"
+              size="lg"
+              className="w-fit"
             >
               <Link href="/services/storage/compare">
                 Compare Storage Options
@@ -38,8 +38,7 @@ export default async function Storage() {
               <Button
                 key={index}
                 variant={link.category === 'Support' ? "secondary_filled" : "primary_filled"}
-                size="md"
-                className="w-fit lg:text-xl lg:h-14 lg:px-8"
+                size="lg"
               >
                 <ExternalLink 
                   href={link.target} 
@@ -57,72 +56,47 @@ export default async function Storage() {
       const isEven = index % 2 === 0;
       const sectionBgColor = isEven ? 'bg-white' : 'bg-neutral-50';
 
-          return(
-            <section key={serviceSection.name} id={serviceSection.name} className={`${sectionBgColor} py-16 sm:py-24 `} >
-              <div className="px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40">
-              <SectionHeader title={humanize(serviceSection.name)} align="center" />
-              <Card className="w-full border-none shadow-none rounded-none">
-                <CardContent className="flex flex-col items-start pb-8">
-                  <div className="prose text-xl">
-                    <Markdown 
-                      rehypePlugins={[rehypeRaw]} 
-                      remarkPlugins={[remarkGfm]}
-                    >
-                      {serviceSection.description}
-                    </Markdown>
-                  </div>
-                  {serviceSection.links && serviceSection.links.length > 0 && (
-                    <div className="mt-4 flex flex-wrap gap-2 w-full items-start not-prose">
-                      {serviceSection.links.map((link, index) => {
-                        const isExternal = link.target.startsWith('http://') || link.target.startsWith('https://');
-                        return (
-                          <Button
-                            key={index}
-                            variant="primary_filled"
-                            size="md"
-                            className="lg:text-xl lg:h-14 lg:px-8"
-                          >
-                            <ExternalLink 
-                              href={link.target} 
-                              external={isExternal}
-                            >
-                              {link.text}
-                            </ExternalLink>
-                          </Button>
-                        );
-                      })}
-                    </div>
-                  )}
-                </CardContent>
-              </Card>
-              </div>
-              {serviceSection.links && serviceSection.links.length > 0 && (
-                <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
-                  {serviceSection.links.map((link, index) => {
-                    const isExternal = link.target.startsWith('http://') || link.target.startsWith('https://');
-                    return (
-                      <Button
-                        key={index}
-                        variant="primary_filled"
-                        size="xl"
-                      >
-                        <ExternalLink 
-                          href={link.target} 
-                          external={isExternal}
-                        >
-                          {link.text}
-                        </ExternalLink>
-                      </Button>
-                    );
-                  })}
+      return(
+        <section key={serviceSection.name} id={serviceSection.name} className={`${sectionBgColor} py-16 sm:py-24 `} >
+          <div className="px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40">
+            <SectionHeader title={humanize(serviceSection.name)} align="center" />
+            <Card className="w-full border-none shadow-none rounded-none">
+              <CardContent className="flex flex-col items-start pb-8">
+                <div className="prose text-xl">
+                  <Markdown 
+                    rehypePlugins={[rehypeRaw]} 
+                    remarkPlugins={[remarkGfm]}
+                  >
+                    {serviceSection.description}
+                  </Markdown>
                 </div>
-              )}
-            </CardContent>
-          </Card>
+                {serviceSection.links && serviceSection.links.length > 0 && (
+                  <div className="mt-4 flex flex-wrap gap-2 w-full items-start not-prose">
+                    {serviceSection.links.map((link, index) => {
+                      const isExternal = link.target.startsWith('http://') || link.target.startsWith('https://');
+                      return (
+                        <Button
+                          key={index}
+                          variant="primary_filled"
+                          size="lg"
+                        >
+                          <ExternalLink 
+                            href={link.target} 
+                            external={isExternal}
+                          >
+                            {link.text}
+                          </ExternalLink>
+                        </Button>
+                      );
+                    })}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
           </div>
         </section>
-        );
-      })}
+      );
+    })}
     </div>
   )
 }

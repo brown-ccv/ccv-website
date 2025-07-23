@@ -83,7 +83,7 @@ export default async function Rates() {
         {oscar.data.links && oscar.data.links.filter(link => link.category === "Default").length > 0 && (
           <div className="flex gap-4 mt-6 justify-center">
             {oscar.data.links.filter(link => link.category === "Default").map((link: ContentLinks) => (
-              <Button key={link.text} variant="primary_filled" size="md" className="lg:text-xl lg:h-10 lg:px-6">
+              <Button key={link.text} variant="primary_filled" size="lg">
                 <ExternalLink href={link.target}>
                   {link.text}
                 </ExternalLink>
@@ -195,7 +195,7 @@ export default async function Rates() {
         {researchDataStorage.data.links && researchDataStorage.data.links.filter(link => link.category === "Default").length > 0 && (
           <div className="flex gap-4 mt-6 justify-center">
             {researchDataStorage.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
-              <Button key={`research-${index}`} variant="primary_filled" size="md" className="lg:text-xl lg:h-10 lg:px-6">
+              <Button key={`research-${index}`} variant="primary_filled" size="lg">
                 <ExternalLink href={link.target}>
                   {link.text}
                 </ExternalLink>

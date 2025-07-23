@@ -58,8 +58,7 @@ export default async function ContactUs() {
                           <Button
                             key={index}
                             variant="primary_filled"
-                            size="md"
-                            className="lg:text-xl lg:h-14 lg:px-8"
+                            size="lg"
                           >
                             <ExternalLink href={link.href} external={true}>{link.text}</ExternalLink>
                           </Button>
@@ -108,7 +107,7 @@ export default async function ContactUs() {
                       </CardTitle>
                       <div className="flex justify-center mt-auto">
                         {card.buttonLinks && card.buttonLinks.map((link, index) => (
-                          <Button key={index} variant="primary_filled" size="md" className="lg:text-xl lg:h-14 lg:px-8">
+                          <Button key={index} variant="primary_filled" size="lg">
                             <ExternalLink href={link.href}>
                               {link.text}
                             </ExternalLink>

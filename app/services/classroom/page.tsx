@@ -52,7 +52,7 @@ export default async function ClassroomSupport() {
           {inClassTutorials.data.links && inClassTutorials.data.links.filter(link => link.category === "Default").length > 0 && (
             <div className="flex flex-wrap gap-4 mt-6 not-prose">
               {inClassTutorials.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
-                <Button key={`default-${index}`} variant="primary_filled" size="md" className="lg:text-xl lg:h-10 lg:px-6">
+                <Button key={`default-${index}`} variant="primary_filled" size="lg">
                   <ExternalLink href={link.target}>
                     {link.text}
                   </ExternalLink>
@@ -80,7 +80,7 @@ export default async function ClassroomSupport() {
           {studentAccounts.data.links && studentAccounts.data.links.filter(link => link.category === "Default").length > 0 && (
             <div className="flex flex-wrap gap-4 mt-6 not-prose">
               {studentAccounts.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
-                <Button key={`default-${index}`} variant="primary_filled" size="md" className="lg:text-xl lg:h-10 lg:px-6">
+                <Button key={`default-${index}`} variant="primary_filled" size="lg">
                   <ExternalLink href={link.target}>
                     {link.text}
                   </ExternalLink>
@@ -120,8 +120,7 @@ export default async function ClassroomSupport() {
                       <Button 
                         key={`${section.name}-${linkIndex}`} 
                         variant={section.name === 'google-colab' ? 'primary_filled' : 'secondary_filled'} 
-                        size="md"
-                        className="lg:text-xl lg:h-10 lg:px-6"
+                        size="lg"
                       >
                         <ExternalLink href={link.target}>
                           {link.text}

@@ -22,7 +22,7 @@ export default async function AboutLayout() {
           <Suspense fallback={<Spinner />}>
             <Workday careers={workdayData} />
           </Suspense>
-          <Button size="xl" variant="primary_filled">
+          <Button size="lg" variant="primary_filled">
             <Link href={"/about/contact"}>Contact Us</Link>
           </Button>
         </section>
