@@ -1,9 +1,9 @@
 import { Hero } from "@/components/Hero";
-import PageContent from "@/content/services/vms.mdx";
+import PageContent from "@/content/services/virtual-machine-hosting.mdx";
 import { getMDXMetadata } from "@/lib/mdx-utils";
 
 export default function Page() {
-  const metadata = getMDXMetadata('content/services/vms.mdx');
+  const metadata = getMDXMetadata('content/services/virtual-machine-hosting.mdx');
 
   return (
     <div>
