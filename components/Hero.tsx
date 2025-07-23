@@ -4,7 +4,7 @@ import { ReactNode } from "react"
 import { TextAnimate } from "@/components/magicui/text-animate"
 
 interface HeroProps {
-  image: string
+  image?: string
   title?: string
   description?: string
   children?: ReactNode
@@ -19,7 +19,7 @@ export const Hero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "font-bold text-6xl md:text-8xl",
+  titleClassName = "font-bold text-white text-6xl md:text-8xl",
   descriptionClassName = "text-4xl font-semibold"
 }: HeroProps) => {
   return (
