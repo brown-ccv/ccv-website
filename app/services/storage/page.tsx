@@ -12,55 +12,50 @@ import { PageContentData, ServiceConfig, ServiceLink } from "@/lib/storage-types
 import { humanize } from "@/lib/utils"
 import ExternalLink from "@/components/ui/external-link"
 
-const rawPageContent = await readContentFile('app/content/services/storage/storage-tool.yaml');
+const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');
 const pageContent: PageContentData = rawPageContent.data as PageContentData;
 const heroLinks: ServiceLink[] = pageContent.links || [];
 
 export default async function Storage() {
   return (
-    <div className="w-full">
-      <div className="relative w-full flex flex-col">
-        <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero/hero.jpeg"}
-            title="Storage and Transfer"
-            description={pageContent?.description}
-
-          >
-            <div className="flex flex-col items-start not-prose">
-              <div className="flex flex-col xl:flex-row flex-wrap gap-2 w-full items-start not-prose">
-                <Button
-                  variant="primary_filled"
-                  size="md"
-                  className="w-fit lg:text-xl lg:h-14 lg:px-8"
+    <div>
+      <Hero 
+        title="Storage and Transfer"
+        description={pageContent?.description}
+      >
+        <div className="flex flex-col items-start not-prose">
+          <div className="flex flex-col xl:flex-row flex-wrap gap-2 w-full items-start not-prose">
+            <Button
+              variant="primary_filled"
+              size="xl"
+              className="w-fit lg:text-xl lg:h-14 lg:px-8"
+            >
+              <Link href="/services/storage/compare">
+                Compare Storage Options
+              </Link>
+            </Button>
+            {heroLinks.map((link, index) => (
+              <Button
+                key={index}
+                variant={link.category === 'Support' ? "secondary_filled" : "primary_filled"}
+                size="md"
+                className="w-fit lg:text-xl lg:h-14 lg:px-8"
+              >
+                <ExternalLink 
+                  href={link.target} 
+                  external={true}
                 >
-                  <Link href="/services/storage/compare">
-                    Compare Storage Options
-                  </Link>
-                </Button>
-                {heroLinks.map((link, index) => (
-                  <Button
-                    key={index}
-                    variant={link.category === 'Support' ? "secondary_filled" : "primary_filled"}
-                    size="md"
-                    className="w-fit lg:text-xl lg:h-14 lg:px-8"
-                  >
-                    <ExternalLink 
-                      href={link.target} 
-                      external={true}
-                    >
-                      {link.text}
-                    </ExternalLink>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          </Hero>
+                  {link.text}
+                </ExternalLink>
+              </Button>
+            ))}
+          </div>
         </div>
-      <div>
-        {pageContent.services.map((serviceSection: ServiceConfig, index: number) => {
-          const isEven = index % 2 === 0;
-          const sectionBgColor = isEven ? 'bg-white' : 'bg-neutral-50';
+      </Hero>
+
+    {pageContent.services.map((serviceSection: ServiceConfig, index: number) => {
+      const isEven = index % 2 === 0;
+      const sectionBgColor = isEven ? 'bg-white' : 'bg-neutral-50';
 
           return(
             <section key={serviceSection.name} id={serviceSection.name} className={`${sectionBgColor} py-16 sm:py-24 `} >
@@ -101,11 +96,33 @@ export default async function Storage() {
                 </CardContent>
               </Card>
               </div>
-            </section>
-            );
-          })}
-        </div>
-      </div>
+              {serviceSection.links && serviceSection.links.length > 0 && (
+                <div className="mt-4 flex flex-row gap-2 w-full items-start not-prose">
+                  {serviceSection.links.map((link, index) => {
+                    const isExternal = link.target.startsWith('http://') || link.target.startsWith('https://');
+                    return (
+                      <Button
+                        key={index}
+                        variant="primary_filled"
+                        size="xl"
+                      >
+                        <ExternalLink 
+                          href={link.target} 
+                          external={isExternal}
+                        >
+                          {link.text}
+                        </ExternalLink>
+                      </Button>
+                    );
+                  })}
+                </div>
+              )}
+            </CardContent>
+          </Card>
+          </div>
+        </section>
+        );
+      })}
     </div>
   )
 }

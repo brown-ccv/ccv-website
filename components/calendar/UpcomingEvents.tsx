@@ -1,6 +1,7 @@
 import { JSX, Key } from "react"
 import CalendarEvent from "@/components/calendar/CalendarEvent"
 import { DataProps } from "@/components/EventSection"
+import { Card, CardContent } from "@/components/ui/card"
 
 interface UpcomingEventsViewProps {
   events: DataProps[]
@@ -14,10 +15,16 @@ const UpcomingEventsView = ({
   const displayedEvents = limit ? events?.slice(0, limit) : events
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
       {displayedEvents?.map(
         (e: JSX.IntrinsicAttributes & DataProps, i: Key | null | undefined) => (
-          <CalendarEvent key={i} {...e} />
+          <div key={i} className="w-full sm:w-80 md:w-96">
+            <Card className="h-full">
+              <CardContent className="p-6">
+                <CalendarEvent {...e} />
+              </CardContent>
+            </Card>
+          </div>
         )
       )}
     </div>

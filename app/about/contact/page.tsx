@@ -13,26 +13,20 @@ import Icon from "@/components/ui/render-icon";
 import { ContactUsTypes, OfficeHoursTypes, PageContentData } from "@/lib/about-types";
 import ExternalLink from "@/components/ui/external-link";
 
-  const loadedContent = await readContentFile<PageContentData>('app/content/about/contact.yaml');
+  const loadedContent = await readContentFile<PageContentData>('content/about/contact.yaml');
 const pageContent: PageContentData = loadedContent.data;
 
 export default async function ContactUs() {
   return (
-    <div className="w-full">
-      <div className="relative w-full flex flex-col">
-        <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero/about-kayaks.png"}
-            title="Contact Us"
-            description={pageContent.description}
-
-            descriptionClassName="text-4xl font-semibold leading-[1.5]"
-          />
-        </div>
-      </div>
+    <div>
+      <Hero 
+        image={"/images/hero/about-kayaks.png"}
+        title="Contact Us"
+        description={pageContent.description}
+      />
 
       {/* Contact Us */}
-      <section className="content-wrapper py-24">
+      <section className="content-wrapper pt-24 px-14 lg:px-36">
         <SectionHeader title="Contact Us" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -81,7 +75,7 @@ export default async function ContactUs() {
       </section>
 
       {/* Office Hours */}
-              <section className="content-wrapper py-24 bg-gray-100">
+      <section className="content-wrapper pt-24 px-14 lg:px-36 bg-neutral-50">
         <SectionHeader title="Office Hours" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">

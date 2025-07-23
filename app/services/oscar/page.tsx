@@ -11,20 +11,14 @@ import ExternalLink from "@/components/ui/external-link";
 
 export default async function Oscar() {
 
-  const pageContentData = await readContentFile<OscarData>('app/content/services/oscar/oscar.yaml')
+  const pageContentData = await readContentFile<OscarData>('content/services/oscar/oscar.yaml')
   
   return (
-    <div className="w-full">
-      <div className="relative w-full flex flex-col">
-        <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero/hero.jpeg"}
-            title={pageContentData.data.title}
-            description={pageContentData.data.description}
-
-          />
-        </div>
-      </div>
+    <div>
+      <Hero 
+        title={pageContentData.data.title}
+        description={pageContentData.data.description}
+      />
 
       <section className="content-wrapper py-24">
         <SectionHeader title={pageContentData.data.sectionTitle} align="center" />

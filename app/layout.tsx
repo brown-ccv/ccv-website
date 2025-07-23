@@ -29,8 +29,11 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata = {
-  title: "CCV",
-  description: "Center for Computation & Visualization",
+  title: "Center for Computation & Visualization",
+  description: "Advancing computational research with scientific and computing expertise at Brown University.",
+  icons: {
+    icon: '/favicon.ico',
+  },
 };
 
 export default async function RootLayoutWrapper({
@@ -45,7 +48,9 @@ export default async function RootLayoutWrapper({
       lang="en"
       className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}
     >
-      <head />
+      <head>
+        <link rel="icon" href="/favicon.ico" />
+      </head>
       <body
         className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}
       >
@@ -53,7 +58,7 @@ export default async function RootLayoutWrapper({
           <LayoutWithStatusBanner issues={issues} />
           <BrownBanner />
           <Navbar />
-          <div className="flex-grow">{children}</div>
+          <div className="flex-grow w-full">{children}</div>
           <Footer />
         </div>
       </body>

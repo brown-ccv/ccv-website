@@ -1,9 +1,7 @@
 "use client"
 
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid"
 import React, { useEffect, useRef, useState } from "react"
-import { DataProps } from "@/components/EventSection"
-import { ALL_MONTHS, ALL_DAYS_OF_WEEK } from "@/components/calendar/utils"
+import { ALL_DAYS_OF_WEEK } from "@/components/calendar/utils"
 import {
   format,
   startOfWeek,

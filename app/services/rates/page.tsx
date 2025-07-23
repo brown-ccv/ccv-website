@@ -14,7 +14,7 @@ import ExternalLink from "@/components/ui/external-link"
 
 export default async function Rates() {
 
-  const sectionData = await readContentFolder<RatesSectionData>('app/content/services/rates')
+  const sectionData = await readContentFolder<RatesSectionData>('content/services/rates')
   const sectionsMap = new Map(sectionData.map(section => [section.slug, section]));
 
   // retrieve section data using their slugs - can be ordered here
@@ -24,17 +24,11 @@ export default async function Rates() {
   const researchDataStorage = sectionsMap.get('research-data-storage')!;
 
   return (  
-    <div className="w-full">
-      <div className="relative w-full flex flex-col">
-        <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero/hero.jpeg"}
-            title="Rates"
-            description="We provide services with limited resources at no cost to all members affiliated with Brown. For advanced computing that requires extra resources, we charge a monthly fee."
-
-          />
-        </div>
-      </div>
+    <div>
+      <Hero 
+        title="Rates"
+        description="We provide services with limited resources at no cost to all members affiliated with Brown. For advanced computing that requires extra resources, we charge a monthly fee."
+      />
 
       {/* Oscar */}
       <section className="content-wrapper py-24">
