@@ -6,6 +6,7 @@ interface SectionHeaderProps {
   align?: "left" | "center"
   bars?: boolean
   icon?: React.ReactNode
+  className?: string
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -13,11 +14,12 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   align = "center",
   bars = true,
   icon,
+  className,
 }) => {
   const isCentered = align === "center"
 
   return (
-    <div className={`mb-16 ${isCentered ? "text-center" : "text-left"}`}>
+    <div className={`mb-16 ${isCentered ? "text-center" : "text-left"} ${className || ""}`}>
       <div
         className={`relative flex flex-col gap-5 ${
           isCentered ? "items-center" : "items-start"

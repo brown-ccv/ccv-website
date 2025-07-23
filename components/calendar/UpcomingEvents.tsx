@@ -18,7 +18,7 @@ const UpcomingEventsView = ({
     <div className="flex flex-wrap justify-center gap-y-6 gap-x-6">
       {displayedEvents?.map(
         (e: JSX.IntrinsicAttributes & DataProps, i: Key | null | undefined) => (
-          <div key={i} className="flex-grow max-w-md">
+          <div key={i} className="w-full sm:w-80 md:w-96">
             <Card className="h-full">
               <CardContent className="p-6">
                 <CalendarEvent {...e} />
