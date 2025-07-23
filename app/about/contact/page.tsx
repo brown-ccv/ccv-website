@@ -26,17 +26,17 @@ export default async function ContactUs() {
       />
 
       {/* Contact Us */}
-      <section className="content-wrapper pt-24 px-14 lg:px-36">
+      <section className="content-wrapper py-24">
         <SectionHeader title="Contact Us" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex items-center px-6">
+          <CardContent className="p-4 sm:p-6">
             <p className="text-black text-xl pb-8">
               {pageContent.contactUs.description}
             </p>
           </CardContent>
         </Card>
 
-        <div className="content-wrapper flex justify-center px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40">
+        <div className="flex justify-center">
           <div className="flex flex-wrap justify-center gap-6">
             {pageContent?.contactUs?.cards?.map((card: ContactUsTypes) => (
               <div
@@ -74,16 +74,16 @@ export default async function ContactUs() {
       </section>
 
       {/* Office Hours */}
-      <section className="content-wrapper pt-24 px-14 lg:px-36 bg-neutral-50">
+      <section className="content-wrapper py-24 bg-neutral-50">
         <SectionHeader title="Office Hours" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex items-center px-6">
+          <CardContent className="p-4 sm:p-6">
             <p className="text-black text-xl">
               {pageContent.officeHours.description}
             </p>
           </CardContent>
         </Card>
-        <section className="content-wrapper">
+        <div className="flex justify-center">
           <div className="flex flex-wrap justify-center gap-6">
             {pageContent?.officeHours?.cards?.map((card: OfficeHoursTypes) => (
               <div
@@ -120,14 +120,14 @@ export default async function ContactUs() {
               </div>
             ))}
           </div>
-        </section>
+        </div>
       </section>
 
       {/* 180 George St */}
-      <section className="content-wrapper py-24 px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40">
+      <section className="content-wrapper py-24">
         <div className="flex flex-col xl:flex-row gap-4">
           <Card className="w-full xl:w-1/2 shadow-none rounded-none border-none">
-            <CardContent className="flex items-center">
+            <CardContent className="p-4 sm:p-6">
               <div className="w-full m-0 p-0">
                 <SectionHeader title="180 George St" align="center" />
                 <p className="text-black text-xl">
