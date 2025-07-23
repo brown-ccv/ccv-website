@@ -39,12 +39,13 @@ export default async function Home() {
           <Button
             variant="primary_filled"
             size="lg"
+            className="w-fit"
           >
             <ExternalLink href="mailto:ccv-support@brown.edu" external={true}>
               Work with Us
             </ExternalLink>
           </Button>
-          <ScrollButton id="events" variant="secondary_filled" size="lg">View Events</ScrollButton>
+          <ScrollButton id="events" variant="secondary_filled" size="lg" className="w-fit">View Events</ScrollButton>
         </Hero>
         <HeroCard />
         <ImpactBanner />
