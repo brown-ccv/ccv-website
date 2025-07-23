@@ -5,12 +5,10 @@ import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
 import { Card, CardContent } from "@/components/ui/card"
-import CCVBars from "@/components/assets/CCVBars"
 import { FaCalendarAlt } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import ExternalLink from "@/components/ui/external-link"
-
-const events_url = "https://events.brown.edu/ccv/all"
+import { SectionHeader } from "@/components/ui/section-header"
 
 export interface DataProps {
   id: number
@@ -43,20 +41,26 @@ interface ToggleButtonProps {
 
 const EventCard = () => {
   return (
-    <Card className="w-full border-none shadow-none my-auto xl:max-w-xs">
-      <CardContent className="mb-6 mt-6">
-        <CCVBars />
-        <h3 className="flex items-center font-semibold text-black text-[32px]">
-          <FaCalendarAlt className="mr-3" /> Events
-        </h3>
-        <p className="font-serif italic text-black text-xl mt-3 mb-3">
-          What’s next at CCV
-        </p>
-        <Button className="h-[55px] font-semibold" variant="primary_filled">
-          <ExternalLink href={events_url} external={true}>
-            View All Events
-          </ExternalLink>
-        </Button>
+    <Card className="w-fit">
+      <CardContent className="p-6">
+        <div className="flex flex-col items-center text-center">
+          <SectionHeader 
+            title="Events" 
+            align="center" 
+            bars={true}
+            icon={<FaCalendarAlt />}
+          />
+          <p className="font-serif italic text-black text-xl mb-6">
+            What's next at CCV
+          </p>
+          <div className="flex justify-center">
+            <Button className="mt-0 mx-4" variant="primary_filled" size="lg">
+              <ExternalLink href="https://events.brown.edu/ccv/all" external={true}>
+                View All Events
+              </ExternalLink>
+            </Button>
+          </div>
+        </div>
       </CardContent>
     </Card>
   )
@@ -96,8 +100,8 @@ export function EventSection({
     <section className="content-wrapper m-0">
       {/* Small Screen Layout (Mobile/Tablet) */}
       <div className="xl:hidden">
-        <div className="grid grid-cols-1 gap-6">
-          <div className="justify-self-start">
+        <div className="flex flex-col gap-6">
+          <div className="flex justify-center">
             <EventCard />
           </div>
           <UpcomingEvents events={dataFuture} />
@@ -105,14 +109,14 @@ export function EventSection({
       </div>
 
       {/* Large Screen Layout (Desktop) */}
-      <div className="hidden xl:grid xl:grid-cols-[auto_1fr] gap-6">
+      <div className="hidden xl:flex xl:gap-6">
         {/* Left: Events card */}
-        <div className="justify-self-start mt-9">
+        <div className="flex-shrink-0">
           <EventCard />
         </div>
 
         {/* Right: Toggle and Views */}
-        <div className="flex flex-col">
+        <div className="flex flex-col flex-1">
           {/* Toggle Buttons */}
           <div className="relative mb-12 self-end">
             <div className="toggle-btn space-x-10 text-xl font-semibold absolute right-0 flex">

@@ -5,12 +5,14 @@ interface SectionHeaderProps {
   title: string
   align?: "left" | "center"
   bars?: boolean
+  icon?: React.ReactNode
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
   title,
   align = "center",
   bars = true,
+  icon,
 }) => {
   const isCentered = align === "center"
 
@@ -21,8 +23,9 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
           isCentered ? "items-center" : "items-start"
         }`}
       >
-        {bars ? <CCVBars /> : null}
-        <h2 className="font-semibold text-black text-4xl tracking-tighter">
+        {bars ? <div className="pt-4"><CCVBars /></div> : null}
+        <h2 className="font-semibold text-black text-4xl tracking-tighter flex items-center">
+          {icon && <span className="mr-3">{icon}</span>}
           {title}
         </h2>
       </div>
