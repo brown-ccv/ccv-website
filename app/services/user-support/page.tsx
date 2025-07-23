@@ -1,19 +1,22 @@
-import React from "react"
-import { Hero } from "@/components/Hero"
+import { Hero } from "@/components/Hero";
+import PageContent from "@/content/services/user-support.mdx";
+import { getMDXMetadata } from "@/lib/mdx-utils";
 
-export default async function UserSupport() {
+export default function Page() {
+  const metadata = getMDXMetadata('content/services/user-support.mdx');
+  
   return (
-    <div className="w-full">
-      <div className="relative w-full flex flex-col">
-        <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero/hero.jpeg"}
-            title="User Support"
-            description="Text tbd."
-            titleClassName="font-bold text-6xl md:text-8xl"
-          />
+    <div>
+      <Hero 
+        image={"/images/hero/hero.jpeg"}
+        title={metadata.title} 
+        description={metadata.description} 
+      />
+      <section className="content-wrapper py-24 px-14 lg:px-36">
+        <div className='prose prose-lg text-xl max-w-none'>
+        <PageContent />
         </div>
-      </div>
+      </section>
     </div>
-  )
+  );
 }

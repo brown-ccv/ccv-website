@@ -1,4 +1,5 @@
 import type { MDXComponents } from 'mdx/types';
+import Image from 'next/image';
 import { SectionHeader } from "@/components/ui/section-header";
 import { buttonVariants } from "@/components/ui/variants";
 import { ExternalLink } from "@/components/ui/external-link";
@@ -30,6 +31,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Global MDX components
     LinkButton,
     SectionHeader,
+    img: (props) => <Image {...props} width={800} height={600} className="max-w-full h-auto" />,
     ...components,
   };
 } 
