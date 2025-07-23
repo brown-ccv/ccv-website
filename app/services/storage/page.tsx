@@ -58,7 +58,7 @@ export default async function Storage() {
 
       return(
         <section key={serviceSection.name} id={serviceSection.name} className={`${sectionBgColor} py-16 sm:py-24 `} >
-          <div className="px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40">
+          <div className="content-wrapper">
             <SectionHeader title={humanize(serviceSection.name)} align="center" />
             <Card className="w-full border-none shadow-none rounded-none">
               <CardContent className="flex flex-col items-start pb-8">
