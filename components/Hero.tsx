@@ -40,7 +40,7 @@ export const Hero = ({
       }}
     >
       {showGradient && (
-        <div className="relative flex-1 flex items-start w-full pl-6 pr-6 md:pl-14 md:pr-14 lg:pl-36 lg:pr-96 z-5">
+        <div className="relative flex-1 flex items-start w-full pl-6 pr-6 md:pl-14 md:pr-14 xl:pl-36 xl:pr-96 z-5">
           <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16 overflow-hidden max-w-[1400px]">
             {title && (
               <TextAnimate

@@ -39,7 +39,7 @@ async function getImagePaths(imageName: string | null) {
   // Check if the hover image exists
   try {
     await fs.access(path.join("public", hoverPath))
-    return { main: mainPath, hover: hoverPath }
+    return { main: mainPath, hover: mainPath }
   } catch {
     return { main: mainPath, hover: mainPath }
   }
@@ -55,10 +55,10 @@ export default async function AboutUs() {
         />
 
         {/* Intro to OIT */}
-        <section className="content-wrapper py-24 px-14 lg:px-36">
+        <section className="content-wrapper py-24">
           <SectionHeader title="Office of Information Technology" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto px-6 py-10">
+            <CardContent className="p-4 sm:p-6">
               <div className="prose prose-lg max-w-none text-black text-xl">
                 <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                   {pageContent.introToOIT?.description || ''}
@@ -69,10 +69,10 @@ export default async function AboutUs() {
         </section>
 
         {/* Our Mission */}
-        <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+        <section className="content-wrapper py-24 bg-neutral-50">
           <SectionHeader title="Our Mission" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto px-6 py-10">
+            <CardContent className="p-4 sm:p-6">
               <div className="prose prose-lg max-w-none text-black text-xl">
                 <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                   {pageContent.mission?.description || ''}
@@ -83,7 +83,7 @@ export default async function AboutUs() {
         </section>
 
         {/* People */}
-        <div id="people" className="content-wrapper py-24 px-14">
+        <div id="people" className="content-wrapper py-24">
           <SectionHeader title="People" align="center"></SectionHeader>
           <div className="flex justify-center py-4 lg:py-10">
             <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8">
@@ -110,10 +110,10 @@ export default async function AboutUs() {
         </div>
 
       {/* Diversity Statement */}
-      <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+      <section className="content-wrapper py-24 bg-neutral-50">
       <SectionHeader title="Diversity Statement" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="max-w-[1440px] mx-auto px-6 py-10">
+          <CardContent className="p-4 sm:p-6">
             <div className="text-black text-xl whitespace-pre-line prose prose-lg max-w-none">
               <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                 {pageContent.diversityStatement?.description || ''}
