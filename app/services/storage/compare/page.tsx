@@ -5,7 +5,7 @@ import StorageTool from "@/components/storage/StorageTool"
 import { PageContentData, QuestionsConfig, SelectedAnswers, FormQuestions } from '@/lib/storage-types'
 
 export default async function CompareStorageOptions() {
-  const rawPageContent = await readContentFile('app/content/services/storage/storage-tool.yaml');
+  const rawPageContent = await readContentFile('content/services/storage/storage-tool.yaml');
   const pageContent: PageContentData = rawPageContent.data as PageContentData;
 
   let formQuestions: FormQuestions[] = [];
@@ -50,17 +50,13 @@ export default async function CompareStorageOptions() {
   });
 
   return (
-    <div className="w-full">
-      <div className="relative w-full flex flex-col">
-        <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero-subroutes.jpeg"}
-            title={pageContent.title}
-            description={pageContent.description}
-            titleClassName="font-bold text-6xl md:text-8xl"
-          />
-        </div>
-      </div>
+    <div>
+        <Hero 
+          image={"/images/hero-subroutes.jpeg"}
+          title={pageContent.title}
+          description={pageContent.description}
+        />
+
       <StorageTool
         pageContent={pageContent}
         questions={formQuestions}

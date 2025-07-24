@@ -18,7 +18,7 @@ interface ClassroomSectionData extends MarkdownFrontmatter {
 
 export default async function ClassroomSupport() {
 
-  const sectionData = await readContentFolder<ClassroomSectionData>('app/content/services/classroom')
+  const sectionData = await readContentFolder<ClassroomSectionData>('content/services/classroom')
   const sectionsMap = new Map(sectionData.map(section => [section.slug, section]));
 
   // retrieve section data using their slugs - can be ordered here
@@ -27,21 +27,15 @@ export default async function ClassroomSupport() {
   const computationalNotebooks = sectionsMap.get('computational-notebooks')!;
 
   // Load featured carousel data from YAML
-  const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>('app/content/services/classroom/featured-carousel.yaml');
+  const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>('content/services/classroom/featured-carousel.yaml');
   const featuredCarouselData = featuredCarouselRaw.data.carousel;
 
   return (
-    <div className="w-full">
-      <div className="relative w-full flex flex-col">
-        <div className="bg-blue-navbar">
-          <Hero 
-            image={"/images/hero/hero.jpeg"}
-            title="Classroom Support"
-            description="CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code"
-            titleClassName="font-bold text-6xl md:text-8xl"
-          />
-        </div>
-      </div>
+    <div>
+      <Hero 
+        title="Classroom Support"
+        description="CCV services to help faculty in the classroom. We can provide tutorial or give you access to cutting edge technology for teaching with code"
+      />
 
     {/* In Class Tutorials */}
     <section className="content-wrapper pt-24 px-14 lg:px-36">
