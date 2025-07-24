@@ -1,18 +1,19 @@
 import { Hero } from "@/components/Hero";
-import StrongholdContent from "@/content/services/stronghold.mdx";
+import { ContentSection } from "@/components/ui/content-section";
+import PageContent from "@/content/services/stronghold.mdx";
 import { getMDXMetadata } from "@/lib/mdx-utils";
 
-export default function Stronghold() {
+export default function Page() {
   const metadata = getMDXMetadata('content/services/stronghold.mdx');
   
   return (
     <div>
       <Hero title={metadata.title} description={metadata.description} />
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+      <ContentSection>
         <div className='prose prose-lg text-xl max-w-none'>
-        <StrongholdContent />
+          <PageContent />
         </div>
-      </section>
+      </ContentSection>
     </div>
   );
 }

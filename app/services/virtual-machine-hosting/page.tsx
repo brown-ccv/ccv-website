@@ -8,15 +8,14 @@ export default function Page() {
   return (
     <div>
       <Hero 
-        image={"/images/hero/hero.jpeg"}
         title={metadata.title} 
         description={metadata.description} 
       />
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+      <ContentSection>
         <div className='prose prose-lg text-xl max-w-none'>
-        <PageContent />
+          <PageContent />
         </div>
-      </section>
+      </ContentSection>
     </div>
   );
 }

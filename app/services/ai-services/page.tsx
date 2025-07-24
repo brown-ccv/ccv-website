@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { ContentSection } from "@/components/ui/content-section";
 import PageContent from "@/content/services/ai-services.mdx";
 import { getMDXMetadata } from "@/lib/mdx-utils";
 
@@ -8,15 +9,14 @@ export default function Page() {
   return (
     <div>
       <Hero 
-        image={"/images/hero/hero.jpeg"}
         title={metadata.title} 
         description={metadata.description} 
       />
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+      <ContentSection>
         <div className='prose prose-lg text-xl max-w-none'>
         <PageContent />
         </div>
-      </section>
+      </ContentSection>
     </div>
   );
 }
