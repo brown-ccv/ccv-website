@@ -63,6 +63,9 @@ jobs:
         run: |
           npm run build
 
-          npx firebase-tools hosting:channel:deploy preview-${{ github.event.number }} --project ccv-website-next
+          # Deploy to Firebase Hosting preview channel
+          npx firebase-tools hosting:channel:deploy preview-${{ github.event.number }} \
+            --project ccv-website-next \
+            --token "${{ secrets.FIREBASE_TOKEN }}"
 
           echo "Preview URL: https://ccv-website-next--preview-${{ github.event.number }}.web.app"
