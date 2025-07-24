@@ -51,9 +51,6 @@ jobs:
       - name: 📥 Install Dependencies
         run: npm ci
 
-      - name: 🔧 Install Firebase CLI
-        run: npm install -g firebase-tools
-
       - name: 🔑 Set up Google Cloud Credentials
         id: "auth"
         uses: "google-github-actions/auth@v2"
