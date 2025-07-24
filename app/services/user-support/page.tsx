@@ -8,7 +8,7 @@ export default function Page() {
   return (
     <div>
       <Hero 
-        image={"/images/hero/hero.jpeg"}
+        image={"/images/services/user-support.jpeg"}
         title={metadata.title} 
         description={metadata.description} 
       />
