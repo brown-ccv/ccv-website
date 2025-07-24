@@ -13,9 +13,10 @@ import { ScrollButton } from "@/components/ui/scroll-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { readContentFile } from "@/lib/content-utils";
 import ExternalLink from "@/components/ui/external-link";
+import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
+
 import { getOpenIssues } from "@/lib/get-open-issues";
 import { unstable_cache } from "next/cache";
-import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
 
 const getCachedOpenIssues = unstable_cache(
   getOpenIssues,
@@ -29,7 +30,7 @@ export default async function Home() {
   const featuredCarouselData = featuredCarouselRaw.data.carousel;
 
   // Fetch GitHub issues for status banner (only on home page)
-  const issues = process.env.NEXT_PUBLIC_STATIC_EXPORT ? [] : await getCachedOpenIssues();
+  const issues = await getCachedOpenIssues();
 
   try {
     const currentDate = new Date();

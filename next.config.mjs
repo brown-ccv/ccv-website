@@ -7,11 +7,13 @@ import rehypePrism from 'rehype-prism-plus'
 const nextConfig = {
   basePath: "",
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
-  output: 'export',
-  trailingSlash: false,
-  images: {
-    unoptimized: true
-  }
+  ...(process.env.NEXT_PUBLIC_STATIC_EXPORT && {
+    output: 'export',
+    trailingSlash: false,
+    images: {
+      unoptimized: true
+    }
+  })
 }
 
 const withMDX = createMDX({
