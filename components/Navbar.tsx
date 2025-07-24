@@ -26,7 +26,7 @@ import {
   FaBook,
 } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
-import ExternalLink from "@/components/ui/external-link"
+import ButtonLink from "@/components/ui/button-link"
 
 interface RouteItem {
   name: string
@@ -227,7 +227,7 @@ export const Navbar: React.FC = () => {
       >
         <div className="flex items-center py-8 px-6 xl:px-10">
           <Link href={"/"}>
-            <span className="sr-only">CCV Home</span>
+            <span className="sr-only text-white">CCV Home</span>
             <CCVLogo width={120} />
           </Link>
         </div>
@@ -237,7 +237,7 @@ export const Navbar: React.FC = () => {
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) => (
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 xl:px-6 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50">
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 xl:px-6 text-white text-2xl font-semibold transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50">
                   {section.name}
                   <FaChevronDown
                     className="relative top-[1px] ml-0 xl:ml-1 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180"
@@ -263,25 +263,26 @@ export const Navbar: React.FC = () => {
 
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             <NavigationMenu.Item>
-              <Link
+              <ButtonLink
+                external={false}
                 href="/about/contact"
-                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 disabled:pointer-events-none disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
               >
                 <FaQuestionCircle className="text-2xl mr-0 stroke-[2.5]" />
                 Help
-              </Link>
+              </ButtonLink>
             </NavigationMenu.Item>
 
             {/* Documentation */}
             <NavigationMenu.Item>
-              <ExternalLink
+              <ButtonLink
                 href="https://docs.ccv.brown.edu/documentation"
                 external={true}
-                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 disabled:pointer-events-none disabled:opacity-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
               >
                 <FaFileLines size="" className="text-2xl mr-0 stroke-[2.5]" />
                 Docs
-              </ExternalLink>
+              </ButtonLink>
             </NavigationMenu.Item>
 
             {/* TODO: Add search */}
@@ -315,9 +316,9 @@ export const Navbar: React.FC = () => {
           <div
             className="
               absolute
-              left-0 
+              left-0
               top-full
-              w-full 
+              w-full
               lg:hidden
               bg-neutral-700
               shadow-md
@@ -344,12 +345,14 @@ export const Navbar: React.FC = () => {
                       <div className="py-2" key={group.name}>
                         {group.routes.map((route) =>
                           route.href.startsWith("http") ? (
-                            <ExternalLink
+                            <ButtonLink
                               key={route.href}
                               href={route.href}
                               external={true}
                               onClick={toggleMobileMenu}
-                              className="block text-white py-6 px-6 mr-6 hover:text-neutral-900 hover:bg-sunglow-400 active:bg-sunglow-200"
+                              className={
+                                "block text-white py-6 px-6 mr-6 hover:text-neutral-900 hover:bg-sunglow-400 active:bg-sunglow-200 focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                              }
                             >
                               <div className="text-xl">{route.name}</div>
                               {route.description && (
@@ -357,13 +360,16 @@ export const Navbar: React.FC = () => {
                                   {route.description}
                                 </div>
                               )}
-                            </ExternalLink>
+                            </ButtonLink>
                           ) : (
-                            <Link
+                            <ButtonLink
+                              external={false}
                               key={route.href}
                               href={route.href}
                               onClick={toggleMobileMenu}
-                              className="block text-white py-6 px-6 mr-6 hover:text-neutral-900 hover:bg-sunglow-400 active:bg-sunglow-200"
+                              className={
+                                "block text-white py-6 px-6 mr-6 hover:text-neutral-900 hover:bg-sunglow-400 active:bg-sunglow-200 focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                              }
                             >
                               <div className="text-xl">{route.name}</div>
                               {route.description && (
@@ -371,7 +377,7 @@ export const Navbar: React.FC = () => {
                                   {route.description}
                                 </div>
                               )}
-                            </Link>
+                            </ButtonLink>
                           )
                         )}
                       </div>
@@ -380,21 +386,22 @@ export const Navbar: React.FC = () => {
                 )}
               </div>
             ))}
-            <Link
+            <ButtonLink
               href="/about/contact"
+              external={false}
               onClick={toggleMobileMenu}
-              className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+              className="block text-sunglow-400 font-semibold text-2xl py-7 px-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200 focus-visible:ring-2 focus-visible:ring-sunglow-400"
             >
               Help
-            </Link>
-            <ExternalLink
+            </ButtonLink>
+            <ButtonLink
               href="https://docs.ccv.brown.edu/documentation"
               external
               onClick={toggleMobileMenu}
-              className="block text-sunglow-400 font-semibold text-2xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+              className="block text-sunglow-400 font-semibold text-2xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200 focus-visible:ring-2 focus-visible:ring-sunglow-400"
             >
               Docs
-            </ExternalLink>
+            </ButtonLink>
           </div>
         )}
       </nav>
@@ -427,7 +434,7 @@ const NavigationSectionContent: React.FC<{
               {group.routes.map((route) => (
                 <li
                   key={route.href}
-                  className="hover:bg-neutral-50 focus:bg-neutral-100 p-1 sm:p-1.5 md:p-2"
+                  className="hover:bg-neutral-50 p-1 sm:p-1.5 md:p-2"
                 >
                   <NavigationMenu.Link
                     href={route.href}
@@ -437,7 +444,7 @@ const NavigationSectionContent: React.FC<{
                           rel: "noopener noreferrer",
                         }
                       : {})}
-                    className="flex items-start focus:outline-none"
+                    className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
                   >
                     {route.icon && (
                       <div className="mr-1 sm:mr-1.5 md:mr-2 h-[2rem] sm:h-[3rem] md:h-[4rem] w-[2rem] sm:w-[3rem] md:w-[4rem] bg-neutral-100/75 text-white rounded-md flex items-center justify-center">

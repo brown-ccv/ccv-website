@@ -6,8 +6,7 @@ import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
 import { Card, CardContent } from "@/components/ui/card"
 import { FaCalendarAlt } from "react-icons/fa"
-import { Button } from "@/components/ui/button"
-import ExternalLink from "@/components/ui/external-link"
+import ButtonLink from "@/components/ui/button-link"
 import { SectionHeader } from "@/components/ui/section-header"
 
 export interface DataProps {
@@ -44,9 +43,9 @@ const EventCard = () => {
     <Card className="w-fit">
       <CardContent className="p-6">
         <div className="flex flex-col items-center text-center">
-          <SectionHeader 
-            title="Events" 
-            align="center" 
+          <SectionHeader
+            title="Events"
+            align="center"
             bars={true}
             icon={<FaCalendarAlt />}
             className="mb-2"
@@ -55,11 +54,15 @@ const EventCard = () => {
             What's next at CCV
           </h3>
           <div className="flex justify-center">
-            <Button className="mt-0 mx-4" variant="primary_filled" size="lg">
-              <ExternalLink href="https://events.brown.edu/ccv/all" external={true}>
-                View All Events
-              </ExternalLink>
-            </Button>
+            <ButtonLink
+              className="mt-0 mx-4"
+              variant="primary_filled"
+              size="lg"
+              href="https://events.brown.edu/ccv/all"
+              external={true}
+            >
+              View All Events
+            </ButtonLink>
           </div>
         </div>
       </CardContent>

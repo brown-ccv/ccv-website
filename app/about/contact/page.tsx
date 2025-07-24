@@ -4,7 +4,6 @@ import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 import { Hero } from "@/components/Hero"
 import { SectionHeader } from "@/components/ui/section-header"
-import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
@@ -21,7 +20,7 @@ import {
   OfficeHoursTypes,
   PageContentData,
 } from "@/lib/about-types"
-import ExternalLink from "@/components/ui/external-link"
+import ButtonLink from "@/components/ui/button-link"
 
 const loadedContent = await readContentFile<PageContentData>(
   "content/about/contact.yaml"
@@ -73,15 +72,15 @@ export default async function ContactUs() {
                       <div className="px-6 flex flex-col gap-2">
                         {card.buttonLinks &&
                           card.buttonLinks.map((link, index) => (
-                            <Button
+                            <ButtonLink
+                              href={link.href}
+                              external={true}
                               key={index}
                               variant="primary_filled"
                               size="xl"
                             >
-                              <ExternalLink href={link.href} external={true}>
-                                {link.text}
-                              </ExternalLink>
-                            </Button>
+                              {link.text}
+                            </ButtonLink>
                           ))}
                       </div>
                     </CardContent>
@@ -134,15 +133,14 @@ export default async function ContactUs() {
                       <div className="flex justify-center mt-auto">
                         {card.buttonLinks &&
                           card.buttonLinks.map((link, index) => (
-                            <Button
+                            <ButtonLink
                               key={index}
                               variant="primary_filled"
                               size="xl"
+                              href={link.href}
                             >
-                              <ExternalLink href={link.href}>
-                                {link.text}
-                              </ExternalLink>
-                            </Button>
+                              {link.text}
+                            </ButtonLink>
                           ))}
                       </div>
                     </CardContent>

@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils";
 import { cardVariants } from "@/components/ui/variants";
 import * as Dialog from "@radix-ui/react-dialog";
 import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa";
-import ExternalLink from "@/components/ui/external-link";
+import ButtonLink from "@/components/ui/button-link";
 
 interface CardWithImageProps {
   className?: string;
@@ -97,22 +97,22 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePa
               )}
               <div className="flex gap-4 mt-2">
                 {personDetails?.github_username && personDetails.github_username !== "" && (
-                  <ExternalLink
+                  <ButtonLink
                     href={`https://github.com/${personDetails.github_username}`}
                     title="GitHub Profile"
                     className="text-black hover:text-keppel-700 text-2xl"
                   >
                     <FaGithub />
-                  </ExternalLink>
+                  </ButtonLink>
                 )}
                 {personDetails?.brown_directory_uuid && personDetails.brown_directory_uuid !== "" && (
-                  <ExternalLink
+                  <ButtonLink
                     href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
                     title="Brown Directory"
                     className="text-black hover:text-keppel-700 text-2xl"
                   >
                     <FaInfoCircle />
-                  </ExternalLink>
+                  </ButtonLink>
                 )}
               </div>
             </div>

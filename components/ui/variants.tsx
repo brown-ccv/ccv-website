@@ -48,7 +48,8 @@ export const buttonVariants = cva(
           "focus-visible:ring-2 focus-visible:ring-neutral-900",
           "active:bg-neutral-800",
         ].join(" "),
-        unstyled: "",
+        unstyled:
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400",
         // —————————————————— icon only, outlined ——————————————————
         icon_only_outlined: [
           "bg-transparent",
