@@ -1,4 +1,5 @@
 import { Hero } from "@/components/Hero";
+import { ContentSection } from "@/components/ui/content-section";
 import PageContent from "@/content/services/virtual-machine-hosting.mdx";
 import { getMDXMetadata } from "@/lib/mdx-utils";
 
