@@ -13,11 +13,23 @@ import { ScrollButton } from "@/components/ui/scroll-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { readContentFile } from "@/lib/content-utils";
 import ExternalLink from "@/components/ui/external-link";
+import { getOpenIssues } from "@/lib/get-open-issues";
+import { unstable_cache } from "next/cache";
+import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
+
+const getCachedOpenIssues = unstable_cache(
+  getOpenIssues,
+  ["open-issues"],
+  { revalidate: 60 }
+);
 
 export default async function Home() {
   // Load featured carousel data from YAML
   const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>("content/home/featured-carousel.yaml");
   const featuredCarouselData = featuredCarouselRaw.data.carousel;
+
+  // Fetch GitHub issues for status banner (only on home page)
+  const issues = await getCachedOpenIssues();
 
   try {
     const currentDate = new Date();
@@ -31,6 +43,7 @@ export default async function Home() {
 
     return (
       <div>
+        <LayoutWithStatusBanner issues={issues} />
         <Hero 
           image={"/images/hero/ccv-original.png"}
           title="Center for Computation and Visualization"

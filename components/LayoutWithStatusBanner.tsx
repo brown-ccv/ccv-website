@@ -1,6 +1,5 @@
 "use client";
 
-import { usePathname } from "next/navigation";
 import "@/app/globals.css";
 import StatusBanner from "@/components/StatusBanner";
 import { Button } from "@/components/ui/button";
@@ -11,15 +10,12 @@ interface LayoutWithStatusBannerProps {
 }
 
 export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBannerProps) {
-  const pathname = usePathname();
-  const showStatusBanner = pathname === "/";
   const repoNames = issues.map((repo) => repo.name).join(", "); 
   const isOperational = issues.length === 0;
 
   return (
     <div>
-      {showStatusBanner && (
-        <StatusBanner isOperational={isOperational}>
+      <StatusBanner isOperational={isOperational}>
           <div className="flex flex-wrap items-center gap-x-4">
             {issues.length > 0 ? (
               <>
@@ -52,7 +48,6 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
             )}
           </div>
         </StatusBanner>
-      )}
     </div>
   );
 }
