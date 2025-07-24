@@ -13,30 +13,11 @@ import { ScrollButton } from "@/components/ui/scroll-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { readContentFile } from "@/lib/content-utils";
 import ExternalLink from "@/components/ui/external-link";
-import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
-
-// Only import Server Action when not in static export mode
-let getCachedOpenIssues: () => Promise<any[]>;
-
-if (!process.env.NEXT_PUBLIC_STATIC_EXPORT) {
-  const { getOpenIssues } = require("@/lib/get-open-issues");
-  const { unstable_cache } = require("next/cache");
-  getCachedOpenIssues = unstable_cache(
-    getOpenIssues,
-    ["open-issues"],
-    { revalidate: 60 }
-  );
-} else {
-  getCachedOpenIssues = async () => [];
-}
 
 export default async function Home() {
   // Load featured carousel data from YAML
   const featuredCarouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>("content/home/featured-carousel.yaml");
   const featuredCarouselData = featuredCarouselRaw.data.carousel;
-
-  // Fetch GitHub issues for status banner (only on home page)
-  const issues = await getCachedOpenIssues();
 
   try {
     const currentDate = new Date();
@@ -50,7 +31,6 @@ export default async function Home() {
 
     return (
       <div>
-        <LayoutWithStatusBanner issues={issues} />
         <Hero 
           image={"/images/hero/ccv-original.png"}
           title="Center for Computation and Visualization"

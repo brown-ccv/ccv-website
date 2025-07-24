@@ -4,6 +4,15 @@ import { ReactNode } from "react";
 import BrownBanner from "@/components/BrownBanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import ConditionalStatusBanner from "@/components/ConditionalStatusBanner";
+import { getOpenIssues } from "@/lib/get-open-issues";
+import { unstable_cache } from "next/cache";
+
+const getCachedOpenIssues = unstable_cache(
+  getOpenIssues,
+  ["open-issues"],
+  { revalidate: 60 }
+);
 
 const inter = Inter({ subsets: ["latin"] });
 const sourceSans = Source_Sans_3({
@@ -32,6 +41,16 @@ export default async function RootLayoutWrapper({
 }: {
   children: ReactNode;
 }) {
+  // Only fetch issues if not in static export mode
+  let issues = [];
+  try {
+    if (!process.env.NEXT_PUBLIC_STATIC_EXPORT) {
+      issues = await getCachedOpenIssues();
+    }
+  } catch (error) {
+    console.error('Failed to fetch GitHub issues:', error);
+  }
+
   return (
     <html
       lang="en"
@@ -44,6 +63,7 @@ export default async function RootLayoutWrapper({
         className={`${inter.className} m-0 p-0 overflow-x-hidden bg-white`}
       >
         <div>
+          <ConditionalStatusBanner issues={issues} />
           <BrownBanner />
           <Navbar />
           <div className="flex-grow w-full">{children}</div>
