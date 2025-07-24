@@ -15,14 +15,20 @@ import { readContentFile } from "@/lib/content-utils";
 import ExternalLink from "@/components/ui/external-link";
 import LayoutWithStatusBanner from "@/components/LayoutWithStatusBanner";
 
-import { getOpenIssues } from "@/lib/get-open-issues";
-import { unstable_cache } from "next/cache";
+// Only import Server Action when not in static export mode
+let getCachedOpenIssues: () => Promise<any[]>;
 
-const getCachedOpenIssues = unstable_cache(
-  getOpenIssues,
-  ["open-issues"],
-  { revalidate: 60 }
-);
+if (!process.env.NEXT_PUBLIC_STATIC_EXPORT) {
+  const { getOpenIssues } = require("@/lib/get-open-issues");
+  const { unstable_cache } = require("next/cache");
+  getCachedOpenIssues = unstable_cache(
+    getOpenIssues,
+    ["open-issues"],
+    { revalidate: 60 }
+  );
+} else {
+  getCachedOpenIssues = async () => [];
+}
 
 export default async function Home() {
   // Load featured carousel data from YAML
