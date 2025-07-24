@@ -26,7 +26,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         }`}
       >
         {bars ? <div className="pt-4"><CCVBars /></div> : null}
-        <h2 className="font-semibold text-black text-4xl tracking-tighter flex items-center">
+        <h2 className="font-semibold text-black text-4xl tracking-tighter flex items-center m-0">
           {icon && <span className="mr-3">{icon}</span>}
           {title}
         </h2>
