@@ -5,14 +5,21 @@ import BrownBanner from "@/components/BrownBanner";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ConditionalStatusBanner from "@/components/ConditionalStatusBanner";
-import { getOpenIssues } from "@/lib/get-open-issues";
-import { unstable_cache } from "next/cache";
 
-const getCachedOpenIssues = unstable_cache(
-  getOpenIssues,
-  ["open-issues"],
-  { revalidate: 60 }
-);
+// Only import server actions when not in static export mode
+let getCachedOpenIssues: () => Promise<any[]>;
+
+if (!process.env.NEXT_PUBLIC_STATIC_EXPORT) {
+  const { getOpenIssues } = require("@/lib/get-open-issues");
+  const { unstable_cache } = require("next/cache");
+  getCachedOpenIssues = unstable_cache(
+    getOpenIssues,
+    ["open-issues"],
+    { revalidate: 60 }
+  );
+} else {
+  getCachedOpenIssues = async () => [];
+}
 
 const inter = Inter({ subsets: ["latin"] });
 const sourceSans = Source_Sans_3({
@@ -41,12 +48,10 @@ export default async function RootLayoutWrapper({
 }: {
   children: ReactNode;
 }) {
-  // Only fetch issues if not in static export mode
+  // Fetch issues (function is already conditional based on static export)
   let issues = [];
   try {
-    if (!process.env.NEXT_PUBLIC_STATIC_EXPORT) {
-      issues = await getCachedOpenIssues();
-    }
+    issues = await getCachedOpenIssues();
   } catch (error) {
     console.error('Failed to fetch GitHub issues:', error);
   }
