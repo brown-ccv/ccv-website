@@ -8,6 +8,7 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
       GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+      NEXT_PUBLIC_STATIC_EXPORT: "true"
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4
@@ -38,6 +39,7 @@ jobs:
     env:
       GH_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
       GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
+      NEXT_PUBLIC_STATIC_EXPORT: "true"
     steps:
       - name: ⬇️ Checkout repo
         uses: actions/checkout@v4

@@ -29,7 +29,7 @@ export default async function Home() {
   const featuredCarouselData = featuredCarouselRaw.data.carousel;
 
   // Fetch GitHub issues for status banner (only on home page)
-  const issues = await getCachedOpenIssues();
+  const issues = process.env.NEXT_PUBLIC_STATIC_EXPORT ? [] : await getCachedOpenIssues();
 
   try {
     const currentDate = new Date();
