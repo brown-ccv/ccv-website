@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prism syntax highlighting */
+@import "prismjs/themes/prism-okaidia.css";
+
 @layer base {
   :root {
     @apply font-sans;

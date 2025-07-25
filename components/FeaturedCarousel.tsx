@@ -10,6 +10,7 @@ import Icon from "@/components/ui/render-icon";
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import rehypePrism from 'rehype-prism-plus'
 
 export interface FeaturedCarouselItem {
   title: string;
@@ -99,7 +100,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             <div className="text-xl font-normal text-gray-800 prose prose-lg max-w-none flex-1">
               <Markdown
                 remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
+                rehypePlugins={[rehypeRaw, rehypePrism]}
               >
                 {description}
               </Markdown>
@@ -135,12 +136,12 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             {/* Attribution positioned at bottom-right of this div */}
             {currentItem.attribution && (
               <div className="absolute bottom-0 right-0 text-sm text-gray-600">
-                <Markdown
-                  remarkPlugins={[remarkGfm]}
-                  rehypePlugins={[rehypeRaw]}
-                >
-                  {currentItem.attribution}
-                </Markdown>
+                                  <Markdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw, rehypePrism]}
+                  >
+                    {currentItem.attribution}
+                  </Markdown>
               </div>
             )}
           </div>
