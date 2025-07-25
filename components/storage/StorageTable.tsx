@@ -299,8 +299,6 @@ const tableData: TableRow[] = useMemo(() => {
           <StorageServiceCard
             key={service.name}
             service={service}
-            questionsConfig={questions}
-            selectedAnswers={selectedAnswers}
             isDisabled={getColumnDisabledState(service, selectedAnswers, questions)}
           />
         ))}
