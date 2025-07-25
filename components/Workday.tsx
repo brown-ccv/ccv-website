@@ -3,7 +3,7 @@
 import React from "react"
 import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
 import { Card, CardContent } from "@/components/ui/card"
-import ExternalLink from "@/components/ui/external-link"
+import ButtonLink from "@/components/ui/button-link"
 
 interface PositionProps {
   title: string
@@ -18,7 +18,7 @@ export function Workday({ careers }: { careers: any[] }) {
     <>
       {careers && careers.length > 0 ? (
         careers.map((position: PositionProps) => (
-          <ExternalLink
+          <ButtonLink
             key={position.externalPath}
             href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
             className="block m-4"
@@ -40,7 +40,7 @@ export function Workday({ careers }: { careers: any[] }) {
                 </div>
               </CardContent>
             </Card>
-          </ExternalLink>
+          </ButtonLink>
         ))
       ) : (
         <p className="text-2xl">
