@@ -50,8 +50,8 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
     return (
     <section className="mt-12 mb-24">
       <div className="w-full max-w-[1400px] px-4 sm:px-6 lg:px-8 mx-auto">
-        {/* Carousel Container with Visual Distinction */}
-        <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6 lg:p-8 relative">
+        {/* Carousel Container */}
+        <div className="bg-white p-6 lg:p-8 relative">
           {/* Navigation Buttons */}
           <div className="flex justify-center items-center gap-4">
             <Button
@@ -71,7 +71,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                   key={i}
                   className={`${
                     i === idx ? "w-3" : "w-2"
-                  } h-2 bg-gray-300 rounded-full cursor-pointer transition-all duration-200`}
+                  } h-2 bg-neutral-300 rounded-full cursor-pointer transition-all duration-200`}
                   onClick={() => setIdx(i)}
                 />
               ))}

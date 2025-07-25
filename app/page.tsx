@@ -51,6 +51,7 @@ export default async function Home() {
         <ImpactBanner />
         <section className="content-wrapper pt-24">
           <SectionHeader title="Featured Projects" align="center" />
+          <FeaturedCarousel carouselData={featuredCarouselData} />
         </section>
         <div
           id="events"
