@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { getColorForTag } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
