@@ -1,6 +1,7 @@
 import type { MDXComponents } from 'mdx/types';
 import { SectionHeader } from "@/components/ui/section-header";
 import { Hero } from "@/components/Hero";
+import { FeaturedCarousel } from "@/components/FeaturedCarousel";
 import { buttonVariants } from "@/components/ui/variants";
 import { ExternalLink } from "@/components/ui/external-link";
 
@@ -20,6 +21,12 @@ export const LinkButton = ({ children, href, ...props }: any) => {
   );
 };
 
+// Custom component for classroom carousel that will receive data via context
+export const ClassroomCarousel = () => {
+  // This will be populated by the parent component
+  return <div id="classroom-carousel-placeholder" />;
+};
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Wrapper component for all MDX content
@@ -32,6 +39,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     LinkButton,
     SectionHeader,
     Hero,
+    FeaturedCarousel,
+    ClassroomCarousel,
     ...components,
   };
 } 
