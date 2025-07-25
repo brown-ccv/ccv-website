@@ -2,19 +2,17 @@ import React from "react"
 import path from 'path'
 import { Hero } from "@/components/Hero"
 import { SectionHeader } from "@/components/ui/section-header"
-import { Card, CardContent } from "@/components/ui/card"
 import { CardWithImage } from "@/components/ui/people-card"
 import { readContentFile } from "@/lib/content-utils"
 import { PeopleTypes, PageContentData } from "@/lib/about-types"
 import fs from "fs/promises"
-import Markdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw'
-import remarkGfm from 'remark-gfm'
+import AboutUsContent from "@/content/about/about-us.mdx";
+import { getMDXMetadata } from "@/lib/mdx-utils";
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
-  const loadedContent = await readContentFile<PageContentData>('content/about/us.yaml');
-const pageContent: PageContentData = loadedContent.data;
+  const loadedContent = await readContentFile<PageContentData>('content/about/people.yaml');
+  const pageContent: PageContentData = loadedContent.data;
 
 async function getImagePaths(imageName: string | null) {
   const defaultPath = "/logos/ccv-logo.svg"
@@ -46,82 +44,47 @@ async function getImagePaths(imageName: string | null) {
 }
 
 export default async function AboutUs() {
-    return (
-      <div>
-        <Hero 
-          image={"/images/hero/about-kayaks.png"}
-          title="About Us"
-          description="The Center for Computation and Visualization provides high-performance computing and visualization services to the Brown community. We also collaborate with researchers on projects across vast range of disciplines."
-        />
+  const metadata = getMDXMetadata('content/about/about-us.mdx');
 
-        {/* Intro to OIT */}
-        <section className="content-wrapper py-24 px-14 lg:px-36">
-          <SectionHeader title="Office of Information Technology" align="center" />
-          <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-              <div className="prose prose-lg max-w-none text-black text-xl">
-                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                  {pageContent.introToOIT?.description || ''}
-                </Markdown>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
+  return (
+    <div>
+      <Hero 
+        image={"/images/hero/about-kayaks.png"}
+        title={metadata.title}
+        description={metadata.description}
+      />
+      <section className="content-wrapper py-24 px-14 lg:px-36">
+        <div className='prose prose-lg text-xl max-w-none'>
+          <AboutUsContent />
+        </div>
+      </section>
 
-        {/* Our Mission */}
-        <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
-          <SectionHeader title="Our Mission" align="center" />
-          <Card className="w-full border-none shadow-none rounded-none">
-            <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-              <div className="prose prose-lg max-w-none text-black text-xl">
-                <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                  {pageContent.mission?.description || ''}
-                </Markdown>
-              </div>
-            </CardContent>
-          </Card>
-        </section>
-
-        {/* People */}
-        <div id="people" className="content-wrapper py-24 px-14">
-          <SectionHeader title="People" align="center"></SectionHeader>
-          <div className="flex justify-center py-4 lg:py-10">
-            <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
-              {pageContent?.people &&
-                (await Promise.all(
-                  pageContent.people.map(async (person: PeopleTypes) => {
-                    const { main, hover } = await getImagePaths(person.image)
-                    return (
-                      <div key={person.name}>
-                        <CardWithImage
-                          imagePath={main}
-                          hoverImagePath={hover}
-                          name={person?.name}
-                          title={person?.title}
-                          personDetails={person}
-                        />
-                      </div>
-                    )
-                  })
-                ))}
-
-            </div>
+      {/* People */}
+      <div id="people" className="content-wrapper py-24 px-14">
+        <SectionHeader title="People" align="center"></SectionHeader>
+        <div className="flex justify-center py-4 lg:py-10">
+          <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
+            {pageContent?.people &&
+              (await Promise.all(
+                pageContent.people.map(async (person: PeopleTypes) => {
+                  const { main, hover } = await getImagePaths(person.image)
+                  return (
+                    <div key={person.name}>
+                      <CardWithImage
+                        imagePath={main}
+                        hoverImagePath={hover}
+                        name={person?.name}
+                        title={person?.title}
+                        personDetails={person}
+                      />
+                    </div>
+                  )
+                })
+              ))}
           </div>
         </div>
+      </div>
 
-      {/* Diversity Statement */}
-      <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
-      <SectionHeader title="Diversity Statement" align="center" />
-        <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-            <div className="text-black text-xl whitespace-pre-line prose prose-lg max-w-none">
-              <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                {pageContent.diversityStatement?.description || ''}
-              </Markdown>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
     </div>
   )
 }
