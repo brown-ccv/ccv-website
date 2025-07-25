@@ -10,6 +10,7 @@ import Icon from "@/components/ui/render-icon";
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import { useSwipeable } from 'react-swipeable';
 
 export interface FeaturedCarouselItem {
   title: string;
@@ -47,11 +48,20 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   const next = () =>
     setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1));
 
+  // Swipe handlers
+  const handlers = useSwipeable({
+    onSwipedLeft: () => next(),
+    onSwipedRight: () => prev(),
+    trackMouse: false,
+    delta: 50, // Minimum distance for swipe
+    swipeDuration: 500, // Maximum time for swipe
+  });
+
     return (
     <section className="mt-12 mb-24">
       <div className="w-full max-w-[1400px] px-4 sm:px-6 lg:px-8 mx-auto">
         {/* Carousel Container */}
-        <div className="bg-white p-6 lg:p-8 relative">
+        <div className="bg-white p-6 lg:p-8 relative" {...handlers}>
           {/* Navigation Buttons */}
           <div className="flex justify-center items-center gap-4">
             <Button
