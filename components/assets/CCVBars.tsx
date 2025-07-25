@@ -1,6 +1,5 @@
 import Image from "next/image"
 import CCVBarsImage from "@/assets/CCVBars.png"
-// import { cn } from "@/lib/utils"
 
 export default function CCVBars({ className }: { className?: string }) {
   return (
