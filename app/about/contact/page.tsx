@@ -41,7 +41,7 @@ export default async function ContactUs() {
             {pageContent?.contactUs?.cards?.map((card: ContactUsTypes) => (
               <div
                 key={card.title}
-                className="flex-grow max-w-lg"
+                className="flex-grow max-w-sm"
               >
                 <div className="inline-flex items-center gap-2 w-full h-full">
                   <Card className={cn("overflow-hidden flex flex-col w-full", cardVariants({ variant: "default" }), "h-full")}>
@@ -88,7 +88,7 @@ export default async function ContactUs() {
             {pageContent?.officeHours?.cards?.map((card: OfficeHoursTypes) => (
               <div
                 key={card.title}
-                className="flex-grow max-w-md"
+                className="flex-grow max-w-sm"
               >
                 <div className="inline-flex items-center gap-2 py-8 w-full h-full">
                   <Card className={cn("overflow-hidden flex flex-col w-full h-full", cardVariants({ variant: "default" }))}>
