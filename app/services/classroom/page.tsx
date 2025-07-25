@@ -153,7 +153,7 @@ export default async function ClassroomSupport() {
                       rehypePlugins={[rehypeRaw]}
                     >
                       {section.title
-                        ? `## ${section.title}\n\n${section.content}`
+                        ? `### ${section.title}\n\n${section.content}`
                         : section.content}
                     </Markdown>
 
