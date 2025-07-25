@@ -73,6 +73,7 @@ const EventCard = () => {
 const ToggleButton = ({ item, view, setView }: ToggleButtonProps) => {
   return (
     <p
+      tabIndex={0}
       id={item}
       key={item}
       className={classNames(
