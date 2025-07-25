@@ -21,7 +21,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className={`mb-16 ${isCentered ? "text-center" : "text-left"} ${className || ""}`}>
       <div
-        className={`relative flex flex-col gap-5 ${
+        className={`relative flex flex-col ${
           isCentered ? "items-center" : "items-start"
         }`}
       >

@@ -63,7 +63,7 @@ p > a:focus {
 
   /* Remove default margins from images in MDX content */
   .prose img {
-    @apply m-2 p-4;
+    @apply my-4 py-4;
   }
 }
 
