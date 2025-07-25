@@ -8,6 +8,8 @@ import { readContentFile } from "@/lib/content-utils";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { RateCard, RatesGrid } from "@/components/ui/rates-card";
 import { PeopleSection } from "@/components/PeopleSection";
+import { Button } from "@/components/ui/button";
+import Icon from "@/components/ui/render-icon";
 
 export const MDXButton = ({ children, href, ...props }: any) => {
   const buttonClassName = buttonVariants({ variant: "primary_filled", size: "lg" });
@@ -58,6 +60,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     RateCard,
     RatesGrid,
     PeopleSection,
+    Button,
+    Icon,
     ...components,
   };
 } 
