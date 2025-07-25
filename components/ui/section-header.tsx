@@ -21,12 +21,12 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div className={`mb-16 ${isCentered ? "text-center" : "text-left"} ${className || ""}`}>
       <div
-        className={`relative flex flex-col gap-5 ${
+        className={`relative flex flex-col ${
           isCentered ? "items-center" : "items-start"
         }`}
       >
         {bars ? <div className="pt-4"><CCVBars /></div> : null}
-        <h2 className="font-semibold text-black text-4xl tracking-tighter flex items-center">
+        <h2 className="font-semibold text-black text-4xl tracking-tighter flex items-center m-0">
           {icon && <span className="mr-3">{icon}</span>}
           {title}
         </h2>
