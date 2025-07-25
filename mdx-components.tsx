@@ -5,11 +5,11 @@ import { buttonVariants } from "@/components/ui/variants";
 import { ExternalLink } from "@/components/ui/external-link";
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 import { readContentFile } from "@/lib/content-utils";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import { RateCard, RatesGrid } from "@/components/ui/rates-card";
 
 export const MDXButton = ({ children, href, ...props }: any) => {
   const buttonClassName = buttonVariants({ variant: "primary_filled", size: "lg" });
-  
   return (
     <div className="inline-block not-prose">
       <ExternalLink 
@@ -43,6 +43,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </div>
     ),
+    // Custom list item component that renders without bullets
+    li: ({ children }) => (
+      <div className="mb-2 last:mb-0">
+        {children}
+      </div>
+    ),
     // Global MDX components
     MDXButton,
     SectionHeader,
@@ -52,6 +58,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     CardContent,
     CardHeader,
     CardTitle,
+    CardDescription,
+    RateCard,
+    RatesGrid,
     ...components,
   };
 } 
