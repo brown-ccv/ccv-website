@@ -5,9 +5,11 @@ import { buttonVariants } from "@/components/ui/variants";
 import { ExternalLink } from "@/components/ui/external-link";
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 import { readContentFile } from "@/lib/content-utils";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const MDXButton = ({ children, href, ...props }: any) => {
   const buttonClassName = buttonVariants({ variant: "primary_filled", size: "lg" });
+  
   return (
     <div className="inline-block not-prose">
       <ExternalLink 
@@ -46,6 +48,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     SectionHeader,
     Hero,
     MDXCarousel,
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
     ...components,
   };
 } 
