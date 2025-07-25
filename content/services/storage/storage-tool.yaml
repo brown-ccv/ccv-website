@@ -33,7 +33,7 @@ services:
       - text: Documentation
         target: https://ithelp.brown.edu/kb/48-google-drive
       - text: Security
-        target: https://storage.googleapis.com/gfw-touched-accounts-pdfs/google-cloud-security-and-compliance-whitepaper.pdf
+        target: https://workspace.google.com/learn-more/security/security-whitepaper/page-1/
     features:
       - name: relative_speed
         value: fast
@@ -74,12 +74,12 @@ services:
   - name: Globus
     description: |
       [Globus](https://www.globus.org/data-transfer) is a secure, reliable, research data management service. With Globus, subscribers can move, share, and discover data via a single interface–whether your files live on a supercomputer, lab cluster, tape archive, public cloud or your laptop–you can manage this data from anywhere via just a web browser and using your existing identities. Transfers are facilitated through endpoints. Endpoints are data locations pointing to subscribers' specific datasets like a researcher's personal Google drive, research share or a folder on a computer.
-    links: 
+    links:
       - text: "Globus"
         target: "https://docs.ccv.brown.edu/globus"
 
   - name: "Campus File Storage / Department File Services"
-    description: |    
+    description: |
       Departmental File Services provides University departments with a location in which files can be stored, backed up, and shared across the department. The service can be accessed by mapping the drive on your computer ( [Windows Explorer](https://ithelp.brown.edu/kb/articles/connect-to-departmental-file-services-on-windows) on PC or [Finder](https://ithelp.brown.edu/kb/articles/connect-to-departmental-file-services-with-macos) on a Mac). For researchers, please check out the "Campus File Storage replicated/non-replicated Research services" sections)
       
       - Best for: Backing up and sharing official department documents, ensuring the longevity of documents after the file authors leave Brown.
@@ -181,7 +181,7 @@ services:
           - Access controlled by Brown Authentication and Security groups
       - name: storage
         value: 1 TB +
-        notes: 
+        notes:
           - 1 TB per PI
           - 10 TB per grant
           - Paid after that @ $100/TB/Yr. (Summed across all paid storage types)
@@ -299,7 +299,7 @@ services:
       - Best for: High performance storage of research data, perform computation on your data using Brown’s supercomputer
       - Limitations: Not accessible on all campus networks.
       - Rate: $100/TB/Year when storing above free/grant allocations
-    links: 
+    links:
       - text: Documentation
         target: https://ccv.brown.edu/services/computing#high-performance-computing-(oscar)
       - text: Request Service
@@ -390,7 +390,7 @@ services:
           - Paid after that @ $100/TB/Yr. (Summed across all paid storage types)
       - name: max_file_size
         value: 4 TB
-        notes: 
+        notes:
           - 1 TB for best performance
       - name: storage_warmth
         value: hot
@@ -404,7 +404,7 @@ services:
         * Types/sizes of files, access times
         * Hot Spots (Growth, user(s)/Group(s))
         * Action: Archive, Delete, Recover
-    links: 
+    links:
       - text: "Request Hibernate Service"
         target: "https://brown.atlassian.net/servicedesk/customer/portal/16/user/login?destination=portal%2F16%2Fgroup%2F55%2Fcreate%2F468"
     features:
