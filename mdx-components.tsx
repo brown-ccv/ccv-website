@@ -43,12 +43,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </div>
     ),
-    // Custom list item component that renders without bullets
-    li: ({ children }) => (
-      <div className="mb-2 last:mb-0">
-        {children}
-      </div>
-    ),
+
     // Global MDX components
     MDXButton,
     SectionHeader,
