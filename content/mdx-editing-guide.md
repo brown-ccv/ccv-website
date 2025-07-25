@@ -31,9 +31,9 @@ Just write normal text like this. You can use **bold** and *italic* formatting.
 
 This is the main content of the page. You can write normal text here.
 
-<LinkButton href="https://ccv.brown.edu">
+<MDXButton href="https://ccv.brown.edu">
   Read Documentation
-</LinkButton>
+</MDXButton>
 
 ## Key Features
 

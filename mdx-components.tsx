@@ -1,13 +1,13 @@
 import type { MDXComponents } from 'mdx/types';
 import { SectionHeader } from "@/components/ui/section-header";
 import { Hero } from "@/components/Hero";
-import { FeaturedCarousel } from "@/components/FeaturedCarousel";
 import { buttonVariants } from "@/components/ui/variants";
 import { ExternalLink } from "@/components/ui/external-link";
+import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
+import { readContentFile } from "@/lib/content-utils";
 
-export const LinkButton = ({ children, href, ...props }: any) => {
+export const MDXButton = ({ children, href, ...props }: any) => {
   const buttonClassName = buttonVariants({ variant: "primary_filled", size: "lg" });
-  
   return (
     <div className="inline-block not-prose">
       <ExternalLink 
@@ -21,10 +21,16 @@ export const LinkButton = ({ children, href, ...props }: any) => {
   );
 };
 
-// Custom component for classroom carousel that will receive data via context
-export const ClassroomCarousel = () => {
-  // This will be populated by the parent component
-  return <div id="classroom-carousel-placeholder" />;
+// Server component that loads carousel data from YAML file
+async function MDXCarouselData({ carouselContentPath }: { carouselContentPath: string }) {
+    const carouselRaw = await readContentFile<{ carousel: FeaturedCarouselItem[] }>(carouselContentPath);
+    const carouselData = carouselRaw.data.carousel;
+    return <FeaturedCarousel carouselData={carouselData} />;
+}
+
+// Client component wrapper for MDX compatibility
+export const MDXCarousel = ({ carouselContentPath }: { carouselContentPath: string }) => {
+  return <MDXCarouselData carouselContentPath={carouselContentPath} />;
 };
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -36,11 +42,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </div>
     ),
     // Global MDX components
-    LinkButton,
+    MDXButton,
     SectionHeader,
     Hero,
-    FeaturedCarousel,
-    ClassroomCarousel,
+    MDXCarousel,
     ...components,
   };
 } 
