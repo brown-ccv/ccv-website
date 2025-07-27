@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button"
 import { readContentFile } from "@/lib/content-utils"
 import { OscarData } from "@/lib/oscar-types";
 import ExternalLink from "@/components/ui/external-link";
+import { ContentSection } from "@/components/ui/content-section";
 
 export default async function Oscar() {
 
@@ -20,7 +21,7 @@ export default async function Oscar() {
         description={pageContentData.data.description}
       />
 
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+      <ContentSection>
         <SectionHeader title={pageContentData.data.sectionTitle} align="center" />
         
         {/* Subsections and buttons */}
@@ -51,7 +52,7 @@ export default async function Oscar() {
             </div>
           ))}
         </div>
-      </section>
+      </ContentSection>
     </div>
   )
 }

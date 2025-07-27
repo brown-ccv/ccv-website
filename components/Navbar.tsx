@@ -24,6 +24,7 @@ import {
   FaCode,
   FaChalkboardTeacher,
   FaBook,
+  FaRobot,
 } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
 import ExternalLink from "@/components/ui/external-link"
@@ -118,6 +119,12 @@ const routes: NavSection[] = [
             href: "/services/virtual-machine-hosting",
             description: "Brown-hosted Windows and Linux servers",
             icon: FaDesktop,
+          },
+          {
+            name: "AI Services",
+            href: "/services/ai-services",
+            description: "Access to large language models and AI tools through CCV's computing infrastructure",
+            icon: FaRobot,
           },
           {
             name: "Rates",

@@ -6,6 +6,13 @@ import remarkFrontmatter from 'remark-frontmatter'
 const nextConfig = {
   basePath: "",
   pageExtensions: ['js', 'jsx', 'md', 'mdx', 'ts', 'tsx'],
+  ...(process.env.NEXT_PUBLIC_STATIC_EXPORT && {
+    output: 'export',
+    trailingSlash: false,
+    images: {
+      unoptimized: true
+    }
+  })
 }
 
 const withMDX = createMDX({

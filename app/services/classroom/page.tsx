@@ -3,6 +3,7 @@ import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { Hero } from "@/components/Hero"
+import { ContentSection } from "@/components/ui/content-section"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -66,7 +67,7 @@ export default async function ClassroomSupport() {
     </section>
 
     {/* Student Accounts */}
-    <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+    <ContentSection>
       <SectionHeader title={studentAccounts.data.title} align="center" />
       <Card className="w-full border-none shadow-none rounded-none">
         <CardContent className="mx-auto flex flex-col px-6">
@@ -90,10 +91,10 @@ export default async function ClassroomSupport() {
           )}
         </CardContent>
       </Card>        
-    </section>
+    </ContentSection>
 
     {/* Computational Notebooks */}
-    <section className="content-wrapper py-24 px-14 lg:px-36">
+    <ContentSection>
       <SectionHeader title={computationalNotebooks.data.title} align="center" />
       <Card className="w-full border-none shadow-none rounded-none">
         <CardContent className="mx-auto flex flex-col px-6">
@@ -134,7 +135,7 @@ export default async function ClassroomSupport() {
           </div>
         </CardContent>
       </Card>
-    </section>
+    </ContentSection>
     </div>
   )
 }
