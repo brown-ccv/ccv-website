@@ -11,8 +11,8 @@ interface BrownBannerProps {
 
 export const BrownBanner: React.FC<BrownBannerProps> = ({ id }) => {
   return (
-    <header className="content-wrapper bg-white flex items-center py-2">
-      <div className="flex flex-row items-center w-full">
+    <header className="bg-white flex items-center py-2 px-6 sm:px-8">
+      <div className="flex flex-row items-center w-full pl-8">
         <ExternalLink href="https://it.brown.edu" external={true}>
           <Image src={OITLogo} alt="OIT Logo" width={250} height={0} priority />
         </ExternalLink>
@@ -26,7 +26,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = ({ id }) => {
             font-semibold rounded-none text-xl
             border-red-university text-red-university  
             hover:bg-red-university hover:text-white hover:border-red-university
-            whitespace-nowrap w-fit px-2"
+            whitespace-nowrap"
           >
             <ExternalLink
               href="mailto:ccv-support@brown.edu"

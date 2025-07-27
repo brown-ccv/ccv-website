@@ -52,20 +52,22 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, questionsConf
             const IconComponent = featureIcons[feature.name.toLowerCase()];
 
             return (
-              <div key={feature.name} className="space-y-1">
-                {/* Main feature row with icon, name, and badge */}
-                <div className="flex items-center gap-2 text-neutral-500 font-semibold tracking-wide min-w-0">
+              <div key={feature.name} className="space-y-2">
+                {/* Feature name and icon */}
+                <div className="flex items-center gap-2 text-neutral-500 font-semibold tracking-wide">
                   {IconComponent ? <IconComponent className="text-lg flex-shrink-0" /> : null}
                   <span className="flex-shrink-0">{humanize(feature.name).toUpperCase()}:</span>
-                  <div className="font-semibold tracking-tight flex items-center gap-2 min-w-0">
-                    <Badge
-                      value={feature.value}
-                      autoColor={true}
-                      className="rounded-full font-semibold text-sm flex-shrink-0"
-                    >
-                      {humanize(formatFeatureDisplayValue(feature))}
-                    </Badge>
-                  </div>
+                </div>
+                
+                {/* Badge on its own line */}
+                <div className="ml-6">
+                  <Badge
+                    value={feature.value}
+                    autoColor={true}
+                    className="rounded-full font-semibold text-sm"
+                  >
+                    {humanize(formatFeatureDisplayValue(feature))}
+                  </Badge>
                 </div>
                 
                 {/* Notes row - appears below when there are notes */}

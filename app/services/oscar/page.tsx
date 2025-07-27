@@ -20,7 +20,7 @@ export default async function Oscar() {
         description={pageContentData.data.description}
       />
 
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+      <section className="content-wrapper py-24">
         <SectionHeader title={pageContentData.data.sectionTitle} align="center" />
         
         {/* Subsections and buttons */}

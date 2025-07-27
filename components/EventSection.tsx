@@ -137,7 +137,7 @@ export function EventSection({
             {view === "Upcoming" && <UpcomingEvents events={dataFuture} />}
 
             {view === "Weekly" && (
-              <div className="h-0 min-h-[1000px]">
+              <div className="h-0 min-h-[400px] sm:min-h-[600px] lg:min-h-[1000px]">
                 <CalendarWeekly
                   today={today}
                   currentDate={currentDate}
@@ -147,7 +147,7 @@ export function EventSection({
             )}
 
             {view === "Monthly" && (
-              <div className="h-0 min-h-[1000px]">
+              <div className="h-0 min-h-[400px] sm:min-h-[600px] lg:min-h-[1000px]">
                 <CalendarMonth
                   today={today}
                   currentDate={currentDate}

@@ -38,7 +38,7 @@ export default async function ClassroomSupport() {
       />
 
     {/* In Class Tutorials */}
-    <section className="content-wrapper pt-24 px-14 lg:px-36">
+    <section className="content-wrapper pt-24">
       <SectionHeader title={inClassTutorials.data.title} align="center" />
       <Card className="w-full border-none shadow-none rounded-none">
         <CardContent className="mx-auto flex flex-col px-6">
@@ -50,7 +50,7 @@ export default async function ClassroomSupport() {
           
           {/* Buttons */}
           {inClassTutorials.data.links && inClassTutorials.data.links.filter(link => link.category === "Default").length > 0 && (
-            <div className="flex gap-4 mt-6 not-prose">
+            <div className="flex flex-wrap gap-4 mt-6 not-prose">
               {inClassTutorials.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
                 <Button key={`default-${index}`} variant="primary_filled" size="lg">
                   <ExternalLink href={link.target}>
@@ -66,7 +66,7 @@ export default async function ClassroomSupport() {
     </section>
 
     {/* Student Accounts */}
-    <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+    <section className="content-wrapper py-24 bg-neutral-50">
       <SectionHeader title={studentAccounts.data.title} align="center" />
       <Card className="w-full border-none shadow-none rounded-none">
         <CardContent className="mx-auto flex flex-col px-6">
@@ -78,7 +78,7 @@ export default async function ClassroomSupport() {
           
           {/* Buttons */}
           {studentAccounts.data.links && studentAccounts.data.links.filter(link => link.category === "Default").length > 0 && (
-            <div className="flex gap-4 mt-6 not-prose">
+            <div className="flex flex-wrap gap-4 mt-6 not-prose">
               {studentAccounts.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
                 <Button key={`default-${index}`} variant="primary_filled" size="lg">
                   <ExternalLink href={link.target}>
@@ -93,7 +93,7 @@ export default async function ClassroomSupport() {
     </section>
 
     {/* Computational Notebooks */}
-    <section className="content-wrapper py-24 px-14 lg:px-36">
+    <section className="content-wrapper py-24">
       <SectionHeader title={computationalNotebooks.data.title} align="center" />
       <Card className="w-full border-none shadow-none rounded-none">
         <CardContent className="mx-auto flex flex-col px-6">
@@ -115,7 +115,7 @@ export default async function ClassroomSupport() {
                 
                 {/* Section buttons */}
                 {section.links && section.links.length > 0 && (
-                  <div className="flex gap-4 mt-6 not-prose">
+                  <div className="flex flex-wrap gap-4 mt-6 not-prose">
                     {section.links.map((link: ContentLinks, linkIndex: number) => (
                       <Button 
                         key={`${section.name}-${linkIndex}`} 

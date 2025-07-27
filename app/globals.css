@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prism.js syntax highlighting */
+@import "prismjs/themes/prism-okaidia.css";
+
+/* Custom code block styling */
+.prose pre code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 @layer base {
   :root {
     @apply font-sans;
@@ -58,7 +67,7 @@ p > a:focus {
   }
 
   .content-wrapper {
-    @apply w-full px-8 md:px-14;
+    @apply w-full px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40;
   }
 
   /* Remove default margins from images in MDX content */

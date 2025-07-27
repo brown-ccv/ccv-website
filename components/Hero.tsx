@@ -19,12 +19,12 @@ export const Hero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "font-bold text-white text-6xl md:text-8xl",
-  descriptionClassName = "text-4xl font-semibold"
+  titleClassName = "font-bold text-5xl sm:text-6xl lg:text-7xl xxl:text-8xl",
+  descriptionClassName = "text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold"
 }: HeroProps) => {
   return (
     <div
-      className="w-full min-h-[clamp(1000px,50vh,60vh)] bg-cover bg-center relative flex flex-col overflow-hidden m-0 p-0"
+      className="w-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[clamp(1000px,50vh,60vh)] bg-cover bg-center relative flex flex-col m-0 p-0"
       style={{
         backgroundImage: `
           radial-gradient(circle at 0% 0%, #060839 0%, transparent 85%),
@@ -40,21 +40,22 @@ export const Hero = ({
       }}
     >
       {showGradient && (
-        <div className="relative flex-1 flex items-start w-full pl-6 pr-6 md:pl-14 md:pr-14 lg:pl-36 lg:pr-96 z-5">
-          <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16">
+        <div className="relative flex-1 flex items-start w-full pl-6 pr-6 md:pl-14 md:pr-14 xl:pl-36 xl:pr-96 z-5">
+          <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16 overflow-hidden max-w-[1400px]">
             {title && (
               <TextAnimate
                 as="h1"
-                duration={1}
-                animation="slideLeft"
-                by="character"
-                className={titleClassName}
+                className={`${titleClassName} break-words`}
+                animation="fadeIn"
+                by="word"
+                delay={0.2}
+                duration={0.5}
               >
                 {title}
               </TextAnimate>
             )}
             {description && (
-              <p className={descriptionClassName}>
+              <p className={`${descriptionClassName} break-words`}>
                 {description}
               </p>
             )}
