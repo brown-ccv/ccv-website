@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prism.js syntax highlighting */
+@import "prismjs/themes/prism-okaidia.css";
+
+/* Custom code block styling */
+.prose pre code {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 @layer base {
   :root {
     @apply font-sans;
@@ -65,6 +74,7 @@ p > a:focus {
   .prose img {
     @apply my-4 py-4;
   }
+}
 
 @layer utilities {
   .toggle-btn {

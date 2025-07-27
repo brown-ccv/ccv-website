@@ -1,6 +1,6 @@
 import Hero from "@/components/Hero";
 import { ContentSection } from "@/components/ui/content-section";
-import PageContent from "@/content/mdx-editing-guide.mdx";
+import MDXEditingGuideContent from "@/content/mdx-editing-guide.mdx";
 import { getMDXMetadata } from "@/lib/mdx-utils";
 
 export default function Page() {
@@ -10,9 +10,9 @@ export default function Page() {
     <div>
         <Hero title={metadata.title} description={metadata.description} />
         <ContentSection>
-            <div className='prose prose-lg text-xl max-w-none'>
-                <PageContent />
-            </div>
+          <div className='prose prose-lg text-xl max-w-none'>
+            <MDXEditingGuideContent />
+          </div>
         </ContentSection>
     </div>
   );
