@@ -24,17 +24,18 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <div className="z-10 mt-6 md:-mt-[170px] mb-[120px] px-6 sm:px-8 lg:px-24 flex justify-center relative">
-      <Card
-        className={cn(
-          cardVariants({ variant: "default" }),
-          "w-7/8 relative"
-        )}
-      >
-        <CardContent className="p-10">
-          <div className="flex justify-center items-start gap-8 sm:gap-12 md:gap-16 lg:gap-20 flex-wrap">
+    <div className="z-10 mt-6 md:mt-6 lg:-mt-[120px] xl:-mt-[170px] mb-[120px] px-6 sm:px-8 lg:px-24 relative">
+      <div className="flex justify-center">
+        <Card
+          className={cn(
+            cardVariants({ variant: "default" }),
+            "w-fit relative"
+          )}
+        >
+        <CardContent className="p-0">
+          <div className="flex justify-center items-start gap-8 sm:gap-12 md:gap-16 lg:gap-20 flex-wrap p-10">
             {heroCards.map((card, index) => (
-              <div key={index} className="max-w-sm">
+              <div key={index} className="w-full sm:w-auto sm:max-w-xs md:max-w-xs lg:max-w-xs xl:max-w-xs">
                 <div className="inline-flex items-center gap-2">
                   <div className="relative">
                     <CCVBars />
@@ -49,6 +50,7 @@ export const HeroCard: React.FC = () => {
           </div>
         </CardContent>
       </Card>
+      </div>
     </div>
   )
 }

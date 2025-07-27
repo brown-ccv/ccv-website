@@ -19,8 +19,8 @@ export const Hero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "font-bold text-5xl md:text-6xl lg:text-7xl xl:text-8xl",
-  descriptionClassName = "text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-semibold"
+  titleClassName = "font-bold text-5xl sm:text-6xl lg:text-7xl xxl:text-8xl",
+  descriptionClassName = "text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold"
 }: HeroProps) => {
   return (
     <div
