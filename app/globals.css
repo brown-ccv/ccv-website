@@ -57,12 +57,14 @@ p > a:focus {
     @apply p-3;
   }
 
-  @layer components {
-    .content-wrapper {
-      @apply w-full px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40;
-    }
+  .content-wrapper {
+    @apply w-full px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40;
   }
-}
+
+  /* Remove default margins from images in MDX content */
+  .prose img {
+    @apply my-4 py-4;
+  }
 
 @layer utilities {
   .toggle-btn {
