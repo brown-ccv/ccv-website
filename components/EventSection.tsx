@@ -98,10 +98,10 @@ export function EventSection({
   const CAL_VIEW_ARRAY = ["Upcoming", "Weekly", "Monthly"] as const
 
   return (
-    <section className="content-wrapper m-0">
+    <section className="m-0">
       {/* Small Screen Layout (Mobile/Tablet) */}
       <div className="xl:hidden">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           <div className="flex justify-center">
             <EventCard />
           </div>
@@ -110,7 +110,7 @@ export function EventSection({
       </div>
 
       {/* Large Screen Layout (Desktop) */}
-      <div className="hidden xl:flex xl:gap-6">
+      <div className="hidden xl:flex xl:gap-4">
         {/* Left: Events card */}
         <div className="flex-shrink-0">
           <EventCard />

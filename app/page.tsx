@@ -55,7 +55,7 @@ export default async function Home() {
         </section>
         <div
           id="events"
-          className="py-12 w-full bg-neutral-50"
+          className="py-12 w-full bg-neutral-50 px-4 sm:px-6 lg:px-8"
         >
           <Suspense fallback={<Spinner />}>
             <EventSection
