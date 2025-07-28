@@ -4,11 +4,8 @@ import { JSX, use, useState } from "react"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
-import { Card, CardContent } from "@/components/ui/card"
-import { FaCalendarAlt } from "react-icons/fa"
-import { Button } from "@/components/ui/button"
-import ExternalLink from "@/components/ui/external-link"
-import { SectionHeader } from "@/components/ui/section-header"
+import { EventCard } from "@/components/calendar/EventCard"
+import { ContentSection } from "@/components/ui/content-section"
 
 export interface DataProps {
   id: number
@@ -37,34 +34,6 @@ interface ToggleButtonProps {
   item: "Upcoming" | "Weekly" | "Monthly"
   view: "Upcoming" | "Weekly" | "Monthly"
   setView: (view: "Upcoming" | "Weekly" | "Monthly") => void
-}
-
-const EventCard = () => {
-  return (
-    <Card className="w-fit">
-      <CardContent className="p-6">
-        <div className="flex flex-col items-center text-center">
-          <SectionHeader 
-            title="Events" 
-            align="center" 
-            bars={true}
-            icon={<FaCalendarAlt />}
-            className="mb-2"
-          />
-          <h3 className="font-serif italic text-black text-xl mb-6">
-            What's next at CCV
-          </h3>
-          <div className="flex justify-center w-full">
-            <Button className="mr-0" variant="primary_filled" size="lg">
-              <ExternalLink href="https://events.brown.edu/ccv/all" external={true}>
-                View All Events
-              </ExternalLink>
-            </Button>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  )
 }
 
 const ToggleButton = ({ item, view, setView }: ToggleButtonProps) => {
@@ -98,7 +67,7 @@ export function EventSection({
   const CAL_VIEW_ARRAY = ["Upcoming", "Weekly", "Monthly"] as const
 
   return (
-    <section className="m-0">
+    <ContentSection>
       {/* Small Screen Layout (Mobile/Tablet) */}
       <div className="xl:hidden">
         <div className="flex flex-col gap-4">
@@ -158,7 +127,7 @@ export function EventSection({
           </div>
         </div>
       </div>
-    </section>
+    </ContentSection>
   )
 }
 
