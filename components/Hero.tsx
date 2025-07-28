@@ -43,21 +43,19 @@ export const Hero = ({
         <div className="relative flex-1 flex items-start w-full pl-6 pr-6 md:pl-14 md:pr-14 xl:pl-36 xl:pr-96 z-5">
           <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16 overflow-hidden max-w-[1400px]">
             {title && (
-              <TextAnimate
-                as="h1"
-                className={`${titleClassName} break-words`}
+              <h1 className={titleClassName}>{title}</h1>
+            )}
+            {description && (
+              <TextAnimate 
+                as="p"
+                className={descriptionClassName}
                 animation="fadeIn"
                 by="word"
                 delay={0.2}
                 duration={0.5}
               >
-                {title}
-              </TextAnimate>
-            )}
-            {description && (
-              <p className={`${descriptionClassName} break-words`}>
                 {description}
-              </p>
+              </TextAnimate>
             )}
             {children && (
               <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 pt-8 md:pt-16">
