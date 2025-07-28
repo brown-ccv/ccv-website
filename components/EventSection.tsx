@@ -53,6 +53,11 @@ const ToggleButton = ({ item, view, setView }: ToggleButtonProps) => {
   )
 }
 
+const CALENDAR_COMPONENTS = {
+  Weekly: CalendarWeekly,
+  Monthly: CalendarMonth,
+} as const;
+
 export function EventSection({
   streamedDataFuture,
   streamedDataPast,
@@ -61,10 +66,25 @@ export function EventSection({
 }: EventSectionProps): JSX.Element {
   const dataFuture = use(streamedDataFuture)
   const dataPast = use(streamedDataPast)
-  const [view, setView] = useState<"Upcoming" | "Weekly" | "Monthly">(
-    "Upcoming"
-  )
+  const [view, setView] = useState<"Upcoming" | "Weekly" | "Monthly">("Upcoming")
   const CAL_VIEW_ARRAY = ["Upcoming", "Weekly", "Monthly"] as const
+
+  const renderView = () => {
+    if (view === "Upcoming") {
+      return <UpcomingEvents events={dataFuture} />
+    }
+    
+    const CalendarComponent = CALENDAR_COMPONENTS[view as keyof typeof CALENDAR_COMPONENTS]
+    return (
+      <div className="h-0 min-h-[400px] sm:min-h-[600px] lg:min-h-[1000px]">
+        <CalendarComponent
+          today={today}
+          currentDate={currentDate}
+          events={dataPast.concat(dataFuture)}
+        />
+      </div>
+    )
+  }
 
   return (
     <ContentSection>
@@ -103,27 +123,7 @@ export function EventSection({
 
           {/* Conditional rendering of views */}
           <div className="mt-1">
-            {view === "Upcoming" && <UpcomingEvents events={dataFuture} />}
-
-            {view === "Weekly" && (
-              <div className="h-0 min-h-[400px] sm:min-h-[600px] lg:min-h-[1000px]">
-                <CalendarWeekly
-                  today={today}
-                  currentDate={currentDate}
-                  events={dataPast.concat(dataFuture)}
-                />
-              </div>
-            )}
-
-            {view === "Monthly" && (
-              <div className="h-0 min-h-[400px] sm:min-h-[600px] lg:min-h-[1000px]">
-                <CalendarMonth
-                  today={today}
-                  currentDate={currentDate}
-                  events={dataPast.concat(dataFuture)}
-                />
-              </div>
-            )}
+            {renderView()}
           </div>
         </div>
       </div>
