@@ -37,22 +37,22 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePa
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
         <Card
-          className={cn("overflow-hidden cursor-pointer", cardVariants({ variant: "people" }), "w-[400px]", "h-[600px]", "flex-shrink-0")}
+          className={cn("overflow-hidden cursor-pointer", cardVariants({ variant: "people" }), "w-[350px] sm:w-[400px]", "h-[525px] sm:h-[600px]", "flex-shrink-0")}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => setOpen(true)}
         >
-          <CardContent className="flex flex-col h-full">
-            <div className="relative overflow-hidden">
+          <CardContent className="flex flex-col h-full p-0">
+            <div className="relative overflow-hidden flex justify-center">
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
                 alt={name}
                 width="500"
                 height="500"
-                className="rounded-full transition-opacity duration-300 max-h-[350px] min-h-[350px] max-w-[350px]"
+                className="rounded-full transition-opacity duration-300 h-[306px] w-[306px] sm:h-[350px] sm:w-[350px]"
               />
             </div>
-            <div>
+            <div className="p-4">
               <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
               <CardDescription className="text-xl italic text-center">{title}</CardDescription>
             </div>
