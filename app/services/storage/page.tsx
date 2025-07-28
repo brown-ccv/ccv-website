@@ -28,7 +28,6 @@ export default async function Storage() {
             <Button
               variant="primary_filled"
               size="lg"
-              className="w-fit"
             >
               <Link href="/services/storage/compare">
                 Compare Storage Options

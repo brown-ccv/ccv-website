@@ -46,7 +46,9 @@ export default async function Home() {
               Work with Us
             </ExternalLink>
           </Button>
-          <ScrollButton id="events" variant="secondary_filled" size="lg" className="w-fit">View Events</ScrollButton>
+          <ScrollButton id="events" variant="secondary_filled" size="lg">
+            View Events
+          </ScrollButton>
         </Hero>
         <HeroCard />
         <ImpactBanner />
