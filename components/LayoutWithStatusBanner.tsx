@@ -26,7 +26,7 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
                 <p className="text-xs sm:text-sm md:text-lg">
                   <strong>Service Disruption:</strong> {repoNames}
                 </p>
-                <Button variant="secondary_filled" size="sm" className="text-xs sm:text-sm md:text-md">
+                <Button variant="secondary_filled" size="sm" className="text-xs sm:text-sm md:text-md w-auto">
                   <ExternalLink
                     href="https://status.ccv.brown.edu/"
                     external={true}
@@ -40,7 +40,7 @@ export default function LayoutWithStatusBanner({ issues }: LayoutWithStatusBanne
                 <p className="text-xs sm:text-sm md:text-lg whitespace-nowrap">
                   All Services Operational
                 </p>
-                <Button variant="secondary_filled" size="sm" className="text-xs sm:text-sm md:text-lg">
+                <Button variant="secondary_filled" size="sm" className="text-xs sm:text-sm md:text-lg w-auto">
                   <ExternalLink
                     href="https://status.ccv.brown.edu/"
                     external={true}
