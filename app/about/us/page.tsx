@@ -39,7 +39,7 @@ async function getImagePaths(imageName: string | null) {
   // Check if the hover image exists
   try {
     await fs.access(path.join("public", hoverPath))
-    return { main: mainPath, hover: mainPath }
+    return { main: mainPath, hover: hoverPath }
   } catch {
     return { main: mainPath, hover: mainPath }
   }

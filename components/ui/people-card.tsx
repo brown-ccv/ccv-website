@@ -49,7 +49,7 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePa
                 alt={name}
                 width="500"
                 height="500"
-                  className="rounded-full transition-opacity duration-300 max-h-[350px] min-h-[350px] max-w-[350px]"
+                className="rounded-full transition-opacity duration-300 max-h-[350px] min-h-[350px] max-w-[350px]"
               />
             </div>
             <div>
