@@ -194,13 +194,8 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 </div>
               )}
             </div>
-
-
           </div>
-
         </div>
-
-
       </div>
     </section>
   );
