@@ -54,8 +54,8 @@ const EventCard = () => {
           <h3 className="font-serif italic text-black text-xl mb-6">
             What's next at CCV
           </h3>
-          <div className="flex justify-center">
-            <Button className="mt-0 mx-4" variant="primary_filled" size="lg">
+          <div className="flex justify-center w-full">
+            <Button className="mt-0 w-full sm:w-auto" variant="primary_filled" size="lg">
               <ExternalLink href="https://events.brown.edu/ccv/all" external={true}>
                 View All Events
               </ExternalLink>

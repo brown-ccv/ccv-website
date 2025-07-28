@@ -8,7 +8,7 @@ export const LinkButton = ({ children, href, ...props }: any) => {
   const buttonClassName = buttonVariants({ variant: "primary_filled", size: "lg" });
   
   return (
-    <div className="inline-block not-prose">
+    <div className="flex justify-center w-full sm:inline-block not-prose">
       <ExternalLink 
         href={href} 
         className={`${buttonClassName} my-4`}
