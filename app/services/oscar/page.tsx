@@ -1,5 +1,6 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
+import { ContentSection } from "@/components/ui/content-section"
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -20,7 +21,7 @@ export default async function Oscar() {
         description={pageContentData.data.description}
       />
 
-      <section className="content-wrapper py-24">
+      <ContentSection>
         <SectionHeader title={pageContentData.data.sectionTitle} align="center" />
         
         {/* Subsections and buttons */}
@@ -51,7 +52,7 @@ export default async function Oscar() {
             </div>
           ))}
         </div>
-      </section>
+      </ContentSection>
     </div>
   )
 }

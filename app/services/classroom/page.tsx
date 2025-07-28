@@ -3,6 +3,7 @@ import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
 import { Hero } from "@/components/Hero"
+import { ContentSection } from "@/components/ui/content-section"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -38,7 +39,7 @@ export default async function ClassroomSupport() {
       />
 
     {/* In Class Tutorials */}
-    <section className="content-wrapper pt-24">
+    <ContentSection>
       <SectionHeader title={inClassTutorials.data.title} align="center" />
       <Card className="w-full border-none shadow-none rounded-none">
         <CardContent className="mx-auto flex flex-col px-6">
@@ -63,10 +64,10 @@ export default async function ClassroomSupport() {
         </CardContent>
       </Card>
       <FeaturedCarousel carouselData={featuredCarouselData} />
-    </section>
+    </ContentSection>
 
     {/* Student Accounts */}
-    <section className="content-wrapper py-24 bg-neutral-50">
+    <ContentSection className="bg-neutral-50">
       <SectionHeader title={studentAccounts.data.title} align="center" />
       <Card className="w-full border-none shadow-none rounded-none">
         <CardContent className="mx-auto flex flex-col px-6">
@@ -90,10 +91,10 @@ export default async function ClassroomSupport() {
           )}
         </CardContent>
       </Card>        
-    </section>
+    </ContentSection>
 
     {/* Computational Notebooks */}
-    <section className="content-wrapper py-24">
+    <ContentSection>
       <SectionHeader title={computationalNotebooks.data.title} align="center" />
       <Card className="w-full border-none shadow-none rounded-none">
         <CardContent className="mx-auto flex flex-col px-6">
@@ -134,7 +135,7 @@ export default async function ClassroomSupport() {
           </div>
         </CardContent>
       </Card>
-    </section>
+    </ContentSection>
     </div>
   )
 }

@@ -2,6 +2,7 @@
 import { Hero } from "@/components/Hero";
 import { HeroCard } from "@/components/HeroCard";
 import { ImpactBanner } from "@/components/ImpactBanner";
+import { ContentSection } from "@/components/ui/content-section";
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 import EventSection from "@/components/EventSection";
 import { getEventData } from "@/app/queries";
@@ -49,10 +50,10 @@ export default async function Home() {
         </Hero>
         <HeroCard />
         <ImpactBanner />
-        <section className="content-wrapper pt-24">
+        <ContentSection>
           <SectionHeader title="Featured Projects" align="center" />
           <FeaturedCarousel carouselData={featuredCarouselData} />
-        </section>
+        </ContentSection>
         <div
           id="events"
           className="py-12 w-full bg-neutral-50 px-4 sm:px-6 lg:px-8"

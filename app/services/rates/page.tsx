@@ -1,5 +1,6 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
+import { ContentSection } from "@/components/ui/content-section"
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
@@ -31,7 +32,7 @@ export default async function Rates() {
       />
 
       {/* Oscar */}
-      <section className="content-wrapper py-24">
+      <ContentSection>
         <SectionHeader title={oscar.data.title} align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex items-center px-6">
@@ -41,7 +42,7 @@ export default async function Rates() {
           </CardContent>
         </Card>
 
-        <section className="content-wrapper flex justify-center">
+        <div className="flex justify-center">
           <div className="flex flex-wrap justify-center gap-6">
             {oscar.data.sections?.map((section: RatesCard) => (
               <div
@@ -68,7 +69,7 @@ export default async function Rates() {
               </div>
             ))}
           </div>
-        </section>
+        </div>
         
         {/* Notes section */}
         {oscar.data.notes && (
@@ -91,10 +92,10 @@ export default async function Rates() {
             ))}
           </div>
         )}
-      </section>
+      </ContentSection>
 
       {/* Purchasing a Condo */}
-      <section className="content-wrapper py-24 bg-neutral-50">
+      <ContentSection className="bg-neutral-50">
         <SectionHeader title={purchasingCondo.data.title} align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex flex-col px-6">
@@ -105,10 +106,10 @@ export default async function Rates() {
             </div>    
           </CardContent>
         </Card>
-      </section>
+      </ContentSection>
 
       {/* Research Data Storage */}
-      <section className="content-wrapper py-24">
+      <ContentSection>
         <SectionHeader title={researchDataStorage.data.title} align="center" />
 
         {/* Default Category */}
@@ -203,10 +204,10 @@ export default async function Rates() {
             ))}
           </div>
         )}
-      </section>
+      </ContentSection>
 
       {/* Pooled Storage Allocations */}
-      <section className="content-wrapper py-24 bg-neutral-50">
+      <ContentSection className="bg-neutral-50">
         <SectionHeader title={pooledStorageAllocations.data.title} align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="mx-auto flex flex-col px-6">
@@ -217,7 +218,7 @@ export default async function Rates() {
             </div>
           </CardContent>
         </Card>
-      </section>
+      </ContentSection>
     </div>
   )
 }
