@@ -29,7 +29,6 @@ async function getSecret() {
 }
 
 export async function getOpenIssues() {
-  unstable_noStore();
   const secret = await getSecret();
   const org = "ccv-status";
   const octokit = new Octokit({ auth: secret });
