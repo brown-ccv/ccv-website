@@ -59,9 +59,9 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
     return (
     <section className="mt-12 mb-24">
-      <div className="w-full max-w-[1400px] px-4 sm:px-6 lg:px-8 mx-auto">
+      <div className="w-full mx-auto">
         {/* Carousel Container */}
-        <div className="bg-white p-6 lg:p-8 relative" {...handlers}>
+        <div className="bg-white relative" {...handlers}>
           {/* Navigation Buttons */}
           <div className="flex justify-center items-center gap-4">
             <Button
@@ -98,7 +98,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </Button>
           </div>
 
-          <div className="flex flex-col xl:flex-row items-start justify-start gap-8 min-h-[600px] lg:min-h-[500px] relative">
+          <div className="flex flex-col lg:flex-row items-start justify-start gap-8 min-h-[600px] lg:min-h-[500px] relative">
             {/* Text Content */}
             <div className="w-full max-w-[700px] space-y-6 flex flex-col justify-start">
               {/* Categories */}
@@ -144,7 +144,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                   ))}
                 </div>
               )}
-              <div className="text-lg lg:text-xl font-normal text-gray-800 prose prose-lg max-w-none flex-1">
+              <div className="text-md lg:text-lg font-normal text-gray-800 prose prose-lg max-w-none flex-1">
                 <Markdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
