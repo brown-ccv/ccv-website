@@ -30,10 +30,10 @@ jobs:
       - name: 🏗️ Build
         run: npm run build
       - name: 🏁 Start up app
-        run: npx serve & npx wait-on http://localhost:9000
+        run: npx serve & npx wait-on http://localhost:3000
 
       - name: ♿️ Run pa11y-ci
-        run: npm exec -c 'pa11y-ci -s http://localhost:9000/sitemap/sitemap-0.xml'
+        run: npm exec -c 'pa11y-ci -s http://localhost:3000/sitemap/sitemap-0.xml'
 
       - name: ✨ Prettify result file
         if: ${{ always() }}
