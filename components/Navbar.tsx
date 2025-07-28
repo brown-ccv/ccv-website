@@ -418,6 +418,7 @@ const NavigationSectionContent: React.FC<{
   return (
     <NavigationMenu.Content className="absolute top-full z-50 w-max rounded-md shadow-md bg-white hidden lg:block">
       <div
+        tabIndex={-1}
         className={`p-2 sm:p-4 md:p-6 flex flex-col xl:flex-row ${hasMultipleGroups ? "space-x-8" : ""} max-h-[80vh] overflow-y-auto`}
       >
         {groups.map((group, index) => (
