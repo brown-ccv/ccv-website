@@ -3,6 +3,7 @@
 import React, { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { SectionHeader } from "@/components/ui/section-header"
+import { ContentSection } from "@/components/ui/content-section"
 import Form from "@/components/storage/StorageForm"
 import Table from "@/components/storage/StorageTable"
 import { PageContentData, SelectedAnswers, QuestionsConfig, ServiceConfig, FormQuestions } from '@/lib/storage-types'
@@ -31,7 +32,7 @@ export default function StorageTool({ pageContent, questions, initialSelectedAns
     
     return (
         <div>
-            <section className="content-wrapper py-24 bg-neutral-50">
+            <ContentSection className="bg-neutral-50">
                 <SectionHeader title="Compare Storage Options" align="center" />
                 <div className="flex flex-col items-start pb-8">
                     <h2 className="text-2xl font-bold text-gray-800 my-12">{pageContent?.storage_tool_header}</h2>
@@ -53,7 +54,7 @@ export default function StorageTool({ pageContent, questions, initialSelectedAns
                         />              
                     </div>
                 </div>
-            </section>
+            </ContentSection>
         </div>
     )
   }
