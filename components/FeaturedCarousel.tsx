@@ -69,7 +69,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
               size="icon"
               aria-label="previous project"
               onClick={prev}
-              className="w-[40px] h-[40px] !mr-0"
+              className="!mr-0"
             >
               <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
             </Button>
