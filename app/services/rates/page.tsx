@@ -34,71 +34,35 @@ export default async function Rates() {
       {/* Oscar */}
       <ContentSection>
         <SectionHeader title={oscar.data.title} align="center" />
-        <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex items-center px-6">
-            <p className="text-black text-xl pb-8">
-              {oscar.data.description}
-            </p>
+        <Card className={cn(cardVariants({ variant: "content" }))}>
+          <CardContent className="mx-auto flex flex-col">
+            <div className="prose text-xl">
+              <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                {oscar.content}
+              </Markdown>
+            </div>
+            
+            {/* Buttons */}
+            {oscar.data.links && oscar.data.links.filter(link => link.category === "Default").length > 0 && (
+              <div className="flex gap-4 mt-6 justify-center">
+                {oscar.data.links.filter(link => link.category === "Default").map((link: ContentLinks, index: number) => (
+                  <Button key={`oscar-${index}`} variant="primary_filled" size="lg">
+                    <ExternalLink href={link.target}>
+                      {link.text}
+                    </ExternalLink>
+                  </Button>
+                ))}
+              </div>
+            )}
           </CardContent>
         </Card>
-
-        <div className="flex justify-center">
-          <div className="flex flex-wrap justify-center gap-6">
-            {oscar.data.sections?.map((section: RatesCard) => (
-              <div
-                key={section.name}
-                className="flex-grow max-w-md"
-              >
-                <div className="inline-flex items-center p-6 w-full h-full">
-                  <Card className={cn("overflow-hidden flex flex-col w-full h-full p-4", cardVariants({ variant: "default" }))}>
-                    <CardContent className="flex flex-col h-full">
-                      <div className="relative border-b border-neutral-900 px-4 flex justify-center">
-                        <CardHeader className="text-center">{section.title}</CardHeader>
-                      </div>
-                      <CardDescription className="text-lg text-left flex-grow pt-6">
-                        <Markdown 
-                          rehypePlugins={[rehypeRaw]} 
-                          remarkPlugins={[remarkGfm]}
-                        >
-                          {section.content}
-                        </Markdown>
-                      </CardDescription>
-                    </CardContent>
-                  </Card>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-        
-        {/* Notes section */}
-        {oscar.data.notes && (
-          <div className="prose prose-sm mt-12 text-lg">
-            <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-              {oscar.data.notes}
-            </Markdown>
-          </div>
-        )}
-        
-        {/* Buttons */}
-        {oscar.data.links && oscar.data.links.filter(link => link.category === "Default").length > 0 && (
-          <div className="flex gap-4 mt-6 justify-center">
-            {oscar.data.links.filter(link => link.category === "Default").map((link: ContentLinks) => (
-              <Button key={link.text} variant="primary_filled" size="lg">
-                <ExternalLink href={link.target}>
-                  {link.text}
-                </ExternalLink>
-              </Button>
-            ))}
-          </div>
-        )}
       </ContentSection>
 
       {/* Purchasing a Condo */}
       <ContentSection className="bg-neutral-50">
         <SectionHeader title={purchasingCondo.data.title} align="center" />
-        <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex flex-col px-6">
+        <Card className={cn(cardVariants({ variant: "content" }))}>
+          <CardContent className="mx-auto flex flex-col">
             <div className="prose text-xl">
               <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                 {purchasingCondo.content}
@@ -121,19 +85,19 @@ export default async function Rates() {
               </p>
             </div>
             <div className="content-wrapper px-0">
-                          <div className="flex flex-wrap gap-6">
+                          <div className="flex flex-wrap gap-4 sm:gap-6">
               {researchDataStorage.data.sections?.filter(section => section.category === "default").map((section: RatesCard) => (
                 <div
                   key={section.name}
-                  className="w-96"
+                  className="w-full sm:w-80 md:w-96"
                 >
-                    <div className="inline-flex items-center p-6 w-full h-full">
-                      <Card className={cn("overflow-hidden flex flex-col w-full h-full p-4", cardVariants({ variant: "default" }))}>
+                    <div className="inline-flex items-center p-4 sm:p-6 w-full h-full">
+                      <Card className={cn("overflow-hidden flex flex-col w-full h-full p-3 sm:p-4", cardVariants({ variant: "default" }))}>
                         <CardContent className="flex flex-col h-full">
-                          <div className="relative border-b border-neutral-900 px-4 flex justify-center">
+                          <div className="relative border-b border-neutral-100 px-3 sm:px-4 flex justify-center">
                             <CardHeader className="text-center">{section.title}</CardHeader>
                           </div>
-                          <CardDescription className="text-lg text-left flex-grow pt-6">
+                          <CardDescription className="text-base sm:text-lg text-left flex-grow pt-6">
                             <Markdown 
                               rehypePlugins={[rehypeRaw]} 
                               remarkPlugins={[remarkGfm]}
@@ -162,19 +126,19 @@ export default async function Rates() {
               </div>
             </div>
             <div className="content-wrapper px-0">
-                          <div className="flex flex-wrap gap-6">
+                          <div className="flex flex-wrap gap-4 sm:gap-6">
               {researchDataStorage.data.sections?.filter(section => section.category === "additional").map((section: RatesCard) => (
                 <div
                   key={section.name}
-                  className="w-96"
+                  className="w-full sm:w-80 md:w-96"
                 >
-                    <div className="inline-flex items-center p-6 w-full h-full">
-                      <Card className={cn("overflow-hidden flex flex-col w-full h-full p-4", cardVariants({ variant: "default" }))}>
+                    <div className="inline-flex items-center p-4 sm:p-6 w-full h-full">
+                      <Card className={cn("overflow-hidden flex flex-col w-full h-full p-3 sm:p-4", cardVariants({ variant: "default" }))}>
                         <CardContent className="flex flex-col h-full">
-                          <div className="relative border-b border-neutral-900 px-4 flex justify-center">
+                          <div className="relative border-b border-neutral-100 px-3 sm:px-4 flex justify-center">
                             <CardHeader className="text-center">{section.title}</CardHeader>
                           </div>
-                          <CardDescription className="text-lg text-left flex-grow pt-6">
+                          <CardDescription className="text-base sm:text-lg text-left flex-grow pt-6">
                             <Markdown 
                               rehypePlugins={[rehypeRaw]} 
                               remarkPlugins={[remarkGfm]}
@@ -209,8 +173,8 @@ export default async function Rates() {
       {/* Pooled Storage Allocations */}
       <ContentSection className="bg-neutral-50">
         <SectionHeader title={pooledStorageAllocations.data.title} align="center" />
-        <Card className="w-full border-none shadow-none rounded-none">
-          <CardContent className="mx-auto flex flex-col px-6">
+        <Card className={cn(cardVariants({ variant: "content" }))}>
+          <CardContent className="mx-auto flex flex-col">
             <div className="prose text-xl">
               <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                 {pooledStorageAllocations.content}

@@ -7,6 +7,8 @@ import { ContentSection } from "@/components/ui/content-section"
 import { SectionHeader } from "@/components/ui/section-header"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { cardVariants } from "@/components/ui/variants";
+import { cn } from "@/lib/utils";
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
 import { readContentFolder, ContentLinks, MarkdownFrontmatter, YamlContentData, readContentFile } from "@/lib/content-utils"
 import ExternalLink from "@/components/ui/external-link"
@@ -41,8 +43,8 @@ export default async function ClassroomSupport() {
     {/* In Class Tutorials */}
     <ContentSection>
       <SectionHeader title={inClassTutorials.data.title} align="center" />
-      <Card className="w-full border-none shadow-none rounded-none">
-        <CardContent className="mx-auto flex flex-col px-6">
+      <Card className={cn(cardVariants({ variant: "content" }))}>
+        <CardContent className="mx-auto flex flex-col">
           <div className="prose text-xl">
             <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
               {inClassTutorials.content}
@@ -69,8 +71,8 @@ export default async function ClassroomSupport() {
     {/* Student Accounts */}
     <ContentSection className="bg-neutral-50">
       <SectionHeader title={studentAccounts.data.title} align="center" />
-      <Card className="w-full border-none shadow-none rounded-none">
-        <CardContent className="mx-auto flex flex-col px-6">
+      <Card className={cn(cardVariants({ variant: "content" }))}>
+        <CardContent className="mx-auto flex flex-col">
           <div className="prose text-xl">
             <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
               {studentAccounts.content}
@@ -96,8 +98,8 @@ export default async function ClassroomSupport() {
     {/* Computational Notebooks */}
     <ContentSection>
       <SectionHeader title={computationalNotebooks.data.title} align="center" />
-      <Card className="w-full border-none shadow-none rounded-none">
-        <CardContent className="mx-auto flex flex-col px-6">
+      <Card className={cn(cardVariants({ variant: "content" }))}>
+        <CardContent className="mx-auto flex flex-col">
           <div className="prose text-xl">
             {/* Description */}
             {(computationalNotebooks.data as YamlContentData).description && (

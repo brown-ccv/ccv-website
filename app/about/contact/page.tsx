@@ -93,7 +93,7 @@ export default async function ContactUs() {
                 <div className="inline-flex items-center gap-2 py-8 w-full h-full">
                   <Card className={cn("overflow-hidden flex flex-col w-full h-full", cardVariants({ variant: "default" }))}>
                     <CardContent className="flex flex-col h-full">
-                      <div className="relative border-b border-neutral-900 px-4 flex justify-center">
+                      <div className="relative border-b border-neutral-100 px-4 flex justify-center">
                         <CardHeader className="text-center">{card.title}</CardHeader>
                       </div>
                       <CardDescription className="pt-6 text-xl text-center">{card.subtitle}</CardDescription>

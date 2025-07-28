@@ -112,9 +112,14 @@ export const cardVariants = cva(
   {
     variants: {
       variant: {
-        default: "border border-neutral-300 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl",
+        default: "border border-neutral-100 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl",
         people: "border-none",
+        content: "w-full border-none shadow-none rounded-none px-0",
       },
+      size: {
+        fit: "w-fit",
+        contained: "w-full max-w-sm mx-auto",
+      }
     },
     defaultVariants: {
       variant: "default",

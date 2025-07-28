@@ -3,10 +3,12 @@ import { FaCalendarAlt } from "react-icons/fa"
 import { Button } from "@/components/ui/button"
 import ExternalLink from "@/components/ui/external-link"
 import { SectionHeader } from "@/components/ui/section-header"
+import { cardVariants } from "@/components/ui/variants"
+import { cn } from "@/lib/utils"
 
 export const EventCard = () => {
   return (
-    <Card className="w-fit">
+    <Card className={cn(cardVariants({ variant: "default" }))}>
       <CardContent className="p-6">
         <div className="flex flex-col items-center text-center">
           <SectionHeader 
