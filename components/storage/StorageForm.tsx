@@ -49,6 +49,7 @@ const Form: React.FC<FormProps> = ({
             {question.options.map((option) => (
               <div key={option.label} className="flex items-center space-x-2">
                 <RadioGroupItem
+                  aria-label={option.label}
                   value={option.label}
                   id={`${question.id}-${option.label}`}
                 />

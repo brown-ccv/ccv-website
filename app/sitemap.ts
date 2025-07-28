@@ -2,7 +2,7 @@ import fs from "fs"
 import { MetadataRoute } from "next"
 import path from "path"
 
-const baseUrl = process.env.SITE_URL || "http:localhost:3000"
+const baseUrl = process.env.SITE_URL || "http://localhost:3000"
 const baseDir = "app"
 
 async function getRoutes(): Promise<MetadataRoute.Sitemap> {
