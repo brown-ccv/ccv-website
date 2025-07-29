@@ -2,6 +2,9 @@ import fs from "fs"
 import { MetadataRoute } from "next"
 import path from "path"
 
+// Required for static export
+export const dynamic = "force-static"
+
 const baseUrl = process.env.SITE_URL || "http://localhost:3000"
 const baseDir = "app"
 
