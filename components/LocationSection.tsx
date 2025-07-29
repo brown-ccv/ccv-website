@@ -1,6 +1,7 @@
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeader } from "@/components/ui/section-header";
+import { ContentSection } from "@/components/ui/content-section";
 
 interface LocationSectionProps {
   title?: string;
@@ -12,7 +13,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
   description = "Our office is on Brown's main campus in Providence's College Hill neighborhood. Built in 1960 and dedicated to Thomas J. Watson in 1961, the building was designed by architect Philip Johnson to house the IBM 7070 computer. Today, it hosts the Center for Computation and Visualization, supporting research at Brown."
 }) => {
   return (
-    <section className="content-wrapper pt-24 px-14 lg:px-36">
+    <ContentSection>
       <div className="flex flex-col xl:flex-row gap-4">
         <Card className="w-full xl:w-1/2 shadow-none rounded-none border-none">
           <CardContent className="flex items-center">
@@ -36,6 +37,6 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
           />
         </div>
       </div>
-    </section>
+    </ContentSection>
   );
 }; 
