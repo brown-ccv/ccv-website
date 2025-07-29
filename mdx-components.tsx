@@ -1,8 +1,8 @@
-import type { MDXComponents } from "mdx/types"
 import { SectionHeader } from "@/components/ui/section-header"
-import { Hero } from "@/components/Hero"
 import { buttonVariants } from "@/components/ui/variants"
 import { ButtonLink } from "@/components/ui/button-link"
+import type { MDXComponents } from "mdx/types"
+import Image from "next/image"
 
 export const LinkButton = ({ children, href, ...props }: any) => {
   const buttonClassName = buttonVariants({
@@ -28,7 +28,14 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Global MDX components
     LinkButton,
     SectionHeader,
-    Hero,
+    img: (props) => (
+      <Image
+        {...props}
+        width={800}
+        height={600}
+        className="max-w-full h-auto"
+      />
+    ),
     ...components,
   }
 }

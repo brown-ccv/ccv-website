@@ -1,11 +1,11 @@
 import { Hero } from "@/components/Hero";
 import { ContentSection } from "@/components/ui/content-section";
-import PageContent from "@/content/services/virtual-machine-hosting.mdx";
+import PageContent from "@/content/services/ai-services.mdx";
 import { getMDXMetadata } from "@/lib/mdx-utils";
 
 export default function Page() {
-  const metadata = getMDXMetadata('content/services/virtual-machine-hosting.mdx');
-
+  const metadata = getMDXMetadata('content/services/ai-services.mdx');
+  
   return (
     <div>
       <Hero 
@@ -14,7 +14,7 @@ export default function Page() {
       />
       <ContentSection>
         <div className='prose prose-lg text-xl max-w-none'>
-          <PageContent />
+        <PageContent />
         </div>
       </ContentSection>
     </div>

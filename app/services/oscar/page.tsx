@@ -7,6 +7,7 @@ import { SectionHeader } from "@/components/ui/section-header"
 import { readContentFile } from "@/lib/content-utils"
 import { OscarData } from "@/lib/oscar-types"
 import ButtonLink from "@/components/ui/button-link"
+import { ContentSection } from "@/components/ui/content-section"
 
 export default async function Oscar() {
   const pageContentData = await readContentFile<OscarData>(
@@ -19,13 +20,11 @@ export default async function Oscar() {
         title={pageContentData.data.title}
         description={pageContentData.data.description}
       />
-
-      <section className="content-wrapper py-24 px-14 lg:px-36">
+      <ContentSection>
         <SectionHeader
           title={pageContentData.data.sectionTitle}
           align="center"
         />
-
         {/* Subsections and buttons */}
         <div className="space-y-12 mb-12">
           {pageContentData.data.subsections.map((subsection, index) => (
@@ -63,7 +62,7 @@ export default async function Oscar() {
             </div>
           ))}
         </div>
-      </section>
+      </ContentSection>
     </div>
   )
 }

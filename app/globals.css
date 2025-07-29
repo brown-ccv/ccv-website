@@ -2,6 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Prism.js syntax highlighting */
+@import "prismjs/themes/prism-tomorrow.css";
+
+/* Custom code block styling */
+.prose pre {
+  background-color: #2d3748;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  overflow-x: auto;
+  margin: 1rem 0;
+  max-width: 50%;
+  width: 50%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.prose code {
+  background-color: #f7fafc;
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  font-size: 0.875em;
+}
+
+.prose pre code {
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+  color: #e2e8f0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 @layer base {
     :root {
         @apply font-sans;

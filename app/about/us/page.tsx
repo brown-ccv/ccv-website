@@ -10,6 +10,7 @@ import fs from "fs/promises"
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import { ContentSection } from "@/components/ui/content-section"
 
 function imagePath(imageName: string) {return path.join('/images/people', imageName)}
 
@@ -55,7 +56,7 @@ export default async function AboutUs() {
         />
 
         {/* Intro to OIT */}
-        <section className="content-wrapper py-24 px-14 lg:px-36">
+        <ContentSection>
           <SectionHeader title="Office of Information Technology" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
@@ -66,10 +67,10 @@ export default async function AboutUs() {
               </div>
             </CardContent>
           </Card>
-        </section>
+        </ContentSection>
 
         {/* Our Mission */}
-        <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+        <ContentSection>
           <SectionHeader title="Our Mission" align="center" />
           <Card className="w-full border-none shadow-none rounded-none">
             <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
@@ -80,7 +81,7 @@ export default async function AboutUs() {
               </div>
             </CardContent>
           </Card>
-        </section>
+        </ContentSection>
 
         {/* People */}
         <div id="people" className="content-wrapper py-24 px-14">
@@ -110,7 +111,7 @@ export default async function AboutUs() {
         </div>
 
       {/* Diversity Statement */}
-      <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+      <ContentSection>
       <SectionHeader title="Diversity Statement" align="center" />
         <Card className="w-full border-none shadow-none rounded-none">
           <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
@@ -121,7 +122,7 @@ export default async function AboutUs() {
             </div>
           </CardContent>
         </Card>
-      </section>
+      </ContentSection>
     </div>
   )
 }
