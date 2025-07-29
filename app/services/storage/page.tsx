@@ -23,7 +23,6 @@ export default async function Storage() {
                 key={index}
                 variant={link.category === "Documentation" ? "primary_filled" : "secondary_filled"}
                 size="xl"
-                className="w-full xl:w-auto"
               >
                 <ExternalLink 
                   href={link.target} 

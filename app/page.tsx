@@ -40,7 +40,6 @@ export default async function Home() {
           <Button
             variant="primary_filled"
             size="lg"
-            className="w-fit"
           >
             <ExternalLink href="mailto:ccv-support@brown.edu" external={true}>
               Work with Us
