@@ -1902,7 +1902,7 @@ C329.880402,335.909088 330.356598,341.392639 337.077576,344.800323
 z"
       />
       <path
-        className="fill-red"
+        className="fill-red-university"
         opacity="1.000000"
         stroke="none"
         d="
@@ -1920,7 +1920,7 @@ C346.940125,368.901947 352.875336,367.035736 359.226196,365.111786
 z"
       />
       <path
-        className="fill-red"
+        className="fill-red-university"
         opacity="1.000000"
         stroke="none"
         d="
@@ -1939,7 +1939,7 @@ C122.549660,379.140015 121.156433,375.923859 119.396141,372.484467
 z"
       />
       <path
-        className="fill-red"
+        className="fill-red-university"
         opacity="1.000000"
         stroke="none"
         d="
@@ -2179,7 +2179,7 @@ z"
       />
 
       <path
-        className="fill-red"
+        className="fill-red-university"
         opacity="1.000000"
         stroke="none"
         d="
