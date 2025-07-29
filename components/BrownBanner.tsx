@@ -1,6 +1,7 @@
 import React from "react"
 import { FaComments } from "react-icons/fa"
 import Image from "next/image"
+import BrownLogo from "@/components/assets/BrownLogo"
 import OITLogo from "@/assets/oit-logo.png"
 import ButtonLink from "@/components/ui/button-link"
 
@@ -17,13 +18,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = ({ id }) => {
           external={true}
           className={"focus-visible:ring-0"}
         >
-          <Image
-            src={OITLogo}
-            alt="OIT Home Page"
-            width={250}
-            height={0}
-            priority
-          />
+          <BrownLogo width={250} height={0} />
         </ButtonLink>
         <div className="ml-6 w-full flex flex-row justify-between items-center">
           <h1 className="py-10 pl-6 text-3xl font-semibold border-l border-black hidden lg:block">
