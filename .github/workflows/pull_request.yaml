@@ -50,9 +50,7 @@ jobs:
           npx wait-on http://localhost:3000
 
       - name: ♿️ Run pa11y-ci
-        run: |
-          export PUPPETEER_ARGS="--no-sandbox --disable-setuid-sandbox --disable-dev-shm-usage --disable-gpu"
-          npm exec -c 'pa11y-ci --sitemap http://localhost:3000/sitemap.xml'
+        run: npm exec -c 'pa11y-ci --sitemap http://localhost:3000/sitemap.xml'
 
       - name: ✨ Prettify result file
         if: ${{ always() }}
