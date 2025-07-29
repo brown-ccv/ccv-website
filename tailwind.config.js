@@ -1,15 +1,44 @@
 /** @type {import('tailwindcss').Config} */
 
 function getCustomColors(config) {
-  const colors = config.theme?.colors || {};
-  const customColorNames = [];
+  const colors = config.theme?.colors || {}
+  const customColorNames = []
 
   for (const key in colors) {
-    if (!['inherit', 'current', 'transparent', 'black', 'white', 'slate', 'gray', 'zinc', 'stone', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'].includes(key) && !/^\d+$/.test(key)) {
-      customColorNames.push(key);
+    if (
+      ![
+        "inherit",
+        "current",
+        "transparent",
+        "black",
+        "white",
+        "slate",
+        "gray",
+        "zinc",
+        "stone",
+        "orange",
+        "amber",
+        "yellow",
+        "lime",
+        "green",
+        "emerald",
+        "teal",
+        "cyan",
+        "sky",
+        "blue",
+        "indigo",
+        "violet",
+        "purple",
+        "fuchsia",
+        "pink",
+        "rose",
+      ].includes(key) &&
+      !/^\d+$/.test(key)
+    ) {
+      customColorNames.push(key)
     }
   }
-  return customColorNames;
+  return customColorNames
 }
 
 module.exports = {
@@ -1111,48 +1140,46 @@ module.exports = {
     extend: {
       typography: ({ theme }) => ({
         DEFAULT: {
-          css: { // overriding prose's styling for markdown - use !important to override
-            'a': {
-              color: theme('colors.keppel.600'),
-              '&:hover': {
-                color: theme('colors.keppel.200'),
+          css: {
+            // overriding prose's styling for markdown - use !important to override
+            a: {
+              color: theme("colors.keppel.800"),
+              "&:hover": {
+                color: theme("colors.keppel.600"),
               },
-              '&:focus': {
-                color: theme('colors.keppel.700'),
-                outline: '2px solid',
-                outlineColor: theme('colors.keppel.700'),
+              "&:focus": {
+                color: theme("colors.keppel.700"),
+                outline: "2px solid",
+                outlineColor: theme("colors.keppel.700"),
               },
             },
-            '&': {
-              maxWidth: 'none !important', 
+            "&": {
+              maxWidth: "none !important",
             },
-            'p': {
-              marginTop: theme('spacing.4'), // equivalent to mt-4
-              marginBottom: theme('spacing.4'), // equivalent to mb-4
+            p: {
+              marginTop: theme("spacing.4"), // equivalent to mt-4
+              marginBottom: theme("spacing.4"), // equivalent to mb-4
             },
-            'h1': {
-                marginTop: '0 !important', 
+            h1: {
+              marginTop: "0 !important",
             },
-            'p, ul, ol, pre, td, th, blockquote, h1, h2, h3, h4, h5, h6': {
-              maxWidth: 'none !important', 
+            "p, ul, ol, pre, td, th, blockquote, h1, h2, h3, h4, h5, h6": {
+              maxWidth: "none !important",
             },
-            'ul': {
-                listStyleType: 'disc',
-                paddingLeft: theme('spacing.6'), // pl-6
+            ul: {
+              listStyleType: "disc",
+              paddingLeft: theme("spacing.6"), // pl-6
             },
-            'ol': {
-                listStyleType: 'decimal',
-                paddingLeft: theme('spacing.6'), // pl-6
+            ol: {
+              listStyleType: "decimal",
+              paddingLeft: theme("spacing.6"), // pl-6
             },
           },
         },
       }),
     },
   },
-  plugins: [
-    require("@tailwindcss/forms"),
-    require('@tailwindcss/typography')
-  ],
+  plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
   //   1. Tailwind's Purge/Tree-Shaking (Most Common Cause)
   // Tailwind CSS works by scanning your code for utility classes and generating only the CSS you actually use. This process is called "purging" or "tree-shaking."
 
@@ -1164,11 +1191,11 @@ module.exports = {
   // The Fix (Safelist Classes):
   // The most robust solution is to explicitly tell Tailwind to include these dynamic classes in its generated CSS by "safelisting" them in your tailwind.config.js file.
   safelist: [
-    'text-red-university',
-    'text-amber-600',
-    'text-keppel-600',
-    'text-sunglow-400',
-    'text-cyan-500',
+    "text-red-university",
+    "text-amber-600",
+    "text-keppel-600",
+    "text-sunglow-400",
+    "text-cyan-500",
     { pattern: /text-(red|amber|keppel|sunglow|cyan)-\d{3,}/ },
   ],
 }
