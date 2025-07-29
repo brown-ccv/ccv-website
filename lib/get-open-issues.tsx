@@ -2,7 +2,6 @@
 
 import { Octokit } from "octokit";
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
-
 interface GitHubIssue {
   id: number;
   title: string;

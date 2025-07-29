@@ -1,4 +1,3 @@
-import ExternalLink from "@/components/ui/external-link"
 import { Button } from "@/components/ui/button"
 import React from "react"
 import Hero from "@/components/Hero"

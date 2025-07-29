@@ -8,9 +8,10 @@ interface StatusBannerProps {
   children: React.ReactNode;
   isOperational?: boolean;
   id?: string;
+  className?: string;
 }
 
-export default function StatusBanner({ children, isOperational, id }: StatusBannerProps) {
+export default function StatusBanner({ children, isOperational, id, className }: StatusBannerProps) {
   const [isOpen, setIsOpen] = useState(true)
 
   if (!isOpen) return null
@@ -18,7 +19,7 @@ export default function StatusBanner({ children, isOperational, id }: StatusBann
   return (
     <div
       className={`relative isolate w-full flex items-center gap-x-6 overflow-hidden h-[55px] px-4 sm:px-3.5 sm:before:flex-1 
-      ${isOperational ? "bg-keppel-500 text-black" : "bg-red-university text-white"}`}
+      ${isOperational ? "bg-keppel-500 text-black" : "bg-red-university text-white"} ${className || ""}`}
     >
       {children}
       <div className="flex flex-1 justify-end">

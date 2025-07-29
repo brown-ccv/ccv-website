@@ -1,17 +1,20 @@
 import { Hero } from "@/components/Hero";
 import { ContentSection } from "@/components/ui/content-section";
-import OscarContent from "@/content/services/oscar.mdx";
+import PageContent from "@/content/services/ai-services.mdx";
 import { getMDXMetadata } from "@/lib/mdx-utils";
 
-export default async function Oscar() {
-  const metadata = getMDXMetadata('content/services/oscar.mdx');
+export default function Page() {
+  const metadata = getMDXMetadata('content/services/ai-services.mdx');
   
   return (
     <div>
-      <Hero title={metadata.title} description={metadata.description} />
+      <Hero 
+        title={metadata.title} 
+        description={metadata.description} 
+      />
       <ContentSection>
         <div className='prose prose-lg text-xl max-w-none'>
-          <OscarContent />
+        <PageContent />
         </div>
       </ContentSection>
     </div>

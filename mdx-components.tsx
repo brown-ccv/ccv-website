@@ -1,6 +1,6 @@
 import type { MDXComponents } from 'mdx/types';
+import Image from 'next/image';
 import { SectionHeader } from "@/components/ui/section-header";
-import { Hero } from "@/components/Hero";
 import { buttonVariants } from "@/components/ui/variants";
 import { ExternalLink } from "@/components/ui/external-link";
 import { FeaturedCarousel, FeaturedCarouselItem } from "@/components/FeaturedCarousel";
@@ -50,7 +50,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     // Global MDX components
     MDXButton,
     SectionHeader,
-    Hero,
     MDXCarousel,
     Card,
     CardContent,
@@ -62,6 +61,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     PeopleSection,
     Button,
     Icon,
+    img: (props) => <Image {...props} width={800} height={600} className="max-w-full h-auto" />,
     ...components,
   };
 } 
