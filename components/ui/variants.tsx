@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority"
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center flex-shrink-0 whitespace-nowrap w-full xl:w-auto sm:w-auto mr-6 font-semibold rounded-full transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none",
+  "inline-flex items-center justify-center flex-shrink-0 whitespace-nowrap w-full xl:w-auto sm:w-auto font-semibold rounded-full transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none m-0 sm:m-2",
   {
     variants: {
       variant: {
@@ -78,12 +78,19 @@ export const buttonVariants = cva(
         left: "flex-row",
         right: "flex-row-reverse",
       },
+
+      align: {
+        left: "justify-start",
+        center: "justify-center",
+        right: "justify-end",
+      },
     },
 
     defaultVariants: {
       variant: "primary_filled",
       size: "default",
       iconPosition: "none",
+      align: "center",
     },
   }
 );

@@ -17,7 +17,7 @@ export default async function Storage() {
         description={metadata.description}
       >
         <div className="flex flex-col items-start not-prose">
-          <div className="flex flex-col xl:flex-row flex-wrap gap-2 w-full items-start not-prose">
+          <div className="flex flex-col xl:flex-row flex-wrap gap-4 w-full items-start not-prose">
             {links.map((link: any, index: number) => (
               <Button
                 key={index}

@@ -14,17 +14,15 @@ import { cn } from "@/lib/utils";
 import { cardVariants } from "@/components/ui/variants";
 
 export const MDXButton = ({ children, href, ...props }: any) => {
-  const buttonClassName = buttonVariants({ variant: "primary_filled", size: "lg" });
+  const buttonClassName = buttonVariants({ variant: "primary_filled", size: "lg", align: "center" });
   return (
-    <div className="flex justify-center w-full sm:inline-block not-prose">
-      <ExternalLink 
-        href={href} 
-        className={`${buttonClassName} my-4`}
-        {...props}
-      >
-        {children}
-      </ExternalLink>
-    </div>
+    <ExternalLink 
+      href={href} 
+      className={`${buttonClassName} my-4 no-underline`}
+      {...props}
+    >
+      {children}
+    </ExternalLink>
   );
 };
 
@@ -84,6 +82,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Global MDX components
     MDXButton,
+    Button,
     ContactCard,
     ContactGrid,
     SectionHeader,
@@ -96,7 +95,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     RatesCard,
     RatesGrid,
     PeopleSection,
-    Button,
     Icon,
     img: (props) => <Image {...props} width={800} height={600} className="max-w-full h-auto" />,
     ...components,
