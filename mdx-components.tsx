@@ -26,7 +26,7 @@ export const MDXButton = ({ children, href, ...props }: any) => {
   );
 };
 
-export const ContactCard = ({ children, title, icon, align = "center" }: any) => {
+export const ContactCard = ({ children, title, icon, align = "center", headerAlign, contentAlign }: any) => {
   const IconComponent = icon ? Icon : null;
   
   return (
@@ -34,15 +34,15 @@ export const ContactCard = ({ children, title, icon, align = "center" }: any) =>
       <div className="inline-flex items-center gap-2 py-8 w-full h-full">
         <Card className={cn("overflow-hidden flex flex-col w-full h-full", cardVariants({ variant: "default" }))}>
           <CardContent className="flex flex-col h-full">
-            <div className={cn("relative border-b border-neutral-300 px-4 flex", align === "center" ? "justify-center" : "justify-start")}>
-              <CardHeader className={cn("flex items-start gap-3 min-w-0", align === "center" ? "text-center" : "text-left")}>
-                <div className="flex items-start gap-2 min-w-0">
-                  {IconComponent && <IconComponent iconName={icon} className="text-2xl flex-shrink-0 mt-1" />}
+            <div className="relative border-b border-neutral-300 flex">
+              <CardHeader className="flex gap-3 min-w-0" align={headerAlign || align}>
+                <div className="flex items-center gap-2 min-w-0">
+                  {IconComponent && <IconComponent iconName={icon} className="text-2xl flex-shrink-0 " />}
                   <span className="leading-none">{title}</span>
                 </div>
               </CardHeader>
             </div>
-            <CardDescription className={cn("pt-6 text-lg", align === "center" ? "text-center" : "text-left")}>{children}</CardDescription>
+            <CardDescription className="pt-6 text-lg" align={contentAlign || align}>{children}</CardDescription>
           </CardContent>
         </Card>
       </div>

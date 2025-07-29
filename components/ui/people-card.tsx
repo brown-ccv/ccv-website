@@ -44,13 +44,16 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({ className, imagePath, ho
         >
           <CardContent className="flex flex-col h-full p-0">
             <div className="relative overflow-hidden flex justify-center">
-              <Image
-                src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
-                alt={name}
-                width="500"
-                height="500"
-                className="rounded-full transition-opacity duration-300 h-[306px] w-[306px] sm:h-[350px] sm:w-[350px]"
-              />
+              <div className="!m-0 !p-0">
+                <Image
+                  src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
+                  alt={name}
+                  width="500"
+                  height="500"
+                  className="rounded-full transition-opacity duration-300 h-[306px] w-[306px] sm:h-[350px] sm:w-[350px] !m-0 !p-0"
+                  style={{ margin: 0, padding: 0 }}
+                />
+              </div>
             </div>
             <div className="p-4">
               <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
