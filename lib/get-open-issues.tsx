@@ -2,8 +2,6 @@
 
 import { Octokit } from "octokit";
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager";
-import { unstable_noStore } from "next/cache";
-
 interface GitHubIssue {
   id: number;
   title: string;

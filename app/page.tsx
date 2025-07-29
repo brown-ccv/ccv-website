@@ -13,6 +13,7 @@ import { ScrollButton } from "@/components/ui/scroll-button"
 import { SectionHeader } from "@/components/ui/section-header"
 import { readContentFile } from "@/lib/content-utils";
 import ExternalLink from "@/components/ui/external-link";
+import { ContentSection } from "@/components/ui/content-section";
 
 export default async function Home() {
   // Load featured carousel data from YAML
@@ -48,10 +49,10 @@ export default async function Home() {
         </Hero>
         <HeroCard />
         <ImpactBanner />
-        <section className="content-wrapper pt-24 px-14 lg:px-36">
+        <ContentSection>
           <SectionHeader title="Featured Projects" align="center" />
           <FeaturedCarousel carouselData={featuredCarouselData} />
-        </section>
+        </ContentSection>
         <div
           id="events"
           className="py-12 w-full bg-neutral-50"
