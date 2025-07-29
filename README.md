@@ -19,15 +19,20 @@ You'll need the gcloud-cli (Google Cloud CLI) installed. If you don't have it, y
 brew install gcloud-cli
 ```
 
-Once `gcloud-cli`` is installed, log in to set up your Application Default Credentials for your user account:
+Once `gcloud-cli` is installed, log in to set up your Application Default Credentials for your user account:
 ```
 gcloud auth application-default login
 ```
 
-[!NOTE] Important Note on Service Accounts: While gcloud auth application-default login sets up user credentials for ADC, in production environments (like Firebase App Hosting), a dedicated service account is typically used for authentication. This ensures your application has only the necessary permissions and improves security. Your local setup emulates this access pattern.
+> [!IMPORTANT] 
+> Important Note on Service Accounts: While gcloud auth application-default login sets up user credentials for ADC, in production environments (like Firebase App Hosting), a dedicated service account is typically used for authentication. This ensures your application has only the necessary permissions and improves security. Your local setup emulates this access pattern.
 
 ### 3. Build
-```
+Before running the development server, it's recommended to build the project. This compiles the Next.js application for production and can help catch configuration errors or issues early.
+
+This step also copies images from the content folder into the public directory. You don't need to run this command every time you develop locally, but if you make changes to images in the content folder, you'll want to rebuild.
+
+```bash
 npm run build
 ```
 
