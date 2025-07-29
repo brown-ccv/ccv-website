@@ -19,13 +19,13 @@ export default function ConditionalStatusBanner({ issues }: ConditionalStatusBan
 
   return (
     <StatusBanner isOperational={issues.length === 0}>
-      <div className="flex flex-wrap items-center gap-x-4">
+      <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
         {issues.length > 0 ? (
           <>
-            <p className="text-lg">
+            <p className="text-sm sm:text-lg text-center sm:text-left flex-shrink">
               <strong>Service Disruption:</strong> {issues.map((repo) => repo.name).join(", ")}
             </p>
-            <Button variant="secondary_filled" size="sm" className="text-md">
+            <Button variant="secondary_filled" size="sm" className="text-sm sm:text-md w-auto flex-shrink-0">
               <ExternalLink
                 href="https://status.ccv.brown.edu/"
                 external={true}
@@ -36,10 +36,10 @@ export default function ConditionalStatusBanner({ issues }: ConditionalStatusBan
           </>
         ) : (
           <>
-            <p className="text-lg">
+            <p className="text-sm sm:text-lg text-center sm:text-left flex-shrink">
               All Services Operational
             </p>
-            <Button variant="secondary_filled" size="sm" className="text-lg">
+            <Button variant="secondary_filled" size="sm" className="text-sm sm:text-lg w-auto flex-shrink-0">
               <ExternalLink
                 href="https://status.ccv.brown.edu/"
                 external={true}
