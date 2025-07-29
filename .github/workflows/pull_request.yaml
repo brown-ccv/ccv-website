@@ -46,7 +46,7 @@ jobs:
 
       - name: 🏁 Start up app
         run: |
-          npx serve -s build -l 3000 &
+          npx start &
           npx wait-on http://localhost:3000
 
       - name: ♿️ Run pa11y-ci
