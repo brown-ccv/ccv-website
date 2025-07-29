@@ -22,7 +22,7 @@ import {
 import { CalendarProps } from "@/components/calendar/types"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { ClockIcon } from "@heroicons/react/20/solid"
-import ExternalLink from "@/components/ui/external-link"
+import ButtonLink from "@/components/ui/button-link"
 
 export interface weekProps {
   id: string
@@ -141,7 +141,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,
           }}
         >
-          <ExternalLink
+          <ButtonLink
             href={event.url}
             external={true}
             className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-sm md:text-md lg:text-xl leading-5`}
@@ -151,7 +151,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
               <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />
               <time dateTime={event.date_utc}>{event.date_time}</time>
             </p>
-          </ExternalLink>
+          </ButtonLink>
         </li>
       )
     })

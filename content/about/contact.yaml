@@ -1,5 +1,5 @@
 title: "Contact Us"
-description: 
+description:
   "We provide support for researchers seeking help with statistical modeling, machine learning, data mining, data visualization, computational biology, high-performance computing, and software engineering."
 
 contactUs:
@@ -25,7 +25,7 @@ contactUs:
         - text: "Join the Slack"
           href: "https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU"
         - text: "Terms of Services"
-          href: "/images/Terms_of_Service_Slack.pdf"
+          href: "https://ithelp.brown.edu/kb/articles/terms-of-use-for-brown-enterprise-slack"
 
 officeHours:
   description: |

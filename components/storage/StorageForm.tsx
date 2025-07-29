@@ -1,27 +1,28 @@
-import React from 'react';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { SelectedAnswers, FormQuestions } from '@/lib/storage-types'
-import Markdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw'
-import remarkGfm from 'remark-gfm'
-import ExternalLink from '@/components/ui/external-link'
+import React from "react"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { SelectedAnswers, FormQuestions } from "@/lib/storage-types"
+import Markdown from "react-markdown"
+import rehypeRaw from "rehype-raw"
+import remarkGfm from "remark-gfm"
+import ButtonLink from "@/components/ui/button-link"
 
 interface FormProps {
-  selectedAnswers: SelectedAnswers;
-  onAnswerChange: (questionId: string, answer: string) => void;
-  questions: FormQuestions[];
+  selectedAnswers: SelectedAnswers
+  onAnswerChange: (questionId: string, answer: string) => void
+  questions: FormQuestions[]
 }
 
-const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions }) => {
+const Form: React.FC<FormProps> = ({
+  selectedAnswers,
+  onAnswerChange,
+  questions,
+}) => {
   return (
     <div className="space-y-2 px-8 pb-8 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl max-w-[800px] border border-neutral-300">
       {questions.map((question) => (
         <div key={question.id}>
           <div className="pt-6 font-medium text-black text-2xl">
-            <Markdown
-              rehypePlugins={[rehypeRaw]}
-              remarkPlugins={[remarkGfm]}
-            >
+            <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
               {`${question.question}`}
             </Markdown>
           </div>
@@ -32,14 +33,13 @@ const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions 
               remarkPlugins={[remarkGfm]}
               components={{
                 a: ({ node, href, ...props }) => (
-                  <ExternalLink href={href!} {...props} />
+                  <ButtonLink href={href!} {...props} />
                 ),
               }}
             >
               {question.information}
             </Markdown>
-            )
-          }
+          )}
 
           <RadioGroup
             value={selectedAnswers[question.id]}
@@ -48,7 +48,11 @@ const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions 
           >
             {question.options.map((option) => (
               <div key={option.label} className="flex items-center space-x-2">
-                <RadioGroupItem value={option.label} id={`${question.id}-${option.label}`} />
+                <RadioGroupItem
+                  aria-label={option.label}
+                  value={option.label}
+                  id={`${question.id}-${option.label}`}
+                />
                 <p>{`${option.label}`}</p>
               </div>
             ))}
@@ -56,7 +60,7 @@ const Form: React.FC<FormProps> = ({ selectedAnswers, onAnswerChange, questions 
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default Form;
+export default Form

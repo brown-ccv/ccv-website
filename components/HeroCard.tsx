@@ -26,10 +26,7 @@ export const HeroCard: React.FC = () => {
   return (
     <div className="z-10 mt-6 md:-mt-[170px] mb-[120px] px-6 lg:px-8 flex justify-center relative">
       <Card
-        className={cn(
-          cardVariants({ variant: "default" }),
-          "w-7/8 relative"
-        )}
+        className={cn(cardVariants({ variant: "default" }), "w-7/8 relative")}
       >
         <CardContent className="p-10">
           <div className="flex justify-center items-start gap-20 flex-wrap">
@@ -38,9 +35,9 @@ export const HeroCard: React.FC = () => {
                 <div className="inline-flex items-center gap-2">
                   <div className="relative">
                     <CCVBars />
-                    <h3 className="font-semibold text-black text-2xl tracking-tight leading-tight">
+                    <h2 className="font-semibold text-black text-2xl tracking-tight leading-tight">
                       {card.title}
-                    </h3>
+                    </h2>
                   </div>
                 </div>
                 <p className="text-black text-xl">{card.description}</p>
@@ -52,4 +49,3 @@ export const HeroCard: React.FC = () => {
     </div>
   )
 }
-
