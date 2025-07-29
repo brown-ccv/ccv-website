@@ -1,20 +1,19 @@
 // src/components/ui/ServiceCard.tsx
 import React from 'react';
-import { ServiceConfig, QuestionsConfig, SelectedAnswers, ServiceFeature, featureIcons } from '@/lib/storage-types';
+import { ServiceConfig, ServiceFeature, featureIcons } from '@/lib/storage-types';
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge'
 import { cn, humanize } from "@/lib/utils"
 import { cardVariants } from '@/components/ui/variants';
-import { sortFeatures } from '@/components/storage/utils';
+// import { sortFeatures } from '@/components/storage/utils';
+
 
 interface ServiceCardProps {
     service: ServiceConfig;
-    questionsConfig: QuestionsConfig[];
-    selectedAnswers: SelectedAnswers;
     isDisabled: boolean;
   }
 
-const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, questionsConfig, isDisabled }) => {
+const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, isDisabled }) => {
 
   // Helper to format the display value of a feature class
   const formatFeatureDisplayValue = (feature: ServiceFeature): string => {
@@ -44,6 +43,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, questionsConf
 
   return (
     <Card className={cn(cardVariants({ variant: "default" }), "bg-white")}>
+    {/* <Card className={cn("w-full bg-white border-neutral-300")}> */}
       <div className={cn("transition-opacity duration-300", isDisabled ? 'opacity-30 grayscale' : '')}>
         <CardHeader className="flex items-center justify-center">
           <CardTitle className="text-2xl pt-4 text-center">{humanize(service.name)}</CardTitle>

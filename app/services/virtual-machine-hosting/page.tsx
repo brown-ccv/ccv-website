@@ -1,13 +1,22 @@
-import React from "react"
-import { Hero } from "@/components/Hero"
+import { Hero } from "@/components/Hero";
+import { ContentSection } from "@/components/ui/content-section";
+import PageContent from "@/content/services/virtual-machine-hosting.mdx";
+import { getMDXMetadata } from "@/lib/mdx-utils";
 
-export default async function VirtualMachineHosting() {
+export default function Page() {
+  const metadata = getMDXMetadata('content/services/virtual-machine-hosting.mdx');
+
   return (
     <div>
       <Hero 
-        title="Virtual Machine Hosting"
-        description="Text tbd."
+        title={metadata.title} 
+        description={metadata.description} 
       />
+      <ContentSection>
+        <div className='prose prose-lg text-xl max-w-none'>
+          <PageContent />
+        </div>
+      </ContentSection>
     </div>
-  )       
+  );
 }

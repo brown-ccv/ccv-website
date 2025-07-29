@@ -245,7 +245,7 @@ const tableData: TableRow[] = useMemo(() => {
             />
           </div>
         </div>
-        <div ref={tableContainerRef} className="overflow-x-scroll overflow-y-auto force-scrollbar h-[calc(100vh-200px)]">
+        <div ref={tableContainerRef} className="overflow-x-scroll overflow-y-auto h-[calc(100vh-200px)]">
           <table className="min-w-full border-separate" style={{ borderSpacing: 0 }}>
             <thead className="bg-white sticky top-0 z-20 border-b border-neutral-200">
               {table.getHeaderGroups().map(headerGroup => (
@@ -299,8 +299,6 @@ const tableData: TableRow[] = useMemo(() => {
           <StorageServiceCard
             key={service.name}
             service={service}
-            questionsConfig={questions}
-            selectedAnswers={selectedAnswers}
             isDisabled={getColumnDisabledState(service, selectedAnswers, questions)}
           />
         ))}

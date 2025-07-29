@@ -13,17 +13,20 @@ The content of the MDX Editing Guide that you are *currently reading* is rendere
 
 Every page on the CCV website is rendered from an mdx, markdown, or yaml file in the `/content` folder.
 
-<LinkButton href="https://nextjs.org/docs/app/guides/mdx">
+<MDXButton href="https://nextjs.org/docs/app/guides/mdx">
   View Next.js MDX Documentation
-</LinkButton>
+</MDXButton>
 
-### Available Components
+{/* Available Components */}
+<SectionHeader
+  title="Available Components"
+/>
 
 All available components are in the `/components` folder. To make them accessible in `.mdx` files, add them to `/mdx-components.tsx`. Import the component(s) at the top of the file and add it to the Global MDX Components section at the bottom. To request a new custom component, please add an issue to the CCV website github repository.
 
-<LinkButton href="https://github.com/brown-ccv/ccv-website/issues">
+<MDXButton href="https://github.com/brown-ccv/ccv-website/issues">
   Request a New Component
-</LinkButton>
+</MDXButton>
 
 ### Best practices:
 
@@ -46,7 +49,17 @@ This is an example of an MDX content file containing custom components and markd
 
 The `<SectionHeader/>` component is used to create a header for the page. It is a custom component that is defined in `/components/section-header.tsx` and imported in `/mdx-components.tsx`.
 
-This is the main content of the page. You can write normal text here. You can use **bold** and *italic* formatting.
+Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<MDXButton/>` component. It uses the same styling as the buttons that are used throughout this website.
+
+<MDXButton href="https://www.markdownguide.org/cheat-sheet/">
+  Markdown Cheat Sheet
+</MDXButton>
+
+<MDXButton href="https://nextjs.org/docs/app/guides/mdx">
+  Read Documentation
+</MDXButton>
+
+Here is a non-exhaustive list of markdown formatting options:
 
 - Use dashes for bullet points
 - Like this
@@ -56,12 +69,6 @@ This is the main content of the page. You can write normal text here. You can us
 - Make a numbered list item
 - Like this
 - And this
-
-Insert a link to a markdown cheat sheet using the `<LinkButton/>` component. `<LinkButton/>` uses the same styling as the buttons that are used throughout this website.
-
-<LinkButton href="https://www.markdownguide.org/cheat-sheet/">
-  Markdown Cheat Sheet
-</LinkButton>
 ```
 
 This is how the above example renders:
@@ -72,7 +79,17 @@ This is how the above example renders:
 
 The `<SectionHeader/>` component is used to create a header for the page. It is a custom component that is defined in `/components/section-header.tsx` and imported in `/mdx-components.tsx`.
 
-This is the main content of the page. You can write normal text here. You can use **bold** and *italic* formatting.
+Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<MDXButton/>` component. It uses the same styling as the buttons that are used throughout this website.
+
+<MDXButton href="https://www.markdownguide.org/cheat-sheet/">
+  Markdown Cheat Sheet
+</MDXButton>
+
+<MDXButton href="https://nextjs.org/docs/app/guides/mdx">
+  Read Documentation
+</MDXButton>
+
+Here is a non-exhaustive list of markdown formatting options:
 
 - Use dashes for bullet points
 - Like this
@@ -82,9 +99,3 @@ This is the main content of the page. You can write normal text here. You can us
 - Make a numbered list item
 - Like this
 - And this
-
-Insert a link to a markdown cheat sheet using the `<LinkButton/>` component. `<LinkButton/>` uses the same styling as the buttons that are used throughout this website.
-
-<LinkButton href="https://www.markdownguide.org/cheat-sheet/">
-  Markdown Cheat Sheet
-</LinkButton>

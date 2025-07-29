@@ -103,29 +103,3 @@ p > a:focus {
     color: #2c3e50;
   }
 }
-
-/* For Webkit browsers (Chrome, Safari) */
-.force-scrollbar::-webkit-scrollbar {
-  height: 8px; /* Or whatever height you want */
-  width: 8px; /* For vertical scrollbar if you ever need it */
-  background-color: transparent; /* Makes the track background transparent */
-}
-
-/* The thumb (the draggable part of the scrollbar) */
-.force-scrollbar::-webkit-scrollbar-thumb {
-  background-color: #d1d5db; /* Light gray */
-  border-radius: 4px; /* Rounded corners */
-  border: 2px solid transparent; /* To prevent it from taking full height/width if smaller than track */
-  background-clip: padding-box; /* Crucial for border to work as padding */
-}
-
-/* On hover */
-.force-scrollbar::-webkit-scrollbar-thumb:hover {
-  background-color: #9ca3af; /* Darker gray on hover */
-}
-
-/* For Firefox (less control, but you can set width/height) */
-.force-scrollbar {
-  scrollbar-width: thin; /* 'auto' or 'none' */
-  scrollbar-color: #d1d5db transparent; /* thumb color track color */
-}
