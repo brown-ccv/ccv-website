@@ -3,6 +3,7 @@ import { Workday } from "@/components/Workday"
 import { Hero } from "@/components/Hero"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
+import { ContentSection } from "@/components/ui/content-section"
 import { SectionHeader } from "@/components/ui/section-header"
 import ButtonLink from "@/components/ui/button-link"
 
@@ -13,7 +14,7 @@ export default async function AboutLayout() {
     return (
       <div>
         <Hero image={"/images/hero/about-kayaks.png"} title="Careers" />
-        <section className="content-wrapper py-24 px-14 lg:px-36 bg-neutral-50">
+        <ContentSection>
           <SectionHeader title="Opportunities" align="center" />
           <Suspense fallback={<Spinner />}>
             <Workday careers={workdayData} />
@@ -26,7 +27,7 @@ export default async function AboutLayout() {
           >
             Contact Us
           </ButtonLink>
-        </section>
+        </ContentSection>
       </div>
     )
   } catch (err: any) {

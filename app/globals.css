@@ -177,7 +177,6 @@ p > a:focus {
     width: 8px; /* For vertical scrollbar if you ever need it */
     background-color: transparent; /* Makes the track background transparent */
 }
-
 /* The thumb (the draggable part of the scrollbar) */
 .force-scrollbar::-webkit-scrollbar-thumb {
     background-color: #d1d5db; /* Light gray */
@@ -196,3 +195,4 @@ p > a:focus {
     scrollbar-width: thin; /* 'auto' or 'none' */
     scrollbar-color: #d1d5db transparent; /* thumb color track color */
 }
+

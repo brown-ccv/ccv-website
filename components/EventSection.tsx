@@ -8,6 +8,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { FaCalendarAlt } from "react-icons/fa"
 import ButtonLink from "@/components/ui/button-link"
 import { SectionHeader } from "@/components/ui/section-header"
+import { ContentSection } from "@/components/ui/content-section"
 
 export interface DataProps {
   id: number
@@ -102,7 +103,7 @@ export function EventSection({
   const CAL_VIEW_ARRAY = ["Upcoming", "Weekly", "Monthly"] as const
 
   return (
-    <section className="content-wrapper m-0">
+    <ContentSection>
       {/* Small Screen Layout (Mobile/Tablet) */}
       <div className="xl:hidden">
         <div className="flex flex-col gap-6">
@@ -162,7 +163,7 @@ export function EventSection({
           </div>
         </div>
       </div>
-    </section>
+    </ContentSection>
   )
 }
 

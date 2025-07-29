@@ -1,90 +1,63 @@
 "use client"
 
-import React, { useState } from "react"
-import Image from "next/image"
-import {
-  Card,
-  CardContent,
-  CardTitle,
-  CardDescription,
-} from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { cn } from "@/lib/utils"
-import { cardVariants } from "@/components/ui/variants"
-import * as Dialog from "@radix-ui/react-dialog"
-import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa"
-import ButtonLink from "@/components/ui/button-link"
+import React, { useState } from "react";
+import Image from "next/image";
+import { Card, CardContent, CardTitle, CardDescription } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
+import { cardVariants } from "@/components/ui/variants";
+import * as Dialog from "@radix-ui/react-dialog";
+import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa";
+import ExternalLink from "@/components/ui/external-link";
 
-interface CardWithImageProps {
-  className?: string
-  imagePath: string
-  hoverImagePath?: string
-  name: string
-  title: string
+interface PeopleCardProps {
+  className?: string;
+  imagePath: string;
+  hoverImagePath?: string;
+  name: string;
+  title: string;
   personDetails?: {
-    name: string
-    title: string
-    team?: string
-    subteam?: string
-    type?: string
-    github_username?: string
-    brown_directory_uuid?: string
-    bio?: string
-    image?: string
-  }
+    name: string;
+    title: string;
+    team?: string;
+    subteam?: string;
+    type?: string;
+    github_username?: string;
+    brown_directory_uuid?: string;
+    bio?: string;
+    image?: string;
+  };
 }
 
-export const CardWithImage: React.FC<CardWithImageProps> = ({
-  className,
-  imagePath,
-  hoverImagePath,
-  name,
-  title,
-  personDetails,
-  ...props
-}) => {
-  const [isHovered, setIsHovered] = useState(false)
-  const [open, setOpen] = useState(false)
+export const PeopleCard: React.FC<PeopleCardProps> = ({ className, imagePath, hoverImagePath, name, title, personDetails, ...props }) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
-        <button
-          onFocus={() => setIsHovered(true)}
-          onBlur={() => setIsHovered(false)}
+        <Card
+          className={cn("overflow-hidden cursor-pointer", cardVariants({ variant: "people" }), "w-[400px]", "h-[600px]", "flex-shrink-0")}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
+          onClick={() => setOpen(true)}
         >
-          <Card
-            className={cn(
-              "overflow-hidden cursor-pointer",
-              cardVariants({ variant: "people" }),
-              "w-[400px]",
-              "h-[600px]",
-              "flex-shrink-0"
-            )}
-          >
-            <CardContent className="flex flex-col h-full">
-              <div className="relative overflow-hidden">
-                <Image
-                  src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
-                  alt={name}
-                  width="500"
-                  height="500"
-                  className="rounded-full transition-opacity duration-300 max-h-[350px] min-h-[350px] max-w-[350px]"
-                />
-              </div>
-              <div>
-                <CardTitle className="text-2xl text-center py-4">
-                  {name}
-                </CardTitle>
-                <CardDescription className="text-xl italic text-center">
-                  {title}
-                </CardDescription>
-              </div>
-            </CardContent>
-          </Card>
-        </button>
+          <CardContent className="flex flex-col h-full">
+            <div className="relative overflow-hidden">
+              <Image
+                src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
+                alt={name}
+                width="500"
+                height="500"
+                className="rounded-full transition-opacity duration-300 max-h-[350px] min-h-[350px] max-w-[350px]"
+              />
+            </div>
+            <div>
+              <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
+              <CardDescription className="text-xl italic text-center">{title}</CardDescription>
+            </div>
+          </CardContent>
+        </Card>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-black/40 z-50" />
@@ -109,13 +82,9 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({
                 className="rounded-full"
               />
               <Dialog.Title asChild>
-                <h2 className="text-3xl font-bold text-center mt-2">
-                  {personDetails?.name || name}
-                </h2>
+                <h2 className="text-3xl font-bold text-center mt-2">{personDetails?.name || name}</h2>
               </Dialog.Title>
-              <div className="text-2xl text-neutral-700 text-center mb-2">
-                {personDetails?.title || title}
-              </div>
+              <div className="text-2xl text-neutral-700 text-center mb-2">{personDetails?.title || title}</div>
               {personDetails?.team && (
                 <div className="text-lg text-neutral-500 text-center -mb-2">
                   {personDetails.team}
@@ -127,26 +96,24 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({
                 </div>
               )}
               <div className="flex gap-4 mt-2">
-                {personDetails?.github_username &&
-                  personDetails.github_username !== "" && (
-                    <ButtonLink
-                      href={`https://github.com/${personDetails.github_username}`}
-                      title="GitHub Profile"
-                      className="text-black hover:text-keppel-700 text-2xl"
-                    >
-                      <FaGithub />
-                    </ButtonLink>
-                  )}
-                {personDetails?.brown_directory_uuid &&
-                  personDetails.brown_directory_uuid !== "" && (
-                    <ButtonLink
-                      href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
-                      title="Brown Directory"
-                      className="text-black hover:text-keppel-700 text-2xl"
-                    >
-                      <FaInfoCircle />
-                    </ButtonLink>
-                  )}
+                {personDetails?.github_username && personDetails.github_username !== "" && (
+                  <ExternalLink
+                    href={`https://github.com/${personDetails.github_username}`}
+                    title="GitHub Profile"
+                    className="text-black hover:text-keppel-700 text-2xl"
+                  >
+                    <FaGithub />
+                  </ExternalLink>
+                )}
+                {personDetails?.brown_directory_uuid && personDetails.brown_directory_uuid !== "" && (
+                  <ExternalLink
+                    href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
+                    title="Brown Directory"
+                    className="text-black hover:text-keppel-700 text-2xl"
+                  >
+                    <FaInfoCircle />
+                  </ExternalLink>
+                )}
               </div>
             </div>
             {personDetails?.bio && (
@@ -158,5 +125,5 @@ export const CardWithImage: React.FC<CardWithImageProps> = ({
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
-  )
-}
+  );
+};
