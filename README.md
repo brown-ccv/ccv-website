@@ -41,8 +41,6 @@ npm run build
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 ## App Hosting
 
 Hosted on Firebase App Hosting (Project ID: `ccv-website-next`). Secrets are in [Google Cloud Secret Manager](https://console.cloud.google.com/security/secret-manager).
