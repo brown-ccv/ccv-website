@@ -10,7 +10,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa";
 import ExternalLink from "@/components/ui/external-link";
 
-interface CardWithImageProps {
+interface PeopleCardProps {
   className?: string;
   imagePath: string;
   hoverImagePath?: string;
@@ -29,7 +29,7 @@ interface CardWithImageProps {
   };
 }
 
-export const CardWithImage: React.FC<CardWithImageProps> = ({ className, imagePath, hoverImagePath, name, title, personDetails, ...props }) => {
+export const PeopleCard: React.FC<PeopleCardProps> = ({ className, imagePath, hoverImagePath, name, title, personDetails, ...props }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [open, setOpen] = useState(false);
 

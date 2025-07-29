@@ -3,12 +3,12 @@ import { Card, CardContent, CardHeader, CardDescription } from "@/components/ui/
 import { cn } from "@/lib/utils";
 import { cardVariants } from "@/components/ui/variants";
 
-interface RateCardProps {
+interface RatesCardProps {
   title: string;
   children: React.ReactNode;
 }
 
-export const RateCard: React.FC<RateCardProps> = ({ title, children }) => {
+export const RatesCard: React.FC<RatesCardProps> = ({ title, children }) => {
   return (
     <div className="flex-grow max-w-sm">
       <div className="inline-flex items-center gap-2 py-8 w-full h-full">

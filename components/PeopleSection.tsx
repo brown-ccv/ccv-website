@@ -1,5 +1,5 @@
 import React from "react";
-import { CardWithImage } from "@/components/ui/people-card";
+import { PeopleCard } from "@/components/ui/people-card";
 import { PeopleTypes, PageContentData } from "@/lib/about-types";
 import { readContentFile } from "@/lib/content-utils";
 import path from 'path';
@@ -52,7 +52,7 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
               const { main, hover } = await getImagePaths(person.image);
               return (
                 <div key={person.name}>
-                  <CardWithImage
+                  <PeopleCard
                     imagePath={main}
                     hoverImagePath={hover}
                     name={person.name}
