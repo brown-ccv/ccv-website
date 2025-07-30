@@ -9,26 +9,31 @@ interface BrownBannerProps {
 
 export const BrownBanner: React.FC<BrownBannerProps> = () => {
   return (
-    <header className="bg-white flex items-center py-2 px-6">
-      <div className="flex flex-row items-center w-full py-2">
-        <ButtonLink
-          href="https://it.brown.edu"
-          external={true}
-          className={"focus-visible:ring-0"}
-        >
-          <BrownLogo />
-        </ButtonLink>
-        <div className="ml-6 w-full flex flex-row justify-between items-center">
-          <h1 className="py-10 pl-6 text-3xl font-semibold border-l border-black hidden lg:block">
+    <header className="bg-white flex items-center py-2 px-4">
+      <div className="flex flex-row items-center w-full">
+        <div className="flex-shrink-0 pt-4 lg:pt-2 lg:border-r lg:border-neutral-900 pr-6">
+          <ButtonLink
+            href="https://it.brown.edu"
+            external={true}
+            className={"focus-visible:ring-0"}
+          >
+            <BrownLogo />
+          </ButtonLink>
+        </div>
+        
+        <div className="flex-1 flex justify-start">
+          <h1 className="pl-6 text-3xl font-semibold hidden lg:block">
             Center for Computation and Visualization
           </h1>
-
+        </div>
+        
+        <div className="flex-shrink-0">
           <ButtonLink
             href="mailto:ccv-support@brown.edu"
             external={true}
             variant="primary_outlined"
-            className="items-center justify-center w-full h-full text-lg
-            font-semibold rounded-none p-4
+            className="items-center justify-center text-lg
+            font-semibold rounded-none py-6 px-4
             border-red-university text-red-university
             hover:bg-red-university hover:text-white hover:border-red-university
             whitespace-nowrap"
