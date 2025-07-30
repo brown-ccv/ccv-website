@@ -52,7 +52,7 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
             pageContent.people.map(async (person: PeopleTypes) => {
               const { main, hover } = await getImagePaths(person.image)
               return (
-                <div key={person.name}>
+                <React.Fragment key={person.name}>
                   <PeopleCard
                     imagePath={main}
                     hoverImagePath={hover}
@@ -60,7 +60,7 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
                     title={person.title}
                     personDetails={person}
                   />
-                </div>
+                </React.Fragment>
               )
             })
           ))}

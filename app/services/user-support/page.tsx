@@ -7,7 +7,7 @@ export default function Page() {
   const metadata = getMDXMetadata("content/services/user-support.mdx")
 
   return (
-    <div>
+    <>
       <Hero
         image={"/images/services/user-support.jpeg"}
         title={metadata.title}
@@ -18,6 +18,6 @@ export default function Page() {
           <PageContent />
         </div>
       </ContentSection>
-    </div>
+    </>
   )
 }

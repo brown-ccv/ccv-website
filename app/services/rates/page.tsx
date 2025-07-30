@@ -7,13 +7,13 @@ export default async function RatesSupport() {
   const metadata = getMDXMetadata("content/services/rates.mdx")
 
   return (
-    <div>
+    <>
       <Hero title={metadata.title} description={metadata.description} />
       <ContentSection>
         <div className="prose prose-lg text-xl max-w-none">
           <RatesContent />
         </div>
       </ContentSection>
-    </div>
+    </>
   )
 }

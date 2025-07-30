@@ -337,7 +337,7 @@ export const Navbar: React.FC = () => {
             "
           >
             {routes.map((section) => (
-              <div key={section.name}>
+              <React.Fragment key={section.name}>
                 <button
                   onClick={() => toggleSubmenu(section.name)}
                   className="flex items-center justify-between w-full text-sunglow-400 font-semibold text-2xl py-7 px-6 mr-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
@@ -391,7 +391,7 @@ export const Navbar: React.FC = () => {
                     ))}
                   </div>
                 )}
-              </div>
+              </React.Fragment>
             ))}
             <ButtonLink
               href="/about/contact"

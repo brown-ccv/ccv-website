@@ -7,13 +7,13 @@ export default function Page() {
   const metadata = getMDXMetadata("content/services/ai-services.mdx")
 
   return (
-    <div>
+    <>
       <Hero title={metadata.title} description={metadata.description} />
       <ContentSection>
         <div className="prose prose-lg text-xl max-w-none">
           <PageContent />
         </div>
       </ContentSection>
-    </div>
+    </>
   )
 }

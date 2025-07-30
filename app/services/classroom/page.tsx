@@ -7,13 +7,13 @@ export default async function ClassroomSupport() {
   const metadata = getMDXMetadata("content/services/classroom.mdx")
 
   return (
-    <div>
+    <>
       <Hero title={metadata.title} description={metadata.description} />
       <ContentSection>
         <div className="prose prose-lg text-xl max-w-none">
           <ClassroomContent />
         </div>
       </ContentSection>
-    </div>
+    </>
   )
 }

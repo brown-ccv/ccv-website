@@ -20,7 +20,7 @@ const Form: React.FC<FormProps> = ({
   return (
     <div className="space-y-2 px-4 sm:px-6 md:px-8 pb-8 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl max-w-[800px] border border-neutral-300">
       {questions.map((question) => (
-        <div key={question.id}>
+        <React.Fragment key={question.id}>
           <div className="pt-6 font-medium text-black text-2xl">
             <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
               {`${question.question}`}
@@ -57,7 +57,7 @@ const Form: React.FC<FormProps> = ({
               </div>
             ))}
           </RadioGroup>
-        </div>
+        </React.Fragment>
       ))}
     </div>
   )

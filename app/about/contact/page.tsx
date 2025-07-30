@@ -9,7 +9,7 @@ export default async function ContactUs() {
   const metadata = getMDXMetadata("content/about/contact.mdx")
 
   return (
-    <div>
+    <>
       <Hero
         image={metadata.image}
         title={metadata.title}
@@ -21,6 +21,6 @@ export default async function ContactUs() {
         </div>
       </ContentSection>
       <LocationSection />
-    </div>
+    </>
   )
 }

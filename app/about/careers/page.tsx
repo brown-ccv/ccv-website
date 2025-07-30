@@ -12,7 +12,7 @@ export default async function AboutLayout() {
     const workdayData = await getWorkdayData()
 
     return (
-      <div>
+      <>
         <Hero image={"/images/hero/about-kayaks.png"} title="Careers" />
         <ContentSection>
           <SectionHeader title="Opportunities" align="center" />
@@ -28,7 +28,7 @@ export default async function AboutLayout() {
             Contact Us
           </ButtonLink>
         </ContentSection>
-      </div>
+      </>
     )
   } catch (err: any) {
     console.error(err)

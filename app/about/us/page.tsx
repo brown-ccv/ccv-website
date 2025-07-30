@@ -8,7 +8,7 @@ export default async function AboutUs() {
   const metadata = getMDXMetadata("content/about/about-us.mdx")
 
   return (
-    <div>
+    <>
       <Hero
         image={"/images/hero/about-kayaks.png"}
         title={metadata.title}
@@ -19,6 +19,6 @@ export default async function AboutUs() {
           <AboutUsContent />
         </div>
       </ContentSection>
-    </div>
+    </>
   )
 }
