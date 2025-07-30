@@ -4,7 +4,7 @@ import ButtonLink from "@/components/ui/button-link"
 
 export default function NotFound() {
   return (
-    <div>
+    <>
       <Hero title="Oops!" description="It looks like this page does not exist">
         <ButtonLink
           external={false}
@@ -15,6 +15,6 @@ export default function NotFound() {
           Return Home
         </ButtonLink>
       </Hero>
-    </div>
+    </>
   )
 }
