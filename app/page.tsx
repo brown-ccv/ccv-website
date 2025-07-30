@@ -35,7 +35,7 @@ export default async function Home() {
     const pastDates = getEventData(`-2 months${today}`)
 
     return (
-      <div>
+      <>
         <Hero
           image={"/images/hero/ccv-original.png"}
           title="Center for Computation and Visualization"
@@ -69,7 +69,7 @@ export default async function Home() {
             />
           </Suspense>
         </div>
-      </div>
+      </>
     )
   } catch (err: any) {
     console.error(err)
