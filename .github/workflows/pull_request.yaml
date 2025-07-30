@@ -151,12 +151,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
           header: "preview deployment"
           message: |
-            <p><small>Note: This comment gets updated with every commit</small></p>
-            <details>
-            <summary>
-                <p>Git SHA: <code>${{ github.event.pull_request.head.sha }}</code></p>
-                <h3>Preview Deployment: <strong>READY</strong></h3>
-            </summary>
             <p>🚀 Your preview is ready!</p>
             <p><strong>Preview URL:</strong> <a href="${{ steps.deploy.outputs.preview_url }}" target="_blank">${{ steps.deploy.outputs.preview_url }}</a></p>
             <p><em>This preview will be automatically updated with each new commit to this PR.</em></p>
