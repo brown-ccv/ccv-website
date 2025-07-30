@@ -10,7 +10,7 @@ interface BrownBannerProps {
 export const BrownBanner: React.FC<BrownBannerProps> = () => {
   return (
     <header className="bg-white flex items-center py-2 px-6">
-      <div className="flex flex-row items-center w-full">
+      <div className="flex flex-row items-center w-full py-2">
         <ButtonLink
           href="https://it.brown.edu"
           external={true}
@@ -27,11 +27,11 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
             href="mailto:ccv-support@brown.edu"
             external={true}
             variant="primary_outlined"
-            className="hidden lg:w-fit lg:flex items-center justify-center w-full h-full text-lg
-            font-semibold rounded-none
+            className="items-center justify-center w-full h-full text-lg
+            font-semibold rounded-none p-4
             border-red-university text-red-university
             hover:bg-red-university hover:text-white hover:border-red-university
-            whitespace-nowrap px-2"
+            whitespace-nowrap"
           >
             <FaComments className="mr-2 text-2xl" />
             Work with Us
