@@ -1,7 +1,7 @@
 import React from "react"
 import { DataProps } from "@/components/EventSection"
 import { ClockIcon } from "@heroicons/react/20/solid"
-import ExternalLink from "@/components/ui/external-link"
+import ButtonLink from "@/components/ui/button-link"
 
 const CalendarEvent: React.FC<DataProps> = ({
   date_time,
@@ -23,13 +23,13 @@ const CalendarEvent: React.FC<DataProps> = ({
         {normalDate}
       </div>
       <div>
-        <ExternalLink
+        <ButtonLink
           className="text-xl md:text-2xl font-bold text-blue-500 no-underline hover:underline leading-6"
           href={url}
           external={true}
         >
           {title}
-        </ExternalLink>
+        </ButtonLink>
       </div>
       <div className="md:text-lg flex items-center text-keppel-700">
         <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />

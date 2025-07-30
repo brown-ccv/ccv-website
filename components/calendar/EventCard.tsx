@@ -1,10 +1,9 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { FaCalendarAlt } from "react-icons/fa"
-import { Button } from "@/components/ui/button"
-import ExternalLink from "@/components/ui/external-link"
 import { SectionHeader } from "@/components/ui/section-header"
 import { cardVariants } from "@/components/ui/variants"
 import { cn } from "@/lib/utils"
+import ButtonLink from "../ui/button-link"
 
 export const EventCard = () => {
   return (
@@ -22,11 +21,15 @@ export const EventCard = () => {
             What's next at CCV
           </h3>
           <div className="flex justify-center w-full">
-            <Button className="mr-0" variant="primary_filled" size="lg">
-              <ExternalLink href="https://events.brown.edu/ccv/all" external={true}>
-                View All Events
-              </ExternalLink>
-            </Button>
+            <ButtonLink
+              className="mt-0 mx-4"
+              variant="primary_filled"
+              size="lg"
+              href="https://events.brown.edu/ccv/all"
+              external={true}
+            >
+              View All Events
+            </ButtonLink>
           </div>
         </div>
       </CardContent>

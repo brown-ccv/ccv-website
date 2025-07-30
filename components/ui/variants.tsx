@@ -48,7 +48,8 @@ export const buttonVariants = cva(
           "focus-visible:ring-2 focus-visible:ring-neutral-900",
           "active:bg-neutral-800",
         ].join(" "),
-        unstyled: "",
+        unstyled:
+          "focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400",
         // —————————————————— icon only, outlined ——————————————————
         icon_only_outlined: [
           "bg-transparent",
@@ -93,33 +94,37 @@ export const buttonVariants = cva(
       align: "center",
     },
   }
-);
+)
 
-export const badgeVariants = cva("inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap", {
-  variants: {
-    color: {
-      // Shared colors
-      keppel: "bg-keppel-500 text-white",
-      sunglow: "bg-sunglow-400 text-black",
-      purple: "bg-purple-900 text-white", 
-      blue: "bg-blue-500 text-white",
-      red: "bg-red-university text-white", 
-      pink: "bg-pink-500 text-white",
+export const badgeVariants = cva(
+  "inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap",
+  {
+    variants: {
+      color: {
+        // Shared colors
+        keppel: "bg-keppel-500 text-black",
+        sunglow: "bg-sunglow-400 text-black",
+        purple: "bg-purple-900 text-white",
+        blue: "bg-blue-500 text-white",
+        red: "bg-red-university text-white",
+        pink: "bg-pink-500 text-white",
+      },
     },
-  },
-  defaultVariants: {
-    color: "keppel",
-  },
-})
+    defaultVariants: {
+      color: "keppel",
+    },
+  }
+)
 
-export type BadgeProps = VariantProps<typeof badgeVariants>;
+export type BadgeProps = VariantProps<typeof badgeVariants>
 
 export const cardVariants = cva(
   "rounded-xl bg-white text-black transition-shadow",
   {
     variants: {
       variant: {
-        default: "border border-neutral-100 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl",
+        default:
+          "border border-neutral-300 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl",
         people: "border-none",
         content: "w-full border-none shadow-none rounded-none px-0",
       },

@@ -5,8 +5,7 @@ import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
 import { ContentSection } from "@/components/ui/content-section"
 import { SectionHeader } from "@/components/ui/section-header"
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
+import ButtonLink from "@/components/ui/button-link"
 
 export default async function AboutLayout() {
   try {
@@ -14,18 +13,20 @@ export default async function AboutLayout() {
 
     return (
       <div>
-        <Hero 
-          image={"/images/hero/about-kayaks.png"}
-          title="Careers"
-        />
+        <Hero image={"/images/hero/about-kayaks.png"} title="Careers" />
         <ContentSection>
           <SectionHeader title="Opportunities" align="center" />
           <Suspense fallback={<Spinner />}>
             <Workday careers={workdayData} />
           </Suspense>
-          <Button size="lg" variant="primary_filled">
-            <Link href={"/about/contact"}>Contact Us</Link>
-          </Button>
+          <ButtonLink
+            href={"/about/contact"}
+            external={false}
+            size="xl"
+            variant="primary_filled"
+          >
+            Contact Us
+          </ButtonLink>
         </ContentSection>
       </div>
     )

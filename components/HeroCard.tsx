@@ -24,14 +24,11 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <div className="z-10 mt-6 md:mt-6 lg:-mt-[120px] xl:-mt-[170px] mb-[120px] px-6 sm:px-8 lg:px-24 relative">
-      <div className="flex justify-center">
-        <Card
-          className={cn(
-            cardVariants({ variant: "default" }),
-            "w-fit relative"
-          )}
-        >
+    <div className="z-10 mt-6 md:-mt-[170px] mb-[120px] px-6 lg:px-8 flex justify-center relative">
+    {/* <div className="z-10 mt-6 md:mt-6 lg:-mt-[120px] xl:-mt-[170px] mb-[120px] px-6 sm:px-8 lg:px-24 relative"> */}
+      <Card
+        className={cn(cardVariants({ variant: "default" }), "w-fit relative")}
+      >
         <CardContent className="p-0">
           <div className="flex flex-col lg:flex-row justify-center items-start gap-4 sm:gap-6 md:gap-8 lg:gap-12 p-4 md:p-0">
             {heroCards.map((card, index) => (
@@ -51,6 +48,5 @@ export const HeroCard: React.FC = () => {
         </CardContent>
       </Card>
       </div>
-    </div>
   )
 }

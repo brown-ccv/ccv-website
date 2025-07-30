@@ -40,7 +40,7 @@
 }
 
 p > a {
-  @apply text-keppel-700;
+  @apply text-keppel-800;
 }
 
 p > a:hover {
@@ -73,6 +73,53 @@ p > a:focus {
   /* Remove default margins from images in MDX content */
   .prose img {
     @apply my-4 py-4;
+  }
+
+  /* Markdown content styles should match globals */
+  .prose h1 {
+    @apply font-bold text-4xl;
+  }
+
+  .prose h2,
+  h3,
+  h4 {
+    @apply font-semibold;
+  }
+
+  .prose h2 {
+    @apply text-3xl;
+  }
+
+  .prose h3 {
+    @apply text-2xl;
+  }
+
+  .prose h4 {
+    @apply text-xl;
+  }
+
+  @media (width >= 64rem) {
+    .prose h1 {
+      @apply font-bold text-5xl;
+    }
+
+    .prose h2,
+    h3,
+    h4 {
+      @apply font-semibold;
+    }
+
+    .prose h2 {
+      @apply text-4xl;
+    }
+
+    .prose h3 {
+      @apply text-3xl;
+    }
+
+    .prose h4 {
+      @apply text-2xl;
+    }
   }
 }
 
