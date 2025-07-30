@@ -23,8 +23,7 @@ export default function ConditionalStatusBanner({
       <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
         {issues.length > 0 ? (
           <>
-            <p className="text-sm sm:text-lg text-center sm:text-left flex-shrink">
-            {/* <p className="text-sm sm:text-md w-auto flex-shrink-0"> */}
+            <p className="text-sm sm:text-md w-auto flex-shrink-0">
               <strong>Service Disruption:</strong>{" "}
               {issues.map((repo) => repo.name).join(", ")}
             </p>

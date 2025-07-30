@@ -23,15 +23,16 @@ import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
 
 export const MDXButton = ({ children, href, ...props }: any) => {
-  const buttonClassName = buttonVariants({
-    variant: "primary_filled",
-    size: "lg",
-    align: "center",
-  })
   return (
-    <div className="inline-block not-prose">
-      <ButtonLink href={href} className={`${buttonClassName} my-4`} {...props}>
-      {/* className={`${buttonClassName} my-4 no-underline`} */}
+    <div className="block not-prose w-full">
+      <ButtonLink 
+        href={href} 
+        variant="primary_filled"
+        size="lg"
+        align="center"
+        className="my-4" 
+        {...props}
+      >
         {children}
       </ButtonLink>
     </div>

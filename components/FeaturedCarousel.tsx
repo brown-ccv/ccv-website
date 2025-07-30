@@ -58,7 +58,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   });
 
     return (
-    <section className="mt-12 mb-24">
+    <section className="my-12">
       <div className="w-full mx-auto">
         {/* Carousel Container */}
         <div className="bg-white relative" {...handlers}>
@@ -98,7 +98,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </Button>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-start justify-start gap-8 min-h-[600px] lg:min-h-[500px] relative">
+          <div className="flex flex-col lg:flex-row items-start justify-start gap-8 relative">
             {/* Text Content */}
             <div className="w-full max-w-[700px] space-y-6 flex flex-col justify-start">
               {/* Categories */}
@@ -184,7 +184,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
               
               {/* Attribution positioned at bottom-right of this div */}
               {currentItem.attribution && (
-                <div className="absolute bottom-0 right-0 text-sm text-gray-600">
+                <div className="absolute bottom-0 right-0 text-sm">
                   <Markdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}

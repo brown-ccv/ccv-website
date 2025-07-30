@@ -81,8 +81,8 @@ p > a:focus {
   }
 
   .prose h2,
-  h3,
-  h4 {
+  .prose h3,
+  .prose h4 {
     @apply font-semibold;
   }
 
@@ -104,8 +104,8 @@ p > a:focus {
     }
 
     .prose h2,
-    h3,
-    h4 {
+    .prose h3,
+    .prose h4 {
       @apply font-semibold;
     }
 

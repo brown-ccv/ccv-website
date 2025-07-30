@@ -1,8 +1,6 @@
 import React from "react"
 import { FaComments } from "react-icons/fa"
-import Image from "next/image"
 import BrownLogo from "@/components/assets/BrownLogo"
-import OITLogo from "@/assets/oit-logo.png"
 import ButtonLink from "@/components/ui/button-link"
 
 interface BrownBannerProps {
@@ -12,15 +10,14 @@ interface BrownBannerProps {
 export const BrownBanner: React.FC<BrownBannerProps> = () => {
   return (
 
-    <header className="content-wrapper bg-white flex items-center py-2">
+    <header className="bg-white flex items-center py-2 px-6">
       <div className="flex flex-row items-center w-full">
         <ButtonLink
           href="https://it.brown.edu"
           external={true}
           className={"focus-visible:ring-0"}
         >
-          <BrownLogo width={250} height={0} />
-          {/* <Image src={OITLogo} alt="OIT Logo" width={250} height={0} priority /> */}
+          <BrownLogo />
         </ButtonLink>
         <div className="ml-6 w-full flex flex-row justify-between items-center">
           <h1 className="py-10 pl-6 text-3xl font-semibold border-l border-black hidden lg:block">

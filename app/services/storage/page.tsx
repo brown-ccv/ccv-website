@@ -23,7 +23,6 @@ export default async function Storage() {
                     : "secondary_filled"
                 }
                 size="xl"
-                className="w-full xl:w-auto"
                 href={link.target}
                 external={!link.target.startsWith("/")}
               >
