@@ -41,15 +41,19 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   if (!resolvedIconPosition && rightIcon) resolvedIconPosition = "right"
 
   const resolvedSize = iconOnly && !size ? "icon" : size
+  
+  // Check if this is a calendar event (has specific calendar styling)
+  const isCalendarEvent = className.includes('bg-sunglow-300') || className.includes('bg-sunglow-200')
+  
   if (external) {
     return (
       <a
-        className={cn(
+        className={isCalendarEvent ? className : cn(
           buttonVariants({
             variant,
             size: resolvedSize,
             iconPosition: resolvedIconPosition,
-            className,
+            className
           })
         )}
         href={href}
@@ -75,7 +79,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   return (
     <Link
       href={href}
-      className={cn(
+      className={isCalendarEvent ? className : cn(
         buttonVariants({
           variant,
           size: resolvedSize,

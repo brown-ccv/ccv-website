@@ -230,9 +230,9 @@ export const Navbar: React.FC = () => {
       <nav
         role="navigation"
         aria-label="Main menu"
-        className="bg-blue-navbar flex px-8 justify-between"
+        className="bg-blue-navbar flex px-6 sm:px-8 justify-between"
       >
-        <div className="flex items-center py-8 px-6 xl:px-10">
+        <div className="flex items-center py-8 px-6 sm:px-8 xl:px-10">
           <Link href={"/"}>
             <span className="sr-only text-white">CCV Home</span>
             <CCVLogo width={120} />
@@ -240,7 +240,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Navigation Menu for Desktop */}
-        <NavigationMenu.Root className="hidden lg:flex relative z-10 w-screen justify-between items-stretch">
+        <NavigationMenu.Root className="hidden lg:flex relative z-10 w-full justify-between items-stretch">
           <NavigationMenu.List className="m-0 flex list-none rounded-md h-full items-center">
             {routes.map((section) => (
               <NavigationMenu.Item key={section.name}>
@@ -355,7 +355,6 @@ export const Navbar: React.FC = () => {
                             <ButtonLink
                               key={route.href}
                               href={route.href}
-                              external={true}
                               onClick={toggleMobileMenu}
                               className={
                                 "block text-white py-6 px-6 mr-6 hover:text-neutral-900 hover:bg-sunglow-400 active:bg-sunglow-200 focus-visible:ring-2 focus-visible:ring-sunglow-400"
@@ -403,7 +402,6 @@ export const Navbar: React.FC = () => {
             </ButtonLink>
             <ButtonLink
               href="https://docs.ccv.brown.edu/documentation"
-              external
               onClick={toggleMobileMenu}
               className="block text-sunglow-400 font-semibold text-2xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200 focus-visible:ring-2 focus-visible:ring-sunglow-400"
             >

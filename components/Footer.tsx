@@ -68,7 +68,7 @@ const Footer = () => {
 
   return (
     <footer className="flex flex-col justify-start items-start sm:justify-center sm:items-center w-full bg-gradient-to-b from-gradient-light to-gradient-dark text-neutral-800">
-      <div className="px-6 py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
+              <div className="px-6 sm:px-8 py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
         <div className="flex flex-col justify-start items-start mb-8 space-y-2 sm:justify-center sm:items-center md:mb-16">
           <div className="text-xs tracking-widest uppercase text-cream">
             Brown University
@@ -94,7 +94,7 @@ const Footer = () => {
         <div className="flex flex-row w-full sm:justify-center sm:items-center">
           <ButtonLink
             href="https://alumni-friends.brown.edu/giving"
-            className="group flex justify-center items-center px-6 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-black"
+            className="group flex justify-center items-center px-6 sm:px-8 py-4 text-sm tracking-widest text-white uppercase border border-sunglow-400 hover:bg-sunglow-400 hover:text-black"
           >
             Give to Brown
             <FaArrowRight className="inline-block ml-2 text-sunglow-400 group-hover:text-black" />
@@ -103,12 +103,14 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="content-wrapper flex flex-row items-start justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
-        <div className="flex flex-col-reverse gap-4 items-start">
-          <div>&copy; Brown University</div>
+      <div className="content-wrapper flex flex-col sm:flex-row items-center sm:items-start justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
+        <div className="flex flex-col gap-4 items-center sm:items-start order-1 sm:order-1">
           <CCVLogo />
+          <div>&copy; Brown University</div>
         </div>
-        <CarbonBadge />
+        <div className="order-2 sm:order-3 scale-75 sm:scale-100">
+          <CarbonBadge />
+        </div>
       </div>
     </footer>
   )

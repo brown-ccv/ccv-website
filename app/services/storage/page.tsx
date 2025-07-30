@@ -13,7 +13,7 @@ export default async function Storage() {
     <>
       <Hero title={metadata.title} description={metadata.description}>
         <div className="flex flex-col items-start not-prose">
-          <div className="flex flex-col xl:flex-row flex-wrap gap-2 w-full items-start not-prose">
+          <div className="flex flex-col xl:flex-row flex-wrap gap-4 w-full items-start not-prose">
             {links.map((link: any, index: number) => (
               <ButtonLink
                 key={index}
@@ -23,7 +23,6 @@ export default async function Storage() {
                     : "secondary_filled"
                 }
                 size="xl"
-                className="w-full xl:w-auto"
                 href={link.target}
                 external={!link.target.startsWith("/")}
               >

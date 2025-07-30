@@ -1,7 +1,7 @@
 import { cva, VariantProps } from "class-variance-authority"
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center flex-shrink-0 whitespace-nowrap w-auto mr-6 font-semibold rounded-full transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none",
+  "inline-flex items-center justify-center flex-shrink-0 whitespace-nowrap w-full sm:w-auto font-semibold rounded-full transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none m-0 sm:m-2 not-prose",
   {
     variants: {
       variant: {
@@ -64,14 +64,14 @@ export const buttonVariants = cva(
         default: "h-9 px-6 py-6 text-xl",
         sm: "h-8 px-3 py-3 text-xs",
         md: "h-8 px-6 py-6 text-md",
-        lg: "h-10 px-8 py-8 text-2xl",
-        xl: "h-14 px-8 py-8 text-2xl",
-        xxl: "h-16 px-10 py-10 text-3xl",
+        lg: "h-8 px-6 py-6 text-md sm:h-10 sm:px-8 sm:py-8 sm:text-2xl",
+        xl: "h-8 px-6 py-6 text-md sm:h-14 sm:px-8 sm:py-8 sm:text-2xl",
+        xxl: "h-8 px-6 py-6 text-md sm:h-16 sm:px-10 sm:py-10 sm:text-3xl",
 
         // large icon-only
-        icon: "h-12 w-12 p-2 h-10 w-10",
+        icon: "h-10 w-10 p-2",
         // small circle for icon-only
-        "icon-sm": "h-8 w-8 p-2 h-8 w-8",
+        "icon-sm": "h-8 w-8 p-2",
       },
 
       iconPosition: {
@@ -79,12 +79,19 @@ export const buttonVariants = cva(
         left: "flex-row",
         right: "flex-row-reverse",
       },
+
+      align: {
+        left: "justify-start",
+        center: "justify-center",
+        right: "justify-end",
+      },
     },
 
     defaultVariants: {
       variant: "primary_filled",
       size: "default",
       iconPosition: "none",
+      align: "center",
     },
   }
 )
@@ -119,7 +126,12 @@ export const cardVariants = cva(
         default:
           "border border-neutral-300 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl",
         people: "border-none",
+        content: "w-full border-none shadow-none rounded-none px-0",
       },
+      size: {
+        fit: "w-fit",
+        contained: "w-full max-w-sm mx-auto",
+      }
     },
     defaultVariants: {
       variant: "default",

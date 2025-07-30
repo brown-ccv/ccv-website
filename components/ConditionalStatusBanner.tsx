@@ -20,10 +20,10 @@ export default function ConditionalStatusBanner({
 
   return (
     <StatusBanner isOperational={issues.length === 0}>
-      <div className="flex flex-wrap items-center gap-x-4">
+      <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
         {issues.length > 0 ? (
           <>
-            <p className="text-lg">
+            <p className="text-sm sm:text-md w-auto flex-shrink-0">
               <strong>Service Disruption:</strong>{" "}
               {issues.map((repo) => repo.name).join(", ")}
             </p>
@@ -32,20 +32,20 @@ export default function ConditionalStatusBanner({
               external
               variant="secondary_filled"
               size="sm"
-              className="text-md"
+              className="text-sm sm:text-md w-auto flex-shrink-0"
             >
               View Incidents
             </ButtonLink>
           </>
         ) : (
           <>
-            <p className="text-lg">All Services Operational</p>
+            <p className="text-sm sm:text-lg text-center sm:text-left flex-shrink">All Services Operational</p>
             <ButtonLink
               href={"https://status.ccv.brown.edu/"}
               external
               variant="secondary_filled"
               size="sm"
-              className="text-lg"
+              className="text-sm sm:text-lg w-auto flex-shrink-0"
             >
               View Status
             </ButtonLink>

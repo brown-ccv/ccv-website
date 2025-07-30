@@ -10,6 +10,7 @@ import Icon from "@/components/ui/render-icon";
 import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw'
 import remarkGfm from 'remark-gfm'
+import { useSwipeable } from 'react-swipeable';
 
 export interface FeaturedCarouselItem {
   title: string;
@@ -47,38 +48,85 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   const next = () =>
     setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1));
 
-  return (
-    <section className="mt-12 mb-24 sm:mx-2">
-      <div className="w-full max-w-[2040px] px-2">
-        <div className="flex flex-col xl:flex-row items-start justify-center gap-8 h-[600px] relative">
-          {/* Text Content */}
-          <div className="w-full max-w-[700px] space-y-6 pt-4 flex flex-col justify-between h-full">
-            {/* Categories */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((cat, index) => (
-                <Badge
-                  key={index}
-                  color={getColorForTag(cat)}
-                  className="rounded-full font-semibold text-sm"
-                >
-                  {cat}
-                </Badge>
+  // Swipe handlers
+  const handlers = useSwipeable({
+    onSwipedLeft: () => next(),
+    onSwipedRight: () => prev(),
+    trackMouse: false,
+    delta: 50, // Minimum distance for swipe
+    swipeDuration: 500, // Maximum time for swipe
+  });
+
+    return (
+    <section className="my-12">
+      <div className="w-full mx-auto">
+        {/* Carousel Container */}
+        <div className="bg-white relative" {...handlers}>
+          {/* Navigation Buttons */}
+          <div className="flex justify-center items-center gap-4">
+            <Button
+              variant="secondary_filled"
+              size="icon"
+              aria-label="previous project"
+              onClick={prev}
+              className="!mr-0"
+            >
+              <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
+            </Button>
+            
+            {/* Pagination Dots */}
+            <div className="flex gap-1">
+              {carouselData.map((_, i) => (
+                <div
+                  key={i}
+                  className={`${
+                    i === idx ? "w-3" : "w-2"
+                  } h-2 bg-neutral-300 rounded-full cursor-pointer transition-all duration-200`}
+                  onClick={() => setIdx(i)}
+                />
               ))}
             </div>
-            <h3 className="text-3xl font-semibold">{title}</h3>
             
-            {/* Organizations */}
-            {organizations && organizations.length > 0 && (
-              <div className="space-y-4">
-                {organizations.map((org, index) => (
-                  <div key={index} className="flex items-center">
-                    <div className="w-6 h-6 mr-3">
-                      <Icon iconName={org.icon} className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <div className="text-xl leading-snug font-semibold">{org.name}</div>
-                      <div className="text-md text-gray-600">{org.organization}</div>
-                                              {(org.pi && org.pi.length > 0) && (
+            <Button
+              variant="secondary_filled"
+              size="icon"
+              aria-label="next project"
+              onClick={next}
+              className="w-[40px] h-[40px] !mr-0"
+            >
+              <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
+            </Button>
+          </div>
+
+          <div className="flex flex-col lg:flex-row items-start justify-start gap-8 relative">
+            {/* Text Content */}
+            <div className="w-full max-w-[700px] space-y-6 flex flex-col justify-start">
+              {/* Categories */}
+              <div className="flex flex-wrap gap-2">
+                {categories.map((cat, index) => (
+                  <Badge
+                    key={index}
+                    color={getColorForTag(cat)}
+                    className="rounded-full font-semibold text-sm"
+                  >
+                    {cat}
+                  </Badge>
+                ))}
+              </div>
+              <h3 className="text-2xl lg:text-3xl font-semibold">{title}</h3>
+              
+              {/* Organizations */}
+              {organizations && organizations.length > 0 && (
+                <div className="space-y-4">
+                  {organizations.map((org, index) => (
+                    <div key={index} className="flex items-center">
+                      <div className="w-6 h-6 mr-3">
+                        <Icon iconName={org.icon} className="w-6 h-6" />
+                      </div>
+                      <div>
+                        <div className="text-lg lg:text-xl leading-snug font-semibold">{org.name}</div>
+                        <div className="text-sm lg:text-md text-gray-600">{org.organization}</div>
+                        {(org.pi && org.pi.length > 0) && (
                           <div className="text-sm text-gray-600 mt-1">
                             <span>PI: </span>
                             {org.pi?.map((pi, piIndex) => (
@@ -91,97 +139,62 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                             {org.pm && <span>PM: {org.pm}</span>}
                           </div>
                         )}
+                      </div>
                     </div>
-                  </div>
-                ))}
-              </div>
-            )}
-            <div className="text-xl font-normal text-gray-800 prose prose-lg max-w-none flex-1">
-              <Markdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-              >
-                {description}
-              </Markdown>
-            </div>
-            {buttons && buttons.length > 0 && (
-              <div className="flex flex-wrap gap-4 mt-auto">
-                {buttons.map((button, index) => (
-                  <Button
-                    key={index}
-                    variant={button.variant}
-                    className="h-[55px] px-6 font-semibold text-xl self-start whitespace-nowrap"
-                    onClick={() => window.open(button.url, "_blank")}
-                  >
-                    {button.text}
-                  </Button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          <div className="w-full max-w-[700px] space-y-6 lg:w-full lg:block h-full flex flex-col justify-start relative">
-            <div>
-              <Image
-                src={image}
-                alt={title}
-                width={600}
-                height={400}
-                className="object-contain min-w-[700px] xs:hidden"
-                style={{ width: '700px', height: '500px' }}
-              />
-            </div>
-            
-            {/* Attribution positioned at bottom-right of this div */}
-            {currentItem.attribution && (
-              <div className="absolute bottom-0 right-0 text-sm text-gray-600">
+                  ))}
+                </div>
+              )}
+              <div className="text-md lg:text-lg font-normal text-gray-800 prose prose-lg max-w-none flex-1">
                 <Markdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
                 >
-                  {currentItem.attribution}
+                  {description}
                 </Markdown>
               </div>
-            )}
+              {buttons && buttons.length > 0 && (
+                <div className="flex flex-wrap gap-4 mt-auto">
+                  {buttons.map((button, index) => (
+                    <Button
+                      key={index}
+                      variant={button.variant}
+                      size="lg"
+                      className="font-semibold self-start whitespace-nowrap"
+                      onClick={() => window.open(button.url, "_blank")}
+                    >
+                      {button.text}
+                    </Button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {/* Desktop Image Only */}
+            <div className="hidden xl:block w-full max-w-[700px] lg:w-full h-full flex-col justify-center relative xl:ml-auto">
+              <div className="min-w-[700px]">
+                <Image
+                  src={image}
+                  alt={title}
+                  width={600}
+                  height={400}
+                  className="object-contain"
+                  style={{ width: '700px', height: '500px' }}
+                />
+              </div>
+              
+              {/* Attribution positioned at bottom-right of this div */}
+              {currentItem.attribution && (
+                <div className="absolute bottom-0 right-0 text-sm">
+                  <Markdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
+                  >
+                    {currentItem.attribution}
+                  </Markdown>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
-
-        {/* Pagination + Chevrons */}
-        <div className="flex items-center justify-center gap-4 sm:gap-6 lg:gap-8 mt-8">
-          {/* Prev button */}
-          <Button
-            variant="secondary_filled"
-            size="icon"
-            aria-label="previous project"
-            onClick={prev}
-            className="w-[40px] h-[40px] mr-0"
-          >
-            <ChevronLeftIcon className="h-8 w-8" strokeWidth={2.5} />
-          </Button>
-
-          {/* Pagination Dots */}
-          <div className="flex justify-center gap-2">
-            {carouselData.map((_, i) => (
-              <div
-                key={i}
-                className={`${
-                  i === idx ? "w-4" : "w-[9px]"
-                } h-[9px] bg-gray-300 rounded-full cursor-pointer`}
-                onClick={() => setIdx(i)}
-              />
-            ))}
-          </div>
-
-          {/* Next button */}
-          <Button
-            variant="secondary_filled"
-            size="icon"
-            aria-label="next project"
-            onClick={next}
-            className="w-[40px] h-[40px] ml-0"
-          >
-            <ChevronRightIcon className="h-8 w-8" strokeWidth={2.5} />
-          </Button>
         </div>
       </div>
     </section>

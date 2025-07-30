@@ -59,7 +59,10 @@ export default async function Home() {
           <SectionHeader title="Featured Projects" align="center" />
           <FeaturedCarousel carouselData={featuredCarouselData} />
         </ContentSection>
-        <div id="events" className="py-12 w-full bg-neutral-50">
+        <div
+          id="events"
+          className="py-12 w-full bg-neutral-50 px-4 sm:px-6 lg:px-8"
+        >
           <Suspense fallback={<Spinner />}>
             <EventSection
               streamedDataPast={pastDates}
