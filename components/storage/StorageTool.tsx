@@ -1,41 +1,57 @@
-"use client";
+"use client"
 
 import React, { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { SectionHeader } from "@/components/ui/section-header"
+import { Button } from "@/components/ui/Button"
+import { SectionHeader } from "@/components/ui/SectionHeader"
 import Form from "@/components/storage/StorageForm"
 import Table from "@/components/storage/StorageTable"
-import { ContentSection } from "@/components/ui/content-section"
-import { PageContentData, SelectedAnswers, QuestionsConfig, ServiceConfig, FormQuestions } from '@/lib/storage-types'
+import { ContentSection } from "@/components/ui/ContentSection"
+import {
+  PageContentData,
+  SelectedAnswers,
+  QuestionsConfig,
+  ServiceConfig,
+  FormQuestions,
+} from "@/lib/storage-types"
 
 interface StorageToolProps {
-  pageContent: PageContentData | null;
-  questions: FormQuestions[];
-  initialSelectedAnswers: SelectedAnswers;
-  services: ServiceConfig[];
-  questionsConfig: QuestionsConfig[];
+  pageContent: PageContentData | null
+  questions: FormQuestions[]
+  initialSelectedAnswers: SelectedAnswers
+  services: ServiceConfig[]
+  questionsConfig: QuestionsConfig[]
 }
 
-export default function StorageTool({ pageContent, questions, initialSelectedAnswers, services, questionsConfig }: StorageToolProps) {
-  const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(initialSelectedAnswers);
+export default function StorageTool({
+  pageContent,
+  questions,
+  initialSelectedAnswers,
+  services,
+  questionsConfig,
+}: StorageToolProps) {
+  const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(
+    initialSelectedAnswers
+  )
 
   const handleAnswerChange = (questionId: string, answer: string) => {
     setSelectedAnswers((prev) => ({
       ...prev,
       [questionId]: answer,
-    }));
-  };
+    }))
+  }
 
   const handleReset = () => {
-    setSelectedAnswers(initialSelectedAnswers);
-  };
-  
+    setSelectedAnswers(initialSelectedAnswers)
+  }
+
   return (
     <div>
       <ContentSection>
         <SectionHeader title="Compare Storage Options" align="center" />
         <div className="flex px-8 flex-col items-start pb-8">
-          <h2 className="text-2xl font-bold text-gray-800 mx-24 my-12">{pageContent?.storage_tool_header}</h2>
+          <h2 className="text-2xl font-bold text-gray-800 mx-24 my-12">
+            {pageContent?.storage_tool_header}
+          </h2>
           <div className="w-full mt-0 flex flex-col xl:flex-row gap-4 items-center xl:items-start">
             <div>
               <Form
@@ -51,7 +67,7 @@ export default function StorageTool({ pageContent, questions, initialSelectedAns
               services={services}
               selectedAnswers={selectedAnswers}
               questions={questionsConfig}
-            />              
+            />
           </div>
         </div>
       </ContentSection>

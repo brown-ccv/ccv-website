@@ -2,16 +2,21 @@
 
 import { XMarkIcon } from "@heroicons/react/20/solid"
 import { useState } from "react"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 
 interface StatusBannerProps {
-  children: React.ReactNode;
-  isOperational?: boolean;
-  id?: string;
-  className?: string;
+  children: React.ReactNode
+  isOperational?: boolean
+  id?: string
+  className?: string
 }
 
-export default function StatusBanner({ children, isOperational, id, className }: StatusBannerProps) {
+export default function StatusBanner({
+  children,
+  isOperational,
+  id,
+  className,
+}: StatusBannerProps) {
   const [isOpen, setIsOpen] = useState(true)
 
   if (!isOpen) return null
@@ -34,9 +39,7 @@ export default function StatusBanner({ children, isOperational, id, className }:
             hover:text-black
             active:bg-neutral-50
           "
-          iconOnly={
-            <XMarkIcon aria-hidden="true" className="h-5 w-5" />
-          }
+          iconOnly={<XMarkIcon aria-hidden="true" className="h-5 w-5" />}
         />
       </div>
     </div>

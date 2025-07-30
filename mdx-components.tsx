@@ -1,8 +1,8 @@
 import type { MDXComponents } from "mdx/types"
 import Image from "next/image"
-import { SectionHeader } from "@/components/ui/section-header"
+import { SectionHeader } from "@/components/ui/SectionHeader"
 import { buttonVariants } from "@/components/ui/variants"
-import { ButtonLink } from "@/components/ui/button-link"
+import { ButtonLink } from "@/components/ui/ButtonLink"
 import {
   FeaturedCarousel,
   FeaturedCarouselItem,
@@ -14,11 +14,11 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card"
-import { RatesCard, RatesGrid } from "@/components/ui/rates-card"
+} from "@/components/ui/Card"
+import { RatesCard, RatesGrid } from "@/components/ui/RatesCard"
 import { PeopleSection } from "@/components/PeopleSection"
-import { Button } from "@/components/ui/button"
-import Icon from "@/components/ui/render-icon"
+import { Button } from "@/components/ui/Button"
+import Icon from "@/components/ui/RenderIcon"
 import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
 

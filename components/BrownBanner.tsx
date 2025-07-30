@@ -3,7 +3,7 @@ import { FaComments } from "react-icons/fa"
 import Image from "next/image"
 import BrownLogo from "@/components/assets/BrownLogo"
 import OITLogo from "@/assets/oit-logo.png"
-import ButtonLink from "@/components/ui/button-link"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 interface BrownBannerProps {
   id?: string

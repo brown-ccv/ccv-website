@@ -1,7 +1,7 @@
 import React from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { SectionHeader } from "@/components/ui/section-header"
-import { ContentSection } from "@/components/ui/content-section"
+import { Card, CardContent } from "@/components/ui/Card"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { ContentSection } from "@/components/ui/ContentSection"
 
 interface LocationSectionProps {
   title?: string

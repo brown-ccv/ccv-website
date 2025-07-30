@@ -1,7 +1,7 @@
 import { JSX, Key } from "react"
 import CalendarEvent from "@/components/calendar/CalendarEvent"
 import { DataProps } from "@/components/EventSection"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/Card"
 
 interface UpcomingEventsViewProps {
   events: DataProps[]

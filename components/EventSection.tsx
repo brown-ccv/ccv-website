@@ -4,11 +4,11 @@ import { JSX, use, useState } from "react"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/Card"
 import { FaCalendarAlt } from "react-icons/fa"
-import ButtonLink from "@/components/ui/button-link"
-import { SectionHeader } from "@/components/ui/section-header"
-import { ContentSection } from "@/components/ui/content-section"
+import ButtonLink from "@/components/ui/ButtonLink"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { ContentSection } from "@/components/ui/ContentSection"
 
 export interface DataProps {
   id: number

@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import StatusBanner from "@/components/StatusBanner"
-import ButtonLink from "@/components/ui/button-link"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 interface ConditionalStatusBannerProps {
   issues: any[]

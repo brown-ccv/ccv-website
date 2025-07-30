@@ -1,5 +1,5 @@
-import React, { type JSX } from "react";
-import { Card, CardContent } from "@/components/ui/card"
+import React, { type JSX } from "react"
+import { Card, CardContent } from "@/components/ui/Card"
 
 export const ImpactBanner = (): JSX.Element => {
   const impactMetrics = [
@@ -13,7 +13,6 @@ export const ImpactBanner = (): JSX.Element => {
       <Card className="w-full border-none shadow-none rounded-none bg-transparent">
         <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
           <div className="flex flex-wrap flex-col lg:flex-row justify-between flex-grow">
-
             <div className="flex flex-col items-center">
               <h2 className="font-semibold text-black text-[28px] font-sans">
                 The CCV Impact
@@ -24,8 +23,10 @@ export const ImpactBanner = (): JSX.Element => {
             </div>
 
             {impactMetrics.map((metric, index) => (
-              <div key={index} className="flex flex-col items-center mt-6 lg:mt-0">
-
+              <div
+                key={index}
+                className="flex flex-col items-center mt-6 lg:mt-0"
+              >
                 <div
                   className="bg-gradient-to-br from-purple-900 to-pink-500 bg-clip-text text-transparent
                     font-bold text-6xl text-center font-sans"
