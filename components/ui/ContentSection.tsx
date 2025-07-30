@@ -1,23 +1,32 @@
-import { ReactNode } from "react";
-import { cn } from "@/lib/utils";
+import { ReactNode } from "react"
+import { cn } from "@/lib/utils"
+import { SectionHeader } from "@/components/ui/SectionHeader"
 
 interface ContentSectionProps {
-  children: ReactNode;
-  className?: string;
+  children: ReactNode
+  title: string
+  id?: string
+  align?: "left" | "center"
+  className?: string
 }
 
-export const ContentSection = ({ 
-  children, 
-  className
+export const ContentSection = ({
+  children,
+  title,
+  id,
+  align = "center",
+  className,
 }: ContentSectionProps) => {
   return (
-    <section 
+    <section
+      id={id}
       className={cn(
-        "content-wrapper py-24 px-6 sm:px-8 lg:px-24",
+        "w-full py-16 px-6 sm:px-8 lg:px-24 md:px-12 xl:px-40 odd:bg-neutral-50",
         className
       )}
     >
+      <SectionHeader title={title} align={align} />
       {children}
     </section>
-  );
-}; 
+  )
+}
