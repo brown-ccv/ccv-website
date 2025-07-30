@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/Card"
-import { cardVariants } from "@/components/ui/variants"
+import { CardVariants } from "@/components/ui/variants"
 import CCVBars from "@/components/assets/CCVBars"
 import { cn } from "@/lib/utils"
 
@@ -26,7 +26,7 @@ export const HeroCard: React.FC = () => {
   return (
     <div className="z-10 mt-6 md:-mt-[170px] mb-[120px] px-6 lg:px-8 flex justify-center relative">
       <Card
-        className={cn(cardVariants({ variant: "default" }), "w-7/8 relative")}
+        className={cn(CardVariants({ variant: "default" }), "w-7/8 relative")}
       >
         <CardContent className="p-10">
           <div className="flex justify-center items-start gap-20 flex-wrap">

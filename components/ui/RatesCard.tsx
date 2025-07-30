@@ -6,7 +6,7 @@ import {
   CardDescription,
 } from "@/components/ui/Card"
 import { cn } from "@/lib/utils"
-import { cardVariants } from "@/components/ui/variants"
+import { CardVariants } from "@/components/ui/variants"
 
 interface RatesCardProps {
   title: string
@@ -20,7 +20,7 @@ export const RatesCard: React.FC<RatesCardProps> = ({ title, children }) => {
         <Card
           className={cn(
             "overflow-hidden flex flex-col w-full h-full",
-            cardVariants({ variant: "default" })
+            CardVariants({ variant: "default" })
           )}
         >
           <CardContent className="flex flex-col h-full">

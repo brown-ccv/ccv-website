@@ -1,5 +1,5 @@
 import Link, { LinkProps } from "next/link"
-import { buttonVariants } from "@/components/ui/variants"
+import { ButtonVariants } from "@/components/ui/variants"
 import type { VariantProps } from "class-variance-authority"
 import React from "react"
 import { cn } from "@/lib/utils"
@@ -15,7 +15,7 @@ type ButtonLinkProps = React.PropsWithChildren<{
 
 export interface ExternalProps
   extends ButtonLinkProps,
-    VariantProps<typeof buttonVariants> {
+    VariantProps<typeof ButtonVariants> {
   asChild?: boolean
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
@@ -45,7 +45,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
     return (
       <a
         className={cn(
-          buttonVariants({
+          ButtonVariants({
             variant,
             size: resolvedSize,
             iconPosition: resolvedIconPosition,
@@ -76,7 +76,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
     <Link
       href={href}
       className={cn(
-        buttonVariants({
+        ButtonVariants({
           variant,
           size: resolvedSize,
           iconPosition: resolvedIconPosition,

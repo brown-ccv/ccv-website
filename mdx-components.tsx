@@ -1,7 +1,7 @@
 import type { MDXComponents } from "mdx/types"
 import Image from "next/image"
 import { SectionHeader } from "@/components/ui/SectionHeader"
-import { buttonVariants } from "@/components/ui/variants"
+import { ButtonVariants } from "@/components/ui/variants"
 import { ButtonLink } from "@/components/ui/ButtonLink"
 import {
   FeaturedCarousel,
@@ -20,10 +20,10 @@ import { PeopleSection } from "@/components/PeopleSection"
 import { Button } from "@/components/ui/Button"
 import Icon from "@/components/ui/RenderIcon"
 import { cn } from "@/lib/utils"
-import { cardVariants } from "@/components/ui/variants"
+import { CardVariants } from "@/components/ui/variants"
 
 export const MDXButton = ({ children, href, ...props }: any) => {
-  const buttonClassName = buttonVariants({
+  const buttonClassName = ButtonVariants({
     variant: "primary_filled",
     size: "lg",
   })
@@ -50,7 +50,7 @@ export const ContactCard = ({
         <Card
           className={cn(
             "overflow-hidden flex flex-col w-full h-full",
-            cardVariants({ variant: "default" })
+            CardVariants({ variant: "default" })
           )}
         >
           <CardContent className="flex flex-col h-full">

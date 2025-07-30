@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/Card"
 import { Button } from "@/components/ui/Button"
 import { cn } from "@/lib/utils"
-import { cardVariants } from "@/components/ui/variants"
+import { CardVariants } from "@/components/ui/variants"
 import * as Dialog from "@radix-ui/react-dialog"
 import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa"
 import ButtonLink from "@/components/ui/ButtonLink"
@@ -52,7 +52,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
         <Card
           className={cn(
             "overflow-hidden cursor-pointer",
-            cardVariants({ variant: "people" }),
+            CardVariants({ variant: "people" }),
             "w-[400px]",
             "h-[600px]",
             "flex-shrink-0"
