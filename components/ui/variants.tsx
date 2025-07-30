@@ -68,9 +68,9 @@ export const buttonVariants = cva(
         xxl: "h-8 px-6 py-6 text-md sm:h-16 sm:px-10 sm:py-10 sm:text-3xl",
 
         // large icon-only
-        icon: "h-12 w-12 p-2 h-10 w-10",
+        icon: "h-10 w-10 p-2",
         // small circle for icon-only
-        "icon-sm": "h-8 w-8 p-2 h-8 w-8",
+        "icon-sm": "h-8 w-8 p-2",
       },
 
       iconPosition: {

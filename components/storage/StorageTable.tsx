@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { Button } from '@/components/ui/button';
+import { ChevronRightIcon, ChevronLeftIcon } from 'lucide-react';
 import { ServiceConfig, SelectedAnswers, TableRow, QuestionsConfig, ServiceFeature, featureIcons, featureColorMap  } from '@/lib/storage-types'
 import {
   createColumnHelper,
@@ -228,20 +229,18 @@ const tableData: TableRow[] = useMemo(() => {
       {/* Desktop View - Table */}
       <div className="hidden lg:block w-full overflow-x-scroll rounded-2xl bg-gradient-to-br from-white to-neutral-50/30 border border-neutral-300">       
         <div className="relative" ref={tableContainerRef}>
-          <div className="flex justify-end px-2 border-b border-neutral-200 bg-white sticky top-0 z-40">
+          <div className="flex justify-end p-2 border-b border-neutral-200 bg-white sticky top-0 z-40">
             <Button
               onClick={() => scrollTable('left')}
               aria-label="Scroll left"
               variant="secondary_filled"
-              size="icon"
-              iconOnly={<FaChevronLeft/>} 
+              iconOnly={<ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />} 
             />
             <Button
               onClick={() => scrollTable('right')}
               aria-label="Scroll right"
               variant="secondary_filled"
-              size="icon"
-              iconOnly={<FaChevronRight />}
+              iconOnly={<ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />} 
             />
           </div>
         </div>
