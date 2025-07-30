@@ -5,7 +5,7 @@ import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
 import { EventCard } from "@/components/calendar/EventCard"
-import { ContentSection } from "@/components/ui/content-section"
+import { ContentSection } from "@/components/ui/ContentSection"
 
 export interface DataProps {
   id: number
@@ -57,7 +57,7 @@ const ToggleButton = ({ item, view, setView }: ToggleButtonProps) => {
 const CALENDAR_COMPONENTS = {
   Weekly: CalendarWeekly,
   Monthly: CalendarMonth,
-} as const;
+} as const
 
 export function EventSection({
   streamedDataFuture,
@@ -67,15 +67,18 @@ export function EventSection({
 }: EventSectionProps): JSX.Element {
   const dataFuture = use(streamedDataFuture)
   const dataPast = use(streamedDataPast)
-  const [view, setView] = useState<"Upcoming" | "Weekly" | "Monthly">("Upcoming")
+  const [view, setView] = useState<"Upcoming" | "Weekly" | "Monthly">(
+    "Upcoming"
+  )
   const CAL_VIEW_ARRAY = ["Upcoming", "Weekly", "Monthly"] as const
 
   const renderView = () => {
     if (view === "Upcoming") {
       return <UpcomingEvents events={dataFuture} />
     }
-    
-    const CalendarComponent = CALENDAR_COMPONENTS[view as keyof typeof CALENDAR_COMPONENTS]
+
+    const CalendarComponent =
+      CALENDAR_COMPONENTS[view as keyof typeof CALENDAR_COMPONENTS]
     return (
       <div className="h-0 min-h-[400px] sm:min-h-[600px] lg:min-h-[1000px]">
         <CalendarComponent
@@ -123,9 +126,7 @@ export function EventSection({
           </div>
 
           {/* Conditional rendering of views */}
-          <div className="mt-1">
-            {renderView()}
-          </div>
+          <div className="mt-1">{renderView()}</div>
         </div>
       </div>
     </ContentSection>

@@ -1,7 +1,7 @@
 "use client"
 
 import { ReactNode } from "react"
-import { TextAnimate } from "@/components/magicui/text-animate"
+import { TextAnimate } from "@/components/magicui/TextAnimate"
 
 interface HeroProps {
   image?: string
@@ -20,15 +20,13 @@ export const Hero = ({
   children,
   showGradient = true,
   titleClassName = "font-bold text-5xl sm:text-6xl lg:text-7xl xxl:text-8xl",
-  descriptionClassName = "text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold"
+  descriptionClassName = "text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold",
 }: HeroProps) => {
   return (
     <div
-
       // className="w-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[clamp(1000px,50vh,60vh)] bg-cover bg-center relative flex flex-col m-0 p-0"
 
       className="w-full min-h-[clamp(1000px,50vh,60vh)] bg-cover bg-[center_65%] relative flex flex-col overflow-hidden m-0 p-0"
-
       style={{
         backgroundImage: `
           linear-gradient(135deg, rgb(17 24 39) 0%, rgb(243 244 246) 100%),
@@ -40,18 +38,18 @@ export const Hero = ({
           linear-gradient(135deg, #00b398 0%, transparent 30%, transparent 70%, #EC4899 100%),
           url(${image})
         `,
-        backgroundSize: "cover, cover, cover, cover, cover, cover, cover, cover",
-        backgroundBlendMode: "overlay, multiply, multiply, overlay, soft-light, overlay, overlay, normal",
+        backgroundSize:
+          "cover, cover, cover, cover, cover, cover, cover, cover",
+        backgroundBlendMode:
+          "overlay, multiply, multiply, overlay, soft-light, overlay, overlay, normal",
       }}
     >
       {showGradient && (
         <div className="relative flex-1 flex items-start w-full pl-6 pr-6 md:pl-14 md:pr-14 xl:pl-36 xl:pr-96 z-5">
           <div className="flex flex-col text-white space-y-6 w-full pt-[12%] pb-16 overflow-hidden max-w-[1400px]">
-            {title && (
-              <h1 className={titleClassName}>{title}</h1>
-            )}
+            {title && <h1 className={titleClassName}>{title}</h1>}
             {description && (
-              <TextAnimate 
+              <TextAnimate
                 as="p"
                 className={descriptionClassName}
                 animation="fadeIn"

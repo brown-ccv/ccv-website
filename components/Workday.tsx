@@ -2,8 +2,8 @@
 
 import React from "react"
 import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
-import { Card, CardContent } from "@/components/ui/card"
-import ButtonLink from "@/components/ui/button-link"
+import { Card, CardContent } from "@/components/ui/Card"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 interface PositionProps {
   title: string

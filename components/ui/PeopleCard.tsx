@@ -7,13 +7,13 @@ import {
   CardContent,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/Card"
+import { Button } from "@/components/ui/Button"
 import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
 import * as Dialog from "@radix-ui/react-dialog"
 import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa"
-import ButtonLink from "@/components/ui/button-link"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 interface PeopleCardProps {
   className?: string
@@ -75,8 +75,12 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
               </div>
             </div>
             <div>
-              <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
-              <CardDescription className="text-xl italic text-center">{title}</CardDescription>
+              <CardTitle className="text-2xl text-center py-4">
+                {name}
+              </CardTitle>
+              <CardDescription className="text-xl italic text-center">
+                {title}
+              </CardDescription>
             </div>
           </CardContent>
         </Card>

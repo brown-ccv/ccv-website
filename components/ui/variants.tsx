@@ -1,6 +1,6 @@
 import { cva, VariantProps } from "class-variance-authority"
 
-export const buttonVariants = cva(
+export const ButtonVariants = cva(
   "inline-flex items-center justify-center flex-shrink-0 whitespace-nowrap w-full sm:w-auto font-semibold rounded-full transition-colors focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 [&_svg]:pointer-events-none m-0 sm:m-2 not-prose",
   {
     variants: {
@@ -96,7 +96,7 @@ export const buttonVariants = cva(
   }
 )
 
-export const badgeVariants = cva(
+export const BadgeVariants = cva(
   "inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap",
   {
     variants: {
@@ -116,7 +116,7 @@ export const badgeVariants = cva(
   }
 )
 
-export type BadgeProps = VariantProps<typeof badgeVariants>
+export type BadgeProps = VariantProps<typeof BadgeVariants>
 
 export const cardVariants = cva(
   "rounded-xl bg-white text-black transition-shadow",
@@ -131,7 +131,7 @@ export const cardVariants = cva(
       size: {
         fit: "w-fit",
         contained: "w-full max-w-sm mx-auto",
-      }
+      },
     },
     defaultVariants: {
       variant: "default",

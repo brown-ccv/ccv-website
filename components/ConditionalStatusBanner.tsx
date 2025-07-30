@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation"
 import StatusBanner from "@/components/StatusBanner"
-import ButtonLink from "@/components/ui/button-link"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 interface ConditionalStatusBannerProps {
   issues: any[]
@@ -39,7 +39,9 @@ export default function ConditionalStatusBanner({
           </>
         ) : (
           <>
-            <p className="text-sm sm:text-lg text-center sm:text-left flex-shrink">All Services Operational</p>
+            <p className="text-sm sm:text-lg text-center sm:text-left flex-shrink">
+              All Services Operational
+            </p>
             <ButtonLink
               href={"https://status.ccv.brown.edu/"}
               external

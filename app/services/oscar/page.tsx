@@ -1,5 +1,5 @@
 import { Hero } from "@/components/Hero"
-import { ContentSection } from "@/components/ui/content-section"
+import { ContentSection } from "@/components/ui/ContentSection"
 import OscarContent from "@/content/services/oscar.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 

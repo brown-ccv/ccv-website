@@ -11,11 +11,11 @@ import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
-import { ScrollButton } from "@/components/ui/scroll-button"
-import { SectionHeader } from "@/components/ui/section-header"
-import ButtonLink from "@/components/ui/button-link"
+import { ScrollButton } from "@/components/ui/ScrollButton"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import ButtonLink from "@/components/ui/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
-import { ContentSection } from "@/components/ui/content-section"
+import { ContentSection } from "@/components/ui/ContentSection"
 
 export default async function Home() {
   // Load featured carousel data from YAML
