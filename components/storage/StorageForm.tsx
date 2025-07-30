@@ -1,10 +1,10 @@
 import React from "react"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup"
 import { SelectedAnswers, FormQuestions } from "@/lib/storage-types"
 import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
-import ButtonLink from "@/components/ui/button-link"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 interface FormProps {
   selectedAnswers: SelectedAnswers

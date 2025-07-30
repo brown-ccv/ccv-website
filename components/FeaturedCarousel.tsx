@@ -1,52 +1,55 @@
-"use client";
+"use client"
 
-import React, { useState } from "react";
-import { Badge } from "@/components/ui/badge";
-import { getColorForTag } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
-import Image from "next/image";
-import Icon from "@/components/ui/render-icon";
-import Markdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw'
-import remarkGfm from 'remark-gfm'
-import { useSwipeable } from 'react-swipeable';
+import React, { useState } from "react"
+import { Badge } from "@/components/ui/Badge"
+import { getColorForTag } from "@/lib/utils"
+import { Button } from "@/components/ui/Button"
+import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
+import Image from "next/image"
+import Icon from "@/components/ui/RenderIcon"
+import Markdown from "react-markdown"
+import rehypeRaw from "rehype-raw"
+import remarkGfm from "remark-gfm"
+import { useSwipeable } from "react-swipeable"
 
 export interface FeaturedCarouselItem {
-  title: string;
-  categories: string[];
-  description: string;
-  image: string;
-  attribution?: string;
+  title: string
+  categories: string[]
+  description: string
+  image: string
+  attribution?: string
   organizations?: {
-    name: string;
-    organization: string;
-    pi?: string[];
-    pm?: string;
-    icon?: string;
-  }[];
+    name: string
+    organization: string
+    pi?: string[]
+    pm?: string
+    icon?: string
+  }[]
   buttons?: {
-    text: string;
-    url: string;
-    variant: "primary_filled" | "primary_outlined" | "secondary_filled" | "secondary_outlined";
-  }[];
+    text: string
+    url: string
+    variant:
+      | "primary_filled"
+      | "primary_outlined"
+      | "secondary_filled"
+      | "secondary_outlined"
+  }[]
 }
 
 interface FeaturedCarouselProps {
-  carouselData: FeaturedCarouselItem[];
+  carouselData: FeaturedCarouselItem[]
 }
 
 export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   carouselData,
 }) => {
-  const [idx, setIdx] = useState(0);
-  const currentItem = carouselData[idx];
-  const { title, categories, description, image, organizations, buttons } = currentItem;
+  const [idx, setIdx] = useState(0)
+  const currentItem = carouselData[idx]
+  const { title, categories, description, image, organizations, buttons } =
+    currentItem
 
-  const prev = () =>
-    setIdx((i) => (i === 0 ? carouselData.length - 1 : i - 1));
-  const next = () =>
-    setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1));
+  const prev = () => setIdx((i) => (i === 0 ? carouselData.length - 1 : i - 1))
+  const next = () => setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1))
 
   // Swipe handlers
   const handlers = useSwipeable({
@@ -55,9 +58,9 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
     trackMouse: false,
     delta: 50, // Minimum distance for swipe
     swipeDuration: 500, // Maximum time for swipe
-  });
+  })
 
-    return (
+  return (
     <section className="my-12">
       <div className="w-full mx-auto">
         {/* Carousel Container */}
@@ -73,7 +76,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             >
               <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
             </Button>
-            
+
             {/* Pagination Dots */}
             <div className="flex gap-1">
               {carouselData.map((_, i) => (
@@ -86,7 +89,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 />
               ))}
             </div>
-            
+
             <Button
               variant="secondary_filled"
               size="icon"
@@ -114,7 +117,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 ))}
               </div>
               <h3 className="text-2xl lg:text-3xl font-semibold">{title}</h3>
-              
+
               {/* Organizations */}
               {organizations && organizations.length > 0 && (
                 <div className="space-y-4">
@@ -124,15 +127,21 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                         <Icon iconName={org.icon} className="w-6 h-6" />
                       </div>
                       <div>
-                        <div className="text-lg lg:text-xl leading-snug font-semibold">{org.name}</div>
-                        <div className="text-sm lg:text-md text-gray-600">{org.organization}</div>
-                        {(org.pi && org.pi.length > 0) && (
+                        <div className="text-lg lg:text-xl leading-snug font-semibold">
+                          {org.name}
+                        </div>
+                        <div className="text-sm lg:text-md text-gray-600">
+                          {org.organization}
+                        </div>
+                        {org.pi && org.pi.length > 0 && (
                           <div className="text-sm text-gray-600 mt-1">
                             <span>PI: </span>
                             {org.pi?.map((pi, piIndex) => (
                               <span key={piIndex}>
                                 {pi}
-                                {piIndex < (org.pi?.length || 0) - 1 && <span>, </span>}
+                                {piIndex < (org.pi?.length || 0) - 1 && (
+                                  <span>, </span>
+                                )}
                               </span>
                             ))}
                             {org.pm && <span className="mx-2">•</span>}
@@ -178,10 +187,10 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                   width={600}
                   height={400}
                   className="object-contain"
-                  style={{ width: '700px', height: '500px' }}
+                  style={{ width: "700px", height: "500px" }}
                 />
               </div>
-              
+
               {/* Attribution positioned at bottom-right of this div */}
               {currentItem.attribution && (
                 <div className="absolute bottom-0 right-0 text-sm">
@@ -198,5 +207,5 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
