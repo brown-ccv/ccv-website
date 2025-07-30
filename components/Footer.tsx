@@ -2,7 +2,7 @@ import CCVLogo from "@/components/assets/CCVLogo"
 import { CarbonBadge } from "@/components/CarbonBadge"
 import { FaArrowRight } from "react-icons/fa"
 import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
-import ButtonLink from "@/components/ui/button-link"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 // Footer link component
 interface FooterLinkProps {
@@ -68,7 +68,7 @@ const Footer = () => {
 
   return (
     <footer className="flex flex-col justify-start items-start sm:justify-center sm:items-center w-full bg-gradient-to-b from-gradient-light to-gradient-dark text-neutral-800">
-              <div className="px-6 sm:px-8 py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
+      <div className="px-6 sm:px-8 py-8 w-full lg:max-w-5xl sm:max-w-3xl md:mt-8">
         <div className="flex flex-col justify-start items-start mb-8 space-y-2 sm:justify-center sm:items-center md:mb-16">
           <div className="text-xs tracking-widest uppercase text-cream">
             Brown University

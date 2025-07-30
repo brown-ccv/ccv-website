@@ -1,47 +1,48 @@
-import React from "react";
-import { PeopleCard } from "@/components/ui/people-card";
-import { PeopleTypes, PageContentData } from "@/lib/about-types";
-import { readContentFile } from "@/lib/content-utils";
-import path from 'path';
-import fs from "fs/promises";
+import React from "react"
+import { PeopleCard } from "@/components/ui/PeopleCard"
+import { PeopleTypes, PageContentData } from "@/lib/about-types"
+import { readContentFile } from "@/lib/content-utils"
+import path from "path"
+import fs from "fs/promises"
 
 interface PeopleSectionProps {
-  peopleContentPath: string;
+  peopleContentPath: string
 }
 
 function imagePath(imageName: string) {
-  return path.join('/images/people', imageName);
+  return path.join("/images/people", imageName)
 }
 
 async function getImagePaths(imageName: string | null) {
-  const defaultPath = "/logos/ccv-logo.svg";
+  const defaultPath = "/logos/ccv-logo.svg"
 
   if (!imageName) {
-    return { main: defaultPath, hover: defaultPath };
+    return { main: defaultPath, hover: defaultPath }
   }
 
-  const mainPath = imagePath(imageName);
-  const hoverName = imageName.replace("main", "hover");
-  const hoverPath = imagePath(hoverName);
+  const mainPath = imagePath(imageName)
+  const hoverName = imageName.replace("main", "hover")
+  const hoverPath = imagePath(hoverName)
 
   try {
-    await fs.access(path.join("public", mainPath));
+    await fs.access(path.join("public", mainPath))
   } catch {
-    return { main: defaultPath, hover: defaultPath };
+    return { main: defaultPath, hover: defaultPath }
   }
 
   try {
-    await fs.access(path.join("public", hoverPath));
-    return { main: mainPath, hover: hoverPath };
+    await fs.access(path.join("public", hoverPath))
+    return { main: mainPath, hover: hoverPath }
   } catch {
-    return { main: mainPath, hover: mainPath };
+    return { main: mainPath, hover: mainPath }
   }
 }
 
 // Server component that loads people data
 async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
-  const loadedContent = await readContentFile<PageContentData>(peopleContentPath);
-  const pageContent = loadedContent.data;
+  const loadedContent =
+    await readContentFile<PageContentData>(peopleContentPath)
+  const pageContent = loadedContent.data
 
   return (
     <div className="flex justify-center py-4 lg:py-10">
@@ -49,7 +50,7 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
         {pageContent?.people &&
           (await Promise.all(
             pageContent.people.map(async (person: PeopleTypes) => {
-              const { main, hover } = await getImagePaths(person.image);
+              const { main, hover } = await getImagePaths(person.image)
               return (
                 <div key={person.name}>
                   <PeopleCard
@@ -60,15 +61,15 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
                     personDetails={person}
                   />
                 </div>
-              );
+              )
             })
           ))}
       </div>
     </div>
-  );
+  )
 }
 
 // Client component wrapper for MDX compatibility
 export const PeopleSection = (props: PeopleSectionProps) => {
-  return <PeopleSectionData {...props} />;
-}; 
+  return <PeopleSectionData {...props} />
+}

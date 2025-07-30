@@ -1,7 +1,7 @@
 import React from "react"
 import { DataProps } from "@/components/EventSection"
 import { ClockIcon } from "@heroicons/react/20/solid"
-import ButtonLink from "@/components/ui/button-link"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 const CalendarEvent: React.FC<DataProps> = ({
   date_time,

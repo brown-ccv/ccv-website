@@ -1,7 +1,7 @@
 import type { MDXComponents } from "mdx/types"
 import Image from "next/image"
-import { SectionHeader } from "@/components/ui/section-header"
-import { ButtonLink } from "@/components/ui/button-link"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import { ButtonLink } from "@/components/ui/ButtonLink"
 import {
   FeaturedCarousel,
   FeaturedCarouselItem,
@@ -13,22 +13,22 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@/components/ui/card"
-import { RatesCard, RatesGrid } from "@/components/ui/rates-card"
+} from "@/components/ui/Card"
+import { RatesCard, RatesGrid } from "@/components/ui/RatesCard"
 import { PeopleSection } from "@/components/PeopleSection"
-import { Button } from "@/components/ui/button"
-import Icon from "@/components/ui/render-icon"
+import { Button } from "@/components/ui/Button"
+import Icon from "@/components/ui/RenderIcon"
 import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
 
 export const MDXButton = ({ children, href, ...props }: any) => {
   return (
-    <ButtonLink 
-      href={href} 
+    <ButtonLink
+      href={href}
       variant="primary_filled"
       size="lg"
       align="center"
-      className="my-4" 
+      className="my-4"
       {...props}
     >
       {children}
@@ -38,7 +38,10 @@ export const MDXButton = ({ children, href, ...props }: any) => {
 
 export const ButtonGroup = ({ children, ...props }: any) => {
   return (
-    <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full items-start not-prose" {...props}>
+    <div
+      className="flex flex-col sm:flex-row flex-wrap gap-4 w-full items-start not-prose"
+      {...props}
+    >
       {children}
     </div>
   )
@@ -70,7 +73,10 @@ export const ContactCard = ({
                 align === "center" ? "justify-center" : "justify-start"
               )}
             >
-              <CardHeader className="flex gap-3 min-w-0" align={headerAlign || align}>
+              <CardHeader
+                className="flex gap-3 min-w-0"
+                align={headerAlign || align}
+              >
                 <div className="flex items-start gap-2 min-w-0">
                   {IconComponent && (
                     <IconComponent
@@ -82,7 +88,10 @@ export const ContactCard = ({
                 </div>
               </CardHeader>
             </div>
-            <CardDescription className="pt-6 text-lg" align={contentAlign || align}>
+            <CardDescription
+              className="pt-6 text-lg"
+              align={contentAlign || align}
+            >
               {children}
             </CardDescription>
           </CardContent>

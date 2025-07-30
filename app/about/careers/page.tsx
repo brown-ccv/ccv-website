@@ -3,9 +3,9 @@ import { Workday } from "@/components/Workday"
 import { Hero } from "@/components/Hero"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
-import { ContentSection } from "@/components/ui/content-section"
-import { SectionHeader } from "@/components/ui/section-header"
-import ButtonLink from "@/components/ui/button-link"
+import { ContentSection } from "@/components/ui/ContentSection"
+import { SectionHeader } from "@/components/ui/SectionHeader"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 export default async function AboutLayout() {
   try {

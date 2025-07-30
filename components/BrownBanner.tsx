@@ -1,7 +1,7 @@
 import React from "react"
 import { FaComments } from "react-icons/fa"
 import BrownLogo from "@/components/assets/BrownLogo"
-import ButtonLink from "@/components/ui/button-link"
+import ButtonLink from "@/components/ui/ButtonLink"
 
 interface BrownBannerProps {
   id?: string
@@ -9,7 +9,6 @@ interface BrownBannerProps {
 
 export const BrownBanner: React.FC<BrownBannerProps> = () => {
   return (
-
     <header className="bg-white flex items-center py-2 px-6">
       <div className="flex flex-row items-center w-full">
         <ButtonLink

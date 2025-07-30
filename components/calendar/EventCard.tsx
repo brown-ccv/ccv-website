@@ -1,18 +1,18 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/Card"
 import { FaCalendarAlt } from "react-icons/fa"
-import { SectionHeader } from "@/components/ui/section-header"
+import { SectionHeader } from "@/components/ui/SectionHeader"
 import { cardVariants } from "@/components/ui/variants"
 import { cn } from "@/lib/utils"
-import { ButtonLink } from "@/components/ui/button-link"
+import { ButtonLink } from "@/components/ui/ButtonLink"
 
 export const EventCard = () => {
   return (
     <Card className={cn(cardVariants({ variant: "default" }))}>
       <CardContent className="p-6">
         <div className="flex flex-col items-center text-center">
-          <SectionHeader 
-            title="Events" 
-            align="center" 
+          <SectionHeader
+            title="Events"
+            align="center"
             bars={true}
             icon={<FaCalendarAlt />}
             className="mb-2"
@@ -35,4 +35,4 @@ export const EventCard = () => {
       </CardContent>
     </Card>
   )
-} 
+}
