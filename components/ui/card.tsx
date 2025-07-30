@@ -1,6 +1,14 @@
 import React from "react"
 import { cn } from "@/lib/utils"
 
+interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
+  align?: "left" | "center" | "right"
+}
+
+interface CardDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {
+  align?: "left" | "center" | "right"
+}
+
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
@@ -8,7 +16,7 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-2xl border bg-gradient-to-br from-white to-neutral-50/30 text-card-foreground",
+      "rounded-2xl border border-neutral-100 bg-gradient-to-br from-white to-neutral-50/30 text-card-foreground",
       className,
     )}
     {...props}
@@ -18,11 +26,16 @@ Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+  CardHeaderProps
+>(({ className, align = "left", ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex flex-col space-y-1.5 p-4 sm:p-6 font-semibold text-3xl", className)}
+    className={cn(
+      "flex flex-col space-y-1.5 py-4 sm:py-6 font-semibold text-3xl",
+      align === "center" && "text-center",
+      align === "right" && "text-right",
+      className
+    )}
     {...props}
   />
 ))
@@ -42,11 +55,16 @@ CardTitle.displayName = "CardTitle"
 
 const CardDescription = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+  CardDescriptionProps
+>(({ className, align = "left", ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("text-sm text-muted-foreground [&_ul]:list-none [&_ol]:list-none [&_li]:list-none", className)}
+    className={cn(
+      "text-sm text-muted-foreground [&_ul]:list-none [&_ol]:list-none [&_li]:list-none",
+      align === "center" && "text-center",
+      align === "right" && "text-right",
+      className
+    )}
     {...props}
   />
 ))

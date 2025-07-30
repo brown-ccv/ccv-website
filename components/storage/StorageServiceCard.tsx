@@ -4,6 +4,9 @@ import { ServiceConfig, ServiceFeature, featureIcons } from '@/lib/storage-types
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge'
 import { cn, humanize } from "@/lib/utils"
+import { cardVariants } from '@/components/ui/variants';
+// import { sortFeatures } from '@/components/storage/utils';
+
 
 interface ServiceCardProps {
     service: ServiceConfig;
@@ -28,10 +31,10 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, isDisabled })
     if (!notes || notes.length === 0) return null;
     
     return (
-      <div className="ml-8 text-sm text-neutral-500 font-normal italic tracking-tight">
+      <div className="ml-6 text-sm text-neutral-500 font-normal italic tracking-tight">
         <ul className="list-disc list-inside space-y-0.5">
           {notes.map((note, index) => (
-            <li key={index}>{note}</li>
+            <li key={index} className="break-words">{note}</li>
           ))}
         </ul>
       </div>
@@ -39,30 +42,33 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({ service, isDisabled })
   };
 
   return (
-    <Card className={cn("w-full bg-white border-neutral-300")}>
+    <Card className={cn(cardVariants({ variant: "default" }), "bg-white")}>
+    {/* <Card className={cn("w-full bg-white border-neutral-300")}> */}
       <div className={cn("transition-opacity duration-300", isDisabled ? 'opacity-30 grayscale' : '')}>
         <CardHeader className="flex items-center justify-center">
-          <CardTitle className="text-2xl pt-4">{humanize(service.name)}</CardTitle>
+          <CardTitle className="text-2xl pt-4 text-center">{humanize(service.name)}</CardTitle>
         </CardHeader>
-        <CardContent className="space-y-3 text-md mx-6 mb-4">
+        <CardContent className="space-y-3 text-sm mx-4 mb-4">
           {service.features?.map((feature) => {
             const IconComponent = featureIcons[feature.name.toLowerCase()];
 
             return (
-              <div key={feature.name} className="space-y-1">
-                {/* Main feature row with icon, name, and badge */}
-                <div className="flex items-center gap-2 text-neutral-500 font-semibold tracking-wide min-w-0">
-                  {IconComponent ? <IconComponent className="text-lg flex-shrink-0" /> : null}
-                  <span className="flex-shrink-0">{humanize(feature.name).toUpperCase()}:</span>
-                  <div className="font-semibold tracking-tight flex items-center gap-2 min-w-0">
-                    <Badge
-                      value={feature.value}
-                      autoColor={true}
-                      className="rounded-full font-semibold text-sm flex-shrink-0"
-                    >
-                      {humanize(formatFeatureDisplayValue(feature))}
-                    </Badge>
-                  </div>
+              <div key={feature.name} className="space-y-2">
+                {/* Feature name and icon */}
+                <div className="flex items-start gap-2 text-neutral-500 font-semibold tracking-wide">
+                  {IconComponent ? <IconComponent className="text-lg flex-shrink-0 mt-0.5" /> : null}
+                  <span className="break-words">{humanize(feature.name).toUpperCase()}:</span>
+                </div>
+                
+                {/* Badge on its own line */}
+                <div className="ml-6">
+                  <Badge
+                    value={feature.value}
+                    autoColor={true}
+                    className="rounded-full font-semibold text-sm"
+                  >
+                    {humanize(formatFeatureDisplayValue(feature))}
+                  </Badge>
                 </div>
                 
                 {/* Notes row - appears below when there are notes */}

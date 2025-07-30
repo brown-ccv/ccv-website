@@ -4,10 +4,7 @@ import { JSX, use, useState } from "react"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
-import { Card, CardContent } from "@/components/ui/card"
-import { FaCalendarAlt } from "react-icons/fa"
-import ButtonLink from "@/components/ui/button-link"
-import { SectionHeader } from "@/components/ui/section-header"
+import { EventCard } from "@/components/calendar/EventCard"
 import { ContentSection } from "@/components/ui/content-section"
 
 export interface DataProps {
@@ -39,38 +36,6 @@ interface ToggleButtonProps {
   setView: (view: "Upcoming" | "Weekly" | "Monthly") => void
 }
 
-const EventCard = () => {
-  return (
-    <Card className="w-fit">
-      <CardContent className="p-6">
-        <div className="flex flex-col items-center text-center">
-          <SectionHeader
-            title="Events"
-            align="center"
-            bars={true}
-            icon={<FaCalendarAlt />}
-            className="mb-2"
-          />
-          <h3 className="font-serif italic text-black text-xl mb-6">
-            What's next at CCV
-          </h3>
-          <div className="flex justify-center">
-            <ButtonLink
-              className="mt-0 mx-4"
-              variant="primary_filled"
-              size="lg"
-              href="https://events.brown.edu/ccv/all"
-              external={true}
-            >
-              View All Events
-            </ButtonLink>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  )
-}
-
 const ToggleButton = ({ item, view, setView }: ToggleButtonProps) => {
   return (
     <p
@@ -89,6 +54,11 @@ const ToggleButton = ({ item, view, setView }: ToggleButtonProps) => {
   )
 }
 
+const CALENDAR_COMPONENTS = {
+  Weekly: CalendarWeekly,
+  Monthly: CalendarMonth,
+} as const;
+
 export function EventSection({
   streamedDataFuture,
   streamedDataPast,
@@ -97,16 +67,31 @@ export function EventSection({
 }: EventSectionProps): JSX.Element {
   const dataFuture = use(streamedDataFuture)
   const dataPast = use(streamedDataPast)
-  const [view, setView] = useState<"Upcoming" | "Weekly" | "Monthly">(
-    "Upcoming"
-  )
+  const [view, setView] = useState<"Upcoming" | "Weekly" | "Monthly">("Upcoming")
   const CAL_VIEW_ARRAY = ["Upcoming", "Weekly", "Monthly"] as const
+
+  const renderView = () => {
+    if (view === "Upcoming") {
+      return <UpcomingEvents events={dataFuture} />
+    }
+    
+    const CalendarComponent = CALENDAR_COMPONENTS[view as keyof typeof CALENDAR_COMPONENTS]
+    return (
+      <div className="h-0 min-h-[400px] sm:min-h-[600px] lg:min-h-[1000px]">
+        <CalendarComponent
+          today={today}
+          currentDate={currentDate}
+          events={dataPast.concat(dataFuture)}
+        />
+      </div>
+    )
+  }
 
   return (
     <ContentSection>
       {/* Small Screen Layout (Mobile/Tablet) */}
       <div className="xl:hidden">
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-4">
           <div className="flex justify-center">
             <EventCard />
           </div>
@@ -115,7 +100,7 @@ export function EventSection({
       </div>
 
       {/* Large Screen Layout (Desktop) */}
-      <div className="hidden xl:flex xl:gap-6">
+      <div className="hidden xl:flex xl:gap-4">
         {/* Left: Events card */}
         <div className="flex-shrink-0">
           <EventCard />
@@ -139,27 +124,7 @@ export function EventSection({
 
           {/* Conditional rendering of views */}
           <div className="mt-1">
-            {view === "Upcoming" && <UpcomingEvents events={dataFuture} />}
-
-            {view === "Weekly" && (
-              <div className="h-0 min-h-[1000px]">
-                <CalendarWeekly
-                  today={today}
-                  currentDate={currentDate}
-                  events={dataPast.concat(dataFuture)}
-                />
-              </div>
-            )}
-
-            {view === "Monthly" && (
-              <div className="h-0 min-h-[1000px]">
-                <CalendarMonth
-                  today={today}
-                  currentDate={currentDate}
-                  events={dataPast.concat(dataFuture)}
-                />
-              </div>
-            )}
+            {renderView()}
           </div>
         </div>
       </div>

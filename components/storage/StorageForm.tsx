@@ -18,7 +18,7 @@ const Form: React.FC<FormProps> = ({
   questions,
 }) => {
   return (
-    <div className="space-y-2 px-8 pb-8 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl max-w-[800px] border border-neutral-300">
+    <div className="space-y-2 px-4 sm:px-6 md:px-8 pb-8 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl max-w-[800px] border border-neutral-300">
       {questions.map((question) => (
         <div key={question.id}>
           <div className="pt-6 font-medium text-black text-2xl">
@@ -44,7 +44,7 @@ const Form: React.FC<FormProps> = ({
           <RadioGroup
             value={selectedAnswers[question.id]}
             onValueChange={(value) => onAnswerChange(question.id, value)}
-            className="flex flex-col md:flex-row space-y-2 md:space-y-0 gap-x-4 px-4 pt-2"
+            className="flex flex-col md:flex-row space-y-2 md:space-y-0 gap-x-4 px-2 sm:px-4 pt-2"
           >
             {question.options.map((option) => (
               <div key={option.label} className="flex items-center space-x-2">

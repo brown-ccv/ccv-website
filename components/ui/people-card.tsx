@@ -35,13 +35,11 @@ interface PeopleCardProps {
 }
 
 export const PeopleCard: React.FC<PeopleCardProps> = ({
-  className,
   imagePath,
   hoverImagePath,
   name,
   title,
   personDetails,
-  ...props
 }) => {
   const [isHovered, setIsHovered] = useState(false)
   const [open, setOpen] = useState(false)
@@ -53,8 +51,8 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           className={cn(
             "overflow-hidden cursor-pointer",
             cardVariants({ variant: "people" }),
-            "w-[400px]",
-            "h-[600px]",
+            "w-[350px] sm:w-[400px]",
+            "h-[525px] sm:h-[600px]",
             "flex-shrink-0"
           )}
           onFocus={() => setIsHovered(true)}
@@ -63,23 +61,22 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => setOpen(true)}
         >
-          <CardContent className="flex flex-col h-full">
-            <div className="relative overflow-hidden">
-              <Image
-                src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
-                alt={name}
-                width="500"
-                height="500"
-                className="rounded-full transition-opacity duration-300 max-h-[350px] min-h-[350px] max-w-[350px]"
-              />
+          <CardContent className="flex flex-col h-full p-0">
+            <div className="relative overflow-hidden flex justify-center">
+              <div className="!m-0 !p-0">
+                <Image
+                  src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
+                  alt={name}
+                  width="500"
+                  height="500"
+                  className="rounded-full transition-opacity duration-300 h-[306px] w-[306px] sm:h-[350px] sm:w-[350px] !m-0 !p-0"
+                  style={{ margin: 0, padding: 0 }}
+                />
+              </div>
             </div>
             <div>
-              <CardTitle className="text-2xl text-center py-4">
-                {name}
-              </CardTitle>
-              <CardDescription className="text-xl italic text-center">
-                {title}
-              </CardDescription>
+              <CardTitle className="text-2xl text-center py-4">{name}</CardTitle>
+              <CardDescription className="text-xl italic text-center">{title}</CardDescription>
             </div>
           </CardContent>
         </Card>

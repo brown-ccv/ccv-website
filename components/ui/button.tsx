@@ -22,6 +22,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       variant,
       size,
       iconPosition,
+      align,
       asChild = false,
       leftIcon,
       rightIcon,
@@ -46,7 +47,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             variant,
             size: resolvedSize,
             iconPosition: resolvedIconPosition,
-            className,
+            align,
+            className
           }),
           "my-4"
         )}

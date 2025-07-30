@@ -9,40 +9,12 @@ description: A guide for getting started using MDX files to create and edit cont
 
 MDX files combine regular text and Markdown formatting with React components and custom components to create a feature-rich, flexible, and easy-to-use content editing experience.
 
+The content of the MDX Editing Guide that you are *currently reading* is rendered from an MDX file called `mdx-editing-guide.mdx`, which you can find in the `/content` folder of the CCV website codebase.  It's extremely meta. 
+
+Every page on the CCV website is rendered from an mdx, markdown, or yaml file in the `/content` folder.
+
 <MDXButton href="https://nextjs.org/docs/app/guides/mdx">
   View Next.js MDX Documentation
-</MDXButton>
-
-## Tips
-
-1. **Keep it simple** - Use the styled components provided and create an issue on github to request a custom component.
-  - ❌ Don't use HTML tags directly
-  - ❌ Don't add complex styling or classes
-2. **Test your changes** - Run `npm run dev` to see your changes 
-
-{/* Commonly Used Markdown Formatting */}
-<SectionHeader
-  title="Commonly Used Markdown Formatting"
-/>
-
-### Regular Text
-```md
-Just write normal text like this. You can use **bold** and *italic* formatting.
-```
-Just write normal text like this. You can use **bold** and *italic* formatting.
-
-### Lists
-```md
-- Use dashes for bullet points
-- Like this
-- And this
-```
-- Use dashes for bullet points
-- Like this
-- And this
-
-<MDXButton href="https://www.markdownguide.org/cheat-sheet/">
-  Markdown Cheat Sheet
 </MDXButton>
 
 {/* Available Components */}
@@ -56,43 +28,76 @@ All available components are in the `/components` folder. To make them accessibl
   Request a New Component
 </MDXButton>
 
+### Best practices:
+
+1. **Keep it simple** - Use the styled components provided and create an issue on github to request a custom component.
+  - ❌ Don't use HTML tags directly
+  - ❌ Don't add complex styling or classes
+2. **Test your changes** - Run `npm run dev` to see your changes 
+
 {/* Example MDX File */}
 <SectionHeader
   title="Example MDX File"
 />
 
-```mdx
+This is an example of an MDX content file containing custom components and markdown formatting.
+
+```tsx
 <SectionHeader
-  title="Welcome to My Service"
+  title="Welcome to the Wonderful World of MDX"
 />
 
-This is the main content of the page. You can write normal text here.
+The `<SectionHeader/>` component is used to create a header for the page. It is a custom component that is defined in `/components/section-header.tsx` and imported in `/mdx-components.tsx`.
 
-<MDXButton href="https://ccv.brown.edu">
-  Read Documentation
-</MDXButton>
+Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<MDXButton/>` component. It uses the same styling as the buttons that are used throughout this website.
 
-## Key Features
+<ButtonGroup>
+  <MDXButton href="https://www.markdownguide.org/cheat-sheet/">
+    Markdown Cheat Sheet
+  </MDXButton>
+  <MDXButton href="https://nextjs.org/docs/app/guides/mdx">
+    Read Documentation
+  </MDXButton>
+</ButtonGroup>
 
-- **Feature 1** - Description of feature 1
-- **Feature 2** - Description of feature 2
-- **Feature 3** - Description of feature 3
+Here is a non-exhaustive list of markdown formatting options:
+
+- Use dashes for bullet points
+- Like this
+- And this
+- Make a ***bold and italic*** list item
+- Make a ~~strikethrough~~ list item 
+- Make a numbered list item
+- Like this
+- And this
 ```
 
-### This is how the above example renders:
+This is how the above example renders:
 
 <SectionHeader
-  title="Welcome to My Service"
+  title="Welcome to the Wonderful World of MDX"
 />
 
-This is the main content of the page. You can write normal text here.
+The `<SectionHeader/>` component is used to create a header for the page. It is a custom component that is defined in `/components/section-header.tsx` and imported in `/mdx-components.tsx`.
 
-<MDXButton href="https://ccv.brown.edu">
-  Read Documentation
-</MDXButton>
+Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<MDXButton/>` component. It uses the same styling as the buttons that are used throughout this website.
 
-### Key Features
+<ButtonGroup>
+  <MDXButton href="https://www.markdownguide.org/cheat-sheet/">
+    Markdown Cheat Sheet
+  </MDXButton>
+  <MDXButton href="https://nextjs.org/docs/app/guides/mdx">
+    Read Documentation
+  </MDXButton>
+</ButtonGroup>
 
-- **Feature 1** - Description of feature 1
-- **Feature 2** - Description of feature 2
-- **Feature 3** - Description of feature 3
+Here is a non-exhaustive list of markdown formatting options:
+
+- Use dashes for bullet points
+- Like this
+- And this
+- Make a ***bold and italic*** list item
+- Make a ~~strikethrough~~ list item 
+- Make a numbered list item
+- Like this
+- And this

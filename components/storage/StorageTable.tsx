@@ -6,6 +6,7 @@ import remarkGfm from 'remark-gfm'
 import Link from 'next/link'
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { Button } from '@/components/ui/button';
+import { ChevronRightIcon, ChevronLeftIcon } from 'lucide-react';
 import { ServiceConfig, SelectedAnswers, TableRow, QuestionsConfig, ServiceFeature, featureIcons, featureColorMap  } from '@/lib/storage-types'
 import {
   createColumnHelper,
@@ -111,13 +112,13 @@ const tableData: TableRow[] = useMemo(() => {
     const featureNameColumn: ColumnDef<TableRow, any> = columnHelper.accessor('featureName', {
       id: 'featureName',
       header: () => (
-        <div className="text-left px-4 py-2 font-semibold text-neutral-700">Feature</div>
+        <div className="text-left px-[4vw] sm:px-[3vw] py-2 font-semibold text-neutral-700">Feature</div>
       ),
       cell: info => {
         const featureName = humanize(info.getValue());
         const IconComponent = featureIcons[info.getValue().toLowerCase()];
         return (
-          <div className="flex items-center gap-2 px-4 py-2 font-medium text-neutral-900 min-h-[80px] uppercase tracking-wider">
+          <div className="flex items-center gap-2 px-[4vw] sm:px-[3vw] py-2 font-medium text-neutral-900 min-h-[80px] uppercase tracking-wider">
             {IconComponent ? <IconComponent className="w-6 h-6 text-brown-700 flex-shrink-0" /> : null}
             <span>{featureName}</span>
           </div>
@@ -142,7 +143,7 @@ const tableData: TableRow[] = useMemo(() => {
         cell: info => {
           const feature = info.getValue() as ServiceFeature;
           const featureNameFromRow = info.row.original.featureName;
-          const cellContentClasses = cn("px-4 py-2 text-start", columnClass);
+          const cellContentClasses = cn("px-[4vw] sm:px-[3vw] py-2 text-start", columnClass);
 
           if (feature === undefined) {
             return (
@@ -228,24 +229,22 @@ const tableData: TableRow[] = useMemo(() => {
       {/* Desktop View - Table */}
       <div className="hidden lg:block w-full overflow-x-scroll rounded-2xl bg-gradient-to-br from-white to-neutral-50/30 border border-neutral-300">       
         <div className="relative" ref={tableContainerRef}>
-          <div className="flex justify-end px-2 border-b border-neutral-200 bg-white sticky top-0 z-40">
+          <div className="flex justify-end p-2 border-b border-neutral-200 bg-white sticky top-0 z-40">
             <Button
               onClick={() => scrollTable('left')}
               aria-label="Scroll left"
               variant="secondary_filled"
-              size="icon"
-              iconOnly={<FaChevronLeft/>} 
+              iconOnly={<ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />} 
             />
             <Button
               onClick={() => scrollTable('right')}
               aria-label="Scroll right"
               variant="secondary_filled"
-              size="icon"
-              iconOnly={<FaChevronRight />}
+              iconOnly={<ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />} 
             />
           </div>
         </div>
-        <div ref={tableContainerRef} className="overflow-x-scroll overflow-y-auto force-scrollbar h-[calc(100vh-200px)]">
+        <div ref={tableContainerRef} className="overflow-x-scroll overflow-y-auto h-[calc(100vh-200px)]">
           <table className="min-w-full border-separate" style={{ borderSpacing: 0 }}>
             <thead className="bg-white sticky top-0 z-20 border-b border-neutral-200">
               {table.getHeaderGroups().map(headerGroup => (

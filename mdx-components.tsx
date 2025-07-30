@@ -1,7 +1,6 @@
 import type { MDXComponents } from "mdx/types"
 import Image from "next/image"
 import { SectionHeader } from "@/components/ui/section-header"
-import { buttonVariants } from "@/components/ui/variants"
 import { ButtonLink } from "@/components/ui/button-link"
 import {
   FeaturedCarousel,
@@ -23,15 +22,24 @@ import { cn } from "@/lib/utils"
 import { cardVariants } from "@/components/ui/variants"
 
 export const MDXButton = ({ children, href, ...props }: any) => {
-  const buttonClassName = buttonVariants({
-    variant: "primary_filled",
-    size: "lg",
-  })
   return (
-    <div className="inline-block not-prose">
-      <ButtonLink href={href} className={`${buttonClassName} my-4`} {...props}>
-        {children}
-      </ButtonLink>
+    <ButtonLink 
+      href={href} 
+      variant="primary_filled"
+      size="lg"
+      align="center"
+      className="my-4" 
+      {...props}
+    >
+      {children}
+    </ButtonLink>
+  )
+}
+
+export const ButtonGroup = ({ children, ...props }: any) => {
+  return (
+    <div className="flex flex-col sm:flex-row flex-wrap gap-4 w-full items-start not-prose" {...props}>
+      {children}
     </div>
   )
 }
@@ -41,6 +49,8 @@ export const ContactCard = ({
   title,
   icon,
   align = "center",
+  headerAlign,
+  contentAlign,
 }: any) => {
   const IconComponent = icon ? Icon : null
 
@@ -60,12 +70,7 @@ export const ContactCard = ({
                 align === "center" ? "justify-center" : "justify-start"
               )}
             >
-              <CardHeader
-                className={cn(
-                  "flex items-start gap-3 min-w-0",
-                  align === "center" ? "text-center" : "text-left"
-                )}
-              >
+              <CardHeader className="flex gap-3 min-w-0" align={headerAlign || align}>
                 <div className="flex items-start gap-2 min-w-0">
                   {IconComponent && (
                     <IconComponent
@@ -77,12 +82,7 @@ export const ContactCard = ({
                 </div>
               </CardHeader>
             </div>
-            <CardDescription
-              className={cn(
-                "pt-6 text-lg",
-                align === "center" ? "text-center" : "text-left"
-              )}
-            >
+            <CardDescription className="pt-6 text-lg" align={contentAlign || align}>
               {children}
             </CardDescription>
           </CardContent>
@@ -135,6 +135,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
 
     // Global MDX components
     MDXButton,
+    ButtonGroup,
+    Button,
     ContactCard,
     ContactGrid,
     SectionHeader,
@@ -147,7 +149,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     RatesCard,
     RatesGrid,
     PeopleSection,
-    Button,
     Icon,
     img: (props) => (
       <Image

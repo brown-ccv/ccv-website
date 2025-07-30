@@ -3,196 +3,150 @@
 @tailwind utilities;
 
 /* Prism.js syntax highlighting */
-@import "prismjs/themes/prism-tomorrow.css";
+@import "prismjs/themes/prism-okaidia.css";
 
 /* Custom code block styling */
-.prose pre {
-  background-color: #2d3748;
-  border-radius: 0.5rem;
-  padding: 1rem;
-  overflow-x: auto;
-  margin: 1rem 0;
-  max-width: 50%;
-  width: 50%;
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
-
-.prose code {
-  background-color: #f7fafc;
-  padding: 0.125rem 0.25rem;
-  border-radius: 0.25rem;
-  font-size: 0.875em;
-}
-
 .prose pre code {
-  background-color: transparent;
-  padding: 0;
-  border-radius: 0;
-  color: #e2e8f0;
   white-space: pre-wrap;
   word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 @layer base {
-    :root {
-        @apply font-sans;
-        @apply text-neutral-700;
-        --accent: 0, 128, 108;
-        --accent-light: 0, 230, 195;
-        --accent-dark: 49, 10, 101;
-        --accent-gradient: linear-gradient(
-                45deg,
-                rgb(var(--accent)),
-                rgb(var(--accent-light)) 30%,
-                white 60%
-        );
-    }
+  :root {
+    @apply font-sans;
+    @apply text-neutral-700;
+    --accent: 0, 128, 108;
+    --accent-light: 0, 230, 195;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(
+      45deg,
+      rgb(var(--accent)),
+      rgb(var(--accent-light)) 30%,
+      white 60%
+    );
+  }
 
-    html,
-    body {
-        @apply h-full;
-        @apply bg-white;
-        zoom: 1;
-    }
+  html,
+  body {
+    @apply h-full;
+    @apply bg-white;
+    zoom: 1;
+  }
 
-    main,
-    section {
-        @apply m-0 p-0;
-    }
+  main,
+  section {
+    @apply m-0 p-0;
+  }
 }
 
 p > a {
-    @apply text-keppel-800;
+  @apply text-keppel-800;
 }
 
 p > a:hover {
-    @apply text-keppel-500;
+  @apply text-keppel-500;
 }
 
 p > a:focus {
-    @apply text-keppel-600 outline-2 outline-keppel-600;
+  @apply text-keppel-600 outline-2 outline-keppel-600;
 }
 
 /* Apply zoom on all screen sizes */
 @media {
-    body {
-        zoom: 1;
-    }
+  body {
+    zoom: 1;
+  }
 }
 
 @layer components {
-    .column {
-        @apply flex-grow;
-        @apply basis-0;
-        @apply flex-shrink;
-        @apply p-3;
-    }
+  .column {
+    @apply flex-grow;
+    @apply basis-0;
+    @apply flex-shrink;
+    @apply p-3;
+  }
 
-    .content-wrapper {
-        @apply w-full px-8 md:px-14;
-    }
+  .content-wrapper {
+    @apply w-full px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40;
+  }
 
-    /* Remove default margins from images in MDX content */
-    .prose img {
-        @apply my-4 py-4;
-    }
+  /* Remove default margins from images in MDX content */
+  .prose img {
+    @apply my-4 py-4;
+  }
 
-    /* Markdown content styles should match globals */
+  /* Markdown content styles should match globals */
+  .prose h1 {
+    @apply font-bold text-4xl;
+  }
+
+  .prose h2,
+  .prose h3,
+  .prose h4 {
+    @apply font-semibold;
+  }
+
+  .prose h2 {
+    @apply text-3xl;
+  }
+
+  .prose h3 {
+    @apply text-2xl;
+  }
+
+  .prose h4 {
+    @apply text-xl;
+  }
+
+  @media (width >= 64rem) {
     .prose h1 {
-        @apply font-bold text-4xl;
+      @apply font-bold text-5xl;
     }
 
-    .prose h2, h3, h4 {
-        @apply font-semibold;
+    .prose h2,
+    .prose h3,
+    .prose h4 {
+      @apply font-semibold;
     }
 
     .prose h2 {
-        @apply text-3xl;
+      @apply text-4xl;
     }
 
     .prose h3 {
-        @apply text-2xl;
+      @apply text-3xl;
     }
 
     .prose h4 {
-        @apply text-xl;
+      @apply text-2xl;
     }
-
-    @media (width >= 64rem) {
-        .prose h1 {
-            @apply font-bold text-5xl;
-        }
-
-        .prose h2, h3, h4 {
-            @apply font-semibold;
-        }
-
-        .prose h2 {
-            @apply text-4xl;
-        }
-
-        .prose h3 {
-            @apply text-3xl;
-        }
-
-        .prose h4 {
-            @apply text-2xl;
-        }
-    }
+  }
 }
 
 @layer utilities {
-    .toggle-btn {
-        position: absolute;
-        top: -8px;
-        right: 4px;
-        padding: 4px;
-        border-radius: 9px;
-        background-color: white;
-    }
+  .toggle-btn {
+    position: absolute;
+    top: -8px;
+    right: 4px;
+    padding: 4px;
+    border-radius: 9px;
+    background-color: white;
+  }
 
-    .toggle-btn p:hover {
-        cursor: pointer;
-    }
+  .toggle-btn p:hover {
+    cursor: pointer;
+  }
 
-    .toggle-btn .selected {
-        background-color: white;
-        border: 2px solid #00b398;
-        box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
-    }
+  .toggle-btn .selected {
+    background-color: white;
+    border: 2px solid #00b398;
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+  }
 
-    .calendar-container {
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
-        text-align: center;
-        color: #2c3e50;
-    }
+  .calendar-container {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #2c3e50;
+  }
 }
-
-/* For Webkit browsers (Chrome, Safari) */
-.force-scrollbar::-webkit-scrollbar {
-    height: 8px; /* Or whatever height you want */
-    width: 8px; /* For vertical scrollbar if you ever need it */
-    background-color: transparent; /* Makes the track background transparent */
-}
-/* The thumb (the draggable part of the scrollbar) */
-.force-scrollbar::-webkit-scrollbar-thumb {
-    background-color: #d1d5db; /* Light gray */
-    border-radius: 4px; /* Rounded corners */
-    border: 2px solid transparent; /* To prevent it from taking full height/width if smaller than track */
-    background-clip: padding-box; /* Crucial for border to work as padding */
-}
-
-/* On hover */
-.force-scrollbar::-webkit-scrollbar-thumb:hover {
-    background-color: #9ca3af; /* Darker gray on hover */
-}
-
-/* For Firefox (less control, but you can set width/height) */
-.force-scrollbar {
-    scrollbar-width: thin; /* 'auto' or 'none' */
-    scrollbar-color: #d1d5db transparent; /* thumb color track color */
-}
-
