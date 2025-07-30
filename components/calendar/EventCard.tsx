@@ -3,7 +3,7 @@ import { FaCalendarAlt } from "react-icons/fa"
 import { SectionHeader } from "@/components/ui/section-header"
 import { cardVariants } from "@/components/ui/variants"
 import { cn } from "@/lib/utils"
-import ButtonLink from "../ui/button-link"
+import { ButtonLink } from "@/components/ui/button-link"
 
 export const EventCard = () => {
   return (
