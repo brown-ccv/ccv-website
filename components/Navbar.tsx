@@ -355,7 +355,6 @@ export const Navbar: React.FC = () => {
                             <ButtonLink
                               key={route.href}
                               href={route.href}
-                              external={true}
                               onClick={toggleMobileMenu}
                               className={
                                 "block text-white py-6 px-6 mr-6 hover:text-neutral-900 hover:bg-sunglow-400 active:bg-sunglow-200 focus-visible:ring-2 focus-visible:ring-sunglow-400"
@@ -403,7 +402,6 @@ export const Navbar: React.FC = () => {
             </ButtonLink>
             <ButtonLink
               href="https://docs.ccv.brown.edu/documentation"
-              external
               onClick={toggleMobileMenu}
               className="block text-sunglow-400 font-semibold text-2xl py-7 pl-6 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200 focus-visible:ring-2 focus-visible:ring-sunglow-400"
             >

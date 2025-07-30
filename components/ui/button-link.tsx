@@ -79,7 +79,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   return (
     <Link
       href={href}
-      className={cn(
+      className={isCalendarEvent ? className : cn(
         buttonVariants({
           variant,
           size: resolvedSize,
