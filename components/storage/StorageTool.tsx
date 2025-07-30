@@ -45,32 +45,30 @@ export default function StorageTool({
   }
 
   return (
-    <div>
-      <ContentSection className="bg-neutral-50">
-        <SectionHeader title="Compare Storage Options" align="center" />
-        <div className="flex flex-col items-start pb-8">
-          <h2 className="text-2xl font-bold text-gray-800 my-12">
-            {pageContent?.storage_tool_header}
-          </h2>
-          <div className="w-full mt-0 flex flex-col xl:flex-row gap-4 items-center xl:items-start">
-            <div>
-              <Form
-                selectedAnswers={selectedAnswers}
-                onAnswerChange={handleAnswerChange}
-                questions={questions}
-              />
-              <Button onClick={handleReset} variant="primary_filled" size="lg">
-                Reset Questions
-              </Button>
-            </div>
-            <Table
-              services={services}
+    <ContentSection className="bg-neutral-50">
+      <SectionHeader title="Compare Storage Options" align="center" />
+      <div className="flex flex-col items-start pb-8">
+        <h2 className="text-2xl font-bold text-gray-800 my-12">
+          {pageContent?.storage_tool_header}
+        </h2>
+        <div className="w-full mt-0 flex flex-col xl:flex-row gap-4 items-center xl:items-start">
+          <div>
+            <Form
               selectedAnswers={selectedAnswers}
-              questions={questionsConfig}
+              onAnswerChange={handleAnswerChange}
+              questions={questions}
             />
+            <Button onClick={handleReset} variant="primary_filled" size="lg">
+              Reset Questions
+            </Button>
           </div>
+          <Table
+            services={services}
+            selectedAnswers={selectedAnswers}
+            questions={questionsConfig}
+          />
         </div>
-      </ContentSection>
-    </div>
+      </div>
+    </ContentSection>
   )
 }
