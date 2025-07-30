@@ -152,6 +152,6 @@ jobs:
           header: "preview deployment"
           message: |
             <p>🚀 Your preview is ready!</p>
-            <p><strong>Preview URL:</strong> <a href="${{ steps.deploy.outputs.preview_url }}" target="_blank">${{ steps.deploy.outputs.preview_url }}</a></p>
+            <p><strong>Preview URL:</strong> <a href="${{ steps.deploy.outputs.preview_url }}" target="_blank" rel="noopener noreferrer">${{ steps.deploy.outputs.preview_url }}</a></p>
             <p><em>This preview will be automatically updated with each new commit to this PR.</em></p>
-            </details>
+            <p><small>Commit: <a href="https://github.com/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}" target="_blank" rel="noopener noreferrer"><code>${{ github.event.pull_request.head.sha }}</code></a></small></p>
