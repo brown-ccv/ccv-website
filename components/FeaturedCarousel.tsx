@@ -64,7 +64,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
     <section className="my-12">
       <div className="w-full mx-auto">
         {/* Carousel Container */}
-        <div className="bg-white relative" {...handlers}>
+        <div className="relative" {...handlers}>
           {/* Navigation Buttons */}
           <div className="flex justify-center items-center gap-4">
             <Button

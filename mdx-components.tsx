@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types"
 import Image from "next/image"
-import { SectionHeader } from "@/components/ui/SectionHeader"
+import { ContentSection } from "@/components/ui/ContentSection"
 import { ButtonLink } from "@/components/ui/ButtonLink"
 import {
   FeaturedCarousel,
@@ -148,7 +148,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Button,
     ContactCard,
     ContactGrid,
-    SectionHeader,
+    ContentSection,
     MDXCarousel,
     Card,
     CardContent,

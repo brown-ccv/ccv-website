@@ -1,5 +1,4 @@
 import React, { type JSX } from "react"
-import { Card, CardContent } from "@/components/ui/Card"
 
 export const ImpactBanner = (): JSX.Element => {
   const impactMetrics = [
@@ -9,38 +8,27 @@ export const ImpactBanner = (): JSX.Element => {
   ]
 
   return (
-    <div className="content-wrapper h-auto bg-gray-100">
-      <Card className="w-full border-none shadow-none rounded-none bg-transparent">
-        <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
-          <div className="flex flex-wrap flex-col lg:flex-row justify-between flex-grow">
-            <div className="flex flex-col items-center">
-              <h2 className="font-semibold text-black text-[28px] font-sans">
-                The CCV Impact
-              </h2>
-              <p className="italic text-gray-600 text-xl font-serif">
-                As of January 1, 2025
-              </p>
-            </div>
+    <div className="bg-neutral-50 p-16 flex flex-col lg:flex-row justify-between items-center flex-grow gap-6">
+      <div className="flex flex-col items-center">
+        <h2 className="font-semibold text-[28px] font-sans">The CCV Impact</h2>
+        <p className="italic text-gray-600 text-xl font-serif">
+          As of January 1, 2025
+        </p>
+      </div>
 
-            {impactMetrics.map((metric, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center mt-6 lg:mt-0"
-              >
-                <div
-                  className="bg-gradient-to-br from-purple-900 to-pink-500 bg-clip-text text-transparent
+      {impactMetrics.map((metric, index) => (
+        <div key={index}>
+          <div
+            className="bg-gradient-to-br from-purple-900 to-pink-500 bg-clip-text text-transparent
                     font-bold text-6xl text-center font-sans"
-                >
-                  {metric.count}
-                </div>
-                <div className="italic text-black text-[28px] text-center font-serif">
-                  {metric.label}
-                </div>
-              </div>
-            ))}
+          >
+            {metric.count}
           </div>
-        </CardContent>
-      </Card>
+          <div className="italic text-black text-[28px] text-center font-serif">
+            {metric.label}
+          </div>
+        </div>
+      ))}
     </div>
   )
 }
