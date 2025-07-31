@@ -1,5 +1,5 @@
 import { Hero } from "@/components/Hero"
-import PageContent from "@/content/services/ai-services.mdx"
+import AIServicesContent from "@/content/services/ai-services.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default function Page() {
@@ -9,7 +9,7 @@ export default function Page() {
     <>
       <Hero title={metadata.title} description={metadata.description} />
       <div className="prose prose-lg text-xl max-w-none">
-        <PageContent />
+        <AIServicesContent />
       </div>
     </>
   )
