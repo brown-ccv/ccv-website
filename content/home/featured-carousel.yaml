@@ -136,3 +136,17 @@ carousel:
         organization: "Brown University"
         pi: [ "Alexander Jaworski" ]
         icon: "FaUser"
+
+  - title: "Offshore Wind Opposition Networks"
+    categories: [ "Web Development", "LLMs", "Climate Science" ]
+    description: |
+      - Leveraging LLMs for metadata extraction from thousands of images and other media at scale
+      - Data aggregation and management
+      - User-friendly, reusable software products
+      - Reproducability and documentation
+    image: "/images/home/featured-carousel/climate-dev-lab.png"
+    organizations:
+      - name: "The Climate and Development Lab"
+        organization: "Brown University"
+        pi: [ "J. Timmons Roberts" ]
+        icon: "FaUser"
