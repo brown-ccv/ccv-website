@@ -1,5 +1,6 @@
 import React, { type JSX } from "react"
 import { Card, CardContent } from "@/components/ui/Card"
+import { cardVariants } from "@/components/ui/variants"
 
 export const ImpactBanner = (): JSX.Element => {
   const impactMetrics = [
@@ -8,9 +9,9 @@ export const ImpactBanner = (): JSX.Element => {
     { count: "600+", label: "Collaborations" },
   ]
 
-  return (
-    <div className="content-wrapper h-auto bg-gray-100">
-      <Card className="w-full border-none shadow-none rounded-none bg-transparent">
+      return (
+      <div className="w-full">
+        <Card variant="content" className="bg-neutral-50 px-4">
         <CardContent className="max-w-[1440px] mx-auto max-h-[600px] flex items-center px-6 py-10">
           <div className="flex flex-wrap flex-col lg:flex-row justify-between flex-grow">
             <div className="flex flex-col items-center">

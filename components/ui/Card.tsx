@@ -1,5 +1,6 @@
 import React from "react"
 import { cn } from "@/lib/utils"
+import { cardVariants } from "./variants"
 
 interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
   align?: "left" | "center" | "right"
@@ -11,12 +12,12 @@ interface CardDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {
 
 const Card = React.forwardRef<
   HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
+  React.HTMLAttributes<HTMLDivElement> & { variant?: "default" | "people" | "content"; size?: "fit" | "contained" }
+>(({ className, variant = "default", size, ...props }, ref) => (
   <div
     ref={ref}
     className={cn(
-      "rounded-2xl border border-neutral-100 bg-gradient-to-br from-white to-neutral-50/30 text-card-foreground",
+      cardVariants({ variant, size }),
       className,
     )}
     {...props}
