@@ -39,11 +39,9 @@ This is an example of an MDX content file containing custom components and markd
 
 
 ```tsx
-<SectionHeader
-  title="Welcome to the Wonderful World of MDX"
-/>
+<ContentSection title="Welcome to the Wonderful World of MDX">
 
-The `<SectionHeader/>` component is used to create a header for the page. It is a custom component that is defined in `/components/SectionHeader.tsx` and imported in `/mdx-components.tsx`.
+The `<ContentSection>` component is used to create a header for the page and apply styling to that page's section. It is a custom component that is defined in `/components/SectionHeader.tsx` and imported in `/mdx-components.tsx`.
 
 Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<MDXButton/>` component. It uses the same styling as the buttons that are used throughout this website.
 
@@ -62,19 +60,19 @@ Here is a non-exhaustive list of markdown formatting options:
 - Like this
 - And this
 - Make a ***bold and italic*** list item
-- Make a ~~strikethrough~~ list item 
-- Make a numbered list item
-- Like this
-- And this
+- Make a ~~strikethrough~~ list item
+
+1. Make a numbered list item
+2. Like this
+3. And this
+</ContentSection>
 ```
 
 This is how the above example renders:
 
-<SectionHeader
-    title="Welcome to the Wonderful World of MDX"
-/>
+<ContentSection title="Welcome to the Wonderful World of MDX">
 
-The `<SectionHeader/>` component is used to create a header for the page. It is a custom component that is defined in `/components/SectionHeader.tsx` and imported in `/mdx-components.tsx`.
+The `<ContentSection>` component is used to create a header for the page and apply styling to that page's section. It is a custom component that is defined in `/components/SectionHeader.tsx` and imported in `/mdx-components.tsx`.
 
 Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<MDXButton/>` component. It uses the same styling as the buttons that are used throughout this website.
 
@@ -94,8 +92,10 @@ Here is a non-exhaustive list of markdown formatting options:
 - And this
 - Make a ***bold and italic*** list item
 - Make a ~~strikethrough~~ list item
-- Make a numbered list item
-- Like this
-- And this
+
+1. Make a numbered list item
+2. Like this
+3. And this
+</ContentSection>
 
 </ContentSection>
