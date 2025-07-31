@@ -94,11 +94,11 @@ export function EventSection({
   return (
     <>
       <div className="flex flex-col gap-4 xl:flex-row xl:gap-8">
-        <div className="flex flex-col items-center lg:items-start gap-4">
+        <div className="flex flex-col items-center gap-4">
           <SectionHeader
             title={"Events"}
-            align={"left"}
             icon={<FaCalendarAlt />}
+            className="mb-0"
           />
           <h3 className="font-serif text-xl italic mb-6">What's next at CCV</h3>
           <ButtonLink
