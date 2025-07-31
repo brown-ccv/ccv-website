@@ -13,7 +13,7 @@ carousel:
         organization: "RIDOH"
         icon: "FaUser"
     buttons:
-      - text: "Provident Study Website"
+      - text: "Provident Website"
         url: "https://provident-study.org"
         variant: "primary_filled"
 
@@ -65,7 +65,7 @@ carousel:
         pi: [ "Nadja Ging-Jehli" ]
         icon: "FaUser"
     buttons:
-      - text: "Gearshift Website"
+      - text: "TODO: Gearshift Website"
         url: "TODO"
         variant: "primary_filled"
 
