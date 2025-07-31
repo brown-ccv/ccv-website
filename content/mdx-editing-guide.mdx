@@ -3,9 +3,7 @@ title: MDX Editing Guide
 description: A guide for getting started using MDX files to create and edit content in the CCV website.
 ---
 
-<SectionHeader
-    title="What is MDX?"
-/>
+<ContentSection title="What is MDX?">
 
 MDX files combine regular text and Markdown formatting with React components and custom components to create a feature-rich, flexible, and easy-to-use content editing experience.
 
@@ -17,10 +15,9 @@ Every page on the CCV website is rendered from an mdx, markdown, or yaml file in
     View Next.js MDX Documentation
 </MDXButton>
 
-{/* Available Components */}
-<SectionHeader
-    title="Available Components"
-/>
+</ContentSection>
+
+<ContentSection title="Available Components">
 
 All available components are in the `/components` folder. To make them accessible in `.mdx` files, add them to `/mdx-components.tsx`. Import the component(s) at the top of the file and add it to the Global MDX Components section at the bottom. To request a new custom component, please add an issue to the CCV website github repository.
 
@@ -34,13 +31,12 @@ All available components are in the `/components` folder. To make them accessibl
   - ❌ Don't use HTML tags directly
   - ❌ Don't add complex styling or classes
 2. **Test your changes** - Run `npm run dev` to see your changes
+</ContentSection>
 
-{/* Example MDX File */}
-<SectionHeader
-    title="Example MDX File"
-/>
+<ContentSection title="Example MDX File">
 
 This is an example of an MDX content file containing custom components and markdown formatting.
+
 
 ```tsx
 <SectionHeader
@@ -101,3 +97,5 @@ Here is a non-exhaustive list of markdown formatting options:
 - Make a numbered list item
 - Like this
 - And this
+
+</ContentSection>

@@ -13,11 +13,9 @@ export default function Page() {
         title={metadata.title}
         description={metadata.description}
       />
-      <ContentSection>
-        <div className="prose prose-lg text-xl max-w-none">
-          <PageContent />
-        </div>
-      </ContentSection>
+      <div className="prose prose-lg text-xl max-w-none">
+        <PageContent />
+      </div>
     </>
   )
 }
