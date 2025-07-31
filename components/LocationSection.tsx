@@ -9,11 +9,16 @@ interface LocationSectionProps {
 export const LocationSection: React.FC<LocationSectionProps> = ({
   title = "180 George St",
 }) => {
+  //class="w-full py-16 px-6 sm:px-8 lg:px-24 md:px-12 xl:px-40 odd:bg-neutral-50"
   return (
-    <ContentSection title={title} align={"left"}>
+    <ContentSection
+      title={title}
+      align={"left"}
+      className="lg:px-0 lg:py-0 xl:pr-0 xl:py-0"
+    >
       <div className="flex flex-col xl:flex-row gap-4 lg:gap-8">
-        <div className="flex flex-col gap-y-4 text-xl xl:w-1/2">
-          <SectionHeader title={title} align={"left"} />
+        <div className="flex flex-col gap-y-4 text-xl lg:px-24 xl:px-0 xl:w-1/2">
+          <SectionHeader title={title} />
           <p>
             Our office is on Brown's main campus in Providence's College Hill
             neighborhood.
