@@ -113,7 +113,7 @@ export function EventSection({
         </div>
 
         {/* Right: Toggle and Views */}
-        <div className="flex flex-col flex-1">
+        <div className="hidden lg:flex flex-col flex-1">
           {/* Toggle Buttons */}
           <div className="relative mb-12 self-end">
             <div className="toggle-btn space-x-10 text-xl font-semibold absolute right-0 flex">
