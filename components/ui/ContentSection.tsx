@@ -25,7 +25,7 @@ export const ContentSection = ({
         className
       )}
     >
-      <SectionHeader title={title} align={align} />
+      {align === "center" && <SectionHeader title={title} align={align} />}
       {children}
     </section>
   )
