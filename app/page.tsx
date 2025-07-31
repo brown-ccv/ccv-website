@@ -12,7 +12,6 @@ import { getStringDate } from "@/components/calendar/utils"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
 import { ScrollButton } from "@/components/ui/ScrollButton"
-import { SectionHeader } from "@/components/ui/SectionHeader"
 import ButtonLink from "@/components/ui/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
 import { ContentSection } from "@/components/ui/ContentSection"
@@ -55,14 +54,10 @@ export default async function Home() {
         </Hero>
         <HeroCard />
         <ImpactBanner />
-        <ContentSection>
-          <SectionHeader title="Featured Projects" align="center" />
+        <ContentSection title="Featured Projects">
           <FeaturedCarousel carouselData={featuredCarouselData} />
         </ContentSection>
-        <div
-          id="events"
-          className="py-12 w-full bg-neutral-50 px-4 sm:px-6 lg:px-8"
-        >
+        <ContentSection title={"Events"} align={"left"}>
           <Suspense fallback={<Spinner />}>
             <EventSection
               streamedDataPast={pastDates}
@@ -71,7 +66,7 @@ export default async function Home() {
               today={today}
             />
           </Suspense>
-        </div>
+        </ContentSection>
       </>
     )
   } catch (err: any) {
