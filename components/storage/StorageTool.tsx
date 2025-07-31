@@ -2,7 +2,6 @@
 
 import React, { useState } from "react"
 import { Button } from "@/components/ui/Button"
-import { SectionHeader } from "@/components/ui/SectionHeader"
 import { ContentSection } from "@/components/ui/ContentSection"
 import Form from "@/components/storage/StorageForm"
 import Table from "@/components/storage/StorageTable"
@@ -45,8 +44,7 @@ export default function StorageTool({
   }
 
   return (
-    <ContentSection className="bg-neutral-50">
-      <SectionHeader title="Compare Storage Options" align="center" />
+    <ContentSection title="Compare Storage Options">
       <div className="flex flex-col items-start pb-8">
         <h2 className="text-2xl font-bold text-gray-800 my-12">
           {pageContent?.storage_tool_header}
