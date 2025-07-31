@@ -1,6 +1,4 @@
 import React, { type JSX } from "react"
-import { Card, CardContent } from "@/components/ui/Card"
-import { ContentSection } from "@/components/ui/ContentSection"
 
 export const ImpactBanner = (): JSX.Element => {
   const impactMetrics = [
