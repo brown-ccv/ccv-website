@@ -1,6 +1,6 @@
 import type { MDXComponents } from "mdx/types"
 import Image from "next/image"
-import { ContentSection } from "@/components/ui/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 import { ButtonLink } from "@/components/ui/ButtonLink"
 import {
   FeaturedCarousel,

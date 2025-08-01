@@ -4,7 +4,7 @@ import { JSX, use, useState } from "react"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
-import { SectionHeader } from "@/components/ui/SectionHeader"
+import { SectionHeader } from "@/components/SectionHeader"
 import ButtonLink from "@/components/ui/ButtonLink"
 import { FaCalendarAlt } from "react-icons/fa"
 
