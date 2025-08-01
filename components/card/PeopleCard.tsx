@@ -55,7 +55,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           onMouseLeave={() => setIsHovered(false)}
           className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-keppel-600"
         >
-          <Card className="w-[350px] sm:w-[400px] h-[525px] sm:h-[600px] flex-shrink-0 border-none shadow-none cursor-pointer">
+          <Card className="w-[350px] sm:w-[400px] h-[525px] sm:h-[600px] flex-shrink-0 border-none shadow-none">
             <CardContent className="flex flex-col h-full items-center">
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
@@ -75,7 +75,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           </Card>
         </button>
       </DialogTrigger>
-      <DialogContent className="text-center text-neutral-500 bg-white flex flex-col items-center  fixed z-50 left-1/2 top-1/2 w-[80vw] h-[80vh] sm:w-[90vw] md:w-[80vw] lg:w-[60vw] sm:h-auto sm:max-h-[95vh] -translate-x-1/2 -translate-y-1/2  rounded-xl shadow-lg   gap-4 overflow-y-auto">
+      <DialogContent className="text-center text-neutral-500 bg-white flex flex-col items-center rounded-xl h-[95vh] w-[95vw] sm:w-[90vw] md:w-[80vw]  overflow-y-auto">
         <Image
           src={imagePath}
           alt={name}
