@@ -75,7 +75,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           </Card>
         </button>
       </DialogTrigger>
-      <DialogContent className="text-center text-neutral-500 bg-white flex flex-col items-center rounded-xl h-[95vh] w-[95vw] sm:w-[90vw] md:w-[90vw] lg:max-w-3xl overflow-y-auto">
+      <DialogContent className="justify-center text-center text-neutral-500 bg-white flex flex-col items-center rounded-xl h-[95vh] w-[95vw] sm:w-[90vw] md:w-[90vw] lg:max-w-3xl overflow-y-auto">
         <Image
           src={imagePath}
           alt={name}
