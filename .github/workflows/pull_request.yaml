@@ -36,8 +36,8 @@ jobs:
             libasound2-dev
 
       - name: 🔑 Set up Google Cloud Credentials
-        id: 'auth'
-        uses: 'google-github-actions/auth@v2'
+        id: "auth"
+        uses: "google-github-actions/auth@v2"
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
@@ -48,7 +48,6 @@ jobs:
         run: |
           npm start &
           npx wait-on http://localhost:3000
-
 
       - name: ✨ Prettify result file
         if: ${{ always() }}
@@ -131,12 +130,28 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
       - name: 🚀 Deploy Preview
+        id: deploy
         run: |
           npm run build
 
-          # Deploy to Firebase Hosting preview channel
-          npx firebase-tools hosting:channel:deploy preview-${{ github.event.number }} \
+          # Deploy to Firebase Hosting preview channel and capture the output
+          DEPLOY_OUTPUT=$(npx firebase-tools hosting:channel:deploy preview-${{ github.event.number }} \
             --project ccv-website-next \
-            --token "${{ secrets.FIREBASE_TOKEN }}"
+            --token "${{ secrets.FIREBASE_TOKEN }}")
 
-          echo "Preview URL: https://ccv-website-next--preview-${{ github.event.number }}.web.app"
+          # Extract the actual channel URL from the output
+          PREVIEW_URL=$(echo "$DEPLOY_OUTPUT" | grep -o 'https://ccv-website-next--preview-[^[:space:]]*\.web\.app' | head -1)
+
+          echo "preview_url=$PREVIEW_URL" >> $GITHUB_OUTPUT
+          echo "Preview URL: $PREVIEW_URL"
+
+      - name: 💬 Comment Preview Link
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
+          header: "preview deployment"
+          message: |
+            <p>🚀 Your preview is ready!</p>
+            <p><strong>Preview URL:</strong> <a href="${{ steps.deploy.outputs.preview_url }}" target="_blank" rel="noopener noreferrer">${{ steps.deploy.outputs.preview_url }}</a></p>
+            <p><em>This preview will be automatically updated with each new commit to this PR.</em></p>
+            <p><small>Commit: <a href="https://github.com/${{ github.repository }}/commit/${{ github.event.pull_request.head.sha }}" target="_blank" rel="noopener noreferrer"><code>${{ github.event.pull_request.head.sha }}</code></a></small></p>
