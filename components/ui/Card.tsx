@@ -1,13 +1,6 @@
-import React from "react"
+import * as React from "react"
+
 import { cn } from "@/lib/utils"
-
-interface CardHeaderProps extends React.HTMLAttributes<HTMLDivElement> {
-  align?: "left" | "center" | "right"
-}
-
-interface CardDescriptionProps extends React.HTMLAttributes<HTMLDivElement> {
-  align?: "left" | "center" | "right"
-}
 
 const Card = React.forwardRef<
   HTMLDivElement,
@@ -16,8 +9,8 @@ const Card = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "rounded-2xl border border-neutral-100 bg-gradient-to-br from-white to-neutral-50/30 text-card-foreground",
-      className,
+      "rounded-xl border bg-card text-card-foreground shadow",
+      className
     )}
     {...props}
   />
@@ -26,16 +19,11 @@ Card.displayName = "Card"
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
-  CardHeaderProps
->(({ className, align = "left", ...props }, ref) => (
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "flex flex-col space-y-1.5 py-4 sm:py-6 font-semibold text-3xl",
-      align === "center" && "text-center",
-      align === "right" && "text-right",
-      className
-    )}
+    className={cn("flex flex-col space-y-1.5 p-6", className)}
     {...props}
   />
 ))
@@ -47,7 +35,7 @@ const CardTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("font-semibold leading-none tracking-tight text-lg", className)}
+    className={cn("font-bold leading-none tracking-tight", className)}
     {...props}
   />
 ))
@@ -55,16 +43,11 @@ CardTitle.displayName = "CardTitle"
 
 const CardDescription = React.forwardRef<
   HTMLDivElement,
-  CardDescriptionProps
->(({ className, align = "left", ...props }, ref) => (
+  React.HTMLAttributes<HTMLDivElement>
+>(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn(
-      "text-sm text-muted-foreground [&_ul]:list-none [&_ol]:list-none [&_li]:list-none",
-      align === "center" && "text-center",
-      align === "right" && "text-right",
-      className
-    )}
+    className={cn("text-sm text-muted-foreground", className)}
     {...props}
   />
 ))
@@ -74,7 +57,7 @@ const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
 >(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn("p-4 sm:p-6 [&_ul]:list-none [&_ol]:list-none [&_li]:list-none", className)} {...props} />
+  <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
 ))
 CardContent.displayName = "CardContent"
 
@@ -84,17 +67,10 @@ const CardFooter = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <div
     ref={ref}
-    className={cn("flex items-center p-4 sm:p-6", className)}
+    className={cn("flex items-center p-6 pt-0", className)}
     {...props}
   />
 ))
 CardFooter.displayName = "CardFooter"
 
-export {
-  Card,
-  CardHeader,
-  CardFooter,
-  CardTitle,
-  CardDescription,
-  CardContent,
-}
+export { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent }
