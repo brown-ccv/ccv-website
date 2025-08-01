@@ -1,21 +1,29 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 import Icon from "@/components/ui/RenderIcon"
 import React from "react"
+import { cn } from "@/lib/utils"
 
 interface CardContainerProps {
   iconName?: string
+  isDisabled?: boolean
   title: string
   children: React.ReactNode
 }
 
 export const CardContainer: React.FC<CardContainerProps> = ({
   iconName,
+  isDisabled = false,
   title,
   children,
 }) => {
   const IconComponent = iconName ? Icon : null
   return (
-    <Card className="w-full max-w-sm bg-white">
+    <Card
+      className={cn(
+        "w-full max-w-sm bg-white",
+        isDisabled ? "opacity-30 grayscale" : ""
+      )}
+    >
       <CardHeader>
         <CardTitle className="flex gap-4 items-center justify-center text-3xl border-b border-gray-300 py-4">
           {IconComponent && (
