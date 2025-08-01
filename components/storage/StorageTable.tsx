@@ -4,7 +4,6 @@ import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 import Link from "next/link"
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
 import { Button } from "@/components/ui/Button"
 import { ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
 import {
@@ -23,7 +22,7 @@ import {
   useReactTable,
   ColumnDef,
 } from "@tanstack/react-table"
-import StorageServiceCard from "@/components/storage/StorageServiceCard"
+import StorageServiceCard from "@/components/card/StorageServiceCard"
 import {
   getAllUniqueFeatureNames,
   sortFeatures,
@@ -390,7 +389,7 @@ const Table: React.FC<TableProps> = ({
       </div>
 
       {/* Mobile View - Cards */}
-      <div className="lg:hidden w-full flex flex-col gap-4">
+      <div className="lg:hidden w-full flex flex-col items-center gap-4">
         {services
           .filter((service) => service.features && service.features.length > 0)
           .map((service) => (
