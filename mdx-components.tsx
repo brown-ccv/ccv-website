@@ -11,7 +11,6 @@ import { CardContainer } from "@/components/card/CardContainer"
 import { CardWrapper } from "@/components/card/CardWrapper"
 import { PeopleSection } from "@/components/PeopleSection"
 import { Button } from "@/components/ui/Button"
-import { cn } from "@/lib/utils"
 
 export const MDXButton = ({ children, href, ...props }: any) => {
   return (
@@ -19,7 +18,6 @@ export const MDXButton = ({ children, href, ...props }: any) => {
       href={href}
       variant="primary_filled"
       size="lg"
-      align="center"
       className="my-4"
       {...props}
     >
