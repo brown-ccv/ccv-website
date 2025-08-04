@@ -9,15 +9,15 @@ interface BrownBannerProps {
 
 export const BrownBanner: React.FC<BrownBannerProps> = () => {
   return (
-    <header className="bg-white flex items-center py-2 px-4">
+    <header className="bg-white flex items-center py-2 lg:py-4 px-4">
       <div className="flex flex-row items-center w-full">
-        <div className="flex-shrink-0 pt-4 lg:pt-2 lg:border-r lg:border-neutral-900 pr-6">
+        <div className="flex-shrink-0 pt-4 lg:border-r lg:border-neutral-900">
           <ButtonLink
             href="https://it.brown.edu"
             external={true}
             className={"focus-visible:ring-0"}
           >
-            <BrownLogo />
+            <BrownLogo width={150} className="sm:w-[200px]" />
             <span className="sr-only">OIT Home</span>
           </ButtonLink>
         </div>
@@ -33,14 +33,14 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
             href="mailto:ccv-support@brown.edu"
             external={true}
             variant="primary_outlined"
-            className="items-center justify-center text-lg
-            font-semibold rounded-none py-6 px-4
+            className="items-center justify-center text-md sm:text-lg
+            font-semibold rounded-none py-6 px-2 sm:px-4
             border-red-university text-red-university
             hover:bg-red-university hover:text-white hover:border-red-university
             whitespace-nowrap"
           >
-            <FaComments className="mr-2 text-2xl" />
-            Work with Us
+            <FaComments className="mr-1 sm:mr-2 text-xl sm:text-2xl" />
+            <span className="sm:inline">Work with Us</span>
           </ButtonLink>
         </div>
       </div>
