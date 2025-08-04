@@ -1,0 +1,39 @@
+import React from "react"
+import { Card, CardContent } from "@/components/ui/Card"
+import CCVBars from "@/components/assets/CCVBars"
+
+const heroCards = [
+  {
+    title: "Our Mission",
+    description:
+      "We provide scientific and technical computing expertise to advance computational research and support Brown's academic mission.",
+  },
+  {
+    title: "Research Support",
+    description:
+      "We partner with researchers, combining diverse expertise across disciplines to transform complex projects into groundbreaking discoveries.",
+  },
+  {
+    title: "Compute Infrastructure",
+    description:
+      "We maintain secure, high‑performance computing infrastructure, along with storage solutions and virtual computing environments to support research and innovation.",
+  },
+]
+
+export const HeroCard: React.FC = () => {
+  return (
+    <Card className="z-10 -mt-[170px] mb-[120px] lg:mx-12 px-6 lg:px-8 flex justify-center relative bg-white">
+      <CardContent className="flex flex-col lg:flex-row gap-10 lg:gap-20">
+        {heroCards.map((card, index) => (
+          <div key={index} className="relative">
+            <CCVBars />
+            <h3 className="font-semibold text-xl tracking-tight leading-tight py-2">
+              {card.title}
+            </h3>
+            <p className="text-lg">{card.description}</p>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  )
+}

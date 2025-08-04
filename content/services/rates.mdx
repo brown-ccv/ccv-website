@@ -7,8 +7,8 @@ description: We provide services with limited resources at no cost to all member
 
 The number and size of jobs allowed on Oscar vary with both partition and type of user account.
 
-<RatesGrid>
-  <RatesCard title="Basic Account">
+<CardGroup>
+  <StyledCard title="Basic Account">
     - **Partition:** batch | gpu | bigmem
     - **CPU Cores:** 64 | 12 | 32
     - **Memory:** 492 GB | 192 GB | 752 GB
@@ -16,9 +16,9 @@ The number and size of jobs allowed on Oscar vary with both partition and type o
     - **Max Walltime:** 48hr
     - **Cost:** $0/month
     - **Quality-of-Service (QOS):** Basic
-  </RatesCard>
+  </StyledCard>
 
-  <RatesCard title="HPC Priority">
+  <StyledCard title="HPC Priority">
     - **Partition:** batch
     - **CPU Cores:** 208
     - **Memory:** 1500 GB
@@ -26,9 +26,9 @@ The number and size of jobs allowed on Oscar vary with both partition and type o
     - **Max Walltime:** 96hr
     - **Cost:** $0/month
     - **Quality-of-Service (QOS):** Faster start times
-  </RatesCard>
+  </StyledCard>
 
-  <RatesCard title="HPC Priority+">
+  <StyledCard title="HPC Priority+">
     - **Partition:** batch
     - **CPU Cores:** 416
     - **Memory:** 3000
@@ -36,39 +36,40 @@ The number and size of jobs allowed on Oscar vary with both partition and type o
     - **Max Walltime:** 48hr
     - **Cost:** $0/month
     - **Quality-of-Service (QOS):** Faster start times
-  </RatesCard>
+  </StyledCard>
 
-  <RatesCard title="Standard GPU Priority">
+  <StyledCard title="Standard GPU Priority">
     - **Partition:** gpu
     - **CPU Cores:** 24
     - **Memory:** 192 GB
     - **GPU:** 4 Std.
     - **Max Walltime:** 96hr
     - **Cost:** $67/month
-  </RatesCard>
+  </StyledCard>
 
-  <RatesCard title="Standard GPU Priority+">
+  <StyledCard title="Standard GPU Priority+">
     - **Partition:** gpu
     - **CPU Cores:** 48
     - **Memory:** 384 GB
     - **GPU:** 8 Std.
     - **Max Walltime:** 96hr
     - **Cost:** $133/month
-  </RatesCard>
+  </StyledCard>
 
-  <RatesCard title="High-End GPU Priority">
+  <StyledCard title="High-End GPU Priority">
     - **Partition:** gpu-he
     - **CPU Cores:** 24
     - **Memory:** 256 GB
     - **GPU:** 4 high-end
     - **Max Walltime:** 96hr
     - **Cost:** $133/month
-  </RatesCard>
-</RatesGrid>
+  </StyledCard>
+</CardGroup>
 
 Note, these values are subject to periodic review and changes. For more technical details, review the system hardware documentation.
 
-*GPU Definitions: Std. - QuadroRTX or lower,  High-end - Tesla V100  
+*GPU Definitions: Std. - QuadroRTX or lower,  High-end - Tesla V100
+
 **Quality-of-Service: The maximum number of cores and duration may change based on cluster utilization. HPC Priority account has a Quality-of-Service (QOS) allowing up to 208 cores, 1TB memory, and a total per-job limit of 1,198,080 core-minutes. This allows a 208-core job to run for 96 hours, a 104-core job to run for 192 hours, or 208 1-core jobs to run for 96 hours. Exploratory account has a Quality-of-Service (QOS) allowing up to 2 GPUs and a total of 5760 GPU-minutes. This allows a 2 GPU job to run for 48 hours or 1 GPU job to run for 96 hours.  
 
 </ContentSection>
@@ -93,31 +94,31 @@ Contact support@ccv.brown.edu to discuss your need and review your purchase opti
 
 CCV provides a variety of storage options for research data. For Brown Faculty members, the default storage option is 1TB.
 
-<RatesGrid align="left">
-  <RatesCard title="Basic">
+<CardGroup align="left">
+  <StyledCard title="Basic">
     - **Location:** Oscar | Campus Files | Stronghold
     - **Storage Allocation:** 1TB
     - **Cost:** $0/year
-  </RatesCard>
-</RatesGrid>
+  </StyledCard>
+</CardGroup>
 
 ## Additional Storage Allocation Costs
 
 When awarded a new grant, Brown faculty members may request an additional storage space by providing CCV with the active grant number.  
 
-<RatesGrid align="left">
-  <RatesCard title="Unreplicated">
+<CardGroup align="left">
+  <StyledCard title="Unreplicated">
     - **Location:** Oscar | Campus Files | Stronghold
     - **Storage Allocation:** Up to 10TB
     - **Cost:** $50/TB/year
-  </RatesCard>
+  </StyledCard>
 
-  <RatesCard title="Replicated">
+  <StyledCard title="Replicated">
     - **Location:** Campus Files
     - **Storage Allocation:** Up to 10TB
     - **Cost:** $100/TB/year
-  </RatesCard>
-</RatesGrid>
+  </StyledCard>
+</CardGroup>
 </ContentSection>
 
 <ContentSection title="Pooled Storage Allocations">

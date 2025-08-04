@@ -1,5 +1,5 @@
 import React from "react"
-import { PeopleCard } from "@/components/ui/PeopleCard"
+import { PeopleCard } from "@/components/card/PeopleCard"
 import { PeopleTypes, PageContentData } from "@/lib/about-types"
 import { readContentFile } from "@/lib/content-utils"
 import path from "path"
