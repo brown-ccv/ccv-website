@@ -3,14 +3,14 @@ import Icon from "@/components/ui/RenderIcon"
 import React from "react"
 import { cn } from "@/lib/utils"
 
-interface CardContainerProps {
+interface StyledCardProps {
   iconName?: string
   isDisabled?: boolean
   title: string
   children: React.ReactNode
 }
 
-export const CardContainer: React.FC<CardContainerProps> = ({
+export const StyledCard: React.FC<StyledCardProps> = ({
   iconName,
   isDisabled = false,
   title,

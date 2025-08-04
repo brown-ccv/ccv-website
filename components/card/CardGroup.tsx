@@ -1,12 +1,12 @@
 import React from "react"
 import { cn } from "@/lib/utils"
 
-interface CardWrapperProps {
+interface CardGroupProps {
   children: React.ReactNode
   align?: "center" | "left"
 }
 
-export const CardWrapper: React.FC<CardWrapperProps> = ({
+export const CardGroup: React.FC<CardGroupProps> = ({
   children,
   align = "center",
 }) => {

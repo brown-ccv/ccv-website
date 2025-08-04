@@ -1,4 +1,4 @@
-import { CardContainer } from "@/components/card/CardContainer"
+import { StyledCard } from "@/components/card/StyledCard"
 import React from "react"
 import { FaClock, FaUserClock } from "react-icons/fa"
 
@@ -18,7 +18,7 @@ export const CostEstimateCard: React.FC<RatesCardProps> = ({
   fte = "40%",
 }) => {
   return (
-    <CardContainer title={title} iconName={"FaTshirt"}>
+    <StyledCard title={title} iconName={"FaTshirt"}>
       <div className="flex flex-col items-center justify-center gap-y-6 py-6">
         <div className="flex items-center gap-6">
           <FaClock className="text-keppel-700 text-2xl" />
@@ -34,6 +34,6 @@ export const CostEstimateCard: React.FC<RatesCardProps> = ({
           </p>
         </div>
       </div>
-    </CardContainer>
+    </StyledCard>
   )
 }

@@ -4,7 +4,7 @@ import {
   ServiceFeature,
   featureIcons,
 } from "@/lib/storage-types"
-import { CardContainer } from "@/components/card/CardContainer"
+import { StyledCard } from "@/components/card/StyledCard"
 import { Badge } from "@/components/ui/Badge"
 import { humanize } from "@/lib/utils"
 
@@ -46,7 +46,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
   }
 
   return (
-    <CardContainer title={humanize(service.name)} isDisabled={isDisabled}>
+    <StyledCard title={humanize(service.name)} isDisabled={isDisabled}>
       {service.features?.map((feature) => {
         const IconComponent = featureIcons[feature.name.toLowerCase()]
 
@@ -73,7 +73,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
           </div>
         )
       })}
-    </CardContainer>
+    </StyledCard>
   )
 }
 

@@ -7,8 +7,8 @@ import {
   FeaturedCarouselItem,
 } from "@/components/FeaturedCarousel"
 import { readContentFile } from "@/lib/content-utils"
-import { CardContainer } from "@/components/card/CardContainer"
-import { CardWrapper } from "@/components/card/CardWrapper"
+import { StyledCard } from "@/components/card/StyledCard"
+import { CardGroup } from "@/components/card/CardGroup"
 import { PeopleSection } from "@/components/PeopleSection"
 import { Button } from "@/components/ui/Button"
 
@@ -71,8 +71,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ButtonGroup,
     Button,
     ButtonLink,
-    CardContainer,
-    CardWrapper,
+    StyledCard,
+    CardGroup,
     ContentSection,
     MDXCarousel,
     PeopleSection,

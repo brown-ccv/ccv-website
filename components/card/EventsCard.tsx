@@ -1,4 +1,4 @@
-import { CardContainer } from "@/components/card/CardContainer"
+import { StyledCard } from "@/components/card/StyledCard"
 import React from "react"
 import { DataProps } from "@/components/EventSection"
 import Icon from "@/components/ui/RenderIcon"
@@ -24,7 +24,7 @@ export const EventsCard: React.FC<DataProps> = ({
     ", " +
     date
   return (
-    <CardContainer title={title}>
+    <StyledCard title={title}>
       <div className="space-y-2">
         <p className="text-lg md:text-xl text-neutral-900 font-semibold">
           {normalDate}
@@ -43,6 +43,6 @@ export const EventsCard: React.FC<DataProps> = ({
         </a>
         {description_long && <p>{descriptionLong}</p>}
       </div>
-    </CardContainer>
+    </StyledCard>
   )
 }
