@@ -1,6 +1,6 @@
 import { ReactNode } from "react"
 import { cn } from "@/lib/utils"
-import { SectionHeader } from "@/components/ui/SectionHeader"
+import { SectionHeader } from "@/components/SectionHeader"
 
 interface ContentSectionProps {
   children: ReactNode
@@ -21,7 +21,7 @@ export const ContentSection = ({
     <section
       id={id}
       className={cn(
-        "w-full py-16 px-6 sm:px-8 lg:px-24 md:px-12 xl:px-40 odd:bg-neutral-50",
+        "w-full py-16 px-6 sm:px-8 lg:px-24 md:px-12 xl:px-40 even:bg-neutral-50",
         className
       )}
     >
