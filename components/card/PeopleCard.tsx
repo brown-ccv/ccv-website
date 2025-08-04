@@ -75,13 +75,13 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           </Card>
         </button>
       </DialogTrigger>
-      <DialogContent className="justify-center text-center text-neutral-500 bg-white flex flex-col items-center rounded-xl h-[95vh] w-[95vw] sm:w-[90vw] md:w-[90vw] lg:max-w-3xl overflow-y-auto">
+      <DialogContent className="p-8 text-center text-neutral-500 bg-white flex flex-col items-center rounded-xl h-[95vh] w-[95vw] sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl max-h-3xl lg:p-24 overflow-y-scroll">
         <Image
           src={imagePath}
           alt={name}
           width={180}
           height={180}
-          className="rounded-full md:h-[250px] md:w-[250px]"
+          className="rounded-full md:h-[250px] md:w-[250px] lg:w-[300px] lg:h-[300px] "
         />
         <DialogTitle className="py-4 text-3xl font-bold">
           {personDetails?.name || name}
