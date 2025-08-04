@@ -1,15 +1,15 @@
 import { Hero } from "@/components/Hero"
-import RatesContent from "@/content/services/rates.mdx"
+import ProjectConsultingContent from "@/content/services/project-consulting.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
-export default async function Rates() {
-  const metadata = getMDXMetadata("content/services/rates.mdx")
+export default function ProjectConsulting() {
+  const metadata = getMDXMetadata("content/services/project-consulting.mdx")
 
   return (
     <>
       <Hero title={metadata.title} description={metadata.description} />
       <div className="prose prose-lg text-xl max-w-none">
-        <RatesContent />
+        <ProjectConsultingContent />
       </div>
     </>
   )
