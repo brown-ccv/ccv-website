@@ -38,7 +38,7 @@ carousel:
   - title: "Collider Parts Database"
     categories: [ "Web Development", "Particle Physics" ]
     description: |
-      An app that tracks the construction of particle detector modules across 4 different research institutions. The database records include information about each change, when it happened, and who made the change. Users can search the database, build modules, and upload images taken during production. The application uses a reusable component-based JavaScript frontend and deployed with a serverless cloud-based backend.
+      An app that tracks the construction of particle detector modules across 4 different research institutions. The database records include information about each change, when it happened, and who made the change. Users can search the database, build modules, and upload images taken during production. The application is built on a JavaScript base React frontend and deployed on serverless scaleable cloud-based infrastructure.
     image: "/images/home/featured-carousel/collider.png"
     organizations:
       - name: "Department of Physics"
