@@ -4,7 +4,7 @@ import { JSX, use, useState } from "react"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
-import { SectionHeader } from "@/components/ui/SectionHeader"
+import { SectionHeader } from "@/components/SectionHeader"
 import ButtonLink from "@/components/ui/ButtonLink"
 import { FaCalendarAlt } from "react-icons/fa"
 
@@ -113,9 +113,9 @@ export function EventSection({
         </div>
 
         {/* Right: Toggle and Views */}
-        <div className="hidden lg:flex flex-col flex-1">
+        <div className="flex flex-col flex-1">
           {/* Toggle Buttons */}
-          <div className="relative mb-12 self-end">
+          <div className="hidden lg:flex relative mb-12 self-end">
             <div className="toggle-btn space-x-10 text-xl font-semibold absolute right-0 flex">
               {CAL_VIEW_ARRAY.map((item) => (
                 <ToggleButton

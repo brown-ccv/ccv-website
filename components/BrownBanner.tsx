@@ -17,6 +17,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
           className={"focus-visible:ring-0"}
         >
           <BrownLogo />
+          <span className="sr-only">OIT Home</span>
         </ButtonLink>
         <div className="ml-6 w-full flex flex-row justify-between items-center">
           <h1 className="py-10 pl-6 text-3xl font-semibold border-l border-black hidden lg:block">
