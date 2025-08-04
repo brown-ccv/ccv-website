@@ -3,7 +3,6 @@ import StorageContent from "@/content/services/storage.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 import { Hero } from "@/components/Hero"
 import ButtonLink from "@/components/ui/ButtonLink"
-import { ContentSection } from "@/components/ui/ContentSection"
 
 export default async function Storage() {
   const metadata = getMDXMetadata("content/services/storage.mdx")
@@ -32,12 +31,9 @@ export default async function Storage() {
           </div>
         </div>
       </Hero>
-
-      <ContentSection>
-        <div className="prose prose-lg text-xl max-w-none">
-          <StorageContent />
-        </div>
-      </ContentSection>
+      <div className="prose prose-lg text-xl max-w-none">
+        <StorageContent />
+      </div>
     </>
   )
 }

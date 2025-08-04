@@ -64,7 +64,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
     <section className="my-12">
       <div className="w-full mx-auto">
         {/* Carousel Container */}
-        <div className="bg-white relative" {...handlers}>
+        <div className="relative" {...handlers}>
           {/* Navigation Buttons */}
           <div className="flex justify-center items-center gap-4">
             <Button
@@ -180,7 +180,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
             {/* Desktop Image Only */}
             <div className="hidden xl:block w-full max-w-[700px] lg:w-full h-full flex-col justify-center relative xl:ml-auto">
-              <div className="min-w-[700px]">
+              <div className="min-w-[700px] relative">
                 <Image
                   src={image}
                   alt={title}
@@ -189,19 +189,19 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                   className="object-contain"
                   style={{ width: "700px", height: "500px" }}
                 />
-              </div>
 
-              {/* Attribution positioned at bottom-right of this div */}
-              {currentItem.attribution && (
-                <div className="absolute bottom-0 right-0 text-sm">
-                  <Markdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {currentItem.attribution}
-                  </Markdown>
-                </div>
-              )}
+                {/* Attribution if image requires it */}
+                {currentItem.attribution && (
+                  <div className="mt-2 text-right text-sm">
+                    <Markdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                    >
+                      {currentItem.attribution}
+                    </Markdown>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

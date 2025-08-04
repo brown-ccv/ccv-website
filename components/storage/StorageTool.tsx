@@ -2,8 +2,7 @@
 
 import React, { useState } from "react"
 import { Button } from "@/components/ui/Button"
-import { SectionHeader } from "@/components/ui/SectionHeader"
-import { ContentSection } from "@/components/ui/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
 import Table from "@/components/storage/StorageTable"
 import {
@@ -45,14 +44,13 @@ export default function StorageTool({
   }
 
   return (
-    <ContentSection className="bg-neutral-50">
-      <SectionHeader title="Compare Storage Options" align="center" />
+    <ContentSection title="Compare Storage Options">
       <div className="flex flex-col items-start pb-8">
         <h2 className="text-2xl font-bold text-gray-800 my-12">
           {pageContent?.storage_tool_header}
         </h2>
         <div className="w-full mt-0 flex flex-col xl:flex-row gap-4 items-center xl:items-start">
-          <div>
+          <div className="w-full">
             <Form
               selectedAnswers={selectedAnswers}
               onAnswerChange={handleAnswerChange}

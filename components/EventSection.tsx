@@ -4,8 +4,9 @@ import { JSX, use, useState } from "react"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
-import { EventCard } from "@/components/calendar/EventCard"
-import { ContentSection } from "@/components/ui/ContentSection"
+import { SectionHeader } from "@/components/SectionHeader"
+import ButtonLink from "@/components/ui/ButtonLink"
+import { FaCalendarAlt } from "react-icons/fa"
 
 export interface DataProps {
   id: number
@@ -91,28 +92,30 @@ export function EventSection({
   }
 
   return (
-    <ContentSection>
-      {/* Small Screen Layout (Mobile/Tablet) */}
-      <div className="xl:hidden">
-        <div className="flex flex-col gap-4">
-          <div className="flex justify-center">
-            <EventCard />
-          </div>
-          <UpcomingEvents events={dataFuture} />
-        </div>
-      </div>
-
-      {/* Large Screen Layout (Desktop) */}
-      <div className="hidden xl:flex xl:gap-4">
-        {/* Left: Events card */}
-        <div className="flex-shrink-0">
-          <EventCard />
+    <>
+      <div className="flex flex-col gap-4 xl:flex-row xl:gap-8">
+        <div className="flex flex-col items-center gap-4">
+          <SectionHeader
+            title={"Events"}
+            icon={<FaCalendarAlt />}
+            className="mb-0"
+          />
+          <h3 className="font-serif text-xl italic mb-6">What's next at CCV</h3>
+          <ButtonLink
+            className="mt-0 mx-4"
+            variant="primary_filled"
+            size="lg"
+            href="https://events.brown.edu/ccv/all"
+            external={true}
+          >
+            View All Events
+          </ButtonLink>
         </div>
 
         {/* Right: Toggle and Views */}
         <div className="flex flex-col flex-1">
           {/* Toggle Buttons */}
-          <div className="relative mb-12 self-end">
+          <div className="hidden lg:flex relative mb-12 self-end">
             <div className="toggle-btn space-x-10 text-xl font-semibold absolute right-0 flex">
               {CAL_VIEW_ARRAY.map((item) => (
                 <ToggleButton
@@ -129,7 +132,7 @@ export function EventSection({
           <div className="mt-1">{renderView()}</div>
         </div>
       </div>
-    </ContentSection>
+    </>
   )
 }
 

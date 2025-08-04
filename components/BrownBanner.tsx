@@ -18,6 +18,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
             className={"focus-visible:ring-0"}
           >
             <BrownLogo />
+            <span className="sr-only">OIT Home</span>
           </ButtonLink>
         </div>
         
