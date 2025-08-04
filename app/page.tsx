@@ -1,6 +1,6 @@
 // app/page.tsx
 import { Hero } from "@/components/Hero"
-import { HeroCard } from "@/components/HeroCard"
+import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import {
   FeaturedCarousel,
