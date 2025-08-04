@@ -25,7 +25,7 @@ import {
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")

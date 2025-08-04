@@ -12,7 +12,7 @@ import { getStringDate } from "@/components/calendar/utils"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
 import { ScrollButton } from "@/components/ui/ScrollButton"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
 import { ContentSection } from "@/components/ContentSection"
 

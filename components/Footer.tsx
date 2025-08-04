@@ -2,7 +2,7 @@ import CCVLogo from "@/components/assets/CCVLogo"
 import { CarbonBadge } from "@/components/CarbonBadge"
 import { FaArrowRight } from "react-icons/fa"
 import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 // Footer link component
 interface FooterLinkProps {

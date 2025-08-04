@@ -1,7 +1,7 @@
 import React from "react"
 import { FaComments } from "react-icons/fa"
 import BrownLogo from "@/components/assets/BrownLogo"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 interface BrownBannerProps {
   id?: string

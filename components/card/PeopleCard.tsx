@@ -5,8 +5,8 @@ import Image from "next/image"
 import {
   Card,
   CardContent,
-  CardTitle,
   CardDescription,
+  CardTitle,
 } from "@/components/ui/Card"
 import {
   Dialog,
@@ -15,8 +15,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/Dialog"
 
-import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa"
-import ButtonLink from "@/components/ui/ButtonLink"
+import { FaGithub, FaInfoCircle } from "react-icons/fa"
+import ButtonLink from "@/components/button/ButtonLink"
 
 interface PeopleCardProps {
   className?: string
