@@ -6,14 +6,13 @@ import ButtonLink from "@/components/ui/ButtonLink"
 
 export default async function Storage() {
   const metadata = getMDXMetadata("content/services/storage.mdx")
-  const links = metadata.links || []
 
   return (
     <>
       <Hero title={metadata.title} description={metadata.description}>
         <div className="flex flex-col items-start not-prose">
           <div className="flex flex-col xl:flex-row flex-wrap gap-4 w-full items-start not-prose">
-            {links.map((link: any, index: number) => (
+            {metadata.links.map((link: any, index: number) => (
               <ButtonLink
                 key={index}
                 variant={
