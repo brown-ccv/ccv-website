@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { Button } from "@/components/ui/Button"
-import { ContentSection } from "@/components/ui/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
 import Table from "@/components/storage/StorageTable"
 import {

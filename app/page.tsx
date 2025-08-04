@@ -14,7 +14,7 @@ import Spinner from "@/components/assets/Spinner"
 import { ScrollButton } from "@/components/ui/ScrollButton"
 import ButtonLink from "@/components/ui/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
-import { ContentSection } from "@/components/ui/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 
 export default async function Home() {
   // Load featured carousel data from YAML
@@ -54,19 +54,21 @@ export default async function Home() {
         </Hero>
         <HeroCard />
         <ImpactBanner />
-        <ContentSection title="Featured Projects">
-          <FeaturedCarousel carouselData={featuredCarouselData} />
-        </ContentSection>
-        <ContentSection title={"Events"} align={"left"}>
-          <Suspense fallback={<Spinner />}>
-            <EventSection
-              streamedDataPast={pastDates}
-              streamedDataFuture={futureDates}
-              currentDate={currentDate}
-              today={today}
-            />
-          </Suspense>
-        </ContentSection>
+        <div>
+          <ContentSection title="Featured Projects">
+            <FeaturedCarousel carouselData={featuredCarouselData} />
+          </ContentSection>
+          <ContentSection title={"Events"} align={"left"}>
+            <Suspense fallback={<Spinner />}>
+              <EventSection
+                streamedDataPast={pastDates}
+                streamedDataFuture={futureDates}
+                currentDate={currentDate}
+                today={today}
+              />
+            </Suspense>
+          </ContentSection>
+        </div>
       </>
     )
   } catch (err: any) {

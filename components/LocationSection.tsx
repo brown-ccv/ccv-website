@@ -1,6 +1,6 @@
 import React from "react"
-import { ContentSection } from "@/components/ui/ContentSection"
-import { SectionHeader } from "@/components/ui/SectionHeader"
+import { ContentSection } from "@/components/ContentSection"
+import { SectionHeader } from "@/components/SectionHeader"
 
 interface LocationSectionProps {
   title?: string
