@@ -15,7 +15,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/Dialog"
 
-import { FaGithub, FaInfoCircle, FaTimes } from "react-icons/fa"
+import { FaGithub, FaInfoCircle } from "react-icons/fa"
 import ButtonLink from "@/components/ui/ButtonLink"
 
 interface PeopleCardProps {
