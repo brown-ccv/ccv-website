@@ -67,8 +67,8 @@ carousel:
         pi: [ "Nadja Ging-Jehli" ]
         icon: "FaUser"
     buttons:
-      - text: "TODO: Gearshift Website"
-        url: "TODO"
+      - text: "Gearshift Website"
+        url: "https://www.gingjehli.com/gearshiftfellowship"
         variant: "primary_filled"
 
   - title: "Ice Floe Tracker"
