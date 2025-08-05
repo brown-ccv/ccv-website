@@ -13,7 +13,7 @@ carousel:
         organization: "RIDOH"
         icon: "FaUser"
     buttons:
-      - text: "Website"
+      - text: "Provident Website"
         url: "https://provident-study.org"
         variant: "primary_filled"
 
@@ -31,7 +31,7 @@ carousel:
         pi: [ "Silvia Giorguli Saucedo", "Jéssica Natalie Nájera Aguirre" ]
         icon: "FaUser"
     buttons:
-      - text: "Website"
+      - text: "MMP Website"
         url: "https://mmp.research.brown.edu/mmp"
         variant: "primary_filled"
 
@@ -46,7 +46,7 @@ carousel:
         pi: [ "Ulrich Heintz" ]
         icon: "FaUser"
     buttons:
-      - text: "Website"
+      - text: "Collider Parts Database Website"
         url: "https://collider-parts-db.web.app/"
         variant: "primary_filled"
 
@@ -65,7 +65,7 @@ carousel:
         pi: [ "Nadja Ging-Jehli" ]
         icon: "FaUser"
     buttons:
-      - text: "Website"
+      - text: "TODO: Gearshift Website"
         url: "TODO"
         variant: "primary_filled"
 
@@ -102,7 +102,7 @@ carousel:
         pi: [ "Frederike Petzschner" ]
         icon: "FaUser"
     buttons:
-      - text: "Website"
+      - text: "SOMA Website"
         url: "https://somatheapp.com/"
         variant: "primary_filled"
 
@@ -136,3 +136,21 @@ carousel:
         organization: "Brown University"
         pi: [ "Alexander Jaworski" ]
         icon: "FaUser"
+
+  - title: "Offshore Wind Opposition Networks"
+    categories: [ "Web Development", "LLMs", "Climate Science" ]
+    description: |
+      - Leveraging LLMs for metadata extraction from thousands of images and other media at scale
+      - Data aggregation and management
+      - User-friendly, reusable software products
+      - Reproducability and documentation
+    image: "/images/home/featured-carousel/climate-dev-lab.jpeg"
+    organizations:
+      - name: "The Climate and Development Lab"
+        organization: "Brown University"
+        pi: [ "J. Timmons Roberts" ]
+        icon: "FaUser"
+    buttons:
+      - text: "Climate and Development Lab Website"
+        url: "https://www.climatedevlab.brown.edu/"
+        variant: "primary_filled"

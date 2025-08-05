@@ -9,7 +9,7 @@ export default async function AboutUs() {
   return (
     <>
       <Hero
-        image={"/images/hero/about-kayaks.png"}
+        image={metadata.image}
         title={metadata.title}
         description={metadata.description}
       />
