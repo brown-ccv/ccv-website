@@ -1,8 +1,7 @@
-// components/Button.tsx
 import { Slot } from "@radix-ui/react-slot"
 import * as React from "react"
 import { cn } from "@/lib/utils"
-import { ButtonVariants } from "@/components/ui/variants"
+import { ButtonVariants } from "@/components/button/variants"
 
 import type { VariantProps } from "class-variance-authority"
 
@@ -49,8 +48,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             iconPosition: resolvedIconPosition,
             align,
             className,
-          }),
-          "my-4"
+          })
         )}
         ref={ref}
         {...props}

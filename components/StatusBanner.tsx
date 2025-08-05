@@ -2,7 +2,7 @@
 
 import { XMarkIcon } from "@heroicons/react/20/solid"
 import { useState } from "react"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 
 interface StatusBannerProps {
   children: React.ReactNode

@@ -10,7 +10,7 @@ import { readContentFile } from "@/lib/content-utils"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
 import { PeopleSection } from "@/components/PeopleSection"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 
 export const MDXButton = ({ children, href, ...props }: any) => {
   return (
