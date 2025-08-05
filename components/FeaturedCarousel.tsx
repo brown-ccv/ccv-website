@@ -101,7 +101,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </Button>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-start justify-start gap-8 relative">
+          <div className="flex flex-col lg:flex-row items-start justify-start gap-8 relative mt-8">
             {/* Text Content */}
             <div className="w-full max-w-[700px] space-y-6 flex flex-col justify-start">
               {/* Categories */}
