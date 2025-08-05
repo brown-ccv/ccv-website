@@ -57,7 +57,9 @@ carousel:
 
       The game is developed using HTML, CSS, and Javascript. The experiment running the game and facilitating data recording is built on jsPsych, a JavaScript framework used in web-based behavioral experiments.
 
-      Honeycomb, an open-source repository that integrates cognitive science and web development practices to create deployable psychophysiological tasks compatible with lab equipment recordings.
+      Honeycomb is an open-source repository that integrates cognitive science and web development practices. 
+      Researchers can use it to create psychophysiological tasks which use lab equipment, for example electroencephalogram (EEG) brain measurements.
+
     image: "/images/home/featured-carousel/gearshift.gif"
     organizations:
       - name: "Cognitive and Psychological Sciences"
