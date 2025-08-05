@@ -72,14 +72,13 @@ carousel:
   - title: "Ice Floe Tracker"
     categories: [ "Data Science", "Julia", "HPC" ]
     description: |
-      Publish code written for a research project:
-
-      - As an open source package anyone could use
-      - Using a programming language more commonly used in the field of study (climate science)
-
-      Allow analysing much larger datasets using Brown's supercomputer.
-
-      Support a future grant application with new data.
+      A tool for tracking ice floes in the arctic ocean using data from the Aqua and Terra Earth-observation satellites. 
+      
+      Researchers can use this software library to detect and find the trajectories and rotation rates of ice floes, allowing them to measure ocean currents and eddies. 
+      These data are used to validate and inform ocean models as part of a larger climate research effort. 
+      
+      The IceFloeTracker.jl package is open source and written in the Julia programming language commonly used in the climate research community. 
+      It includes a workflow manager to help analyze regions up to the size of the whole arctic, over decade timescales.
     image: "/images/home/featured-carousel/icefloe.png"
     organizations:
       - name: "Department of Engineering"
