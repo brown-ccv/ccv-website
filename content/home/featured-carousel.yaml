@@ -89,6 +89,9 @@ carousel:
       - text: "Wilhelmus Lab"
         url: "https://wilhelmuslab.me/"
         variant: "primary_filled"
+      - text: "Code"
+        url: "https://github.com/wilhelmusLab/IceFloeTracker.jl"
+        variant: "secondary_filled"
 
   - title: "SOMA Pain Manager"
     categories: [ "Mobile Applications", "React Native", "Pain Management" ]
