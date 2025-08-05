@@ -50,7 +50,7 @@ export default function StorageTool({
           {pageContent?.storage_tool_header}
         </h2>
         <div className="w-full mt-0 flex flex-col xl:flex-row gap-4 items-center xl:items-start">
-          <div>
+          <div className="w-full">
             <Form
               selectedAnswers={selectedAnswers}
               onAnswerChange={handleAnswerChange}
