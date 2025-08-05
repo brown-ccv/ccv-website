@@ -188,6 +188,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                   height={400}
                   className="object-contain"
                   style={{ width: "700px", height: "500px" }}
+                  unoptimized={image.endsWith('.gif')}
                 />
 
                 {/* Attribution if image requires it */}
