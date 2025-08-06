@@ -29,7 +29,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
           {IconComponent && (
             <IconComponent
               iconName={iconName}
-              className="text-2xl flex-shrink-0 mt-1"
+              className="text-4xl flex-shrink-0 mt-1"
             />
           )}
           {title}

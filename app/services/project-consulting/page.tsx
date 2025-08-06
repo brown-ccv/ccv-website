@@ -1,11 +1,10 @@
-import React from "react"
-import StorageContent from "@/content/services/storage.mdx"
-import { getMDXMetadata } from "@/lib/mdx-utils"
 import { Hero } from "@/components/Hero"
 import ButtonLink from "@/components/ui/ButtonLink"
+import ProjectConsultingContent from "@/content/services/project-consulting.mdx"
+import { getMDXMetadata } from "@/lib/mdx-utils"
 
-export default async function Storage() {
-  const metadata = getMDXMetadata("content/services/storage.mdx")
+export default function ProjectConsulting() {
+  const metadata = getMDXMetadata("content/services/project-consulting.mdx")
 
   return (
     <>
@@ -15,11 +14,7 @@ export default async function Storage() {
             {metadata.links.map((link: any, index: number) => (
               <ButtonLink
                 key={index}
-                variant={
-                  link.category === "Documentation"
-                    ? "primary_filled"
-                    : "secondary_filled"
-                }
+                variant="secondary_filled"
                 size="xl"
                 href={link.target}
                 external={!link.target.startsWith("/")}
@@ -31,7 +26,7 @@ export default async function Storage() {
         </div>
       </Hero>
       <div className="prose prose-lg text-xl max-w-none">
-        <StorageContent />
+        <ProjectConsultingContent />
       </div>
     </>
   )

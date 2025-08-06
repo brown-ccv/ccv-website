@@ -72,7 +72,7 @@ const routes: NavSection[] = [
         routes: [
           {
             name: "Project Consulting",
-            href: "/services/consulting",
+            href: "/services/project-consulting",
             description:
               "We help with: Computational Biology, AI / Machine Learning, Software Engineering, Scientific Visualization, and more",
             icon: FaComments,

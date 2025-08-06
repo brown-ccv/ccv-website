@@ -9,8 +9,11 @@ import {
 import { readContentFile } from "@/lib/content-utils"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
+import { CostEstimateCard } from "@/components/card/CostEstimateCard"
 import { PeopleSection } from "@/components/PeopleSection"
 import { Button } from "@/components/ui/Button"
+
+import { FaClock, FaUserClock, FaTshirt } from "react-icons/fa"
 
 export const MDXButton = ({ children, href, ...props }: any) => {
   return (
@@ -73,14 +76,22 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ButtonLink,
     StyledCard,
     CardGroup,
+    CostEstimateCard,
     ContentSection,
     MDXCarousel,
     PeopleSection,
+    
+    // Font Awesome Icons
+    FaClock,
+    FaUserClock,
+    FaTshirt,
+    
     img: (props) => (
       <Image
         {...props}
         width={800}
         height={600}
+        alt={props.alt || ""}
         className="max-w-full h-auto"
       />
     ),

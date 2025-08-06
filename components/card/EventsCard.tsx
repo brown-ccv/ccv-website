@@ -2,12 +2,6 @@ import { StyledCard } from "@/components/card/StyledCard"
 import React from "react"
 import { DataProps } from "@/components/EventSection"
 import Icon from "@/components/ui/RenderIcon"
-import {
-  FaClock,
-  FaExternalLinkSquareAlt,
-  FaExternalLinkAlt,
-} from "react-icons/fa"
-import { ClockIcon } from "@heroicons/react/20/solid"
 
 export const EventsCard: React.FC<DataProps> = ({
   date_time,

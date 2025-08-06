@@ -6,7 +6,7 @@ import Spinner from "@/components/assets/Spinner"
 import { ContentSection } from "@/components/ContentSection"
 import ButtonLink from "@/components/ui/ButtonLink"
 
-export default async function AboutLayout() {
+export default async function Careers() {
   try {
     const workdayData = await getWorkdayData()
 
