@@ -1,5 +1,3 @@
-"use client"
-
 import { scrollToID } from "@/lib/utils"
 import { Button, ButtonProps } from "@/components/button/Button"
 
