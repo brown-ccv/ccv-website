@@ -11,7 +11,6 @@ import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
 import { PeopleSection } from "@/components/PeopleSection"
 import { ButtonGroup } from "@/components/button/ButtonGroup"
-import { MDXButton } from "@/components/button/MDXButton"
 
 // Server component that loads carousel data from YAML file
 async function MDXCarouselData({
@@ -43,9 +42,16 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
 
     // Global MDX components
-    Button: MDXButton,
+    Button: (props) => (
+      <ButtonLink
+        variant="primary_filled"
+        size="lg"
+        className="my-4"
+        external
+        {...props}
+      />
+    ),
     ButtonGroup,
-    ButtonLink,
     StyledCard,
     CardGroup,
     ContentSection,
