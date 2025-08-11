@@ -10,16 +10,16 @@ interface BrownBannerProps {
 export const BrownBanner: React.FC<BrownBannerProps> = () => {
   return (
     <header className="bg-white flex flex-row items-center justify-between py-2 lg:py-4 px-4">
-      <div className="flex-shrink-0 p-4 lg:border-r lg:border-neutral-900">
-        <a
-          href="https://it.brown.edu"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <BrownLogo width={150} className="sm:w-[200px]" />
-          <span className="sr-only">OIT Home</span>
-        </a>
-      </div>
+      <a
+        href="https://it.brown.edu"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex-shrink-0 p-4 lg:border-r lg:border-neutral-900"
+      >
+        <BrownLogo width={150} className="sm:w-[200px]" />
+        <span className="sr-only">OIT Home</span>
+      </a>
+
       <h1 className="pl-6 text-3xl font-semibold hidden lg:flex-1 lg:flex lg:justify-start">
         Center for Computation and Visualization
       </h1>
