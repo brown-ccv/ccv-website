@@ -33,6 +33,13 @@ export const ButtonVariants = cva(
           "focus-visible:ring-2 focus-visible:ring-sunglow-200",
           "active:bg-sunglow-50 active:border-sunglow-300 active:text-sunglow-300",
         ].join(" "),
+        // ————————————————————— Red Outlined ————————————————————
+        red_outlined: [
+          "items-center justify-center text-md sm:text-lg font-semibold",
+          "rounded-none border-2 border-red-university text-red-university",
+          "hover:bg-red-university hover:text-white",
+          "focus-visible:bg-red-university focus:text-white focus-visible:border-red-university whitespace-nowrap",
+        ].join(" "),
         // ————————————————————— Black Filled ——————————————————————
         black_filled: [
           "bg-neutral-900 text-white",
