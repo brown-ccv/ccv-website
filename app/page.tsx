@@ -15,6 +15,7 @@ import { ScrollButton } from "@/components/button/ScrollButton"
 import ButtonLink from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
 import { ContentSection } from "@/components/ContentSection"
+import { IconButton } from "@/components/button/IconButton"
 
 export default async function Home() {
   // Load featured carousel data from YAML
@@ -58,7 +59,7 @@ export default async function Home() {
           <ContentSection title="Featured Projects">
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>
-          <ContentSection title={"Events"} align={"left"}>
+          <ContentSection title={"Events"} align={"left"} id={"events"}>
             <Suspense fallback={<Spinner />}>
               <EventSection
                 streamedDataPast={pastDates}
