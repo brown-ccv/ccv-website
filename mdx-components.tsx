@@ -10,32 +10,8 @@ import { readContentFile } from "@/lib/content-utils"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
 import { PeopleSection } from "@/components/PeopleSection"
-import { Button } from "@/components/button/Button"
-
-export const MDXButton = ({ children, href, ...props }: any) => {
-  return (
-    <ButtonLink
-      href={href}
-      variant="primary_filled"
-      size="lg"
-      className="my-4"
-      {...props}
-    >
-      {children}
-    </ButtonLink>
-  )
-}
-
-export const ButtonGroup = ({ children, ...props }: any) => {
-  return (
-    <div
-      className="flex flex-col sm:flex-row flex-wrap gap-4 w-full items-start not-prose"
-      {...props}
-    >
-      {children}
-    </div>
-  )
-}
+import { ButtonGroup } from "@/components/button/ButtonGroup"
+import { MDXButton } from "@/components/button/MDXButton"
 
 // Server component that loads carousel data from YAML file
 async function MDXCarouselData({
@@ -67,9 +43,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
 
     // Global MDX components
-    MDXButton,
+    Button: MDXButton,
     ButtonGroup,
-    Button,
     ButtonLink,
     StyledCard,
     CardGroup,
