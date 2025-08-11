@@ -75,7 +75,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           </Card>
         </button>
       </DialogTrigger>
-      <DialogContent className="p-8 text-center text-neutral-500 bg-white flex flex-col items-center rounded-xl h-[95vh] w-[95vw] sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl max-h-3xl lg:p-24 overflow-y-scroll">
+      <DialogContent className="p-8 text-center text-neutral-500 bg-white flex flex-col items-center rounded-xl h-[95vh] w-[95vw] sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl max-h-3xl lg:p-24 overflow-y-auto">
         <Image
           src={imagePath}
           alt={name}
@@ -95,28 +95,30 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
         {personDetails?.subteam && (
           <p className="text-lg italic">{personDetails.subteam}</p>
         )}
-        <div className="flex gap-4">
+        <div className="flex gap-8">
           {personDetails?.github_username &&
             personDetails.github_username !== "" && (
               <ButtonLink
                 href={`https://github.com/${personDetails.github_username}`}
+                variant={"icon_only"}
+                size={"icon"}
+                iconOnly={<FaGithub />}
                 external
                 title="GitHub Profile"
-                className="w-10 h-10 p-1 text-3xl hover:text-keppel-700"
-              >
-                <FaGithub />
-              </ButtonLink>
+                className="text-3xl hover:text-keppel-700"
+              ></ButtonLink>
             )}
           {personDetails?.brown_directory_uuid &&
             personDetails.brown_directory_uuid !== "" && (
               <ButtonLink
                 href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
+                variant={"icon_only"}
+                size={"icon"}
                 external
+                iconOnly={<FaInfoCircle className="text-3xl" />}
                 title="Brown Directory"
-                className="w-10 h-10 p-1 text-3xl hover:text-keppel-700"
-              >
-                <FaInfoCircle />
-              </ButtonLink>
+                className="text-3xl hover:text-keppel-700"
+              ></ButtonLink>
             )}
         </div>
         {personDetails?.bio && (
