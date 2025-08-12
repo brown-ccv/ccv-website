@@ -11,9 +11,9 @@ The content of the MDX Editing Guide that you are *currently reading* is rendere
 
 Every page on the CCV website is rendered from an mdx, markdown, or yaml file in the `/content` folder.
 
-<MDXButton href="https://nextjs.org/docs/app/guides/mdx">
+<Button href="https://nextjs.org/docs/app/guides/mdx">
     View Next.js MDX Documentation
-</MDXButton>
+</Button>
 
 </ContentSection>
 
@@ -21,9 +21,9 @@ Every page on the CCV website is rendered from an mdx, markdown, or yaml file in
 
 All available components are in the `/components` folder. To make them accessible in `.mdx` files, add them to `/mdx-components.tsx`. Import the component(s) at the top of the file and add it to the Global MDX Components section at the bottom. To request a new custom component, please add an issue to the CCV website github repository.
 
-<MDXButton href="https://github.com/brown-ccv/ccv-website/issues">
+<Button href="https://github.com/brown-ccv/ccv-website/issues">
     Request a New Component
-</MDXButton>
+</Button>
 
 ### Best practices:
 
@@ -43,15 +43,15 @@ This is an example of an MDX content file containing custom components and markd
 
 The `<ContentSection>` component is used to create a header for the page and apply styling to that page's section. It is a custom component that is defined in `/components/SectionHeader.tsx` and imported in `/mdx-components.tsx`.
 
-Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<MDXButton/>` component. It uses the same styling as the buttons that are used throughout this website.
+Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<Button/>` component. It uses the same styling as the buttons that are used throughout this website.
 
 <ButtonGroup>
-  <MDXButton href="https://www.markdownguide.org/cheat-sheet/">
+  <Button href="https://www.markdownguide.org/cheat-sheet/">
     Markdown Cheat Sheet
-  </MDXButton>
-  <MDXButton href="https://nextjs.org/docs/app/guides/mdx">
+  </Button>
+  <Button href="https://nextjs.org/docs/app/guides/mdx">
     Read Documentation
-  </MDXButton>
+  </Button>
 </ButtonGroup>
 
 Here is a non-exhaustive list of markdown formatting options:
@@ -74,15 +74,15 @@ This is how the above example renders:
 
 The `<ContentSection>` component is used to create a header for the page and apply styling to that page's section. It is a custom component that is defined in `/components/SectionHeader.tsx` and imported in `/mdx-components.tsx`.
 
-Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<MDXButton/>` component. It uses the same styling as the buttons that are used throughout this website.
+Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<Button/>` component. It uses the same styling as the buttons that are used throughout this website.
 
 <ButtonGroup>
-    <MDXButton href="https://www.markdownguide.org/cheat-sheet/">
+    <Button href="https://www.markdownguide.org/cheat-sheet/">
         Markdown Cheat Sheet
-    </MDXButton>
-    <MDXButton href="https://nextjs.org/docs/app/guides/mdx">
+    </Button>
+    <Button href="https://nextjs.org/docs/app/guides/mdx">
         Read Documentation
-    </MDXButton>
+    </Button>
 </ButtonGroup>
 
 Here is a non-exhaustive list of markdown formatting options:

@@ -1,9 +1,9 @@
 "use client"
 
 import React from "react"
-import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
+import { ArrowRightIcon, MapPinIcon } from "@heroicons/react/24/solid"
 import { Card, CardContent } from "@/components/ui/Card"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 interface PositionProps {
   title: string

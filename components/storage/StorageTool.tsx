@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 import { ContentSection } from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
 import Table from "@/components/storage/StorageTable"
