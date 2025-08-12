@@ -1,12 +1,13 @@
 "use client"
 
-import { JSX, use, useState } from "react"
+import { JSX, use } from "react"
 import CalendarWeekly from "@/components/calendar/CalendarWeekly"
 import CalendarMonth from "@/components/calendar/CalendarMonth"
 import UpcomingEvents from "@/components/calendar/UpcomingEvents"
 import { SectionHeader } from "@/components/SectionHeader"
 import ButtonLink from "@/components/ui/ButtonLink"
 import { FaCalendarAlt } from "react-icons/fa"
+import { StyledTabs } from "@/components/StyledTabs"
 
 export interface DataProps {
   id: number
@@ -20,45 +21,12 @@ export interface DataProps {
   url: string
 }
 
-function classNames(...classes: (string | boolean | undefined)[]) {
-  return classes.filter(Boolean).join(" ")
-}
-
 interface EventSectionProps {
   streamedDataFuture: Promise<any>
   streamedDataPast: Promise<any>
   today: string
   currentDate: Date
 }
-
-interface ToggleButtonProps {
-  item: "Upcoming" | "Weekly" | "Monthly"
-  view: "Upcoming" | "Weekly" | "Monthly"
-  setView: (view: "Upcoming" | "Weekly" | "Monthly") => void
-}
-
-const ToggleButton = ({ item, view, setView }: ToggleButtonProps) => {
-  return (
-    <p
-      tabIndex={0}
-      id={item}
-      key={item}
-      className={classNames(
-        view === item ? "selected" : "",
-        "inline-block m-0 rounded-[13px] py-2 px-3 cursor-pointer"
-      )}
-      role="button"
-      onClick={() => setView(item)}
-    >
-      {item}
-    </p>
-  )
-}
-
-const CALENDAR_COMPONENTS = {
-  Weekly: CalendarWeekly,
-  Monthly: CalendarMonth,
-} as const
 
 export function EventSection({
   streamedDataFuture,
@@ -68,32 +36,10 @@ export function EventSection({
 }: EventSectionProps): JSX.Element {
   const dataFuture = use(streamedDataFuture)
   const dataPast = use(streamedDataPast)
-  const [view, setView] = useState<"Upcoming" | "Weekly" | "Monthly">(
-    "Upcoming"
-  )
-  const CAL_VIEW_ARRAY = ["Upcoming", "Weekly", "Monthly"] as const
-
-  const renderView = () => {
-    if (view === "Upcoming") {
-      return <UpcomingEvents events={dataFuture} />
-    }
-
-    const CalendarComponent =
-      CALENDAR_COMPONENTS[view as keyof typeof CALENDAR_COMPONENTS]
-    return (
-      <div className="h-0 min-h-[400px] sm:min-h-[600px] lg:min-h-[1000px]">
-        <CalendarComponent
-          today={today}
-          currentDate={currentDate}
-          events={dataPast.concat(dataFuture)}
-        />
-      </div>
-    )
-  }
 
   return (
     <>
-      <div className="flex flex-col gap-4 xl:flex-row xl:gap-8">
+      <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-8">
         <div className="flex flex-col items-center gap-4">
           <SectionHeader
             title={"Events"}
@@ -113,24 +59,38 @@ export function EventSection({
         </div>
 
         {/* Right: Toggle and Views */}
-        <div className="flex flex-col flex-1">
-          {/* Toggle Buttons */}
-          <div className="hidden lg:flex relative mb-12 self-end">
-            <div className="toggle-btn space-x-10 text-xl font-semibold absolute right-0 flex">
-              {CAL_VIEW_ARRAY.map((item) => (
-                <ToggleButton
-                  key={item}
-                  item={item}
-                  view={view}
-                  setView={setView}
+        <StyledTabs
+          className="hidden md:flex"
+          tabs={[
+            {
+              value: "upcoming",
+              label: "Upcoming",
+              content: <UpcomingEvents events={dataFuture} />,
+            },
+            {
+              value: "weekly",
+              label: "Weekly",
+              content: (
+                <CalendarWeekly
+                  events={dataPast.concat(dataFuture)}
+                  currentDate={currentDate}
+                  today={today}
                 />
-              ))}
-            </div>
-          </div>
-
-          {/* Conditional rendering of views */}
-          <div className="mt-1">{renderView()}</div>
-        </div>
+              ),
+            },
+            {
+              value: "monthly",
+              label: "Monthly",
+              content: (
+                <CalendarMonth
+                  events={dataPast.concat(dataFuture)}
+                  currentDate={currentDate}
+                  today={today}
+                />
+              ),
+            },
+          ]}
+        />
       </div>
     </>
   )
