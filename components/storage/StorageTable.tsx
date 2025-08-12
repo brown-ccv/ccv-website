@@ -4,7 +4,7 @@ import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 import Link from "next/link"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 import { ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
 import {
   ServiceConfig,

@@ -2,7 +2,7 @@ import React from "react"
 import StorageContent from "@/content/services/storage.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 import { Hero } from "@/components/Hero"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 export default async function Storage() {
   const metadata = getMDXMetadata("content/services/storage.mdx")
