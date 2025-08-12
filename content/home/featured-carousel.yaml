@@ -1,4 +1,18 @@
 carousel:
+  - title: "CCV AI Services"
+    categories: [ "Web Development", "LLMs", "AI" ]
+    description: |
+      CCV AI Services provides a set of generative AI tools that are built and deployed in-house at Brown for all members of the Brown community. These tools include:
+
+      - LibreChat (currently under construction): A unified chat interface that provides the community free and private access to a mix of state-of-the-art open-source and commercial large language models (LLMs), including GPT-5 and Gemini-2.5-Pro.
+      - Transcribe: A web app that provides fast and accurate audio transcription through open-source and enterprise-level models, including the OpenAI Whisper model and Google Gemini models.
+      - Ask Oscar (currently under construction): An AI assistant that can answer questions based on documentation of CCV and other Brown services.
+    image: "/images/home/featured-carousel/ccv-ai-services.png"
+    buttons:
+      - text: "CCV AI Services Website"
+        url: "https://ai.ccv.brown.edu"
+        variant: "primary_filled"
+        
   - title: "PROVIDENT"
     categories: [ "Public Health", "Web Development" ]
     description: "A dashboard that showcases the PROVIDENT model that makes predictions about which neighborhoods are at the highest risk for future overdoses. Intervention municipalities received predictions from the PROVIDENT model in the randomized trial. Organizations plan and track their interventions and their effects on the overdose data using neighborhood assessment and planning forms."
@@ -155,18 +169,4 @@ carousel:
     buttons:
       - text: "Climate and Development Lab Website"
         url: "https://www.climatedevlab.brown.edu/"
-        variant: "primary_filled"
-
-  - title: "CCV AI Services"
-    categories: [ "Web Development", "LLMs", "AI" ]
-    description: |
-      CCV AI Services provides a set of generative AI tools that are built and deployed in-house at Brown for all members of the Brown community. These tools include:
-
-      - LibreChat (currently under construction): A unified chat interface that provides the community free and private access to a mix of state-of-the-art open-source and commercial large language models (LLMs), including GPT-5 and Gemini-2.5-Pro.
-      - Transcribe: A web app that provides fast and accurate audio transcription through open-source and enterprise-level models, including the OpenAI Whisper model and Google Gemini models.
-      - Ask Oscar (currently under construction): An AI assistant that can answer questions based on documentation of CCV and other Brown services.
-    image: "/images/home/featured-carousel/ccv-ai-services.png"
-    buttons:
-      - text: "CCV AI Services Website"
-        url: "https://ai.ccv.brown.edu"
         variant: "primary_filled"
