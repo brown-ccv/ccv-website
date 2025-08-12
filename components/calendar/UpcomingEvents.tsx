@@ -15,7 +15,7 @@ const UpcomingEventsView = ({
   const displayedEvents = limit ? events?.slice(0, limit) : events
 
   return (
-    <div className="flex flex-wrap justify-end gap-6">
+    <div className="flex flex-wrap justify-center lg:justify-end gap-6">
       {displayedEvents?.map(
         (e: JSX.IntrinsicAttributes & DataProps, i: Key | null | undefined) => (
           <React.Fragment key={i}>
