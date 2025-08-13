@@ -50,7 +50,7 @@ export const StyledTabs: React.FC<TabsProps> = ({
       </TabsList>
 
       {tabs?.map((tab) => (
-        <TabsContent key={tab.value} value={tab.value}>
+        <TabsContent key={tab.value} value={tab.value} className={"w-full"}>
           {tab.content}
         </TabsContent>
       ))}
