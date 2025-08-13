@@ -61,6 +61,7 @@ export function EventSection({
         {/* Right: Toggle and Views */}
         <StyledTabs
           className="hidden md:flex"
+          variant="neutral"
           tabs={[
             {
               value: "upcoming",
