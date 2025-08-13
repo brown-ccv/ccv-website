@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 import { ContentSection } from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
 import Table from "@/components/storage/StorageTable"
@@ -50,7 +50,7 @@ export default function StorageTool({
           {pageContent?.storage_tool_header}
         </h2>
         <div className="w-full mt-0 flex flex-col xl:flex-row gap-4 items-center xl:items-start">
-          <div>
+          <div className="w-full">
             <Form
               selectedAnswers={selectedAnswers}
               onAnswerChange={handleAnswerChange}

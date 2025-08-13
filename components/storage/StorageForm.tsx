@@ -4,7 +4,7 @@ import { SelectedAnswers, FormQuestions } from "@/lib/storage-types"
 import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 interface FormProps {
   selectedAnswers: SelectedAnswers

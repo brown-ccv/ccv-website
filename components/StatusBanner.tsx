@@ -1,8 +1,5 @@
-"use client"
-
-import { XMarkIcon } from "@heroicons/react/20/solid"
-import { useState } from "react"
-import { Button } from "@/components/ui/Button"
+import React, { useState } from "react"
+import { IconButton } from "@/components/button/IconButton"
 
 interface StatusBannerProps {
   children: React.ReactNode
@@ -25,25 +22,11 @@ export default function StatusBanner({
       ${isOperational ? "bg-keppel-500 text-black" : "bg-red-university text-white"}`}
     >
       <div className="flex-1 min-w-0 pr-2 sm:pr-4">{children}</div>
-      <div className="flex-shrink-0">
-        <Button
-          variant="icon_only"
-          size="icon"
-          aria-label="Dismiss banner"
-          onClick={() => setIsOpen(false)}
-          className="
-            bg-transparent
-            hover:bg-white
-            hover:text-black
-            active:bg-neutral-50
-            w-8 h-8
-            sm:w-10 sm:h-10
-          "
-          iconOnly={
-            <XMarkIcon aria-hidden="true" className="h-4 w-4 sm:h-5 sm:w-5" />
-          }
-        />
-      </div>
+      <IconButton
+        iconName="FaTimes"
+        aria-label="Dismiss banner"
+        onClick={() => setIsOpen(false)}
+      />
     </div>
   )
 }

@@ -8,7 +8,7 @@ export default function UserSupport() {
   return (
     <>
       <Hero
-        image={"/images/services/user-support.jpeg"}
+        image={metadata.image}
         title={metadata.title}
         description={metadata.description}
       />

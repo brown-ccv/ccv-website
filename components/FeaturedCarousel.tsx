@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import { Badge } from "@/components/ui/Badge"
 import { getColorForTag } from "@/lib/utils"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import Image from "next/image"
 import Icon from "@/components/ui/RenderIcon"
@@ -101,7 +101,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </Button>
           </div>
 
-          <div className="flex flex-col lg:flex-row items-start justify-start gap-8 relative">
+          <div className="flex flex-col lg:flex-row items-start justify-start gap-8 relative mt-8">
             {/* Text Content */}
             <div className="w-full max-w-[700px] space-y-6 flex flex-col justify-start">
               {/* Categories */}
