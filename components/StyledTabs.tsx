@@ -30,7 +30,7 @@ export const StyledTabs: React.FC<TabsProps> = ({
             key={tab.value}
             value={tab.value}
             className={cn(
-              "bg-white text-lg border-b-2 rounded-none hover:text-keppel-800 hover:border-gray-300 dark:hover:text-keppel-500 focus-visible:ring-offset-0 data-[state=active]:bg-neutral-50 data-[state=active]:text-keppel-700 data-[state=active]:border-keppel-700",
+              "text-lg border-b-2 px-8 rounded-b-none hover:text-keppel-800 hover:border-gray-300 dark:hover:text-keppel-500 focus-visible:ring-offset-0 data-[state=active]:bg-neutral-50 data-[state=active]:text-keppel-700 data-[state=active]:border-keppel-700",
               className
             )}
           >
