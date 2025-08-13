@@ -22,9 +22,9 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   return (
     <Card
       className={cn(
-        className,
-        "w-full bg-white px-6",
-        isDisabled ? "opacity-30 grayscale" : ""
+        "w-full md:max-w-md bg-white px-6",
+        isDisabled ? "opacity-30 grayscale" : "",
+        className
       )}
     >
       <CardHeader>
