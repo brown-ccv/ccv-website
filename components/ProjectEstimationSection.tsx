@@ -86,7 +86,7 @@ export const ProjectEstimationSection = () => {
 
   return (
     <>
-      <StyledTabs tabs={tabs} />
+      <StyledTabs position="center" tabs={tabs} />
     </>
   )
 }
