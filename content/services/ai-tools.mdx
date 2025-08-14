@@ -13,85 +13,6 @@ CCV provides access to cutting-edge AI tools and large language models through o
 
 </ContentSection>
 
-<ContentSection title="Ollama - Large Language Models">
-
-Ollama is a framework that allows you to run large language models directly on Oscar's GPU nodes. CCV hosts dozens of open-weight LLMs including Llama 3.3, DeepSeek-r1, Mistral, and Gemma3.
-
-<Button href="https://docs.ccv.brown.edu/oscar/large-language-models/ollama">
-  View Documentation
-</Button>
-
-## Getting Started
-
-### 1. Set Up Environment
-First, connect to Oscar and set the environment variable for CCV-hosted models:
-
-```bash
-echo 'export OLLAMA_MODELS=/oscar/data/shared/ollama_models' >> ~/.bashrc
-source ~/.bashrc
-```
-
-### 2. Request GPU Resources
-Request a GPU node with appropriate resources:
-
-```bash
-interact -n 4 -m 32g -q gpu -g 1 -t 1:00:00
-```
-
-### 3. Start Ollama Server
-Load the Ollama module and start the server:
-
-```bash
-module load ollama
-ollama serve
-```
-
-### 4. Run Models Interactively
-In a new terminal session, connect to your GPU node and start chatting:
-
-```bash
-ssh gpuXXXX  # Replace with your node number
-module load ollama
-ollama run llama3.2
-```
-
-## Available Models
-
-CCV hosts a comprehensive collection of models including:
-
-- **Llama Models**: llama3.1, llama3.2, llama3.3 (various sizes)
-- **Code Models**: codellama, deepseek-coder-v2, starcoder2
-- **General Purpose**: mistral, gemma2, phi3, qwen2.5
-- **Specialized**: llava (vision), moondream (vision)
-
-For the complete list, run `ollama list` after starting your server.
-
-## Python Integration
-
-You can also use Ollama models programmatically with Python:
-
-```python
-import ollama
-
-response = ollama.chat(model='llama3.2', messages=[
-    {
-        'role': 'user',
-        'content': 'Write a function to compute Fibonacci numbers in Rust?',
-    },
-])
-
-print(response['message']['content'])
-```
-
-## Performance Notes
-
-- LLMs perform best on GPUs due to their parallel architecture
-- Large models (like llama3.1:405b) may require multiple GPUs
-- Request additional resources for optimal performance
-- Models are automatically distributed across available GPUs
-
-</ContentSection>
-
 <ContentSection title="ChatCCV">
 
 A conversational AI assistant for CCV services and support.
@@ -126,14 +47,26 @@ Ask Oscar is an AI assistant that specializes in answering questions about CCV a
 
 Ask Oscar is powered by the latest version of the OpenAI GPT-4o model served by Azure OpenAI. Different from models served directly by OpenAI, information provided to the model will not be used by OpenAI or Microsoft for training purposes. Please check the Data, privacy, and security for Azure OpenAI for more information. Nevertheless, please avoid sharing sensitive information with the model.
 
-<Button href="https://platform.openai.com/docs/models">
-  OpenAI Models
-</Button>
+<ButtonGroup>
+  <Button href="https://platform.openai.com/docs/models">
+    OpenAI Models
+  </Button>
 
-<Button href="https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy?tabs=azure-portal">
-  Azure OpenAI Data Privacy
-</Button>
+  <Button href="https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy?tabs=azure-portal">
+    Azure OpenAI Data Privacy
+  </Button>
+</ButtonGroup>
 
 **Note**: Ask Oscar is currently under development as a proof of concept. The information about the Oscar documentation is not up-to-date and may be incorrect.
+
+</ContentSection>
+
+<ContentSection title="Ollama - Large Language Models">
+
+Ollama is a framework that allows you to run large language models directly on Oscar's GPU nodes. CCV hosts dozens of open-weight LLMs including Llama 3.3, DeepSeek-r1, Mistral, and Gemma3.
+
+<Button href="https://docs.ccv.brown.edu/oscar/large-language-models/ollama">
+  View Documentation
+</Button>
 
 </ContentSection>
