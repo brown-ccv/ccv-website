@@ -1,4 +1,18 @@
 carousel:
+  - title: "CCV AI Services"
+    categories: [ "Web Development", "LLMs", "AI" ]
+    description: |
+      CCV AI Services provides a set of generative AI tools that are built and deployed in-house at Brown for all members of the Brown community. These tools include:
+
+      - LibreChat (currently under construction): A unified chat interface that provides the community free and private access to a mix of state-of-the-art open-source and commercial large language models (LLMs), including GPT-5 and Gemini-2.5-Pro.
+      - Transcribe: A web app that provides fast and accurate audio transcription through open-source and enterprise-level models, including the OpenAI Whisper model and Google Gemini models.
+      - Ask Oscar (currently under construction): An AI assistant that can answer questions based on documentation of CCV and other Brown services.
+    image: "/images/home/featured-carousel/ccv-ai-services.png"
+    buttons:
+      - text: "CCV AI Services Website"
+        url: "https://ai.ccv.brown.edu"
+        variant: "primary_filled"
+        
   - title: "PROVIDENT"
     categories: [ "Public Health", "Web Development" ]
     description: "A dashboard that showcases the PROVIDENT model that makes predictions about which neighborhoods are at the highest risk for future overdoses. Intervention municipalities received predictions from the PROVIDENT model in the randomized trial. Organizations plan and track their interventions and their effects on the overdose data using neighborhood assessment and planning forms."
@@ -57,7 +71,9 @@ carousel:
 
       The game is developed using HTML, CSS, and Javascript. The experiment running the game and facilitating data recording is built on jsPsych, a JavaScript framework used in web-based behavioral experiments.
 
-      Honeycomb is an open source task-template repository that combines well-accepted practices and technologies from the cognitive science and web development communities to build psychophysiological tasks that support lab equipment recordings and are ready for deployment to different settings (desktop or online) without significant changes to the code base
+      It is built using Honeycomb, is an open-source template that integrates cognitive science and web development practices.
+      Researchers can use it to create psychophysiological tasks which use lab equipment, for example electroencephalogram (EEG) brain measurements.
+
     image: "/images/home/featured-carousel/gearshift.gif"
     organizations:
       - name: "Cognitive and Psychological Sciences"
@@ -65,8 +81,8 @@ carousel:
         pi: [ "Nadja Ging-Jehli" ]
         icon: "FaUser"
     buttons:
-      - text: "Code"
-        url: "https://github.com/brown-ccv/jehli-gearshift-task"
+      - text: "Gearshift Website"
+        url: "https://www.gingjehli.com/gearshiftfellowship"
         variant: "primary_filled"
       - text: "Honeycomb"
         url: "https://honeycomb.ccv.brown.edu/"

@@ -2,7 +2,7 @@ import CCVLogo from "@/components/assets/CCVLogo"
 import { CarbonBadge } from "@/components/CarbonBadge"
 import { FaArrowRight } from "react-icons/fa"
 import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 // Footer link component
 interface FooterLinkProps {
@@ -74,11 +74,11 @@ const Footer = () => {
             Brown University
           </div>
           <div className="flex flex-col space-x-0 space-y-2 sm:flex-row sm:space-y-0 sm:space-x-8">
-            <div className="font-serif text-base text-white sm:text-lg xl:text-xl">
+            <div className="font-serif text-md text-white sm:text-lg xl:text-xl">
               <MdLocationPin className="inline-block mr-2 text-stone-400" />
               Providence, RI 02912
             </div>
-            <div className="font-serif text-base text-white sm:text-lg xl:text-xl">
+            <div className="font-serif text-md text-white sm:text-lg xl:text-xl">
               <MdOutlinePhoneInTalk className="inline-block mr-2 text-stone-400" />
               401-863-1000
             </div>
@@ -103,7 +103,7 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="content-wrapper flex flex-col sm:flex-row items-center sm:items-start justify-between py-4 bg-black font-serif text-base text-cream md:text-lg">
+      <div className="content-wrapper flex flex-col sm:flex-row items-center sm:items-start justify-between py-4 bg-black font-serif text-md text-cream md:text-lg">
         <div className="flex flex-col gap-4 items-center sm:items-start order-1 sm:order-1">
           <CCVLogo />
           <div>&copy; Brown University</div>

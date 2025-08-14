@@ -22,7 +22,7 @@ import {
 import { CalendarProps } from "@/components/calendar/types"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { ClockIcon } from "@heroicons/react/20/solid"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 export interface weekProps {
   id: string
@@ -89,7 +89,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
       return (
         <div
           key={day}
-          className={`flex items-center justify-center py-3 ${
+          className={`flex items-center justify-center py-3 lg:py-4 xl:w-32 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
           ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-50" : "bg-white"}`}
@@ -97,7 +97,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             setSelectedDate(cloneDate)
           }}
         >
-          <span className="text-neutral-900 font-semibold text-lg">
+          <span className="text-neutral-900 text-center font-semibold text-lg">
             {day}
             <span className="mx-2 items-center justify-center">
               {format(thisDate, "d")}
@@ -159,7 +159,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
   }
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex flex-col h-full w-full">
       <CalendarHeading
         date={activeDate}
         srButtonText={"week"}
@@ -170,15 +170,12 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
       <div
         ref={container}
-        className="isolate border-white border-t-2 shadow ring-1 ring-black ring-opacity-5 flex flex-auto flex-col overflow-auto bg-white"
+        className="isolate border-white border-t-2 max-h-screen shadow ring-1 ring-black ring-opacity-5 flex flex-auto flex-col overflow-auto bg-white"
       >
-        <div
-          style={{ width: "165%" }}
-          className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full"
-        >
+        <div className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full">
           <div
             ref={containerNav}
-            className="sticky top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
+            className="sticky bg-white top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
           >
             <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-500 sm:grid">
               <div className="col-end-1 w-14 bg-white" />

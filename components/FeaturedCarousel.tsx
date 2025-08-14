@@ -3,7 +3,7 @@
 import React, { useState } from "react"
 import { Badge } from "@/components/ui/Badge"
 import { getColorForTag } from "@/lib/utils"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import Image from "next/image"
 import Icon from "@/components/ui/RenderIcon"

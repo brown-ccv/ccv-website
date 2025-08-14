@@ -4,7 +4,7 @@ import { Hero } from "@/components/Hero"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
 import { ContentSection } from "@/components/ContentSection"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 export default async function AboutLayout() {
   try {
