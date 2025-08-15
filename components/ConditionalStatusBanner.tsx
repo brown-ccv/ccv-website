@@ -23,7 +23,7 @@ export default function ConditionalStatusBanner({
       <div className="flex flex-row items-center justify-center gap-2 sm:gap-4">
         {issues.length > 0 ? (
           <>
-            <p className="text-sm sm:text-md w-auto flex-shrink-0">
+            <p className="w-auto flex-shrink-0 text-sm sm:text-md">
               <strong>Service Disruption:</strong>{" "}
               {issues.map((repo) => repo.name).join(", ")}
             </p>
@@ -32,14 +32,14 @@ export default function ConditionalStatusBanner({
               external
               variant="secondary_filled"
               size="sm"
-              className="text-sm sm:text-md w-auto flex-shrink-0"
+              className="w-auto flex-shrink-0 text-sm sm:text-md"
             >
               View Incidents
             </ButtonLink>
           </>
         ) : (
           <>
-            <p className="text-sm sm:text-lg text-center sm:text-left flex-shrink">
+            <p className="flex-shrink text-center text-sm sm:text-left sm:text-lg">
               All Services Operational
             </p>
             <ButtonLink
@@ -47,7 +47,7 @@ export default function ConditionalStatusBanner({
               external
               variant="secondary_filled"
               size="sm"
-              className="text-sm sm:text-lg w-auto flex-shrink-0"
+              className="w-auto flex-shrink-0 text-sm sm:text-lg"
             >
               View Status
             </ButtonLink>

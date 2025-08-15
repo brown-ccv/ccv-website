@@ -8,7 +8,7 @@ export default async function ClassroomSupport() {
   return (
     <>
       <Hero title={metadata.title} description={metadata.description} />
-      <div className="prose prose-lg text-xl max-w-none">
+      <div className="prose prose-lg max-w-none text-xl">
         <ClassroomContent />
       </div>
     </>

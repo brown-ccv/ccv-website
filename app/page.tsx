@@ -75,7 +75,7 @@ export default async function Home() {
   } catch (err: any) {
     console.error(err)
     return (
-      <div className="px-2 my-6 space-y-2">
+      <div className="my-6 space-y-2 px-2">
         <p>{err.message}</p>
       </div>
     )

@@ -31,7 +31,7 @@ export default async function AboutLayout() {
   } catch (err: any) {
     console.error(err)
     return (
-      <div className="text-3xl font-semibold py-10 text-center">
+      <div className="py-10 text-center text-3xl font-semibold">
         Error loading careers{" "}
       </div>
     )

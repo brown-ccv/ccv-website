@@ -46,9 +46,9 @@ export function EventSection({
             icon={<FaCalendarAlt />}
             className="mb-0"
           />
-          <h3 className="font-serif text-xl italic mb-6">What's next at CCV</h3>
+          <h3 className="mb-6 font-serif text-xl italic">What's next at CCV</h3>
           <ButtonLink
-            className="mt-0 mx-4"
+            className="mx-4 mt-0"
             variant="primary_filled"
             size="lg"
             href="https://events.brown.edu/ccv/all"

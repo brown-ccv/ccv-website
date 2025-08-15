@@ -18,10 +18,9 @@ export default function StatusBanner({
 
   return (
     <div
-      className={`relative isolate w-full flex items-center justify-between gap-x-1 sm:gap-x-4 md:gap-x-6 overflow-hidden h-[55px] px-4 sm:px-6 md:px-8 
-      ${isOperational ? "bg-keppel-500 text-black" : "bg-red-university text-white"}`}
+      className={`relative isolate flex h-[55px] w-full items-center justify-between gap-x-1 overflow-hidden px-4 sm:gap-x-4 sm:px-6 md:gap-x-6 md:px-8 ${isOperational ? "bg-keppel-500 text-black" : "bg-red-university text-white"}`}
     >
-      <div className="flex-1 min-w-0 pr-2 sm:pr-4">{children}</div>
+      <div className="min-w-0 flex-1 pr-2 sm:pr-4">{children}</div>
       <IconButton
         iconName="FaTimes"
         aria-label="Dismiss banner"

@@ -6,7 +6,7 @@ const Spinner: React.FC<LogoProps> = ({ width = 75 }) => {
     <div role="status" className="flex justify-center py-4 text-center">
       <svg
         aria-hidden="true"
-        className="w-12 h-12 animate-spin text-gray-500 fill-keppel-500"
+        className="h-12 w-12 animate-spin fill-keppel-500 text-gray-500"
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
