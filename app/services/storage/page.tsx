@@ -31,9 +31,7 @@ export default async function Storage() {
           </div>
         </div>
       </Hero>
-      <div className="prose prose-lg max-w-none text-xl">
-        <StorageContent />
-      </div>
+      <StorageContent />
     </>
   )
 }
