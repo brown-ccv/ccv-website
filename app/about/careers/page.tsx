@@ -14,17 +14,19 @@ export default async function AboutLayout() {
       <>
         <Hero image={"/images/hero/about-kayaks.png"} title="Careers" />
         <ContentSection title="Opportunities">
-          <Suspense fallback={<Spinner />}>
-            <Workday careers={workdayData} />
-          </Suspense>
-          <ButtonLink
-            href={"/about/contact"}
-            external={false}
-            size="xl"
-            variant="primary_filled"
-          >
-            Contact Us
-          </ButtonLink>
+          <div className="flex flex-col items-start gap-y-6">
+            <Suspense fallback={<Spinner />}>
+              <Workday careers={workdayData} />
+            </Suspense>
+            <ButtonLink
+              href={"/about/contact"}
+              external={false}
+              size="xl"
+              variant="primary_filled"
+            >
+              Contact Us
+            </ButtonLink>
+          </div>
         </ContentSection>
       </>
     )
