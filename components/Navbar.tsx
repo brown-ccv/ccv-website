@@ -226,28 +226,24 @@ export const Navbar: React.FC = () => {
   }
 
   return (
-    <header className={`sticky top-0 z-50`}>
-      <nav
-        role="navigation"
-        aria-label="Main menu"
-        className="flex justify-between bg-blue-navbar px-6 sm:px-8"
-      >
+    <div className="sticky top-0 z-50">
+      <div className="flex justify-between bg-blue-navbar px-6 sm:px-8">
         <div className="flex items-center px-6 py-8 sm:px-8 xl:px-10">
-          <Link href={"/"}>
-            <span className="sr-only text-white">CCV Home</span>
+          <Link href="/">
+            <span className="sr-only">CCV Home</span>
             <CCVLogo width={120} />
           </Link>
         </div>
 
         {/* Navigation Menu for Desktop */}
         <NavigationMenu.Root className="relative z-10 hidden w-full items-stretch justify-between lg:flex">
-          <NavigationMenu.List className="m-0 flex h-full list-none items-center rounded-md">
+          <NavigationMenu.List className="flex h-full items-center">
             {routes.map((section) => (
               <NavigationMenu.Item key={section.name}>
                 <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 text-2xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-6">
                   {section.name}
                   <FaChevronDown
-                    className="relative top-[1px] ml-0 h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180 xl:ml-1"
+                    className="relative top-[1px] h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180 xl:ml-1"
                     aria-hidden="true"
                   />
                 </NavigationMenu.Trigger>
@@ -268,14 +264,14 @@ export const Navbar: React.FC = () => {
             </NavigationMenu.Item> */}
           </NavigationMenu.List>
 
-          <NavigationMenu.List className="m-0 flex h-full list-none items-center rounded-md">
+          <NavigationMenu.List className="flex h-full items-center">
             <NavigationMenu.Item>
               <ButtonLink
                 external={false}
                 href="/about/contact"
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-2xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
-                <FaQuestionCircle className="mr-0 stroke-[2.5] text-2xl" />
+                <FaQuestionCircle className="stroke-[2.5] text-2xl" />
                 Help
               </ButtonLink>
             </NavigationMenu.Item>
@@ -287,7 +283,7 @@ export const Navbar: React.FC = () => {
                 external={true}
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-2xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
-                <FaFileLines size="" className="mr-0 stroke-[2.5] text-2xl" />
+                <FaFileLines className="stroke-[2.5] text-2xl" />
                 Docs
               </ButtonLink>
             </NavigationMenu.Item>
@@ -325,7 +321,7 @@ export const Navbar: React.FC = () => {
               <React.Fragment key={section.name}>
                 <button
                   onClick={() => toggleSubmenu(section.name)}
-                  className="mr-6 flex w-full items-center justify-between px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+                  className="flex w-full items-center justify-between px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
                 >
                   {section.name}
                   <FaChevronDown
@@ -336,42 +332,22 @@ export const Navbar: React.FC = () => {
                   <div className="ml-6">
                     {section.groups.map((group) => (
                       <div className="py-2" key={group.name}>
-                        {group.routes.map((route) =>
-                          route.href.startsWith("http") ? (
-                            <ButtonLink
-                              key={route.href}
-                              href={route.href}
-                              onClick={toggleMobileMenu}
-                              className={
-                                "mr-6 block px-6 py-6 text-white hover:bg-sunglow-400 hover:text-neutral-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
-                              }
-                            >
-                              <div className="text-xl">{route.name}</div>
-                              {route.description && (
-                                <div className="mt-1 text-sm">
-                                  {route.description}
-                                </div>
-                              )}
-                            </ButtonLink>
-                          ) : (
-                            <ButtonLink
-                              external={false}
-                              key={route.href}
-                              href={route.href}
-                              onClick={toggleMobileMenu}
-                              className={
-                                "mr-6 block px-6 py-6 text-white hover:bg-sunglow-400 hover:text-neutral-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
-                              }
-                            >
-                              <div className="text-xl">{route.name}</div>
-                              {route.description && (
-                                <div className="mt-1 text-sm">
-                                  {route.description}
-                                </div>
-                              )}
-                            </ButtonLink>
-                          )
-                        )}
+                        {group.routes.map((route) => (
+                          <ButtonLink
+                            key={route.href}
+                            href={route.href}
+                            external={route.href.startsWith("http")}
+                            onClick={toggleMobileMenu}
+                            className="block px-6 py-6 text-white hover:bg-sunglow-400 hover:text-neutral-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+                          >
+                            <div className="text-xl">{route.name}</div>
+                            {route.description && (
+                              <div className="mt-1 text-sm">
+                                {route.description}
+                              </div>
+                            )}
+                          </ButtonLink>
+                        ))}
                       </div>
                     ))}
                   </div>
@@ -389,14 +365,14 @@ export const Navbar: React.FC = () => {
             <ButtonLink
               href="https://docs.ccv.brown.edu/documentation"
               onClick={toggleMobileMenu}
-              className="block py-7 pl-6 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+              className="block px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
             >
               Docs
             </ButtonLink>
           </div>
         )}
-      </nav>
-    </header>
+      </div>
+    </div>
   )
 }
 
@@ -410,19 +386,25 @@ const NavigationSectionContent: React.FC<{
     <NavigationMenu.Content className="absolute top-full z-50 hidden w-max rounded-md bg-white shadow-md lg:block">
       <div
         tabIndex={-1}
-        className={`flex flex-col p-2 sm:p-4 md:p-6 xl:flex-row ${hasMultipleGroups ? "space-x-8" : ""} max-h-[80vh] overflow-y-auto`}
+        className={`flex max-h-[80vh] flex-col overflow-y-auto p-2 sm:p-4 md:p-6 xl:flex-row ${hasMultipleGroups ? "space-x-8" : ""}`}
       >
         {groups.map((group, index) => (
           <div
             key={group.name}
-            className={`${hasMultipleGroups && index > 0 ? "border-l-0 border-t border-neutral-700 py-1 xl:border-l xl:border-t-0 xl:py-0 xl:pl-6" : ""} ${hasMultipleGroups && index < 1 ? "px-6 py-1 xl:px-0 xl:py-0" : ""} ${hasMultipleGroups ? "flex-1" : ""}`}
+            className={`${
+              hasMultipleGroups && index > 0
+                ? "border-t border-neutral-700 py-1 xl:border-l xl:border-t-0 xl:py-0 xl:pl-6"
+                : ""
+            } ${hasMultipleGroups && index === 0 ? "px-6 py-1 xl:px-0 xl:py-0" : ""} ${
+              hasMultipleGroups ? "flex-1" : ""
+            }`}
           >
             {group.name && (
-              <h3 className="mb-2 max-w-[425px] pl-2 text-xl tracking-widest sm:mb-3 md:mb-4">
-                {group.name.toUpperCase()}
+              <h3 className="mb-2 max-w-[425px] pl-2 text-xl uppercase tracking-widest sm:mb-3 md:mb-4">
+                {group.name}
               </h3>
             )}
-            <ul className="flex list-none flex-col gap-1 sm:gap-1.5 md:gap-2">
+            <ul className="flex flex-col gap-1 sm:gap-1.5 md:gap-2">
               {group.routes.map((route) => (
                 <li
                   key={route.href}
@@ -430,16 +412,15 @@ const NavigationSectionContent: React.FC<{
                 >
                   <NavigationMenu.Link
                     href={route.href}
-                    {...(route.href === "https://publications.ccv.brown.edu"
-                      ? {
-                          target: "_blank",
-                          rel: "noopener noreferrer",
-                        }
-                      : {})}
+                    {...(route.href ===
+                      "https://publications.ccv.brown.edu" && {
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    })}
                     className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
                   >
                     {route.icon && (
-                      <div className="mr-1 flex h-[2rem] w-[2rem] items-center justify-center rounded-md bg-neutral-100/75 text-white sm:mr-1.5 sm:h-[3rem] sm:w-[3rem] md:mr-2 md:h-[4rem] md:w-[4rem]">
+                      <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-neutral-100/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
                         <route.icon className="h-1/2 w-1/2" />
                       </div>
                     )}

@@ -67,13 +67,13 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="text-neutral-800 flex w-full flex-col items-start justify-start bg-gradient-to-b from-gradient-light to-gradient-dark sm:items-center sm:justify-center">
+    <footer className="text-neutral-800 flex w-full flex-col bg-gradient-to-b from-gradient-light to-gradient-dark sm:items-center">
       <div className="w-full px-6 py-8 sm:max-w-3xl sm:px-8 md:mt-8 lg:max-w-5xl">
-        <div className="mb-8 flex flex-col items-start justify-start space-y-2 sm:items-center sm:justify-center md:mb-16">
+        <div className="mb-8 flex flex-col space-y-2 sm:items-center md:mb-16">
           <div className="text-xs uppercase tracking-widest text-cream">
             Brown University
           </div>
-          <div className="flex flex-col space-x-0 space-y-2 sm:flex-row sm:space-x-8 sm:space-y-0">
+          <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-8 sm:space-y-0">
             <div className="font-serif text-md text-white sm:text-lg xl:text-xl">
               <MdLocationPin className="mr-2 inline-block text-stone-400" />
               Providence, RI 02912
@@ -84,6 +84,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
+
         <div className="flex w-full flex-col text-sunglow-400">
           {/* Quick Navigation */}
           <FooterSection links={quickNavLinks} />
@@ -91,7 +92,8 @@ const Footer = () => {
           {/* Footer Navigation */}
           <FooterSection links={footerNavLinks} className="lg:border-b-0" />
         </div>
-        <div className="flex w-full flex-row sm:items-center sm:justify-center">
+
+        <div className="flex w-full sm:justify-center">
           <ButtonLink
             href="https://alumni-friends.brown.edu/giving"
             className="group flex items-center justify-center border border-sunglow-400 px-6 py-4 text-sm uppercase tracking-widest text-white hover:bg-sunglow-400 hover:text-black sm:px-8"
@@ -103,13 +105,13 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="flex w-full flex-col items-center justify-between bg-black px-6 py-4 font-serif text-md text-cream sm:flex-row sm:items-start sm:px-8 md:px-12 md:text-lg lg:px-32 xl:px-40">
-        <div className="order-1 flex flex-col items-center gap-4 sm:order-1 sm:items-start">
+      <div className="flex w-full flex-col items-center justify-between bg-black px-6 py-4 font-serif text-md text-cream sm:flex-row sm:px-8 md:px-12 md:text-lg lg:px-32 xl:px-40">
+        <div className="flex flex-col items-center gap-4 sm:items-start">
           <CCVLogo />
           <div>&copy; Brown University</div>
         </div>
-        <div className="order-2 scale-75 sm:order-3 sm:scale-100">
-          <CarbonBadge />
+        <div className="scale-75 sm:scale-100">
+          <CarbonBadge className="scale-75 sm:scale-100" />
         </div>
       </div>
     </footer>

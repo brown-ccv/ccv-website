@@ -24,8 +24,6 @@ export const Hero = ({
 }: HeroProps) => {
   return (
     <div
-      // className="w-full min-h-[400px] sm:min-h-[500px] md:min-h-[600px] lg:min-h-[clamp(1000px,50vh,60vh)] bg-cover bg-center relative flex flex-col m-0 p-0"
-
       className="relative m-0 flex min-h-[clamp(1000px,50vh,60vh)] w-full flex-col overflow-hidden bg-cover bg-[center_65%] p-0"
       style={{
         backgroundImage: `

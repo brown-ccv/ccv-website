@@ -72,7 +72,6 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
               size="icon"
               aria-label="previous project"
               onClick={prev}
-              className="!mr-0"
             >
               <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
             </Button>
@@ -95,15 +94,14 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
               size="icon"
               aria-label="next project"
               onClick={next}
-              className="!mr-0 h-[40px] w-[40px]"
             >
               <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
             </Button>
           </div>
 
-          <div className="relative mt-8 flex flex-col items-start justify-start gap-8 lg:flex-row">
+          <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-start">
             {/* Text Content */}
-            <div className="flex w-full max-w-[700px] flex-col justify-start space-y-6">
+            <div className="flex w-full max-w-[700px] flex-col space-y-6">
               {/* Categories */}
               <div className="flex flex-wrap gap-2">
                 {categories.map((cat, index) => (
@@ -116,43 +114,43 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                   </Badge>
                 ))}
               </div>
+
               <h3 className="text-2xl font-semibold lg:text-3xl">{title}</h3>
 
               {/* Organizations */}
               {organizations && organizations.length > 0 && (
                 <div className="space-y-4">
                   {organizations.map((org, index) => (
-                    <div key={index} className="flex items-center">
-                      <div className="mr-3 h-6 w-6">
-                        <Icon iconName={org.icon} className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <div className="text-lg font-semibold leading-snug lg:text-xl">
+                    <div key={index} className="flex">
+                      <Icon
+                        iconName={org.icon}
+                        className="mr-3 mt-1.5 h-6 w-6"
+                      />
+                      <div className="flex flex-col gap-1">
+                        <p className="text-lg font-semibold leading-snug lg:text-xl">
                           {org.name}
-                        </div>
-                        <div className="text-sm text-gray-600 lg:text-md">
+                        </p>
+                        <p className="text-sm text-gray-600 lg:text-md">
                           {org.organization}
-                        </div>
+                        </p>
                         {org.pi && org.pi.length > 0 && (
-                          <div className="mt-1 text-sm text-gray-600">
+                          <p className="text-sm text-gray-600">
                             <span>PI: </span>
                             {org.pi?.map((pi, piIndex) => (
                               <span key={piIndex}>
                                 {pi}
-                                {piIndex < (org.pi?.length || 0) - 1 && (
-                                  <span>, </span>
-                                )}
+                                {piIndex < (org.pi?.length || 0) - 1 && ", "}
                               </span>
                             ))}
-                            {org.pm && <span className="mx-2">•</span>}
-                            {org.pm && <span>PM: {org.pm}</span>}
-                          </div>
+                            {org.pm && " • PM: " + org.pm}
+                          </p>
                         )}
                       </div>
                     </div>
                   ))}
                 </div>
               )}
+
               <div className="prose prose-lg max-w-none flex-1 text-md font-normal text-gray-800 lg:text-lg">
                 <Markdown
                   remarkPlugins={[remarkGfm]}
@@ -161,14 +159,15 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                   {description}
                 </Markdown>
               </div>
+
               {buttons && buttons.length > 0 && (
-                <div className="mt-auto flex flex-wrap gap-4">
+                <div className="flex flex-wrap gap-4">
                   {buttons.map((button, index) => (
                     <Button
                       key={index}
                       variant={button.variant}
                       size="lg"
-                      className="self-start whitespace-nowrap font-semibold"
+                      className="whitespace-nowrap font-semibold"
                       onClick={() => window.open(button.url, "_blank")}
                     >
                       {button.text}
@@ -179,29 +178,27 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </div>
 
             {/* Desktop Image Only */}
-            <div className="relative hidden h-full w-full max-w-[700px] flex-col justify-center lg:w-full xl:ml-auto xl:block">
-              <div className="relative min-w-[700px]">
-                <Image
-                  src={image}
-                  alt={title}
-                  width={600}
-                  height={400}
-                  className="object-contain"
-                  style={{ width: "700px", height: "500px" }}
-                />
+            <div className="hidden w-full max-w-[700px] lg:block xl:ml-auto">
+              <Image
+                src={image}
+                alt={title}
+                width={600}
+                height={400}
+                className="object-contain"
+                style={{ width: "700px", height: "500px" }}
+              />
 
-                {/* Attribution if image requires it */}
-                {currentItem.attribution && (
-                  <div className="mt-2 text-right text-sm">
-                    <Markdown
-                      remarkPlugins={[remarkGfm]}
-                      rehypePlugins={[rehypeRaw]}
-                    >
-                      {currentItem.attribution}
-                    </Markdown>
-                  </div>
-                )}
-              </div>
+              {/* Attribution if image requires it */}
+              {currentItem.attribution && (
+                <div className="mt-2 text-right text-sm">
+                  <Markdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
+                  >
+                    {currentItem.attribution}
+                  </Markdown>
+                </div>
+              )}
             </div>
           </div>
         </div>

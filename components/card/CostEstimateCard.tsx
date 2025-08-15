@@ -26,7 +26,7 @@ export const CostEstimateCard: React.FC<RatesCardProps> = ({
             <span className="text-2xl font-semibold">{time}</span> {units}
           </p>
         </div>
-        <div className={"flex items-center gap-6"}>
+        <div className="flex items-center gap-6">
           <FaUserClock className="text-2xl text-sunglow-500" />
           <p>
             <span className="text-2xl font-semibold">{engineers}</span> {fte}{" "}

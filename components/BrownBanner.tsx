@@ -14,7 +14,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
         href="https://it.brown.edu"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-shrink-0 p-4 lg:border-r lg:border-neutral-900"
+        className="flex-shrink-0 lg:border-r lg:border-neutral-900 lg:p-4"
       >
         <BrownLogo width={150} className="sm:w-[200px]" />
         <span className="sr-only">OIT Home</span>
@@ -28,10 +28,11 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
         href="mailto:ccv-support@brown.edu"
         external={true}
         variant="red_outlined"
+        size="sm"
         className={"px-2 py-6 sm:px-4"}
       >
-        <FaComments className="mr-1 text-xl sm:mr-2 sm:text-2xl" />
-        <span className="sm:inline">Work with Us</span>
+        <FaComments className="text-xl sm:text-2xl" />
+        Work with Us
       </ButtonLink>
     </header>
   )
