@@ -64,7 +64,7 @@ export default async function RootLayoutWrapper({
         <link rel="icon" href="/favicon.ico" />
         <title>{metadata.title}</title>
       </head>
-      <body className={`${inter.className} bg-white`}>
+      <body className={`${inter.className}`}>
         <ConditionalStatusBanner issues={issues} />
         <BrownBanner />
         <Navbar />
