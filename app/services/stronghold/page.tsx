@@ -2,7 +2,7 @@ import { Hero } from "@/components/Hero"
 import StrongholdContent from "@/content/services/stronghold.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
-export default function Page() {
+export default function Stronghold() {
   const metadata = getMDXMetadata("content/services/stronghold.mdx")
 
   return (

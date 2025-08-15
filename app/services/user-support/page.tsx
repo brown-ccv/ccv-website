@@ -2,7 +2,7 @@ import { Hero } from "@/components/Hero"
 import UserSupportContent from "@/content/services/user-support.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
-export default function Page() {
+export default function UserSupport() {
   const metadata = getMDXMetadata("content/services/user-support.mdx")
 
   return (
