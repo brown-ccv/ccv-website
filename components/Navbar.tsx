@@ -120,8 +120,8 @@ const routes: NavSection[] = [
             icon: FaDesktop,
           },
           {
-            name: "AI Services",
-            href: "/services/ai-services",
+            name: "AI Tools",
+            href: "/services/ai-tools",
             description:
               "Access to large language models and AI tools through CCV's computing infrastructure",
             icon: FaRobot,
