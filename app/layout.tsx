@@ -58,19 +58,18 @@ export default async function RootLayoutWrapper({
   return (
     <html
       lang="en"
-      className={`${sourceSans.variable} ${sourceSerif.variable} font-sans`}
+      className={`${sourceSans.variable} ${sourceSerif.variable}`}
     >
       <head>
         <link rel="icon" href="/favicon.ico" />
+        <title>{metadata.title}</title>
       </head>
-      <body className={`${inter.className} m-0 overflow-x-hidden bg-white p-0`}>
-        <div>
-          <ConditionalStatusBanner issues={issues} />
-          <BrownBanner />
-          <Navbar />
-          <div className="w-full flex-grow">{children}</div>
-          <Footer />
-        </div>
+      <body className={`${inter.className} bg-white`}>
+        <ConditionalStatusBanner issues={issues} />
+        <BrownBanner />
+        <Navbar />
+        <>{children}</>
+        <Footer />
       </body>
     </html>
   )
