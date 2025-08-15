@@ -15,7 +15,6 @@ export default async function ContactUs() {
         description={metadata.description}
       />
       <ContactContent />
-      <LocationSection />
     </>
   )
 }

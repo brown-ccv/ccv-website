@@ -11,6 +11,7 @@ import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
 import { PeopleSection } from "@/components/PeopleSection"
 import { ButtonGroup } from "@/components/button/ButtonGroup"
+import { LocationSection } from "@/components/LocationSection"
 
 // Server component that loads carousel data from YAML file
 async function MDXCarouselData({
@@ -57,6 +58,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ContentSection,
     MDXCarousel,
     PeopleSection,
+    LocationSection,
     img: (props) => (
       <Image
         {...props}
