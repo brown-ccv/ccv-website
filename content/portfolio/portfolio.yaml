@@ -1,519 +1,540 @@
----
-title: Automated Continuos Behavioral Monitoring (ACBM)
-description: Automated Continuous Behavioral Monitoring (ACBM) is a machine vision-based automated phenotyping method to detect and quantify the earliest-detected phenotypes in Tdp43Q331K knock-in mice. This method entails continuous video recording for 5 days that is then scored by a trained computer system. The system is a set of DL models deployed on google cloud platform using Kubeflow pipelines. Our goal is to establish sensitive, robust, objective, and open-source machine vision-based behavioral analysis tools that will be widely available to workers in the field.
-project-type: software
-starred: true
-groups:
-  - serre-lab
-languages:
-  - python
-tags:
-  - neuro
-  - gcp
-  - pipelines
-people:
-  - name: Rohit Kakodkar
-    github_user: rkakodkar
+projects:
+  - title: Automated Continuos Behavioral Monitoring
+    image: /images/services/classroom/featured-carousel/julia.jpeg
+    slug: automated-continuos-behavioral-monitoring
+    description: Automated Continuous Behavioral Monitoring (ACBM) is a machine vision-based automated phenotyping method to detect and quantify the earliest-detected phenotypes in Tdp43Q331K knock-in mice. This method entails continuous video recording for 5 days that is then scored by a trained computer system. The system is a set of DL models deployed on google cloud platform using Kubeflow pipelines. Our goal is to establish sensitive, robust, objective, and open-source machine vision-based behavioral analysis tools that will be widely available to workers in the field.
+    project-type: software
+    starred: True
+    groups:
+      - serre-lab
+    languages:
+      - python
+    tags:
+      - neuro
+      - gcp
+      - pipelines
+    people:
+      - name: Rohit Kakodkar
+        github_user: rkakodkar
 
----
-title: Web Volume Viewer
-description: Volumetric data visualization on the web with compatibility on VR devices. It supports color mapping through a transfer function that maps specific data values to a scalar color. Developed using React-JS and A-Frame.
-project-type: software
-starred: false
-languages:
-  - javascript
-  - reactjs
-tags:
-  - vr
-  - web
-people:
-  - name: Camilo Diaz Rodriguez
-    github_user: kmilo9999
-  - name: Robert Gemma
-    github_user: RobertGemmaJr
-links:
-  - category: code
-    url: https://github.com/brown-ccv/react-volume-viewer.git
-  - category: npm
-    url: https://www.npmjs.com/package/react-volume-viewer
+  - title: Web Volume Viewer
+    image: /images/services/classroom/featured-carousel/linux.jpg
+    slug: web-volume-viewer
+    description: Volumetric data visualization on the web with compatibility on VR devices. It supports color mapping through a transfer function that maps specific data values to a scalar color. Developed using React-JS and A-Frame.
+    project-type: software
+    starred: False
+    languages:
+      - javascript
+      - reactjs
+    tags:
+      - vr
+      - web
+    people:
+      - name: Camilo Diaz Rodriguez
+        github_user: kmilo9999
+      - name: Robert Gemma
+        github_user: RobertGemmaJr
+    links:
+      - category: code
+        url: https://github.com/brown-ccv/react-volume-viewer.git
+      - category: npm
+        url: https://www.npmjs.com/package/react-volume-viewer
 
----
-title: Autonomous Research Assistant (AutoRA)
-description: Autonomous Research Assistant (AutoRA) is a framework for implementing machine learning tools which autonomously and iteratively generate 1) new theories to describe real-world data, and 2) experiments to invalidate those theories and seed a new cycle of theory-making. The experiments will be run online via crowd-sourcing platforms (MTurk, Prolific).
-project-type: software
-starred: true
-groups:
-  - aer-group
-languages:
-  - python
-  - javascript
-tags:
-  - machine-learning
-  - cognitive-science
-  - behavioral-tasks
-people:
-  - name: John Gerrard Holland
-    github_user: hollandjg
-  - name: George Dang
-    github_user: gtdang
-links:
-  - category: code
-    url: https://github.com/AutoResearch/autora
-  - category: docs
-    url: https://autoresearch.github.io/autora/
+  - title: Autonomous Research Assistant (AutoRA)
+    image: /images/services/classroom/featured-carousel/julia.jpeg
+    slug: autonomous-research-assistant-autora
+    description: Autonomous Research Assistant (AutoRA) is a framework for implementing machine learning tools which autonomously and iteratively generate 1) new theories to describe real-world data, and 2) experiments to invalidate those theories and seed a new cycle of theory-making. The experiments will be run online via crowd-sourcing platforms (MTurk, Prolific).
+    project-type: software
+    starred: True
+    groups:
+      - aer-group
+    languages:
+      - python
+      - javascript
+    tags:
+      - machine-learning
+      - cognitive-science
+      - behavioral-tasks
+    people:
+      - name: John Gerrard Holland
+        github_user: hollandjg
+      - name: George Dang
+        github_user: gtdang
+    links:
+      - category: code
+        url: https://github.com/AutoResearch/autora
+      - category: docs
+        url: https://autoresearch.github.io/autora/
 
----
-title: Beehive
-description: "A hub for researchers to share and find behavioral tasks"
-project-type: software
-starred: false
-languages:
-  - javascript
-  - vuejs
-tags:
-  - behavioral-tasks
-groups:
-  - borton-lab
-  - openmind
-  - frank-lab
-  - nassar-lab
-people:
-  - name: Isabel Restrepo
-    github_user: mirestrepo
-  - name: Heather Yu
-    github_user: hetd54
-links:
-  - category: "code"
-    url: https://github.com/brown-ccv/behavioral-task-hub
-  - category: "website"
-    url: https://beehive.ccv.brown.edu
+  - title: Beehive
+    image: /images/services/classroom/featured-carousel/julia.jpeg
+    slug: beehive
+    description: "A hub for researchers to share and find behavioral tasks"
+    project-type: software
+    starred: False
+    languages:
+      - javascript
+      - vuejs
+    tags:
+      - behavioral-tasks
+    groups:
+      - borton-lab
+      - openmind
+      - frank-lab
+      - nassar-lab
+    people:
+      - name: Isabel Restrepo
+        github_user: mirestrepo
+      - name: Heather Yu
+        github_user: hetd54
+    links:
+      - category: "code"
+        url: https://github.com/brown-ccv/behavioral-task-hub
+      - category: "website"
+        url: https://beehive.ccv.brown.edu
 
----
-title: DrawOnAir (cave-painting)
-description: A collaboration between Dr Daniel Keefe (University of Minnesota), Dr David Laidlaw (Brown University) and CCV to expand 3D DrawOnAir haptic functionality to VR systems
-project-type: software
-starred: true
-languages:
-  - c++
-tags:
-  - vr
-  - desktop
-people:
-  - name: Camilo Diaz
-    github_user: kmilo9999
-links:
-  - category: code
-    url: https://github.com/brown-ccv/DrawingOnAir
+  - title: DrawOnAir (cave-painting)
+    image: /images/services/classroom/featured-carousel/julia.jpeg
+    slug: drawonair-cave-painting
+    description: A collaboration between Dr Daniel Keefe (University of Minnesota), Dr David Laidlaw (Brown University) and CCV to expand 3D DrawOnAir haptic functionality to VR systems
+    project-type: software
+    starred: True
+    languages:
+      - c++
+    tags:
+      - vr
+      - desktop
+    people:
+      - name: Camilo Diaz
+        github_user: kmilo9999
+    links:
+      - category: code
+        url: https://github.com/brown-ccv/DrawingOnAir
 
----
-title: Chamber.jl
-description: Julia package for simulating the eruption of a volcano using a model for the frequency of eruptions of upper crustal magma chambers based on Degruyter and Huber (2014).
-project-type: software
-starred: false
-languages:
-  - julia
-tags:
-  - model
-  - volcanology
-people:
-  - name: Carlos Paniagua
-    github_user: cpaniaguam
-groups:
-  - huber-lab
-links:
-  - category: code
-    url: https://github.com/brown-ccv/Chamber.jl
+  - title: Chamber.jl
+    image: /images/services/classroom/featured-carousel/julia.jpeg
+    slug: chamber-jl
+    description: Julia package for simulating the eruption of a volcano using a model for the frequency of eruptions of upper crustal magma chambers based on Degruyter and Huber (2014).
+    project-type: software
+    starred: False
+    languages:
+      - julia
+    tags:
+      - model
+      - volcanology
+    people:
+      - name: Carlos Paniagua
+        github_user: cpaniaguam
+    groups:
+      - huber-lab
+    links:
+      - category: code
+        url: https://github.com/brown-ccv/Chamber.jl
 
----
-title: Cognitive Research Registration App
-description: "Web application that allows participants to register for studies, and for researchers to manage participant registrations"
-project-type: software
-starred: true
-languages:
-  - javascript
-  - vuejs
-tags:
-  - cognitive-science
-groups:
-  - nassar-lab
-  - frank-lab
-  - shenhav-lab
-  - oh-lab
-people:
-  - name: Isabel Restrepo
-    github_user: mirestrepo
-links:
-  - category: "code"
-    url: https://github.com/brown-ccv/cognitive-aging-research-app
-  - category: "website"
-    url: https://cogresnet.ccv.brown.edu
+  - title: Cognitive Research Registration App
+    image: /images/services/classroom/featured-carousel/julia.jpeg
+    slug: cognitive-research-registration-app
+    description: "Web application that allows participants to register for studies, and for researchers to manage participant registrations"
+    project-type: software
+    starred: True
+    languages:
+      - javascript
+      - vuejs
+    tags:
+      - cognitive-science
+    groups:
+      - nassar-lab
+      - frank-lab
+      - shenhav-lab
+      - oh-lab
+    people:
+      - name: Isabel Restrepo
+        github_user: mirestrepo
+    links:
+      - category: "code"
+        url: https://github.com/brown-ccv/cognitive-aging-research-app
+      - category: "website"
+        url: https://cogresnet.ccv.brown.edu
 
----
-title: Honeycomb
-description: 'Template repository for reproducible psychophysiological tasks for clinic, laboratory, and home use.'
-project-type: software
-starred: false
-languages:
-  - javascript
-  - reactjs
-tags:
-  - behavioral-tasks
-groups:
-  - borton-lab
-  - openmind
-  - frank-lab
-  - nassar-lab
-  - brainstorm
-people:
-  - name: Robert Gemma
-    github_user: RobertGemmaJr
-  - name: Isabel Restrepo
-    github_user: mirestrepo
-links:
-  - category: 'code'
-    url: https://github.com/brown-ccv/honeycomb
-  - category: 'website'
-    url: https://brown-ccv.github.io/honeycomb-docs/
-  - category: 'publication'
-    url: https://www.scielo.br/j/rbp/a/XFbqkbZKfG65BwTxmnrHgZh/?lang=en#
+  - title: Honeycomb
+    image: /images/services/classroom/featured-carousel/julia.jpeg
+    slug: honeycomb
+    description: 'Template repository for reproducible psychophysiological tasks for clinic, laboratory, and home use.'
+    project-type: software
+    starred: False
+    languages:
+      - javascript
+      - reactjs
+    tags:
+      - behavioral-tasks
+    groups:
+      - borton-lab
+      - openmind
+      - frank-lab
+      - nassar-lab
+      - brainstorm
+    people:
+      - name: Robert Gemma
+        github_user: RobertGemmaJr
+      - name: Isabel Restrepo
+        github_user: mirestrepo
+    links:
+      - category: 'code'
+        url: https://github.com/brown-ccv/honeycomb
+      - category: 'website'
+        url: https://brown-ccv.github.io/honeycomb-docs/
+      - category: 'publication'
+        url: https://www.scielo.br/j/rbp/a/XFbqkbZKfG65BwTxmnrHgZh/?lang=en#
 
----
-title: Unsupervised cell segmentation in 3D image datasets
-description: An application leveraging the SwinUNetR deep learning model to detect and annotate neuronal cells in 3D confocal microscopy images. It processes spinal cord sections stained through immunohistochemistry, using four excitation channels (405nm, 488nm, 594nm, and 647nm) to identify and quantify specific neuronal populations, including DAPI-labeled total neurons, Neurod2-expressing neurons, Robo3-expressing cells, and Zfhx3-marked subsets. A preprocessing pipeline applies contrast adjustment, Gaussian filtering, and intensity-based thresholding to generate a binary mask, isolating relevant structures while filtering out background noise. Post-processing compares segmented cells with the binary mask to ensure accurate quantification and identifies co-labeled neurons across multiple stains. With GPU acceleration, the system significantly improves inference speed, enabling efficient analysis of large-scale 3D microscopy datasets.
-project-type: software
-starred: true
-languages:
-  - python
-tags:
-  - deep-learning
-  - desktop
-people:
-  - name: Camilo Diaz
-    github_user: kmilo9999
-  - name: Paul Xu
-    github_user: digicosmos86
-links:
-  - category: code
-    url: https://github.com/brown-ccv/jaworski-cellseg
+  - title: Unsupervised cell segmentation in 3D image datasets
+    image: /images/services/classroom/featured-carousel/julia.jpeg
+    slug: unsupervised-cell-segmentation-3d-image-datasets
+    description: An application leveraging the SwinUNetR deep learning model to detect and annotate neuronal cells in 3D confocal microscopy images. It processes spinal cord sections stained through immunohistochemistry, using four excitation channels (405nm, 488nm, 594nm, and 647nm) to identify and quantify specific neuronal populations, including DAPI-labeled total neurons, Neurod2-expressing neurons, Robo3-expressing cells, and Zfhx3-marked subsets. A preprocessing pipeline applies contrast adjustment, Gaussian filtering, and intensity-based thresholding to generate a binary mask, isolating relevant structures while filtering out background noise. Post-processing compares segmented cells with the binary mask to ensure accurate quantification and identifies co-labeled neurons across multiple stains. With GPU acceleration, the system significantly improves inference speed, enabling efficient analysis of large-scale 3D microscopy datasets.
+    project-type: software
+    starred: True
+    languages:
+      - python
+    tags:
+      - deep-learning
+      - desktop
+    people:
+      - name: Camilo Diaz
+        github_user: kmilo9999
+      - name: Paul Xu
+        github_user: digicosmos86
+    links:
+      - category: code
+        url: https://github.com/brown-ccv/jaworski-cellseg
 
----
-title: Intro to Bash programming
-description: This workshop will cover basic shell scripting in Bash - variables, loops, pipes and more so participants can learn to automate work with Bash.  We will assume participants have some familiarity with the linux command line. 
-project-type: hpc-workshop
-starred: false
-languages:
-  - unix-cli
-  - bash
-tags:
-  - oscar
-  - hpc
-people:
-  - name: Rohit Kakodkar
-    github_user: rkakodkar
-links:
-  - category: slides 
-    url: https://docs.google.com/presentation/d/12wCVXuDVIuJMjM_Am65exg9mcx6QyQlx8mV-HgQjCx0/edit?usp=sharing
+  - title: Intro to Bash programming
+    image: /images/services/classroom/featured-carousel/linux.jpg
+    slug: intro-bash-programming
+    description: This workshop will cover basic shell scripting in Bash - variables, loops, pipes and more so participants can learn to automate work with Bash.  We will assume participants have some familiarity with the linux command line. 
+    project-type: hpc-workshop
+    starred: False
+    languages:
+      - unix-cli
+      - bash
+    tags:
+      - oscar
+      - hpc
+    people:
+      - name: Rohit Kakodkar
+        github_user: rkakodkar
+    links:
+      - category: slides 
+        url: https://docs.google.com/presentation/d/12wCVXuDVIuJMjM_Am65exg9mcx6QyQlx8mV-HgQjCx0/edit?usp=sharing
 
----
-title: CCV Bootcamp 2024
-description: A series of interactive online tutorials designed to introduce members of the Brown community to some of the research computing resources available to them. The tutorials will provide participants with the practical knowledge necessary to make effective use of Oscar, Brown's research computing cluster, in their own research, while introducing users to the range of research computing resources available at Brown.
-project-type: bootcamp
-starred: true
-groups:
-  - hpc
-languages:
-  - unix-cli
-  - bash
-  - python
-  - julia
-  - R
-  - matlab
-  - sql
-tags:
-  - oscar
-  - hpc
-  - visualization
-people:
-  - name: Paul Hall
-    github_user: phall-brown
-  - name: Rain Fan
-    github_user: rainxfan
-  - name: Prithvi Thakur
-    github_user: thehalfspace
-  - name: Ashok Ragavendran
-    github_user: ashokrags
-  - name: Prasad Bandarkar
-    github_user: prasadbandarkar
-  - name: John Gerrard Holland
-    github_user: hollandjg
-  - name: Carlos Paniagua
-    github_user: cpaniaguam
-  - name: Ford McDonald
-    github_user: fordmcdonald
-  - name: Robert Gemma, Jr.
-    github_user: robertgemmajr
-  - name: Paul Cao
-    github_user: paulcao-brown
-  - name: Paul Stey
-    github_user: paulstey
-  - name: Ellen Duong
-    github_user: eldu
-  - name: George Dang
-    github_user: gtdang
-  - name: Eric Salomaki
-    github_user: ericsalomaki
-  - name: August Guang
-    github_user: aguang
-  - name: Jordan Lawson
-    github_user: j-stat
-  - name: Joselynn Wallace
-    github_user: jrwallace
-links:
-  - category: website
-    url: https://docs.ccv.brown.edu/bootcamp-2024
+  - title: CCV Bootcamp 2024
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: ccv-bootcamp-2024
+    description: A series of interactive online tutorials designed to introduce members of the Brown community to some of the research computing resources available to them. The tutorials will provide participants with the practical knowledge necessary to make effective use of Oscar, Brown's research computing cluster, in their own research, while introducing users to the range of research computing resources available at Brown.
+    project-type: bootcamp
+    starred: True
+    groups:
+      - hpc
+    languages:
+      - unix-cli
+      - bash
+      - python
+      - julia
+      - R
+      - matlab
+      - sql
+    tags:
+      - oscar
+      - hpc
+      - visualization
+    people:
+      - name: Paul Hall
+        github_user: phall-brown
+      - name: Rain Fan
+        github_user: rainxfan
+      - name: Prithvi Thakur
+        github_user: thehalfspace
+      - name: Ashok Ragavendran
+        github_user: ashokrags
+      - name: Prasad Bandarkar
+        github_user: prasadbandarkar
+      - name: John Gerrard Holland
+        github_user: hollandjg
+      - name: Carlos Paniagua
+        github_user: cpaniaguam
+      - name: Ford McDonald
+        github_user: fordmcdonald
+      - name: Robert Gemma, Jr.
+        github_user: robertgemmajr
+      - name: Paul Cao
+        github_user: paulcao-brown
+      - name: Paul Stey
+        github_user: paulstey
+      - name: Ellen Duong
+        github_user: eldu
+      - name: George Dang
+        github_user: gtdang
+      - name: Eric Salomaki
+        github_user: ericsalomaki
+      - name: August Guang
+        github_user: aguang
+      - name: Jordan Lawson
+        github_user: j-stat
+      - name: Joselynn Wallace
+        github_user: jrwallace
+    links:
+      - category: website
+        url: https://docs.ccv.brown.edu/bootcamp-2024
 
----
-title: Building Software on Oscar
-description: Learn how to build and install software packages on Oscar. Topics covered include make, cmake, compiler options on Oscar, pip, building python packages from source, and python virtual environments.
-project-type: hpc-workshop
-starred: false
-languages:
-  - unix-cli
-  - bash
-  - c/c++
-  - fortran
-  - python
-tags:
-  - oscar
-  - hpc
-people:
-  - name: Paul Hall
-    github_user: phall-brown
-links:
-  - category: slides 
-    url: https://docs.google.com/presentation/d/1Rtd3mjHPhI8CUsTLOn8lRA6X7dGQAlMeqoImszAqqFI/edit?usp=sharing
+  - title: Building Software on Oscar
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: building-software-on-oscar
+    description: Learn how to build and install software packages on Oscar. Topics covered include make, cmake, compiler options on Oscar, pip, building python packages from source, and python virtual environments.
+    project-type: hpc-workshop
+    starred: False
+    languages:
+      - unix-cli
+      - bash
+      - c/c++
+      - fortran
+      - python
+    tags:
+      - oscar
+      - hpc
+    people:
+      - name: Paul Hall
+        github_user: phall-brown
+    links:
+      - category: slides 
+        url: https://docs.google.com/presentation/d/1Rtd3mjHPhI8CUsTLOn8lRA6X7dGQAlMeqoImszAqqFI/edit?usp=sharing
 
----
-title: Working on the Command Line
-description: A practical introduction to the Linux operating system. Topics covered include basic Linux commands for maneuvering within the file system and manipulating files, Unix shells, and working with environment variables and paths.
-project-type: workshop
-starred: true
-groups:
-  - hpc
-languages:
-  - unix-cli
-  - bash
-tags:
-  - oscar
-  - hpc
-people:
-  - name: Paul Hall
-    github_user: phall-brown
-links:
-  - category: slides 
-    url: https://docs.google.com/presentation/d/1RyKBOqyfXcXChyMcqtvZ1GuSGWv3XBgegVjmltxs45Y/edit?usp=sharing
+  - title: Working on the Command Line
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: working-on-command-line
+    description: A practical introduction to the Linux operating system. Topics covered include basic Linux commands for maneuvering within the file system and manipulating files, Unix shells, and working with environment variables and paths.
+    project-type: workshop
+    starred: True
+    groups:
+      - hpc
+    languages:
+      - unix-cli
+      - bash
+    tags:
+      - oscar
+      - hpc
+    people:
+      - name: Paul Hall
+        github_user: phall-brown
+    links:
+      - category: slides 
+        url: https://docs.google.com/presentation/d/1RyKBOqyfXcXChyMcqtvZ1GuSGWv3XBgegVjmltxs45Y/edit?usp=sharing
 
----
-title: File Transfer Basics
-description: An overview of methods for moving files onto and off of Oscar. Topics covered include Linux command line tools for file transfer (scp, rsync, sftp), GUI-based file transfer applications, mounting Oscar’s filesystem using CIFS, and using Globus on Oscar. 
-project-type: workshop
-starred: false
-groups:
-  - hpc
-languages:
-  - unix-cli
-  - bash
-tags:
-  - oscar
-  - hpc
-people:
-  - name: Paul Hall
-    github_user: phall-brown
-links:
-  - category: slides 
-    url: https://docs.google.com/presentation/d/12XIf-IiUNCWIPzqprUnSh6tVSisdR7-u2JkeCY1g-G8/edit?usp=sharing
+  - title: File Transfer Basics
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: file-transfer-basics
+    description: An overview of methods for moving files onto and off of Oscar. Topics covered include Linux command line tools for file transfer (scp, rsync, sftp), GUI-based file transfer applications, mounting Oscar's filesystem using CIFS, and using Globus on Oscar. 
+    project-type: workshop
+    starred: False
+    groups:
+      - hpc
+    languages:
+      - unix-cli
+      - bash
+    tags:
+      - oscar
+      - hpc
+    people:
+      - name: Paul Hall
+        github_user: phall-brown
+    links:
+      - category: slides 
+        url: https://docs.google.com/presentation/d/12XIf-IiUNCWIPzqprUnSh6tVSisdR7-u2JkeCY1g-G8/edit?usp=sharing
 
----
-title: Cloud computing with GCP
-description: This workshop provides an introduction to Google Cloud Platform. It provides
-  familiarity with Google Cloud Console and the basics of interacting and using
-  Google's Compute Engine
-project-type: workshop
-starred: true
-groups:
-  - dscov
-languages:
-  - unix-cli
-tags:
-  - cloud-computing
-  - gcp
-people:
-  - name: Isabel Restrepo
-    github_user: mirestrepo
-links:
-  - category: code
-    url: https://github.com/dscov-tutorials/gcp-intro
-  - category: slides 
-    url: https://brownccv.notion.site/Introduction-to-Google-Cloud-023dc53073504132b76bb487cebfe86a
-  - category: video
-    url: https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aa0aa1a2-acee-4878-b366-ab9f003367bd
+  - title: Cloud computing with GCP
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: cloud-computing-with-gcp
+    description: This workshop provides an introduction to Google Cloud Platform. It provides familiarity with Google Cloud Console and the basics of interacting and using Google's Compute Engine
+    project-type: workshop
+    starred: True
+    groups:
+      - dscov
+    languages:
+      - unix-cli
+    tags:
+      - cloud-computing
+      - gcp
+    people:
+      - name: Isabel Restrepo
+        github_user: mirestrepo
+    links:
+      - category: code
+        url: https://github.com/dscov-tutorials/gcp-intro
+      - category: slides 
+        url: https://brownccv.notion.site/Introduction-to-Google-Cloud-023dc53073504132b76bb487cebfe86a
+      - category: video
+        url: https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=aa0aa1a2-acee-4878-b366-ab9f003367bd
 
----
-title: Version Control with Git
-description: A practical introduction to version control for software management using Git. Topics covered include creating a repository, checking the status of a repository, committing changes, viewing changes, reverting to older versions of files, and setting up a remote repository. 
-project-type: workshop
-starred: false
-groups:
-  - hpc
-languages:
-  - unix-cli
-  - bash
-tags:
-  - oscar
-  - hpc
-people:
-  - name: Paul Hall
-    github_user: phall-brown
-links:
-  - category: slides 
-    url: https://docs.google.com/presentation/d/12wCVXuDVIuJMjM_Am65exg9mcx6QyQlx8mV-HgQjCx0/edit?usp=sharing
+  - title: Version Control with Git
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: version-control-with-git
+    description: A practical introduction to version control for software management using Git. Topics covered include creating a repository, checking the status of a repository, committing changes, viewing changes, reverting to older versions of files, and setting up a remote repository. 
+    project-type: workshop
+    starred: False
+    groups:
+      - hpc
+    languages:
+      - unix-cli
+      - bash
+    tags:
+      - oscar
+      - hpc
+    people:
+      - name: Paul Hall
+        github_user: phall-brown
+    links:
+      - category: slides 
+        url: https://docs.google.com/presentation/d/12wCVXuDVIuJMjM_Am65exg9mcx6QyQlx8mV-HgQjCx0/edit?usp=sharing
 
----
-title: Getting Started with Honeycomb
-description: Step by step guide on creating new behavioral/psychophysiological tasks for clinic, laboratory, and home using a template repository called Honeycomb, which CCV has developed in collaboration with the Borton, Frank and Nassar labs. The first video covers installing dependencies and basic git workflows, and the second covers Firebase set up. The third video corresponds to a follow up workshop organized by the Nassar lab and lead by Ben Heasly on Converting a jsPsych task with Honeycomb.
-project-type: workshop
-starred: false
-groups:
-  - gsdc
-languages:
-  - reactjs
-  - javascript
-tags:
-  - honeycomb
-  - behavioral-tasks
-people:
-  - name: Robert Gemma
-    github_user: RobertGemmaJr
-  - name: Josh Lu
-    github_user: jashlu
-  - name: Aisulu Omar
-    github_user: AisOmar
-links:
-  - category: video 
-    url: https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=38c60a2c-309e-49b3-b23b-aef201239cbb
-  - category: video 
-    url: https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=5903a4db-9759-4cef-a9e8-aefd014adaa5
-  - category: video
-    url: https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=096759c6-7d5b-4ead-b307-aefc01539396
-  - category: slides
-    url: https://docs.google.com/document/d/1pk8-E1NpbIrjTmWZBVPsmusAl_NEMXy8XE5FdamXx08/edit?usp=sharing
-  - category: website
-    url: https://brown-ccv.github.io/honeycomb-docs/docs/
+  - title: Getting Started with Honeycomb
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: getting-started-with-honeycomb
+    description: Step by step guide on creating new behavioral/psychophysiological tasks for clinic, laboratory, and home using a template repository called Honeycomb, which CCV has developed in collaboration with the Borton, Frank and Nassar labs. The first video covers installing dependencies and basic git workflows, and the second covers Firebase set up. The third video corresponds to a follow up workshop organized by the Nassar lab and lead by Ben Heasly on Converting a jsPsych task with Honeycomb.
+    project-type: workshop
+    starred: False
+    groups:
+      - gsdc
+    languages:
+      - reactjs
+      - javascript
+    tags:
+      - honeycomb
+      - behavioral-tasks
+    people:
+      - name: Robert Gemma
+        github_user: RobertGemmaJr
+      - name: Josh Lu
+        github_user: jashlu
+      - name: Aisulu Omar
+        github_user: AisOmar
+    links:
+      - category: video 
+        url: https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=38c60a2c-309e-49b3-b23b-aef201239cbb
+      - category: video 
+        url: https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=5903a4db-9759-4cef-a9e8-aefd014adaa5
+      - category: video
+        url: https://brown.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=096759c6-7d5b-4ead-b307-aefc01539396
+      - category: slides
+        url: https://docs.google.com/document/d/1pk8-E1NpbIrjTmWZBVPsmusAl_NEMXy8XE5FdamXx08/edit?usp=sharing
+      - category: website
+        url: https://brown-ccv.github.io/honeycomb-docs/docs/
 
----
-title: "Coding and Collaboration using Git, GitHub and Pull Requests"
-description: "A hands-on workshop on version control systems: what they are, why every coder needs them, and how to use git for solo and collaborative coding."
-project-type: workshop
-starred: false
-groups:
-  - dscov
-languages:
-  - git
-  - markdown
-tags:
-  - collaboration
-  - oscar
-people:
-  - name: John Gerrard Holland
-    github_user: hollandjg
-links:
-  - category: website
-    url: https://brownccv.notion.site/Coding-Collaboration-using-Git-GitHub-and-Pull-Requests-afdc0e8c48a449f2864f0e3e8b5b4a59?pvs=4
-  - category: code
-    url: https://github.com/brown-ccv/how-to-pr
+  - title: "Coding and Collaboration using Git, GitHub and Pull Requests"
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: coding-collaboration-git-github-pull-requests
+    description: "A hands-on workshop on version control systems: what they are, why every coder needs them, and how to use git for solo and collaborative coding."
+    project-type: workshop
+    starred: False
+    groups:
+      - dscov
+    languages:
+      - git
+      - markdown
+    tags:
+      - collaboration
+      - oscar
+    people:
+      - name: John Gerrard Holland
+        github_user: hollandjg
+    links:
+      - category: website
+        url: https://brownccv.notion.site/Coding-Collaboration-using-Git-GitHub-and-Pull-Requests-afdc0e8c48a449f2864f0e3e8b5b4a59?pvs=4
+      - category: code
+        url: https://github.com/brown-ccv/how-to-pr
 
----
-title: "Introduction to Python"
-description:
-  In this hands-on workshop, we explored Python, a popular user-friendly programming language, and discussed general programming principles.
-project-type: workshop
-starred: false
-groups:
-  - dscov
-languages:
-  - python
-tags:
-  - visualization
-people:
-  - name: Ellen Duong
-    github_user: eldu
-links:
-  - category: slides
-    url: https://docs.google.com/presentation/d/104aGeYJ_W3mgbtPtlVjNsR0FLOOsApGAXvxJOpBa7TE/edit?usp=sharing
+  - title: "Introduction to Python"
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: introduction-to-python
+    description: In this hands-on workshop, we explored Python, a popular user-friendly programming language, and discussed general programming principles.
+    project-type: workshop
+    starred: False
+    groups:
+      - dscov
+    languages:
+      - python
+    tags:
+      - visualization
+    people:
+      - name: Ellen Duong
+        github_user: eldu
+    links:
+      - category: slides
+        url: https://docs.google.com/presentation/d/104aGeYJ_W3mgbtPtlVjNsR0FLOOsApGAXvxJOpBa7TE/edit?usp=sharing
 
----
-title: Acadia National Park Natural Resources
-description: "The goal of this project is to extract data-driven 'vital signs' from  data collected on bat populations at Acadia National Park since 2008 and transform data into standardized annual Data Packages for submission to the National Park Service Inventory & Monitoring Data Store. CCV helps to wrangle and clean the various datasets into data packages and to generate report templates for quick visualization of vital signs."
-project-type: collaboration
-starred: true
-tags:
-  - government
-  - data-science
-  - data-management
-  - software-engineering
-department:
-  - ecology-evolution-and-organismal-biology
-investigators:
-  - name: Bik Wheeler
-    link: https://www.nps.gov/subjects/parkscience/author-bik-wheeler.htm
-people:
-  - name: Timothy Divoll
-    github_user: tdivoll
-links:
-  - category: "website"
-    url: https://irma.nps.gov/DataStore
-  - category: "website"
-    url: https://www.nps.gov/im/vital-signs.htm
+  - title: Acadia National Park Natural Resources
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: acadia-national-park-natural-resources
+    description: "The goal of this project is to extract data-driven 'vital signs' from  data collected on bat populations at Acadia National Park since 2008 and transform data into standardized annual Data Packages for submission to the National Park Service Inventory & Monitoring Data Store. CCV helps to wrangle and clean the various datasets into data packages and to generate report templates for quick visualization of vital signs."
+    project-type: collaboration
+    starred: True
+    tags:
+      - government
+      - data-science
+      - data-management
+      - software-engineering
+    department:
+      - ecology-evolution-and-organismal-biology
+    investigators:
+      - name: Bik Wheeler
+        link: https://www.nps.gov/subjects/parkscience/author-bik-wheeler.htm
+    people:
+      - name: Timothy Divoll
+        github_user: tdivoll
+    links:
+      - category: "website"
+        url: https://irma.nps.gov/DataStore
+      - category: "website"
+        url: https://www.nps.gov/im/vital-signs.htm
 
----
+  - title: Autonomous Empirical Research Group
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: autonomous-empirical-research-group
+    description: The Autonomous Empirical Research Group (AER) strives to enhance and accelerate scientific discovery by automating each step of the empirical research process, from constructing a scientific hypothesis to conducting novel experiments. CCV's collaboration focuses on developing a framework which the group can use to run simulations to test machine learning models and run experiments with real participants.
+    project-type: collaboration
+    starred: True
+    department:
+      - clps
+    tags:
+      - machine-learning
+      - software-engineering
+    investigators:
+      - name: Sebastian Musslick
+        link: https://musslick.github.io/AER_website/About.html
+    people:
+      - name: John Gerrard Holland
+        github_user: hollandjg
+      - name: George Dang
+        github_user: gtdang
+    links:
+      - category: "website"
+        url: https://musslick.github.io/AER_website/About.html
 
-title: Autonomous Empirical Research Group
-description: The Autonomous Empirical Research Group (AER) strives to enhance and accelerate scientific discovery by automating each step of the empirical research process, from constructing a scientific hypothesis to conducting novel experiments. CCV's collaboration focuses on developing a framework which the group can use to run simulations to test machine learning models and run experiments with real participants.
-project-type: collaboration
-starred: true
-department:
-  - clps
-tags:
-  - machine-learning
-  - software-engineering
-investigators:
-  - name: Sebastian Musslick
-    link: https://vivo.brown.edu/display/smusslic
-people:
-  - name: John Gerrard Holland
-    github_user: hollandjg
-  - name: George Dang
-    github_user: gtdang
-links:
-  - category: "website"
-    url: https://musslick.github.io/AER_website/About.html
-
----
-title: Division of Biology and Medicine Administrative
-description: "The goal of this project is to extract insights on diversity and inclusion efforts from employee surveys among Brown's Biomedical departments and affiliates. We transform survey data into scoring metrics and apply natural language processing to derive sentiments and topics from the typed responses"
-starred: true
-department:
-  - biomedical
-tags:
-  - university-administration
-  - data-science
-  - nlp
-investigators:
-  - name: Joseph Diaz, MD, MPH
-    link: https://diversity.biomed.brown.edu/people/joseph-diaz-md-mph
-people:
-  - name: Timothy Divoll
-    github_user: tdivoll
-links:
-  - category: "website"
-    url: https://biomedical.brown.edu/diversity
+  - title: Division of Biology and Medicine Administrative
+    image: /images/services/classroom/featured-carousel/gpu.jpeg
+    slug: division-biology-medicine-administrative
+    id: division-biology-medicine
+    description: "The goal of this project is to extract insights on diversity and inclusion efforts from employee surveys among Brown's Biomedical departments and affiliates. We transform survey data into scoring metrics and apply natural language processing to derive sentiments and topics from the typed responses"
+    project-type: collaboration
+    starred: True
+    department:
+      - biomedical
+    tags:
+      - university-administration
+      - data-science
+      - nlp
+    investigators:
+      - name: Joseph Diaz, MD, MPH
+        link: https://diversity.biomed.brown.edu/people/joseph-diaz-md-mph
+    people:
+      - name: Timothy Divoll
+        github_user: tdivoll
+    links:
+      - category: "website"
+        url: https://biomedical.brown.edu/diversity

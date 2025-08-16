@@ -1,32 +1,30 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
-const portfolioRaw = await readContentFile<{
-    portfolio: PortfolioEntry[]
-  }>("content/portfolio/portfolio.yaml")
-  const portfolioData = portfolioRaw.data.portfolio
-import { getMDXMetadata } from "@/lib/mdx-utils"
 import { readContentFile } from "@/lib/content-utils"
 import { PortfolioEntry } from "@/lib/portfolio-types"
-import { StyledCard } from "@/components/card/StyledCard"
+import { ContentSection } from "@/components/ContentSection"
+import { CardGroup } from "@/components/card/CardGroup"
+import { ProjectOverviewCard } from "@/components/card/ProjectOverviewCard"
 
 export default async function Portfolio() {
-  const metadata = getMDXMetadata("content/portfolio/portfolio.yaml")
+  const portfolioRaw = await readContentFile<{
+    projects: PortfolioEntry[];
+  }>("content/portfolio/portfolio.yaml")
+  const portfolioData = portfolioRaw.data.projects
 
   return (
     <>
       <Hero
-        image={metadata.image}
-        title={metadata.title}
-        description={metadata.description}
+        title="Portfolio"
+        description="A collection of software and analysis projects, workshops, and bootcamps that CCV has worked on."
       />
-      <div className="prose prose-lg text-xl max-w-none">
-        {portfolioData.map((entry) => (
-          <StyledCard key={entry.title} title={entry.title} iconName={entry['project-type']}>
-            <p>{entry.description}</p>
-            <p>{entry['project-type']}</p>
-          </StyledCard>
-        ))}
-      </div>
+      <ContentSection title="Projects">
+        <CardGroup>
+          {portfolioData.map((entry) => (
+            <ProjectOverviewCard key={entry.title} entry={entry} />
+          ))}
+        </CardGroup>
+      </ContentSection>    
     </>
   )
 }
