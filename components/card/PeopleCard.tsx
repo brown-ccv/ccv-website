@@ -55,42 +55,42 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           onMouseLeave={() => setIsHovered(false)}
           className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-keppel-600"
         >
-          <Card className="w-[350px] sm:w-[400px] h-[525px] sm:h-[600px] flex-shrink-0 border-none shadow-none">
-            <CardContent className="flex flex-col h-full items-center">
+          <Card className="h-[525px] w-[350px] flex-shrink-0 border-none shadow-none sm:h-[600px] sm:w-[400px]">
+            <CardContent className="flex h-full flex-col items-center">
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
                 alt={name}
                 width="500"
                 height="500"
-                className="rounded-full transition-opacity duration-300 h-[306px] w-[306px] sm:h-[350px] sm:w-[350px]"
+                className="h-[306px] w-[306px] rounded-full transition-opacity duration-300 sm:h-[350px] sm:w-[350px]"
                 style={{ margin: 0, padding: 0 }}
               />
-              <CardTitle className="text-2xl text-center py-4">
+              <CardTitle className="py-4 text-center text-2xl">
                 {name}
               </CardTitle>
-              <CardDescription className="text-xl italic text-center">
+              <CardDescription className="text-center text-xl italic">
                 {title}
               </CardDescription>
             </CardContent>
           </Card>
         </button>
       </DialogTrigger>
-      <DialogContent className="p-8 text-center text-neutral-500 bg-white flex flex-col items-center rounded-xl h-[95vh] w-[95vw] sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl max-h-3xl lg:p-24 overflow-y-auto">
+      <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-neutral-500 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
         <Image
           src={imagePath}
           alt={name}
           width={180}
           height={180}
-          className="rounded-full md:h-[250px] md:w-[250px] lg:w-[300px] lg:h-[300px] "
+          className="rounded-full md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
         <DialogTitle className="py-4 text-3xl font-bold">
           {personDetails?.name || name}
         </DialogTitle>
-        <p className="text-2xl text-neutral-700 mb-2">
+        <p className="mb-2 text-2xl text-neutral-700">
           {personDetails?.title || title}
         </p>
         {personDetails?.team && (
-          <p className="text-lg -mb-2">{personDetails.team}</p>
+          <p className="-mb-2 text-lg">{personDetails.team}</p>
         )}
         {personDetails?.subteam && (
           <p className="text-lg italic">{personDetails.subteam}</p>
@@ -122,7 +122,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
             )}
         </div>
         {personDetails?.bio && (
-          <div className="mt-4 text-lg text-neutral-800">
+          <div className="text-neutral-800 mt-4 text-lg">
             {personDetails.bio}
           </div>
         )}

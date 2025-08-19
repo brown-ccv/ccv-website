@@ -1,15 +1,8 @@
+@import "prismjs/themes/prism-okaidia.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Prism.js syntax highlighting */
-@import "prismjs/themes/prism-okaidia.css";
-
-/* Custom code block styling */
-.prose pre code {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-}
 
 @layer base {
   :root {
@@ -28,125 +21,76 @@
 
   html,
   body {
-    @apply h-full;
     @apply bg-white;
-    zoom: 1;
   }
 
-  main,
-  section {
-    @apply m-0 p-0;
+  h1 {
+    @apply text-4xl font-bold;
   }
-}
 
-p > a {
-  @apply text-keppel-800;
-}
+  h2,
+  h3,
+  h4 {
+    @apply font-semibold;
+  }
 
-p > a:hover {
-  @apply text-keppel-500;
-}
+  h2 {
+    @apply text-3xl;
+  }
 
-p > a:focus {
-  @apply text-keppel-600 outline-2 outline-keppel-600;
-}
+  h3 {
+    @apply text-2xl;
+  }
 
-/* Apply zoom on all screen sizes */
-@media {
-  body {
-    zoom: 1;
+  h4 {
+    @apply text-xl;
+  }
+
+  @media (width >= 64rem) {
+    h1 {
+      @apply text-5xl font-bold;
+    }
+
+    h2,
+    h3,
+    h4 {
+      @apply font-semibold;
+    }
+
+    h2 {
+      @apply text-4xl;
+    }
+
+    h3 {
+      @apply text-3xl;
+    }
+
+    h4 {
+      @apply text-2xl;
+    }
+  }
+  p > a {
+    @apply text-keppel-800;
+  }
+
+  p > a:hover {
+    @apply text-keppel-500;
+  }
+
+  p > a:focus {
+    @apply text-keppel-600 outline-2 outline-keppel-600;
   }
 }
 
 @layer components {
-  .column {
-    @apply flex-grow;
-    @apply basis-0;
-    @apply flex-shrink;
-    @apply p-3;
-  }
-
-  .content-wrapper {
-    @apply w-full px-6 sm:px-8 md:px-12 lg:px-32 xl:px-40;
+  /* Custom code block styling */
+  .prose pre code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
   }
 
   /* Remove default margins from images in MDX content */
   .prose img {
     @apply my-4 py-4;
-  }
-
-  /* Markdown content styles should match globals */
-  .prose h1 {
-    @apply font-bold text-4xl;
-  }
-
-  .prose h2,
-  .prose h3,
-  .prose h4 {
-    @apply font-semibold;
-  }
-
-  .prose h2 {
-    @apply text-3xl;
-  }
-
-  .prose h3 {
-    @apply text-2xl;
-  }
-
-  .prose h4 {
-    @apply text-xl;
-  }
-
-  @media (width >= 64rem) {
-    .prose h1 {
-      @apply font-bold text-5xl;
-    }
-
-    .prose h2,
-    .prose h3,
-    .prose h4 {
-      @apply font-semibold;
-    }
-
-    .prose h2 {
-      @apply text-4xl;
-    }
-
-    .prose h3 {
-      @apply text-3xl;
-    }
-
-    .prose h4 {
-      @apply text-2xl;
-    }
-  }
-}
-
-@layer utilities {
-  .toggle-btn {
-    position: absolute;
-    top: -8px;
-    right: 4px;
-    padding: 4px;
-    border-radius: 9px;
-    background-color: white;
-  }
-
-  .toggle-btn p:hover {
-    cursor: pointer;
-  }
-
-  .toggle-btn .selected {
-    background-color: white;
-    border: 2px solid #00b398;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
-  }
-
-  .calendar-container {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
   }
 }

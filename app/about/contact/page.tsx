@@ -14,10 +14,7 @@ export default async function ContactUs() {
         title={metadata.title}
         description={metadata.description}
       />
-      <div className="prose prose-lg text-xl max-w-none">
-        <ContactContent />
-      </div>
-      <LocationSection />
+      <ContactContent />
     </>
   )
 }
