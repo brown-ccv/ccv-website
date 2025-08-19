@@ -5,6 +5,7 @@ import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 import ButtonLink from "@/components/button/ButtonLink"
+import { StyledCard } from "@/components/card/StyledCard"
 
 interface FormProps {
   selectedAnswers: SelectedAnswers
@@ -18,7 +19,7 @@ const Form: React.FC<FormProps> = ({
   questions,
 }) => {
   return (
-    <div className="max-w-[800px] space-y-2 rounded-2xl border border-neutral-300 bg-gradient-to-br from-white to-neutral-50/30 px-4 pb-8 sm:px-6 md:px-8">
+    <StyledCard title="Data Needs" className="max-w-full">
       {questions.map((question) => (
         <React.Fragment key={question.id}>
           <div className="pt-6 text-2xl font-medium text-black">
@@ -59,7 +60,7 @@ const Form: React.FC<FormProps> = ({
           </RadioGroup>
         </React.Fragment>
       ))}
-    </div>
+    </StyledCard>
   )
 }
 
