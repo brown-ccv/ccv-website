@@ -13,9 +13,7 @@ export default async function AboutUs() {
         title={metadata.title}
         description={metadata.description}
       />
-      <div className="prose prose-lg text-xl max-w-none">
-        <AboutUsContent />
-      </div>
+      <AboutUsContent />
     </>
   )
 }

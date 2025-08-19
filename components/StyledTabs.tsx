@@ -30,17 +30,17 @@ export const StyledTabs: React.FC<TabsProps> = ({
   return (
     <Tabs
       defaultValue={defaultTab}
-      className={`flex flex-col gap-4 justify-end items-end ${tabsWrapperClass}`}
+      className={`flex flex-col items-end justify-end gap-4 ${tabsWrapperClass}`}
     >
       <TabsList
-        className={`flex justify-end bg-[--tabs-bg] border border-gray-200 py-6 text-neutral-500 `}
+        className={`flex justify-end border border-gray-200 bg-[--tabs-bg] py-6 text-neutral-500`}
       >
         {tabs?.map((tab) => (
           <TabsTrigger
             key={tab.value}
             value={tab.value}
             className={cn(
-              "data-[state=active]:bg-white data-[state=active]:text-keppel-700 data-[state=active]:border data-[state=active]:border-keppel-700/50 hover:text-keppel-600 px-4 text-lg",
+              "px-4 text-lg hover:text-keppel-600 data-[state=active]:border data-[state=active]:border-keppel-700/50 data-[state=active]:bg-white data-[state=active]:text-keppel-700",
               className
             )}
           >

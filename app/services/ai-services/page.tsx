@@ -8,9 +8,7 @@ export default function AIServices() {
   return (
     <>
       <Hero title={metadata.title} description={metadata.description} />
-      <div className="prose prose-lg text-xl max-w-none">
-        <AIServicesContent />
-      </div>
+      <AIServicesContent />
     </>
   )
 }

@@ -10,29 +10,23 @@ export default async function Storage() {
   return (
     <>
       <Hero title={metadata.title} description={metadata.description}>
-        <div className="flex flex-col items-start not-prose">
-          <div className="flex flex-col xl:flex-row flex-wrap gap-4 w-full items-start not-prose">
-            {metadata.links.map((link: any, index: number) => (
-              <ButtonLink
-                key={index}
-                variant={
-                  link.category === "Documentation"
-                    ? "primary_filled"
-                    : "secondary_filled"
-                }
-                size="xl"
-                href={link.target}
-                external={!link.target.startsWith("/")}
-              >
-                {link.text}
-              </ButtonLink>
-            ))}
-          </div>
-        </div>
+        {links.map((link: any, index: number) => (
+          <ButtonLink
+            key={index}
+            variant={
+              link.category === "Documentation"
+                ? "primary_filled"
+                : "secondary_filled"
+            }
+            size="xl"
+            href={link.target}
+            external={!link.target.startsWith("/")}
+          >
+            {link.text}
+          </ButtonLink>
+        ))}
       </Hero>
-      <div className="prose prose-lg text-xl max-w-none">
-        <StorageContent />
-      </div>
+      <StorageContent />
     </>
   )
 }

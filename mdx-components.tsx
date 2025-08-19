@@ -11,7 +11,7 @@ import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
 import { PeopleSection } from "@/components/PeopleSection"
 import { ButtonGroup } from "@/components/button/ButtonGroup"
-import { CostEstimateCard } from "@/components/card/CostEstimateCard"
+import { LocationSection } from "@/components/LocationSection"
 
 // Server component that loads carousel data from YAML file
 async function MDXCarouselData({
@@ -39,7 +39,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Wrapper component for all MDX content
     wrapper: ({ children }) => (
-      <div className="text-xl max-w-none">{children}</div>
+      <div className="prose max-w-none text-xl">{children}</div>
     ),
 
     // Global MDX components
@@ -59,12 +59,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ContentSection,
     MDXCarousel,
     PeopleSection,
+    LocationSection,
     img: (props) => (
       <Image
         {...props}
         width={800}
         height={600}
-        className="max-w-full h-auto"
+        className="h-auto max-w-full"
       />
     ),
     ...components,

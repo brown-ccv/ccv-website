@@ -137,7 +137,7 @@ people:
     type: Full Time
     team: CCV Operations
     subteam: Research Technical Services
-    title: Assistant Director Research Computing Services 
+    title: Assistant Director Research Computing Services
     github_username: yangliu2009
     brown_directory_uuid: e0e55df3-9f2c-4a12-a1de-742955164e1e
     bio:
@@ -146,7 +146,7 @@ people:
     type: Full Time
     team: CCV Operations
     subteam: Research Technical Services
-    title: Senior Research Computing Consultant 
+    title: Senior Research Computing Consultant
     github_username: prasadbandarkar
     brown_directory_uuid: 11533980-c5cd-4969-81ca-537543da9b72
     bio:
@@ -205,10 +205,9 @@ people:
     title: Senior Research Software Engineer
     github_username: ashleysyg
     brown_directory_uuid: 380094e2-6f9d-47cf-91ce-e636876a58cf
-    bio: 
-      Ashley is a data scientist and software engineer. She studied at the 
-      University of Virginia Data Science Institute. Her range of experience is in 
-      machine learning, statistical analysis, data visualization, and web development projects in React. 
+    bio: Ashley is a data scientist and software engineer. She studied at the
+      University of Virginia Data Science Institute. Her range of experience is in
+      machine learning, statistical analysis, data visualization, and web development projects in React.
       Her personal interests include muay thai, running, reading, thrifting, and dogs.
     image: ashley_main.jpg
   - name: Bradford N. Roarr
