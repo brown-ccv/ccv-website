@@ -12,6 +12,7 @@ import {
   ServiceConfig,
   FormQuestions,
 } from "@/lib/storage-types"
+import StorageCards from "@/components/storage/StorageCards"
 
 interface StorageToolProps {
   pageContent: PageContentData | null
@@ -45,28 +46,30 @@ export default function StorageTool({
 
   return (
     <ContentSection title="Compare Storage Options">
-      <div className="flex flex-col items-start pb-8">
-        <h2 className="my-12 text-2xl font-bold text-gray-800">
+      <div className="flex flex-col gap-2 md:hidden">
+        <h2 className="my-12 text-2xl font-semibold text-gray-800">
           {pageContent?.storage_tool_header}
         </h2>
-        <div className="mt-0 flex w-full flex-col items-center gap-4 xl:flex-row xl:items-start">
-          <div className="w-full">
-            <Form
-              selectedAnswers={selectedAnswers}
-              onAnswerChange={handleAnswerChange}
-              questions={questions}
-            />
-            <Button onClick={handleReset} variant="primary_filled" size="lg">
-              Reset Questions
-            </Button>
-          </div>
-          <Table
-            services={services}
-            selectedAnswers={selectedAnswers}
-            questions={questionsConfig}
-          />
-        </div>
+        <Form
+          selectedAnswers={selectedAnswers}
+          onAnswerChange={handleAnswerChange}
+          questions={questions}
+        />
+        <Button
+          onClick={handleReset}
+          variant="primary_filled"
+          size="lg"
+          className="mb-8"
+        >
+          Reset Questions
+        </Button>
+        <StorageCards
+          services={services}
+          selectedAnswers={selectedAnswers}
+          questions={questionsConfig}
+        />
       </div>
+      <Table services={services} />
     </ContentSection>
   )
 }

@@ -1,16 +1,10 @@
 import React, { useMemo, useRef } from "react"
 import { cn, humanize } from "@/lib/utils"
-import Markdown from "react-markdown"
-import rehypeRaw from "rehype-raw"
-import remarkGfm from "remark-gfm"
 import Link from "next/link"
-import { Button } from "@/components/button/Button"
 import { ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
 import {
   ServiceConfig,
-  SelectedAnswers,
   TableRow,
-  QuestionsConfig,
   ServiceFeature,
   featureIcons,
   featureColorMap,
@@ -21,101 +15,25 @@ import {
   getCoreRowModel,
   useReactTable,
   ColumnDef,
+  SortingState,
+  ColumnFiltersState,
+  getSortedRowModel,
+  getFilteredRowModel,
 } from "@tanstack/react-table"
-import StorageServiceCard from "@/components/card/StorageServiceCard"
-import {
-  getAllUniqueFeatureNames,
-  sortFeatures,
-} from "@/components/storage/utils"
+import { getAllUniqueFeatureNames } from "@/components/storage/utils"
 
 export interface TableProps {
   services: ServiceConfig[]
-  selectedAnswers: SelectedAnswers
-  questions: QuestionsConfig[]
 }
 
-// --- Core Filtering Logic ---
-const getColumnDisabledState = (
-  service: ServiceConfig,
-  currentSelectedAnswers: SelectedAnswers,
-  questions: QuestionsConfig[]
-): boolean => {
-  // service column is disabled if it fails *any* active filter condition.
-  for (const questionId in currentSelectedAnswers) {
-    if (currentSelectedAnswers.hasOwnProperty(questionId)) {
-      const selectedAnswerValue = currentSelectedAnswers[questionId]
-
-      const yamlQuestion = questions?.find(
-        (question) => question.affected_feature === questionId
-      )
-      if (!yamlQuestion) {
-        continue // Skip this filter if question config is missing
-      }
-
-      const selectedYAMLAnswerOption = yamlQuestion.answers.find(
-        (answer) => answer.answer === selectedAnswerValue
-      )
-      if (!selectedYAMLAnswerOption) {
-        continue // Skip this filter if selected answer option is missing
-      }
-
-      const allowedCategoryClasses =
-        selectedYAMLAnswerOption.matching_feature_values
-
-      const serviceFeature = service.features?.find(
-        (f) => f.name === questionId
-      )
-
-      // Determine if the selected answer implies a *strict requirement* for the feature.
-      const nonStrictAnswers = [
-        "no risk",
-        "no",
-        "any",
-        "not sure",
-        "less than 1 tb",
-      ]
-      const isStrictFilter = !nonStrictAnswers.includes(
-        String(selectedAnswerValue).toLowerCase()
-      )
-
-      if (!serviceFeature) {
-        // Case 1: Service does not have the feature
-        if (isStrictFilter) {
-          return true
-        }
-        continue
-      }
-
-      // Case 2: Service *does* have the feature, now check if its class matches the allowed classes.
-      const serviceFeatureClassNormalized = String(
-        serviceFeature.value
-      ).toLowerCase()
-
-      // Normalize the service's feature class (can be string, number, boolean) to a lowercase string
-      const passesThisSpecificFilter = allowedCategoryClasses.some(
-        (allowedClass) => {
-          return (
-            String(allowedClass).toLowerCase() === serviceFeatureClassNormalized
-          )
-        }
-      )
-
-      if (!passesThisSpecificFilter) {
-        return true
-      }
-    }
-  }
-  return false
-}
-
-// --- Main Table Component ---
-const Table: React.FC<TableProps> = ({
-  services,
-  selectedAnswers,
-  questions,
-}) => {
+const Table: React.FC<TableProps> = ({ services }) => {
   const columnHelper = createColumnHelper<TableRow>()
+  const [sorting, setSorting] = React.useState<SortingState>([])
+  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
+    []
+  )
   const tableContainerRef = useRef<HTMLDivElement>(null)
+  const featureNames = useMemo(() => getAllUniqueFeatureNames(services), [])
 
   const tableData: TableRow[] = useMemo(() => {
     // Filter services to only include those with at least one feature
@@ -123,170 +41,106 @@ const Table: React.FC<TableProps> = ({
       (service) => service.features && service.features.length > 0
     )
 
-    // Use shared utility to get all unique feature names
-    const featureNames = getAllUniqueFeatureNames(servicesWithFeatures)
-    // Use improved sortFeatures utility
-    const orderedFeatureNames = sortFeatures(featureNames, questions)
+    return servicesWithFeatures.map((service) => {
+      const row: TableRow = {
+        serviceName: service.name,
+        description: service.description,
+        links: service.links,
+      }
 
-    return orderedFeatureNames.map((featureName) => {
-      const row: TableRow = { featureName: featureName }
-      servicesWithFeatures.forEach((service) => {
-        row[service.name] = service.features?.find(
-          (f) => f.name === featureName
-        )
+      // Add each feature as a property
+      service.features.forEach((feature) => {
+        row[feature.name] = feature
       })
+
       return row
     })
-  }, [services, questions])
+  }, [services])
 
   // 2. define columns for TanStack Table (memoized for performance)
   const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
-    // Filter services to only include those with at least one feature
-    const servicesWithFeatures = services.filter(
-      (service) => service.features && service.features.length > 0
-    )
+    const serviceColumn = columnHelper.accessor("serviceName", {
+      header: "Service",
+      cell: (info) => (
+        <Link
+          href={`/services/storage#${info.getValue()}`}
+          className={cn(
+            "font-medium text-keppel-800 transition-colors hover:text-keppel-700 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+          )}
+        >
+          {humanize(info.getValue())}
+        </Link>
+      ),
+    })
 
-    const featureNameColumn: ColumnDef<TableRow, any> = columnHelper.accessor(
-      "featureName",
-      {
-        id: "featureName",
-        header: () => (
-          <div className="px-[4vw] py-2 text-left font-semibold text-neutral-700 sm:px-[3vw]">
-            Feature
-          </div>
-        ),
-        cell: (info) => {
-          const featureName = humanize(info.getValue())
-          const IconComponent = featureIcons[info.getValue().toLowerCase()]
-          return (
-            <div className="flex min-h-[80px] items-center gap-2 px-[4vw] py-2 font-medium uppercase tracking-wider text-neutral-900 sm:px-[3vw]">
-              {IconComponent ? (
-                <IconComponent className="text-brown-700 h-6 w-6 flex-shrink-0" />
-              ) : null}
-              <span>{featureName}</span>
-            </div>
-          )
+    const featureColumns = featureNames.map((featureName) =>
+      columnHelper.accessor(
+        (row: TableRow) => {
+          const feature = row[featureName] as ServiceFeature
+          return feature?.value // Return just the value for sorting
         },
-        enableColumnFilter: false,
-        size: 200,
-      }
-    )
-
-    const serviceColumns: ColumnDef<TableRow, any>[] = servicesWithFeatures.map(
-      (service) => {
-        // Determine if the *entire service column* should be disabled (grayed out)
-        const isDisabled = getColumnDisabledState(
-          service,
-          selectedAnswers,
-          questions
-        )
-        const columnClass = isDisabled ? "opacity-30 grayscale" : ""
-
-        return columnHelper.accessor(service.name, {
-          id: service.name,
-          header: () => (
-            <Link
-              href={`/services/storage#${service.name}`}
-              className={cn(
-                "flex flex-col items-start justify-start px-2 py-2 text-center",
-                columnClass
-              )}
-            >
-              <div className="font-semibold">{humanize(service.name)}</div>
-            </Link>
-          ),
-          cell: (info) => {
-            const feature = info.getValue() as ServiceFeature
-            const featureNameFromRow = info.row.original.featureName
-            const cellContentClasses = cn(
-              "px-[4vw] sm:px-[3vw] py-2 text-start",
-              columnClass
+        {
+          id: featureName,
+          header: () => {
+            const IconComponent = featureIcons[featureName.toLowerCase()]
+            return (
+              <div className="flex items-center gap-2 font-medium">
+                {IconComponent ? (
+                  <IconComponent className="text-brown-700 h-4 w-4 flex-shrink-0" />
+                ) : null}
+                {featureName
+                  .replace(/_/g, " ")
+                  .replace(/\b\w/g, (l) => l.toUpperCase())}
+              </div>
             )
-
-            if (feature === undefined) {
-              return (
-                <div
-                  className={cn(
-                    "flex min-h-[80px] flex-col items-center justify-center p-2",
-                    cellContentClasses
-                  )}
-                >
-                  <span className="text-neutral-400 text-3xl">-</span>
-                </div>
-              )
-            }
-
-            const featureClassLower = String(feature?.value).toLowerCase()
-            const IconComponent = featureIcons[featureNameFromRow.toLowerCase()]
+          },
+          cell: (info) => {
+            const feature = info.row.original[featureName] as ServiceFeature
+            const IconComponent = featureIcons[featureName.toLowerCase()]
             const valueColor =
-              featureColorMap[featureClassLower] || featureColorMap["default"]
+              featureColorMap[String(feature.value).toLowerCase()] ||
+              featureColorMap["default"]
+            if (!feature) return <span className="text-gray-400">—</span>
 
             return (
-              <div
-                className={cn(
-                  "flex min-h-[80px] flex-col items-center justify-center p-2",
-                  cellContentClasses
-                )}
-              >
-                <div className={cn("flex gap-2 text-xl font-semibold")}>
+              <>
+                <div className="flex items-center gap-2 font-medium uppercase tracking-wider">
                   {IconComponent ? (
                     <IconComponent
                       className={cn("h-6 w-6 flex-shrink-0", valueColor)}
                     />
                   ) : null}
-                  <span>
-                    {(() => {
-                      const featureClassValue = feature?.value
-                      if (typeof featureClassValue === "boolean") {
-                        return featureClassValue ? "Yes" : "No"
-                      }
-                      if (
-                        featureNameFromRow === "security" &&
-                        typeof featureClassValue === "number"
-                      ) {
-                        return `Level ${featureClassValue}`
-                      }
-                      if (
-                        featureNameFromRow === "storage" &&
-                        typeof featureClassValue === "string"
-                      ) {
-                        if (featureClassValue.includes("TB +")) {
-                          return featureClassValue
-                        }
-                        if (featureClassValue.includes("TB")) {
-                          return featureClassValue
-                        }
-                      }
-                      return humanize(String(featureClassValue))
-                    })()}
-                  </span>
+                  <span>{String(feature.value)}</span>
                 </div>
-                {feature?.notes && (
-                  <div className="mt-1 max-w-[300px] text-center text-sm tracking-tight text-neutral-500">
-                    <Markdown
-                      rehypePlugins={[rehypeRaw]}
-                      remarkPlugins={[remarkGfm]}
-                    >
-                      {String(feature.notes ?? "")}
-                    </Markdown>
+                {feature.notes && (
+                  <div className="text-xs text-gray-500">
+                    {feature.notes.map((note, idx) => (
+                      <div key={idx}>• {note}</div>
+                    ))}
                   </div>
                 )}
-              </div>
+              </>
             )
           },
-          enableColumnFilter: false,
-          size: 150,
-        })
-      }
+        }
+      )
     )
 
-    return [featureNameColumn, ...serviceColumns]
-  }, [columnHelper, services, selectedAnswers, questions])
+    return [serviceColumn, ...featureColumns]
+  }, [featureNames])
 
   const table = useReactTable({
     data: tableData,
     columns,
+    state: {
+      sorting,
+      columnFilters,
+    },
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
     defaultColumn: {
       minSize: 100,
       maxSize: 300,
@@ -305,106 +159,81 @@ const Table: React.FC<TableProps> = ({
   }
 
   return (
-    <>
-      {/* Desktop View - Table */}
-      <div className="hidden w-full overflow-x-scroll rounded-2xl border border-neutral-300 bg-gradient-to-br from-white to-neutral-50/30 lg:block">
-        <div className="relative" ref={tableContainerRef}>
-          <div className="sticky top-0 z-40 flex justify-end border-b border-neutral-200 bg-white p-2">
-            <Button
-              onClick={() => scrollTable("left")}
-              aria-label="Scroll left"
-              variant="secondary_filled"
-              iconOnly={
-                <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
-              }
-            />
-            <Button
-              onClick={() => scrollTable("right")}
-              aria-label="Scroll right"
-              variant="secondary_filled"
-              iconOnly={
-                <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
-              }
-            />
-          </div>
-        </div>
-        <div
-          ref={tableContainerRef}
-          className="h-[calc(100vh-200px)] overflow-y-auto overflow-x-scroll"
-        >
-          <table
-            className="min-w-full border-separate"
-            style={{ borderSpacing: 0 }}
-          >
-            <thead className="sticky top-0 z-20 border-b border-neutral-200 bg-white">
-              {table.getHeaderGroups().map((headerGroup) => (
-                <tr key={headerGroup.id}>
-                  {headerGroup.headers.map((header, index) => (
-                    <th
-                      key={header.id}
-                      className={cn(
-                        "min-w-[175px] px-2 py-3 text-left text-md font-medium uppercase tracking-wider text-neutral-500",
-                        header.column.getCanSort()
-                          ? "cursor-pointer select-none"
-                          : "",
-                        index < headerGroup.headers.length - 1 &&
-                          "border border-neutral-200",
-                        "sticky top-0 border-b border-neutral-200 bg-white",
-                        header.id === "featureName" ? "left-0 z-30" : "z-20"
-                      )}
-                    >
+    <div className="hidden bg-white p-6 md:block">
+      <div className="mb-6">
+        <h2 className="mb-2 text-2xl font-bold text-gray-900">
+          Service Features Comparison
+        </h2>
+        <p className="text-gray-600">
+          Compare features across different services
+        </p>
+      </div>
+
+      {/* Search filter */}
+      <div className="mb-4">
+        <input
+          placeholder="Filter services..."
+          value={
+            (table.getColumn("serviceName")?.getFilterValue() as string) ?? ""
+          }
+          onChange={(e) =>
+            table.getColumn("serviceName")?.setFilterValue(e.target.value)
+          }
+          className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div className="overflow-x-auto rounded-lg border border-gray-200">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            {table.getHeaderGroups().map((headerGroup) => (
+              <tr key={headerGroup.id}>
+                {headerGroup.headers.map((header) => (
+                  <th
+                    key={header.id}
+                    className="w-40 cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 hover:bg-gray-100"
+                    onClick={header.column.getToggleSortingHandler()}
+                    style={{ width: header.getSize() }}
+                  >
+                    <div className="flex items-center space-x-1">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                    </th>
-                  ))}
-                </tr>
-              ))}
-            </thead>
-            <tbody className="bg-white">
-              {table.getRowModel().rows.map((row) => (
-                <tr key={row.id}>
-                  {row.getVisibleCells().map((cell, index) => (
-                    <td
-                      key={cell.id}
-                      className={cn(
-                        index < row.getVisibleCells().length &&
-                          "border border-y border-neutral-200",
-                        cell.column.id === "featureName" &&
-                          "sticky left-0 z-10 bg-white"
-                      )}
-                    >
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                      <span className="ml-1">
+                        {{
+                          asc: "↑",
+                          desc: "↓",
+                        }[header.column.getIsSorted() as string] ?? "↕"}
+                      </span>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            ))}
+          </thead>
+          <tbody className="divide-y divide-gray-200 bg-white">
+            {table.getRowModel().rows.map((row) => (
+              <tr key={row.id} className="hover:bg-gray-50">
+                {row.getVisibleCells().map((cell) => (
+                  <td
+                    key={cell.id}
+                    className="min-w-44 px-4 py-4 text-sm"
+                    style={{ width: cell.column.getSize() }}
+                  >
+                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
-      {/* Mobile View - Cards */}
-      <div className="flex w-full flex-col items-center gap-4 lg:hidden">
-        {services
-          .filter((service) => service.features && service.features.length > 0)
-          .map((service) => (
-            <StorageServiceCard
-              key={service.name}
-              service={service}
-              isDisabled={getColumnDisabledState(
-                service,
-                selectedAnswers,
-                questions
-              )}
-            />
-          ))}
-      </div>
-    </>
+      <p className="mt-4 text-sm text-gray-500">
+        Showing {table.getRowModel().rows.length} service(s)
+      </p>
+    </div>
   )
 }
 
