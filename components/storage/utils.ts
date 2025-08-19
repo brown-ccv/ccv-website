@@ -1,4 +1,8 @@
-import { ServiceConfig } from "@/lib/storage-types"
+import {
+  QuestionsConfig,
+  SelectedAnswers,
+  ServiceConfig,
+} from "@/lib/storage-types"
 
 /**
  * Extracts all unique feature names from an array of services.
@@ -203,4 +207,77 @@ export const storageBadgeColorVariants = {
   small: "bg-cyan-500 text-white",
   large: "bg-sunglow-400 text-black",
   default: "bg-neutral-200 text-black",
+}
+
+export const getDisabledState = (
+  service: ServiceConfig,
+  currentSelectedAnswers: SelectedAnswers,
+  questions: QuestionsConfig[]
+): boolean => {
+  // service column is disabled if it fails *any* active filter condition.
+  for (const questionId in currentSelectedAnswers) {
+    if (currentSelectedAnswers.hasOwnProperty(questionId)) {
+      const selectedAnswerValue = currentSelectedAnswers[questionId]
+
+      const yamlQuestion = questions?.find(
+        (question) => question.affected_feature === questionId
+      )
+      if (!yamlQuestion) {
+        continue // Skip this filter if question config is missing
+      }
+
+      const selectedYAMLAnswerOption = yamlQuestion.answers.find(
+        (answer) => answer.answer === selectedAnswerValue
+      )
+      if (!selectedYAMLAnswerOption) {
+        continue // Skip this filter if selected answer option is missing
+      }
+
+      const allowedCategoryClasses =
+        selectedYAMLAnswerOption.matching_feature_values
+
+      const serviceFeature = service.features?.find(
+        (f) => f.name === questionId
+      )
+
+      // Determine if the selected answer implies a *strict requirement* for the feature.
+      const nonStrictAnswers = [
+        "no risk",
+        "no",
+        "any",
+        "not sure",
+        "less than 1 tb",
+      ]
+      const isStrictFilter = !nonStrictAnswers.includes(
+        String(selectedAnswerValue).toLowerCase()
+      )
+
+      if (!serviceFeature) {
+        // Case 1: Service does not have the feature
+        if (isStrictFilter) {
+          return true
+        }
+        continue
+      }
+
+      // Case 2: Service *does* have the feature, now check if its class matches the allowed classes.
+      const serviceFeatureClassNormalized = String(
+        serviceFeature.value
+      ).toLowerCase()
+
+      // Normalize the service's feature class (can be string, number, boolean) to a lowercase string
+      const passesThisSpecificFilter = allowedCategoryClasses.some(
+        (allowedClass) => {
+          return (
+            String(allowedClass).toLowerCase() === serviceFeatureClassNormalized
+          )
+        }
+      )
+
+      if (!passesThisSpecificFilter) {
+        return true
+      }
+    }
+  }
+  return false
 }

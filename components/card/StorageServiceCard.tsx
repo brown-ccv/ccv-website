@@ -46,12 +46,16 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
   }
 
   return (
-    <StyledCard title={humanize(service.name)} isDisabled={isDisabled}>
+    <StyledCard
+      title={humanize(service.name)}
+      isDisabled={isDisabled}
+      className="max-w-full"
+    >
       {service.features?.map((feature) => {
         const IconComponent = featureIcons[feature.name.toLowerCase()]
 
         return (
-          <div key={feature.name} className="space-y-2 py-2">
+          <div key={feature.name} className="space-y-2 px-6 py-2">
             {/* Feature name and icon */}
             <div className="flex items-center gap-2 font-semibold tracking-wide text-neutral-500">
               {IconComponent ? (
