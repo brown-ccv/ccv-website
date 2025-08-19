@@ -21,6 +21,7 @@ import {
   getFilteredRowModel,
 } from "@tanstack/react-table"
 import { getAllUniqueFeatureNames } from "@/components/storage/utils"
+import { Button } from "@/components/button/Button"
 
 export interface TableProps {
   services: ServiceConfig[]
@@ -86,7 +87,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
             return (
               <div className="flex items-center gap-2 font-medium">
                 {IconComponent ? (
-                  <IconComponent className="text-brown-700 h-4 w-4 flex-shrink-0" />
+                  <IconComponent className="h-4 w-4 flex-shrink-0" />
                 ) : null}
                 {featureName
                   .replace(/_/g, " ")
@@ -182,8 +183,25 @@ const Table: React.FC<TableProps> = ({ services }) => {
           className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
       </div>
+      <div className="mb-4 flex justify-end space-x-2">
+        <Button
+          onClick={() => scrollTable("left")}
+          aria-label="Scroll left"
+          variant="secondary_filled"
+          iconOnly={<ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />}
+        />
+        <Button
+          onClick={() => scrollTable("right")}
+          aria-label="Scroll right"
+          variant="secondary_filled"
+          iconOnly={<ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />}
+        />
+      </div>
 
-      <div className="overflow-x-auto rounded-lg border border-gray-200">
+      <div
+        ref={tableContainerRef}
+        className="overflow-x-scroll rounded-lg border border-gray-200"
+      >
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             {table.getHeaderGroups().map((headerGroup) => (
@@ -191,7 +209,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
                 {headerGroup.headers.map((header) => (
                   <th
                     key={header.id}
-                    className="w-40 cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 hover:bg-gray-100"
+                    className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 hover:bg-gray-100"
                     onClick={header.column.getToggleSortingHandler()}
                     style={{ width: header.getSize() }}
                   >
