@@ -36,7 +36,7 @@ carousel:
   - title: "Introduction to Statistical Analysis with R on Oscar"
     categories: ["Statistics"]
     description: "An introduction to R, a programming language for statistical computing and graphics. Topics covered include: basic R commands, working with data frames, plotting data, and using functions."
-    image: "/images/services/classroom/featured-carousel/r.png" 
+    image: "/images/services/classroom/featured-carousel/r.png"
     attribution: "Photo by <a href='https://creativecommons.org/licenses/by-sa/4.0/'>cdhowe</a>."
     buttons:
       - text: "View Notebook"

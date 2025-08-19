@@ -13,7 +13,7 @@ export const CardGroup: React.FC<CardGroupProps> = ({
   return (
     <div
       className={cn(
-        "flex flex-wrap gap-y-6 gap-x-6",
+        "flex flex-wrap gap-x-6 gap-y-6",
         align === "center" ? "justify-center" : "justify-start"
       )}
     >

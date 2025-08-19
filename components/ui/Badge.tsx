@@ -1,15 +1,7 @@
 import React from "react"
 import { cn } from "@/lib/utils"
-import { BadgeVariants } from "@/components/ui/variants"
-import type { VariantProps } from "class-variance-authority"
 import { getBadgeStyling } from "@/components/storage/utils"
-
-type BadgeProps = React.HTMLAttributes<HTMLDivElement> &
-  VariantProps<typeof BadgeVariants> & {
-    // New props for automatic color determination
-    value?: string | boolean | number
-    autoColor?: boolean
-  }
+import { cva, VariantProps } from "class-variance-authority"
 
 // The badge system:
 // - Automatically determines appropriate colors based on feature values
@@ -49,6 +41,33 @@ type BadgeProps = React.HTMLAttributes<HTMLDivElement> &
  * <Badge value="fast" autoColor>Fast Speed</Badge>
  */
 
+export const BadgeVariants = cva(
+  "inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap",
+  {
+    variants: {
+      color: {
+        // Shared colors
+        keppel: "bg-keppel-500 text-black",
+        sunglow: "bg-sunglow-400 text-black",
+        purple: "bg-purple-900 text-white",
+        blue: "bg-blue-500 text-white",
+        red: "bg-red-university text-white",
+        pink: "bg-pink-500 text-white",
+      },
+    },
+    defaultVariants: {
+      color: "keppel",
+    },
+  }
+)
+
+type BadgeProps = React.HTMLAttributes<HTMLDivElement> &
+  VariantProps<typeof BadgeVariants> & {
+    // New props for automatic color determination
+    value?: string | boolean | number
+    autoColor?: boolean
+  }
+
 export const Badge = ({
   color,
   className,
@@ -62,7 +81,7 @@ export const Badge = ({
     return (
       <div
         className={cn(
-          "inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap",
+          "inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-semibold",
           styling.className,
           className
         )}

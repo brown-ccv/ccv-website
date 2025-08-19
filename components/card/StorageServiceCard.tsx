@@ -33,8 +33,8 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
     if (!notes || notes.length === 0) return null
 
     return (
-      <div className="ml-6 text-sm text-neutral-500 font-normal italic tracking-tight">
-        <ul className="list-disc list-inside space-y-0.5">
+      <div className="ml-6 text-sm font-normal italic tracking-tight text-neutral-500">
+        <ul className="list-inside list-disc space-y-0.5">
           {notes.map((note, index) => (
             <li key={index} className="break-words">
               {note}
@@ -53,9 +53,9 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
         return (
           <div key={feature.name} className="space-y-2 py-2">
             {/* Feature name and icon */}
-            <div className="flex items-center gap-2 text-neutral-500 font-semibold tracking-wide">
+            <div className="flex items-center gap-2 font-semibold tracking-wide text-neutral-500">
               {IconComponent ? (
-                <IconComponent className="text-lg flex-shrink-0 mt-0.5" />
+                <IconComponent className="mt-0.5 flex-shrink-0 text-lg" />
               ) : null}
               <span className="break-words">
                 {humanize(feature.name).toUpperCase()}:
@@ -65,7 +65,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
             <Badge
               value={feature.value}
               autoColor={true}
-              className="rounded-full font-semibold text-sm ml-6"
+              className="ml-6 rounded-full text-sm font-semibold"
             >
               {humanize(formatFeatureDisplayValue(feature))}
             </Badge>

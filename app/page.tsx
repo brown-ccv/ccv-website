@@ -11,8 +11,8 @@ import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
-import { ScrollButton } from "@/components/ui/ScrollButton"
-import ButtonLink from "@/components/ui/ButtonLink"
+import { ScrollButton } from "@/components/button/ScrollButton"
+import ButtonLink from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
 import { ContentSection } from "@/components/ContentSection"
 
@@ -58,7 +58,7 @@ export default async function Home() {
           <ContentSection title="Featured Projects">
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>
-          <ContentSection title={"Events"} align={"left"}>
+          <ContentSection title={"Events"} align={"left"} id={"events"}>
             <Suspense fallback={<Spinner />}>
               <EventSection
                 streamedDataPast={pastDates}
@@ -74,7 +74,7 @@ export default async function Home() {
   } catch (err: any) {
     console.error(err)
     return (
-      <div className="px-2 my-6 space-y-2">
+      <div className="my-6 px-2">
         <p>{err.message}</p>
       </div>
     )

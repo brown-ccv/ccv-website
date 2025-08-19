@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 import { ContentSection } from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
 import Table from "@/components/storage/StorageTable"
@@ -46,11 +46,11 @@ export default function StorageTool({
   return (
     <ContentSection title="Compare Storage Options">
       <div className="flex flex-col items-start pb-8">
-        <h2 className="text-2xl font-bold text-gray-800 my-12">
+        <h2 className="my-12 text-2xl font-bold text-gray-800">
           {pageContent?.storage_tool_header}
         </h2>
-        <div className="w-full mt-0 flex flex-col xl:flex-row gap-4 items-center xl:items-start">
-          <div>
+        <div className="mt-0 flex w-full flex-col items-center gap-4 xl:flex-row xl:items-start">
+          <div className="w-full">
             <Form
               selectedAnswers={selectedAnswers}
               onAnswerChange={handleAnswerChange}

@@ -1,6 +1,6 @@
 import React from "react"
 import Hero from "@/components/Hero"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 export default function NotFound() {
   return (
