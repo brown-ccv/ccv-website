@@ -15,7 +15,6 @@ import { ScrollButton } from "@/components/button/ScrollButton"
 import ButtonLink from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
 import { ContentSection } from "@/components/ContentSection"
-import { IconButton } from "@/components/button/IconButton"
 
 export default async function Home() {
   // Load featured carousel data from YAML
@@ -75,7 +74,7 @@ export default async function Home() {
   } catch (err: any) {
     console.error(err)
     return (
-      <div className="px-2 my-6 space-y-2">
+      <div className="my-6 px-2">
         <p>{err.message}</p>
       </div>
     )

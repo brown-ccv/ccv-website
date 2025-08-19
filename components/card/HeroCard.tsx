@@ -22,12 +22,12 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <Card className="z-10 -mt-[170px] mb-[120px] lg:mx-12 px-6 lg:px-8 flex justify-center relative bg-white">
-      <CardContent className="flex flex-col lg:flex-row gap-10 lg:gap-20">
+    <Card className="relative z-10 -mt-[170px] mb-[120px] flex justify-center bg-white px-6 lg:mx-12 lg:px-8">
+      <CardContent className="flex flex-col gap-10 lg:flex-row lg:gap-20">
         {heroCards.map((card, index) => (
           <div key={index} className="relative">
             <CCVBars />
-            <h3 className="font-semibold text-xl tracking-tight leading-tight py-2">
+            <h3 className="py-2 text-xl font-semibold leading-tight tracking-tight">
               {card.title}
             </h3>
             <p className="text-lg">{card.description}</p>
