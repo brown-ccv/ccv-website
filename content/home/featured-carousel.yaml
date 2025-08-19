@@ -74,7 +74,7 @@ carousel:
       It is built using Honeycomb, is an open-source template that integrates cognitive science and web development practices.
       Researchers can use it to create psychophysiological tasks which use lab equipment, for example electroencephalogram (EEG) brain measurements.
 
-    image: "/images/home/featured-carousel/gearshift.gif"
+    image: "/images/home/featured-carousel/gearshift.webp"
     organizations:
       - name: "Cognitive and Psychological Sciences"
         organization: "Brown University"
