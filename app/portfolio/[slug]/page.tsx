@@ -19,7 +19,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   
   const entry = portfolioRaw.data.projects.find(
     project => project.slug === slug
-  )!
+  )
 
   if (!entry) {
     notFound()
