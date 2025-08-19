@@ -10,7 +10,7 @@ export default async function Storage() {
   return (
     <>
       <Hero title={metadata.title} description={metadata.description}>
-        {links.map((link: any, index: number) => (
+        {metadata.links?.map((link: any, index: number) => (
           <ButtonLink
             key={index}
             variant={
