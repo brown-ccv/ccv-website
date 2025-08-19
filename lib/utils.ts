@@ -1,7 +1,6 @@
 import { clsx, type ClassValue } from "clsx"
 import { twMerge } from "tailwind-merge"
 
-
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
@@ -16,32 +15,35 @@ export function cn(...inputs: ClassValue[]) {
 export const tagColors = [
   "keppel",
   "sunglow",
-  "purple", 
+  "purple",
   "blue",
   "pink",
   "red",
 ] as const
 
-export type TagColor = typeof tagColors[number]
+export type TagColor = (typeof tagColors)[number]
 
 // Create a map to store tag-to-color assignments
-const tagColorMap: Record<string, TagColor> = {};
+const tagColorMap: Record<string, TagColor> = {}
 
 export const getColorForTag = (tag: string): TagColor => {
   // If the tag already has an assigned color, return it
   if (tagColorMap[tag]) {
-    return tagColorMap[tag];
+    return tagColorMap[tag]
   }
 
   // If not, generate a color based on the tag
-  const hash = Array.from(tag).reduce((acc, char) => acc + char.charCodeAt(0), 0);
-  const color = tagColors[hash % tagColors.length];
+  const hash = Array.from(tag).reduce(
+    (acc, char) => acc + char.charCodeAt(0),
+    0
+  )
+  const color = tagColors[hash % tagColors.length]
 
   // Store the assignment in the map
-  tagColorMap[tag] = color;
+  tagColorMap[tag] = color
 
-  return color;
-};
+  return color
+}
 
 /**
  * Scrolls to an html element, often used with a button click
@@ -60,13 +62,13 @@ export const scrollToID = (targetId: string) => {
  * @param {string} str The string to be cleaned
  */
 export const humanize = (str: string | null | undefined): string => {
-  if (typeof str !== 'string' || str === null) {
-    return '';
+  if (typeof str !== "string" || str === null) {
+    return ""
   }
-  const cleanStr = str.replace(/_/g, ' ');
+  const cleanStr = str.replace(/_/g, " ")
   if (cleanStr.length === 0) {
-    return '';
+    return ""
   }
-  const upperFirst = cleanStr.charAt(0).toUpperCase() + cleanStr.slice(1);
-  return upperFirst;
-};
+  const upperFirst = cleanStr.charAt(0).toUpperCase() + cleanStr.slice(1)
+  return upperFirst
+}

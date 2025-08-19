@@ -24,6 +24,7 @@ Ollama is a framework that allows you to run large language models directly on O
 ## Getting Started
 
 ### 1. Set Up Environment
+
 First, connect to Oscar and set the environment variable for CCV-hosted models:
 
 ```bash
@@ -32,6 +33,7 @@ source ~/.bashrc
 ```
 
 ### 2. Request GPU Resources
+
 Request a GPU node with appropriate resources:
 
 ```bash
@@ -39,6 +41,7 @@ interact -n 4 -m 32g -q gpu -g 1 -t 1:00:00
 ```
 
 ### 3. Start Ollama Server
+
 Load the Ollama module and start the server:
 
 ```bash
@@ -47,6 +50,7 @@ ollama serve
 ```
 
 ### 4. Run Models Interactively
+
 In a new terminal session, connect to your GPU node and start chatting:
 
 ```bash
@@ -96,9 +100,7 @@ print(response['message']['content'])
 
 A conversational AI assistant for CCV services and support.
 
-<Button href="https://ai.ccv.brown.edu/">
-  Try ChatCCV
-</Button>
+<Button href="https://ai.ccv.brown.edu/">Try ChatCCV</Button>
 
 ## Transcribe
 
@@ -126,9 +128,7 @@ Ask Oscar is an AI assistant that specializes in answering questions about CCV a
 
 Ask Oscar is powered by the latest version of the OpenAI GPT-4o model served by Azure OpenAI. Different from models served directly by OpenAI, information provided to the model will not be used by OpenAI or Microsoft for training purposes. Please check the Data, privacy, and security for Azure OpenAI for more information. Nevertheless, please avoid sharing sensitive information with the model.
 
-<Button href="https://platform.openai.com/docs/models">
-  OpenAI Models
-</Button>
+<Button href="https://platform.openai.com/docs/models">OpenAI Models</Button>
 
 <Button href="https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy?tabs=azure-portal">
   Azure OpenAI Data Privacy

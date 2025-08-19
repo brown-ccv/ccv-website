@@ -81,7 +81,7 @@ export const Badge = ({
     return (
       <div
         className={cn(
-          "inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap",
+          "inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-semibold",
           styling.className,
           className
         )}

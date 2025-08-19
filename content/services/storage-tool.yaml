@@ -48,7 +48,7 @@ services:
   - name: Globus
 
   - name: "Campus File Storage / Department File Services"
-  
+
   - name: "Campus File Storage Non-Replicated / Research Services"
     features:
       - name: relative_speed
@@ -128,7 +128,7 @@ services:
           - Access controlled by Brown Authentication and Security groups
       - name: storage
         value: 1 TB +
-        notes: 
+        notes:
           - 1 TB per PI
           - 10 TB per grant
           - Paid after that @ $100/TB/Yr. (Summed across all paid storage types)
@@ -292,7 +292,7 @@ services:
           - Paid after that @ $100/TB/Yr. (Summed across all paid storage types)
       - name: max_file_size
         value: 4 TB
-        notes: 
+        notes:
           - 1 TB for best performance
       - name: storage_warmth
         value: hot
@@ -328,7 +328,6 @@ services:
         value: 4 TB
       - name: storage_warmth
         value: cold
-
 
 questions:
   - question: Security Level

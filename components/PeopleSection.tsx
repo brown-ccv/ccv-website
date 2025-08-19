@@ -46,7 +46,7 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
 
   return (
     <div className="flex justify-center py-4 lg:py-10">
-      <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
+      <div className="xs:w-1/2 flex flex-wrap justify-center gap-y-6">
         {pageContent?.people &&
           (await Promise.all(
             pageContent.people.map(async (person: PeopleTypes) => {
