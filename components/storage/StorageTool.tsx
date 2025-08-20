@@ -9,7 +9,7 @@ import {
   PageContentData,
   SelectedAnswers,
   QuestionsConfig,
-  ServiceConfig,
+  StorageData,
   FormQuestions,
 } from "@/lib/storage-types"
 import StorageCards from "@/components/storage/StorageCards"
@@ -18,7 +18,7 @@ interface StorageToolProps {
   pageContent: PageContentData | null
   questions: FormQuestions[]
   initialSelectedAnswers: SelectedAnswers
-  services: ServiceConfig[]
+  services: StorageData
   questionsConfig: QuestionsConfig[]
 }
 
@@ -63,11 +63,11 @@ export default function StorageTool({
         >
           Reset Questions
         </Button>
-        <StorageCards
-          services={services}
-          selectedAnswers={selectedAnswers}
-          questions={questionsConfig}
-        />
+        {/*<StorageCards*/}
+        {/*  services={services}*/}
+        {/*  selectedAnswers={selectedAnswers}*/}
+        {/*  questions={questionsConfig}*/}
+        {/*/>*/}
       </div>
       <Table services={services} />
     </ContentSection>

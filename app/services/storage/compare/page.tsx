@@ -8,6 +8,7 @@ import {
   SelectedAnswers,
   FormQuestions,
 } from "@/lib/storage-types"
+import services from "@/content/services/storage-tool.json"
 
 export default async function CompareStorageOptions() {
   const rawPageContent = await readContentFile(
@@ -37,25 +38,6 @@ export default async function CompareStorageOptions() {
       }
     })
   }
-
-  // --- Sort questions to match the table's feature order ---
-  // 1. Get unique feature names from services and sort them alphabetically
-  const uniqueFeatureNames = new Set<string>()
-  pageContent.services.forEach((service) => {
-    if (service.features) {
-      service.features.forEach((feature) => {
-        uniqueFeatureNames.add(feature.name)
-      })
-    }
-  })
-  const sortedFeatureNames = Array.from(uniqueFeatureNames).sort()
-
-  // 2. Create a map for quick lookup of the sorted index
-  const featureOrderMap = new Map<string, number>()
-  sortedFeatureNames.forEach((name, index) => {
-    featureOrderMap.set(name, index)
-  })
-
   return (
     <>
       <Hero title={pageContent.title} description={pageContent.description} />
@@ -64,7 +46,7 @@ export default async function CompareStorageOptions() {
         pageContent={pageContent}
         questions={formQuestions}
         initialSelectedAnswers={initialSelectedAnswers}
-        services={pageContent.services}
+        services={services}
         questionsConfig={rawQuestionsConfig}
       />
     </>

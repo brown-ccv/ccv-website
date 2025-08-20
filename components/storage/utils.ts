@@ -1,8 +1,4 @@
-import {
-  QuestionsConfig,
-  SelectedAnswers,
-  ServiceConfig,
-} from "@/lib/storage-types"
+import {QuestionsConfig, SelectedAnswers, ServiceConfig,} from "@/lib/storage-types"
 
 /**
  * Extracts all unique feature names from an array of services.

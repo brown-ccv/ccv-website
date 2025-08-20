@@ -1,10 +1,10 @@
-import React, { useMemo, useRef } from "react"
+import React, { useMemo, useRef, useState } from "react"
 import { cn, humanize } from "@/lib/utils"
 import Link from "next/link"
 import { ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
 import {
-  ServiceConfig,
   TableRow,
+  StorageData,
   ServiceFeature,
   featureIcons,
   featureColorMap,
@@ -20,43 +20,22 @@ import {
   getSortedRowModel,
   getFilteredRowModel,
 } from "@tanstack/react-table"
-import { getAllUniqueFeatureNames } from "@/components/storage/utils"
 import { Button } from "@/components/button/Button"
+import Icon from "@/components/ui/RenderIcon"
 
 export interface TableProps {
-  services: ServiceConfig[]
+  services: StorageData
 }
 
 const Table: React.FC<TableProps> = ({ services }) => {
+  const [sorting, setSorting] = useState<SortingState>([])
+  const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const columnHelper = createColumnHelper<TableRow>()
-  const [sorting, setSorting] = React.useState<SortingState>([])
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
   const tableContainerRef = useRef<HTMLDivElement>(null)
-  const featureNames = useMemo(() => getAllUniqueFeatureNames(services), [])
 
-  const tableData: TableRow[] = useMemo(() => {
-    // Filter services to only include those with at least one feature
-    const servicesWithFeatures = services.filter(
-      (service) => service.features && service.features.length > 0
-    )
-
-    return servicesWithFeatures.map((service) => {
-      const row: TableRow = {
-        serviceName: service.name,
-        description: service.description,
-        links: service.links,
-      }
-
-      // Add each feature as a property
-      service.features.forEach((feature) => {
-        row[feature.name] = feature
-      })
-
-      return row
-    })
-  }, [services])
+  const tableData = services.table_data
+  const featureNames = services.metadata.feature_names
+  const featureMetadata = services.metadata.feature_metadata
 
   // 2. define columns for TanStack Table (memoized for performance)
   const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
@@ -74,43 +53,37 @@ const Table: React.FC<TableProps> = ({ services }) => {
       ),
     })
 
-    const featureColumns = featureNames.map((featureName) =>
-      columnHelper.accessor(
+    const featureColumns = featureNames.map((featureName) => {
+      const metadata = featureMetadata[featureName]
+
+      return columnHelper.accessor(
         (row: TableRow) => {
           const feature = row[featureName] as ServiceFeature
-          return feature?.value // Return just the value for sorting
+          return feature?.sortValue ?? feature?.value
         },
         {
           id: featureName,
-          header: () => {
-            const IconComponent = featureIcons[featureName.toLowerCase()]
-            return (
-              <div className="flex items-center gap-2 font-medium">
-                {IconComponent ? (
-                  <IconComponent className="h-4 w-4 flex-shrink-0" />
-                ) : null}
-                {featureName
-                  .replace(/_/g, " ")
-                  .replace(/\b\w/g, (l) => l.toUpperCase())}
+          header: () => (
+            <div className="flex items-center justify-center space-x-2">
+              <Icon
+                iconName={metadata?.icon}
+                className="h-4 w-4 flex-shrink-0"
+              />
+              <div className="font-medium uppercase">
+                {metadata.display_name}
               </div>
-            )
-          },
+            </div>
+          ),
           cell: (info) => {
+            // Get the full feature object from the original row data
             const feature = info.row.original[featureName] as ServiceFeature
-            const IconComponent = featureIcons[featureName.toLowerCase()]
-            const valueColor =
-              featureColorMap[String(feature.value).toLowerCase()] ||
-              featureColorMap["default"]
-            if (!feature) return <span className="text-gray-400">—</span>
-
             return (
               <>
                 <div className="flex items-center gap-2 font-medium uppercase tracking-wider">
-                  {IconComponent ? (
-                    <IconComponent
-                      className={cn("h-6 w-6 flex-shrink-0", valueColor)}
-                    />
-                  ) : null}
+                  <Icon
+                    iconName={metadata?.icon}
+                    className="h-4 w-4 flex-shrink-0"
+                  />
                   <span>{String(feature.value)}</span>
                 </div>
                 {feature.notes && (
@@ -123,9 +96,10 @@ const Table: React.FC<TableProps> = ({ services }) => {
               </>
             )
           },
+          size: 175,
         }
       )
-    )
+    })
 
     return [serviceColumn, ...featureColumns]
   }, [featureNames])
@@ -200,25 +174,28 @@ const Table: React.FC<TableProps> = ({ services }) => {
 
       <div
         ref={tableContainerRef}
-        className="overflow-x-scroll rounded-lg border border-gray-200"
+        className="overflow-y-auto overflow-x-scroll rounded-lg border border-gray-200"
       >
         <table className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
+          <thead className="sticky top-0 z-20 bg-gray-50">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header) => (
+                {headerGroup.headers.map((header, index) => (
                   <th
                     key={header.id}
-                    className="cursor-pointer px-4 py-3 text-left text-xs font-medium uppercase tracking-wider text-gray-500 hover:bg-gray-100"
+                    className={cn(
+                      "cursor-pointer px-4 py-3 text-left font-medium uppercase tracking-wider hover:bg-gray-100",
+                      index === 0 && "sticky left-0 z-30 bg-gray-50 shadow-md"
+                    )}
                     onClick={header.column.getToggleSortingHandler()}
                     style={{ width: header.getSize() }}
                   >
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center gap-4">
                       {flexRender(
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                      <span className="ml-1">
+                      <span>
                         {{
                           asc: "↑",
                           desc: "↓",
@@ -233,10 +210,13 @@ const Table: React.FC<TableProps> = ({ services }) => {
           <tbody className="divide-y divide-gray-200 bg-white">
             {table.getRowModel().rows.map((row) => (
               <tr key={row.id} className="hover:bg-gray-50">
-                {row.getVisibleCells().map((cell) => (
+                {row.getVisibleCells().map((cell, index) => (
                   <td
                     key={cell.id}
-                    className="min-w-44 px-4 py-4 text-sm"
+                    className={cn(
+                      "min-w-56 px-4 py-4 text-sm",
+                      index === 0 && "sticky left-0 z-10 bg-white shadow-md"
+                    )}
                     style={{ width: cell.column.getSize() }}
                   >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}

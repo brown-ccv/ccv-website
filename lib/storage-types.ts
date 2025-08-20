@@ -81,6 +81,7 @@ export const featureColorMap: Record<string, string> = {
 export interface ServiceFeature {
   name: string
   value: string | boolean | number
+  sortValue: number
   notes?: string[]
 }
 
@@ -90,14 +91,31 @@ export interface ServiceLink {
   category?: string
 }
 
+export interface FeatureMetadata {
+  name: string
+  display_name: string
+  icon: string
+}
+
 export interface ServiceConfig {
   name: string
   description?: string
   links?: ServiceLink[]
   features: ServiceFeature[]
+  display_name: string
+  icon: string
 }
 
-// Transform your data structure for the table
+export interface StorageData {
+  metadata: {
+    total_services: number
+    total_features: number
+    feature_names: string[]
+    feature_metadata: Record<string, FeatureMetadata>
+  }
+  table_data: TableRow[]
+}
+
 export interface TableRow {
   serviceName: string
   description?: string
@@ -139,6 +157,5 @@ export interface PageContentData {
   icon?: string
   links?: ServiceLink[]
   storage_tool_header: string
-  services: ServiceConfig[]
   questions: QuestionsConfig[]
 }
