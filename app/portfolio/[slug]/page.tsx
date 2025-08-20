@@ -5,6 +5,7 @@ import { ProjectDetailCard } from "@/components/card/ProjectDetailCard"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { notFound } from "next/navigation"
 import Image from "next/image"
+import { ContentSection } from "@/components/ContentSection"
 
 interface PortfolioDetailPageProps {
   params: Promise<{ slug: string }>
@@ -26,7 +27,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   }    
 
   return (
-      <section className="w-full py-16 px-6 sm:px-8 lg:px-24 md:px-12 xl:px-40 even:bg-neutral-50">
+      <ContentSection header={false}>
         <ButtonLink href="/portfolio" variant="primary_filled" size="md" external={false}>
           Back to Portfolio
         </ButtonLink>
@@ -43,6 +44,6 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
              </div>
            </div>
         </div>
-      </section>
+      </ContentSection>
   )
 }
