@@ -11,8 +11,8 @@ interface ProjectDetailCardProps {
 
 export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
   return (
-    <Card className="w-full max-w-sm bg-white relative flex flex-col">
-      <CardHeader>
+    <Card className="w-full lg:max-w-sm bg-white relative flex flex-col">
+      <CardHeader className="lg:pb-4 pb-2">
         <div className="flex items-center justify-between">
           <Badge color="blue" className="text-sm text-white">
             {entry['project-type']}
@@ -23,7 +23,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             </Badge>
           )}
         </div>
-        <CardTitle className="text-center text-3xl border-b border-gray-300 py-4">
+        <CardTitle className="text-center text-2xl lg:text-3xl border-b border-gray-300 py-2 lg:py-4">
           {entry.title}
         </CardTitle>
       </CardHeader>
@@ -32,7 +32,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Languages */}
         {entry.languages && entry.languages.length > 0 && (
           <div>
-            <h3 className="text-2xl font-semibold mb-2 mt-8 text-neutral-900 pt-4">Languages</h3>
+            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Languages</h3>
             <div className="flex flex-wrap gap-2">
               {entry.languages.map((lang) => (
                 <Badge key={lang} color="keppel" className="bg-purple-900/20 text-purple-900 border border-purple-900">
@@ -46,7 +46,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Tags */}
         {entry.tags && entry.tags.length > 0 && (
           <div>
-            <h3 className="text-2xl font-semibold mb-2 mt-8 text-neutral-900 pt-4">Tags</h3>
+            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {entry.tags.map((tag) => (
                 <Badge key={tag} color="pink" className="bg-pink-600/20 text-pink-600 border border-pink-600">
@@ -60,7 +60,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Groups */}
         {entry.groups && entry.groups.length > 0 && (
           <div>
-            <h3 className="text-2xl font-semibold mb-2 mt-8 text-neutral-900 pt-4">Groups</h3>
+            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Groups</h3>
             <div className="flex flex-wrap gap-2">
               {entry.groups.map((group) => (
                 <Badge key={group} color="blue" className="bg-blue-500/10 text-blue-500 border border-blue-500">
@@ -74,7 +74,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Department */}
         {entry.department && entry.department.length > 0 && (
           <div>
-            <h3 className="text-2xl font-semibold mb-2 mt-8 text-neutral-900 pt-4">Department</h3>
+            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Department</h3>
             <div className="flex flex-wrap gap-2">
               {entry.department.map((department) => (
                 <Badge key={department} className="bg-red-university/10 text-red-university border border-red-university">
@@ -87,7 +87,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
 
         {/* People */}
         <div>
-          <h3 className="text-2xl font-semibold mb-2 mt-8 text-neutral-900 pt-4">People</h3>
+          <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">People</h3>
           <div className="space-y-2">
             {entry.people.map((person) => (
               <div key={person.name} className="flex items-center space-x-2">
@@ -111,7 +111,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Investigators */}
         {entry.investigators && entry.investigators.length > 0 && (
           <div>
-            <h3 className="text-2xl font-semibold mb-2 mt-8 text-neutral-900 pt-4">Investigators</h3>
+            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Investigators</h3>
             <div className="space-y-2">
               {entry.investigators.map((investigator) => (
                 <div key={investigator.name} className="flex items-center space-x-2">
@@ -133,7 +133,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Links */}
         {entry.links && entry.links.length > 0 && (
           <div>
-            <h3 className="text-2xl font-semibold mb-2 mt-8 text-neutral-900 pt-4">Resources</h3>
+            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Resources</h3>
             <div className="flex flex-col gap-2">
               {entry.links.map((link, index) => (
                 <a key={index} href={link.url} className="text-keppel-500 hover:text-keppel-700 active:text-keppel-700 underline" target="_blank" rel="noopener noreferrer">

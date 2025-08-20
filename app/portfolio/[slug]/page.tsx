@@ -31,18 +31,16 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
         <ButtonLink href="/portfolio" variant="primary_filled" size="md" external={false}>
           Back to Portfolio
         </ButtonLink>
-        <div className="flex gap-8 justify-center">
-          <div className="prose prose-lg text-xl max-w-none w-2/3">
+        <div className="flex flex-col lg:flex-row gap-8">
+          <div className="prose prose-lg text-xl max-w-none lg:w-2/3">
             {entry.image && (
               <Image src={entry.image} alt={entry.title} width={100} height={100} className="w-full h-auto" />
             )}
             <p>{entry.description}</p>
           </div>
-                     <div className="w-1/3">
-             <div className="my-4 py-4">
-               <ProjectDetailCard entry={entry} />
-             </div>
-           </div>
+          <div className="lg:w-1/3">
+            <ProjectDetailCard entry={entry} />
+          </div>
         </div>
       </ContentSection>
   )
