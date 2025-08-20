@@ -10,7 +10,7 @@ interface ProjectEstimateTabProps {
   time: string
   link?: string
   goal: string
-  image: string
+  image?: string
   alt: string
 }
 
@@ -47,15 +47,17 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
           )}
         </div>
         {/*Image*/}
-        <div className="relative w-full flex justify-end">
-          <Image
-            height={600}
-            width={600}
-            src={image}
-            alt={alt}
-            className="object-center"
-          />
-        </div>
+        {image && image.trim() !== "" && (
+          <div className="relative w-full flex justify-end">
+            <Image
+              height={600}
+              width={600}
+              src={image}
+              alt={alt}
+              className="object-center"
+            />
+          </div>
+        )}
       </div>
       <p>{goal}</p>
     </div>

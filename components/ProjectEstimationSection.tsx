@@ -31,32 +31,34 @@ export const ProjectEstimationSection = () => {
       value: "sm",
       label: "Small",
       content: (
-        <ProjectEstimateTab
-          title={""}
-          description={""}
-          group={""}
-          time={""}
-          goal={""}
-          image={""}
-          alt={""}
-        />
+        <h3 className="text-center">*Coming Soon*</h3>
+        // <ProjectEstimateTab
+        //   title={""}
+        //   description={""}
+        //   group={""}
+        //   time={""}
+        //   goal={""}
+        //   image={""}
+        //   alt={""}
+        // />
       ),
     },
     {
       value: "md",
       label: "Medium",
       content: (
-        <ProjectEstimateTab
-          title={"MAPPS"}
-          description={
-            "We understand pandemic infection spread models from the virus side. Less is known about human behavior. Can we design agents based on human behavior to enhance existing models?"
-          }
-          group={"Pandemic Center, School of Public Health"}
-          time={"1 year"}
-          goal={"TBD"}
-          image={"/images/services/consulting/project-estimation/mapps.png"}
-          alt={"MAPPS phone examples"}
-        />
+        <h3 className="text-center">*Coming Soon*</h3>
+        // <ProjectEstimateTab
+        //   title={""}
+        //   description={
+        //     ""
+        //   }
+        //   image={""}
+        //   group={""}
+        //   time={""}
+        //   goal={""}
+        //   alt={""}
+        // />
       ),
     },
     {
@@ -64,21 +66,15 @@ export const ProjectEstimationSection = () => {
       label: "Large",
       content: (
         <ProjectEstimateTab
-          title={"Ice Floe Tracker"}
+          title={"Soma Pain and Recovery"}
           description={
-            "Publish code written for a research project:\n" +
-            "\n" +
-            "As an open source package anyone could use\n" +
-            "Using a programming language more commonly used in the field of study (climate science)\n" +
-            "Allow analysing much larger datasets using Brown's supercomputer.\n" +
-            "\n" +
-            "Support a future grant application with new data."
+            "A web and mobile app that combines symptom tracking with neuroscientific assessments and tailored interventions. SOMA is designed to directly support individuals on their journeys to overcome pain. SOMA is designed to directly support individuals on their journeys to overcome pain."
           }
-          group={"Department of Engineering"}
-          time={"3 years"}
-          goal={"TBD"}
-          image={"/images/services/consulting/project-estimation/icefloe.png"}
-          alt={"A code block displaying Julia programming language"}
+          group={"Performance and Energy Aware Computing Lab"}
+          time={"2+ years"}
+          goal={"SOMA is designed to improve the lives of people living with chronic pain by enabling clinicians to improve treatment options for patients."}
+          image={"/images/services/consulting/project-estimation/soma.png"}
+          alt={"Screenshots of the SOMA app"}
         />
       ),
     },
