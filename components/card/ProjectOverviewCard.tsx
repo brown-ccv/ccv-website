@@ -16,23 +16,21 @@ export function ProjectOverviewCard({ entry }: ProjectOverviewCardProps) {
            <Image src={entry.image} alt={entry.title} width={100} height={100} className="w-full h-auto" />
          )}
       <CardHeader>
-        {entry.starred && (
-          <div>
+        <div className="flex items-center justify-between">
+          <Badge color="blue" className="text-white">
+            {entry['project-type']}
+          </Badge>
+          {entry.starred && (
             <Badge color="sunglow" className="text-black">
               ⭐ Featured
             </Badge>
-          </div>
-        )}
+          )}
+        </div>
         <CardTitle className="text-center text-3xl border-b border-gray-300 py-4">
            {entry.title}
          </CardTitle>
       </CardHeader>
       <CardContent className="text-xl flex-1 flex flex-col">
-        <div className="flex items-center justify-center mb-4">
-          <Badge color="blue" className="text-sm text-white">
-            {entry['project-type']}
-          </Badge>
-         </div>
          <div className="mt-auto pt-4 flex justify-center">
           <ButtonLink href={`/portfolio/${entry.slug}`} variant="primary_filled" size="md" external={false}>
             Learn More

@@ -14,7 +14,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
     <Card className="w-full max-w-sm bg-white relative flex flex-col">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <Badge color="keppel" className="text-sm text-white">
+          <Badge color="blue" className="text-sm text-white">
             {entry['project-type']}
           </Badge>
           {entry.starred && (
@@ -35,7 +35,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-2xl font-semibold mb-2 mt-8 text-neutral-900 pt-4">Languages</h3>
             <div className="flex flex-wrap gap-2">
               {entry.languages.map((lang) => (
-                <Badge key={lang} color="blue" className="bg-purple-900/20 text-purple-900 border border-purple-900">
+                <Badge key={lang} color="keppel" className="bg-purple-900/20 text-purple-900 border border-purple-900">
                   {lang}
                 </Badge>
               ))}

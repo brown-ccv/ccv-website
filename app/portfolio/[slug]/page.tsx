@@ -27,7 +27,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
 
   return (
       <section className="w-full py-16 px-6 sm:px-8 lg:px-24 md:px-12 xl:px-40 even:bg-neutral-50">
-        <ButtonLink href="/portfolio" variant="primary_outlined" size="md" external={false}>
+        <ButtonLink href="/portfolio" variant="primary_filled" size="md" external={false}>
           Back to Portfolio
         </ButtonLink>
         <div className="flex gap-8 justify-center">
