@@ -5,7 +5,7 @@ export default function BrownLogoBuildingTogether() {
   return (
     <Image
       src={BrownLogoBuildingTogetherImage}
-      alt="BrowserWindow"
+      alt="Browser Window"
       width={200}
       height={100}
     />
