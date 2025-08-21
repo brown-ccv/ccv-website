@@ -6,7 +6,6 @@ import {
   TableRow,
   StorageData,
   ServiceFeature,
-  featureIcons,
   featureColorMap,
 } from "@/lib/storage-types"
 import {
@@ -75,14 +74,15 @@ const Table: React.FC<TableProps> = ({ services }) => {
             </div>
           ),
           cell: (info) => {
-            // Get the full feature object from the original row data
             const feature = info.row.original[featureName] as ServiceFeature
+            const value = String(feature.value).toLowerCase()
+            const colorClass = featureColorMap[value] || featureColorMap.default
             return (
               <>
                 <div className="flex items-center gap-2 font-medium uppercase tracking-wider">
                   <Icon
                     iconName={metadata?.icon}
-                    className="h-4 w-4 flex-shrink-0"
+                    className={cn("h-4 w-4 flex-shrink-0", colorClass)}
                   />
                   <span>{String(feature.value)}</span>
                 </div>
