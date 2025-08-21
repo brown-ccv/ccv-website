@@ -1,6 +1,6 @@
 carousel:
   - title: "CCV AI Tools"
-    categories: [ "Web Development", "LLMs", "AI" ]
+    categories: ["Web Development", "LLMs", "AI"]
     description: |
       CCV AI Tools provides a set of generative AI tools that are built and deployed in-house at Brown for all members of the Brown community. These tools include:
 
@@ -89,10 +89,10 @@ carousel:
     categories: ["Data Science", "Julia", "HPC"]
     description: |
       A tool for tracking ice floes in the arctic ocean using data from the Aqua and Terra Earth-observation satellites. 
-      
+
       Researchers can use this software library to detect and find the trajectories and rotation rates of ice floes, allowing them to measure ocean currents and eddies. 
       These data are used to validate and inform ocean models as part of a larger climate research effort. 
-      
+
       The IceFloeTracker.jl package is open source and written in the Julia programming language commonly used in the climate research community. 
       It includes a workflow manager to help analyze regions up to the size of the whole arctic, over decade timescales.
     image: "/images/home/featured-carousel/icefloe.png"

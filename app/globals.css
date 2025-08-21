@@ -83,13 +83,15 @@
 }
 
 @layer components {
-  /* Custom code block styling */
   .prose pre code {
     white-space: pre-wrap;
     word-wrap: break-word;
   }
 
-  /* Remove default margins from images in MDX content */
+  .prose h2 {
+    @apply mt-0;
+  }
+
   .prose img {
     @apply my-4 py-4;
   }
