@@ -161,6 +161,12 @@ const routes: NavSection[] = [
             icon: FaChalkboardTeacher,
           },
           {
+            name: "Portfolio",
+            href: "/portfolio",
+            description: "",
+            icon: FaCode,
+          },
+          {
             name: "Publications",
             href: "https://publications.ccv.brown.edu",
             description: "",
