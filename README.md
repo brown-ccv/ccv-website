@@ -66,7 +66,7 @@ in [Google Cloud Secret Manager](https://console.cloud.google.com/security/secre
 ### Pa11y
 
 This repo uses [pa11y-ci](https://github.com/pa11y/pa11y-ci) in order to help to prevent accessibility issues reaching
-production. You can run  ```next dev``` and then in a separate terminal run:
+production. You can run `next dev` and then in a separate terminal run:
 
 ```ssh
 pa11y-ci --sitemap http://localhost:3000/sitemap

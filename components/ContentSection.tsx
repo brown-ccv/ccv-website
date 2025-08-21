@@ -23,7 +23,7 @@ export const ContentSection = ({
     <section
       id={id}
       className={cn(
-        "w-full py-16 px-6 sm:px-8 lg:px-24 md:px-12 xl:px-40 even:bg-neutral-50",
+        "w-full px-6 py-16 even:bg-neutral-50 sm:px-8 md:px-12 lg:px-24 xl:px-40",
         className
       )}
     >

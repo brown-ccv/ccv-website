@@ -20,19 +20,17 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 
   return (
     <div
-      className={`${isCentered ? "text-center mb-16" : "text-left"} ${className || ""}`}
+      className={`${isCentered ? "mb-16 text-center" : "text-left"} ${className || ""}`}
     >
       <div
-        className={`relative flex flex-col ${
-          isCentered ? "items-center" : "items-start"
-        }`}
+        className={`flex flex-col ${isCentered ? "items-center" : "items-start"}`}
       >
-        {bars ? (
+        {bars && (
           <div className="pt-4">
             <CCVBars />
           </div>
-        ) : null}
-        <h2 className="font-semibold text-black text-4xl tracking-tighter flex items-center m-0">
+        )}
+        <h2 className="flex items-center text-4xl font-semibold tracking-tighter text-black">
           {icon && <span className="mr-3">{icon}</span>}
           {title}
         </h2>

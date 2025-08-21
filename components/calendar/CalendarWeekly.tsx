@@ -91,13 +91,12 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           key={day}
           className={`flex items-center justify-center py-3 lg:py-4 xl:w-32 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
-          } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""}
-          ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-50" : "bg-white"}`}
+          } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""} ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-50" : "bg-white"}`}
           onClick={() => {
             setSelectedDate(cloneDate)
           }}
         >
-          <span className="text-neutral-900 text-center font-semibold text-lg">
+          <span className="text-center text-lg font-semibold text-neutral-900">
             {day}
             <span className="mx-2 items-center justify-center">
               {format(thisDate, "d")}
@@ -144,10 +143,10 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           <ButtonLink
             href={event.url}
             external={true}
-            className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs md:text-sm lg:text-md leading-5`}
+            className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5 md:text-sm lg:text-md`}
           >
             <p className="font-semibold text-blue-500">{event.title}</p>
-            <p className="weekly-datetime text-keppel-700 flex items-center py-2">
+            <p className="weekly-datetime flex items-center py-2 text-keppel-700">
               <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />
               <time dateTime={event.date_utc}>{event.date_time}</time>
             </p>
@@ -159,7 +158,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
   }
 
   return (
-    <div className="flex flex-col h-full w-full">
+    <div className="flex h-full w-full flex-col">
       <CalendarHeading
         date={activeDate}
         srButtonText={"week"}
@@ -170,12 +169,12 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
       <div
         ref={container}
-        className="isolate border-white border-t-2 max-h-screen shadow ring-1 ring-black ring-opacity-5 flex flex-auto flex-col overflow-auto bg-white"
+        className="isolate flex max-h-screen flex-auto flex-col overflow-auto border-t-2 border-white bg-white shadow ring-1 ring-black ring-opacity-5"
       >
         <div className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full">
           <div
             ref={containerNav}
-            className="sticky bg-white top-0 z-30 flex-none bg-gray border-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
+            className="bg-gray sticky top-0 z-30 flex-none border-white bg-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
           >
             <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-500 sm:grid">
               <div className="col-end-1 w-14 bg-white" />
@@ -187,7 +186,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             </div>
           </div>
           <div className="flex flex-auto">
-            <div className="sticky left-0 z-10 w-14 flex-none bg-gray ring-1 ring-gray-100" />
+            <div className="bg-gray sticky left-0 z-10 w-14 flex-none ring-1 ring-gray-100" />
             <div className="grid flex-auto grid-cols-1 grid-rows-1">
               {/* Horizontal lines */}
               <div

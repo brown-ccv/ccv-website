@@ -7,6 +7,7 @@ interface StyledCardProps {
   iconName?: string
   isDisabled?: boolean
   title: string
+  className?: string
   children: React.ReactNode
 }
 
@@ -15,21 +16,23 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   isDisabled = false,
   title,
   children,
+  className,
 }) => {
   const IconComponent = iconName ? Icon : null
   return (
     <Card
       className={cn(
-        "w-full max-w-sm bg-white",
-        isDisabled ? "opacity-30 grayscale" : ""
+        "w-full md:max-w-md bg-white px-6",
+        isDisabled ? "opacity-30 grayscale" : "",
+        className
       )}
     >
       <CardHeader>
-        <CardTitle className="flex gap-4 items-center justify-center text-3xl border-b border-gray-300 py-4">
+        <CardTitle className="flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-3xl">
           {IconComponent && (
             <IconComponent
               iconName={iconName}
-              className="text-2xl flex-shrink-0 mt-1"
+              className="mt-1 flex-shrink-0 text-2xl"
             />
           )}
           {title}

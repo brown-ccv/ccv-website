@@ -1,36 +1,36 @@
-import fs from 'fs/promises';
-import path from 'path';
-import matter from 'front-matter';
-import MarkdownIt from 'markdown-it';
-import * as yaml from 'js-yaml';
+import fs from "fs/promises"
+import path from "path"
+import matter from "front-matter"
+import MarkdownIt from "markdown-it"
+import * as yaml from "js-yaml"
 
-const md = new MarkdownIt();
+const md = new MarkdownIt()
 
 // --- Interfaces for content ---
 export interface ContentLinks {
-  text: string;
-  target: string;
-  category: string;
+  text: string
+  target: string
+  category: string
 }
 
 export interface ContentSection {
-  name: string;
-  title?: string;
-  content: string;
-  links?: ContentLinks[];
+  name: string
+  title?: string
+  content: string
+  links?: ContentLinks[]
 }
 
 export interface MarkdownFrontmatter {
-  title: string;
-  links?: ContentLinks[];
-  sections?: ContentSection[];
+  title: string
+  links?: ContentLinks[]
+  sections?: ContentSection[]
 }
 
 export interface YamlContentData {
-  title: string;
-  description?: string;
-  sections?: ContentSection[];
-  links?: ContentLinks[];
+  title: string
+  description?: string
+  sections?: ContentSection[]
+  links?: ContentLinks[]
 }
 
 /**
@@ -45,25 +45,27 @@ export interface YamlContentData {
 export async function readContentFile<TData>(
   fullFilePath: string
 ): Promise<{ data: TData; content: string }> {
-  const fileContent = await fs.readFile(fullFilePath, 'utf8');
-  const extension = path.extname(fullFilePath).toLowerCase();
+  const fileContent = await fs.readFile(fullFilePath, "utf8")
+  const extension = path.extname(fullFilePath).toLowerCase()
 
-  if (extension === '.md') {
-    const parsed = matter(fileContent);
+  if (extension === ".md") {
+    const parsed = matter(fileContent)
     return {
       data: (parsed.attributes || {}) as TData,
-      content: md.render(parsed.body) // Return rendered HTML
-    };
-  } else if (extension === '.yaml' || extension === '.yml') {
-    const parsedYaml = yaml.load(fileContent);
+      content: md.render(parsed.body), // Return rendered HTML
+    }
+  } else if (extension === ".yaml" || extension === ".yml") {
+    const parsedYaml = yaml.load(fileContent)
     return {
       data: parsedYaml as TData,
-      content: ''
-    };
+      content: "",
+    }
   }
 
   // If we reach here, it's an unsupported file type, but we're assuming valid files exist
-  throw new Error(`Unsupported file type encountered: ${extension} for file ${fullFilePath}`);
+  throw new Error(
+    `Unsupported file type encountered: ${extension} for file ${fullFilePath}`
+  )
 }
 
 /**
@@ -78,25 +80,27 @@ export async function readContentFile<TData>(
 export async function readContentFileRaw<TData>(
   fullFilePath: string
 ): Promise<{ data: TData; content: string }> {
-  const fileContent = await fs.readFile(fullFilePath, 'utf8');
-  const extension = path.extname(fullFilePath).toLowerCase();
+  const fileContent = await fs.readFile(fullFilePath, "utf8")
+  const extension = path.extname(fullFilePath).toLowerCase()
 
-  if (extension === '.md') {
-    const parsed = matter(fileContent);
+  if (extension === ".md") {
+    const parsed = matter(fileContent)
     return {
       data: (parsed.attributes || {}) as TData,
-      content: parsed.body // Return raw markdown instead of rendered HTML
-    };
-  } else if (extension === '.yaml' || extension === '.yml') {
-    const parsedYaml = yaml.load(fileContent);
+      content: parsed.body, // Return raw markdown instead of rendered HTML
+    }
+  } else if (extension === ".yaml" || extension === ".yml") {
+    const parsedYaml = yaml.load(fileContent)
     return {
       data: parsedYaml as TData,
-      content: ''
-    };
+      content: "",
+    }
   }
 
   // If we reach here, it's an unsupported file type, but we're assuming valid files exist
-  throw new Error(`Unsupported file type encountered: ${extension} for file ${fullFilePath}`);
+  throw new Error(
+    `Unsupported file type encountered: ${extension} for file ${fullFilePath}`
+  )
 }
 
 /**
@@ -107,21 +111,23 @@ export async function readContentFileRaw<TData>(
  * @param folderRelativePath The relative path to the content folder from `process.cwd()` (e.g., 'content/services/classroom').
  * @returns A promise resolving to an array of parsed content objects.
  */
-export async function readContentFolder<TData extends MarkdownFrontmatter = MarkdownFrontmatter>(
+export async function readContentFolder<
+  TData extends MarkdownFrontmatter = MarkdownFrontmatter,
+>(
   folderRelativePath: string
 ): Promise<{ slug: string; data: TData; content: string }[]> {
-  const folderPath = path.join(process.cwd(), folderRelativePath);
-  const filenames = await fs.readdir(folderPath); // Will throw if folder doesn't exist
+  const folderPath = path.join(process.cwd(), folderRelativePath)
+  const filenames = await fs.readdir(folderPath) // Will throw if folder doesn't exist
 
   // Use Promise.all directly as we're assuming all files will succeed
   const results = await Promise.all(
     filenames.map(async (filename) => {
-      const filePath = path.join(folderPath, filename);
-      const slug = filename.replace(/\.(md|yaml|yml)$/, '');
-      const parsed = await readContentFileRaw<TData>(filePath); // Use raw content function
-      return { slug, data: parsed.data, content: parsed.content };
+      const filePath = path.join(folderPath, filename)
+      const slug = filename.replace(/\.(md|yaml|yml)$/, "")
+      const parsed = await readContentFileRaw<TData>(filePath) // Use raw content function
+      return { slug, data: parsed.data, content: parsed.content }
     })
-  );
+  )
 
-  return results;
+  return results
 }

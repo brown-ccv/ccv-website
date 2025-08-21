@@ -38,62 +38,57 @@ export function EventSection({
   const dataPast = use(streamedDataPast)
 
   return (
-    <>
-      <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-8">
-        <div className="flex flex-col items-center gap-4">
-          <SectionHeader
-            title={"Events"}
-            icon={<FaCalendarAlt />}
-            className="mb-0"
-          />
-          <h3 className="font-serif text-xl italic mb-6">What's next at CCV</h3>
-          <ButtonLink
-            className="mt-0 mx-4"
-            variant="primary_filled"
-            size="lg"
-            href="https://events.brown.edu/ccv/all"
-            external={true}
-          >
-            View All Events
-          </ButtonLink>
-        </div>
-
-        {/* Right: Toggle and Views */}
-        <StyledTabs
-          className="hidden md:flex"
-          variant="neutral"
-          tabs={[
-            {
-              value: "upcoming",
-              label: "Upcoming",
-              content: <UpcomingEvents events={dataFuture} />,
-            },
-            {
-              value: "weekly",
-              label: "Weekly",
-              content: (
-                <CalendarWeekly
-                  events={dataPast.concat(dataFuture)}
-                  currentDate={currentDate}
-                  today={today}
-                />
-              ),
-            },
-            {
-              value: "monthly",
-              label: "Monthly",
-              content: (
-                <CalendarMonth
-                  events={dataPast.concat(dataFuture)}
-                  currentDate={currentDate}
-                  today={today}
-                />
-              ),
-            },
-          ]}
-        />
+    <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-8">
+      <div className="flex flex-col items-center gap-4">
+        <SectionHeader title={"Events"} icon={<FaCalendarAlt />} />
+        <h3 className="mb-6 font-serif text-xl font-normal italic">
+          What's next at CCV
+        </h3>
+        <ButtonLink
+          variant="primary_filled"
+          size="lg"
+          href="https://events.brown.edu/ccv/all"
+          external={true}
+        >
+          View All Events
+        </ButtonLink>
       </div>
-    </>
+
+      {/* Right: Toggle and Views */}
+      <StyledTabs
+        className="hidden md:flex"
+        variant="neutral"
+        tabs={[
+          {
+            value: "upcoming",
+            label: "Upcoming",
+            content: <UpcomingEvents events={dataFuture} />,
+          },
+          {
+            value: "weekly",
+            label: "Weekly",
+            content: (
+              <CalendarWeekly
+                events={dataPast.concat(dataFuture)}
+                currentDate={currentDate}
+                today={today}
+              />
+            ),
+          },
+          {
+            value: "monthly",
+            label: "Monthly",
+            content: (
+              <CalendarMonth
+                events={dataPast.concat(dataFuture)}
+                currentDate={currentDate}
+                today={today}
+              />
+            ),
+          },
+        ]}
+      />
+    </div>
   )
 }
 
