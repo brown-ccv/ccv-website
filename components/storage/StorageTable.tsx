@@ -21,9 +21,20 @@ import {
 } from "@tanstack/react-table"
 import { Button } from "@/components/button/Button"
 import Icon from "@/components/ui/RenderIcon"
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@/components/ui/HoverCard"
 
 export interface TableProps {
   services: StorageData
+}
+
+interface FeatureCellProps {
+  feature: ServiceFeature
+  colorClass: string
+  iconName: string
 }
 
 const Table: React.FC<TableProps> = ({ services }) => {
@@ -35,6 +46,48 @@ const Table: React.FC<TableProps> = ({ services }) => {
   const tableData = services.table_data
   const featureNames = services.metadata.feature_names
   const featureMetadata = services.metadata.feature_metadata
+
+  const FeatureCell: React.FC<FeatureCellProps> = ({
+    feature,
+    colorClass,
+    iconName,
+  }) => {
+    if (feature.notes) {
+      return (
+        <HoverCard>
+          <HoverCardTrigger className="group flex gap-2">
+            <div className="flex items-center gap-2">
+              <Icon
+                iconName={iconName}
+                className={cn("h-4 w-4 flex-shrink-0", colorClass)}
+              />
+              <span className="font-medium uppercase tracking-wider">
+                {String(feature.value)}
+              </span>
+            </div>
+            <Icon
+              iconName="FaInfoCircle"
+              className="h-2.5 w-2.5 group-hover:text-keppel-600"
+            />
+          </HoverCardTrigger>
+          <HoverCardContent className="bg-white">
+            {feature.notes.map((note, index) => (
+              <p key={index}>{note}</p>
+            ))}
+          </HoverCardContent>
+        </HoverCard>
+      )
+    }
+    return (
+      <div className="flex items-center gap-2 font-medium uppercase tracking-wider">
+        <Icon
+          iconName={iconName}
+          className={cn("h-4 w-4 flex-shrink-0", colorClass)}
+        />
+        <span>{String(feature.value)}</span>
+      </div>
+    )
+  }
 
   // 2. define columns for TanStack Table (memoized for performance)
   const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
@@ -78,22 +131,11 @@ const Table: React.FC<TableProps> = ({ services }) => {
             const value = String(feature.value).toLowerCase()
             const colorClass = featureColorMap[value] || featureColorMap.default
             return (
-              <>
-                <div className="flex items-center gap-2 font-medium uppercase tracking-wider">
-                  <Icon
-                    iconName={metadata?.icon}
-                    className={cn("h-4 w-4 flex-shrink-0", colorClass)}
-                  />
-                  <span>{String(feature.value)}</span>
-                </div>
-                {feature.notes && (
-                  <div className="text-xs text-gray-500">
-                    {feature.notes.map((note, idx) => (
-                      <div key={idx}>• {note}</div>
-                    ))}
-                  </div>
-                )}
-              </>
+              <FeatureCell
+                feature={feature}
+                colorClass={colorClass}
+                iconName={metadata?.icon}
+              />
             )
           },
           size: 175,
