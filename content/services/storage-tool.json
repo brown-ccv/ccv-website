@@ -90,13 +90,13 @@
       "serviceName": "Google Drive",
       "DOI_provided": {
         "name": "DOI_provided",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "accessible via Globus"
@@ -104,31 +104,31 @@
       },
       "brown_network_required": {
         "name": "brown_network_required",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "canvas_integration": {
         "name": "canvas_integration",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "data_protection_replication": {
         "name": "data_protection_replication",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "data_protection_snapshots": {
         "name": "data_protection_snapshots",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "up to 30 days"
@@ -157,7 +157,7 @@
       },
       "shareable_link": {
         "name": "shareable_link",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
@@ -180,13 +180,13 @@
       "serviceName": "Campus File Storage Non-Replicated / Research Services",
       "DOI_provided": {
         "name": "DOI_provided",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "Multi-Protocol Share"
@@ -194,7 +194,7 @@
       },
       "brown_network_required": {
         "name": "brown_network_required",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "except with Globus"
@@ -202,25 +202,25 @@
       },
       "canvas_integration": {
         "name": "canvas_integration",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "data_protection_replication": {
         "name": "data_protection_replication",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "data_protection_snapshots": {
         "name": "data_protection_snapshots",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "up to 6 months"
@@ -250,7 +250,7 @@
       },
       "shareable_link": {
         "name": "shareable_link",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "via Globus"
@@ -277,13 +277,13 @@
       "serviceName": "Campus File Storage Replicated / Research Services",
       "DOI_provided": {
         "name": "DOI_provided",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "Multi-Protocol Share"
@@ -291,7 +291,7 @@
       },
       "brown_network_required": {
         "name": "brown_network_required",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "except with Globus"
@@ -299,25 +299,25 @@
       },
       "canvas_integration": {
         "name": "canvas_integration",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "data_protection_replication": {
         "name": "data_protection_replication",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "data_protection_snapshots": {
         "name": "data_protection_snapshots",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "up to 6 months"
@@ -347,7 +347,7 @@
       },
       "shareable_link": {
         "name": "shareable_link",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "via Globus"
@@ -374,19 +374,19 @@
       "serviceName": "Brown_Digital_Repository",
       "DOI_provided": {
         "name": "DOI_provided",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "brown_network_required": {
         "name": "brown_network_required",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "except with Globus"
@@ -394,25 +394,25 @@
       },
       "canvas_integration": {
         "name": "canvas_integration",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "data_protection_replication": {
         "name": "data_protection_replication",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "data_protection_snapshots": {
         "name": "data_protection_snapshots",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "up to 60 days"
@@ -442,7 +442,7 @@
       },
       "shareable_link": {
         "name": "shareable_link",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
@@ -465,43 +465,43 @@
       "serviceName": "LabArchives",
       "DOI_provided": {
         "name": "DOI_provided",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "brown_network_required": {
         "name": "brown_network_required",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "canvas_integration": {
         "name": "canvas_integration",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "data_protection_replication": {
         "name": "data_protection_replication",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "data_protection_snapshots": {
         "name": "data_protection_snapshots",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "up to 60 days"
@@ -529,7 +529,7 @@
       },
       "shareable_link": {
         "name": "shareable_link",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
@@ -552,19 +552,19 @@
       "serviceName": "oscar_storage",
       "DOI_provided": {
         "name": "DOI_provided",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "brown_network_required": {
         "name": "brown_network_required",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "except with Globus"
@@ -572,25 +572,25 @@
       },
       "canvas_integration": {
         "name": "canvas_integration",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "data_protection_replication": {
         "name": "data_protection_replication",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "data_protection_snapshots": {
         "name": "data_protection_snapshots",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "up to 30 days"
@@ -620,7 +620,7 @@
       },
       "shareable_link": {
         "name": "shareable_link",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "via Globus"
@@ -647,19 +647,19 @@
       "serviceName": "stronghold",
       "DOI_provided": {
         "name": "DOI_provided",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "brown_network_required": {
         "name": "brown_network_required",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "except with Globus"
@@ -667,25 +667,25 @@
       },
       "canvas_integration": {
         "name": "canvas_integration",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "data_protection_replication": {
         "name": "data_protection_replication",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "data_protection_snapshots": {
         "name": "data_protection_snapshots",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": [
           "up to 6 weeks"
@@ -715,7 +715,7 @@
       },
       "shareable_link": {
         "name": "shareable_link",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
@@ -740,43 +740,43 @@
       "serviceName": "Hibernate",
       "DOI_provided": {
         "name": "DOI_provided",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "brown_network_required": {
         "name": "brown_network_required",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "canvas_integration": {
         "name": "canvas_integration",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
       "data_protection_replication": {
         "name": "data_protection_replication",
-        "value": true,
+        "value": "true",
         "sortValue": 1,
         "notes": null
       },
       "data_protection_snapshots": {
         "name": "data_protection_snapshots",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
@@ -802,7 +802,7 @@
       },
       "shareable_link": {
         "name": "shareable_link",
-        "value": false,
+        "value": "false",
         "sortValue": 0,
         "notes": null
       },
