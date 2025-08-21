@@ -69,7 +69,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
                 iconName={metadata?.icon}
                 className="h-4 w-4 flex-shrink-0"
               />
-              <div className="font-medium uppercase">
+              <div className="text-sm font-medium uppercase">
                 {metadata.display_name}
               </div>
             </div>
@@ -102,7 +102,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
     })
 
     return [serviceColumn, ...featureColumns]
-  }, [featureNames])
+  }, [featureNames, featureMetadata])
 
   const table = useReactTable({
     data: tableData,
@@ -135,28 +135,10 @@ const Table: React.FC<TableProps> = ({ services }) => {
 
   return (
     <div className="hidden bg-white p-6 md:block">
-      <div className="mb-6">
-        <h2 className="mb-2 text-2xl font-bold text-gray-900">
-          Service Features Comparison
-        </h2>
-        <p className="text-gray-600">
-          Compare features across different services
-        </p>
-      </div>
+      <h3 className="mb-6 text-xl text-gray-600">
+        This tool lets you compare the available storage options at Brown.
+      </h3>
 
-      {/* Search filter */}
-      <div className="mb-4">
-        <input
-          placeholder="Filter services..."
-          value={
-            (table.getColumn("serviceName")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(e) =>
-            table.getColumn("serviceName")?.setFilterValue(e.target.value)
-          }
-          className="rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
       <div className="mb-4 flex justify-end space-x-2">
         <Button
           onClick={() => scrollTable("left")}
@@ -174,18 +156,19 @@ const Table: React.FC<TableProps> = ({ services }) => {
 
       <div
         ref={tableContainerRef}
-        className="overflow-y-auto overflow-x-scroll rounded-lg border border-gray-200"
+        className="overflow-auto rounded-lg border border-gray-200 bg-white"
       >
-        <table className="min-w-full divide-y divide-gray-200">
-          <thead className="sticky top-0 z-20 bg-gray-50">
+        <table className="min-w-full divide-y divide-stone-500">
+          <thead className="sticky top-0 z-20 bg-gradient-to-b from-gradient-light to-gradient-dark text-white shadow-sm">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header, index) => (
                   <th
                     key={header.id}
                     className={cn(
-                      "cursor-pointer px-4 py-3 text-left font-medium uppercase tracking-wider hover:bg-gray-100",
-                      index === 0 && "sticky left-0 z-30 bg-gray-50 shadow-md"
+                      "cursor-pointer border-r border-stone-500 px-4 py-3 text-left font-medium uppercase tracking-wider last:border-r-0 hover:bg-stone-500",
+                      index === 0 &&
+                        "sticky left-0 z-30 bg-gradient-to-b from-gradient-light to-gradient-dark shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]"
                     )}
                     onClick={header.column.getToggleSortingHandler()}
                     style={{ width: header.getSize() }}
@@ -214,8 +197,9 @@ const Table: React.FC<TableProps> = ({ services }) => {
                   <td
                     key={cell.id}
                     className={cn(
-                      "min-w-56 px-4 py-4 text-sm",
-                      index === 0 && "sticky left-0 z-10 bg-white shadow-md"
+                      "min-w-56 border-r border-gray-200 px-4 py-4 text-sm",
+                      index === 0 &&
+                        "sticky left-0 z-10 bg-white shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]"
                     )}
                     style={{ width: cell.column.getSize() }}
                   >
