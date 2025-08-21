@@ -20,9 +20,9 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
         <span className="sr-only">OIT Home</span>
       </a>
 
-      <h1 className="hidden pl-6 text-3xl font-semibold lg:flex lg:flex-1 lg:justify-start">
+      <p className="hidden pl-6 text-3xl font-semibold lg:flex lg:flex-1 lg:justify-start">
         Center for Computation and Visualization
-      </h1>
+      </p>
 
       <ButtonLink
         href="mailto:ccv-support@brown.edu"
