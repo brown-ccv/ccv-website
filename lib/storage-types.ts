@@ -1,18 +1,18 @@
 // --- Import Icons ---
 import {
-  FaThermometerHalf,
-  FaDollarSign,
-  FaShareSquare,
-  FaHdd,
-  FaWifi,
-  FaExchangeAlt,
-  FaShieldAlt,
-  FaFile,
-  FaNetworkWired,
   FaCamera,
-  FaTachometerAlt,
   FaChalkboardTeacher,
+  FaDollarSign,
+  FaExchangeAlt,
+  FaFile,
+  FaHdd,
+  FaNetworkWired,
+  FaShareSquare,
+  FaShieldAlt,
   FaSyncAlt,
+  FaTachometerAlt,
+  FaThermometerHalf,
+  FaWifi,
 } from "react-icons/fa"
 import { SiDoi } from "react-icons/si"
 
@@ -92,6 +92,7 @@ export interface ServiceLink {
 
 export interface ServiceConfig {
   name: string
+  id: string
   description?: string
   links?: ServiceLink[]
   features: ServiceFeature[]
@@ -121,6 +122,7 @@ export interface FormQuestions {
 // Table
 export interface TableRow {
   featureName: string
+
   [key: string]: ServiceFeature | undefined | string
 }
 

@@ -9,6 +9,7 @@ storage_tool_header: |
 
 services:
   - name: "Google Drive"
+    id: google_drive
     features:
       - name: relative_speed
         value: fast
@@ -51,6 +52,7 @@ services:
   - name: "Campus File Storage / Department File Services"
 
   - name: "Campus File Storage Non-Replicated / Research Services"
+    id: cfs_nonreplicated
     features:
       - name: relative_speed
         value: faster
@@ -96,6 +98,7 @@ services:
         value: hot
 
   - name: "Campus File Storage Replicated / Research Services"
+    id: cfs_replicated
     features:
       - name: relative_speed
         value: faster
@@ -141,6 +144,7 @@ services:
         value: hot
 
   - name: Brown_Digital_Repository
+    id: brown_digital_repository
     features:
       - name: relative_speed
         value: faster
@@ -180,6 +184,7 @@ services:
         value: cold
 
   - name: LabArchives
+    id: labarchives
     features:
       - name: relative_speed
         value: faster
@@ -215,6 +220,7 @@ services:
         value: hot
 
   - name: oscar_storage
+    id: oscar_storage
     features:
       - name: relative_speed
         value: fastest
@@ -258,6 +264,7 @@ services:
         value: hot
 
   - name: stronghold
+    id: stronghold
     features:
       - name: relative_speed
         value: faster
@@ -299,6 +306,7 @@ services:
         value: hot
 
   - name: Hibernate
+    id: hibernate
     features:
       - name: relative_speed
         value: slow
