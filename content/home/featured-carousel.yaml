@@ -52,7 +52,7 @@ carousel:
   - title: "Collider Parts Database"
     categories: ["Web Development", "Particle Physics"]
     description: |
-      An app that tracks the construction of particle detector modules across 4 different research institutions. The database records include information about each change, when it happened, and who made the change. Users can search the database, build modules, and upload images taken during production. The application uses a reusable component-based JavaScript frontend and deployed with a serverless cloud-based backend.
+      An app that tracks the construction of particle detector modules across 4 different research institutions. The database records include information about each change, when it happened, and who made the change. Users can search the database, build modules, and upload images taken during production. The application is built on a JavaScript base React frontend and deployed on serverless scaleable cloud-based infrastructure.
     image: "/images/home/featured-carousel/collider.png"
     organizations:
       - name: "Department of Physics"
@@ -74,7 +74,7 @@ carousel:
       It is built using Honeycomb, is an open-source template that integrates cognitive science and web development practices.
       Researchers can use it to create psychophysiological tasks which use lab equipment, for example electroencephalogram (EEG) brain measurements.
 
-    image: "/images/home/featured-carousel/gearshift.gif"
+    image: "/images/home/featured-carousel/gearshift.webp"
     organizations:
       - name: "Cognitive and Psychological Sciences"
         organization: "Brown University"
@@ -84,6 +84,9 @@ carousel:
       - text: "Gearshift Website"
         url: "https://www.gingjehli.com/gearshiftfellowship"
         variant: "primary_filled"
+      - text: "Honeycomb"
+        url: "https://honeycomb.ccv.brown.edu/"
+        variant: "secondary_filled"
 
   - title: "Ice Floe Tracker"
     categories: ["Data Science", "Julia", "HPC"]
@@ -110,9 +113,9 @@ carousel:
         variant: "secondary_filled"
 
   - title: "SOMA Pain Manager"
-    categories: ["Mobile Applications", "React Native", "Pain Management"]
+    categories: [ "Mobile Applications", "React Native", "JavaScript" ]
     description: |
-      TODO
+      SOMA is a new app from Brown University researchers designed to help people with acute and chronic pain. By allowing you to track symptoms and daily activities, SOMA provides insights into your pain and recovery patterns. You can use this data for your own understanding or share it with your healthcare provider to help guide your treatment. Available for free on the App Store and Google Play, SOMA is designed to empower you with a better understanding of your pain.
     image: "/images/home/featured-carousel/soma.webp"
     organizations:
       - name: "Carney Institute for Brain Science, Center for Digital Health"
