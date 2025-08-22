@@ -59,7 +59,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
             <CardContent className="flex h-full flex-col items-center">
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
-                alt={name}
+                alt=""
                 width="500"
                 height="500"
                 className="h-[306px] w-[306px] rounded-full transition-opacity duration-300 sm:h-[350px] sm:w-[350px]"
@@ -78,7 +78,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
       <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-neutral-500 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
         <Image
           src={imagePath}
-          alt={name}
+          alt=""
           width={180}
           height={180}
           className="rounded-full md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
