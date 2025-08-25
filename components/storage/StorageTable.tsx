@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from "react"
+import React, { CSSProperties, useMemo, useRef, useState } from "react"
 import { cn, humanize } from "@/lib/utils"
 import Link from "next/link"
 import { ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
@@ -16,8 +16,10 @@ import {
   ColumnDef,
   SortingState,
   ColumnFiltersState,
+  ColumnPinningState,
   getSortedRowModel,
   getFilteredRowModel,
+  Column,
 } from "@tanstack/react-table"
 import { Button } from "@/components/button/Button"
 import Icon from "@/components/ui/RenderIcon"
@@ -37,9 +39,35 @@ interface FeatureCellProps {
   iconName: string
 }
 
+const getCommonPinningStyles = (column: Column<TableRow>): CSSProperties => {
+  const isPinned = column.getIsPinned()
+  const isLastLeftPinnedColumn =
+    isPinned === "left" && column.getIsLastColumn("left")
+  const isFirstRightPinnedColumn =
+    isPinned === "right" && column.getIsFirstColumn("right")
+
+  return {
+    boxShadow: isLastLeftPinnedColumn
+      ? "-4px 0 4px -4px gray inset"
+      : isFirstRightPinnedColumn
+        ? "4px 0 4px -4px gray inset"
+        : undefined,
+    left: isPinned === "left" ? `${column.getStart("left")}px` : undefined,
+    right: isPinned === "right" ? `${column.getAfter("right")}px` : undefined,
+    opacity: isPinned ? 0.95 : 1,
+    position: isPinned ? "sticky" : "relative",
+    width: column.getSize(),
+    zIndex: isPinned ? 1 : 0,
+  }
+}
+
 const Table: React.FC<TableProps> = ({ services }) => {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
+  const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({
+    left: ["serviceName"],
+    right: [],
+  })
   const columnHelper = createColumnHelper<TableRow>()
   const tableContainerRef = useRef<HTMLDivElement>(null)
 
@@ -103,6 +131,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
           {humanize(info.getValue())}
         </Link>
       ),
+      enablePinning: false,
     })
 
     const featureColumns = featureNames.map((featureName) => {
@@ -152,9 +181,11 @@ const Table: React.FC<TableProps> = ({ services }) => {
     state: {
       sorting,
       columnFilters,
+      columnPinning,
     },
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
+    onColumnPinningChange: setColumnPinning,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -204,50 +235,105 @@ const Table: React.FC<TableProps> = ({ services }) => {
           <thead className="sticky top-0 z-20 bg-gradient-to-b from-gradient-light to-gradient-dark text-white shadow-sm">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
-                {headerGroup.headers.map((header, index) => (
-                  <th
-                    key={header.id}
-                    className={cn(
-                      "cursor-pointer border-r border-stone-500 px-4 py-3 text-left font-medium uppercase tracking-wider last:border-r-0 hover:bg-stone-500",
-                      index === 0 &&
-                        "sticky left-0 z-30 bg-gradient-to-b from-gradient-light to-gradient-dark shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]"
-                    )}
-                    onClick={header.column.getToggleSortingHandler()}
-                    style={{ width: header.getSize() }}
-                  >
-                    <div className="flex items-center gap-4">
-                      {flexRender(
-                        header.column.columnDef.header,
-                        header.getContext()
+                {headerGroup.headers.map((header) => {
+                  const { column } = header
+                  return (
+                    <th
+                      key={header.id}
+                      className={cn(
+                        "cursor-pointer border-r border-stone-500 px-4 py-3 text-left font-medium uppercase tracking-wider last:border-r-0 hover:bg-stone-500"
                       )}
-                      <span>
-                        {{
-                          asc: "↑",
-                          desc: "↓",
-                        }[header.column.getIsSorted() as string] ?? "↕"}
-                      </span>
-                    </div>
-                  </th>
-                ))}
+                      style={{ ...getCommonPinningStyles(column) }}
+                      onClick={header.column.getToggleSortingHandler()}
+                    >
+                      <div className="flex items-center justify-between gap-5">
+                        {!header.isPlaceholder && header.column.getCanPin() && (
+                          <div className="pb-2">
+                            {header.column.getIsPinned() !== "left" ? (
+                              <Button
+                                variant="icon_only"
+                                size="icon-sm"
+                                className="border border-white"
+                                aria-label="Pin Column"
+                                iconOnly={
+                                  <Icon
+                                    iconName="FaThumbtack"
+                                    className="h-3 w-3"
+                                  />
+                                }
+                                onClick={(event) => {
+                                  event.stopPropagation()
+                                  header.column.pin("left")
+                                }}
+                              ></Button>
+                            ) : null}
+                            {header.column.getIsPinned() ? (
+                              <Button
+                                variant="icon_only"
+                                size="icon-sm"
+                                className="border border-white"
+                                iconOnly={
+                                  <Icon
+                                    iconName="FaTimes"
+                                    className="h-3 w-3"
+                                  />
+                                }
+                                onClick={(event) => {
+                                  event.stopPropagation()
+                                  header.column.pin(false)
+                                }}
+                              ></Button>
+                            ) : null}
+                          </div>
+                        )}
+                        <div className="flex items-center gap-4">
+                          {flexRender(
+                            header.column.columnDef.header,
+                            header.getContext()
+                          )}
+                          <span>
+                            {{
+                              asc: (
+                                <Icon iconName="FaSortUp" className="h-4 w-4" />
+                              ),
+                              desc: (
+                                <Icon
+                                  iconName="FaSortDown"
+                                  className="h-4 w-4"
+                                />
+                              ),
+                            }[header.column.getIsSorted() as string] ?? (
+                              <Icon iconName="FaSort" className="h-4 w-4" />
+                            )}
+                          </span>
+                        </div>
+                      </div>
+                    </th>
+                  )
+                })}
               </tr>
             ))}
           </thead>
           <tbody className="divide-y divide-gray-200 bg-white">
             {table.getRowModel().rows.map((row) => (
               <tr key={row.id} className="hover:bg-gray-50">
-                {row.getVisibleCells().map((cell, index) => (
-                  <td
-                    key={cell.id}
-                    className={cn(
-                      "min-w-56 border-r border-gray-200 px-4 py-4 text-sm",
-                      index === 0 &&
-                        "sticky left-0 z-10 bg-white shadow-[2px_0_5px_-2px_rgba(0,0,0,0.1)]"
-                    )}
-                    style={{ width: cell.column.getSize() }}
-                  >
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
-                ))}
+                {row.getVisibleCells().map((cell) => {
+                  const { column } = cell
+                  return (
+                    <td
+                      key={cell.id}
+                      className={cn(
+                        "min-w-56 border-r border-gray-200 bg-white px-4 py-4 text-sm"
+                      )}
+                      style={{ ...getCommonPinningStyles(column) }}
+                    >
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
+                    </td>
+                  )
+                })}
               </tr>
             ))}
           </tbody>
