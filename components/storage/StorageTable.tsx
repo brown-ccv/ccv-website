@@ -27,6 +27,7 @@ import {
   HoverCard,
   HoverCardContent,
   HoverCardTrigger,
+  HoverCardPortal,
 } from "@/components/ui/HoverCard"
 
 export interface TableProps {
@@ -98,11 +99,13 @@ const Table: React.FC<TableProps> = ({ services }) => {
               className="h-2.5 w-2.5 group-hover:text-keppel-600"
             />
           </HoverCardTrigger>
-          <HoverCardContent className="bg-white">
-            {feature.notes.map((note, index) => (
-              <p key={index}>{note}</p>
-            ))}
-          </HoverCardContent>
+          <HoverCardPortal>
+            <HoverCardContent className="bg-white">
+              {feature.notes.map((note, index) => (
+                <p key={index}>{note}</p>
+              ))}
+            </HoverCardContent>
+          </HoverCardPortal>
         </HoverCard>
       )
     }
@@ -208,10 +211,6 @@ const Table: React.FC<TableProps> = ({ services }) => {
 
   return (
     <div className="hidden bg-white p-6 md:block">
-      <h3 className="mb-6 text-xl text-gray-600">
-        This tool lets you compare the available storage options at Brown.
-      </h3>
-
       <div className="mb-4 flex justify-end space-x-2">
         <Button
           onClick={() => scrollTable("left")}
@@ -232,7 +231,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
         className="overflow-auto rounded-lg border border-gray-200 bg-white"
       >
         <table className="min-w-full divide-y divide-stone-500">
-          <thead className="sticky top-0 z-20 bg-gradient-to-b from-gradient-light to-gradient-dark text-white shadow-sm">
+          <thead className="sticky top-0 z-20 shadow-sm">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
@@ -241,7 +240,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
                     <th
                       key={header.id}
                       className={cn(
-                        "cursor-pointer border-r border-stone-500 px-4 py-3 text-left font-medium uppercase tracking-wider last:border-r-0 hover:bg-stone-500"
+                        "cursor-pointer border-r border-stone-500 bg-gradient-to-b from-gradient-light to-gradient-dark px-4 py-3 text-left font-medium uppercase tracking-wider text-white last:border-r-0 hover:bg-gradient-to-b hover:from-stone-400 hover:to-stone-500"
                       )}
                       style={{ ...getCommonPinningStyles(column) }}
                       onClick={header.column.getToggleSortingHandler()}
