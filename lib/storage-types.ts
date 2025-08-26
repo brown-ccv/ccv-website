@@ -120,6 +120,7 @@ export interface ServiceConfig {
 export interface FormQuestions {
   id: string
   question: string
+  default_answer: string
   options: { label: string; value: (string | number | boolean)[] }[]
   information?: string[]
   link?: { label: string; value: string }

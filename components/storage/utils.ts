@@ -1,23 +1,4 @@
-import {
-  QuestionsConfig,
-  SelectedAnswers,
-  ServiceConfig,
-} from "@/lib/storage-types"
-
-/**
- * Extracts all unique feature names from an array of services.
- * @param services Array of ServiceConfig objects
- * @returns Array of unique feature names (strings)
- */
-export function getAllUniqueFeatureNames(services: ServiceConfig[]): string[] {
-  const uniqueFeatureNames = new Set<string>()
-  services.forEach((service) => {
-    service.features?.forEach((feature) => {
-      uniqueFeatureNames.add(feature.name)
-    })
-  })
-  return Array.from(uniqueFeatureNames)
-}
+import {FormQuestions, SelectedAnswers, ServiceConfig,} from "@/lib/storage-types"
 
 /**
  * Determines whether text should be white or black based on the background color
@@ -118,33 +99,29 @@ export const getBadgeStyling = (value: string | boolean | number) => {
 export const getDisabledState = (
   service: ServiceConfig,
   currentSelectedAnswers: SelectedAnswers,
-  questions: QuestionsConfig[]
+  questions: FormQuestions[]
 ): boolean => {
   // service column is disabled if it fails *any* active filter condition.
-  for (const questionId in currentSelectedAnswers) {
-    if (currentSelectedAnswers.hasOwnProperty(questionId)) {
-      const selectedAnswerValue = currentSelectedAnswers[questionId]
+  for (const id in currentSelectedAnswers) {
+    if (currentSelectedAnswers.hasOwnProperty(id)) {
+      const selectedAnswerValue = currentSelectedAnswers[id]
 
-      const yamlQuestion = questions?.find(
-        (question) => question.affected_feature === questionId
-      )
+      const yamlQuestion = questions?.find((question) => question.id === id)
+
       if (!yamlQuestion) {
         continue // Skip this filter if question config is missing
       }
-
-      const selectedYAMLAnswerOption = yamlQuestion.answers.find(
-        (answer) => answer.answer === selectedAnswerValue
+      const selectedYAMLAnswerOption = yamlQuestion.options.find(
+        (answer) => answer.label === selectedAnswerValue
       )
+      // selectedYAMLAnswerOption: { answer: 'No', matching_feature_values: [ true, false, 'partial' ] }
       if (!selectedYAMLAnswerOption) {
         continue // Skip this filter if selected answer option is missing
       }
 
-      const allowedCategoryClasses =
-        selectedYAMLAnswerOption.matching_feature_values
+      const allowedCategoryClasses = selectedYAMLAnswerOption.value
 
-      const serviceFeature = service.features?.find(
-        (f) => f.name === questionId
-      )
+      const serviceFeature = service[id]
 
       // Determine if the selected answer implies a *strict requirement* for the feature.
       const nonStrictAnswers = [
@@ -173,7 +150,7 @@ export const getDisabledState = (
 
       // Normalize the service's feature class (can be string, number, boolean) to a lowercase string
       const passesThisSpecificFilter = allowedCategoryClasses.some(
-        (allowedClass) => {
+        (allowedClass: any) => {
           return (
             String(allowedClass).toLowerCase() === serviceFeatureClassNormalized
           )
