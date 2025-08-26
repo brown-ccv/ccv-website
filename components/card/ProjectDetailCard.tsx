@@ -3,7 +3,7 @@ import { PortfolioEntry } from "@/lib/portfolio-types"
 import { Badge } from "@/components/ui/Badge"
 import { FaGithub, FaUser } from "react-icons/fa"
 import { humanize } from "@/lib/utils"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
 
 interface ProjectDetailCardProps {
   entry: PortfolioEntry
@@ -17,11 +17,11 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
           <Badge color="blue" className="text-sm text-white">
             {entry['project-type']}
           </Badge>
-          {entry.starred && (
+          {/* {entry.starred && (
             <Badge color="sunglow" className="text-black">
               ⭐ Featured
             </Badge>
-          )}
+          )} */}
         </div>
         <CardTitle className="text-center text-2xl lg:text-3xl border-b border-gray-300 py-2 lg:py-4">
           {entry.title}

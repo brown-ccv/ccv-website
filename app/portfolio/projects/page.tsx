@@ -9,14 +9,14 @@ import { ProjectOverviewCard } from "@/components/card/ProjectOverviewCard"
 export default async function Portfolio() {
   const portfolioRaw = await readContentFile<{
     projects: PortfolioEntry[];
-  }>("content/portfolio/portfolio.yaml")
+  }>("content/portfolio/projects.yaml")
   const portfolioData = portfolioRaw.data.projects
 
   return (
     <>
       <Hero
-        title="Portfolio"
-        description="A collection of software and analysis projects, workshops, and bootcamps that CCV has worked on."
+        title="Projects"
+        description="A collection of software and analysis projects that CCV has worked on."
       />
       <ContentSection title="Projects">
         <CardGroup>
