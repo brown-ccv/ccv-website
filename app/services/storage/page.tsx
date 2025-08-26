@@ -6,12 +6,11 @@ import ButtonLink from "@/components/button/ButtonLink"
 
 export default async function Storage() {
   const metadata = getMDXMetadata("content/services/storage.mdx")
-  const links = metadata.links || []
 
   return (
     <>
       <Hero title={metadata.title} description={metadata.description}>
-        {links.map((link: any, index: number) => (
+        {metadata.links?.map((link: any, index: number) => (
           <ButtonLink
             key={index}
             variant={

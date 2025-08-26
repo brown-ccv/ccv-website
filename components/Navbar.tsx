@@ -71,7 +71,7 @@ const routes: NavSection[] = [
         routes: [
           {
             name: "Project Consulting",
-            href: "/services/consulting",
+            href: "/services/project-consulting",
             description:
               "We help with: Computational Biology, AI / Machine Learning, Software Engineering, Scientific Visualization, and more",
             icon: FaComments,
@@ -120,8 +120,8 @@ const routes: NavSection[] = [
             icon: FaDesktop,
           },
           {
-            name: "AI Services",
-            href: "/services/ai-services",
+            name: "AI Tools",
+            href: "/services/ai-tools",
             description:
               "Access to large language models and AI tools through CCV's computing infrastructure",
             icon: FaRobot,

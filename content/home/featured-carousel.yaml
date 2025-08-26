@@ -1,15 +1,15 @@
 carousel:
-  - title: "CCV AI Services"
-    categories: ["Web Development", "LLMs", "AI"]
+  - title: "CCV AI Tools"
+    categories: [ "Web Development", "LLMs", "AI" ]
     description: |
-      CCV AI Services provides a set of generative AI tools that are built and deployed in-house at Brown for all members of the Brown community. These tools include:
+      CCV AI Tools provides a set of generative AI tools that are built and deployed in-house at Brown for all members of the Brown community. These tools include:
 
       - LibreChat (currently under construction): A unified chat interface that provides the community free and private access to a mix of state-of-the-art open-source and commercial large language models (LLMs), including GPT-5 and Gemini-2.5-Pro.
       - Transcribe: A web app that provides fast and accurate audio transcription through open-source and enterprise-level models, including the OpenAI Whisper model and Google Gemini models.
       - Ask Oscar (currently under construction): An AI assistant that can answer questions based on documentation of CCV and other Brown services.
-    image: "/images/home/featured-carousel/ccv-ai-services.png"
+    image: "/images/home/featured-carousel/ccv-ai-tools.png"
     buttons:
-      - text: "CCV AI Services Website"
+      - text: "CCV AI Tools Website"
         url: "https://ai.ccv.brown.edu"
         variant: "primary_filled"
 
@@ -52,7 +52,7 @@ carousel:
   - title: "Collider Parts Database"
     categories: ["Web Development", "Particle Physics"]
     description: |
-      An app that tracks the construction of particle detector modules across 4 different research institutions. The database records include information about each change, when it happened, and who made the change. Users can search the database, build modules, and upload images taken during production. The application uses a reusable component-based JavaScript frontend and deployed with a serverless cloud-based backend.
+      An app that tracks the construction of particle detector modules across 4 different research institutions. The database records include information about each change, when it happened, and who made the change. Users can search the database, build modules, and upload images taken during production. The application is built on a JavaScript base React frontend and deployed on serverless scaleable cloud-based infrastructure.
     image: "/images/home/featured-carousel/collider.png"
     organizations:
       - name: "Department of Physics"
@@ -74,7 +74,7 @@ carousel:
       It is built using Honeycomb, is an open-source template that integrates cognitive science and web development practices.
       Researchers can use it to create psychophysiological tasks which use lab equipment, for example electroencephalogram (EEG) brain measurements.
 
-    image: "/images/home/featured-carousel/gearshift.gif"
+    image: "/images/home/featured-carousel/gearshift.webp"
     organizations:
       - name: "Cognitive and Psychological Sciences"
         organization: "Brown University"
@@ -84,18 +84,20 @@ carousel:
       - text: "Gearshift Website"
         url: "https://www.gingjehli.com/gearshiftfellowship"
         variant: "primary_filled"
+      - text: "Honeycomb"
+        url: "https://honeycomb.ccv.brown.edu/"
+        variant: "secondary_filled"
 
   - title: "Ice Floe Tracker"
     categories: ["Data Science", "Julia", "HPC"]
     description: |
-      Publish code written for a research project:
-
-      - As an open source package anyone could use
-      - Using a programming language more commonly used in the field of study (climate science)
-
-      Allow analysing much larger datasets using Brown's supercomputer.
-
-      Support a future grant application with new data.
+      A tool for tracking ice floes in the arctic ocean using data from the Aqua and Terra Earth-observation satellites. 
+      
+      Researchers can use this software library to detect and find the trajectories and rotation rates of ice floes, allowing them to measure ocean currents and eddies. 
+      These data are used to validate and inform ocean models as part of a larger climate research effort. 
+      
+      The IceFloeTracker.jl package is open source and written in the Julia programming language commonly used in the climate research community. 
+      It includes a workflow manager to help analyze regions up to the size of the whole arctic, over decade timescales.
     image: "/images/home/featured-carousel/icefloe.png"
     organizations:
       - name: "Department of Engineering"
@@ -106,11 +108,14 @@ carousel:
       - text: "Wilhelmus Lab"
         url: "https://wilhelmuslab.me/"
         variant: "primary_filled"
+      - text: "Code"
+        url: "https://github.com/wilhelmusLab/IceFloeTracker.jl"
+        variant: "secondary_filled"
 
   - title: "SOMA Pain Manager"
-    categories: ["Mobile Applications", "React Native", "Pain Management"]
+    categories: [ "Mobile Applications", "React Native", "JavaScript" ]
     description: |
-      TODO
+      SOMA is a new app from Brown University researchers designed to help people with acute and chronic pain. By allowing you to track symptoms and daily activities, SOMA provides insights into your pain and recovery patterns. You can use this data for your own understanding or share it with your healthcare provider to help guide your treatment. Available for free on the App Store and Google Play, SOMA is designed to empower you with a better understanding of your pain.
     image: "/images/home/featured-carousel/soma.webp"
     organizations:
       - name: "Carney Institute for Brain Science, Center for Digital Health"
