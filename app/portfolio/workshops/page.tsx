@@ -21,7 +21,7 @@ export default async function Portfolio() {
       <ContentSection title="Workshops">
         <CardGroup>
           {portfolioData.map((entry) => (
-            <ProjectOverviewCard key={entry.title} entry={entry} />
+            <ProjectOverviewCard key={entry.title} entry={entry} portfolioType="workshops" />
           ))}
         </CardGroup>
       </ContentSection>    

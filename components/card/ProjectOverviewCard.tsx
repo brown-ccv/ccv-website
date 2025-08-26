@@ -7,9 +7,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 
 interface ProjectOverviewCardProps {
   entry: PortfolioEntry
+  portfolioType: string
 }
 
-export function ProjectOverviewCard({ entry }: ProjectOverviewCardProps) {
+export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCardProps) {
   return (
     <Card className="w-full max-w-lg bg-white relative flex flex-col gap-4">
          {entry.image && (
@@ -37,7 +38,7 @@ export function ProjectOverviewCard({ entry }: ProjectOverviewCardProps) {
           )}
         </CardTitle>  
         <div className="mt-auto pt-4 flex justify-center">
-          <ButtonLink href={`/portfolio/${entry.slug}`} variant="primary_filled" size="md" external={false}>
+          <ButtonLink href={`/portfolio/${portfolioType}/${entry.slug}`} variant="primary_filled" size="md" external={false}>
             Learn More
           </ButtonLink>
         </div>

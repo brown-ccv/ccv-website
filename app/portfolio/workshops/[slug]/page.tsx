@@ -13,10 +13,10 @@ interface PortfolioDetailPageProps {
 
 export async function generateStaticParams() {
   const portfolioRaw = await readContentFile<{
-    projects: PortfolioEntry[]
-  }>("content/portfolio/projects.yaml")
+    workshops: PortfolioEntry[]
+  }>("content/portfolio/workshops.yaml")
   
-  return portfolioRaw.data.projects.map((item) => ({
+  return portfolioRaw.data.workshops.map((item) => ({
     slug: item.slug,
   }))
 }
@@ -25,11 +25,11 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   const { slug } = await params
   
   const portfolioRaw = await readContentFile<{
-    projects: PortfolioEntry[]
-  }>("content/portfolio/projects.yaml")
+    workshops: PortfolioEntry[]
+  }>("content/portfolio/workshops.yaml")
   
-  const entry = portfolioRaw.data.projects.find(
-    project => project.slug === slug
+  const entry = portfolioRaw.data.workshops.find(
+    workshop => workshop.slug === slug
   )
 
   if (!entry) {
