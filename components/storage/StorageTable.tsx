@@ -3,7 +3,7 @@ import { cn, humanize } from "@/lib/utils"
 import Link from "next/link"
 import { ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
 import {
-  TableRow,
+  ServiceConfig,
   StorageData,
   ServiceFeature,
   featureColorMap,
@@ -40,7 +40,9 @@ interface FeatureCellProps {
   iconName: string
 }
 
-const getCommonPinningStyles = (column: Column<TableRow>): CSSProperties => {
+const getCommonPinningStyles = (
+  column: Column<ServiceConfig>
+): CSSProperties => {
   const isPinned = column.getIsPinned()
   const isLastLeftPinnedColumn =
     isPinned === "left" && column.getIsLastColumn("left")
@@ -69,7 +71,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
     left: ["serviceName"],
     right: [],
   })
-  const columnHelper = createColumnHelper<TableRow>()
+  const columnHelper = createColumnHelper<ServiceConfig>()
   const tableContainerRef = useRef<HTMLDivElement>(null)
 
   const tableData = services.table_data
@@ -121,7 +123,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
   }
 
   // 2. define columns for TanStack Table (memoized for performance)
-  const columns = useMemo<ColumnDef<TableRow, any>[]>(() => {
+  const columns = useMemo<ColumnDef<ServiceConfig, any>[]>(() => {
     const serviceColumn = columnHelper.accessor("serviceName", {
       header: "Service",
       cell: (info) => (
@@ -141,7 +143,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
       const metadata = featureMetadata[featureName]
 
       return columnHelper.accessor(
-        (row: TableRow) => {
+        (row: ServiceConfig) => {
           const feature = row[featureName] as ServiceFeature
           return feature?.sortValue ?? feature?.value
         },

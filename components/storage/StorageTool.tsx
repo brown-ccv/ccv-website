@@ -7,7 +7,6 @@ import { ContentSection } from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
 import Table from "@/components/storage/StorageTable"
 import {
-  PageContentData,
   SelectedAnswers,
   StorageData,
   FormQuestions,
@@ -16,14 +15,12 @@ import StorageCards from "@/components/storage/StorageCards"
 import Icon from "@/components/ui/RenderIcon"
 
 interface StorageToolProps {
-  pageContent: PageContentData | null
   questions: FormQuestions[]
   initialSelectedAnswers: SelectedAnswers
   services: StorageData
 }
 
 export default function StorageTool({
-  pageContent,
   questions,
   initialSelectedAnswers,
   services,
@@ -64,31 +61,29 @@ export default function StorageTool({
         <Table services={services} />
       </ContentSection>
       <ContentSection id="form" title="Storage Selection Tool">
-        <div className="flex flex-col gap-2">
-          <p className="my-12 text-2xl font-semibold text-gray-800">
-            Answering the questions in the form will provide a list of services
-            that meet your requirements.
-          </p>
+        <p className="my-12 text-2xl font-semibold text-gray-800">
+          Answering the questions in the form will provide a list of services
+          that meet your requirements.
+        </p>
+        <Form
+          selectedAnswers={selectedAnswers}
+          onAnswerChange={handleAnswerChange}
+          questions={questions}
+        />
+        <Button
+          onClick={handleReset}
+          variant="primary_filled"
+          size="lg"
+          className="mb-8"
+        >
+          Reset Questions
+        </Button>
 
-          <Form
-            selectedAnswers={selectedAnswers}
-            onAnswerChange={handleAnswerChange}
-            questions={questions}
-          />
-          <Button
-            onClick={handleReset}
-            variant="primary_filled"
-            size="lg"
-            className="mb-8"
-          >
-            Reset Questions
-          </Button>
-          {/*<StorageCards*/}
-          {/*  services={services}*/}
-          {/*  selectedAnswers={selectedAnswers}*/}
-          {/*  questions={questionsConfig}*/}
-          {/*/>*/}
-        </div>
+        <StorageCards
+          services={services}
+          selectedAnswers={selectedAnswers}
+          questions={questions}
+        />
       </ContentSection>
     </>
   )

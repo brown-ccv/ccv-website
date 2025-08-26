@@ -3,7 +3,7 @@
     "total_services": 8,
     "total_features": 13,
     "feature_names": [
-      "storage",
+      "storage_threshold",
       "max_file_size",
       "relative_speed",
       "security",
@@ -68,9 +68,9 @@
         "display_name": "Shareable Links",
         "icon": "FaShareSquare"
       },
-      "storage": {
-        "name": "storage",
-        "display_name": "Storage",
+      "storage_threshold": {
+        "name": "storage_threshold",
+        "display_name": "Storage Threshold",
         "icon": "FaHdd"
       },
       "storage_warmth": {
@@ -88,47 +88,13 @@
   "table_data": [
     {
       "serviceName": "Google Drive",
-      "DOI_provided": {
-        "name": "DOI_provided",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "access_from_oscar": {
-        "name": "access_from_oscar",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["accessible via Globus"]
-      },
-      "brown_network_required": {
-        "name": "brown_network_required",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "canvas_integration": {
-        "name": "canvas_integration",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "collaborative_edits": {
-        "name": "collaborative_edits",
-        "value": "true",
-        "sortValue": 1,
-        "notes": null
-      },
-      "data_protection_replication": {
-        "name": "data_protection_replication",
-        "value": "true",
-        "sortValue": 1,
-        "notes": null
-      },
-      "data_protection_snapshots": {
-        "name": "data_protection_snapshots",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["up to 30 days"]
+      "storage_threshold": {
+        "name": "storage_threshold",
+        "value": "1 TB +",
+        "sortValue": 1000,
+        "notes": [
+          "Not for large storage needs"
+        ]
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -146,46 +112,44 @@
         "name": "security",
         "value": 2,
         "sortValue": 2,
-        "notes": ["prevent editors from resharing", "set expiration date"]
+        "notes": [
+          "prevent editors from resharing",
+          "set expiration date"
+        ]
       },
-      "shareable_link": {
-        "name": "shareable_link",
+      "data_protection_replication": {
+        "name": "data_protection_replication",
         "value": "true",
         "sortValue": 1,
         "notes": null
       },
-      "storage": {
-        "name": "storage",
-        "value": "1 TB +",
-        "sortValue": 1000,
-        "notes": ["Not for large storage needs"]
+      "data_protection_snapshots": {
+        "name": "data_protection_snapshots",
+        "value": "true",
+        "sortValue": 1,
+        "notes": [
+          "up to 30 days"
+        ]
       },
       "storage_warmth": {
         "name": "storage_warmth",
         "value": "warm",
         "sortValue": 2,
         "notes": null
-      }
-    },
-    {
-      "serviceName": "Campus File Storage Non-Replicated / Research Services",
-      "DOI_provided": {
-        "name": "DOI_provided",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
         "value": "true",
         "sortValue": 1,
-        "notes": ["Multi-Protocol Share"]
+        "notes": [
+          "accessible via Globus"
+        ]
       },
       "brown_network_required": {
         "name": "brown_network_required",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["except with Globus"]
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
       },
       "canvas_integration": {
         "name": "canvas_integration",
@@ -195,50 +159,27 @@
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "data_protection_replication": {
-        "name": "data_protection_replication",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "data_protection_snapshots": {
-        "name": "data_protection_snapshots",
         "value": "true",
         "sortValue": 1,
-        "notes": ["up to 6 months"]
-      },
-      "max_file_size": {
-        "name": "max_file_size",
-        "value": "128 TB",
-        "sortValue": 128000,
-        "notes": ["1 TB for best performance"]
-      },
-      "relative_speed": {
-        "name": "relative_speed",
-        "value": "faster",
-        "sortValue": 3,
         "notes": null
-      },
-      "security": {
-        "name": "security",
-        "value": 2,
-        "sortValue": 2,
-        "notes": [
-          "Access controlled by Brown Authentication and Security groups"
-        ]
       },
       "shareable_link": {
         "name": "shareable_link",
         "value": "true",
         "sortValue": 1,
-        "notes": ["via Globus"]
+        "notes": null
       },
-      "storage": {
-        "name": "storage",
+      "DOI_provided": {
+        "name": "DOI_provided",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      }
+    },
+    {
+      "serviceName": "Campus File Storage Non-Replicated / Research Services",
+      "storage_threshold": {
+        "name": "storage_threshold",
         "value": "2 TB +",
         "sortValue": 2000,
         "notes": [
@@ -247,62 +188,13 @@
           "Paid after that @ $50/TB/Yr. (Summed across all paid storage types)"
         ]
       },
-      "storage_warmth": {
-        "name": "storage_warmth",
-        "value": "hot",
-        "sortValue": 3,
-        "notes": null
-      }
-    },
-    {
-      "serviceName": "Campus File Storage Replicated / Research Services",
-      "DOI_provided": {
-        "name": "DOI_provided",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "access_from_oscar": {
-        "name": "access_from_oscar",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["Multi-Protocol Share"]
-      },
-      "brown_network_required": {
-        "name": "brown_network_required",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["except with Globus"]
-      },
-      "canvas_integration": {
-        "name": "canvas_integration",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "collaborative_edits": {
-        "name": "collaborative_edits",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "data_protection_replication": {
-        "name": "data_protection_replication",
-        "value": "true",
-        "sortValue": 1,
-        "notes": null
-      },
-      "data_protection_snapshots": {
-        "name": "data_protection_snapshots",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["up to 6 months"]
-      },
       "max_file_size": {
         "name": "max_file_size",
         "value": "128 TB",
         "sortValue": 128000,
-        "notes": ["1 TB for best performance"]
+        "notes": [
+          "1 TB for best performance"
+        ]
       },
       "relative_speed": {
         "name": "relative_speed",
@@ -318,14 +210,73 @@
           "Access controlled by Brown Authentication and Security groups"
         ]
       },
+      "data_protection_replication": {
+        "name": "data_protection_replication",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "data_protection_snapshots": {
+        "name": "data_protection_snapshots",
+        "value": "true",
+        "sortValue": 1,
+        "notes": [
+          "up to 6 months"
+        ]
+      },
+      "storage_warmth": {
+        "name": "storage_warmth",
+        "value": "hot",
+        "sortValue": 3,
+        "notes": null
+      },
+      "access_from_oscar": {
+        "name": "access_from_oscar",
+        "value": "true",
+        "sortValue": 1,
+        "notes": [
+          "Multi-Protocol Share"
+        ]
+      },
+      "brown_network_required": {
+        "name": "brown_network_required",
+        "value": "true",
+        "sortValue": 1,
+        "notes": [
+          "except with Globus"
+        ]
+      },
+      "canvas_integration": {
+        "name": "canvas_integration",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "collaborative_edits": {
+        "name": "collaborative_edits",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
       "shareable_link": {
         "name": "shareable_link",
         "value": "true",
         "sortValue": 1,
-        "notes": ["via Globus"]
+        "notes": [
+          "via Globus"
+        ]
       },
-      "storage": {
-        "name": "storage",
+      "DOI_provided": {
+        "name": "DOI_provided",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      }
+    },
+    {
+      "serviceName": "Campus File Storage Replicated / Research Services",
+      "storage_threshold": {
+        "name": "storage_threshold",
         "value": "1 TB +",
         "sortValue": 1000,
         "notes": [
@@ -334,62 +285,13 @@
           "Paid after that @ $100/TB/Yr. (Summed across all paid storage types)"
         ]
       },
-      "storage_warmth": {
-        "name": "storage_warmth",
-        "value": "hot",
-        "sortValue": 3,
-        "notes": null
-      }
-    },
-    {
-      "serviceName": "Brown_Digital_Repository",
-      "DOI_provided": {
-        "name": "DOI_provided",
-        "value": "true",
-        "sortValue": 1,
-        "notes": null
-      },
-      "access_from_oscar": {
-        "name": "access_from_oscar",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "brown_network_required": {
-        "name": "brown_network_required",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["except with Globus"]
-      },
-      "canvas_integration": {
-        "name": "canvas_integration",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "collaborative_edits": {
-        "name": "collaborative_edits",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "data_protection_replication": {
-        "name": "data_protection_replication",
-        "value": "true",
-        "sortValue": 1,
-        "notes": null
-      },
-      "data_protection_snapshots": {
-        "name": "data_protection_snapshots",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["up to 60 days"]
-      },
       "max_file_size": {
         "name": "max_file_size",
-        "value": "4 GB",
-        "sortValue": 4,
-        "notes": ["1 TB for best performance"]
+        "value": "128 TB",
+        "sortValue": 128000,
+        "notes": [
+          "1 TB for best performance"
+        ]
       },
       "relative_speed": {
         "name": "relative_speed",
@@ -405,32 +307,120 @@
           "Access controlled by Brown Authentication and Security groups"
         ]
       },
-      "shareable_link": {
-        "name": "shareable_link",
+      "data_protection_replication": {
+        "name": "data_protection_replication",
         "value": "true",
         "sortValue": 1,
         "notes": null
       },
-      "storage": {
-        "name": "storage",
+      "data_protection_snapshots": {
+        "name": "data_protection_snapshots",
+        "value": "true",
+        "sortValue": 1,
+        "notes": [
+          "up to 6 months"
+        ]
+      },
+      "storage_warmth": {
+        "name": "storage_warmth",
+        "value": "hot",
+        "sortValue": 3,
+        "notes": null
+      },
+      "access_from_oscar": {
+        "name": "access_from_oscar",
+        "value": "true",
+        "sortValue": 1,
+        "notes": [
+          "Multi-Protocol Share"
+        ]
+      },
+      "brown_network_required": {
+        "name": "brown_network_required",
+        "value": "true",
+        "sortValue": 1,
+        "notes": [
+          "except with Globus"
+        ]
+      },
+      "canvas_integration": {
+        "name": "canvas_integration",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "collaborative_edits": {
+        "name": "collaborative_edits",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "shareable_link": {
+        "name": "shareable_link",
+        "value": "true",
+        "sortValue": 1,
+        "notes": [
+          "via Globus"
+        ]
+      },
+      "DOI_provided": {
+        "name": "DOI_provided",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      }
+    },
+    {
+      "serviceName": "Brown_Digital_Repository",
+      "storage_threshold": {
+        "name": "storage_threshold",
         "value": "1 TB",
         "sortValue": 1000,
-        "notes": ["Contact the Library for greater needs"]
+        "notes": [
+          "Contact the Library for greater needs"
+        ]
+      },
+      "max_file_size": {
+        "name": "max_file_size",
+        "value": "4 GB",
+        "sortValue": 4,
+        "notes": [
+          "1 TB for best performance"
+        ]
+      },
+      "relative_speed": {
+        "name": "relative_speed",
+        "value": "faster",
+        "sortValue": 3,
+        "notes": null
+      },
+      "security": {
+        "name": "security",
+        "value": 2,
+        "sortValue": 2,
+        "notes": [
+          "Access controlled by Brown Authentication and Security groups"
+        ]
+      },
+      "data_protection_replication": {
+        "name": "data_protection_replication",
+        "value": "true",
+        "sortValue": 1,
+        "notes": null
+      },
+      "data_protection_snapshots": {
+        "name": "data_protection_snapshots",
+        "value": "true",
+        "sortValue": 1,
+        "notes": [
+          "up to 60 days"
+        ]
       },
       "storage_warmth": {
         "name": "storage_warmth",
         "value": "cold",
         "sortValue": 1,
         "notes": null
-      }
-    },
-    {
-      "serviceName": "LabArchives",
-      "DOI_provided": {
-        "name": "DOI_provided",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
@@ -442,31 +432,44 @@
         "name": "brown_network_required",
         "value": "true",
         "sortValue": 1,
-        "notes": null
+        "notes": [
+          "except with Globus"
+        ]
       },
       "canvas_integration": {
         "name": "canvas_integration",
-        "value": "true",
-        "sortValue": 1,
+        "value": "false",
+        "sortValue": 0,
         "notes": null
       },
       "collaborative_edits": {
         "name": "collaborative_edits",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "shareable_link": {
+        "name": "shareable_link",
         "value": "true",
         "sortValue": 1,
         "notes": null
       },
-      "data_protection_replication": {
-        "name": "data_protection_replication",
+      "DOI_provided": {
+        "name": "DOI_provided",
         "value": "true",
         "sortValue": 1,
         "notes": null
-      },
-      "data_protection_snapshots": {
-        "name": "data_protection_snapshots",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["up to 60 days"]
+      }
+    },
+    {
+      "serviceName": "LabArchives",
+      "storage_threshold": {
+        "name": "storage_threshold",
+        "value": "1 TB",
+        "sortValue": 1000,
+        "notes": [
+          "Contact the Library for greater needs"
+        ]
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -488,57 +491,6 @@
           "Access controlled by Brown Authentication and Security groups"
         ]
       },
-      "shareable_link": {
-        "name": "shareable_link",
-        "value": "true",
-        "sortValue": 1,
-        "notes": null
-      },
-      "storage": {
-        "name": "storage",
-        "value": "1 TB",
-        "sortValue": 1000,
-        "notes": ["Contact the Library for greater needs"]
-      },
-      "storage_warmth": {
-        "name": "storage_warmth",
-        "value": "hot",
-        "sortValue": 3,
-        "notes": null
-      }
-    },
-    {
-      "serviceName": "oscar_storage",
-      "DOI_provided": {
-        "name": "DOI_provided",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "access_from_oscar": {
-        "name": "access_from_oscar",
-        "value": "true",
-        "sortValue": 1,
-        "notes": null
-      },
-      "brown_network_required": {
-        "name": "brown_network_required",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["except with Globus"]
-      },
-      "canvas_integration": {
-        "name": "canvas_integration",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
-      "collaborative_edits": {
-        "name": "collaborative_edits",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
-      },
       "data_protection_replication": {
         "name": "data_protection_replication",
         "value": "true",
@@ -549,13 +501,72 @@
         "name": "data_protection_snapshots",
         "value": "true",
         "sortValue": 1,
-        "notes": ["up to 30 days"]
+        "notes": [
+          "up to 60 days"
+        ]
+      },
+      "storage_warmth": {
+        "name": "storage_warmth",
+        "value": "hot",
+        "sortValue": 3,
+        "notes": null
+      },
+      "access_from_oscar": {
+        "name": "access_from_oscar",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "brown_network_required": {
+        "name": "brown_network_required",
+        "value": "true",
+        "sortValue": 1,
+        "notes": null
+      },
+      "canvas_integration": {
+        "name": "canvas_integration",
+        "value": "true",
+        "sortValue": 1,
+        "notes": null
+      },
+      "collaborative_edits": {
+        "name": "collaborative_edits",
+        "value": "true",
+        "sortValue": 1,
+        "notes": null
+      },
+      "shareable_link": {
+        "name": "shareable_link",
+        "value": "true",
+        "sortValue": 1,
+        "notes": null
+      },
+      "DOI_provided": {
+        "name": "DOI_provided",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      }
+    },
+    {
+      "serviceName": "oscar_storage",
+      "storage_threshold": {
+        "name": "storage_threshold",
+        "value": "1 TB +",
+        "sortValue": 1000,
+        "notes": [
+          "1 TB per PI",
+          "10 TB per grant",
+          "Paid after that @ $100/TB/Yr. (Summed across all paid storage types)"
+        ]
       },
       "max_file_size": {
         "name": "max_file_size",
         "value": "128 TB",
         "sortValue": 128000,
-        "notes": ["1 TB for best performance"]
+        "notes": [
+          "1 TB for best performance"
+        ]
       },
       "relative_speed": {
         "name": "relative_speed",
@@ -571,20 +582,18 @@
           "Access controlled by Brown Authentication and Security groups"
         ]
       },
-      "shareable_link": {
-        "name": "shareable_link",
+      "data_protection_replication": {
+        "name": "data_protection_replication",
         "value": "true",
         "sortValue": 1,
-        "notes": ["via Globus"]
+        "notes": null
       },
-      "storage": {
-        "name": "storage",
-        "value": "1 TB +",
-        "sortValue": 1000,
+      "data_protection_snapshots": {
+        "name": "data_protection_snapshots",
+        "value": "true",
+        "sortValue": 1,
         "notes": [
-          "1 TB per PI",
-          "10 TB per grant",
-          "Paid after that @ $100/TB/Yr. (Summed across all paid storage types)"
+          "up to 30 days"
         ]
       },
       "storage_warmth": {
@@ -592,27 +601,20 @@
         "value": "hot",
         "sortValue": 3,
         "notes": null
-      }
-    },
-    {
-      "serviceName": "stronghold",
-      "DOI_provided": {
-        "name": "DOI_provided",
-        "value": "false",
-        "sortValue": 0,
-        "notes": null
       },
       "access_from_oscar": {
         "name": "access_from_oscar",
-        "value": "false",
-        "sortValue": 0,
+        "value": "true",
+        "sortValue": 1,
         "notes": null
       },
       "brown_network_required": {
         "name": "brown_network_required",
         "value": "true",
         "sortValue": 1,
-        "notes": ["except with Globus"]
+        "notes": [
+          "except with Globus"
+        ]
       },
       "canvas_integration": {
         "name": "canvas_integration",
@@ -626,23 +628,40 @@
         "sortValue": 0,
         "notes": null
       },
-      "data_protection_replication": {
-        "name": "data_protection_replication",
+      "shareable_link": {
+        "name": "shareable_link",
         "value": "true",
         "sortValue": 1,
-        "notes": null
+        "notes": [
+          "via Globus"
+        ]
       },
-      "data_protection_snapshots": {
-        "name": "data_protection_snapshots",
-        "value": "true",
-        "sortValue": 1,
-        "notes": ["up to 6 weeks"]
+      "DOI_provided": {
+        "name": "DOI_provided",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      }
+    },
+    {
+      "serviceName": "stronghold",
+      "storage_threshold": {
+        "name": "storage_threshold",
+        "value": "1 TB +",
+        "sortValue": 1000,
+        "notes": [
+          "1 TB per PI",
+          "10 TB per grant",
+          "Paid after that @ $100/TB/Yr. (Summed across all paid storage types)"
+        ]
       },
       "max_file_size": {
         "name": "max_file_size",
         "value": "4 TB",
         "sortValue": 4000,
-        "notes": ["1 TB for best performance"]
+        "notes": [
+          "1 TB for best performance"
+        ]
       },
       "relative_speed": {
         "name": "relative_speed",
@@ -658,35 +677,24 @@
           "Appropriate for data with strong data compliance requirements PII, HIPAA, etc"
         ]
       },
-      "shareable_link": {
-        "name": "shareable_link",
-        "value": "false",
-        "sortValue": 0,
+      "data_protection_replication": {
+        "name": "data_protection_replication",
+        "value": "true",
+        "sortValue": 1,
         "notes": null
       },
-      "storage": {
-        "name": "storage",
-        "value": "1 TB +",
-        "sortValue": 1000,
+      "data_protection_snapshots": {
+        "name": "data_protection_snapshots",
+        "value": "true",
+        "sortValue": 1,
         "notes": [
-          "1 TB per PI",
-          "10 TB per grant",
-          "Paid after that @ $100/TB/Yr. (Summed across all paid storage types)"
+          "up to 6 weeks"
         ]
       },
       "storage_warmth": {
         "name": "storage_warmth",
         "value": "hot",
         "sortValue": 3,
-        "notes": null
-      }
-    },
-    {
-      "serviceName": "Hibernate",
-      "DOI_provided": {
-        "name": "DOI_provided",
-        "value": "false",
-        "sortValue": 0,
         "notes": null
       },
       "access_from_oscar": {
@@ -699,7 +707,9 @@
         "name": "brown_network_required",
         "value": "true",
         "sortValue": 1,
-        "notes": null
+        "notes": [
+          "except with Globus"
+        ]
       },
       "canvas_integration": {
         "name": "canvas_integration",
@@ -713,16 +723,25 @@
         "sortValue": 0,
         "notes": null
       },
-      "data_protection_replication": {
-        "name": "data_protection_replication",
-        "value": "true",
-        "sortValue": 1,
-        "notes": null
-      },
-      "data_protection_snapshots": {
-        "name": "data_protection_snapshots",
+      "shareable_link": {
+        "name": "shareable_link",
         "value": "false",
         "sortValue": 0,
+        "notes": null
+      },
+      "DOI_provided": {
+        "name": "DOI_provided",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      }
+    },
+    {
+      "serviceName": "Hibernate",
+      "storage_threshold": {
+        "name": "storage_threshold",
+        "value": "2 TB +",
+        "sortValue": 2000,
         "notes": null
       },
       "max_file_size": {
@@ -745,22 +764,58 @@
           "Access controlled by Brown Authentication and Security groups"
         ]
       },
-      "shareable_link": {
-        "name": "shareable_link",
-        "value": "false",
-        "sortValue": 0,
+      "data_protection_replication": {
+        "name": "data_protection_replication",
+        "value": "true",
+        "sortValue": 1,
         "notes": null
       },
-      "storage": {
-        "name": "storage",
-        "value": "2 TB +",
-        "sortValue": 2000,
+      "data_protection_snapshots": {
+        "name": "data_protection_snapshots",
+        "value": "false",
+        "sortValue": 0,
         "notes": null
       },
       "storage_warmth": {
         "name": "storage_warmth",
         "value": "cold",
         "sortValue": 1,
+        "notes": null
+      },
+      "access_from_oscar": {
+        "name": "access_from_oscar",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "brown_network_required": {
+        "name": "brown_network_required",
+        "value": "true",
+        "sortValue": 1,
+        "notes": null
+      },
+      "canvas_integration": {
+        "name": "canvas_integration",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "collaborative_edits": {
+        "name": "collaborative_edits",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "shareable_link": {
+        "name": "shareable_link",
+        "value": "false",
+        "sortValue": 0,
+        "notes": null
+      },
+      "DOI_provided": {
+        "name": "DOI_provided",
+        "value": "false",
+        "sortValue": 0,
         "notes": null
       }
     }

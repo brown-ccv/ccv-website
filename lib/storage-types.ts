@@ -97,15 +97,6 @@ export interface FeatureMetadata {
   icon: string
 }
 
-export interface ServiceConfig {
-  name: string
-  description?: string
-  links?: ServiceLink[]
-  features: ServiceFeature[]
-  display_name: string
-  icon: string
-}
-
 export interface StorageData {
   metadata: {
     total_services: number
@@ -113,10 +104,10 @@ export interface StorageData {
     feature_names: string[]
     feature_metadata: Record<string, FeatureMetadata>
   }
-  table_data: TableRow[]
+  table_data: ServiceConfig[]
 }
 
-export interface TableRow {
+export interface ServiceConfig {
   serviceName: string
   description?: string
   links?: ServiceLink[]

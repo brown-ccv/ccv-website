@@ -11,14 +11,16 @@ export default async function CompareStorageOptions() {
     "content/services/storage-tool.yaml"
   )
   const pageContent: PageContentData = rawPageContent.data as PageContentData
-
   let initialSelectedAnswers: SelectedAnswers = {}
+  questions.map((question: any, index: number) => {
+    initialSelectedAnswers[question.id] = question.default_answer
+  })
+
   return (
     <>
       <Hero title={pageContent.title} description={pageContent.description} />
 
       <StorageTool
-        pageContent={pageContent}
         questions={questions}
         initialSelectedAnswers={initialSelectedAnswers}
         services={services}

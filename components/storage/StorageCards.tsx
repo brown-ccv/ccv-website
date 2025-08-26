@@ -1,16 +1,16 @@
 import React from "react"
 import {
-  ServiceConfig,
   SelectedAnswers,
-  QuestionsConfig,
+  FormQuestions,
+  StorageData,
 } from "@/lib/storage-types"
 import StorageServiceCard from "@/components/card/StorageServiceCard"
 import { getDisabledState } from "@/components/storage/utils"
 
 export interface TableProps {
-  services: ServiceConfig[]
+  services: StorageData
   selectedAnswers: SelectedAnswers
-  questions: QuestionsConfig[]
+  questions: FormQuestions[]
 }
 
 const StorageCards: React.FC<TableProps> = ({
@@ -19,16 +19,10 @@ const StorageCards: React.FC<TableProps> = ({
   questions,
 }) => {
   return (
-    <div className="flex w-full flex-col items-center gap-4 lg:hidden">
-      {services
-        .filter((service) => service.features && service.features.length > 0)
-        .map((service) => (
-          <StorageServiceCard
-            key={service.name}
-            service={service}
-            isDisabled={getDisabledState(service, selectedAnswers, questions)}
-          />
-        ))}
+    <div className="flex flex-wrap justify-center gap-4">
+      {services.table_data.map((service, index) => (
+        <StorageServiceCard key={index} service={service} isDisabled={false} />
+      ))}
     </div>
   )
 }

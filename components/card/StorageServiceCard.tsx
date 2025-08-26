@@ -3,10 +3,12 @@ import {
   ServiceConfig,
   ServiceFeature,
   featureIcons,
+  featureColorMap,
 } from "@/lib/storage-types"
 import { StyledCard } from "@/components/card/StyledCard"
 import { Badge } from "@/components/ui/Badge"
-import { humanize } from "@/lib/utils"
+import { cn, humanize } from "@/lib/utils"
+import Icon from "@/components/ui/RenderIcon"
 
 interface ServiceCardProps {
   service: ServiceConfig
@@ -47,36 +49,31 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
 
   return (
     <StyledCard
-      title={humanize(service.name)}
+      title={humanize(service.serviceName)}
       isDisabled={isDisabled}
-      className="max-w-full"
+      className="max-w-sm flex-grow"
     >
-      {service.features?.map((feature) => {
-        const IconComponent = featureIcons[feature.name.toLowerCase()]
-
-        return (
-          <div key={feature.name} className="space-y-2 px-6 py-2">
-            {/* Feature name and icon */}
-            <div className="flex items-center gap-2 font-semibold tracking-wide text-neutral-500">
-              {IconComponent ? (
-                <IconComponent className="mt-0.5 flex-shrink-0 text-lg" />
-              ) : null}
-              <span className="break-words">
-                {humanize(feature.name).toUpperCase()}:
-              </span>
-            </div>
-
-            <Badge
-              value={feature.value}
-              autoColor={true}
-              className="ml-6 rounded-full text-sm font-semibold"
-            >
-              {humanize(formatFeatureDisplayValue(feature))}
-            </Badge>
-            {feature.notes && renderNotes(feature.notes)}
-          </div>
-        )
-      })}
+      <div className="space-y-3 p-2">
+        {Object.entries(service).map(([key, value]) => {
+          const feature = value as ServiceFeature
+          if (feature.name) {
+            return (
+              <div key={key} className="flex items-center justify-between">
+                <span className="text-base font-semibold uppercase tracking-wide text-neutral-500">
+                  {humanize(feature.name)}:
+                </span>
+                <Badge
+                  value={feature.value}
+                  autoColor={true}
+                  className="ml-6 rounded-full text-sm font-semibold"
+                >
+                  {humanize(formatFeatureDisplayValue(feature))}
+                </Badge>
+              </div>
+            )
+          }
+        })}
+      </div>
     </StyledCard>
   )
 }
