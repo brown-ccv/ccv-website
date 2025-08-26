@@ -1,10 +1,6 @@
 import React from "react"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup"
 import { SelectedAnswers, FormQuestions } from "@/lib/storage-types"
-import Markdown from "react-markdown"
-import rehypeRaw from "rehype-raw"
-import remarkGfm from "remark-gfm"
-import ButtonLink from "@/components/button/ButtonLink"
 import { StyledCard } from "@/components/card/StyledCard"
 
 interface FormProps {
@@ -22,30 +18,29 @@ const Form: React.FC<FormProps> = ({
     <StyledCard title="Data Needs" className="max-w-full">
       {questions.map((question) => (
         <React.Fragment key={question.id}>
-          <div className="pt-6 text-2xl font-medium text-black">
-            <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
-              {`${question.question}`}
-            </Markdown>
-          </div>
+          <p className="pt-6 text-xl font-medium text-black">
+            {question.question}
+          </p>
 
-          {question.information && (
-            <Markdown
-              rehypePlugins={[rehypeRaw]}
-              remarkPlugins={[remarkGfm]}
-              components={{
-                a: ({ node, href, ...props }) => (
-                  <ButtonLink href={href!} {...props} />
-                ),
-              }}
+          {question.information &&
+            question.information.map((info, index) => (
+              <p className="text-sm" key={index}>
+                {info}
+              </p>
+            ))}
+          {question.link && (
+            <a
+              className="text-sm text-keppel-800 hover:text-keppel-600"
+              href={question.link.value}
             >
-              {question.information}
-            </Markdown>
+              {question.link.label}
+            </a>
           )}
 
           <RadioGroup
             value={selectedAnswers[question.id]}
             onValueChange={(value) => onAnswerChange(question.id, value)}
-            className="flex flex-col gap-x-4 space-y-2 px-2 pt-2 sm:px-4 md:flex-row md:space-y-0"
+            className="flex flex-col gap-x-4 space-y-2 pt-2 md:flex-row md:space-y-0"
           >
             {question.options.map((option) => (
               <div key={option.label} className="flex items-center space-x-2">
@@ -54,7 +49,7 @@ const Form: React.FC<FormProps> = ({
                   value={option.label}
                   id={`${question.id}-${option.label}`}
                 />
-                <p>{`${option.label}`}</p>
+                <p>{option.label}</p>
               </div>
             ))}
           </RadioGroup>

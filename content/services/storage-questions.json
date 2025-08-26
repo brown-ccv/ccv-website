@@ -66,7 +66,9 @@
   },
   {
     "question": "Data Snapshots",
-    "information": "<p>Data snapshots are point-in-time copies of your data that allow you to restore files to previous versions if they are accidentally deleted or corrupted.</p>",
+    "information": [
+      "Point-in-time copies of your data that allow you to restore files to previous versions if they are accidentally deleted or corrupted."
+    ],
     "id": "data_protection_snapshots",
     "default_answer": "No",
     "options": [
@@ -95,7 +97,7 @@
   {
     "question": "Data Replication",
     "information": [
-      "Data replication creates multiple copies of your data across different storage locations to protect against hardware failures and ensure high availability"
+      "Creates multiple copies of your data across different storage locations to protect against hardware failures and ensure high availability."
     ],
     "id": "data_protection_replication",
     "default_answer": "No",
@@ -167,7 +169,7 @@
     ]
   },
   {
-    "question": "Oscar Access",
+    "question": "Accessible from Oscar",
     "id": "access_from_oscar",
     "default_answer": "No",
     "options": [
@@ -213,7 +215,7 @@
     "information": [
       "Hot: accessed frequently for active model fitting/analysis",
       "Warm: accessed infrequently for reading/writing",
-      "Cold: effectively never accessed (aka \\\"archival storage\\\" for funding obligations for completed analyses)"
+      "Cold: effectively never accessed (aka \"archival storage\" for funding obligations for completed analyses)"
     ],
     "id": "storage_warmth",
     "default_answer": "Any",

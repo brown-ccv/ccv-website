@@ -9,7 +9,6 @@ import Table from "@/components/storage/StorageTable"
 import {
   PageContentData,
   SelectedAnswers,
-  QuestionsConfig,
   StorageData,
   FormQuestions,
 } from "@/lib/storage-types"
@@ -21,7 +20,6 @@ interface StorageToolProps {
   questions: FormQuestions[]
   initialSelectedAnswers: SelectedAnswers
   services: StorageData
-  questionsConfig: QuestionsConfig[]
 }
 
 export default function StorageTool({
@@ -29,7 +27,6 @@ export default function StorageTool({
   questions,
   initialSelectedAnswers,
   services,
-  questionsConfig,
 }: StorageToolProps) {
   const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(
     initialSelectedAnswers

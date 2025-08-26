@@ -125,24 +125,13 @@ export interface TableRow {
 }
 
 // Form
-export interface QuestionAnswer {
-  answer: string
-  matching_feature_values: (string | boolean | number)[]
-}
-
-export interface QuestionsConfig {
-  question: string
-  information?: string
-  affected_feature: string
-  default_answer: string
-  answers: QuestionAnswer[]
-}
 
 export interface FormQuestions {
   id: string
   question: string
   options: { label: string; value: (string | number | boolean)[] }[]
-  information?: string
+  information?: string[]
+  link?: { label: string; value: string }
 }
 
 // Form and Table
@@ -157,5 +146,4 @@ export interface PageContentData {
   icon?: string
   links?: ServiceLink[]
   storage_tool_header: string
-  questions: QuestionsConfig[]
 }
