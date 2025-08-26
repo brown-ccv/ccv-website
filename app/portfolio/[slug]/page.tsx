@@ -11,6 +11,16 @@ interface PortfolioDetailPageProps {
   params: Promise<{ slug: string }>
 }
 
+export async function generateStaticParams() {
+  const portfolioRaw = await readContentFile<{
+    projects: PortfolioEntry[]
+  }>("content/portfolio/portfolio.yaml")
+  
+  return portfolioRaw.data.projects.map((item) => ({
+    slug: item.slug,
+  }))
+}
+
 export default async function PortfolioDetailPage({ params }: PortfolioDetailPageProps) {
   const { slug } = await params
   
