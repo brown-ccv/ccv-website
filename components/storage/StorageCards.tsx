@@ -19,14 +19,19 @@ const StorageCards: React.FC<TableProps> = ({
   questions,
 }) => {
   return (
-    <div className="flex flex-wrap justify-center gap-4">
-      {services.table_data.map((service, index) => (
-        <StorageServiceCard
-          key={index}
-          service={service}
-          isDisabled={getDisabledState(service, selectedAnswers, questions)}
-        />
-      ))}
+    <div className="flex flex-col items-center lg:items-start">
+      <p className="mb-4 text-sm text-gray-500">
+        Showing {} matching service(s)
+      </p>
+      <div className="flex flex-wrap justify-center gap-4 lg:justify-start">
+        {services.table_data.map((service, index) => (
+          <StorageServiceCard
+            key={index}
+            service={service}
+            isDisabled={getDisabledState(service, selectedAnswers, questions)}
+          />
+        ))}
+      </div>
     </div>
   )
 }

@@ -42,7 +42,41 @@ export default function StorageTool({
 
   return (
     <>
-      <ContentSection title="Compare Storage Options">
+      <ContentSection id="form" title="Storage Selection Tool">
+        <p className="my-12 text-2xl font-semibold text-gray-800">
+          Answering the questions in the form will provide a list of services
+          that meet your requirements.
+        </p>
+        <div className="hidden lg:flex lg:items-center lg:gap-4 lg:pb-8">
+          <p className="text-lg">Want to dive into comparing features?</p>
+          <ScrollButton variant="primary_outlined" id="table">
+            View Comparison Table
+            <Icon iconName="FaAngleDoubleDown" />
+          </ScrollButton>
+        </div>
+        <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
+          <Form
+            selectedAnswers={selectedAnswers}
+            onAnswerChange={handleAnswerChange}
+            questions={questions}
+          >
+            <Button onClick={handleReset} variant="primary_filled" size="md">
+              Reset Questions
+            </Button>
+          </Form>
+
+          <StorageCards
+            services={services}
+            selectedAnswers={selectedAnswers}
+            questions={questions}
+          />
+        </div>
+      </ContentSection>
+      <ContentSection
+        id="table"
+        title="Compare Storage Options"
+        className="hidden lg:block"
+      >
         <p className="mb-6 text-xl font-semibold">
           This tool lets you compare the available storage options at Brown to
           compare their features and decide which of these services best suits
@@ -50,40 +84,7 @@ export default function StorageTool({
           about the service.
         </p>
 
-        <div className="space-y-4">
-          <p className="text-lg">Need help looking for a storage option?</p>{" "}
-          <ScrollButton variant="primary_outlined" id="form">
-            Fill out the Form
-            <Icon iconName="FaAngleDoubleDown" />
-          </ScrollButton>
-        </div>
-
         <Table services={services} />
-      </ContentSection>
-      <ContentSection id="form" title="Storage Selection Tool">
-        <p className="my-12 text-2xl font-semibold text-gray-800">
-          Answering the questions in the form will provide a list of services
-          that meet your requirements.
-        </p>
-        <Form
-          selectedAnswers={selectedAnswers}
-          onAnswerChange={handleAnswerChange}
-          questions={questions}
-        />
-        <Button
-          onClick={handleReset}
-          variant="primary_filled"
-          size="lg"
-          className="mb-8"
-        >
-          Reset Questions
-        </Button>
-
-        <StorageCards
-          services={services}
-          selectedAnswers={selectedAnswers}
-          questions={questions}
-        />
       </ContentSection>
     </>
   )

@@ -7,15 +7,17 @@ interface FormProps {
   selectedAnswers: SelectedAnswers
   onAnswerChange: (questionId: string, answer: string) => void
   questions: FormQuestions[]
+  children: React.ReactNode
 }
 
 const Form: React.FC<FormProps> = ({
   selectedAnswers,
   onAnswerChange,
   questions,
+  children,
 }) => {
   return (
-    <StyledCard title="Data Needs" className="max-w-full">
+    <StyledCard title="Data Needs" className="max-w-lg flex-shrink-0">
       {questions.map((question) => (
         <React.Fragment key={question.id}>
           <p className="pt-6 text-xl font-medium text-black">
@@ -55,6 +57,9 @@ const Form: React.FC<FormProps> = ({
           </RadioGroup>
         </React.Fragment>
       ))}
+      <div className="mt-6 flex justify-end border-t border-gray-300 pt-4">
+        {children}
+      </div>
     </StyledCard>
   )
 }

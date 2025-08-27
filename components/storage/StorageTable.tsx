@@ -57,7 +57,6 @@ const getCommonPinningStyles = (
         : undefined,
     left: isPinned === "left" ? `${column.getStart("left")}px` : undefined,
     right: isPinned === "right" ? `${column.getAfter("right")}px` : undefined,
-    opacity: isPinned ? 0.95 : 1,
     position: isPinned ? "sticky" : "relative",
     width: column.getSize(),
     zIndex: isPinned ? 1 : 0,
@@ -98,7 +97,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
             </div>
             <Icon
               iconName="FaInfoCircle"
-              className="h-2.5 w-2.5 group-hover:text-keppel-600"
+              className="h-3 w-3 group-hover:text-keppel-600"
             />
           </HoverCardTrigger>
           <HoverCardPortal>
@@ -150,14 +149,14 @@ const Table: React.FC<TableProps> = ({ services }) => {
         {
           id: featureName,
           header: () => (
-            <div className="flex items-center justify-center space-x-2">
+            <div className="flex items-center justify-center gap-2.5">
               <Icon
                 iconName={metadata?.icon}
                 className="h-4 w-4 flex-shrink-0"
               />
-              <div className="text-sm font-medium uppercase">
+              <p className="text-sm font-medium uppercase">
                 {metadata.display_name}
-              </div>
+              </p>
             </div>
           ),
           cell: (info) => {
@@ -212,7 +211,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
   }
 
   return (
-    <div className="hidden bg-white p-6 md:block">
+    <>
       <div className="mb-4 flex justify-end space-x-2">
         <Button
           onClick={() => scrollTable("left")}
@@ -242,7 +241,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
                     <th
                       key={header.id}
                       className={cn(
-                        "cursor-pointer border-r border-stone-500 bg-gradient-to-b from-gradient-light to-gradient-dark px-4 py-3 text-left font-medium uppercase tracking-wider text-white last:border-r-0 hover:bg-gradient-to-b hover:from-stone-400 hover:to-stone-500"
+                        "cursor-pointer border-r border-stone-500 bg-neutral-900 px-4 py-3 text-left font-medium uppercase tracking-wider text-white last:border-r-0 hover:bg-neutral-500"
                       )}
                       style={{ ...getCommonPinningStyles(column) }}
                       onClick={header.column.getToggleSortingHandler()}
@@ -344,7 +343,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
       <p className="mt-4 text-sm text-gray-500">
         Showing {table.getRowModel().rows.length} service(s)
       </p>
-    </div>
+    </>
   )
 }
 
