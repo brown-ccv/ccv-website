@@ -52,9 +52,9 @@ projects:
       - python
       - javascript
     tags:
-      - machine-learning
-      - cognitive-science
-      - behavioral-tasks
+      - machine learning
+      - cognitive science
+      - behavioral tasks
     people:
       - name: John Gerrard Holland
         github_user: hollandjg
@@ -76,7 +76,7 @@ projects:
       - javascript
       - vuejs
     tags:
-      - behavioral-tasks
+      - behavioral tasks
     groups:
       - borton-lab
       - openmind
@@ -141,7 +141,7 @@ projects:
       - javascript
       - vuejs
     tags:
-      - cognitive-science
+      - cognitive science
     groups:
       - nassar-lab
       - frank-lab
@@ -166,7 +166,7 @@ projects:
       - javascript
       - reactjs
     tags:
-      - behavioral-tasks
+      - behavioral tasks
     groups:
       - borton-lab
       - openmind
@@ -195,7 +195,7 @@ projects:
     languages:
       - python
     tags:
-      - deep-learning
+      - deep learning
       - desktop
     people:
       - name: Camilo Diaz
@@ -240,7 +240,7 @@ projects:
     department:
       - clps
     tags:
-      - machine-learning
+      - machine learning
       - software-engineering
     investigators:
       - name: Sebastian Musslick
@@ -264,7 +264,7 @@ projects:
     department:
       - biomedical
     tags:
-      - university-administration
+      - university administration
       - data-science
       - nlp
     investigators:

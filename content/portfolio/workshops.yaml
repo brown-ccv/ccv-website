@@ -152,7 +152,7 @@ workshops:
     languages:
       - unix-cli
     tags:
-      - cloud-computing
+      - cloud computing
       - gcp
     people:
       - name: Isabel Restrepo
@@ -199,7 +199,7 @@ workshops:
       - javascript
     tags:
       - honeycomb
-      - behavioral-tasks
+      - behavioral tasks
     people:
       - name: Robert Gemma
         github_user: RobertGemmaJr

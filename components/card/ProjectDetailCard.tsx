@@ -17,11 +17,11 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
           <Badge value={entry['project-type']} autoColor={true}>
             {entry['project-type']}
           </Badge>
-          {/* {entry.starred && (
+          {entry.starred && (
             <Badge color="sunglow" className="text-black">
               ⭐ Featured
             </Badge>
-          )} */}
+          )}
         </div>
         <CardTitle className="text-center text-2xl lg:text-3xl border-b border-gray-300 py-2 lg:py-4">
           {entry.title}

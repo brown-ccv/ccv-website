@@ -24,10 +24,15 @@ export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCar
            </div>
          )}
       <CardHeader className="py-2">
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-between">
           <Badge value={entry['project-type']} autoColor={true}>
             {entry['project-type']}
           </Badge>
+          {entry.starred && (
+            <Badge color="sunglow" className="text-black">
+              ⭐ Featured
+            </Badge>
+          )}
         </div>
       </CardHeader>
       <CardContent className="flex-1 flex flex-col">
