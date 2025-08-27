@@ -5,7 +5,7 @@ import { Button } from "@/components/button/Button"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import { ContentSection } from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
-import Table from "@/components/storage/StorageTable"
+import StorageTable from "@/components/storage/StorageTable"
 import {
   SelectedAnswers,
   StorageData,
@@ -84,7 +84,7 @@ export default function StorageTool({
           about the service.
         </p>
 
-        <Table services={services} />
+        <StorageTable services={services} />
       </ContentSection>
     </>
   )

@@ -19,6 +19,9 @@ import {
   ColumnPinningState,
   getSortedRowModel,
   getFilteredRowModel,
+  Row,
+  RowPinningState,
+  Table,
   Column,
 } from "@tanstack/react-table"
 import { Button } from "@/components/button/Button"
@@ -46,29 +49,55 @@ const getCommonPinningStyles = (
   const isPinned = column.getIsPinned()
   const isLastLeftPinnedColumn =
     isPinned === "left" && column.getIsLastColumn("left")
-  const isFirstRightPinnedColumn =
-    isPinned === "right" && column.getIsFirstColumn("right")
 
   return {
     boxShadow: isLastLeftPinnedColumn
       ? "-4px 0 4px -4px gray inset"
-      : isFirstRightPinnedColumn
-        ? "4px 0 4px -4px gray inset"
-        : undefined,
+      : undefined,
     left: isPinned === "left" ? `${column.getStart("left")}px` : undefined,
-    right: isPinned === "right" ? `${column.getAfter("right")}px` : undefined,
     position: isPinned ? "sticky" : "relative",
     width: column.getSize(),
     zIndex: isPinned ? 1 : 0,
   }
 }
 
-const Table: React.FC<TableProps> = ({ services }) => {
+function PinnedRow({ row, table }: { row: Row<any>; table: Table<any> }) {
+  return (
+    <tr
+      style={{
+        position: "sticky",
+        top:
+          row.getIsPinned() === "top"
+            ? `${row.getPinnedIndex() * 26 + 48}px`
+            : undefined,
+      }}
+    >
+      {row.getVisibleCells().map((cell) => {
+        const { column } = cell
+        return (
+          <td
+            key={cell.id}
+            style={{ ...getCommonPinningStyles(column) }}
+            className="border-r border-gray-200 bg-neutral-100 px-4 py-4 text-sm"
+          >
+            {flexRender(cell.column.columnDef.cell, cell.getContext())}
+          </td>
+        )
+      })}
+    </tr>
+  )
+}
+
+const StorageTable: React.FC<TableProps> = ({ services }) => {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({
-    left: ["serviceName"],
+    left: ["pin", "serviceName"],
     right: [],
+  })
+  const [rowPinning, setRowPinning] = React.useState<RowPinningState>({
+    top: [],
+    bottom: [],
   })
   const columnHelper = createColumnHelper<ServiceConfig>()
   const tableContainerRef = useRef<HTMLDivElement>(null)
@@ -123,6 +152,36 @@ const Table: React.FC<TableProps> = ({ services }) => {
 
   // 2. define columns for TanStack Table (memoized for performance)
   const columns = useMemo<ColumnDef<ServiceConfig, any>[]>(() => {
+    const pinColumn = {
+      id: "pin",
+      header: () => "Pin Service",
+      cell: ({ row }: { row: Row<ServiceConfig> }) =>
+        row.getIsPinned() ? (
+          <Button
+            variant="icon_only"
+            size="icon-sm"
+            className="border border-black"
+            iconOnly={<Icon iconName="FaTimes" className="h-3 w-3" />}
+            onClick={() => row.pin(false)}
+          ></Button>
+        ) : (
+          <div className="flex gap-1">
+            <Button
+              variant="icon_only"
+              size="icon-sm"
+              className="border border-black"
+              aria-label="Pin Column"
+              iconOnly={<Icon iconName="FaThumbtack" className="h-3 w-3" />}
+              onClick={() => row.pin("top")}
+            ></Button>
+          </div>
+        ),
+      enablePinning: false,
+      enableSorting: false,
+      size: 52,
+      minSize: 52,
+      maxSize: 52,
+    }
     const serviceColumn = columnHelper.accessor("serviceName", {
       header: "Service",
       cell: (info) => (
@@ -176,7 +235,7 @@ const Table: React.FC<TableProps> = ({ services }) => {
       )
     })
 
-    return [serviceColumn, ...featureColumns]
+    return [pinColumn, serviceColumn, ...featureColumns]
   }, [featureNames, featureMetadata])
 
   const table = useReactTable({
@@ -186,10 +245,12 @@ const Table: React.FC<TableProps> = ({ services }) => {
       sorting,
       columnFilters,
       columnPinning,
+      rowPinning,
     },
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnPinningChange: setColumnPinning,
+    onRowPinningChange: setRowPinning,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -237,11 +298,20 @@ const Table: React.FC<TableProps> = ({ services }) => {
               <tr key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   const { column } = header
+                  if (header.column.id === "pin") {
+                    return (
+                      <th
+                        key={header.id}
+                        className="w-12 bg-neutral-900 px-4 py-3"
+                        style={{ ...getCommonPinningStyles(column) }}
+                      ></th>
+                    )
+                  }
                   return (
                     <th
                       key={header.id}
                       className={cn(
-                        "cursor-pointer border-r border-stone-500 bg-neutral-900 px-4 py-3 text-left font-medium uppercase tracking-wider text-white last:border-r-0 hover:bg-neutral-500"
+                        "min-w-56 cursor-pointer border-r border-stone-500 bg-neutral-900 px-4 py-3 text-left font-medium uppercase tracking-wider text-white last:border-r-0 hover:bg-neutral-500"
                       )}
                       style={{ ...getCommonPinningStyles(column) }}
                       onClick={header.column.getToggleSortingHandler()}
@@ -291,21 +361,26 @@ const Table: React.FC<TableProps> = ({ services }) => {
                             header.column.columnDef.header,
                             header.getContext()
                           )}
-                          <span>
-                            {{
-                              asc: (
-                                <Icon iconName="FaSortUp" className="h-4 w-4" />
-                              ),
-                              desc: (
-                                <Icon
-                                  iconName="FaSortDown"
-                                  className="h-4 w-4"
-                                />
-                              ),
-                            }[header.column.getIsSorted() as string] ?? (
-                              <Icon iconName="FaSort" className="h-4 w-4" />
-                            )}
-                          </span>
+                          {header.column.getCanSort() && (
+                            <span>
+                              {{
+                                asc: (
+                                  <Icon
+                                    iconName="FaSortUp"
+                                    className="h-4 w-4"
+                                  />
+                                ),
+                                desc: (
+                                  <Icon
+                                    iconName="FaSortDown"
+                                    className="h-4 w-4"
+                                  />
+                                ),
+                              }[header.column.getIsSorted() as string] ?? (
+                                <Icon iconName="FaSort" className="h-4 w-4" />
+                              )}
+                            </span>
+                          )}
                         </div>
                       </div>
                     </th>
@@ -315,15 +390,18 @@ const Table: React.FC<TableProps> = ({ services }) => {
             ))}
           </thead>
           <tbody className="divide-y divide-gray-200 bg-white">
-            {table.getRowModel().rows.map((row) => (
-              <tr key={row.id} className="hover:bg-gray-50">
+            {table.getTopRows().map((row) => (
+              <PinnedRow key={row.id} row={row} table={table} />
+            ))}
+            {table.getCenterRows().map((row) => (
+              <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
                   const { column } = cell
                   return (
                     <td
                       key={cell.id}
                       className={cn(
-                        "min-w-56 border-r border-gray-200 bg-white px-4 py-4 text-sm"
+                        "border-r border-gray-200 bg-white px-4 py-4 text-sm"
                       )}
                       style={{ ...getCommonPinningStyles(column) }}
                     >
@@ -347,4 +425,4 @@ const Table: React.FC<TableProps> = ({ services }) => {
   )
 }
 
-export default Table
+export default StorageTable
