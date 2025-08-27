@@ -51,15 +51,15 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
     <StyledCard
       title={humanize(service.serviceName)}
       isDisabled={isDisabled}
-      className="max-w-sm flex-grow"
+      className="max-w-sm"
     >
-      <div className="space-y-3 p-2">
+      <ul className="space-y-3 p-2">
         {Object.entries(service).map(([key, value]) => {
           const feature = value as ServiceFeature
           if (feature.name) {
             return (
-              <div key={key} className="flex items-center justify-between">
-                <span className="text-base font-semibold uppercase tracking-wide text-neutral-500">
+              <li key={key} className="flex items-center justify-between">
+                <span className="text-sm font-semibold uppercase tracking-wide text-neutral-500">
                   {humanize(feature.name)}:
                 </span>
                 <Badge
@@ -69,11 +69,11 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
                 >
                   {humanize(formatFeatureDisplayValue(feature))}
                 </Badge>
-              </div>
+              </li>
             )
           }
         })}
-      </div>
+      </ul>
     </StyledCard>
   )
 }
