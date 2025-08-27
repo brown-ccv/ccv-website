@@ -25,7 +25,7 @@ export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCar
          )}
       <CardHeader className="py-2">
         <div className="flex items-center justify-center">
-          <Badge color="blue" className="text-white">
+          <Badge value={entry['project-type']} autoColor={true}>
             {entry['project-type']}
           </Badge>
         </div>

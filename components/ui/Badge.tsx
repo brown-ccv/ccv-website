@@ -93,6 +93,8 @@ export const getTextColorForBackground = (backgroundColor: string): string => {
     "bg-neutral-500": "text-white",
     "bg-neutral-600": "text-white",
     "bg-neutral-700": "text-white",
+    "bg-indigo-500": "text-white",
+    "bg-cyan-600": "text-white",
   }
   return colorMap[backgroundColor] || "text-black"
 }
@@ -138,6 +140,14 @@ export const getBadgeBackgroundColor = (
     "8 eb": "bg-keppel-600",
     "9 eb": "bg-keppel-600",
     unlimited: "bg-keppel-600",
+    "software-engineering": "bg-blue-500",
+    "computational-biology": "bg-keppel-600",
+    "data-science": "bg-purple-900",
+    "software-sustainability": "bg-sunglow-400",
+    "high-performance-computing": "bg-amber-600",
+    "3d-visualization": "bg-indigo-500",
+    "hardware-consultation": "bg-cyan-600",
+    "artificial-intelligence": "bg-pink-500",
     default: "bg-neutral-200",
   }
   return backgroundMap[stringValue] || backgroundMap["default"]
@@ -176,7 +186,7 @@ export const Badge = ({
     return (
       <div
         className={cn(
-          "inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-semibold",
+          "inline-flex items-center whitespace-nowrap rounded-full px-2 py-1 text-xs font-semibold",
           styling.className,
           className
         )}

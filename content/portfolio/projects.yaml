@@ -21,7 +21,7 @@ projects:
     image: /images/services/classroom/featured-carousel/linux.jpg
     slug: web-volume-viewer
     description: Volumetric data visualization on the web with compatibility on VR devices. It supports color mapping through a transfer function that maps specific data values to a scalar color. Developed using React-JS and A-Frame.
-    project-type: software-engineering
+    project-type: data-science
     starred: False
     languages:
       - javascript
@@ -44,7 +44,7 @@ projects:
     image: /images/services/classroom/featured-carousel/matlab.jpeg
     slug: autonomous-research-assistant-autora
     description: Autonomous Research Assistant (AutoRA) is a framework for implementing machine learning tools which autonomously and iteratively generate 1) new theories to describe real-world data, and 2) experiments to invalidate those theories and seed a new cycle of theory-making. The experiments will be run online via crowd-sourcing platforms (MTurk, Prolific).
-    project-type: software-engineering
+    project-type: software-sustainability
     starred: True
     groups:
       - aer-group
@@ -70,7 +70,7 @@ projects:
     image: /images/services/classroom/featured-carousel/julia.jpeg
     slug: beehive
     description: "A hub for researchers to share and find behavioral tasks"
-    project-type: software-engineering
+    project-type: 3d-visualization
     starred: False
     languages:
       - javascript
@@ -97,7 +97,7 @@ projects:
     image: /images/services/classroom/featured-carousel/julia.jpeg
     slug: drawonair-cave-painting
     description: A collaboration between Dr Daniel Keefe (University of Minnesota), Dr David Laidlaw (Brown University) and CCV to expand 3D DrawOnAir haptic functionality to VR systems
-    project-type: software-engineering
+    project-type: hardware-consultation
     starred: True
     languages:
       - c++

@@ -3,7 +3,7 @@ import { PortfolioEntry } from "@/lib/portfolio-types"
 import { Badge } from "@/components/ui/Badge"
 import { FaGithub, FaUser } from "react-icons/fa"
 import { humanize } from "@/lib/utils"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 
 interface ProjectDetailCardProps {
   entry: PortfolioEntry
