@@ -69,16 +69,8 @@ export const getBadgeBackgroundColor = (
     slow: "bg-red-university",
     small: "bg-cyan-500",
     large: "bg-sunglow-400",
-    "4 gb": "bg-red-university",
-    "1 tb": "bg-amber-600",
-    "1 tb +": "bg-sunglow-400",
-    "2 tb +": "bg-sunglow-400",
-    "4 tb": "bg-sunglow-400",
-    "128 tb": "bg-sunglow-400",
-    "8 eb": "bg-keppel-600",
-    "9 eb": "bg-keppel-600",
     unlimited: "bg-keppel-600",
-    default: "bg-neutral-200",
+    default: "bg-neutral-600",
   }
   return backgroundMap[stringValue] || backgroundMap["default"]
 }

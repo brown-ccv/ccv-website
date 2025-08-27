@@ -64,17 +64,9 @@ export const featureColorMap: Record<string, string> = {
 
   small: "text-cyan-500",
   large: "text-sunglow-400",
-  "4 gb": "text-red-university",
-  "1 tb": "text-amber-600",
-  "1 tb +": "text-sunglow-400",
-  "2 tb +": "text-keppel-600",
-  "4 tb": "text-sunglow-400",
-  "128 tb": "text-keppel-600",
-  "8 eb": "text-keppel-600",
-  "9 eb": "text-keppel-600",
   unlimited: "text-keppel-600",
 
-  default: "text-neutral-800",
+  default: "text-neutral-600",
 }
 
 // Content
