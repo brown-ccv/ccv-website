@@ -14,7 +14,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
     <Card className="w-full lg:max-w-sm bg-white relative flex flex-col">
       <CardHeader className="lg:pb-4 pb-2">
         <div className="flex items-center justify-between">
-          <Badge color="blue" className="text-sm text-white">
+          <Badge value={entry['project-type']} autoColor={true}>
             {entry['project-type']}
           </Badge>
           {/* {entry.starred && (
@@ -35,7 +35,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Languages</h3>
             <div className="flex flex-wrap gap-2">
               {entry.languages.map((lang) => (
-                <Badge key={lang} color="keppel" className="bg-purple-900/20 text-purple-900 border border-purple-900">
+                <Badge key={lang} color="purple" className="bg-purple-900/20 text-purple-900 border border-purple-900">
                   {lang}
                 </Badge>
               ))}
@@ -49,7 +49,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {entry.tags.map((tag) => (
-                <Badge key={tag} color="pink" className="bg-pink-600/20 text-pink-600 border border-pink-600">
+                <Badge key={tag} color="pink" className="bg-pink-500/20 text-pink-500 border border-pink-500">
                   {tag}
                 </Badge>
               ))}
@@ -63,7 +63,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Groups</h3>
             <div className="flex flex-wrap gap-2">
               {entry.groups.map((group) => (
-                <Badge key={group} color="blue" className="bg-blue-500/10 text-blue-500 border border-blue-500">
+                <Badge key={group} color="blue" className="bg-blue-500/20 text-blue-500 border border-blue-500">
                   {group}
                 </Badge>
               ))}
@@ -77,7 +77,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Department</h3>
             <div className="flex flex-wrap gap-2">
               {entry.department.map((department) => (
-                <Badge key={department} className="bg-red-university/10 text-red-university border border-red-university">
+                <Badge key={department} className="bg-red-university/20 text-red-university border border-red-university">
                   {department}
                 </Badge>
               ))}
