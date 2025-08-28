@@ -58,7 +58,7 @@ export default async function Home() {
           <ContentSection title="Featured Projects">
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>
-          <ContentSection title={"Events"} align={"left"} id={"events"}>
+          <ContentSection align={"left"} id={"events"}>
             <Suspense fallback={<Spinner />}>
               <EventSection
                 streamedDataPast={pastDates}
