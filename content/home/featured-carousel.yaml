@@ -23,12 +23,9 @@ carousel:
         pi: ["Brandon Marshall"]
         pm: "Max Krieger"
         icon: "FaUser"
-      - name: "Rhode Island Department of Health"
-        organization: "RIDOH"
-        icon: "FaUser"
     buttons:
       - text: "Provident Website"
-        url: "https://provident-study.org"
+        url: "https://provident.preventoverdoseri.org/"
         variant: "primary_filled"
 
   - title: "Mesoamerican Migration Project"
