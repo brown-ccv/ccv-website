@@ -4,6 +4,7 @@ import { PortfolioEntry } from "@/lib/portfolio-types"
 import { Badge } from "@/components/ui/Badge"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
+import { TechnicalExpertiseHeader } from "@/components/TechnicalExpertiseHeader"
 
 interface ProjectOverviewCardProps {
   entry: PortfolioEntry
@@ -25,11 +26,9 @@ export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCar
          )}
       <CardHeader className="py-2">
         <div className="flex items-center justify-between">
-          <Badge value={entry['project-type']} autoColor={true}>
-            {entry['project-type']}
-          </Badge>
+          <TechnicalExpertiseHeader expertiseType={entry['project-type']} />
           {entry.starred && (
-            <Badge color="sunglow" className="text-black">
+            <Badge color="sunglow" className="text-black text-md">
               ⭐ Featured
             </Badge>
           )}
@@ -39,7 +38,7 @@ export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCar
         <CardTitle className="text-center text-3xl border-t border-gray-300 py-6 flex flex-col gap-2">
           {entry.title}
           {entry.department && (
-            <CardDescription className="text-center text-neutral-500">{entry.department}</CardDescription> 
+            <CardDescription className="text-center text-neutral-500 text-md italic">{entry.department}</CardDescription> 
           )}
         </CardTitle>  
         <div className="mt-auto pt-4 flex justify-center">

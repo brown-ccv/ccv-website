@@ -1,4 +1,4 @@
-export interface Person {
+export interface Developer {
     name: string;
     github_user?: string;
 }
@@ -19,7 +19,7 @@ export interface PortfolioEntry {
   description: string;
   'project-type': string;
   starred: boolean;
-  people: Person[];
+  developers: Developer[]; 
   languages?: string[];
   tags?: string[];
   groups?: string[];

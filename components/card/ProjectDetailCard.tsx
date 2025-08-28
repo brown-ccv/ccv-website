@@ -3,7 +3,7 @@ import { PortfolioEntry } from "@/lib/portfolio-types"
 import { Badge } from "@/components/ui/Badge"
 import { FaGithub, FaUser } from "react-icons/fa"
 import { humanize } from "@/lib/utils"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
+import { Card, CardContent } from "@/components/ui/Card"
 
 interface ProjectDetailCardProps {
   entry: PortfolioEntry
@@ -12,21 +12,14 @@ interface ProjectDetailCardProps {
 export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
   return (
     <Card className="w-full lg:max-w-sm bg-white relative flex flex-col">
-      <CardHeader className="lg:pb-4 pb-2">
-        <div className="flex items-center justify-between">
-          <Badge value={entry['project-type']} autoColor={true}>
-            {entry['project-type']}
+      {/* Featured Badge */}
+      {entry.starred && (
+        <div className="absolute top-4 right-4 z-10">
+          <Badge color="sunglow" className="text-black text-md">
+            ⭐ Featured
           </Badge>
-          {entry.starred && (
-            <Badge color="sunglow" className="text-black">
-              ⭐ Featured
-            </Badge>
-          )}
         </div>
-        <CardTitle className="text-center text-2xl lg:text-3xl border-b border-gray-300 py-2 lg:py-4">
-          {entry.title}
-        </CardTitle>
-      </CardHeader>
+      )}
       
       <CardContent>
         {/* Languages */}
@@ -35,7 +28,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Languages</h3>
             <div className="flex flex-wrap gap-2">
               {entry.languages.map((lang) => (
-                <Badge key={lang} color="purple" className="bg-purple-900/20 text-purple-900 border border-purple-900">
+                <Badge key={lang} color="purple" className="text-md bg-purple-900/20 text-purple-900 border border-purple-900">
                   {lang}
                 </Badge>
               ))}
@@ -49,7 +42,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Tags</h3>
             <div className="flex flex-wrap gap-2">
               {entry.tags.map((tag) => (
-                <Badge key={tag} color="pink" className="bg-pink-500/20 text-pink-500 border border-pink-500">
+                <Badge key={tag} color="pink" className="text-md bg-pink-500/20 text-pink-500 border border-pink-500">
                   {tag}
                 </Badge>
               ))}
@@ -63,7 +56,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Groups</h3>
             <div className="flex flex-wrap gap-2">
               {entry.groups.map((group) => (
-                <Badge key={group} color="blue" className="bg-blue-500/20 text-blue-500 border border-blue-500">
+                <Badge key={group} color="blue" className="text-md bg-blue-500/20 text-blue-500 border border-blue-500">
                   {group}
                 </Badge>
               ))}
@@ -77,7 +70,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Department</h3>
             <div className="flex flex-wrap gap-2">
               {entry.department.map((department) => (
-                <Badge key={department} className="bg-red-university/20 text-red-university border border-red-university">
+                <Badge key={department} className="text-md bg-red-university/20 text-red-university border border-red-university">
                   {department}
                 </Badge>
               ))}
@@ -85,24 +78,24 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
           </div>
         )}
 
-        {/* People */}
+        {/* Developers */}
         <div>
-          <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">People</h3>
+          <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Developers</h3>
           <div className="space-y-2">
-            {entry.people.map((person) => (
-              <div key={person.name} className="flex items-center space-x-2">
-                <span className="text-neutral-700">{person.name}</span>
-                {person.github_user && (
+            {entry.developers.map((developer) => (
+              <div key={developer.name} className="flex items-center space-x-2">
+                {developer.github_user && (
                   <a 
-                    href={`https://github.com/${person.github_user}`}
+                    href={`https://github.com/${developer.github_user}`}
                     className="text-neutral-900 hover:text-sunglow-400 active:text-sunglow-400"
                     target="_blank"
                     rel="noopener noreferrer"
-                    title={`${person.name}'s GitHub Profile`}
+                    title={`${developer.name}'s GitHub Profile`}
                   >
-                    <FaGithub className="text-xl" />
+                    <FaGithub className="text-2xl" />
                   </a>
                 )}
+                <span className="text-neutral-700 text-lg">{developer.name}</span>
               </div>
             ))}
           </div>
@@ -115,15 +108,15 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <div className="space-y-2">
               {entry.investigators.map((investigator) => (
                 <div key={investigator.name} className="flex items-center space-x-2">
-                  <span className="text-neutral-700">{investigator.name}</span>
                   <a 
                     href={investigator.link}
                     className="text-neutral-900 hover:text-sunglow-400 active:text-sunglow-400"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaUser className="text-xl" />
+                    <FaUser className="text-2xl" />
                   </a>
+                  <span className="text-neutral-700 text-lg">{investigator.name}</span>
                 </div>
               ))}
             </div>
@@ -136,7 +129,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Resources</h3>
             <div className="flex flex-col gap-2">
               {entry.links.map((link, index) => (
-                <a key={index} href={link.url} className="text-keppel-500 hover:text-keppel-700 active:text-keppel-700 underline" target="_blank" rel="noopener noreferrer">
+                <a key={index} href={link.url} className="text-keppel-600 hover:text-keppel-400 active:text-keppel-400 underline text-lg" target="_blank" rel="noopener noreferrer">
                   {humanize(link.category)}
                 </a>
               ))}

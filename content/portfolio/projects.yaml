@@ -3,7 +3,7 @@ projects:
     image: /images/services/classroom/featured-carousel/julia.jpeg
     slug: automated-continuos-behavioral-monitoring
     description: Automated Continuous Behavioral Monitoring (ACBM) is a machine vision-based automated phenotyping method to detect and quantify the earliest-detected phenotypes in Tdp43Q331K knock-in mice. This method entails continuous video recording for 5 days that is then scored by a trained computer system. The system is a set of DL models deployed on google cloud platform using Kubeflow pipelines. Our goal is to establish sensitive, robust, objective, and open-source machine vision-based behavioral analysis tools that will be widely available to workers in the field.
-    project-type: software-engineering
+    project-type: Software Engineering
     starred: True
     groups:
       - serre-lab
@@ -13,7 +13,7 @@ projects:
       - neuro
       - gcp
       - pipelines
-    people:
+    developers:
       - name: Rohit Kakodkar
         github_user: rkakodkar
 
@@ -21,7 +21,7 @@ projects:
     image: /images/services/classroom/featured-carousel/linux.jpg
     slug: web-volume-viewer
     description: Volumetric data visualization on the web with compatibility on VR devices. It supports color mapping through a transfer function that maps specific data values to a scalar color. Developed using React-JS and A-Frame.
-    project-type: data-science
+    project-type: Data Science
     starred: False
     languages:
       - javascript
@@ -29,7 +29,7 @@ projects:
     tags:
       - vr
       - web
-    people:
+    developers:
       - name: Camilo Diaz Rodriguez
         github_user: kmilo9999
       - name: Robert Gemma
@@ -44,7 +44,7 @@ projects:
     image: /images/services/classroom/featured-carousel/matlab.jpeg
     slug: autonomous-research-assistant-autora
     description: Autonomous Research Assistant (AutoRA) is a framework for implementing machine learning tools which autonomously and iteratively generate 1) new theories to describe real-world data, and 2) experiments to invalidate those theories and seed a new cycle of theory-making. The experiments will be run online via crowd-sourcing platforms (MTurk, Prolific).
-    project-type: software-sustainability
+    project-type: Software Sustainability
     starred: True
     groups:
       - aer-group
@@ -55,7 +55,7 @@ projects:
       - machine learning
       - cognitive science
       - behavioral tasks
-    people:
+    developers:
       - name: John Gerrard Holland
         github_user: hollandjg
       - name: George Dang
@@ -70,7 +70,7 @@ projects:
     image: /images/services/classroom/featured-carousel/julia.jpeg
     slug: beehive
     description: "A hub for researchers to share and find behavioral tasks"
-    project-type: 3d-visualization
+    project-type: 3D Visualization
     starred: False
     languages:
       - javascript
@@ -82,7 +82,7 @@ projects:
       - openmind
       - frank-lab
       - nassar-lab
-    people:
+    developers:
       - name: Isabel Restrepo
         github_user: mirestrepo
       - name: Heather Yu
@@ -97,14 +97,14 @@ projects:
     image: /images/services/classroom/featured-carousel/julia.jpeg
     slug: drawonair-cave-painting
     description: A collaboration between Dr Daniel Keefe (University of Minnesota), Dr David Laidlaw (Brown University) and CCV to expand 3D DrawOnAir haptic functionality to VR systems
-    project-type: hardware-consultation
+    project-type: Hardware Consultation
     starred: True
     languages:
       - c++
     tags:
       - vr
       - desktop
-    people:
+    developers:
       - name: Camilo Diaz
         github_user: kmilo9999
     links:
@@ -115,14 +115,14 @@ projects:
     image: /images/services/classroom/featured-carousel/julia.jpeg
     slug: chamber-jl
     description: Julia package for simulating the eruption of a volcano using a model for the frequency of eruptions of upper crustal magma chambers based on Degruyter and Huber (2014).
-    project-type: software-engineering
+    project-type: Software Engineering
     starred: False
     languages:
       - julia
     tags:
       - model
       - volcanology
-    people:
+    developers:
       - name: Carlos Paniagua
         github_user: cpaniaguam
     groups:
@@ -135,7 +135,7 @@ projects:
     image: /images/services/classroom/featured-carousel/julia.jpeg
     slug: cognitive-research-registration-app
     description: "Web application that allows participants to register for studies, and for researchers to manage participant registrations"
-    project-type: software-engineering
+    project-type: Software Engineering
     starred: True
     languages:
       - javascript
@@ -147,7 +147,7 @@ projects:
       - frank-lab
       - shenhav-lab
       - oh-lab
-    people:
+    developers:
       - name: Isabel Restrepo
         github_user: mirestrepo
     links:
@@ -160,7 +160,7 @@ projects:
     image: /images/services/classroom/featured-carousel/julia.jpeg
     slug: honeycomb
     description: 'Template repository for reproducible psychophysiological tasks for clinic, laboratory, and home use.'
-    project-type: software-engineering
+    project-type: Software Engineering
     starred: False
     languages:
       - javascript
@@ -173,7 +173,7 @@ projects:
       - frank-lab
       - nassar-lab
       - brainstorm
-    people:
+    developers:
       - name: Robert Gemma
         github_user: RobertGemmaJr
       - name: Isabel Restrepo
@@ -190,14 +190,14 @@ projects:
     image: /images/services/classroom/featured-carousel/julia.jpeg
     slug: unsupervised-cell-segmentation-3d-image-datasets
     description: An application leveraging the SwinUNetR deep learning model to detect and annotate neuronal cells in 3D confocal microscopy images. It processes spinal cord sections stained through immunohistochemistry, using four excitation channels (405nm, 488nm, 594nm, and 647nm) to identify and quantify specific neuronal populations, including DAPI-labeled total neurons, Neurod2-expressing neurons, Robo3-expressing cells, and Zfhx3-marked subsets. A preprocessing pipeline applies contrast adjustment, Gaussian filtering, and intensity-based thresholding to generate a binary mask, isolating relevant structures while filtering out background noise. Post-processing compares segmented cells with the binary mask to ensure accurate quantification and identifies co-labeled neurons across multiple stains. With GPU acceleration, the system significantly improves inference speed, enabling efficient analysis of large-scale 3D microscopy datasets.
-    project-type: software-engineering
+    project-type: Software Engineering
     starred: True
     languages:
       - python
     tags:
       - deep learning
       - desktop
-    people:
+    developers:
       - name: Camilo Diaz
         github_user: kmilo9999
       - name: Paul Xu
@@ -210,7 +210,7 @@ projects:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: acadia-national-park-natural-resources
     description: "The goal of this project is to extract data-driven 'vital signs' from  data collected on bat populations at Acadia National Park since 2008 and transform data into standardized annual Data Packages for submission to the National Park Service Inventory & Monitoring Data Store. CCV helps to wrangle and clean the various datasets into data packages and to generate report templates for quick visualization of vital signs."
-    project-type: computational-biology
+    project-type: Computational Biology
     starred: True
     tags:
       - government
@@ -222,7 +222,7 @@ projects:
     investigators:
       - name: Bik Wheeler
         link: https://www.nps.gov/subjects/parkscience/author-bik-wheeler.htm
-    people:
+    developers:
       - name: Timothy Divoll
         github_user: tdivoll
     links:
@@ -235,7 +235,7 @@ projects:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: autonomous-empirical-research-group
     description: The Autonomous Empirical Research Group (AER) strives to enhance and accelerate scientific discovery by automating each step of the empirical research process, from constructing a scientific hypothesis to conducting novel experiments. CCV's collaboration focuses on developing a framework which the group can use to run simulations to test machine learning models and run experiments with real participants.
-    project-type: computational-biology
+    project-type: Computational Biology
     starred: True
     department:
       - clps
@@ -245,7 +245,7 @@ projects:
     investigators:
       - name: Sebastian Musslick
         link: https://musslick.github.io/AER_website/About.html
-    people:
+    developers:
       - name: John Gerrard Holland
         github_user: hollandjg
       - name: George Dang
@@ -259,7 +259,7 @@ projects:
     slug: division-biology-medicine-administrative
     id: division-biology-medicine
     description: "The goal of this project is to extract insights on diversity and inclusion efforts from employee surveys among Brown's Biomedical departments and affiliates. We transform survey data into scoring metrics and apply natural language processing to derive sentiments and topics from the typed responses"
-    project-type: computational-biology
+    project-type: Computational Biology
     starred: True
     department:
       - biomedical
@@ -270,7 +270,7 @@ projects:
     investigators:
       - name: Joseph Diaz, MD, MPH
         link: https://diversity.biomed.brown.edu/people/joseph-diaz-md-mph
-    people:
+    developers:
       - name: Timothy Divoll
         github_user: tdivoll
     links:

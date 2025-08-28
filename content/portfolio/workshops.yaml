@@ -3,7 +3,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/linux.jpg
     slug: intro-bash-programming
     description: This workshop will cover basic shell scripting in Bash - variables, loops, pipes and more so participants can learn to automate work with Bash.  We will assume participants have some familiarity with the linux command line. 
-    project-type: high-performance-computing
+    project-type: High-Performance Computing
     starred: False
     languages:
       - unix-cli
@@ -11,7 +11,7 @@ workshops:
     tags:
       - oscar
       - hpc
-    people:
+    developers:
       - name: Rohit Kakodkar
         github_user: rkakodkar
     links:
@@ -22,7 +22,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: ccv-bootcamp-2024
     description: A series of interactive online tutorials designed to introduce members of the Brown community to some of the research computing resources available to them. The tutorials will provide participants with the practical knowledge necessary to make effective use of Oscar, Brown's research computing cluster, in their own research, while introducing users to the range of research computing resources available at Brown.
-    project-type: artificial-intelligence
+    project-type: Artificial Intelligence
     starred: True
     groups:
       - hpc
@@ -38,7 +38,7 @@ workshops:
       - oscar
       - hpc
       - visualization
-    people:
+    developers:
       - name: Paul Hall
         github_user: phall-brown
       - name: Rain Fan
@@ -81,7 +81,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: building-software-on-oscar
     description: Learn how to build and install software packages on Oscar. Topics covered include make, cmake, compiler options on Oscar, pip, building python packages from source, and python virtual environments.
-    project-type: high-performance-computing
+    project-type: High-Performance Computing
     starred: False
     languages:
       - unix-cli
@@ -92,7 +92,7 @@ workshops:
     tags:
       - oscar
       - hpc
-    people:
+    developers:
       - name: Paul Hall
         github_user: phall-brown
     links:
@@ -103,7 +103,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: working-on-command-line
     description: A practical introduction to the Linux operating system. Topics covered include basic Linux commands for maneuvering within the file system and manipulating files, Unix shells, and working with environment variables and paths.
-    project-type: high-performance-computing
+    project-type: High-Performance Computing
     starred: True
     groups:
       - hpc
@@ -113,7 +113,7 @@ workshops:
     tags:
       - oscar
       - hpc
-    people:
+    developers:
       - name: Paul Hall
         github_user: phall-brown
     links:
@@ -124,7 +124,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: file-transfer-basics
     description: An overview of methods for moving files onto and off of Oscar. Topics covered include Linux command line tools for file transfer (scp, rsync, sftp), GUI-based file transfer applications, mounting Oscar's filesystem using CIFS, and using Globus on Oscar. 
-    project-type: high-performance-computing
+    project-type: High-Performance Computing
     starred: False
     groups:
       - hpc
@@ -134,7 +134,7 @@ workshops:
     tags:
       - oscar
       - hpc
-    people:
+    developers:
       - name: Paul Hall
         github_user: phall-brown
     links:
@@ -145,7 +145,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: cloud-computing-with-gcp
     description: This workshop provides an introduction to Google Cloud Platform. It provides familiarity with Google Cloud Console and the basics of interacting and using Google's Compute Engine
-    project-type: high-performance-computing
+    project-type: High-Performance Computing
     starred: True
     groups:
       - dscov
@@ -154,7 +154,7 @@ workshops:
     tags:
       - cloud computing
       - gcp
-    people:
+    developers:
       - name: Isabel Restrepo
         github_user: mirestrepo
     links:
@@ -169,7 +169,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: version-control-with-git
     description: A practical introduction to version control for software management using Git. Topics covered include creating a repository, checking the status of a repository, committing changes, viewing changes, reverting to older versions of files, and setting up a remote repository. 
-    project-type: high-performance-computing
+    project-type: High-Performance Computing
     starred: False
     groups:
       - hpc
@@ -179,7 +179,7 @@ workshops:
     tags:
       - oscar
       - hpc
-    people:
+    developers:
       - name: Paul Hall
         github_user: phall-brown
     links:
@@ -190,7 +190,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: getting-started-with-honeycomb
     description: Step by step guide on creating new behavioral/psychophysiological tasks for clinic, laboratory, and home using a template repository called Honeycomb, which CCV has developed in collaboration with the Borton, Frank and Nassar labs. The first video covers installing dependencies and basic git workflows, and the second covers Firebase set up. The third video corresponds to a follow up workshop organized by the Nassar lab and lead by Ben Heasly on Converting a jsPsych task with Honeycomb.
-    project-type: high-performance-computing
+    project-type: High-Performance Computing
     starred: False
     groups:
       - gsdc
@@ -200,7 +200,7 @@ workshops:
     tags:
       - honeycomb
       - behavioral tasks
-    people:
+    developers:
       - name: Robert Gemma
         github_user: RobertGemmaJr
       - name: Josh Lu
@@ -223,7 +223,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: coding-collaboration-git-github-pull-requests
     description: "A hands-on workshop on version control systems: what they are, why every coder needs them, and how to use git for solo and collaborative coding."
-    project-type: high-performance-computing
+    project-type: High-Performance Computing
     starred: False
     groups:
       - dscov
@@ -233,7 +233,7 @@ workshops:
     tags:
       - collaboration
       - oscar
-    people:
+    developers:
       - name: John Gerrard Holland
         github_user: hollandjg
     links:
@@ -246,7 +246,7 @@ workshops:
     image: /images/services/classroom/featured-carousel/gpu.jpeg
     slug: introduction-to-python
     description: In this hands-on workshop, we explored Python, a popular user-friendly programming language, and discussed general programming principles.
-    project-type: high-performance-computing
+    project-type: High-Performance Computing
     starred: False
     groups:
       - dscov
@@ -254,7 +254,7 @@ workshops:
       - python
     tags:
       - visualization
-    people:
+    developers:
       - name: Ellen Duong
         github_user: eldu
     links:
