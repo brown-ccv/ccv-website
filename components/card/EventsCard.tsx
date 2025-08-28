@@ -2,7 +2,6 @@ import { StyledCard } from "@/components/card/StyledCard"
 import React from "react"
 import { DataProps } from "@/components/EventSection"
 import Icon from "@/components/ui/RenderIcon"
-import ButtonLink from "@/components/button/ButtonLink"
 
 export const EventsCard: React.FC<DataProps> = ({
   date_time,
@@ -28,14 +27,14 @@ export const EventsCard: React.FC<DataProps> = ({
           <Icon iconName="FaClock" />
           {date_time}
         </div>
-        <ButtonLink
-          href={url}
-          external={true}
+        <a
           className="flex gap-2 text-xl font-bold leading-6 text-blue-500 hover:underline md:text-2xl"
-          isCalendarEvent={true}
+          href={url}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           View Event <Icon iconName="FaExternalLinkAlt" size={16} />
-        </ButtonLink>
+        </a>
         {description_long && <p>{descriptionLong}</p>}
       </div>
     </StyledCard>
