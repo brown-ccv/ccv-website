@@ -96,7 +96,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             setSelectedDate(cloneDate)
           }}
         >
-          <span className="text-center text-lg font-semibold text-neutral-900">
+          <span className="text-center text-lg font-semibold text-slate-900">
             {day}
             <span className="mx-2 items-center justify-center">
               {format(thisDate, "d")}
