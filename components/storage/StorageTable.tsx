@@ -186,7 +186,7 @@ const Table: React.FC<TableProps> = ({
           id: service.name,
           header: () => (
             <Link
-              href={`/services/storage#${service.name}`}
+              href={`/services/storage#${service.id}`}
               className={cn(
                 "flex flex-col items-start justify-start px-2 py-2 text-center",
                 columnClass
@@ -211,7 +211,7 @@ const Table: React.FC<TableProps> = ({
                     cellContentClasses
                   )}
                 >
-                  <span className="text-neutral-400 text-3xl">-</span>
+                  <span className="text-3xl text-neutral-400">-</span>
                 </div>
               )
             }

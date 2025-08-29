@@ -67,7 +67,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="text-neutral-800 flex w-full flex-col bg-gradient-to-b from-gradient-light to-gradient-dark sm:items-center">
+    <footer className="flex w-full flex-col bg-gradient-to-b from-gradient-light to-gradient-dark text-neutral-800 sm:items-center">
       <div className="w-full px-6 py-8 sm:max-w-3xl sm:px-8 md:mt-8 lg:max-w-5xl">
         <div className="mb-8 flex flex-col space-y-2 sm:items-center md:mb-16">
           <div className="text-xs uppercase tracking-widest text-cream">
@@ -75,23 +75,29 @@ const Footer = () => {
           </div>
           <div className="flex flex-col space-y-2 sm:flex-row sm:space-x-8 sm:space-y-0">
             <div className="font-serif text-md text-white sm:text-lg xl:text-xl">
-              <MdLocationPin className="mr-2 inline-block text-stone-400" />
+              <MdLocationPin
+                aria-label="Map Pin"
+                className="mr-2 inline-block text-stone-400"
+              />
               Providence, RI 02912
             </div>
             <div className="font-serif text-md text-white sm:text-lg xl:text-xl">
-              <MdOutlinePhoneInTalk className="mr-2 inline-block text-stone-400" />
+              <MdOutlinePhoneInTalk
+                aria-label="Phone Icon"
+                className="mr-2 inline-block text-stone-400"
+              />
               401-863-1000
             </div>
           </div>
         </div>
 
-        <div className="flex w-full flex-col text-sunglow-400">
+        <nav className="flex w-full flex-col text-sunglow-400">
           {/* Quick Navigation */}
           <FooterSection links={quickNavLinks} />
 
           {/* Footer Navigation */}
           <FooterSection links={footerNavLinks} className="lg:border-b-0" />
-        </div>
+        </nav>
 
         <div className="flex w-full sm:justify-center">
           <ButtonLink
@@ -108,7 +114,7 @@ const Footer = () => {
       <div className="flex w-full flex-col items-center justify-between bg-black px-6 py-4 font-serif text-md text-cream sm:flex-row sm:px-8 md:px-12 md:text-lg lg:px-32 xl:px-40">
         <div className="flex flex-col items-center gap-4 sm:items-start">
           <CCVLogo />
-          <div>&copy; Brown University</div>
+          <p>&copy; Brown University</p>
         </div>
         <div className="scale-75 sm:scale-100">
           <CarbonBadge className="scale-75 sm:scale-100" />

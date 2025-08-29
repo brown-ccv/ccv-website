@@ -14,15 +14,15 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
         href="https://it.brown.edu"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-shrink-0 lg:border-r lg:border-neutral-900 lg:p-4"
+        className="flex-shrink-0 lg:border-r lg:border-slate-900 lg:p-4"
       >
         <BrownLogo width={150} className="sm:w-[200px]" />
         <span className="sr-only">OIT Home</span>
       </a>
 
-      <h1 className="hidden pl-6 text-3xl font-semibold lg:flex lg:flex-1 lg:justify-start">
+      <p className="hidden pl-6 text-3xl font-semibold lg:flex lg:flex-1 lg:justify-start">
         Center for Computation and Visualization
-      </h1>
+      </p>
 
       <ButtonLink
         href="mailto:ccv-support@brown.edu"

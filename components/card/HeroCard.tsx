@@ -27,9 +27,9 @@ export const HeroCard: React.FC = () => {
         {heroCards.map((card, index) => (
           <div key={index} className="relative">
             <CCVBars />
-            <h3 className="py-2 text-xl font-semibold leading-tight tracking-tight">
+            <h2 className="py-2 text-xl font-semibold leading-tight tracking-tight">
               {card.title}
-            </h3>
+            </h2>
             <p className="text-lg">{card.description}</p>
           </div>
         ))}
