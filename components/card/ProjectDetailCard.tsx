@@ -11,7 +11,7 @@ interface ProjectDetailCardProps {
 
 export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
   return (
-    <Card className="w-full lg:max-w-sm bg-white relative flex flex-col">
+    <Card className="w-full bg-white relative flex flex-col p-6">
       {/* Featured Badge */}
       {entry.starred && (
         <div className="absolute top-4 right-4 z-10">
