@@ -190,6 +190,7 @@ module.exports = {
       gray: colors.gray,
       zinc: colors.zinc,
       stone: colors.stone,
+      neutral: colors.neutral,
       ruby: "#450a0a",
       orange: colors.orange,
       amber: colors.amber,
@@ -217,18 +218,6 @@ module.exports = {
       },
       red: {
         university: "#C00404",
-      },
-      neutral: {
-        900: "#242424",
-        800: "#262626",
-        700: "#404040",
-        600: "#525252",
-        500: "#737373",
-        400: "#a3a3a3",
-        300: "#d4d4d4",
-        200: "#e5e5e5",
-        100: "#f5f5f5",
-        50: "#fafafa",
       },
       blue: {
         900: "#2c3e50",

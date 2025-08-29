@@ -26,20 +26,20 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
 }) => {
   return (
     <div className="flex flex-col">
-      <div className="flex flex-col items-center justify-between lg:flex-row  gap-4">
+      <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
         {/*Project Section*/}
         <div>
           <h3>{title}</h3>
           <div className="flex items-center gap-4">
-            <Icon iconName="FaUser" className="w-6 h-6" />
-            <p className="text-lg lg:text-xl leading-snug font-semibold">
+            <Icon iconName="FaUser" className="h-6 w-6" />
+            <p className="text-lg font-semibold leading-snug lg:text-xl">
               {group}
             </p>
           </div>
           {/* Time to Complete */}
           <div className="flex items-center gap-4">
-            <Icon iconName="FaClock" className="w-6 h-6 text-keppel-700" />
-            <p className="text-lg lg:text-lg font-semibold">{time}</p>
+            <Icon iconName="FaClock" className="h-6 w-6 text-keppel-700" />
+            <p className="text-lg font-semibold lg:text-lg">{time}</p>
           </div>
           <p>{description}</p>
           {link && (
@@ -48,7 +48,7 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
         </div>
         {/*Image*/}
         {image && image.trim() !== "" && (
-          <div className="relative w-full flex justify-end">
+          <div className="relative flex w-full justify-end">
             <Image
               height={600}
               width={600}

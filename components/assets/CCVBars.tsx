@@ -7,7 +7,7 @@ export default function CCVBars({ className }: { className?: string }) {
     <Image
       className={cn("my-4 py-4", className)}
       src={CCVBarsImage}
-      alt="CCVBars"
+      alt=""
       width={100}
       height={50}
     />
