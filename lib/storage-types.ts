@@ -122,12 +122,3 @@ export interface FormQuestions {
 export interface SelectedAnswers {
   [key: string]: string
 }
-
-// Top-level structure of content file
-export interface PageContentData {
-  title: string
-  description: string
-  icon?: string
-  links?: ServiceLink[]
-  storage_tool_header: string
-}

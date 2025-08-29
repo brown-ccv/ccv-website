@@ -1,16 +1,13 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
-import { readContentFile } from "@/lib/content-utils"
+import { getMDXMetadata } from "@/lib/mdx-utils"
 import StorageTool from "@/components/storage/StorageTool"
-import { PageContentData, SelectedAnswers } from "@/lib/storage-types"
+import { SelectedAnswers } from "@/lib/storage-types"
 import services from "@/content/services/storage-features.json"
 import questions from "@/content/services/storage-questions.json"
 
 export default async function CompareStorageOptions() {
-  const rawPageContent = await readContentFile(
-    "content/services/storage-tool.yaml"
-  )
-  const pageContent: PageContentData = rawPageContent.data as PageContentData
+  const metadata = getMDXMetadata("content/services/storage-tool.mdx")
   let initialSelectedAnswers: SelectedAnswers = {}
   questions.map((question: any, index: number) => {
     initialSelectedAnswers[question.id] = question.default_answer
@@ -18,7 +15,7 @@ export default async function CompareStorageOptions() {
 
   return (
     <>
-      <Hero title={pageContent.title} description={pageContent.description} />
+      <Hero title={metadata.title} description={metadata.description} />
 
       <StorageTool
         questions={questions}

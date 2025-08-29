@@ -98,20 +98,20 @@ export const getDisabledState = (
     if (currentSelectedAnswers.hasOwnProperty(id)) {
       const selectedAnswerValue = currentSelectedAnswers[id]
 
-      const yamlQuestion = questions?.find((question) => question.id === id)
+      const matchingQuestion = questions?.find((question) => question.id === id)
 
-      if (!yamlQuestion) {
+      if (!matchingQuestion) {
         continue // Skip this filter if question config is missing
       }
-      const selectedYAMLAnswerOption = yamlQuestion.options.find(
+      const selectedAnswerOption = matchingQuestion.options.find(
         (answer) => answer.label === selectedAnswerValue
       )
-      // selectedYAMLAnswerOption: { answer: 'No', matching_feature_values: [ true, false, 'partial' ] }
-      if (!selectedYAMLAnswerOption) {
+      // selectedAnswerOption: { answer: 'No', matching_feature_values: [ true, false, 'partial' ] }
+      if (!selectedAnswerOption) {
         continue // Skip this filter if selected answer option is missing
       }
 
-      const allowedCategoryClasses = selectedYAMLAnswerOption.value
+      const allowedCategoryClasses = selectedAnswerOption.value
 
       const serviceFeature = service[id]
 
