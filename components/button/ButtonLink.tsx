@@ -9,6 +9,7 @@ import { cn } from "@/lib/utils"
 type ButtonLinkProps = React.PropsWithChildren<{
   external?: boolean
   className?: string
+  isCalendarEvent?: boolean
 }> &
   Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href"> &
   Omit<LinkProps, "href"> & {
@@ -36,6 +37,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   variant = "unstyled",
   children,
   className = "",
+  isCalendarEvent = false,
   ...props
 }) => {
   let resolvedIconPosition = iconPosition
@@ -43,10 +45,6 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   if (!resolvedIconPosition && rightIcon) resolvedIconPosition = "right"
 
   const resolvedSize = iconOnly && !size ? "icon" : size
-
-  // Check if this is a calendar event (has specific calendar styling)
-  const isCalendarEvent =
-    className.includes("bg-sunglow-300") || className.includes("bg-sunglow-200")
 
   if (external) {
     return (
