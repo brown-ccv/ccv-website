@@ -15,16 +15,16 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   iconName,
   isDisabled = false,
   title,
+  className = "max-w-sm",
   children,
-  className,
 }) => {
   const IconComponent = iconName ? Icon : null
   return (
     <Card
       className={cn(
-        "w-full bg-white px-6 md:max-w-md",
-        isDisabled ? "opacity-30 grayscale" : "",
-        className
+        className,
+        "w-full bg-white",
+        isDisabled ? "opacity-30 grayscale" : ""
       )}
     >
       <CardHeader>

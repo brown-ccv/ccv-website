@@ -1,0 +1,180 @@
+[
+  {
+    "question": "Security Level",
+    "link": {
+      "label": "Brown Data Risk Classification",
+      "value": "https://it.brown.edu/computing-policies/risk-classifications"
+    },
+    "id": "security",
+    "default_answer": "No Risk",
+    "options": [
+      {
+        "label": "No Risk",
+        "value": [0, 1, 2, 3]
+      },
+      {
+        "label": "Level 1",
+        "value": [1, 2, 3]
+      },
+      {
+        "label": "Level 2",
+        "value": [2, 3]
+      },
+      {
+        "label": "Level 3",
+        "value": [3]
+      }
+    ]
+  },
+  {
+    "question": "Auto-generated DOI",
+    "link": {
+      "label": "Brown University Library",
+      "value": "https://repository.library.brown.edu/studio/doi"
+    },
+    "id": "DOI_provided",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [true]
+      },
+      {
+        "label": "No",
+        "value": [true, false]
+      }
+    ]
+  },
+  {
+    "question": "Data Snapshots",
+    "information": [
+      "Point-in-time copies of your data that allow you to restore files to previous versions if they are accidentally deleted or corrupted."
+    ],
+    "id": "data_protection_snapshots",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [true]
+      },
+      {
+        "label": "No",
+        "value": [false, true]
+      },
+      {
+        "label": "Not sure",
+        "value": [true, false]
+      }
+    ]
+  },
+  {
+    "question": "Data Replication",
+    "information": [
+      "Creates multiple copies of your data across different storage locations to protect against hardware failures and ensure high availability."
+    ],
+    "id": "data_protection_replication",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [true]
+      },
+      {
+        "label": "No",
+        "value": [false, true]
+      },
+      {
+        "label": "Not sure",
+        "value": [true, false]
+      }
+    ]
+  },
+  {
+    "question": "Canvas Integration",
+    "id": "canvas_integration",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [true]
+      },
+      {
+        "label": "No",
+        "value": [true, false]
+      }
+    ]
+  },
+  {
+    "question": "Data Size",
+    "id": "storage",
+    "default_answer": "Less than 1 TB",
+    "options": [
+      {
+        "label": "Less than 1 TB",
+        "value": ["unlimited", "1 TB", "1 TB +", "2 TB +"]
+      },
+      {
+        "label": "Greater than 1 TB",
+        "value": ["unlimited", "1 TB +", "2 TB +"]
+      }
+    ]
+  },
+  {
+    "question": "Accessible from Oscar",
+    "id": "access_from_oscar",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [true, "partial"]
+      },
+      {
+        "label": "No",
+        "value": [true, false, "partial"]
+      }
+    ]
+  },
+  {
+    "question": "Shareable Link",
+    "id": "shareable_link",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [true]
+      },
+      {
+        "label": "No",
+        "value": [true, false]
+      }
+    ]
+  },
+  {
+    "question": "Access Frequency",
+    "information": [
+      "Hot: accessed frequently for active model fitting/analysis",
+      "Warm: accessed infrequently for reading/writing",
+      "Cold: effectively never accessed (aka \"archival storage\" for funding obligations for completed analyses)"
+    ],
+    "id": "storage_warmth",
+    "default_answer": "Any",
+    "options": [
+      {
+        "label": "Hot",
+        "value": ["hot"]
+      },
+      {
+        "label": "Warm",
+        "value": ["warm"]
+      },
+      {
+        "label": "Cold",
+        "value": ["cold"]
+      },
+      {
+        "label": "Any",
+        "value": ["hot", "warm", "cold"]
+      }
+    ]
+  }
+]
