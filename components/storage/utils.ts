@@ -1,4 +1,8 @@
-import {FormQuestions, SelectedAnswers, ServiceConfig,} from "@/lib/storage-types"
+import {
+  FormQuestions,
+  SelectedAnswers,
+  ServiceConfig,
+} from "@/lib/storage-types"
 
 /**
  * Determines whether text should be white or black based on the background color

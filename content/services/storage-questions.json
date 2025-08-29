@@ -10,33 +10,19 @@
     "options": [
       {
         "label": "No Risk",
-        "value": [
-          0,
-          1,
-          2,
-          3
-        ]
+        "value": [0, 1, 2, 3]
       },
       {
         "label": "Level 1",
-        "value": [
-          1,
-          2,
-          3
-        ]
+        "value": [1, 2, 3]
       },
       {
         "label": "Level 2",
-        "value": [
-          2,
-          3
-        ]
+        "value": [2, 3]
       },
       {
         "label": "Level 3",
-        "value": [
-          3
-        ]
+        "value": [3]
       }
     ]
   },
@@ -51,16 +37,11 @@
     "options": [
       {
         "label": "Yes",
-        "value": [
-          true
-        ]
+        "value": [true]
       },
       {
         "label": "No",
-        "value": [
-          true,
-          false
-        ]
+        "value": [true, false]
       }
     ]
   },
@@ -74,23 +55,15 @@
     "options": [
       {
         "label": "Yes",
-        "value": [
-          true
-        ]
+        "value": [true]
       },
       {
         "label": "No",
-        "value": [
-          false,
-          true
-        ]
+        "value": [false, true]
       },
       {
         "label": "Not sure",
-        "value": [
-          true,
-          false
-        ]
+        "value": [true, false]
       }
     ]
   },
@@ -104,23 +77,15 @@
     "options": [
       {
         "label": "Yes",
-        "value": [
-          true
-        ]
+        "value": [true]
       },
       {
         "label": "No",
-        "value": [
-          false,
-          true
-        ]
+        "value": [false, true]
       },
       {
         "label": "Not sure",
-        "value": [
-          true,
-          false
-        ]
+        "value": [true, false]
       }
     ]
   },
@@ -131,16 +96,11 @@
     "options": [
       {
         "label": "Yes",
-        "value": [
-          true
-        ]
+        "value": [true]
       },
       {
         "label": "No",
-        "value": [
-          true,
-          false
-        ]
+        "value": [true, false]
       }
     ]
   },
@@ -151,20 +111,11 @@
     "options": [
       {
         "label": "Less than 1 TB",
-        "value": [
-          "unlimited",
-          "1 TB",
-          "1 TB +",
-          "2 TB +"
-        ]
+        "value": ["unlimited", "1 TB", "1 TB +", "2 TB +"]
       },
       {
         "label": "Greater than 1 TB",
-        "value": [
-          "unlimited",
-          "1 TB +",
-          "2 TB +"
-        ]
+        "value": ["unlimited", "1 TB +", "2 TB +"]
       }
     ]
   },
@@ -175,18 +126,11 @@
     "options": [
       {
         "label": "Yes",
-        "value": [
-          true,
-          "partial"
-        ]
+        "value": [true, "partial"]
       },
       {
         "label": "No",
-        "value": [
-          true,
-          false,
-          "partial"
-        ]
+        "value": [true, false, "partial"]
       }
     ]
   },
@@ -197,16 +141,11 @@
     "options": [
       {
         "label": "Yes",
-        "value": [
-          true
-        ]
+        "value": [true]
       },
       {
         "label": "No",
-        "value": [
-          true,
-          false
-        ]
+        "value": [true, false]
       }
     ]
   },
@@ -222,29 +161,19 @@
     "options": [
       {
         "label": "Hot",
-        "value": [
-          "hot"
-        ]
+        "value": ["hot"]
       },
       {
         "label": "Warm",
-        "value": [
-          "warm"
-        ]
+        "value": ["warm"]
       },
       {
         "label": "Cold",
-        "value": [
-          "cold"
-        ]
+        "value": ["cold"]
       },
       {
         "label": "Any",
-        "value": [
-          "hot",
-          "warm",
-          "cold"
-        ]
+        "value": ["hot", "warm", "cold"]
       }
     ]
   }
