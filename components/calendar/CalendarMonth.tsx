@@ -124,6 +124,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                   href={event.url}
                   external={true}
                   className="flex gap-1 text-blue-500"
+                  isCalendarEvent={true}
                 >
                   <p className="font-semibold hover:underline">{event.title}</p>
                   <ArrowTopRightOnSquareIcon
@@ -160,6 +161,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               href={event.url}
               external={true}
               className="flex gap-1 text-blue-500"
+              isCalendarEvent={true}
             >
               <p className="font-semibold hover:underline">{event.title}</p>
               <ArrowTopRightOnSquareIcon
