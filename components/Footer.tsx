@@ -67,7 +67,7 @@ const Footer = () => {
   ]
 
   return (
-    <footer className="text-neutral-800 flex w-full flex-col bg-gradient-to-b from-gradient-light to-gradient-dark sm:items-center">
+    <footer className="flex w-full flex-col bg-gradient-to-b from-gradient-light to-gradient-dark text-neutral-800 sm:items-center">
       <div className="w-full px-6 py-8 sm:max-w-3xl sm:px-8 md:mt-8 lg:max-w-5xl">
         <div className="mb-8 flex flex-col space-y-2 sm:items-center md:mb-16">
           <div className="text-xs uppercase tracking-widest text-cream">

@@ -211,7 +211,7 @@ const Table: React.FC<TableProps> = ({
                     cellContentClasses
                   )}
                 >
-                  <span className="text-neutral-400 text-3xl">-</span>
+                  <span className="text-3xl text-neutral-400">-</span>
                 </div>
               )
             }
