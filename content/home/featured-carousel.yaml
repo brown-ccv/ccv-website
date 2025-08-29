@@ -21,7 +21,7 @@ carousel:
       - name: "Brown School of Public Health"
         organization: "People, Place and Health Collective"
         pi: ["Brandon Marshall"]
-        pm: "Max Krieger"
+        pm: "Maxwell Krieger"
         icon: "FaUser"
     buttons:
       - text: "Provident Website"
