@@ -143,21 +143,15 @@ const routes: NavSection[] = [
         name: "",
         routes: [
           {
-            name: "Collaborations",
-            href: "/portfolio/collaborations",
-            description: "*Coming Soon*",
-            icon: FaHandshake,
-          },
-          {
-            name: "Software",
-            href: "/portfolio/software",
-            description: "*Coming Soon*",
+            name: "Projects",
+            href: "/portfolio/projects",
+            description: "",
             icon: FaCode,
           },
           {
-            name: "Workshops and Talks",
-            href: "/portfolio/workshops-and-talks",
-            description: "*Coming Soon*",
+            name: "Workshops",
+            href: "/portfolio/workshops",
+            description: "",
             icon: FaChalkboardTeacher,
           },
           {
