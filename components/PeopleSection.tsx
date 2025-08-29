@@ -1,5 +1,5 @@
 import React from "react"
-import { PeopleCard } from "@/components/ui/PeopleCard"
+import { PeopleCard } from "@/components/card/PeopleCard"
 import { PeopleTypes, PageContentData } from "@/lib/about-types"
 import { readContentFile } from "@/lib/content-utils"
 import path from "path"
@@ -46,13 +46,13 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
 
   return (
     <div className="flex justify-center py-4 lg:py-10">
-      <div className="flex flex-wrap justify-center gap-y-6 xs:w-1/2">
+      <div className="xs:w-1/2 flex flex-wrap justify-center gap-y-6">
         {pageContent?.people &&
           (await Promise.all(
             pageContent.people.map(async (person: PeopleTypes) => {
               const { main, hover } = await getImagePaths(person.image)
               return (
-                <div key={person.name}>
+                <React.Fragment key={person.name}>
                   <PeopleCard
                     imagePath={main}
                     hoverImagePath={hover}
@@ -60,7 +60,7 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
                     title={person.title}
                     personDetails={person}
                   />
-                </div>
+                </React.Fragment>
               )
             })
           ))}

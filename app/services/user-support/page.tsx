@@ -1,23 +1,18 @@
 import { Hero } from "@/components/Hero"
-import { ContentSection } from "@/components/ui/ContentSection"
-import PageContent from "@/content/services/user-support.mdx"
+import UserSupportContent from "@/content/services/user-support.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
-export default function Page() {
+export default function UserSupport() {
   const metadata = getMDXMetadata("content/services/user-support.mdx")
 
   return (
-    <div>
+    <>
       <Hero
-        image={"/images/services/user-support.jpeg"}
+        image={metadata.image}
         title={metadata.title}
         description={metadata.description}
       />
-      <ContentSection>
-        <div className="prose prose-lg text-xl max-w-none">
-          <PageContent />
-        </div>
-      </ContentSection>
-    </div>
+      <UserSupportContent />
+    </>
   )
 }

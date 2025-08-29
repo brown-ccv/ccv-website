@@ -4,8 +4,7 @@ import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 import Link from "next/link"
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/button/Button"
 import { ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
 import {
   ServiceConfig,
@@ -23,7 +22,7 @@ import {
   useReactTable,
   ColumnDef,
 } from "@tanstack/react-table"
-import StorageServiceCard from "@/components/storage/StorageServiceCard"
+import StorageServiceCard from "@/components/card/StorageServiceCard"
 import {
   getAllUniqueFeatureNames,
   sortFeatures,
@@ -152,7 +151,7 @@ const Table: React.FC<TableProps> = ({
       {
         id: "featureName",
         header: () => (
-          <div className="text-left px-[4vw] sm:px-[3vw] py-2 font-semibold text-neutral-700">
+          <div className="px-[4vw] py-2 text-left font-semibold text-neutral-700 sm:px-[3vw]">
             Feature
           </div>
         ),
@@ -160,9 +159,9 @@ const Table: React.FC<TableProps> = ({
           const featureName = humanize(info.getValue())
           const IconComponent = featureIcons[info.getValue().toLowerCase()]
           return (
-            <div className="flex items-center gap-2 px-[4vw] sm:px-[3vw] py-2 font-medium text-neutral-900 min-h-[80px] uppercase tracking-wider">
+            <div className="flex min-h-[80px] items-center gap-2 px-[4vw] py-2 font-medium uppercase tracking-wider text-neutral-900 sm:px-[3vw]">
               {IconComponent ? (
-                <IconComponent className="w-6 h-6 text-brown-700 flex-shrink-0" />
+                <IconComponent className="text-brown-700 h-6 w-6 flex-shrink-0" />
               ) : null}
               <span>{featureName}</span>
             </div>
@@ -189,7 +188,7 @@ const Table: React.FC<TableProps> = ({
             <Link
               href={`/services/storage#${service.name}`}
               className={cn(
-                "flex flex-col items-start justify-start text-center px-2 py-2",
+                "flex flex-col items-start justify-start px-2 py-2 text-center",
                 columnClass
               )}
             >
@@ -208,7 +207,7 @@ const Table: React.FC<TableProps> = ({
               return (
                 <div
                   className={cn(
-                    "flex flex-col items-center justify-center p-2 min-h-[80px]",
+                    "flex min-h-[80px] flex-col items-center justify-center p-2",
                     cellContentClasses
                   )}
                 >
@@ -225,14 +224,14 @@ const Table: React.FC<TableProps> = ({
             return (
               <div
                 className={cn(
-                  "flex flex-col items-center justify-center p-2 min-h-[80px]",
+                  "flex min-h-[80px] flex-col items-center justify-center p-2",
                   cellContentClasses
                 )}
               >
-                <div className={cn("flex gap-2 font-semibold text-xl")}>
+                <div className={cn("flex gap-2 text-xl font-semibold")}>
                   {IconComponent ? (
                     <IconComponent
-                      className={cn("w-6 h-6 flex-shrink-0", valueColor)}
+                      className={cn("h-6 w-6 flex-shrink-0", valueColor)}
                     />
                   ) : null}
                   <span>
@@ -263,7 +262,7 @@ const Table: React.FC<TableProps> = ({
                   </span>
                 </div>
                 {feature?.notes && (
-                  <div className="text-sm text-neutral-500 mt-1 max-w-[300px] text-center tracking-tight">
+                  <div className="mt-1 max-w-[300px] text-center text-sm tracking-tight text-neutral-500">
                     <Markdown
                       rehypePlugins={[rehypeRaw]}
                       remarkPlugins={[remarkGfm]}
@@ -308,9 +307,9 @@ const Table: React.FC<TableProps> = ({
   return (
     <>
       {/* Desktop View - Table */}
-      <div className="hidden lg:block w-full overflow-x-scroll rounded-2xl bg-gradient-to-br from-white to-neutral-50/30 border border-neutral-300">
+      <div className="hidden w-full overflow-x-scroll rounded-2xl border border-neutral-300 bg-gradient-to-br from-white to-neutral-50/30 lg:block">
         <div className="relative" ref={tableContainerRef}>
-          <div className="flex justify-end p-2 border-b border-neutral-200 bg-white sticky top-0 z-40">
+          <div className="sticky top-0 z-40 flex justify-end border-b border-neutral-200 bg-white p-2">
             <Button
               onClick={() => scrollTable("left")}
               aria-label="Scroll left"
@@ -331,27 +330,27 @@ const Table: React.FC<TableProps> = ({
         </div>
         <div
           ref={tableContainerRef}
-          className="overflow-x-scroll overflow-y-auto h-[calc(100vh-200px)]"
+          className="h-[calc(100vh-200px)] overflow-y-auto overflow-x-scroll"
         >
           <table
             className="min-w-full border-separate"
             style={{ borderSpacing: 0 }}
           >
-            <thead className="bg-white sticky top-0 z-20 border-b border-neutral-200">
+            <thead className="sticky top-0 z-20 border-b border-neutral-200 bg-white">
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr key={headerGroup.id}>
                   {headerGroup.headers.map((header, index) => (
                     <th
                       key={header.id}
                       className={cn(
-                        "px-2 py-3 text-left text-md font-medium text-neutral-500 uppercase tracking-wider min-w-[175px]",
+                        "min-w-[175px] px-2 py-3 text-left text-md font-medium uppercase tracking-wider text-neutral-500",
                         header.column.getCanSort()
                           ? "cursor-pointer select-none"
                           : "",
                         index < headerGroup.headers.length - 1 &&
                           "border border-neutral-200",
-                        "sticky top-0 bg-white border-b border-neutral-200",
-                        header.id === "featureName" ? "z-30 left-0" : "z-20"
+                        "sticky top-0 border-b border-neutral-200 bg-white",
+                        header.id === "featureName" ? "left-0 z-30" : "z-20"
                       )}
                     >
                       {flexRender(
@@ -371,7 +370,7 @@ const Table: React.FC<TableProps> = ({
                       key={cell.id}
                       className={cn(
                         index < row.getVisibleCells().length &&
-                          "border-y border border-neutral-200",
+                          "border border-y border-neutral-200",
                         cell.column.id === "featureName" &&
                           "sticky left-0 z-10 bg-white"
                       )}
@@ -390,7 +389,7 @@ const Table: React.FC<TableProps> = ({
       </div>
 
       {/* Mobile View - Cards */}
-      <div className="lg:hidden w-full flex flex-col gap-4">
+      <div className="flex w-full flex-col items-center gap-4 lg:hidden">
         {services
           .filter((service) => service.features && service.features.length > 0)
           .map((service) => (

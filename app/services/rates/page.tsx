@@ -1,19 +1,14 @@
 import { Hero } from "@/components/Hero"
-import { ContentSection } from "@/components/ui/ContentSection"
 import RatesContent from "@/content/services/rates.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
-export default async function RatesSupport() {
+export default async function Rates() {
   const metadata = getMDXMetadata("content/services/rates.mdx")
 
   return (
-    <div>
+    <>
       <Hero title={metadata.title} description={metadata.description} />
-      <ContentSection>
-        <div className="prose prose-lg text-xl max-w-none">
-          <RatesContent />
-        </div>
-      </ContentSection>
-    </div>
+      <RatesContent />
+    </>
   )
 }

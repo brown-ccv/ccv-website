@@ -1,9 +1,11 @@
-import React from 'react';
-import * as RadioGroupPrimitive from "@radix-ui/react-radio-group";
-import { cn } from "@/lib/utils";
+import React from "react"
+import * as RadioGroupPrimitive from "@radix-ui/react-radio-group"
+import { cn } from "@/lib/utils"
 
-interface RadioGroupProps extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> {}
-interface RadioGroupItemProps extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {}
+interface RadioGroupProps
+  extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Root> {}
+interface RadioGroupItemProps
+  extends React.ComponentPropsWithoutRef<typeof RadioGroupPrimitive.Item> {}
 
 const RadioGroup = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Root>,
@@ -15,9 +17,9 @@ const RadioGroup = React.forwardRef<
       {...props}
       ref={ref}
     />
-  );
-});
-RadioGroup.displayName = RadioGroupPrimitive.Root.displayName;
+  )
+})
+RadioGroup.displayName = RadioGroupPrimitive.Root.displayName
 
 const RadioGroupItem = React.forwardRef<
   React.ElementRef<typeof RadioGroupPrimitive.Item>,
@@ -54,14 +56,14 @@ const RadioGroupItem = React.forwardRef<
           className={cn(
             "aspect-square h-4 w-4 rounded-full",
             "border border-keppel-600 bg-keppel-600",
-            "data-[state=checked]:bg-keppel-600", 
+            "data-[state=checked]:bg-keppel-600",
             "data-[state=checked]:text-keppel-600" // Fallback for text-based indicators if any
           )}
         />
       </RadioGroupPrimitive.Indicator>
     </RadioGroupPrimitive.Item>
-  );
-});
-RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName;
+  )
+})
+RadioGroupItem.displayName = RadioGroupPrimitive.Item.displayName
 
 export { RadioGroup, RadioGroupItem }

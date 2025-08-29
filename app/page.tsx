@@ -1,6 +1,6 @@
 // app/page.tsx
 import { Hero } from "@/components/Hero"
-import { HeroCard } from "@/components/HeroCard"
+import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import {
   FeaturedCarousel,
@@ -11,11 +11,10 @@ import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
-import { ScrollButton } from "@/components/ui/ScrollButton"
-import { SectionHeader } from "@/components/ui/SectionHeader"
-import ButtonLink from "@/components/ui/ButtonLink"
+import { ScrollButton } from "@/components/button/ScrollButton"
+import ButtonLink from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
-import { ContentSection } from "@/components/ui/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 
 export default async function Home() {
   // Load featured carousel data from YAML
@@ -35,7 +34,7 @@ export default async function Home() {
     const pastDates = getEventData(`-2 months${today}`)
 
     return (
-      <div>
+      <>
         <Hero
           image={"/images/hero/ccv-original.png"}
           title="Center for Computation and Visualization"
@@ -55,29 +54,27 @@ export default async function Home() {
         </Hero>
         <HeroCard />
         <ImpactBanner />
-        <ContentSection>
-          <SectionHeader title="Featured Projects" align="center" />
-          <FeaturedCarousel carouselData={featuredCarouselData} />
-        </ContentSection>
-        <div
-          id="events"
-          className="py-12 w-full bg-neutral-50 px-4 sm:px-6 lg:px-8"
-        >
-          <Suspense fallback={<Spinner />}>
-            <EventSection
-              streamedDataPast={pastDates}
-              streamedDataFuture={futureDates}
-              currentDate={currentDate}
-              today={today}
-            />
-          </Suspense>
+        <div>
+          <ContentSection title="Featured Projects">
+            <FeaturedCarousel carouselData={featuredCarouselData} />
+          </ContentSection>
+          <ContentSection title={"Events"} align={"left"} id={"events"}>
+            <Suspense fallback={<Spinner />}>
+              <EventSection
+                streamedDataPast={pastDates}
+                streamedDataFuture={futureDates}
+                currentDate={currentDate}
+                today={today}
+              />
+            </Suspense>
+          </ContentSection>
         </div>
-      </div>
+      </>
     )
   } catch (err: any) {
     console.error(err)
     return (
-      <div className="px-2 my-6 space-y-2">
+      <div className="my-6 px-2">
         <p>{err.message}</p>
       </div>
     )

@@ -4,7 +4,7 @@ import { SelectedAnswers, FormQuestions } from "@/lib/storage-types"
 import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 interface FormProps {
   selectedAnswers: SelectedAnswers
@@ -18,10 +18,10 @@ const Form: React.FC<FormProps> = ({
   questions,
 }) => {
   return (
-    <div className="space-y-2 px-4 sm:px-6 md:px-8 pb-8 bg-gradient-to-br from-white to-neutral-50/30 rounded-2xl max-w-[800px] border border-neutral-300">
+    <div className="max-w-[800px] space-y-2 rounded-2xl border border-neutral-300 bg-gradient-to-br from-white to-neutral-50/30 px-4 pb-8 sm:px-6 md:px-8">
       {questions.map((question) => (
-        <div key={question.id}>
-          <div className="pt-6 font-medium text-black text-2xl">
+        <React.Fragment key={question.id}>
+          <div className="pt-6 text-2xl font-medium text-black">
             <Markdown rehypePlugins={[rehypeRaw]} remarkPlugins={[remarkGfm]}>
               {`${question.question}`}
             </Markdown>
@@ -44,7 +44,7 @@ const Form: React.FC<FormProps> = ({
           <RadioGroup
             value={selectedAnswers[question.id]}
             onValueChange={(value) => onAnswerChange(question.id, value)}
-            className="flex flex-col md:flex-row space-y-2 md:space-y-0 gap-x-4 px-2 sm:px-4 pt-2"
+            className="flex flex-col gap-x-4 space-y-2 px-2 pt-2 sm:px-4 md:flex-row md:space-y-0"
           >
             {question.options.map((option) => (
               <div key={option.label} className="flex items-center space-x-2">
@@ -57,7 +57,7 @@ const Form: React.FC<FormProps> = ({
               </div>
             ))}
           </RadioGroup>
-        </div>
+        </React.Fragment>
       ))}
     </div>
   )

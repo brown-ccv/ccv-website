@@ -3,37 +3,37 @@ import { Workday } from "@/components/Workday"
 import { Hero } from "@/components/Hero"
 import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
-import { ContentSection } from "@/components/ui/ContentSection"
-import { SectionHeader } from "@/components/ui/SectionHeader"
-import ButtonLink from "@/components/ui/ButtonLink"
+import { ContentSection } from "@/components/ContentSection"
+import ButtonLink from "@/components/button/ButtonLink"
 
-export default async function AboutLayout() {
+export default async function Careers() {
   try {
     const workdayData = await getWorkdayData()
 
     return (
-      <div>
+      <>
         <Hero image={"/images/hero/about-kayaks.png"} title="Careers" />
-        <ContentSection>
-          <SectionHeader title="Opportunities" align="center" />
-          <Suspense fallback={<Spinner />}>
-            <Workday careers={workdayData} />
-          </Suspense>
-          <ButtonLink
-            href={"/about/contact"}
-            external={false}
-            size="xl"
-            variant="primary_filled"
-          >
-            Contact Us
-          </ButtonLink>
+        <ContentSection title="Opportunities">
+          <div className="flex flex-col items-start gap-y-6">
+            <Suspense fallback={<Spinner />}>
+              <Workday careers={workdayData} />
+            </Suspense>
+            <ButtonLink
+              href={"/about/contact"}
+              external={false}
+              size="xl"
+              variant="primary_filled"
+            >
+              Contact Us
+            </ButtonLink>
+          </div>
         </ContentSection>
-      </div>
+      </>
     )
   } catch (err: any) {
     console.error(err)
     return (
-      <div className="text-3xl font-semibold py-10 text-center">
+      <div className="py-10 text-center text-3xl font-semibold">
         Error loading careers{" "}
       </div>
     )

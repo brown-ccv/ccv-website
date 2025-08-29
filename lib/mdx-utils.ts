@@ -1,17 +1,17 @@
-import fs from 'fs';
-import path from 'path';
-import frontMatter from 'front-matter';
+import fs from "fs"
+import path from "path"
+import frontMatter from "front-matter"
 
 /**
  * Interface for MDX front matter metadata
  */
 export interface MDXMetadata {
   /** The Hero title for the page */
-  title?: string;
+  title?: string
   /** The Hero description for the page */
-  description?: string;
+  description?: string
   /** Additional metadata properties */
-  [key: string]: any;
+  [key: string]: any
 }
 
 /**
@@ -25,8 +25,8 @@ export interface MDXMetadata {
  * ```
  */
 export function getMDXMetadata(filePath: string): MDXMetadata {
-  const fullPath = path.join(process.cwd(), filePath);
-  const content = fs.readFileSync(fullPath, 'utf8');
-  const { attributes } = frontMatter(content);
-  return attributes as MDXMetadata;
+  const fullPath = path.join(process.cwd(), filePath)
+  const content = fs.readFileSync(fullPath, "utf8")
+  const { attributes } = frontMatter(content)
+  return attributes as MDXMetadata
 }

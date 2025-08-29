@@ -1,9 +1,9 @@
 "use client"
 
 import React from "react"
-import { MapPinIcon, ArrowRightIcon } from "@heroicons/react/24/solid"
+import { ArrowRightIcon, MapPinIcon } from "@heroicons/react/24/solid"
 import { Card, CardContent } from "@/components/ui/Card"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 interface PositionProps {
   title: string
@@ -16,25 +16,26 @@ interface PositionProps {
 export function Workday({ careers }: { careers: any[] }) {
   return (
     <>
-      {careers && careers.length > 0 ? (
+      {careers?.length > 0 ? (
         careers.map((position: PositionProps) => (
           <ButtonLink
             key={position.externalPath}
+            external
             href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
-            className="block m-4"
+            className="m-4 block"
           >
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="flex flex-col gap-6 md:items-center md:justify-between md:flex-row p-6">
+            <Card className="transition-shadow hover:shadow-lg">
+              <CardContent className="flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between">
                 <div className="flex flex-col gap-2">
-                  <p className="flex items-center text-700 gap-2 md:gap-4 text-sm">
+                  <p className="flex items-center gap-2 text-sm text-gray-700 md:gap-4">
                     <MapPinIcon className="h-4 w-4" />
                     Providence, RI - United States
                   </p>
-                  <p className="text-gray-800 text-lg font-medium">
+                  <p className="text-lg font-medium text-gray-800">
                     {position.title}
                   </p>
                 </div>
-                <div className="flex items-center gap-2 md:gap-4 text-700 text-sm font-medium">
+                <div className="flex items-center gap-2 text-sm font-medium text-gray-700 md:gap-4">
                   <span>Learn More</span>
                   <ArrowRightIcon className="h-4 w-4" />
                 </div>

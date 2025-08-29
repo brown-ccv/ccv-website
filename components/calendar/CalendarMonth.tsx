@@ -25,7 +25,7 @@ import {
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
-import ButtonLink from "@/components/ui/ButtonLink"
+import ButtonLink from "@/components/button/ButtonLink"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -110,20 +110,21 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             <Tooltip>
               <TooltipTrigger
                 asChild
-                className="rounded-md max-w-full px-2 hover:bg-neutral-50"
+                className="max-w-full rounded-md px-2 hover:bg-neutral-50"
               >
                 <ButtonLink href={event.url} external={true}>
-                  <p className="flex-auto min-w-0 truncate text-lg text-blue-500 font-semibold">
+                  <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
                     {event.title}
                   </p>
                 </ButtonLink>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="font-semibold pb-2">{event.date}</p>
+                <p className="pb-2 font-semibold">{event.date}</p>
                 <ButtonLink
                   href={event.url}
                   external={true}
                   className="flex gap-1 text-blue-500"
+                  isCalendarEvent={true}
                 >
                   <p className="font-semibold hover:underline">{event.title}</p>
                   <ArrowTopRightOnSquareIcon
@@ -134,7 +135,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
 
                 <time
                   dateTime={event.date_utc}
-                  className="hidden flex-none text-keppel-700 group-hover:text-keppel-700 group-hover:font-semibold xl:flex xl:items-center"
+                  className="hidden flex-none text-keppel-700 group-hover:font-semibold group-hover:text-keppel-700 xl:flex xl:items-center"
                 >
                   <ClockIcon
                     className="mr-1 h-4 w-4 text-keppel-700"
@@ -160,6 +161,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               href={event.url}
               external={true}
               className="flex gap-1 text-blue-500"
+              isCalendarEvent={true}
             >
               <p className="font-semibold hover:underline">{event.title}</p>
               <ArrowTopRightOnSquareIcon
@@ -210,7 +212,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             dateTime={day.dateString}
             className={
               day.isToday
-                ? "flex h-9 w-9 items-center justify-center rounded-full bg-sunglow-400 font-semibold text-lg"
+                ? "flex h-9 w-9 items-center justify-center rounded-full bg-sunglow-400 text-lg font-semibold"
                 : "flex h-9 w-9 items-center justify-center text-lg"
             }
           >
@@ -246,7 +248,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             isSameDay(day.date, selectedDate) && "text-white",
             !isSameDay(day.date, selectedDate) &&
               day.isToday &&
-              "text-blue-500 bg-sunglow-400",
+              "bg-sunglow-400 text-blue-500",
             !isSameDay(day.date, selectedDate) &&
               day.isCurrentMonth &&
               !day.isToday &&
@@ -279,7 +281,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               {validDayEvents.map((event) => (
                 <span
                   key={event.id}
-                  className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-700"
+                  className="bg-700 mx-0.5 mb-1 h-1.5 w-1.5 rounded-full"
                 />
               ))}
             </span>
@@ -330,7 +332,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         prevButtonFunction={() => setActiveDate(subMonths(activeDate, 1))}
         todayButtonFunction={() => setActiveDate(currentDate)}
       />
-      <p className="flex text-sm mx-1 mb-2 lg:hidden">
+      <p className="mx-1 mb-2 flex text-sm lg:hidden">
         Click on a date to see a list of its events!
       </p>
       <div className="shadow ring-1 ring-black ring-opacity-5 lg:flex lg:flex-auto lg:flex-col">

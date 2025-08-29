@@ -1,5 +1,4 @@
 import { Hero } from "@/components/Hero"
-import { ContentSection } from "@/components/ui/ContentSection"
 import ClassroomContent from "@/content/services/classroom.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
@@ -7,13 +6,9 @@ export default async function ClassroomSupport() {
   const metadata = getMDXMetadata("content/services/classroom.mdx")
 
   return (
-    <div>
+    <>
       <Hero title={metadata.title} description={metadata.description} />
-      <ContentSection>
-        <div className="prose prose-lg text-xl max-w-none">
-          <ClassroomContent />
-        </div>
-      </ContentSection>
-    </div>
+      <ClassroomContent />
+    </>
   )
 }
