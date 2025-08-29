@@ -5,94 +5,94 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    @apply font-sans;
-    @apply text-neutral-700;
-    --accent: 0, 128, 108;
-    --accent-light: 0, 230, 195;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
+    :root {
+        @apply font-sans;
+        @apply text-slate-800;
+        --accent: 0, 128, 108;
+        --accent-light: 0, 230, 195;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+                45deg,
+                rgb(var(--accent)),
+                rgb(var(--accent-light)) 30%,
+                white 60%
+        );
+    }
 
-  html,
-  body {
-    @apply bg-white;
-  }
+    html,
+    body {
+        @apply bg-white;
+    }
 
-  h1 {
-    @apply text-4xl font-bold;
-  }
-
-  h2,
-  h3,
-  h4 {
-    @apply font-semibold;
-  }
-
-  h2 {
-    @apply text-3xl;
-  }
-
-  h3 {
-    @apply text-2xl;
-  }
-
-  h4 {
-    @apply text-xl;
-  }
-
-  @media (width >= 64rem) {
     h1 {
-      @apply text-5xl font-bold;
+        @apply text-4xl font-bold;
     }
 
     h2,
     h3,
     h4 {
-      @apply font-semibold;
+        @apply font-semibold;
     }
 
     h2 {
-      @apply text-4xl;
+        @apply text-3xl;
     }
 
     h3 {
-      @apply text-3xl;
+        @apply text-2xl;
     }
 
     h4 {
-      @apply text-2xl;
+        @apply text-xl;
     }
-  }
-  p > a {
-    @apply text-keppel-800;
-  }
 
-  p > a:hover {
-    @apply text-keppel-500;
-  }
+    @media (width >= 64rem) {
+        h1 {
+            @apply text-5xl font-bold;
+        }
 
-  p > a:focus {
-    @apply text-keppel-600 outline-2 outline-keppel-600;
-  }
+        h2,
+        h3,
+        h4 {
+            @apply font-semibold;
+        }
+
+        h2 {
+            @apply text-4xl;
+        }
+
+        h3 {
+            @apply text-3xl;
+        }
+
+        h4 {
+            @apply text-2xl;
+        }
+    }
+    p > a {
+        @apply text-keppel-800;
+    }
+
+    p > a:hover {
+        @apply text-keppel-500;
+    }
+
+    p > a:focus {
+        @apply text-keppel-600 outline-2 outline-keppel-600;
+    }
 }
 
 @layer components {
-  .prose pre code {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
+    .prose pre code {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
 
-  .prose h2 {
-    @apply mt-0;
-  }
+    .prose h2 {
+        @apply mt-0;
+    }
 
-  .prose img {
-    @apply my-4 py-4;
-  }
+    .prose img {
+        @apply my-4 py-4;
+    }
 }

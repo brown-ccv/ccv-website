@@ -75,7 +75,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           </Card>
         </button>
       </DialogTrigger>
-      <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-neutral-500 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
+      <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-slate-500 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
         <Image
           src={imagePath}
           alt=""
@@ -86,7 +86,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
         <DialogTitle className="py-4 text-3xl font-bold">
           {personDetails?.name || name}
         </DialogTitle>
-        <p className="mb-2 text-2xl text-neutral-700">
+        <p className="mb-2 text-2xl text-slate-700">
           {personDetails?.title || title}
         </p>
         {personDetails?.team && (
@@ -122,9 +122,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
             )}
         </div>
         {personDetails?.bio && (
-          <div className="text-neutral-800 mt-4 text-lg">
-            {personDetails.bio}
-          </div>
+          <div className="mt-4 text-lg text-slate-800">{personDetails.bio}</div>
         )}
       </DialogContent>
     </Dialog>
