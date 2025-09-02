@@ -142,24 +142,24 @@ const routes: NavSection[] = [
       {
         name: "",
         routes: [
-          {
-            name: "Collaborations",
-            href: "/portfolio/collaborations",
-            description: "*Coming Soon*",
-            icon: FaHandshake,
-          },
-          {
-            name: "Software",
-            href: "/portfolio/software",
-            description: "*Coming Soon*",
-            icon: FaCode,
-          },
-          {
-            name: "Workshops and Talks",
-            href: "/portfolio/workshops-and-talks",
-            description: "*Coming Soon*",
-            icon: FaChalkboardTeacher,
-          },
+          // {
+          //   name: "Collaborations",
+          //   href: "/portfolio/collaborations",
+          //   description: "*Coming Soon*",
+          //   icon: FaHandshake,
+          // },
+          // {
+          //   name: "Software",
+          //   href: "/portfolio/software",
+          //   description: "*Coming Soon*",
+          //   icon: FaCode,
+          // },
+          // {
+          //   name: "Workshops and Talks",
+          //   href: "/portfolio/workshops-and-talks",
+          //   description: "*Coming Soon*",
+          //   icon: FaChalkboardTeacher,
+          // },
           {
             name: "Publications",
             href: "https://publications.ccv.brown.edu",
