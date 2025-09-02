@@ -2,6 +2,7 @@
 
 import { ReactNode } from "react"
 import { TextAnimate } from "@/components/magicui/TextAnimate"
+import { cn } from "@/lib/utils"
 
 interface HeroProps {
   image?: string
@@ -23,7 +24,7 @@ export const Hero = ({
 }: HeroProps) => {
   return (
     <div
-      className="relative flex w-full flex-col overflow-hidden bg-cover bg-[center_65%] p-12 text-white lg:px-14 lg:py-32"
+      className="relative flex w-full flex-col overflow-hidden bg-cover bg-[center_65%] p-12 text-white sm:px-16 lg:px-14 lg:py-32 xl:px-20"
       style={{
         backgroundImage: `
           linear-gradient(135deg, rgb(17 24 39) 0%, rgb(243 244 246) 100%),
