@@ -1,5 +1,5 @@
 // app/page.tsx
-import { Hero } from "@/components/Hero"
+import { MainHero } from "@/components/Hero"
 import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import {
@@ -35,7 +35,7 @@ export default async function Home() {
 
     return (
       <>
-        <Hero
+        <MainHero
           image={"/images/hero/ccv-original.png"}
           title="Center for Computation and Visualization"
           description="Advancing computational research with scientific and computing expertise."
@@ -51,7 +51,7 @@ export default async function Home() {
           <ScrollButton id="events" variant="secondary_filled" size="xl">
             View Events
           </ScrollButton>
-        </Hero>
+        </MainHero>
         <HeroCard />
         <ImpactBanner />
         <div>
