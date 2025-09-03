@@ -1,9 +1,9 @@
-name: 🏗️ Build, Run Pa11y, & Deploy Preview
+name: 🏗️ Deploy Preview
 on: pull_request
 
 jobs:
   build:
-    name: Build
+    name: build
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
