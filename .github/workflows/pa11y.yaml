@@ -38,7 +38,7 @@ jobs:
           npm start &
           npx wait-on http://localhost:3000
 
-      - run: npm exec -c 'pa11y-ci --sitemap http://localhost:3000/sitemap.xml' > pa11y-results.json
+      - run: npm exec -c 'pa11y-ci --sitemap http://localhost:3000/sitemap.xml --reporter json' > pa11y-results.json
 
       - name: ✨ Prettify result file
         if: ${{ always() }}
