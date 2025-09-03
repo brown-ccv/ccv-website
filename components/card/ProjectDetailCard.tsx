@@ -82,10 +82,11 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         )}
 
         {/* Developers */}
-        <div>
-          <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Developers</h3>
-          <div className="space-y-2">
-            {entry.developers.map((developer) => (
+        {entry.developers && entry.developers.length > 0 && (
+          <div>
+            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Developers</h3>
+            <div className="space-y-2">
+              {entry.developers.map((developer) => (
               <div key={developer.name} className="flex items-center space-x-2">
                 {developer.github_user && (
                   <a 
@@ -101,8 +102,9 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
                 <span className="text-neutral-700 text-lg">{developer.name}</span>
               </div>
             ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Investigators */}
         {entry.investigators && entry.investigators.length > 0 && (
@@ -133,7 +135,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <div className="flex flex-col gap-2">
               {entry.links.map((link, index) => (
                 <a key={index} href={link.url} className="text-keppel-600 hover:text-keppel-400 active:text-keppel-400 underline text-lg" target="_blank" rel="noopener noreferrer">
-                  {humanize(link.category)}
+                  {humanize(link.display_text)}
                 </a>
               ))}
             </div>

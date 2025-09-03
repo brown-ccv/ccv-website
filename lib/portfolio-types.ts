@@ -4,7 +4,7 @@ export interface Developer {
 }
 
 export interface Link {
-    category: string;
+    display_text: string;
     url: string;
 }
 
@@ -19,7 +19,7 @@ export interface PortfolioEntry {
   description: string;
   'project-type': string;
   starred: boolean;
-  developers: Developer[]; 
+  developers?: Developer[]; 
   languages?: string[];
   tags?: string[];
   groups?: string[];

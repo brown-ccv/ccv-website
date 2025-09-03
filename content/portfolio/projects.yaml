@@ -4,7 +4,7 @@ projects:
     slug: automated-continuos-behavioral-monitoring
     description: Automated Continuous Behavioral Monitoring (ACBM) is a machine vision-based automated phenotyping method to detect and quantify the earliest-detected phenotypes in Tdp43Q331K knock-in mice. This method entails continuous video recording for 5 days that is then scored by a trained computer system. The system is a set of DL models deployed on google cloud platform using Kubeflow pipelines. Our goal is to establish sensitive, robust, objective, and open-source machine vision-based behavioral analysis tools that will be widely available to workers in the field.
     project-type: Software Engineering
-    starred: True
+    starred: true
     groups:
       - serre-lab
     languages:
@@ -22,7 +22,7 @@ projects:
     slug: web-volume-viewer
     description: Volumetric data visualization on the web with compatibility on VR devices. It supports color mapping through a transfer function that maps specific data values to a scalar color. Developed using React-JS and A-Frame.
     project-type: Data Science
-    starred: False
+    starred: false
     languages:
       - javascript
       - reactjs
@@ -35,9 +35,9 @@ projects:
       - name: Robert Gemma
         github_user: RobertGemmaJr
     links:
-      - category: code
+      - display_text: code
         url: https://github.com/brown-ccv/react-volume-viewer.git
-      - category: npm
+      - display_text: npm
         url: https://www.npmjs.com/package/react-volume-viewer
 
   - title: Autonomous Research Assistant (AutoRA)
@@ -45,7 +45,7 @@ projects:
     slug: autonomous-research-assistant-autora
     description: Autonomous Research Assistant (AutoRA) is a framework for implementing machine learning tools which autonomously and iteratively generate 1) new theories to describe real-world data, and 2) experiments to invalidate those theories and seed a new cycle of theory-making. The experiments will be run online via crowd-sourcing platforms (MTurk, Prolific).
     project-type: Software Sustainability
-    starred: True
+    starred: true
     groups:
       - aer-group
     languages:
@@ -61,9 +61,9 @@ projects:
       - name: George Dang
         github_user: gtdang
     links:
-      - category: code
+      - display_text: code
         url: https://github.com/AutoResearch/autora
-      - category: docs
+      - display_text: docs
         url: https://autoresearch.github.io/autora/
 
   - title: Beehive
@@ -71,7 +71,7 @@ projects:
     slug: beehive
     description: "A hub for researchers to share and find behavioral tasks"
     project-type: 3D Visualization
-    starred: False
+    starred: false
     languages:
       - javascript
       - vuejs
@@ -88,9 +88,9 @@ projects:
       - name: Heather Yu
         github_user: hetd54
     links:
-      - category: "code"
+      - display_text: "code"
         url: https://github.com/brown-ccv/behavioral-task-hub
-      - category: "website"
+      - display_text: "website"
         url: https://beehive.ccv.brown.edu
 
   - title: DrawOnAir (cave-painting)
@@ -98,7 +98,7 @@ projects:
     slug: drawonair-cave-painting
     description: A collaboration between Dr Daniel Keefe (University of Minnesota), Dr David Laidlaw (Brown University) and CCV to expand 3D DrawOnAir haptic functionality to VR systems
     project-type: Hardware Consultation
-    starred: True
+    starred: true
     languages:
       - c++
     tags:
@@ -108,7 +108,7 @@ projects:
       - name: Camilo Diaz
         github_user: kmilo9999
     links:
-      - category: code
+      - display_text: code
         url: https://github.com/brown-ccv/DrawingOnAir
 
   - title: Chamber.jl
@@ -116,7 +116,7 @@ projects:
     slug: chamber-jl
     description: Julia package for simulating the eruption of a volcano using a model for the frequency of eruptions of upper crustal magma chambers based on Degruyter and Huber (2014).
     project-type: Software Engineering
-    starred: False
+    starred: false
     languages:
       - julia
     tags:
@@ -128,7 +128,7 @@ projects:
     groups:
       - huber-lab
     links:
-      - category: code
+      - display_text: code
         url: https://github.com/brown-ccv/Chamber.jl
 
   - title: Cognitive Research Registration App
@@ -136,7 +136,7 @@ projects:
     slug: cognitive-research-registration-app
     description: "Web application that allows participants to register for studies, and for researchers to manage participant registrations"
     project-type: Software Engineering
-    starred: True
+    starred: true
     languages:
       - javascript
       - vuejs
@@ -151,9 +151,9 @@ projects:
       - name: Isabel Restrepo
         github_user: mirestrepo
     links:
-      - category: "code"
+      - display_text: "code"
         url: https://github.com/brown-ccv/cognitive-aging-research-app
-      - category: "website"
+      - display_text: "website"
         url: https://cogresnet.ccv.brown.edu
 
   - title: Honeycomb
@@ -161,7 +161,7 @@ projects:
     slug: honeycomb
     description: 'Template repository for reproducible psychophysiological tasks for clinic, laboratory, and home use.'
     project-type: Software Engineering
-    starred: False
+    starred: false
     languages:
       - javascript
       - reactjs
@@ -179,11 +179,11 @@ projects:
       - name: Isabel Restrepo
         github_user: mirestrepo
     links:
-      - category: 'code'
+      - display_text: 'code'
         url: https://github.com/brown-ccv/honeycomb
-      - category: 'website'
+      - display_text: 'website'
         url: https://brown-ccv.github.io/honeycomb-docs/
-      - category: 'publication'
+      - display_text: 'publication'
         url: https://www.scielo.br/j/rbp/a/XFbqkbZKfG65BwTxmnrHgZh/?lang=en#
 
   - title: Unsupervised cell segmentation in 3D image datasets
@@ -191,7 +191,7 @@ projects:
     slug: unsupervised-cell-segmentation-3d-image-datasets
     description: An application leveraging the SwinUNetR deep learning model to detect and annotate neuronal cells in 3D confocal microscopy images. It processes spinal cord sections stained through immunohistochemistry, using four excitation channels (405nm, 488nm, 594nm, and 647nm) to identify and quantify specific neuronal populations, including DAPI-labeled total neurons, Neurod2-expressing neurons, Robo3-expressing cells, and Zfhx3-marked subsets. A preprocessing pipeline applies contrast adjustment, Gaussian filtering, and intensity-based thresholding to generate a binary mask, isolating relevant structures while filtering out background noise. Post-processing compares segmented cells with the binary mask to ensure accurate quantification and identifies co-labeled neurons across multiple stains. With GPU acceleration, the system significantly improves inference speed, enabling efficient analysis of large-scale 3D microscopy datasets.
     project-type: Software Engineering
-    starred: True
+    starred: true
     languages:
       - python
     tags:
@@ -203,7 +203,7 @@ projects:
       - name: Paul Xu
         github_user: digicosmos86
     links:
-      - category: code
+      - display_text: code
         url: https://github.com/brown-ccv/jaworski-cellseg
         
   - title: Acadia National Park Natural Resources
@@ -211,7 +211,7 @@ projects:
     slug: acadia-national-park-natural-resources
     description: "The goal of this project is to extract data-driven 'vital signs' from  data collected on bat populations at Acadia National Park since 2008 and transform data into standardized annual Data Packages for submission to the National Park Service Inventory & Monitoring Data Store. CCV helps to wrangle and clean the various datasets into data packages and to generate report templates for quick visualization of vital signs."
     project-type: Computational Biology
-    starred: True
+    starred: true
     tags:
       - government
       - data-science
@@ -226,9 +226,9 @@ projects:
       - name: Timothy Divoll
         github_user: tdivoll
     links:
-      - category: "website"
+      - display_text: "website"
         url: https://irma.nps.gov/DataStore
-      - category: "website"
+      - display_text: "website"
         url: https://www.nps.gov/im/vital-signs.htm
 
   - title: Autonomous Empirical Research Group
@@ -236,7 +236,7 @@ projects:
     slug: autonomous-empirical-research-group
     description: The Autonomous Empirical Research Group (AER) strives to enhance and accelerate scientific discovery by automating each step of the empirical research process, from constructing a scientific hypothesis to conducting novel experiments. CCV's collaboration focuses on developing a framework which the group can use to run simulations to test machine learning models and run experiments with real participants.
     project-type: Computational Biology
-    starred: True
+    starred: true
     department:
       - clps
     tags:
@@ -251,7 +251,7 @@ projects:
       - name: George Dang
         github_user: gtdang
     links:
-      - category: "website"
+      - display_text: "website"
         url: https://musslick.github.io/AER_website/About.html
 
   - title: Division of Biology and Medicine Administrative
@@ -260,7 +260,7 @@ projects:
     id: division-biology-medicine
     description: "The goal of this project is to extract insights on diversity and inclusion efforts from employee surveys among Brown's Biomedical departments and affiliates. We transform survey data into scoring metrics and apply natural language processing to derive sentiments and topics from the typed responses"
     project-type: Computational Biology
-    starred: True
+    starred: true
     department:
       - biomedical
     tags:
@@ -274,5 +274,5 @@ projects:
       - name: Timothy Divoll
         github_user: tdivoll
     links:
-      - category: "website"
+      - display_text: "website"
         url: https://biomedical.brown.edu/diversity
