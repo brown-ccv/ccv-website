@@ -6,6 +6,7 @@ import { notFound } from "next/navigation"
 import Image from "next/image"
 import { ContentSection } from "@/components/ContentSection"
 import { TechnicalExpertiseHeader } from "@/components/TechnicalExpertiseHeader"
+import { Hero } from "@/components/Hero"
 
 interface PortfolioDetailPageProps {
   params: Promise<{ slug: string }>
@@ -37,8 +38,9 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
   }    
 
   return (
-    <ContentSection title={entry.title}>
-      <TechnicalExpertiseHeader expertiseType={entry['project-type']} className="flex justify-center" />
+    <>
+    <Hero title={entry.title} />
+    <ContentSection>
       <div className="flex flex-col lg:flex-row gap-8 mt-8">
         <div className="prose prose-lg text-xl max-w-none lg:w-2/3 flex flex-col items-center">
           {entry.image && (
@@ -57,6 +59,7 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
           <ProjectDetailCard entry={entry} />
         </div>
       </div>
-    </ContentSection>
+    </ContentSection> 
+    </>
   )
 }
