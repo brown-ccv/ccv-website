@@ -354,6 +354,7 @@ export const Navbar: React.FC = () => {
                               className="hover:bg-sunglow-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
                               key={route.href}
                               href={route.href}
+                              onClick={toggleMobileMenu}
                             >
                               <p className="text-xl font-semibold">
                                 {route.name}
