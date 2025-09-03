@@ -88,18 +88,20 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
             <div className="space-y-2">
               {entry.developers.map((developer) => (
               <div key={developer.name} className="flex items-center space-x-2">
-                {developer.github_user && (
+                {developer.github_user ? (
                   <a 
                     href={`https://github.com/${developer.github_user}`}
-                    className="text-neutral-900 hover:text-sunglow-400 active:text-sunglow-400"
+                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500"
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`${developer.name}'s GitHub Profile`}
                   >
                     <FaGithub className="text-2xl" />
+                    <span className="text-lg">{developer.name}</span>
                   </a>
+                ) : (
+                  <span className="text-neutral-700 text-lg">{developer.name}</span>
                 )}
-                <span className="text-neutral-700 text-lg">{developer.name}</span>
               </div>
             ))}
             </div>
@@ -115,13 +117,13 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
                 <div key={investigator.name} className="flex items-center space-x-2">
                   <a 
                     href={investigator.link}
-                    className="text-neutral-900 hover:text-sunglow-400 active:text-sunglow-400"
+                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
                     <FaUser className="text-2xl" />
+                    <span className="text-lg">{investigator.name}</span>
                   </a>
-                  <span className="text-neutral-700 text-lg">{investigator.name}</span>
                 </div>
               ))}
             </div>
