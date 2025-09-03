@@ -142,24 +142,24 @@ const routes: NavSection[] = [
       {
         name: "",
         routes: [
-          {
-            name: "Collaborations",
-            href: "/portfolio/collaborations",
-            description: "*Coming Soon*",
-            icon: FaHandshake,
-          },
-          {
-            name: "Software",
-            href: "/portfolio/software",
-            description: "*Coming Soon*",
-            icon: FaCode,
-          },
-          {
-            name: "Workshops and Talks",
-            href: "/portfolio/workshops-and-talks",
-            description: "*Coming Soon*",
-            icon: FaChalkboardTeacher,
-          },
+          // {
+          //   name: "Collaborations",
+          //   href: "/portfolio/collaborations",
+          //   description: "*Coming Soon*",
+          //   icon: FaHandshake,
+          // },
+          // {
+          //   name: "Software",
+          //   href: "/portfolio/software",
+          //   description: "*Coming Soon*",
+          //   icon: FaCode,
+          // },
+          // {
+          //   name: "Workshops and Talks",
+          //   href: "/portfolio/workshops-and-talks",
+          //   description: "*Coming Soon*",
+          //   icon: FaChalkboardTeacher,
+          // },
           {
             name: "Publications",
             href: "https://publications.ccv.brown.edu",
@@ -329,46 +329,65 @@ export const Navbar: React.FC = () => {
                   />
                 </button>
                 {openSubmenus.includes(section.name) && (
-                  <div className="ml-6">
+                  <div className="ml-12 py-3 text-white">
                     {section.groups.map((group) => (
-                      <div className="py-2" key={group.name}>
-                        {group.routes.map((route) => (
-                          <ButtonLink
-                            key={route.href}
-                            href={route.href}
-                            external={route.href.startsWith("http")}
-                            onClick={toggleMobileMenu}
-                            className="block px-6 py-6 text-white hover:bg-sunglow-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
-                          >
-                            <div className="text-xl">{route.name}</div>
-                            {route.description && (
-                              <div className="mt-1 text-sm">
-                                {route.description}
-                              </div>
-                            )}
-                          </ButtonLink>
-                        ))}
-                      </div>
+                      <ul className="flex flex-col gap-4 pt-4" key={group.name}>
+                        {group.routes.map((route) =>
+                          route.href.startsWith("http") ? (
+                            <a
+                              key={route.href}
+                              href={route.href}
+                              onClick={toggleMobileMenu}
+                              className="hover:bg-sunglow-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+                            >
+                              <p className="text-xl font-semibold">
+                                {route.name}
+                              </p>
+                              {route.description && (
+                                <p className="mt-1 text-sm">
+                                  {route.description}
+                                </p>
+                              )}
+                            </a>
+                          ) : (
+                            <Link
+                              className="hover:bg-sunglow-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+                              key={route.href}
+                              href={route.href}
+                            >
+                              <p className="text-xl font-semibold">
+                                {route.name}
+                              </p>
+                              {route.description && (
+                                <p className="mt-1 text-sm">
+                                  {route.description}
+                                </p>
+                              )}
+                            </Link>
+                          )
+                        )}
+                      </ul>
                     ))}
                   </div>
                 )}
               </React.Fragment>
             ))}
-            <ButtonLink
-              href="/about/contact"
-              external={false}
-              onClick={toggleMobileMenu}
-              className="block px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
-            >
-              Help
-            </ButtonLink>
-            <ButtonLink
-              href="https://docs.ccv.brown.edu/documentation"
-              onClick={toggleMobileMenu}
-              className="block px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
-            >
-              Docs
-            </ButtonLink>
+            <div className="flex flex-col">
+              <Link
+                href="/about/contact"
+                onClick={toggleMobileMenu}
+                className="px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+              >
+                Help
+              </Link>
+              <a
+                href="https://docs.ccv.brown.edu/documentation"
+                onClick={toggleMobileMenu}
+                className="px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+              >
+                Docs
+              </a>
+            </div>
           </div>
         )}
       </div>
