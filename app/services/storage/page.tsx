@@ -14,9 +14,7 @@ export default async function Storage() {
           <ButtonLink
             key={index}
             variant={
-              link.category === "Documentation"
-                ? "primary_filled"
-                : "secondary_filled"
+              link.variant === "primary" ? "primary_filled" : "secondary_filled"
             }
             size="xl"
             href={link.target}

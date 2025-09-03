@@ -1,18 +1,18 @@
 // --- Import Icons ---
 import {
-  FaThermometerHalf,
-  FaDollarSign,
-  FaShareSquare,
-  FaHdd,
-  FaWifi,
-  FaExchangeAlt,
-  FaShieldAlt,
-  FaFile,
-  FaNetworkWired,
   FaCamera,
-  FaTachometerAlt,
   FaChalkboardTeacher,
+  FaDollarSign,
+  FaExchangeAlt,
+  FaFile,
+  FaHdd,
+  FaNetworkWired,
+  FaShareSquare,
+  FaShieldAlt,
   FaSyncAlt,
+  FaTachometerAlt,
+  FaThermometerHalf,
+  FaWifi,
 } from "react-icons/fa"
 import { SiDoi } from "react-icons/si"
 
@@ -37,50 +37,27 @@ export const featureIcons: Record<string, React.ElementType> = {
 }
 
 export const featureColorMap: Record<string, string> = {
-  high: "text-red-university",
-  medium: "text-amber-600",
-  low: "text-keppel-600",
-  "0": "text-keppel-600",
+  "0": "text-keppel-700",
   "1": "text-sunglow-400",
   "2": "text-amber-600",
   "3": "text-red-university",
-  true: "text-keppel-600",
+  true: "text-keppel-700",
   false: "text-red-university",
-  easy: "text-keppel-600",
-  complex: "text-red-university",
-  partial: "text-sunglow-400",
-
-  "low cost": "text-keppel-600",
-  "medium cost": "text-sunglow-400",
-  "high cost": "text-red-university",
-
   hot: "text-red-university",
   warm: "text-sunglow-400",
-  cold: "text-cyan-500",
-  fastest: "text-keppel-600",
+  cold: "text-indigo-800",
+  fastest: "text-keppel-700",
   faster: "text-amber-600",
   fast: "text-sunglow-400",
   slow: "text-red-university",
-
-  small: "text-cyan-500",
-  large: "text-sunglow-400",
-  "4 gb": "text-red-university",
-  "1 tb": "text-amber-600",
-  "1 tb +": "text-sunglow-400",
-  "2 tb +": "text-sunglow-400",
-  "4 tb": "text-sunglow-400",
-  "128 tb": "text-sunglow-400",
-  "8 eb": "text-keppel-600",
-  "9 eb": "text-keppel-600",
-  unlimited: "text-keppel-600",
-
-  default: "text-neutral-800",
+  default: "text-neutral-600",
 }
 
 // Content
 export interface ServiceFeature {
   name: string
   value: string | boolean | number
+  sortValue: number
   notes?: string[]
 }
 
@@ -90,52 +67,42 @@ export interface ServiceLink {
   display_text?: string
 }
 
-export interface ServiceConfig {
+export interface FeatureMetadata {
   name: string
+  display_name: string
+  icon: string
+}
+
+export interface StorageData {
+  metadata: {
+    total_services: number
+    total_features: number
+    feature_names: string[]
+    feature_metadata: Record<string, FeatureMetadata>
+  }
+  table_data: ServiceConfig[]
+}
+
+export interface ServiceConfig {
+  serviceName: string
   description?: string
   links?: ServiceLink[]
-  features: ServiceFeature[]
+
+  [key: string]: any // For dynamic feature columns
 }
 
 // Form
-export interface QuestionAnswer {
-  answer: string
-  matching_feature_values: (string | boolean | number)[]
-}
-
-export interface QuestionsConfig {
-  question: string
-  information?: string
-  affected_feature: string
-  default_answer: string
-  answers: QuestionAnswer[]
-}
 
 export interface FormQuestions {
   id: string
   question: string
+  default_answer: string
   options: { label: string; value: (string | number | boolean)[] }[]
-  information?: string
-}
-
-// Table
-export interface TableRow {
-  featureName: string
-  [key: string]: ServiceFeature | undefined | string
+  information?: string[]
+  link?: { label: string; value: string }
 }
 
 // Form and Table
 export interface SelectedAnswers {
   [key: string]: string
-}
-
-// Top-level structure of content file
-export interface PageContentData {
-  title: string
-  description: string
-  icon?: string
-  links?: ServiceLink[]
-  storage_tool_header: string
-  services: ServiceConfig[]
-  questions: QuestionsConfig[]
 }

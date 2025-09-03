@@ -142,18 +142,24 @@ const routes: NavSection[] = [
       {
         name: "",
         routes: [
-          {
-            name: "Projects",
-            href: "/portfolio/projects",
-            description: "",
-            icon: FaCode,
-          },
-          {
-            name: "Workshops",
-            href: "/portfolio/workshops",
-            description: "",
-            icon: FaChalkboardTeacher,
-          },
+          // {
+          //   name: "Collaborations",
+          //   href: "/portfolio/collaborations",
+          //   description: "*Coming Soon*",
+          //   icon: FaHandshake,
+          // },
+          // {
+          //   name: "Software",
+          //   href: "/portfolio/software",
+          //   description: "*Coming Soon*",
+          //   icon: FaCode,
+          // },
+          // {
+          //   name: "Workshops and Talks",
+          //   href: "/portfolio/workshops-and-talks",
+          //   description: "*Coming Soon*",
+          //   icon: FaChalkboardTeacher,
+          // },
           {
             name: "Publications",
             href: "https://publications.ccv.brown.edu",
@@ -310,7 +316,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu Content */}
         {isMobileMenuOpen && (
-          <div className="absolute left-0 top-full z-40 h-[calc(100vh-100px)] w-full overflow-y-auto bg-neutral-700 pb-40 shadow-md lg:hidden">
+          <div className="absolute left-0 top-full z-40 h-[calc(100vh-100px)] w-full overflow-y-auto bg-slate-700 pb-40 shadow-md lg:hidden">
             {routes.map((section) => (
               <React.Fragment key={section.name}>
                 <button
@@ -323,46 +329,65 @@ export const Navbar: React.FC = () => {
                   />
                 </button>
                 {openSubmenus.includes(section.name) && (
-                  <div className="ml-6">
+                  <div className="ml-12 py-3 text-white">
                     {section.groups.map((group) => (
-                      <div className="py-2" key={group.name}>
-                        {group.routes.map((route) => (
-                          <ButtonLink
-                            key={route.href}
-                            href={route.href}
-                            external={route.href.startsWith("http")}
-                            onClick={toggleMobileMenu}
-                            className="block px-6 py-6 text-white hover:bg-sunglow-400 hover:text-neutral-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
-                          >
-                            <div className="text-xl">{route.name}</div>
-                            {route.description && (
-                              <div className="mt-1 text-sm">
-                                {route.description}
-                              </div>
-                            )}
-                          </ButtonLink>
-                        ))}
-                      </div>
+                      <ul className="flex flex-col gap-4 pt-4" key={group.name}>
+                        {group.routes.map((route) =>
+                          route.href.startsWith("http") ? (
+                            <a
+                              key={route.href}
+                              href={route.href}
+                              onClick={toggleMobileMenu}
+                              className="hover:bg-sunglow-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+                            >
+                              <p className="text-xl font-semibold">
+                                {route.name}
+                              </p>
+                              {route.description && (
+                                <p className="mt-1 text-sm">
+                                  {route.description}
+                                </p>
+                              )}
+                            </a>
+                          ) : (
+                            <Link
+                              className="hover:bg-sunglow-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+                              key={route.href}
+                              href={route.href}
+                            >
+                              <p className="text-xl font-semibold">
+                                {route.name}
+                              </p>
+                              {route.description && (
+                                <p className="mt-1 text-sm">
+                                  {route.description}
+                                </p>
+                              )}
+                            </Link>
+                          )
+                        )}
+                      </ul>
                     ))}
                   </div>
                 )}
               </React.Fragment>
             ))}
-            <ButtonLink
-              href="/about/contact"
-              external={false}
-              onClick={toggleMobileMenu}
-              className="block px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
-            >
-              Help
-            </ButtonLink>
-            <ButtonLink
-              href="https://docs.ccv.brown.edu/documentation"
-              onClick={toggleMobileMenu}
-              className="block px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
-            >
-              Docs
-            </ButtonLink>
+            <div className="flex flex-col">
+              <Link
+                href="/about/contact"
+                onClick={toggleMobileMenu}
+                className="px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+              >
+                Help
+              </Link>
+              <a
+                href="https://docs.ccv.brown.edu/documentation"
+                onClick={toggleMobileMenu}
+                className="px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+              >
+                Docs
+              </a>
+            </div>
           </div>
         )}
       </div>
@@ -387,7 +412,7 @@ const NavigationSectionContent: React.FC<{
             key={group.name}
             className={`${
               hasMultipleGroups && index > 0
-                ? "border-t border-neutral-700 py-1 xl:border-l xl:border-t-0 xl:py-0 xl:pl-6"
+                ? "border-t border-slate-700 py-1 xl:border-l xl:border-t-0 xl:py-0 xl:pl-6"
                 : ""
             } ${hasMultipleGroups && index === 0 ? "px-6 py-1 xl:px-0 xl:py-0" : ""} ${
               hasMultipleGroups ? "flex-1" : ""
@@ -402,7 +427,7 @@ const NavigationSectionContent: React.FC<{
               {group.routes.map((route) => (
                 <li
                   key={route.href}
-                  className="p-1 hover:bg-neutral-50 sm:p-1.5 md:p-2"
+                  className="p-1 hover:bg-slate-100 sm:p-1.5 md:p-2"
                 >
                   <NavigationMenu.Link
                     href={route.href}
@@ -414,7 +439,7 @@ const NavigationSectionContent: React.FC<{
                     className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
                   >
                     {route.icon && (
-                      <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-neutral-100/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
+                      <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-slate-400/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
                         <route.icon className="h-1/2 w-1/2" />
                       </div>
                     )}
@@ -423,7 +448,7 @@ const NavigationSectionContent: React.FC<{
                         {route.name}
                       </span>
                       {route.description && (
-                        <span className="mb-1 max-w-[425px] text-sm italic text-neutral-500 sm:mb-1.5 sm:text-md md:mb-3">
+                        <span className="mb-1 max-w-[425px] text-sm italic text-slate-500 sm:mb-1.5 sm:text-md md:mb-3">
                           {route.description}
                         </span>
                       )}

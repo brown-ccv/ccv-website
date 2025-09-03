@@ -96,7 +96,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             setSelectedDate(cloneDate)
           }}
         >
-          <span className="text-center text-lg font-semibold text-neutral-900">
+          <span className="text-center text-lg font-semibold text-slate-900">
             {day}
             <span className="mx-2 items-center justify-center">
               {format(thisDate, "d")}
@@ -144,6 +144,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
             href={event.url}
             external={true}
             className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5 md:text-sm lg:text-md`}
+            isCalendarEvent={true}
           >
             <p className="font-semibold text-blue-500">{event.title}</p>
             <p className="weekly-datetime flex items-center py-2 text-keppel-700">

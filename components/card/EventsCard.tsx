@@ -20,7 +20,7 @@ export const EventsCard: React.FC<DataProps> = ({
   return (
     <StyledCard title={title}>
       <div className="space-y-2">
-        <p className="text-lg font-semibold text-neutral-900 md:text-xl">
+        <p className="text-lg font-semibold text-slate-900 md:text-xl">
           {normalDate}
         </p>
         <div className="flex items-center gap-2 text-keppel-800 md:text-lg">

@@ -72,7 +72,9 @@ export const ProjectEstimationSection = () => {
           }
           group={"Performance and Energy Aware Computing Lab"}
           time={"2+ years"}
-          goal={"SOMA is designed to improve the lives of people living with chronic pain by enabling clinicians to improve treatment options for patients."}
+          goal={
+            "SOMA is designed to improve the lives of people living with chronic pain by enabling clinicians to improve treatment options for patients."
+          }
           image={"/images/services/consulting/project-estimation/soma.png"}
           alt={"Screenshots of the SOMA app"}
         />

@@ -2,31 +2,28 @@
 
 import React, { useState } from "react"
 import { Button } from "@/components/button/Button"
+import { ScrollButton } from "@/components/button/ScrollButton"
 import { ContentSection } from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
-import Table from "@/components/storage/StorageTable"
+import StorageTable from "@/components/storage/StorageTable"
 import {
-  PageContentData,
   SelectedAnswers,
-  QuestionsConfig,
-  ServiceConfig,
+  StorageData,
   FormQuestions,
 } from "@/lib/storage-types"
+import StorageCards from "@/components/storage/StorageCards"
+import Icon from "@/components/ui/RenderIcon"
 
 interface StorageToolProps {
-  pageContent: PageContentData | null
   questions: FormQuestions[]
   initialSelectedAnswers: SelectedAnswers
-  services: ServiceConfig[]
-  questionsConfig: QuestionsConfig[]
+  services: StorageData
 }
 
 export default function StorageTool({
-  pageContent,
   questions,
   initialSelectedAnswers,
   services,
-  questionsConfig,
 }: StorageToolProps) {
   const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(
     initialSelectedAnswers
@@ -44,29 +41,51 @@ export default function StorageTool({
   }
 
   return (
-    <ContentSection title="Compare Storage Options">
-      <div className="flex flex-col items-start pb-8">
-        <h2 className="my-12 text-2xl font-bold text-gray-800">
-          {pageContent?.storage_tool_header}
-        </h2>
-        <div className="mt-0 flex w-full flex-col items-center gap-4 xl:flex-row xl:items-start">
-          <div className="w-full">
-            <Form
-              selectedAnswers={selectedAnswers}
-              onAnswerChange={handleAnswerChange}
-              questions={questions}
-            />
-            <Button onClick={handleReset} variant="primary_filled" size="lg">
+    <>
+      <ContentSection id="form" title="Storage Selection Tool">
+        <p className="my-12 text-2xl font-semibold text-gray-800">
+          Answering the questions in the form will provide a list of services
+          that meet your requirements.
+        </p>
+        <div className="hidden lg:flex lg:items-center lg:gap-4 lg:pb-8">
+          <p className="text-lg">Want to dive into comparing features?</p>
+          <ScrollButton variant="primary_outlined" id="table">
+            View Comparison Table
+            <Icon iconName="FaAngleDoubleDown" />
+          </ScrollButton>
+        </div>
+        <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
+          <Form
+            selectedAnswers={selectedAnswers}
+            onAnswerChange={handleAnswerChange}
+            questions={questions}
+          >
+            <Button onClick={handleReset} variant="primary_outlined" size="md">
               Reset Questions
             </Button>
-          </div>
-          <Table
+          </Form>
+
+          <StorageCards
             services={services}
             selectedAnswers={selectedAnswers}
-            questions={questionsConfig}
+            questions={questions}
           />
         </div>
-      </div>
-    </ContentSection>
+      </ContentSection>
+      <ContentSection
+        id="table"
+        title="Compare Storage Options"
+        className="hidden lg:block"
+      >
+        <p className="mb-6 text-xl font-semibold">
+          This tool lets you compare the available storage options at Brown to
+          compare their features and decide which of these services best suits
+          your needs. Select a storage service in the table for more information
+          about the service.
+        </p>
+
+        <StorageTable services={services} />
+      </ContentSection>
+    </>
   )
 }

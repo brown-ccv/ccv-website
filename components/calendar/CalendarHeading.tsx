@@ -36,7 +36,7 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
           </button>
           <button
             type="button"
-            className="hidden border border-gray-300 px-3.5 text-xl font-semibold text-neutral-900 hover:bg-gray-50 focus:relative md:block"
+            className="hidden border border-gray-300 px-3.5 text-xl font-semibold text-slate-900 hover:bg-gray-50 focus:relative md:block"
             onClick={() => todayButtonFunction()}
           >
             Today

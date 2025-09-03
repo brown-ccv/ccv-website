@@ -9,42 +9,42 @@ export const ButtonVariants = cva(
         primary_filled: [
           "bg-keppel-700 text-white",
           "hover:bg-keppel-500",
-          "focus-visible:ring-2 focus-visible:ring-keppel-500",
+          "focus-visible:ring-2 focus-visible:ring-sunglow-300",
           "active:bg-keppel-600",
         ].join(" "),
         // ————————————————————— Secondary Filled ————————————————————
         secondary_filled: [
           "bg-sunglow-400 text-black",
           "hover:bg-sunglow-200",
-          "focus-visible:ring-2 focus-visible:ring-sunglow-200",
+          "focus-visible:ring-2 focus-visible:ring-keppel-400",
           "active:bg-sunglow-300",
         ].join(" "),
         // ————————————————————— Primary Outlined ————————————————————
         primary_outlined: [
-          "bg-transparent border-2 border-keppel-700 text-keppel-700",
-          "hover:bg-keppel-500 hover:text-white",
-          "focus-visible:ring-2 focus-visible:ring-keppel-500",
-          "active:bg-keppel-50 active:bg-keppel-600 active:text-white",
+          "bg-transparent border-2 border-keppel-700 text-keppel-800",
+          "hover:border-keppel-500 hover:text-keppel-500",
+          "focus-visible:ring-2 focus-visible:ring-sunglow-200",
+          "active:bg-keppel-50 active:border-keppel-600 active:text-keppel-600",
         ].join(" "),
         // ————————————————————— Secondary Outlined ———————————————————
         secondary_outlined: [
           "bg-transparent border-2 border-sunglow-400 text-sunglow-400",
-          "hover:bg-sunglow-400 hover:text-white",
-          "focus-visible:ring-2 focus-visible:ring-sunglow-400",
-          "active:bg-sunglow-50 active:bg-sunglow-300 active:text-white",
+          "hover:border-sunglow-200 hover:text-sunglow-200",
+          "focus-visible:ring-2 focus-visible:ring-keppel-400",
+          "active:bg-sunglow-50 active:border-sunglow-300 active:text-sunglow-300",
         ].join(" "),
         // ————————————————————— Red Outlined ————————————————————
         red_outlined: [
           "items-center justify-center text-md sm:text-lg font-semibold",
           "rounded-none border-2 border-red-university text-red-university",
           "hover:bg-red-university hover:text-white",
-          "focus-visible:bg-red-university focus:text-white focus-visible:border-red-university whitespace-nowrap",
+          "focus-visible:bg-red-university focus:text-white whitespace-nowrap",
         ].join(" "),
         // ————————————————————— Black Filled ——————————————————————
         black_filled: [
           "bg-neutral-900 text-white",
           "hover:bg-neutral-700",
-          "focus-visible:ring-2 focus-visible:ring-neutral-700",
+          "focus-visible:ring-2 focus-visible:ring-sunglow-200",
           "active:bg-neutral-800",
         ].join(" "),
         // ——————————————————— Icon Only (filled, for black icon buttons) ———————————————————

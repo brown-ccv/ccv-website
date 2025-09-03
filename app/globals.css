@@ -7,7 +7,7 @@
 @layer base {
   :root {
     @apply font-sans;
-    @apply text-neutral-700;
+    @apply text-slate-800;
     --accent: 0, 128, 108;
     --accent-light: 0, 230, 195;
     --accent-dark: 49, 10, 101;
@@ -83,13 +83,15 @@
 }
 
 @layer components {
-  /* Custom code block styling */
   .prose pre code {
     white-space: pre-wrap;
     word-wrap: break-word;
   }
 
-  /* Remove default margins from images in MDX content */
+  .prose h2 {
+    @apply mt-0;
+  }
+
   .prose img {
     @apply my-4 py-4;
   }
