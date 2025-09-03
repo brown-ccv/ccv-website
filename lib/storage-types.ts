@@ -37,35 +37,19 @@ export const featureIcons: Record<string, React.ElementType> = {
 }
 
 export const featureColorMap: Record<string, string> = {
-  high: "text-red-university",
-  medium: "text-amber-600",
-  low: "text-keppel-600",
-  "0": "text-red-university",
+  "0": "text-keppel-700",
   "1": "text-sunglow-400",
   "2": "text-amber-600",
-  "3": "text-keppel-600",
-  true: "text-keppel-600",
+  "3": "text-red-university",
+  true: "text-keppel-700",
   false: "text-red-university",
-  easy: "text-keppel-600",
-  complex: "text-red-university",
-  partial: "text-sunglow-400",
-
-  "low cost": "text-keppel-600",
-  "medium cost": "text-sunglow-400",
-  "high cost": "text-red-university",
-
   hot: "text-red-university",
   warm: "text-sunglow-400",
-  cold: "text-cyan-500",
-  fastest: "text-keppel-600",
+  cold: "text-indigo-800",
+  fastest: "text-keppel-700",
   faster: "text-amber-600",
   fast: "text-sunglow-400",
   slow: "text-red-university",
-
-  small: "text-cyan-500",
-  large: "text-sunglow-400",
-  unlimited: "text-keppel-600",
-
   default: "text-neutral-600",
 }
 

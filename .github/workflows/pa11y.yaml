@@ -1,0 +1,93 @@
+name: Run pa11y
+
+on: pull_request
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - run: npm ci
+
+      - name: 🔧 Install Chromium dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y \
+            libnss3-dev \
+            libatk-bridge2.0-dev \
+            libdrm-dev \
+            libxcomposite-dev \
+            libxdamage-dev \
+            libxrandr-dev \
+            libgbm-dev \
+            libxss-dev \
+            libasound2-dev
+
+      - name: 🔑 Set up Google Cloud Credentials
+        id: "auth"
+        uses: "google-github-actions/auth@v2"
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY_CR }}
+
+      - name: 🏗️ Build
+        run: npm run build
+
+      - name: 🏁 Start up app
+        run: |
+          npm start &
+          npx wait-on http://localhost:3000
+
+      - run: npm exec -c 'pa11y-ci --sitemap http://localhost:3000/sitemap.xml --reporter json' > pa11y-results.json
+
+      - name: ✨ Prettify result file
+        if: ${{ always() }}
+        run: |
+          if [ -f pa11y-results.json ]; then
+            python -m json.tool pa11y-results.json pretty-pa11y-results.json
+          else
+            echo '{"status": "success", "message": "No accessibility issues found!", "results": []}' > pretty-pa11y-results.json
+          fi
+
+      - name: 👓 Read pa11y result file
+        if: ${{ always() }}
+        id: pa11y_output
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./pretty-pa11y-results.json
+
+      - name: ❌ Comment on pull request (failure)
+        if: ${{ failure() }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
+          header: "pa11y report"
+          message: |
+            <p><small>Note: This comment gets updated with every commit</small></p>
+            <details>
+            <summary>
+                <p>Git SHA: <code>${{ github.event.pull_request.head.sha }}</code></p>
+                <h3>Pa11y test status: <strong>FAIL</strong></h3>
+            </summary>
+            <pre><code>
+            ${{ steps.pa11y_output.outputs.content }}
+            </code></pre>
+            </details>
+
+      - name: ✅ Comment on pull request (success)
+        if: ${{ success() }}
+        uses: marocchino/sticky-pull-request-comment@v2
+        with:
+          GITHUB_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
+          header: "pa11y report"
+          message: |
+            <p><small>Note: This comment gets updated with every commit</small></p>
+            <details>
+            <summary>
+                <p>Git SHA: <code>${{ github.event.pull_request.head.sha }}</code></p>
+                <h3>Pa11y test status: <strong>PASS</strong></h3>
+            </summary>
+            <pre><code>
+            ${{ steps.pa11y_output.outputs.content }}
+            </code></pre>
+            </details>

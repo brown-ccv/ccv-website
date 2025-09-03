@@ -1,9 +1,9 @@
-name: 🏗️ Build, Run Pa11y, & Deploy Preview
+name: 🏗️ Deploy Preview
 on: pull_request
 
 jobs:
   build:
-    name: Build
+    name: build
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
@@ -44,62 +44,6 @@ jobs:
       - name: 🏗️ Build
         run: npm run build
 
-      - name: 🏁 Start up app
-        run: |
-          npm start &
-          npx wait-on http://localhost:3000
-
-      - name: ✨ Prettify result file
-        if: ${{ always() }}
-        run: |
-          if [ -f pa11y-results.json ]; then
-            python -m json.tool pa11y-results.json pretty-pa11y-results.json
-          else
-            echo '{"status": "success", "message": "No accessibility issues found!", "results": []}' > pretty-pa11y-results.json
-          fi
-
-      - name: 👓 Read pa11y result file
-        if: ${{ always() }}
-        id: pa11y_output
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./pretty-pa11y-results.json
-
-      - name: ❌ Comment on pull request (failure)
-        if: ${{ failure() }}
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          GITHUB_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
-          header: "pa11y report"
-          message: |
-            <p><small>Note: This comment gets updated with every commit</small></p>
-            <details>
-            <summary>
-                <p>Git SHA: <code>${{ github.event.pull_request.head.sha }}</code></p>
-                <h3>Pa11y test status: <strong>FAIL</strong></h3>
-            </summary>
-            <pre><code>
-            ${{ steps.pa11y_output.outputs.content }}
-            </code></pre>
-            </details>
-
-      - name: ✅ Comment on pull request (success)
-        if: ${{ success() }}
-        uses: marocchino/sticky-pull-request-comment@v2
-        with:
-          GITHUB_TOKEN: ${{ secrets.CCV_WEBSITE_STATUS_GITHUB_TOKEN }}
-          header: "pa11y report"
-          message: |
-            <p><small>Note: This comment gets updated with every commit</small></p>
-            <details>
-            <summary>
-                <p>Git SHA: <code>${{ github.event.pull_request.head.sha }}</code></p>
-                <h3>Pa11y test status: <strong>PASS</strong></h3>
-            </summary>
-            <pre><code>
-            ${{ steps.pa11y_output.outputs.content }}
-            </code></pre>
-            </details>
 
   deploy-preview:
     name: Deploy Preview

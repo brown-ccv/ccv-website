@@ -60,7 +60,7 @@ export default function StorageTool({
             onAnswerChange={handleAnswerChange}
             questions={questions}
           >
-            <Button onClick={handleReset} variant="primary_filled" size="md">
+            <Button onClick={handleReset} variant="primary_outlined" size="md">
               Reset Questions
             </Button>
           </Form>
