@@ -5,23 +5,17 @@ import rehypePrismPlus from "rehype-prism-plus"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "",
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  ...(process.env.NEXT_PUBLIC_STATIC_EXPORT && {
-    output: "export",
-    trailingSlash: false,
-    images: {
-      unoptimized: true,
-    },
-  }),
+    basePath: "",
+    pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+    output: "standalone",
 }
 
 const withMDX = createMDX({
-  extension: /\.(md|mdx)$/,
-  options: {
-    remarkPlugins: [remarkFrontmatter, remarkGfm],
-    rehypePlugins: [rehypePrismPlus],
-  },
+    extension: /\.(md|mdx)$/,
+    options: {
+        remarkPlugins: [remarkFrontmatter, remarkGfm],
+        rehypePlugins: [rehypePrismPlus],
+    },
 })
 
 export default withMDX(nextConfig)
