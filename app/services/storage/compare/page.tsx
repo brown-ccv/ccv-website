@@ -17,21 +17,14 @@ export default async function CompareStorageOptions() {
   return (
     <>
       <Hero title={metadata.title} description={metadata.description}>
-        {metadata.links?.map((link: any, index: number) => (
-          <ButtonLink
-            key={index}
-            variant={
-              link.category === "Documentation"
-                ? "primary_filled"
-                : "secondary_filled"
-            }
-            size="xl"
-            href={link.target}
-            external={!link.target.startsWith("/")}
-          >
-            {link.text}
-          </ButtonLink>
-        ))}
+        <ButtonLink
+          variant="secondary_filled"
+          size="xl"
+          href="https://brown.atlassian.net/servicedesk/customer/portal/16"
+          external
+        >
+          Request Storage
+        </ButtonLink>
       </Hero>
 
       <StorageTool
