@@ -56,9 +56,11 @@ npm run build
 npm run dev
 ```
 
-## App Hosting
+## Hosting
 
-Hosted on Firebase App Hosting (Project ID: `ccv-website-next`). Secrets are
+Containerized in Docker, stored in an image on Google Container Registry, and run via Google Cloud run  (Project
+ID: `ccv-website-next`).
+Secrets are
 in [Google Cloud Secret Manager](https://console.cloud.google.com/security/secret-manager).
 
 ## Accessibility
