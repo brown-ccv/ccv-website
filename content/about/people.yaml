@@ -1,5 +1,6 @@
 people:
   - name: Ashok Ragavendran
+    last_name: Ragavendran
     type: Full Time
     team: Leadership
     subteam: Computational Biology Core
@@ -16,6 +17,7 @@ people:
       the beach.
     image: ashok_main.jpg
   - name: Isabel Restrepo
+    last_name: Restrepo
     type: Full Time
     team: Leadership
     subteam: Graphics, Software, and Data Core
@@ -29,6 +31,7 @@ people:
       children.
     image: isabel_main.jpg
   - name: Linnea Wolfe
+    last_name: Wolfe
     type: Full Time
     team: Leadership
     title: Assistant Chief Information Officer, Infrastructure and Research Computing
@@ -37,6 +40,7 @@ people:
     bio: ""
     image: linnea_main.jpg
   - name: Paul Stey
+    last_name: Stey
     type: Full Time
     team: Leadership
     title: Assistant CIO Research Software Engineering and Data Science
@@ -48,14 +52,17 @@ people:
       He has a PhD in Developmental Psychology.
     image: stey_main.jpg
   - name: Sam Fulcomer
+    last_name: Fulcomer
     type: Full Time
     team: Leadership
+    last_name: Fulcomer
     title: HPC IT Architect
     github_username: ""
     brown_directory_uuid: 0d83d4b5-85a5-62fc-44a3-81eaff49e183
     bio: ""
     image: fulcomer_main.jpg
   - name: Thomas Serre
+    last_name: Serre
     type: Full Time
     team: Leadership
     title: Faculty Director, Professor of Cognitive, Linguistic, and Psychological Sciences
@@ -67,6 +74,7 @@ people:
       Bretagne (France) in 2000.
     image: thomas_main.jpg
   - name: David D Johnson
+    last_name: Johnson
     type: Full Time
     team: CCV Operations
     subteam: High-Performance Computing Systems
@@ -76,6 +84,7 @@ people:
     bio: ""
     image: dave_main.jpg
   - name: Geoffrey Avila
+    last_name: Avila
     type: Full Time
     team: CCV Operations
     subteam: High-Performance Computing Systems
@@ -84,6 +93,7 @@ people:
     brown_directory_uuid: f904bb23-202f-48fb-bf93-7b7d326c7043
     image: avila_main.jpg
   - name: Nathan Wood
+    last_name: Wood
     type: Full Time
     team: CCV Operations
     subteam: High-Performance Computing Systems
@@ -93,6 +103,7 @@ people:
     bio: ""
     image: nate_main.jpg
   - name: Jarrod Winsor
+    last_name: Winsor
     type: Full Time
     team: CCV Operations
     title: Lead Research Systems Administrator
@@ -101,6 +112,7 @@ people:
     bio: ""
     image:
   - name: Timothy Poli
+    last_name: Poli
     type: Full Time
     team: CCV Operations
     title: Senior Research Systems Administrator
@@ -109,6 +121,7 @@ people:
     bio: ""
     image:
   - name: Michael Antonelli
+    last_name: Antonelli
     type: Full Time
     team: CCV Operations
     title: Research Systems Administrator
@@ -117,6 +130,7 @@ people:
     bio: ""
     image:
   - name: Paul Koussa
+    last_name: Koussa
     type: Full Time
     team: Leadership
     title: Associate Director of Research Systems
@@ -125,6 +139,7 @@ people:
     bio: ""
     image:
   - name: Paulo S Baptista
+    last_name: Baptista
     type: Full Time
     team: CCV Operations
     subteam: High-Performance Computing Systems
@@ -134,6 +149,7 @@ people:
     bio: ""
     image: paulo_main.jpg
   - name: Yang Liu
+    last_name: Liu
     type: Full Time
     team: CCV Operations
     subteam: Research Technical Services
@@ -143,6 +159,7 @@ people:
     bio:
     image: yang_main.jpg
   - name: Prasad Bandarkar
+    last_name: Bandarkar
     type: Full Time
     team: CCV Operations
     subteam: Research Technical Services
@@ -152,6 +169,7 @@ people:
     bio:
     image: prasad_main.jpg
   - name: August Guang
+    last_name: Guang
     type: Full Time
     team: Advanced Research Computing
     subteam: Computational Biology Core
@@ -166,6 +184,7 @@ people:
       how change happens.
     image: august_main.jpg
   - name: Paul Cao
+    last_name: Cao
     type: Full Time
     team: Advanced Research Computing
     title: Genomics Data Scientist
@@ -175,6 +194,7 @@ people:
     bio: ""
     image:
   - name: Jordan Lawson
+    last_name: Lawson
     type: Full Time
     team: Advanced Research Computing
     title: Senior Research Software Engineer
@@ -187,6 +207,7 @@ people:
       loves learning about natural and formal languages, superhero movies, boxing, and basketball.
     image: jordan_main.jpg
   - name: Joselynn Wallace
+    last_name: Wallace
     type: Full Time
     team: Advanced Research Computing
     title: Senior Genomics Data Scientist
@@ -199,6 +220,7 @@ people:
       microbes.
     image: joselynn_main.jpg
   - name: Ashley S. Lee
+    last_name: Lee
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -211,6 +233,7 @@ people:
       Her personal interests include muay thai, running, reading, thrifting, and dogs.
     image: ashley_main.jpg
   - name: Bradford N. Roarr
+    last_name: Roarr
     type: Full Time
     team: Advanced Research Computing
     title: Lead Research Software Engineer
@@ -224,6 +247,7 @@ people:
       Before Brown, Bradford worked for various startups in the Silicon Valley.
     image: bradford_main.jpg
   - name: Camilo Diaz
+    last_name: Diaz
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -236,6 +260,7 @@ people:
       playing soccer and volunteering for multiple events accros Rhode Island.
     image: camilo_main.jpg
   - name: Ellen Duong
+    last_name: Duong
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -245,6 +270,7 @@ people:
     bio: ""
     image: ellen_main.jpg
   - name: Paul Xu
+    last_name: Xu
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -254,6 +280,7 @@ people:
     bio: Paul's diverse interests as a Lead Data Scientist include building generative AI applications in computer vision and natural language processing, engineering data science software, and maintaining cloud compute infrastructure for data science. Paul received his Sc.M. in Computer Science with focus on AI/ML from Brown University and Ph.D. in Curriculum and Instruction with focus on CS Education from Boston College. In his own time, Paul likes to geek out on computer and natural languages. He is also an avid photographer with his work published in an international magazine.
     image: px_main.jpg
   - name: Joshua Lu
+    last_name: Lu
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -263,6 +290,7 @@ people:
     bio: ""
     image:
   - name: Robert Gemma, Jr.
+    last_name: Gemma
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -276,6 +304,7 @@ people:
       where he also minored in music.
     image: robert_main.jpg
   - name: Paul Hall
+    last_name: Hall
     type: Full Time
     team: Advanced Research Computing
     subteam: High-Performance Computing
@@ -287,6 +316,7 @@ people:
       his Ph.D. in Oceanography from the URI.
     image: hall_main.jpg
   - name: Timothy Divoll
+    last_name: Divoll
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -300,6 +330,7 @@ people:
       and making pipelines accessible.
     image: tim_main.jpg
   - name: John Gerrard Holland
+    last_name: Holland
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -312,6 +343,7 @@ people:
       and worked for a boutique management and IT consultancy in Germany.
     image: john_main.jpg
   - name: Carlos Paniagua
+    last_name: Paniagua
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -321,6 +353,7 @@ people:
     bio: Carlos is a data scientist at the CCV. Previously a Mathematics tenure-track faculty member at universities in the US and the Dominican Republic, Carlos likes using his skills working with data for wider social impact.
     image: carlos_main.jpg
   - name: George Dang
+    last_name: Dang
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -332,6 +365,7 @@ people:
       Prior to joining CCV, worked in environmental consulting specializing in water quality and geospatial analytics.
     image: dang_main.jpg
   - name: Ford McDonald
+    last_name: McDonald
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -341,6 +375,7 @@ people:
     bio: Ford is a software engineer here at CCV, with a background in simulation-based prototyping and user interface development. His favorite weekend ventures include hiking a new trail in the White Mountains, or heading down to Narragansett Beach for a surf.
     image: ford_main.jpg
   - name: Eric Salomaki
+    last_name: Salomaki
     type: Full Time
     team: Advanced Research Computing
     subteam: Computational Biology Core
@@ -350,6 +385,7 @@ people:
     bio: Eric is a genomics data scientist at the CCV. Before coming to Brown, he was a postdoc investigating genome evolution, organellar metabolism, and biodiversity of protists at the Czech Academy of Sciences. He earned his PhD from the University of Rhode Island studying the evolution of parasitism in red algae.
     image: eric_main.jpg
   - name: Heather Yu
+    last_name: Yu
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -359,6 +395,7 @@ people:
     bio: Heather is a research software engineer with a background in research applications and database creation. Prior to joining CCV, she was a Research Manager at Brown in the Department of Cognitive, Linguistic, and Psychological Sciences (CLPS).
     image: heather_main.jpg
   - name: Anna Murphy
+    last_name: Murphy
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -368,6 +405,7 @@ people:
     bio: Anna is a software engineer and researcher with the CCV with a background in full-stack web development. She loves thinking about technology and media, and the different impacts they both have on the world.
     image: anna_main.jpg
   - name: Rain Fan
+    last_name: Fan
     type: Full Time
     team: CCV Operations
     subteam: Research Technical Services
@@ -377,6 +415,7 @@ people:
     bio:
     image: rain_main.jpg
   - name: Prithvi Thakur
+    last_name: Thakur
     type: Full Time
     team: Advanced Research Computing
     subteam: High-Performance Computing
@@ -386,6 +425,7 @@ people:
     bio: Prithvi is a research software engineer in the High Performance Computing division at CCV. He did his PhD in computational seismology from UMich, and later spent a year modeling extreme events and natural catastrophes at Karen Clark and Company. His professional interests include high performance computing, statistical modeling, software development, and earthquake source processes. Outside of work, you can find him hiking in the woods or playing music.
     image: prithvi_main.jpg
   - name: Sam Bessey
+    last_name: Bessey
     type: Full Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
@@ -398,6 +438,7 @@ people:
       software to study the spread of HIV through sexual and needle-sharing networks.
     image: sam_main.jpeg
   - name: Gurpartap Singh
+    last_name: Singh
     type: Part Time
     team: Advanced Research Computing
     subteam: Graphics, Software, and Data Core
