@@ -27,7 +27,7 @@ jobs:
       - uses: google-github-actions/auth@v2
         with:
           project_id: ${{ env.gcp_project_id }}
-          credentials_json: ${{ secrets.GCP_SA_KEY_CR }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
           export_environment_variables: true
           create_credentials_file: true
 
@@ -40,7 +40,7 @@ jobs:
         with:
           registry: ${{ env.gcp_registry_url }}
           username: _json_key
-          password: ${{ secrets.GCP_SA_KEY_CR }}
+          password: ${{ secrets.GCP_SA_KEY }}
 
       - name: Configure Docker Auth
         shell: bash
