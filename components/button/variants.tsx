@@ -21,7 +21,7 @@ export const ButtonVariants = cva(
         ].join(" "),
         // ————————————————————— Primary Outlined ————————————————————
         primary_outlined: [
-          "bg-transparent border-2 border-keppel-700 text-keppel-700",
+          "bg-transparent border-2 border-keppel-700 text-keppel-800",
           "hover:border-keppel-500 hover:text-keppel-500",
           "focus-visible:ring-2 focus-visible:ring-sunglow-200",
           "active:bg-keppel-50 active:border-keppel-600 active:text-keppel-600",
