@@ -1,6 +1,7 @@
 // --- about/us
 export interface PeopleTypes {
   name: string
+  last_name: string
   type: string
   team: string
   subteam: string

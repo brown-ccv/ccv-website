@@ -49,7 +49,9 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
       <div className="xs:w-1/2 flex flex-wrap justify-center gap-y-6">
         {pageContent?.people &&
           (await Promise.all(
-            pageContent.people.map(async (person: PeopleTypes) => {
+            pageContent.people
+              .sort((a, b) => a.last_name.localeCompare(b.last_name))
+              .map(async (person: PeopleTypes) => {
               const { main, hover } = await getImagePaths(person.image)
               return (
                 <React.Fragment key={person.name}>
