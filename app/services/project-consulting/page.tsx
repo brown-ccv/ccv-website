@@ -9,8 +9,8 @@ export default function ProjectConsulting() {
   return (
     <>
       <Hero title={metadata.title} description={metadata.description}>
-        <div className="not-prose flex flex-col items-start">
-          <div className="not-prose flex w-full flex-col flex-wrap items-start gap-4 xl:flex-row">
+        <div className="flex flex-col items-start">
+          <div className="flex w-full flex-col flex-wrap items-start gap-4 xl:flex-row">
             {metadata.links.map((link: any, index: number) => (
               <ButtonLink
                 key={index}
@@ -25,7 +25,7 @@ export default function ProjectConsulting() {
           </div>
         </div>
       </Hero>
-      <div className="prose prose-lg max-w-none text-xl">
+      <div className="max-w-none flex-1 text-content lg:text-content-lg">
         <ProjectConsultingContent />
       </div>
     </>

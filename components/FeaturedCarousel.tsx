@@ -151,7 +151,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 </div>
               )}
 
-              <div className="prose prose-lg max-w-none flex-1 text-md font-normal text-gray-800 lg:text-lg">
+              <div className="prose prose-xl max-w-none flex-1">
                 <Markdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}

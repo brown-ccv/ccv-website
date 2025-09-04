@@ -41,7 +41,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Wrapper component for all MDX content
     wrapper: ({ children }) => (
-      <div className="prose max-w-none text-xl">{children}</div>
+      <div className="prose prose-xl max-w-none">{children}</div>
     ),
 
     // Global MDX components
@@ -49,7 +49,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <ButtonLink
         variant="primary_filled"
         size="lg"
-        className="my-4"
+        className="my-4 mb-8"
         external
         {...props}
       />
