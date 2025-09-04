@@ -2,7 +2,6 @@
 
 import { ReactNode } from "react"
 import { TextAnimate } from "@/components/magicui/TextAnimate"
-import { cn } from "@/lib/utils"
 
 interface HeroProps {
   image?: string
@@ -20,7 +19,7 @@ export const Hero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "xl:text-5xl",
+  titleClassName = "font-semibold xl:text-5xl",
 }: HeroProps) => {
   const backgroundImageStyles = [
     "linear-gradient(135deg, rgb(17 24 39) 0%, rgb(243 244 246) 100%)",
@@ -69,7 +68,7 @@ export const MainHero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "xl:text-6xl",
+  titleClassName = "font-semibold xl:text-6xl",
   descriptionClassName = "text-xl md:text-2xl xl:text-3xl",
 }: HeroProps) => {
   const backgroundImageStyles = [
