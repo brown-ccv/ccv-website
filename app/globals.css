@@ -88,10 +88,6 @@
     word-wrap: break-word;
   }
 
-  /* .prose h2 {
-    @apply mt-0;
-  } */
-
   .prose img {
     @apply my-4 py-4;
   }
