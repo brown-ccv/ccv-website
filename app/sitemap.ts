@@ -10,7 +10,7 @@ const baseDir = "app"
 
 async function getRoutes(): Promise<MetadataRoute.Sitemap> {
   const fullPath = path.join(process.cwd(), baseDir)
-  let routes: string[] = ["/"]
+  let routes: string[] = ["/"] // Always include home page
 
   function scanDirectory(dirPath: string, currentRoute: string = "") {
     try {
@@ -21,10 +21,16 @@ async function getRoutes(): Promise<MetadataRoute.Sitemap> {
           const routePath = currentRoute
             ? `${currentRoute}/${entry.name}`
             : `/${entry.name}`
-          routes.push(routePath)
+
+          const subDirPath = path.join(dirPath, entry.name)
+
+          // Only add route if it has a page.tsx file
+          const pageFilePath = path.join(subDirPath, "page.tsx")
+          if (fs.existsSync(pageFilePath)) {
+            routes.push(routePath)
+          }
 
           // Recursively scan subdirectories
-          const subDirPath = path.join(dirPath, entry.name)
           scanDirectory(subDirPath, routePath)
         }
       })
@@ -41,7 +47,7 @@ async function getRoutes(): Promise<MetadataRoute.Sitemap> {
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
-    priority: 1.0,
+    priority: route === "/" ? 1.0 : 0.8, // Give home page higher priority
   }))
 }
 
