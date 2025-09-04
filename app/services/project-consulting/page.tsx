@@ -25,7 +25,7 @@ export default function ProjectConsulting() {
           </div>
         </div>
       </Hero>
-      <div className="max-w-none flex-1 text-content lg:text-content-lg">
+      <div className="prose prose-lg max-w-none flex-1">
         <ProjectConsultingContent />
       </div>
     </>

@@ -89,12 +89,6 @@
   }
 }
 
-@layer utilities {
-  /* For non-heading text that needs specific sizing */
-  .text-content { @apply text-lg text-slate-800 leading-relaxed; }
-  .text-content-lg { @apply text-xl text-slate-800 leading-relaxed; }
-}
-
 @layer components {
   .prose pre code {
     white-space: pre-wrap;
