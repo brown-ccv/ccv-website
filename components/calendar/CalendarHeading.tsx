@@ -19,7 +19,7 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
 }) => {
   return (
     <header className="mb-2 mt-0 flex items-center justify-between rounded-md border border-gray-200 bg-gray-50 px-6 py-4 lg:flex-none">
-      <h1 className="text-xl font-semibold text-blue-500">
+      <h1 className="text-blue-500">
         <time dateTime={date.toISOString()}>
           {`${ALL_MONTHS[date.getMonth()]} ${date.getFullYear()}`}
         </time>

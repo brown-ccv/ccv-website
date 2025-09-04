@@ -115,7 +115,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 ))}
               </div>
 
-              <h3 className="text-2xl font-semibold lg:text-3xl">{title}</h3>
+              <h3>{title}</h3>
 
               {/* Organizations */}
               {organizations && organizations.length > 0 && (
@@ -127,7 +127,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                         className="mr-3 mt-1.5 h-6 w-6"
                       />
                       <div className="flex flex-col gap-1">
-                        <p className="text-lg font-semibold leading-snug lg:text-xl">
+                        <p className="text-lg  lg:text-xl font-semibold leading-snug">
                           {org.name}
                         </p>
                         <p className="text-sm text-gray-600 lg:text-md">
