@@ -21,7 +21,7 @@ export default async function Careers() {
             <ButtonLink
               href={"/about/contact"}
               external={false}
-              size="xl"
+              size="lg"
               variant="primary_filled"
             >
               Contact Us
