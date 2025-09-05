@@ -18,7 +18,7 @@ export const EventsCard: React.FC<DataProps> = ({
     ", " +
     date
   return (
-    <StyledCard title={title}>
+    <StyledCard title={title} size="sm">
       <div className="space-y-2">
         <p className="text-lg font-semibold text-slate-900 md:text-xl">
           {normalDate}

@@ -17,7 +17,7 @@ const Form: React.FC<FormProps> = ({
   children,
 }) => {
   return (
-    <StyledCard title="Data Needs" className="max-w-lg flex-shrink-0">
+    <StyledCard size="lg">
       {questions.map((question) => (
         <React.Fragment key={question.id}>
           <p className="pt-6 text-xl font-medium text-black">
