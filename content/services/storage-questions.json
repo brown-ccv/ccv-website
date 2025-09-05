@@ -1,7 +1,7 @@
 [
   {
     "question": "How much data do you have?",
-    "id": "storage",
+    "id": "storage_threshold",
     "default_answer": "Less than 1 TB",
     "options": [
       {
