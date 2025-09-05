@@ -7,8 +7,7 @@ import {
 } from "@/lib/storage-types"
 import { StyledCard } from "@/components/card/StyledCard"
 import { Badge } from "@/components/ui/Badge"
-import { cn, humanize } from "@/lib/utils"
-import Icon from "@/components/ui/RenderIcon"
+import { humanize } from "@/lib/utils"
 
 interface ServiceCardProps {
   service: ServiceConfig
@@ -51,7 +50,8 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
     <StyledCard
       title={humanize(service.serviceName)}
       isDisabled={isDisabled}
-      className="max-w-sm"
+      size="sm"
+      className="w-full"
     >
       <ul className="space-y-3 p-2">
         {Object.entries(service).map(([key, value]) => {

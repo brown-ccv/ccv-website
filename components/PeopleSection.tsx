@@ -45,26 +45,24 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
   const pageContent = loadedContent.data
 
   return (
-    <div className="flex justify-center py-4 lg:py-10">
-      <div className="xs:w-1/2 flex flex-wrap justify-center gap-y-6">
-        {pageContent?.people &&
-          (await Promise.all(
-            pageContent.people.map(async (person: PeopleTypes) => {
-              const { main, hover } = await getImagePaths(person.image)
-              return (
-                <React.Fragment key={person.name}>
-                  <PeopleCard
-                    imagePath={main}
-                    hoverImagePath={hover}
-                    name={person.name}
-                    title={person.title}
-                    personDetails={person}
-                  />
-                </React.Fragment>
-              )
-            })
-          ))}
-      </div>
+    <div className="xs:w-1/2 flex flex-wrap justify-center gap-4">
+      {pageContent?.people &&
+        (await Promise.all(
+          pageContent.people.map(async (person: PeopleTypes) => {
+            const { main, hover } = await getImagePaths(person.image)
+            return (
+              <React.Fragment key={person.name}>
+                <PeopleCard
+                  imagePath={main}
+                  hoverImagePath={hover}
+                  name={person.name}
+                  title={person.title}
+                  personDetails={person}
+                />
+              </React.Fragment>
+            )
+          })
+        ))}
     </div>
   )
 }
