@@ -1,6 +1,30 @@
 [
   {
-    "question": "Security Level",
+    "question": "How much data do you have?",
+    "id": "storage",
+    "default_answer": "Less than 1 TB",
+    "options": [
+      {
+        "label": "Less than 1 TB",
+        "value": [
+          "unlimited",
+          "1 TB",
+          "1 TB +",
+          "2 TB +"
+        ]
+      },
+      {
+        "label": "Greater than 1 TB",
+        "value": [
+          "unlimited",
+          "1 TB +",
+          "2 TB +"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "What is the risk classification of your data?",
     "link": {
       "label": "Brown Data Risk Classification",
       "value": "https://it.brown.edu/computing-policies/risk-classifications"
@@ -10,147 +34,38 @@
     "options": [
       {
         "label": "No Risk",
-        "value": [0, 1, 2, 3]
+        "value": [
+          0,
+          1,
+          2,
+          3
+        ]
       },
       {
         "label": "Level 1",
-        "value": [1, 2, 3]
+        "value": [
+          1,
+          2,
+          3
+        ]
       },
       {
         "label": "Level 2",
-        "value": [2, 3]
+        "value": [
+          2,
+          3
+        ]
       },
       {
         "label": "Level 3",
-        "value": [3]
+        "value": [
+          3
+        ]
       }
     ]
   },
   {
-    "question": "Auto-generated DOI",
-    "link": {
-      "label": "Brown University Library",
-      "value": "https://repository.library.brown.edu/studio/doi"
-    },
-    "id": "DOI_provided",
-    "default_answer": "No",
-    "options": [
-      {
-        "label": "Yes",
-        "value": [true]
-      },
-      {
-        "label": "No",
-        "value": [true, false]
-      }
-    ]
-  },
-  {
-    "question": "Data Snapshots",
-    "information": [
-      "Point-in-time copies of your data that allow you to restore files to previous versions if they are accidentally deleted or corrupted."
-    ],
-    "id": "data_protection_snapshots",
-    "default_answer": "No",
-    "options": [
-      {
-        "label": "Yes",
-        "value": [true]
-      },
-      {
-        "label": "No",
-        "value": [false, true]
-      },
-      {
-        "label": "Not sure",
-        "value": [true, false]
-      }
-    ]
-  },
-  {
-    "question": "Data Replication",
-    "information": [
-      "Creates multiple copies of your data across different storage locations to protect against hardware failures and ensure high availability."
-    ],
-    "id": "data_protection_replication",
-    "default_answer": "No",
-    "options": [
-      {
-        "label": "Yes",
-        "value": [true]
-      },
-      {
-        "label": "No",
-        "value": [false, true]
-      },
-      {
-        "label": "Not sure",
-        "value": [true, false]
-      }
-    ]
-  },
-  {
-    "question": "Canvas Integration",
-    "id": "canvas_integration",
-    "default_answer": "No",
-    "options": [
-      {
-        "label": "Yes",
-        "value": [true]
-      },
-      {
-        "label": "No",
-        "value": [true, false]
-      }
-    ]
-  },
-  {
-    "question": "Data Size",
-    "id": "storage",
-    "default_answer": "Less than 1 TB",
-    "options": [
-      {
-        "label": "Less than 1 TB",
-        "value": ["unlimited", "1 TB", "1 TB +", "2 TB +"]
-      },
-      {
-        "label": "Greater than 1 TB",
-        "value": ["unlimited", "1 TB +", "2 TB +"]
-      }
-    ]
-  },
-  {
-    "question": "Accessible from Oscar",
-    "id": "access_from_oscar",
-    "default_answer": "No",
-    "options": [
-      {
-        "label": "Yes",
-        "value": [true, "partial"]
-      },
-      {
-        "label": "No",
-        "value": [true, false, "partial"]
-      }
-    ]
-  },
-  {
-    "question": "Shareable Link",
-    "id": "shareable_link",
-    "default_answer": "No",
-    "options": [
-      {
-        "label": "Yes",
-        "value": [true]
-      },
-      {
-        "label": "No",
-        "value": [true, false]
-      }
-    ]
-  },
-  {
-    "question": "Access Frequency",
+    "question": "With what frequency will you access your data?",
     "information": [
       "Hot: accessed frequently for active model fitting/analysis",
       "Warm: accessed infrequently for reading/writing",
@@ -161,19 +76,175 @@
     "options": [
       {
         "label": "Hot",
-        "value": ["hot"]
+        "value": [
+          "hot"
+        ]
       },
       {
         "label": "Warm",
-        "value": ["warm"]
+        "value": [
+          "warm"
+        ]
       },
       {
         "label": "Cold",
-        "value": ["cold"]
+        "value": [
+          "cold"
+        ]
       },
       {
         "label": "Any",
-        "value": ["hot", "warm", "cold"]
+        "value": [
+          "hot",
+          "warm",
+          "cold"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Do you require data snapshots?",
+    "information": [
+      "Point-in-time copies of your data that allow you to restore files to previous versions if they are accidentally deleted or corrupted."
+    ],
+    "id": "data_protection_snapshots",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [
+          true
+        ]
+      },
+      {
+        "label": "No",
+        "value": [
+          false,
+          true
+        ]
+      },
+      {
+        "label": "Not sure",
+        "value": [
+          true,
+          false
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Do you require data replication?",
+    "information": [
+      "Creates multiple copies of your data across different storage locations to protect against hardware failures and ensure high availability."
+    ],
+    "id": "data_protection_replication",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [
+          true
+        ]
+      },
+      {
+        "label": "No",
+        "value": [
+          false,
+          true
+        ]
+      },
+      {
+        "label": "Not sure",
+        "value": [
+          true,
+          false
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Is integration with Canvas required?",
+    "id": "canvas_integration",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [
+          true
+        ]
+      },
+      {
+        "label": "No",
+        "value": [
+          true,
+          false
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Do you need access to your data from Oscar?",
+    "id": "access_from_oscar",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [
+          true,
+          "partial"
+        ]
+      },
+      {
+        "label": "No",
+        "value": [
+          true,
+          false,
+          "partial"
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Would you like a DOI auto-generated for your data?",
+    "link": {
+      "label": "Brown University Library",
+      "value": "https://repository.library.brown.edu/studio/doi"
+    },
+    "id": "DOI_provided",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [
+          true
+        ]
+      },
+      {
+        "label": "No",
+        "value": [
+          true,
+          false
+        ]
+      }
+    ]
+  },
+  {
+    "question": "Do you need to share data via a link?",
+    "id": "shareable_link",
+    "default_answer": "No",
+    "options": [
+      {
+        "label": "Yes",
+        "value": [
+          true
+        ]
+      },
+      {
+        "label": "No",
+        "value": [
+          true,
+          false
+        ]
       }
     ]
   }
