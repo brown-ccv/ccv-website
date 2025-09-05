@@ -22,7 +22,10 @@ const heroCards = [
 
 export const HeroCard: React.FC = () => {
   return (
-    <StyledCard variant="sticky" size="custom">
+    <StyledCard
+      className="relative z-10 -mt-[170px] mb-[120px] flex justify-center px-6 lg:mx-12 lg:px-8"
+      size="custom"
+    >
       <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">
         {heroCards.map((card, index) => (
           <div key={index} className="relative">

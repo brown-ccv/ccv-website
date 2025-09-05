@@ -51,7 +51,10 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           onMouseLeave={() => setIsHovered(false)}
           className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-keppel-600"
         >
-          <StyledCard variant="people" size="custom" className="w-80 sm:w-96">
+          <StyledCard
+            size="custom"
+            className="w-80 border-none shadow-none sm:w-96"
+          >
             <div className="flex h-full flex-col items-center">
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}

@@ -18,7 +18,6 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   isDisabled = false,
   title,
   className,
-  variant,
   size,
   children,
 }) => {
@@ -27,7 +26,6 @@ export const StyledCard: React.FC<StyledCardProps> = ({
     <Card
       className={cn(
         CardVariants({
-          variant,
           size,
           className,
         }),
