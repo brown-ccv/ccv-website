@@ -2,7 +2,6 @@
 
 import { ReactNode } from "react"
 import { TextAnimate } from "@/components/magicui/TextAnimate"
-import { cn } from "@/lib/utils"
 
 interface HeroProps {
   image?: string
