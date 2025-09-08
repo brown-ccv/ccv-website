@@ -1,8 +1,9 @@
 import CCVLogo from "@/components/assets/CCVLogo"
 import { CarbonBadge } from "@/components/CarbonBadge"
 import { FaArrowRight } from "react-icons/fa"
-import { MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
+import { MdEmail, MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
 import ButtonLink from "@/components/button/ButtonLink"
+import { CopyableEmail } from "@/components/CopyableEmail"
 
 // Footer link component
 interface FooterLinkProps {
@@ -87,6 +88,13 @@ const Footer = () => {
                 className="mr-2 inline-block text-stone-400"
               />
               401-863-1000
+            </div>
+            <div className="font-serif text-md text-white sm:text-lg xl:text-xl">
+              <MdEmail
+                aria-label="Email Icon"
+                className="mr-2 inline-block text-stone-400"
+              />
+              <CopyableEmail email="ccv-support@brown.edu" />
             </div>
           </div>
         </div>
