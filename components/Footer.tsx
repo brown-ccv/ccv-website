@@ -99,7 +99,7 @@ const Footer = () => {
           <FooterSection links={footerNavLinks} className="lg:border-b-0" />
         </nav>
 
-        <div className="flex w-full justify-center sm:justify-center">
+        <div className="flex w-full justify-center">
           <ButtonLink
             href="https://alumni-friends.brown.edu/giving"
             variant="secondary_outlined"
