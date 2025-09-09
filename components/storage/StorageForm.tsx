@@ -99,8 +99,8 @@ const Form: React.FC<FormProps> = ({
   const memoizedQuestions = useMemo(() => questions, [questions])
 
   return (
-    <StyledCard title="Data Needs" className="max-w-lg flex-shrink-0">
-      <div className="mb-6 flex justify-end border-b border-gray-300 pb-4">
+    <StyledCard size="lg">
+      <div className="my-6 flex justify-end border-b border-gray-300 pb-4">
         {children}
       </div>
       <div className="space-y-8">
