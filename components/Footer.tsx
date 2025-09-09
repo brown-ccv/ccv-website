@@ -104,7 +104,7 @@ const Footer = () => {
             href="https://alumni-friends.brown.edu/giving"
             variant="secondary_outlined"
             size="md"
-            className="group uppercase tracking-widest p-4 text-white"
+            className="group uppercase tracking-widest text-white"
           >
             Give to Brown
             <FaArrowRight className="ml-2 text-sunglow-400 group-hover:text-black" />
