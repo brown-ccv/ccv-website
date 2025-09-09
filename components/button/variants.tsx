@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority"
 
 export const ButtonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-md font-medium transition-colors focus-visible:outline-none focus-visible:ring-ring focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 not-prose",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-md font-bold transition-colors focus-visible:outline-none focus-visible:ring-ring focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 not-prose",
   {
     variants: {
       variant: {
@@ -57,11 +57,11 @@ export const ButtonVariants = cva(
 
       size: {
         default: "h-8 p-4 text-sm",
-        sm: "h-8 p-3 text-xs",
-        md: "h-8 p-4 text-sm",
-        lg: "h-8 p-5 text-md sm:h-10 sm:p-8 sm:text-xl",
-        xl: "h-8 p-6 text-md sm:h-14 sm:p-8 sm:text-2xl",
-        xxl: "h-8 p-6 text-md sm:h-16 sm:p-10 sm:text-3xl",
+        sm: "h-8 p-3 text-sm",
+        md: "h-8 p-2 text-md",
+        lg: "h-8 p-5 text-md xl:h-10 xl:p-8 xl:text-xl",
+        xl: "h-8 p-6 text-md xl:h-14 xl:p-8 xl:text-2xl",
+        xxl: "h-8 p-6 text-md xl:h-16 xl:p-10 xl:text-3xl",
 
         // large icon-only
         icon: "w-8 h-8 sm:w-10 sm:h-10",

@@ -41,4 +41,8 @@ next-env.d.ts
 # anima
 /.anima/
 
+# pa11y
+pa11y-results.json
+pretty-pa11y-results.json
+
 /public/images/*
