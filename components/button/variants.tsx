@@ -59,10 +59,10 @@ export const ButtonVariants = cva(
       size: {
         default: "h-8 p-4 text-sm",
         sm: "h-8 p-3 text-sm",
-        md: "h-8 p-2 text-md",
+        md: "h-8 p-4 text-md",
         lg: "h-8 p-5 text-md xl:h-10 xl:p-8 xl:text-xl",
-        xl: "h-8 p-6 text-md xl:h-14 xl:p-8 xl:text-2xl",
-        xxl: "h-8 p-6 text-md xl:h-16 xl:p-10 xl:text-3xl",
+        xl: "h-8 p-6 text-lg xl:h-14 xl:p-8 xl:text-2xl",
+        xxl: "h-8 p-7 text-lg xl:h-16 xl:p-10 xl:text-3xl",
 
         // large icon-only
         icon: "w-8 h-8 sm:w-10 sm:h-10",
