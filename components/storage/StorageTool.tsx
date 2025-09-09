@@ -49,7 +49,7 @@ export default function StorageTool({
         </p>
         <div className="hidden lg:flex lg:items-center lg:gap-4 lg:pb-8">
           <p className="text-lg">Want to dive into comparing features?</p>
-          <ScrollButton variant="primary_outlined" id="table">
+          <ScrollButton variant="primary_outlined" size="lg" id="table">
             View Comparison Table
             <Icon iconName="FaAngleDoubleDown" />
           </ScrollButton>
@@ -60,7 +60,7 @@ export default function StorageTool({
             onAnswerChange={handleAnswerChange}
             questions={questions}
           >
-            <Button onClick={handleReset} variant="primary_outlined" size="md">
+            <Button onClick={handleReset} variant="primary_outlined" size="lg">
               Reset Questions
             </Button>
           </Form>
