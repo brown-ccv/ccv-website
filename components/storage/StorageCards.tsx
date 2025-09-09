@@ -41,6 +41,20 @@ const StorageCards: React.FC<TableProps> = ({
 
   return (
     <div className="flex flex-col items-center lg:items-start">
+      {enabledCount === 0 && rankedServices.length > 0 && (
+        <div
+          className="rounded-lg border border-sunglow-200 bg-sunglow-50 p-4"
+          role="alert"
+          aria-live="assertive"
+        >
+          <p className="text-sm text-sunglow-700">
+            <span className="font-medium">
+              No services match your criteria.
+            </span>{" "}
+            Try adjusting your requirements to see more options.
+          </p>
+        </div>
+      )}
       <div
         className="mt-4 text-sm text-gray-500"
         role="status"
@@ -70,21 +84,6 @@ const StorageCards: React.FC<TableProps> = ({
           )
         })}
       </div>
-
-      {enabledCount === 0 && rankedServices.length > 0 && (
-        <div
-          className="mt-6 rounded-lg border border-yellow-200 bg-yellow-50 p-4"
-          role="alert"
-          aria-live="assertive"
-        >
-          <p className="text-sm text-yellow-800">
-            <span className="font-medium">
-              No services match your criteria.
-            </span>{" "}
-            Try adjusting your requirements to see more options.
-          </p>
-        </div>
-      )}
     </div>
   )
 }

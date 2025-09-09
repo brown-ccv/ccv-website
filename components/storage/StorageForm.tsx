@@ -64,6 +64,7 @@ const FormQuestion = React.memo<{
                 aria-describedby={
                   question.information ? `${fieldsetId}-info` : undefined
                 }
+                aria-label={radioId}
                 id={radioId}
               />
               <label htmlFor={radioId}>{option.label}</label>
