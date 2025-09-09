@@ -28,7 +28,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
         href="mailto:ccv-support@brown.edu"
         external={true}
         variant="red_outlined"
-        size="sm"
+        size="md"
         className={"px-2 py-6 sm:px-4"}
       >
         <FaComments className="text-xl sm:text-2xl" />

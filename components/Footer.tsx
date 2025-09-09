@@ -99,13 +99,15 @@ const Footer = () => {
           <FooterSection links={footerNavLinks} className="lg:border-b-0" />
         </nav>
 
-        <div className="flex w-full sm:justify-center">
+        <div className="flex w-full justify-center sm:justify-center">
           <ButtonLink
             href="https://alumni-friends.brown.edu/giving"
-            className="group flex items-center justify-center border border-sunglow-400 px-6 py-4 text-sm uppercase tracking-widest text-white hover:bg-sunglow-400 hover:text-black sm:px-8"
+            variant="secondary_outlined"
+            size="md"
+            className="group uppercase tracking-widest p-4 text-white"
           >
             Give to Brown
-            <FaArrowRight className="ml-2 inline-block text-sunglow-400 group-hover:text-black" />
+            <FaArrowRight className="ml-2 text-sunglow-400 group-hover:text-black" />
           </ButtonLink>
         </div>
       </div>
