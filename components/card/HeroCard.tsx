@@ -1,6 +1,6 @@
 import React from "react"
 import { Card, CardContent } from "@/components/ui/Card"
-import CCVBars from "@/components/assets/CCVBars"
+import { SectionHeader } from "../SectionHeader"
 
 const heroCards = [
   {
@@ -23,14 +23,11 @@ const heroCards = [
 export const HeroCard: React.FC = () => {
   return (
     <Card className="relative z-10 -mt-[170px] mb-[120px] flex justify-center bg-white px-6 lg:mx-12 lg:px-8">
-      <CardContent className="flex flex-col gap-10 lg:flex-row lg:gap-20">
+      <CardContent className="prose prose-sm lg:prose-base flex flex-col gap-10 lg:flex-row lg:gap-20">
         {heroCards.map((card, index) => (
           <div key={index} className="relative">
-            <CCVBars />
-            <h2 className="py-2">
-              {card.title}
-            </h2>
-            <p className="text-xl">{card.description}</p>
+            <SectionHeader title={card.title} align="left" className="mb-6" />
+            <p>{card.description}</p>
           </div>
         ))}
       </CardContent>

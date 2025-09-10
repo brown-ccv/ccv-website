@@ -65,10 +65,10 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
                 className="h-[306px] w-[306px] rounded-full transition-opacity duration-300 sm:h-[350px] sm:w-[350px]"
                 style={{ margin: 0, padding: 0 }}
               />
-              <CardTitle className="py-4 text-center text-2xl">
+              <CardTitle className="py-4 text-center">
                 {name}
               </CardTitle>
-              <CardDescription className="text-center text-xl italic">
+              <CardDescription className="text-center italic">
                 {title}
               </CardDescription>
             </CardContent>
@@ -83,10 +83,10 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           height={180}
           className="rounded-full md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
-        <DialogTitle className="py-4 text-xl">
+        <DialogTitle className="py-4">
           {personDetails?.name || name}
         </DialogTitle>
-        <p className="text-2xl">
+        <p>
           {personDetails?.title || title}
         </p>
         {personDetails?.team && (

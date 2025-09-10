@@ -127,14 +127,14 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                         className="mr-3 mt-1.5 h-6 w-6"
                       />
                       <div className="flex flex-col gap-1">
-                        <p className="text-lg  lg:text-xl font-semibold leading-snug">
+                        <p className="font-semibold leading-snug">
                           {org.name}
                         </p>
-                        <p className="text-sm text-gray-600 lg:text-md">
+                        <p>
                           {org.organization}
                         </p>
                         {org.pi && org.pi.length > 0 && (
-                          <p className="text-sm text-gray-600">
+                          <p>
                             <span>PI: </span>
                             {org.pi?.map((pi, piIndex) => (
                               <span key={piIndex}>
@@ -190,7 +190,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
               {/* Attribution if image requires it */}
               {currentItem.attribution && (
-                <div className="mt-2 text-right text-sm">
+                <div className="mt-2 text-right">
                   <Markdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
