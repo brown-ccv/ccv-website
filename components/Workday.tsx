@@ -44,7 +44,7 @@ export function Workday({ careers }: { careers: any[] }) {
           </ButtonLink>
         ))
       ) : (
-        <p className="text-2xl">
+        <p className="text-xl">
           There are no positions open at the moment. Check back with us in the
           future. We appreciate your interest!
         </p>
