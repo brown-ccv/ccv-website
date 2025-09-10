@@ -13,7 +13,7 @@ function imagePath(imageName: string) {
   return path.join("/images/people", imageName)
 }
 
-async function getImagePaths(imageName: string | null) {
+async function getImagePaths(imageName: string | undefined | null) {
   const defaultPath = "/logos/ccv-logo.svg"
 
   if (!imageName) {
@@ -54,11 +54,11 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
               .map(async (person: PeopleTypes) => {
               const { main, hover } = await getImagePaths(person.image)
               return (
-                <React.Fragment key={person.name}>
+                <React.Fragment key={person.display_name}>
                   <PeopleCard
                     imagePath={main}
                     hoverImagePath={hover}
-                    name={person.name}
+                    name={person.display_name}
                     title={person.title}
                     personDetails={person}
                   />
