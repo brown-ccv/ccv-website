@@ -25,15 +25,15 @@
   }
 
   p > a {
-    @apply text-keppel-800;
+    @apply text-keppel-800 underline;
   }
 
   p > a:hover {
-    @apply text-keppel-500;
+    @apply text-keppel-500 underline;
   }
 
   p > a:focus {
-    @apply text-keppel-600 outline-2 outline-keppel-600;
+    @apply text-keppel-600 outline-2 outline-keppel-400 underline;
   }
 
   /* Heading hierarchy - base styles for all headings */
@@ -72,26 +72,26 @@
     }
 
     h3 {
-      @apply text-3xl;
-    }
-
-    h4 {
       @apply text-2xl;
     }
 
-    h5 {
+    h4 {
       @apply text-xl;
     }
 
-    h6 {
+    h5 {
       @apply text-lg;
+    }
+
+    h6 {
+      @apply text-md;
     }
   }
 }
 
 @layer components {
   .prose {
-    @apply prose-sm;
+    @apply prose-sm lg:prose-base;
   }
 
   .prose pre code {
