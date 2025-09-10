@@ -26,11 +26,11 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
         className={`flex flex-col ${isCentered ? "items-center" : "items-start"}`}
       >
         {bars && (
-          <div className="pt-4">
+          <div>
             <CCVBars />
           </div>
         )}
-        <h2 className="flex items-center text-3xl font-semibold tracking-tighter text-black">
+        <h2 className="flex items-center tracking-tighter">
           {icon && <span className="mr-3">{icon}</span>}
           {title}
         </h2>
