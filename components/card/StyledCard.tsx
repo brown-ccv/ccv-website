@@ -28,11 +28,11 @@ export const StyledCard: React.FC<StyledCardProps> = ({
       )}
     >
       <CardHeader>
-        <CardTitle className="flex items-center justify-center gap-4 border-b border-gray-300 py-4">
+        <CardTitle className="flex items-center justify-center gap-4 border-b border-slate-300 py-4">
           {IconComponent && (
             <IconComponent
               iconName={iconName}
-              className="mt-1 flex-shrink-0 text-xl"
+              className="mt-1 flex-shrink-0"
             />
           )}
           {title}

@@ -20,7 +20,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 
   return (
     <div
-      className={`${isCentered ? "mb-16 text-center" : "text-left"} ${className || ""}`}
+        className={`${isCentered ? "mb-16 text-center" : "text-left"} ${className || ""}`}
     >
       <div
         className={`flex flex-col ${isCentered ? "items-center" : "items-start"}`}

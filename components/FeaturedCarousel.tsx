@@ -61,7 +61,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   })
 
   return (
-    <section className="my-12">
+    <section className="prose prose-sm lg:prose-base my-12">
       <div className="mx-auto w-full">
         {/* Carousel Container */}
         <div className="relative" {...handlers}>
@@ -151,7 +151,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 </div>
               )}
 
-              <div className="prose prose-xl max-w-none flex-1">
+              <div className="max-w-none flex-1">
                 <Markdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
