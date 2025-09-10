@@ -228,7 +228,7 @@ export const Navbar: React.FC = () => {
   return (
     <div className="sticky top-0 z-50">
       <div className="flex justify-between bg-blue-navbar px-6 sm:px-8">
-        <div className="flex items-center px-6 py-8 sm:px-8 xl:px-10">
+        <div className="flex items-center px-6 py-4 sm:px-8 xl:px-10">
           <Link href="/">
             <span className="sr-only">CCV Home</span>
             <CCVLogo width={120} />
