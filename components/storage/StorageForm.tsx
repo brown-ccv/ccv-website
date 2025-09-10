@@ -57,7 +57,7 @@ const Form: React.FC<FormProps> = ({
           </RadioGroup>
         </React.Fragment>
       ))}
-      <div className="mt-6 flex justify-end border-t border-gray-300 pt-4">
+      <div className="mt-6 flex justify-end border-t border-slate-300 pt-4">
         {children}
       </div>
     </StyledCard>
