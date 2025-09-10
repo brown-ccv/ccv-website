@@ -36,56 +36,28 @@
     @apply text-keppel-600 outline-2 outline-keppel-400 underline;
   }
 
-  /* Heading hierarchy - base styles for all headings */
   h1 {
-    @apply text-3xl font-semibold leading-tight;
+    @apply text-3xl font-semibold leading-tight lg:text-4xl;
   }
 
   h2 {
-    @apply text-2xl font-semibold leading-tight;
+    @apply text-2xl font-semibold leading-tight lg:text-3xl;
   }
 
   h3 {
-    @apply text-xl font-semibold leading-tight;
+    @apply text-xl font-semibold leading-tight lg:text-2xl;
   }
 
   h4 {
-    @apply text-lg font-semibold leading-tight;
+    @apply text-lg font-semibold leading-tight lg:text-xl;
   }
 
   h5 {
-    @apply text-md font-semibold leading-tight;
+    @apply text-md font-semibold leading-tight lg:text-lg;
   }
 
   h6 {
-    @apply text-sm font-semibold leading-tight;
-  }
-
-  /* Responsive heading sizes */
-  @media (width >= 64rem) {
-    h1 {
-      @apply text-4xl;
-    }
-
-    h2 {
-      @apply text-3xl;
-    }
-
-    h3 {
-      @apply text-2xl;
-    }
-
-    h4 {
-      @apply text-xl;
-    }
-
-    h5 {
-      @apply text-lg;
-    }
-
-    h6 {
-      @apply text-md;
-    }
+    @apply text-sm font-semibold leading-tight lg:text-md;
   }
 }
 
