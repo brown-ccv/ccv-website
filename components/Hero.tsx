@@ -68,8 +68,8 @@ export const MainHero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "font-semibold xl:text-6xl",
-  descriptionClassName = "text-xl md:text-2xl xl:text-3xl",
+  titleClassName = "font-semibold xl:text-5xl",
+  descriptionClassName = "text-xl xl:text-2xl",
 }: HeroProps) => {
   const backgroundImageStyles = [
     "linear-gradient(135deg, rgb(17 24 39) 0%, rgb(243 244 246) 100%)",

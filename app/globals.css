@@ -90,6 +90,10 @@
 }
 
 @layer components {
+  .prose {
+    @apply prose-sm;
+  }
+
   .prose pre code {
     white-space: pre-wrap;
     word-wrap: break-word;
