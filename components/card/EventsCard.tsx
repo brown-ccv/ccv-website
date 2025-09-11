@@ -20,15 +20,15 @@ export const EventsCard: React.FC<DataProps> = ({
   return (
     <StyledCard title={title}>
       <div className="space-y-2">
-        <p className="text-md font-semibold text-slate-900 md:text-lg">
+        <p className="font-semibold text-slate-900">
           {normalDate}
         </p>
-        <div className="flex items-center gap-2 text-keppel-800 md:text-lg">
+        <div className="flex items-center gap-2 text-keppel-800">
           <Icon iconName="FaClock" />
           {date_time}
         </div>
         <a
-          className="flex gap-2 text-lg font-bold text-blue-500 leading-6 hover:underline"
+          className="flex gap-2 font-bold text-blue-500 leading-6 hover:underline"
           href={url}
           target="_blank"
           rel="noopener noreferrer"

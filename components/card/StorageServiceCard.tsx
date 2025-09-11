@@ -2,13 +2,10 @@ import React from "react"
 import {
   ServiceConfig,
   ServiceFeature,
-  featureIcons,
-  featureColorMap,
 } from "@/lib/storage-types"
 import { StyledCard } from "@/components/card/StyledCard"
 import { Badge } from "@/components/ui/Badge"
-import { cn, humanize } from "@/lib/utils"
-import Icon from "@/components/ui/RenderIcon"
+import { humanize } from "@/lib/utils"
 
 interface ServiceCardProps {
   service: ServiceConfig

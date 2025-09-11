@@ -18,10 +18,10 @@ export const ImpactBanner = (): JSX.Element => {
 
       {impactMetrics.map((metric, index) => (
         <div key={index} className="text-center">
-          <div className="bg-gradient-to-br from-purple-900 to-pink-500 bg-clip-text font-sans text-5xl font-bold text-transparent">
+          <div className="bg-gradient-to-br from-purple-900 to-pink-500 bg-clip-text font-sans text-4xl lg:text-5xl font-bold text-transparent">
             {metric.count}
           </div>
-          <div className="font-serif italic text-slate-700 text-xl">
+          <div className="font-serif italic text-slate-700 text-lg lg:text-xl">
             {metric.label}
           </div>
         </div>
