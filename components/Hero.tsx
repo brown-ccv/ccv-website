@@ -48,7 +48,7 @@ export const Hero = ({
       {showGradient ? (
         <div className="flex w-full max-w-[1400px] flex-col gap-9">
           {title && <h1 className={titleClassName}>{title}</h1>}
-          {description && <p className="text-xl md:text-2xl">{description}</p>}
+          {description && <h4>{description}</h4>}
           {children && (
             <div className="flex flex-col flex-wrap gap-2 pt-8 sm:flex-row sm:gap-4">
               {children}
