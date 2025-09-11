@@ -59,9 +59,9 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
                 alt=""
-                width="500"
-                height="500"
-                className="h-[306px] w-[306px] rounded-full transition-opacity duration-300 sm:h-[350px] sm:w-[350px]"
+                width="200"
+                height="200"
+                className="rounded-full transition-opacity duration-300 h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
                 style={{ margin: 0, padding: 0 }}
               />
               <CardTitle className="py-4 text-center">
@@ -78,9 +78,9 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
         <Image
           src={imagePath}
           alt=""
-          width={180}
-          height={180}
-          className="rounded-full md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
+          width={200}
+          height={200}
+          className="rounded-full h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
         <DialogTitle className="py-4">
           {personDetails?.name || name}
