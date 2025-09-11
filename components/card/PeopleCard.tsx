@@ -2,12 +2,8 @@
 
 import React, { useState } from "react"
 import Image from "next/image"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardTitle,
-} from "@/components/ui/Card"
+import { CardDescription, CardTitle } from "@/components/ui/Card"
+import { StyledCard } from "@/components/card/StyledCard"
 import {
   Dialog,
   DialogContent,
@@ -55,8 +51,11 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           onMouseLeave={() => setIsHovered(false)}
           className="rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-keppel-600"
         >
-          <Card className="h-[525px] w-[350px] flex-shrink-0 border-none shadow-none sm:h-[600px] sm:w-[400px]">
-            <CardContent className="flex h-full flex-col items-center">
+          <StyledCard
+            size="custom"
+            className="w-80 border-none shadow-none sm:w-96"
+          >
+            <div className="flex h-full flex-col items-center">
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
                 alt=""
@@ -71,8 +70,8 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
               <CardDescription className="text-center italic">
                 {title}
               </CardDescription>
-            </CardContent>
-          </Card>
+            </div>
+          </StyledCard>
         </button>
       </DialogTrigger>
       <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">

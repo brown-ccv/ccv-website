@@ -17,22 +17,21 @@ const Form: React.FC<FormProps> = ({
   children,
 }) => {
   return (
-    <StyledCard title="Data Needs" className="max-w-lg flex-shrink-0">
+    <StyledCard size="md" className="pt-6">
       {questions.map((question) => (
         <React.Fragment key={question.id}>
-          <p className="pt-6 text-xl font-medium text-black">
+          <h4>
             {question.question}
-          </p>
+          </h4>
 
           {question.information &&
             question.information.map((info, index) => (
-              <p className="text-sm" key={index}>
+              <p key={index}>
                 {info}
               </p>
             ))}
           {question.link && (
             <a
-              className="text-sm text-keppel-800 hover:text-keppel-600"
               href={question.link.value}
             >
               {question.link.label}
@@ -42,7 +41,7 @@ const Form: React.FC<FormProps> = ({
           <RadioGroup
             value={selectedAnswers[question.id]}
             onValueChange={(value) => onAnswerChange(question.id, value)}
-            className="flex flex-col gap-x-4 space-y-2 pt-2 md:flex-row md:space-y-0"
+            className="flex flex-col gap-x-4 md:flex-row md:space-y-0"
           >
             {question.options.map((option) => (
               <div key={option.label} className="flex items-center space-x-2">
