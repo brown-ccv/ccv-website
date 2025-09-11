@@ -84,7 +84,7 @@ export const ButtonVariants = cva(
 
     defaultVariants: {
       variant: "primary_filled",
-      size: "default",
+      size: "md",
       iconPosition: "none",
       align: "center",
     },
