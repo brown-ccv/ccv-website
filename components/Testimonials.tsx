@@ -3,17 +3,18 @@ import ReviewCard from "@/components/card/ReviewCard"
 
 const reviews = [
   {
-    name: "Jack",
-    department: "@jack",
+    name: "Beth Brainerd",
+    department: "Ecology and Evolutionary Biology",
     review:
-      "I've never seen anything like this before. It's amazing. I love it.",
-    img: "https://avatar.vercel.sh/jack",
+      "Over the past 15 years I have had numerous highly productive collaborations with research software engineers at CCV. We developed several open-source software packages for X-ray motion analysis and data management that have been tremendously valuable for my research program and for my field more generally. This work was supported by five extramural grants. CCV staff helped with the development of the grant proposals and the software products as well as the funding were direct results of the software engineering expertise provided by CCV.",
+    img: "/images/home/testimonials/beth_brainerd.jpg",
   },
   {
-    name: "Jill",
-    department: "@jill",
-    review: "I don't know what to say. I'm speechless. This is amazing.",
-    img: "https://avatar.vercel.sh/jill",
+    name: "Chris Horvat",
+    department: "Earth, Environmental, and Planetary Sciences",
+    review:
+      "Collaborating with Anna and her colleagues at CCV has been a pleasure. Anna helped get a complex visualization project from concept to deployment in just a few months, preventing countless headaches along the way. I recommend CCV to anyone seeking a high-quality team of data and software engineers to accelerate their research.",
+    img: "/images/home/testimonials/chris_horvat.png",
   },
   {
     name: "John",

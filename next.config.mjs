@@ -8,6 +8,14 @@ const nextConfig = {
     basePath: "",
     pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
     output: "standalone",
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'avatar.vercel.sh',
+            },
+        ],
+    },
 }
 
 const withMDX = createMDX({
