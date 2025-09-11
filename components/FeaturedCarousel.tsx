@@ -119,30 +119,21 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
               {/* Organizations */}
               {organizations && organizations.length > 0 && (
-                <div className="space-y-4">
+                <div className="space-y-3">
                   {organizations.map((org, index) => (
-                    <div key={index} className="flex">
+                    <div key={index} className="flex items-start gap-4">
                       <Icon
                         iconName={org.icon}
-                        className="mr-3 mt-1.5 h-6 w-6"
+                        className="h-6 w-6 flex-shrink-0"
                       />
-                      <div className="flex flex-col gap-1">
-                        <p className="font-semibold leading-snug">
-                          {org.name}
-                        </p>
-                        <p>
-                          {org.organization}
-                        </p>
-                        {org.pi && org.pi.length > 0 && (
-                          <p>
-                            <span>PI: </span>
-                            {org.pi?.map((pi, piIndex) => (
-                              <span key={piIndex}>
-                                {pi}
-                                {piIndex < (org.pi?.length || 0) - 1 && ", "}
-                              </span>
-                            ))}
-                            {org.pm && " • PM: " + org.pm}
+                      <div>
+                        <h5 className="font-semibold leading-snug">{org.name}</h5>
+                        <p className="text-sm text-slate-600">{org.organization}</p>
+                        {(org.pi?.length || org.pm) && (
+                          <p className="text-sm text-slate-600">
+                            {org.pi?.length && `PI: ${org.pi.join(", ")}`}
+                            {org.pi?.length && org.pm && " • "}
+                            {org.pm && `PM: ${org.pm}`}
                           </p>
                         )}
                       </div>
