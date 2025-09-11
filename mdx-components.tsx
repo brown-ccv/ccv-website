@@ -48,7 +48,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Button: (props) => (
       <ButtonLink
         variant="primary_filled"
-        size="lg"
+        size="md"
         className="my-2"
         external
         {...props}

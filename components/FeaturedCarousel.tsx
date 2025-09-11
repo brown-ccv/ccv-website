@@ -166,7 +166,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                     <Button
                       key={index}
                       variant={button.variant}
-                      size="lg"
+                      size="md"
                       className="whitespace-nowrap"
                       onClick={() => window.open(button.url, "_blank")}
                     >

@@ -15,6 +15,7 @@ const FooterLink = ({ href, label }: FooterLinkProps) => {
     <li>
       <ButtonLink
         href={href}
+        size="sm"
         className="flex items-center text-sm uppercase tracking-wider text-sunglow-400 transition-colors duration-300 hover:text-white"
       >
         {label}
@@ -103,7 +104,7 @@ const Footer = () => {
           <ButtonLink
             href="https://alumni-friends.brown.edu/giving"
             variant="secondary_outlined"
-            size="md"
+            size="sm"
             className="group uppercase tracking-widest text-white"
           >
             Give to Brown

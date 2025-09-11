@@ -15,7 +15,7 @@ export default function ProjectConsulting() {
               <ButtonLink
                 key={index}
                 variant="secondary_filled"
-                size="xl"
+                size="lg"
                 href={link.target}
                 external={!link.target.startsWith("/")}
               >

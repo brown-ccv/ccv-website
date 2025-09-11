@@ -19,7 +19,7 @@ export default async function CompareStorageOptions() {
       <Hero title={metadata.title} description={metadata.description}>
         <ButtonLink
           variant="secondary_filled"
-          size="xl"
+          size="lg"
           href="https://brown.atlassian.net/servicedesk/customer/portal/16"
           external
         >

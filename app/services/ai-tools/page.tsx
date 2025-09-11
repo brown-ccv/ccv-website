@@ -11,7 +11,7 @@ export default function AITools() {
       <Hero title={metadata.title} description={metadata.description}>
         <ButtonLink
           variant="primary_filled"
-          size="xl"
+          size="lg"
           href="https://ai.ccv.brown.edu"
           external={true}
         >
