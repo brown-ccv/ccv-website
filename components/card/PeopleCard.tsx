@@ -85,14 +85,14 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
         <DialogTitle className="py-4">
           {personDetails?.name || name}
         </DialogTitle>
-        <p>
+        <h5 className="font-normal">
           {personDetails?.title || title}
-        </p>
+        </h5>
         {personDetails?.team && (
-          <p className="-mb-2 text-lg">{personDetails.team}</p>
+          <h5 className="-mb-2">{personDetails.team}</h5>
         )}
         {personDetails?.subteam && (
-          <p className="text-lg italic">{personDetails.subteam}</p>
+          <p className="italic">{personDetails.subteam}</p>
         )}
         <div className="flex gap-8">
           {personDetails?.github_username &&
