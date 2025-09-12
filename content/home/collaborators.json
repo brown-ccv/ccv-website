@@ -1,0 +1,126 @@
+[
+  {
+    "name": "Elizabeth Brainerd",
+    "department": "Ecology and Evolutionary Biology",
+    "review": "Over the past 15 years I have had numerous highly productive collaborations with research software engineers at CCV. We developed several open-source software packages for X-ray motion analysis and data management that have been tremendously valuable for my research program and for my field more generally. This work was supported by five extramural grants. CCV staff helped with the development of the grant proposals and the software products as well as the funding were direct results of the software engineering expertise provided by CCV.",
+    "img": "/images/home/testimonials/beth_brainerd.jpg"
+  },
+  {
+    "name": "Chris Horvat",
+    "department": "Earth, Environmental, and Planetary Sciences",
+    "review": "Collaborating with Anna and her colleagues at CCV has been a pleasure. Anna helped get a complex visualization project from concept to deployment in just a few months, preventing countless headaches along the way. I recommend CCV to anyone seeking a high-quality team of data and software engineers to accelerate their research.",
+    "img": "/images/home/testimonials/chris_horvat.png"
+  },
+  {
+    "name": "Sebastian Musslick",
+    "department": "Cognitive and Psychological Sciences",
+    "img": "/images/home/testimonials/sebastian_musslick.jpeg"
+  },
+  {
+    "name": "Daniel Spade",
+    "department": "Pathology and Laboratory Medicine",
+    "img": "/images/home/testimonials/dan_spade.jpg"
+  },
+  {
+    "name": "Phyllis Dennery",
+    "department": "Molecular Biology, Cell Biology and Biochemistry",
+    "img": "/images/home/testimonials/phyllis_dennery.jpg"
+  },
+  {
+    "name": "Joseph Diaz, MD",
+    "department": "Department of Medicine",
+    "img": "/images/home/testimonials/joseph_diaz.jpg"
+  },
+  {
+    "name": "Alexey Fedulov",
+    "department": "Department of Surgery"
+  },
+  {
+    "name": "Rami Kantor",
+    "department": "Department of Medicine",
+    "img": "/images/home/testimonials/rami_kantor.jpg"
+  },
+  {
+    "name": "Emily McDonald",
+    "department": "Department of Pediatrics",
+    "img": "/images/home/testimonials/emily_mcdonald.jpg"
+  },
+  {
+    "name": "Frederike Petzschner",
+    "department": "Cognitive and Psychological Sciences",
+    "img": "/images/home/testimonials/frederike_petzschner.jpg"
+  },
+  {
+    "name": "Thomas Serre",
+    "department": "Cognitive and Psychological Sciences",
+    "img": "/images/home/testimonials/thomas_serre.jpeg"
+  },
+  {
+    "name": "Robbert Creton",
+    "department": "Molecular Biology, Cell Biology and Biochemistry",
+    "img": "/images/home/testimonials/robbert_creton.jpg"
+  },
+  {
+    "name": "George Karniadakis",
+    "department": "Applied Mathematics and Engineering",
+    "img": "/images/home/testimonials/george_karniadakis.jpg"
+  },
+  {
+    "name": "Monica Martinez Wilhelmus",
+    "department": "Engineering",
+    "img": "/images/home/testimonials/monica_martinez_wilhelmus.jpg"
+  },
+  {
+    "name": "Alan Rothman",
+    "department": "Molecular Microbiology and Immunology"
+  },
+  {
+    "name": "David Borton",
+    "department": "Engineering",
+    "img": "/images/home/testimonials/david_borton.jpg"
+  },
+  {
+    "name": "John Simeral",
+    "department": "Engineering",
+    "img": "/images/home/testimonials/john_simeral.jpeg"
+  },
+  {
+    "name": "Robert Hurt",
+    "department": "Engineering",
+    "img": "/images/home/testimonials/robert_hurt.jpg"
+  },
+  {
+    "name": "Scott Frickel",
+    "department": "Sociology",
+    "img": "/images/home/testimonials/scott_frickel.jpg"
+  },
+  {
+    "name": "Patrick McHugh",
+    "department": "Engineering",
+    "img": "/images/home/testimonials/patrick_mchugh.jpg"
+  },
+  {
+    "name": "Baylor Fox-Kemper",
+    "department": "Earth, Environmental, and Planetary Sciences",
+    "img": "/images/home/testimonials/baylor_fox-kemper.png"
+  },
+  {
+    "name": "Taylor Burke",
+    "department": "Massachusetts General Hospital"
+  },
+  {
+    "name": "David Yokum",
+    "department": "The Policy Lab",
+    "img": "/images/home/testimonials/david_yokum.webp"
+  },
+  {
+    "name": "Banu Ozkazanc-Pan",
+    "department": "Engineering",
+    "img": "/images/home/testimonials/banu_ozkazanc-pan.jpg"
+  },
+  {
+    "name": "David Laidlaw",
+    "department": "Computer Science",
+    "img": "/images/home/testimonials/david_laidlaw.jpg"
+  }
+]
