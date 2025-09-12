@@ -1,5 +1,6 @@
+"use client"
 import { cn } from "@/lib/utils"
-import React from "react"
+import React, { useState } from "react"
 import Image from "next/image"
 
 interface ReviewCardProps {
@@ -15,6 +16,11 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
   department,
   review,
 }) => {
+  const [imgSrc, setImgSrc] = useState(img)
+
+  const handleError = () => {
+    setImgSrc("https://avatar.vercel.sh/jack")
+  }
   return (
     <figure
       className={cn(
@@ -24,10 +30,11 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
     >
       <div className="flex flex-row items-center gap-2">
         <Image
-          src={img ? img : "https://avatar.vercel.sh/jack"}
+          src={imgSrc ? imgSrc : "https://avatar.vercel.sh/jack"}
           alt=""
           width={32}
           height={32}
+          onError={handleError}
           className="h-[32px] w-[32px] rounded-full object-cover"
         />
         <div className="flex flex-col">
