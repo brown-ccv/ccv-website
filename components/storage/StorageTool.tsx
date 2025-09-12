@@ -43,10 +43,10 @@ export default function StorageTool({
   return (
     <>
       <ContentSection id="form" title="Storage Selection Tool">
-        <h4 className="mb-6">
+        <p className="text-lg leading-tight lg:text-xl mb-6">
           Answering the questions in the form will provide a list of services
           that meet your requirements.
-        </h4>
+        </p>
         <div className="hidden lg:flex lg:items-center lg:gap-4 lg:pb-8">
           <p>Want to dive into comparing features?</p>
           <ScrollButton variant="primary_outlined" id="table">
@@ -77,7 +77,7 @@ export default function StorageTool({
         title="Compare Storage Options"
         className="hidden lg:block"
       >
-        <h4 className="mb-6">
+        <h4 className="text-lg leading-tight lg:text-xl mb-6">
           This tool lets you compare the available storage options at Brown to
           compare their features and decide which of these services best suits
           your needs. Select a storage service in the table for more information

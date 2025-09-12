@@ -21,7 +21,7 @@ interface PeopleCardProps {
   name: string
   title: string
   personDetails?: {
-    name: string
+    display_name: string
     title: string
     team?: string
     subteam?: string
@@ -74,7 +74,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           </StyledCard>
         </button>
       </DialogTrigger>
-      <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
+      <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-slate-600 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
         <Image
           src={imagePath}
           alt=""
@@ -83,7 +83,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           className="rounded-full h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
         <DialogTitle className="py-4">
-          {personDetails?.name || name}
+          {personDetails?.display_name}
         </DialogTitle>
         <h5 className="font-normal">
           {personDetails?.title || title}
