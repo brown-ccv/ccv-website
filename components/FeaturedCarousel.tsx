@@ -119,15 +119,16 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
               {/* Organizations */}
               {organizations && organizations.length > 0 && (
-                <div className="space-y-3">
+                <div className="space-y-3" role="list" aria-label={`${title} organizations`}>
                   {organizations.map((org, index) => (
-                    <div key={index} className="flex items-start gap-4">
+                    <div key={index} className="flex items-center gap-2 not-prose" role="listitem">
                       <Icon
                         iconName={org.icon}
                         className="h-6 w-6 flex-shrink-0"
+                        aria-hidden="true"
                       />
                       <div>
-                        <h5 className="font-semibold leading-snug">{org.name}</h5>
+                        <h4>{org.name}</h4>
                         <p className="text-sm text-slate-600">{org.organization}</p>
                         {(org.pi?.length || org.pm) && (
                           <p className="text-sm text-slate-600">

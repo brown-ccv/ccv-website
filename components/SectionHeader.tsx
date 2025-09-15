@@ -30,8 +30,8 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
             <CCVBars />
           </div>
         )}
-        <h2 className="flex items-center tracking-tighter">
-          {icon && <span className="mr-3">{icon}</span>}
+        <h2 className="flex items-center tracking-tighter" aria-label={title}>
+          {icon && <span className="mr-3" aria-hidden="true">{icon}</span>}
           {title}
         </h2>
       </div>

@@ -33,12 +33,12 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
           {/* Group Name */}
           <div className="flex items-center gap-2">
             <Icon iconName="FaUser" className="h-6 w-6" />
-            <h5>{group}</h5>
+            <span className="font-semibold">{group}</span>
           </div>
           {/* Time to Complete */}
           <div className="flex items-center gap-2 mt-2">
             <Icon iconName="FaClock" className="h-6 w-6 text-keppel-700" />
-            <h5>{time}</h5>
+            <span className="font-semibold">{time}</span>
           </div>
           <p>{description}</p>
           {link && (

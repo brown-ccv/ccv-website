@@ -82,14 +82,14 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           height={200}
           className="rounded-full h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
-        <DialogTitle className="py-4">
+        <DialogTitle className="py-4 text-2xl">
           {personDetails?.display_name}
         </DialogTitle>
-        <h5 className="font-normal">
+        <p className="font-normal text-xl">
           {personDetails?.title || title}
-        </h5>
+        </p>
         {personDetails?.team && (
-          <h5 className="-mb-2">{personDetails.team}</h5>
+          <p className="-mb-2 text-lg font-semibold">{personDetails.team}</p>
         )}
         {personDetails?.subteam && (
           <p className="italic">{personDetails.subteam}</p>
