@@ -41,9 +41,9 @@ export function EventSection({
     <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-8">
       <div className="flex flex-col items-center gap-4">
         <SectionHeader title={"Events"} icon={<FaCalendarAlt />} />
-        <h3 className="mb-6 font-serif text-xl font-normal italic">
+        <h4 className="mb-6 font-serif font-normal italic">
           What's next at CCV
-        </h3>
+        </h4>
         <ButtonLink
           variant="primary_filled"
           size="lg"

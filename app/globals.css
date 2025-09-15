@@ -24,65 +24,53 @@
     @apply bg-white;
   }
 
-  h1 {
-    @apply text-4xl font-bold;
-  }
-
-  h2,
-  h3,
-  h4 {
-    @apply font-semibold;
-  }
-
-  h2 {
-    @apply text-3xl;
-  }
-
-  h3 {
-    @apply text-2xl;
-  }
-
-  h4 {
-    @apply text-xl;
-  }
-
-  @media (width >= 64rem) {
-    h1 {
-      @apply text-5xl font-bold;
-    }
-
-    h2,
-    h3,
-    h4 {
-      @apply font-semibold;
-    }
-
-    h2 {
-      @apply text-4xl;
-    }
-
-    h3 {
-      @apply text-3xl;
-    }
-
-    h4 {
-      @apply text-2xl;
-    }
-  }
   p > a {
-    @apply text-keppel-800;
+    @apply text-keppel-800 underline;
   }
 
   p > a:hover {
-    @apply text-keppel-500;
+    @apply text-keppel-500 underline;
   }
 
   p > a:focus {
-    @apply text-keppel-600 outline-2 outline-keppel-600;
+    @apply text-keppel-600 outline-2 outline-keppel-400 underline;
+  }
+
+  h1 {
+    @apply text-3xl font-semibold leading-tight lg:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold leading-tight lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl font-semibold leading-tight lg:text-2xl;
+  }
+
+  h4 {
+    @apply text-lg font-semibold leading-tight lg:text-xl;
+  }
+
+  h5 {
+    @apply text-md font-semibold leading-tight lg:text-lg;
+  }
+
+  h6 {
+    @apply text-sm font-semibold leading-tight lg:text-md;
   }
 }
 
 @layer components {
+  .prose {
+    @apply prose-sm lg:prose-base;
+  }
+
+  /* Simple fix for CardTitle - make it h2 sized */
+  .font-bold.leading-none.tracking-tight {
+    @apply text-lg font-semibold leading-tight lg:text-xl;
+  }
+
   .prose pre code {
     white-space: pre-wrap;
     word-wrap: break-word;

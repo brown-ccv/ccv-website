@@ -1,14 +1,15 @@
 // --- about/us
 export interface PeopleTypes {
-  name: string
-  type: string
-  team: string
-  subteam: string
+  display_name: string
+  last_name: string
   title: string
-  github_username: string
-  brown_directory_uuid: string
-  bio: string
-  image: string
+  team?: string
+  subteam?: string
+  type?: string
+  github_username?: string
+  brown_directory_uuid?: string
+  bio?: string
+  image?: string
 }
 
 export interface IntroToOITSection {

@@ -78,7 +78,7 @@ function PinnedRow({ row, table }: { row: Row<any>; table: Table<any> }) {
           <td
             key={cell.id}
             style={{ ...getCommonPinningStyles(column) }}
-            className="border-r border-gray-200 bg-neutral-100 px-4 py-4 text-sm"
+            className="border-r border-slate-200 bg-neutral-100 px-4 py-4 text-sm"
           >
             {flexRender(cell.column.columnDef.cell, cell.getContext())}
           </td>
@@ -290,9 +290,9 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
 
       <div
         ref={tableContainerRef}
-        className="overflow-auto rounded-lg border border-gray-200 bg-white"
+        className="overflow-auto rounded-lg border border-slate-200 bg-white"
       >
-        <table className="min-w-full divide-y divide-stone-500">
+        <table className="not-prose min-w-full divide-y divide-stone-500">
           <thead className="sticky top-0 z-20 shadow-sm">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
@@ -389,7 +389,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
               </tr>
             ))}
           </thead>
-          <tbody className="divide-y divide-gray-200 bg-white">
+          <tbody className="divide-y divide-slate-200 bg-white">
             {table.getTopRows().map((row) => (
               <PinnedRow key={row.id} row={row} table={table} />
             ))}
@@ -401,7 +401,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
                     <td
                       key={cell.id}
                       className={cn(
-                        "border-r border-gray-200 bg-white px-4 py-4 text-sm"
+                        "border-r border-slate-200 bg-white px-4 py-4 text-sm"
                       )}
                       style={{ ...getCommonPinningStyles(column) }}
                     >
@@ -418,7 +418,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
         </table>
       </div>
 
-      <p className="mt-4 text-sm text-gray-500">
+      <p className="mt-4 text-sm text-slate-500">
         Showing {table.getRowModel().rows.length} service(s)
       </p>
     </>
