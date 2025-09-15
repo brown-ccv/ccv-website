@@ -8,68 +8,80 @@ description: We provide services with limited resources at no cost to all member
 The number and size of jobs allowed on Oscar vary with both partition and type of user account.
 
 <CardGroup>
-  <RatesCard 
+  <StyledCard 
     title="Basic Account"
-    partition="batch | gpu | bigmem"
-    cores="64 | 12 | 32"
-    memory="492 GB | 192 GB | 752 GB"
-    gpu="None | 2 Std. | None"
-    walltime="48hr"
-    cost="$0/month"
-    qos="Basic"
-  />
+    size="custom"
+    className="w-80 flex-shrink-0">
+    **Partition:** batch | gpu | bigmem  
+    **CPU Cores:** 64 | 12 | 32  
+    **Memory:** 492 GB | 192 GB | 752 GB  
+    **GPU:** None | 2 Std. | None  
+    **Max Walltime:** 48hr  
+    **Cost:** $0/month  
+    **Quality-of-Service (QOS):** Basic  
+  </StyledCard>
 
-  <RatesCard 
+  <StyledCard 
     title="HPC Priority"
-    partition="batch"
-    cores="208"
-    memory="1500 GB"
-    gpu="2 Std."
-    walltime="96hr"
-    cost="$0/month"
-    qos="Faster start times"
-  />
+    size="custom"
+    className="w-80 flex-shrink-0">
+    **Partition:** batch  
+    **CPU Cores:** 208  
+    **Memory:** 1500 GB  
+    **GPU:** 2 Std.  
+    **Max Walltime:** 96hr  
+    **Cost:** $0/month  
+    **Quality-of-Service (QOS):** Faster start times  
+  </StyledCard>
 
-  <RatesCard 
+  <StyledCard 
     title="HPC Priority+"
-    partition="batch"
-    cores="416"
-    memory="3000"
-    gpu="2 Std."
-    walltime="48hr"
-    cost="$0/month"
-    qos="Faster start times"
-  />
+    size="custom"
+    className="w-80 flex-shrink-0">
+    **Partition:** batch  
+    **CPU Cores:** 416  
+    **Memory:** 3000  
+    **GPU:** 2 Std.  
+    **Max Walltime:** 48hr  
+    **Cost:** $0/month  
+    **Quality-of-Service (QOS):** Faster start times  
+  </StyledCard>
 
-  <RatesCard 
+  <StyledCard 
     title="Standard GPU Priority"
-    partition="gpu"
-    cores="24"
-    memory="192 GB"
-    gpu="4 Std."
-    walltime="96hr"
-    cost="$67/month"
-  />
+    size="custom"
+    className="w-80 flex-shrink-0">
+    **Partition:** gpu  
+    **CPU Cores:** 24  
+    **Memory:** 192 GB  
+    **GPU:** 4 Std.  
+    **Max Walltime:** 96hr  
+    **Cost:** $67/month  
+  </StyledCard>
 
-  <RatesCard 
+  <StyledCard 
     title="Standard GPU Priority+"
-    partition="gpu"
-    cores="48"
-    memory="384 GB"
-    gpu="8 Std."
-    walltime="96hr"
-    cost="$133/month"
-  />
+    size="custom"
+    className="w-80 flex-shrink-0">
+    **Partition:** gpu  
+    **CPU Cores:** 48  
+    **Memory:** 384 GB  
+    **GPU:** 8 Std.  
+    **Max Walltime:** 96hr  
+    **Cost:** $133/month  
+  </StyledCard>
 
-  <RatesCard 
+  <StyledCard 
     title="High-End GPU Priority"
-    partition="gpu-he"
-    cores="24"
-    memory="256 GB"
-    gpu="4 high-end"
-    walltime="96hr"
-    cost="$133/month"
-  />
+    size="custom"
+    className="w-80 flex-shrink-0">
+    **Partition:** gpu-he  
+    **CPU Cores:** 24  
+    **Memory:** 256 GB  
+    **GPU:** 4 high-end  
+    **Max Walltime:** 96hr  
+    **Cost:** $133/month  
+  </StyledCard>
 </CardGroup>
 
 Note, these values are subject to periodic review and changes. For more technical details, review the system hardware documentation.
@@ -102,12 +114,14 @@ Contact support@ccv.brown.edu to discuss your need and review your purchase opti
 CCV provides a variety of storage options for research data. For Brown Faculty members, the default storage option is 1TB.
 
 <CardGroup align="left">
-  <RatesCard 
+  <StyledCard 
     title="Basic"
-    location="Oscar | Campus Files | Stronghold"
-    allocation="1TB"
-    cost="$0/year"
-  />
+    size="custom"
+    className="w-80 flex-shrink-0">
+      **Location:** Oscar | Campus Files | Stronghold  
+      **Allocation:** 1TB  
+      **Cost:** $0/year  
+  </StyledCard>
 </CardGroup>
 
 ## Additional Storage Allocation Costs
@@ -115,19 +129,23 @@ CCV provides a variety of storage options for research data. For Brown Faculty m
 When awarded a new grant, Brown faculty members may request an additional storage space by providing CCV with the active grant number.
 
 <CardGroup align="left">
-  <RatesCard 
+  <StyledCard 
     title="Unreplicated"
-    location="Oscar | Campus Files | Stronghold"
-    allocation="Up to 10TB"
-    cost="$50/TB/year"
-  />
+    size="custom"
+    className="w-80 flex-shrink-0">
+    **Location:** Oscar | Campus Files | Stronghold  
+    **Storage Allocation:** Up to 10TB  
+    **Cost:** $50/TB/year  
+  </StyledCard>
 
-  <RatesCard 
+  <StyledCard 
     title="Replicated"
-    location="Campus Files"
-    allocation="Up to 10TB"
-    cost="$100/TB/year"
-  />
+    size="custom"
+    className="w-80 flex-shrink-0">
+    **Location:** Campus Files  
+    **Storage Allocation:** Up to 10TB  
+    **Cost:** $100/TB/year  
+  </StyledCard>
 </CardGroup>
 </ContentSection>
 
