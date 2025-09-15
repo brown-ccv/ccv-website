@@ -7,7 +7,7 @@ export const ButtonVariants = cva(
       variant: {
         // ————————————————————— Primary Filled —————————————————————
         primary_filled: [
-          "bg-keppel-700 text-white",
+          "bg-keppel-800 text-white",
           "hover:bg-keppel-500",
           "focus-visible:ring-sunglow-300",
           "active:bg-keppel-600",
@@ -21,21 +21,24 @@ export const ButtonVariants = cva(
         ].join(" "),
         // ————————————————————— Primary Outlined ————————————————————
         primary_outlined: [
-          "bg-transparent border-2 border-keppel-700 text-keppel-700",
-          "hover:bg-keppel-700 hover:text-white",
+          "bg-transparent text-keppel-800",
+          "border-2 border-keppel-700", 
+          "hover:bg-keppel-800 hover:text-white",
           "focus-visible:ring-sunglow-300",
           "active:bg-keppel-600",
         ].join(" "),
         // ————————————————————— Secondary Outlined ———————————————————
         secondary_outlined: [
-          "bg-transparent border-2 border-sunglow-400 text-sunglow-400",
+          "bg-transparent text-sunglow-400",
+          "border-2 border-sunglow-400",
           "hover:bg-sunglow-400 hover:text-black",
           "focus-visible:ring-keppel-400",
           "active:bg-sunglow-300",
         ].join(" "),
         // ————————————————————— Red Outlined ————————————————————
         red_outlined: [
-          "bg-transparent border-2 border-red-university text-red-university",
+          "bg-transparent text-red-university",
+          "border-2 border-red-university",
           "hover:bg-red-university hover:text-white",
           "focus-visible:ring-keppel-400",
           "active:bg-red-university/80",
