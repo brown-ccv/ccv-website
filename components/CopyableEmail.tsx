@@ -17,7 +17,7 @@ export const CopyableEmail = ({ email, className = "" }: CopyableEmailProps) => 
       setCopied(true)
     } catch (err) {
       // Optionally, provide fallback feedback to the user
-      alert("Failed to copy email to clipboard. Please copy manually.");
+      alert(`Failed to copy email to clipboard. Please copy manually.`);
     } finally {
       setTimeout(() => setCopied(false), 2000)
     }
