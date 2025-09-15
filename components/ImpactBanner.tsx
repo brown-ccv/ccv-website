@@ -8,7 +8,7 @@ export const ImpactBanner = (): JSX.Element => {
   ]
 
   return (
-    <div className="flex flex-grow flex-col items-center justify-between gap-6 bg-neutral-50 p-16 lg:flex-row">
+    <div className="flex flex-grow flex-col items-center justify-between gap-6 bg-neutral-50 p-8 lg:flex-row">
       <div className="text-center">
         <h2 className="font-sans font-semibold">The CCV Impact</h2>
         <p className="font-serif italic text-slate-600">
