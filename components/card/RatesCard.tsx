@@ -32,7 +32,7 @@ export const RatesCard: React.FC<RatesCardProps> = ({
       size="custom"
       className="w-80 flex-shrink-0"
     >
-      <div className="gap-y-0 not-prose">
+      <div className="not-prose">
         {partition && (
           <p>
             <span className="font-semibold">Partition:</span> {partition}
