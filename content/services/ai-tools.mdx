@@ -57,18 +57,10 @@ We at CCV host dozens of public, open‑weight models in a shared repository—s
 Gemma3—so you don’t have to download anything; you simply point the OLLAMA_MODELS environment variable to CCV’s shared
 path and run. We are also open to adding more models, so you can always contact us to request one!
 
-You can choose default models or explicit variants (for example, requesting a larger parameter size), and interact
-either through an interactive chat or programmatically.
-
-For programmatic use, Ollama provides a lightweight Python client that lets you script evaluations, benchmarks, and
-longer workflows across multiple models. Because LLMs are resource‑intensive, CCV recommends running on GPU nodes;
-very large models may not fit in a single GPU’s memory and will otherwise spill to CPU, which is slower.
-For those cases, requesting multiple GPUs allows Ollama to automatically shard model weights for better performance.
-
 
 <ButtonGroup>
-<Button href="https://docs.ccv.brown.edu/oscar/large-language-models/ollama">Ollama Documentation</Button>
-<Button variant="primary_outlined" external={false} href="/services/oscar">About Oscar</Button>
+    <Button href="https://docs.ccv.brown.edu/oscar/large-language-models/ollama">Ollama Documentation</Button>
+    <Button variant="primary_outlined" external={false} href="/services/oscar">About Oscar</Button>
 </ButtonGroup>
 
 </ContentSection>
