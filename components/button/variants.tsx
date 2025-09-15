@@ -22,7 +22,7 @@ export const ButtonVariants = cva(
         // ————————————————————— Primary Outlined ————————————————————
         primary_outlined: [
           "bg-transparent text-keppel-800",
-          "border-2 border-keppel-700", 
+          "border-2 border-keppel-800", 
           "hover:bg-keppel-800 hover:text-white",
           "focus-visible:ring-sunglow-300",
           "active:bg-keppel-600",
