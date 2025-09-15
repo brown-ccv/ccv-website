@@ -44,14 +44,14 @@ export const StyledTabs: React.FC<TabsProps> = ({
 
   const config = positionConfig[position]
   const tabsListBaseStyles =
-    "bg-[--tabs-bg] border border-gray-200 py-6 text-neutral-800"
+    "bg-[--tabs-bg] border border-slate-200 py-6 text-neutral-800"
   const tabsTriggerBaseStyles =
-    "data-[state=active]:bg-white data-[state=active]:text-keppel-800 data-[state=active]:font-bold data-[state=active]:border data-[state=active]:border-keppel-700/50 hover:text-keppel-600 text-lg"
+    "data-[state=active]:bg-white data-[state=active]:text-keppel-800 data-[state=active]:font-bold data-[state=active]:border data-[state=active]:border-keppel-700/50 hover:text-keppel-600 text-md"
 
   return (
     <Tabs
       defaultValue={defaultTab}
-      className={`flex flex-col items-end justify-end gap-4 ${tabsWrapperClass}`}
+      className={`prose prose-sm lg:prose-base flex flex-col items-end justify-end gap-4 ${tabsWrapperClass}`}
     >
       <TabsList className={`${config.tabsList} ${tabsListBaseStyles}`}>
         {tabs?.map((tab) => (

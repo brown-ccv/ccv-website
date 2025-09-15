@@ -9,18 +9,18 @@ interface BrownBannerProps {
 
 export const BrownBanner: React.FC<BrownBannerProps> = () => {
   return (
-    <header className="flex flex-row items-center justify-between bg-white px-4 py-2 lg:py-4">
+    <header className="flex flex-row items-center justify-between bg-white px-4 py-4">
       <a
         href="https://it.brown.edu"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex-shrink-0 lg:border-r lg:border-slate-900 lg:p-4"
+        className="flex-shrink-0 lg:border-r lg:border-slate-900 lg:p-2"
       >
         <BrownLogo width={150} className="sm:w-[200px]" />
         <span className="sr-only">OIT Home</span>
       </a>
 
-      <p className="hidden pl-6 text-3xl font-semibold lg:flex lg:flex-1 lg:justify-start">
+      <p className="hidden pl-6 text-2xl font-semibold lg:flex lg:flex-1 lg:justify-start">
         Center for Computation and Visualization
       </p>
 
@@ -31,7 +31,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
         size="md"
         className={"px-2 py-6 sm:px-4"}
       >
-        <FaComments className="text-xl sm:text-2xl" />
+        <FaComments className="text-lg sm:text-xl" />
         Work with Us
       </ButtonLink>
     </header>

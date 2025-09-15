@@ -19,7 +19,8 @@ export const Hero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "xl:text-5xl",
+  titleClassName = "font-semibold xl:text-5xl",
+  descriptionClassName = "text-xl xl:text-2xl",
 }: HeroProps) => {
   const backgroundImageStyles = [
     "linear-gradient(135deg, rgb(17 24 39) 0%, rgb(243 244 246) 100%)",
@@ -48,7 +49,7 @@ export const Hero = ({
       {showGradient ? (
         <div className="flex w-full max-w-[1400px] flex-col gap-9">
           {title && <h1 className={titleClassName}>{title}</h1>}
-          {description && <p className="text-xl md:text-2xl">{description}</p>}
+          {description && <p className={descriptionClassName}>{description}</p>}
           {children && (
             <div className="flex flex-col flex-wrap gap-2 pt-8 sm:flex-row sm:gap-4">
               {children}
@@ -68,8 +69,8 @@ export const MainHero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "xl:text-6xl",
-  descriptionClassName = "text-xl md:text-2xl xl:text-3xl",
+  titleClassName = "font-semibold xl:text-5xl",
+  descriptionClassName = "text-xl xl:text-2xl",
 }: HeroProps) => {
   const backgroundImageStyles = [
     "linear-gradient(135deg, rgb(17 24 39) 0%, rgb(243 244 246) 100%)",

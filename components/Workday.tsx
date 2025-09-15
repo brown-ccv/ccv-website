@@ -27,15 +27,15 @@ export function Workday({ careers }: { careers: any[] }) {
             <Card className="transition-shadow hover:shadow-lg">
               <CardContent className="flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between">
                 <div className="flex flex-col gap-2">
-                  <p className="flex items-center gap-2 text-sm text-gray-700 md:gap-4">
+                  <p className="flex items-center gap-2 text-sm text-slate-700 md:gap-4">
                     <MapPinIcon className="h-4 w-4" />
                     Providence, RI - United States
                   </p>
-                  <p className="text-lg font-medium text-gray-800">
+                  <p className="text-lg font-medium text-slate-800">
                     {position.title}
                   </p>
                 </div>
-                <div className="flex items-center gap-2 text-sm font-medium text-gray-700 md:gap-4">
+                <div className="flex items-center gap-2 text-sm font-medium text-slate-700 md:gap-4">
                   <span>Learn More</span>
                   <ArrowRightIcon className="h-4 w-4" />
                 </div>
