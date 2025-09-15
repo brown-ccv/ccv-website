@@ -45,7 +45,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
           </CardTitle>
         </CardHeader>
       )}
-      <CardContent>      
+      <CardContent className="pt-0">      
         <div className="prose prose-sm lg:prose-base max-w-none">
           {children}
         </div>
