@@ -41,7 +41,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Wrapper component for all MDX content
     wrapper: ({ children }) => (
-      <div className="prose max-w-none text-xl">{children}</div>
+      <div className="prose prose-sm lg:prose-base max-w-none">{children}</div>
     ),
 
     // Global MDX components

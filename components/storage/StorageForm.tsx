@@ -101,7 +101,7 @@ const Form: React.FC<FormProps> = ({
 
   return (
     <StyledCard size="lg">
-      <div className="my-6 flex justify-end border-b border-gray-300 pb-4">
+      <div className="my-6 flex justify-end border-b border-gray-300 py-4">
         {children}
       </div>
       <div className="space-y-8">
