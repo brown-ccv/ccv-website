@@ -69,7 +69,10 @@ export default async function Home() {
               />
             </Suspense>
           </ContentSection>
-          <ContentSection title="Testimonials">
+          <ContentSection
+            className="px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0"
+            title="Collaborations"
+          >
             <Testimonials />
           </ContentSection>
         </div>

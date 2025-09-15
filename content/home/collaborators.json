@@ -6,12 +6,6 @@
     "img": "/images/home/testimonials/beth_brainerd.jpg"
   },
   {
-    "name": "Chris Horvat",
-    "department": "Earth, Environmental, and Planetary Sciences",
-    "review": "Collaborating with Anna and her colleagues at CCV has been a pleasure. Anna helped get a complex visualization project from concept to deployment in just a few months, preventing countless headaches along the way. I recommend CCV to anyone seeking a high-quality team of data and software engineers to accelerate their research.",
-    "img": "/images/home/testimonials/chris_horvat.png"
-  },
-  {
     "name": "Sebastian Musslick",
     "department": "Cognitive and Psychological Sciences",
     "img": "/images/home/testimonials/sebastian_musslick.jpeg"
@@ -122,5 +116,11 @@
     "name": "David Laidlaw",
     "department": "Computer Science",
     "img": "/images/home/testimonials/david_laidlaw.jpg"
+  },
+  {
+    "name": "Chris Horvat",
+    "department": "Earth, Environmental, and Planetary Sciences",
+    "review": "Collaborating with Anna and her colleagues at CCV has been a pleasure. Anna helped get a complex visualization project from concept to deployment in just a few months, preventing countless headaches along the way. I recommend CCV to anyone seeking a high-quality team of data and software engineers to accelerate their research.",
+    "img": "/images/home/testimonials/chris_horvat.png"
   }
 ]

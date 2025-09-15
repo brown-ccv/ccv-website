@@ -42,7 +42,15 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
           <p className="text-xs font-medium">{department}</p>
         </div>
       </div>
-      {review && <blockquote className="mt-2 text-sm">{review}</blockquote>}
+      {review &&
+        (() => {
+          const words = review.trim().split(/\s+/)
+          const truncatedReview =
+            words.slice(0, 20).join(" ") + (words.length > 12 ? "..." : "")
+          return (
+            <blockquote className="mt-2 text-sm">{truncatedReview}</blockquote>
+          )
+        })()}
     </figure>
   )
 }
