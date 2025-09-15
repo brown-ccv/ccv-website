@@ -5,19 +5,18 @@ description: |
 ---
 
 <ContentSection title="What is a Virtual Machine?">
-Using a virtual machine on a server lets you run several separate computers inside one physical box. This means you can
-get more value from the hardware that Brown already owns, cutting down on extra machines, power, and space. Each virtual
-machine is walled off from the others, so if one crashes, is set up incorrectly, or gets infected, the others keep running.
+A virtual machine (VM) instance is a digital version of a computer, hosted on Brown's servers, that provides
+researchers with a dedicated and customizable environment. On a dedicated VM you can run a specific operating system
+and install your own software without interfering with other systems or users. VMs for Windows or Linux are available
+for researchers with needs not met by existing resources and do not want to purchase and maintain their own hardware.
 
-You can run different operating systems and versions side by side, which helps with older software or special needs.
-New machines can be created in minutes from ready‑made templates, and you can take a “picture” of a machine at a moment
-in time and roll back if a change goes wrong. Many platforms let you move a running virtual machine to another physical
-server to balance work or do maintenance without stopping service, and they can automatically restart machines on
-healthy hardware if a server fails.
+A VM may be the right choice for your research if you require:
 
-Security is improved through separate networks and rules, and it is easier to review changes and control who can do what.
-This approach makes it practical to host work for different teams on the same hardware, to test new ideas safely, and
-to monitor and automate day‑to‑day operations.
+- Windows-Specific Applications unavailable on your computer
+- GUI-based software that is not compatible with running with OSCAR's Open OnDemand
+- Persistent services and long-running tasks that cannot be hosted on other resources or platforms
+- An isolated sandbox to develop and test software
+- A complex software stack
 
 </ContentSection>
 
@@ -25,19 +24,13 @@ to monitor and automate day‑to‑day operations.
 We support virtual machines on Windows and Linux servers. Depending on your needs, we can also
 assist with basic system administration and maintenance.
 
-We do not currently support GPUs in this environment.
+Request a consultation with CCV to see if VMs are the right tool for your work.
 
 <Button
   size="md"
-  href="https://brown.atlassian.net/servicedesk/customer/portal/12/create/200"
+  href="/about/contact"
 >
-  Request Virtual Hosting
+  Contact Us
 </Button>
-
-### VM Environment sizing limits:
-
-**Hosting DMZ** is an internet facing environment with a CPU sizing limit of 16 cores and a Memory sizing limit of 128GB RAM for your virtual machine
-
-**Hosting Internal** is an internal environment with a CPU sizing limit of 24 cores and a Memory sizing limit of 384GB RAM for your virtual machine
 
 </ContentSection>
