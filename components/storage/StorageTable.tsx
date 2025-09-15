@@ -292,7 +292,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
         ref={tableContainerRef}
         className="overflow-auto rounded-lg border border-slate-200 bg-white"
       >
-        <table className="min-w-full divide-y divide-stone-500">
+        <table className="not-prose min-w-full divide-y divide-stone-500">
           <thead className="sticky top-0 z-20 shadow-sm">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
