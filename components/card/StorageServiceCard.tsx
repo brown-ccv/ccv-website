@@ -48,7 +48,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
     <StyledCard
       title={humanize(service.serviceName)}
       isDisabled={isDisabled}
-      size="md"
+      size="sm"
       className="w-full"
     >
       <ul className="space-y-3 p-2">
