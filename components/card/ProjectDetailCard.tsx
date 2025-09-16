@@ -14,7 +14,7 @@ interface ProjectDetailCardProps {
 export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
   return (
     <StyledCard size="sm">
-      <CardHeader className="px-0 pb-0">
+      <CardHeader className="px-0 pb-0 pt-6">
         <div className="flex items-center justify-between">
           <TechnicalExpertiseHeader expertiseType={entry['project-type']} />
           {entry.starred && (
@@ -25,7 +25,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         </div>
       </CardHeader>
       
-      <CardContent>
+      <CardContent className="p-0">
         {/* Dynamic Array Fields (for now they are languages, tags, groups, department,
         excluding developers, links, and investigators because they are not displayed as badges) */}
         {Object.entries(entry)
@@ -76,7 +76,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
                 {developer.github_user ? (
                   <a 
                     href={`https://github.com/${developer.github_user}`}
-                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500 no-underline"
+                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500 no-underline font-normal"
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`${developer.name}'s GitHub Profile`}
@@ -104,7 +104,7 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
                 <div key={investigator.name} className="flex items-center">
                   <a 
                     href={investigator.link}
-                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500 no-underline"
+                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500 no-underline font-normal"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
