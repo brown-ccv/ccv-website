@@ -26,8 +26,8 @@ export function TechnicalExpertiseHeader({
   const iconName = iconMap[expertiseType]
   
   return (
-    <div className={cn("flex items-center gap-2", className)}>
-      {iconName && <Icon iconName={iconName} className="text-keppel-700 text-lg" />}
+    <div className={cn("flex items-start gap-2 text-lg", className)}>
+      {iconName && <Icon iconName={iconName} className="mt-1" />}
       <span>{expertiseType}</span>
     </div>
   )

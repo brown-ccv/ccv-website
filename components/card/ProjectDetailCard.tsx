@@ -26,8 +26,8 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
       </CardHeader>
       
       <CardContent>
-
-        {/* Dynamic Array Fields */}
+        {/* Dynamic Array Fields (for now they are languages, tags, groups, department,
+        excluding developers, links, and investigators because they are not displayed as badges) */}
         {Object.entries(entry)
           .filter(([key, value]) => 
             Array.isArray(value) && 
@@ -37,21 +37,24 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
           .map(([key, value]) => {
             const fieldName = key.charAt(0).toUpperCase() + key.slice(1).replace(/-/g, ' ')
             
-            // Generate a consistent color for each field type using a simple hash
-            const colors = ['purple', 'pink', 'blue', 'red']
-            const hash = key.split('').reduce((a, b) => a + b.charCodeAt(0), 0)
-            const colorIndex = hash % colors.length
+            // Simple color mapping for each field type
+            const colorMap: Record<string, string> = {
+              languages: 'purple',
+              tags: 'pink',
+              groups: 'blue',
+              department: 'red'
+            }
             
             return (
               <div key={key}>
-                <h2>
+                <p className="text-lg font-semibold leading-tight lg:text-xl !mb-2">
                   {fieldName}
-                </h2>
+                </p>
                 <div className="flex flex-wrap gap-2">
                   {(value as string[]).map((item) => (
                     <Badge 
                       key={item} 
-                      color={colors[colorIndex] as any}
+                      color={colorMap[key] as any}
                     >
                       {item}
                     </Badge>
@@ -64,14 +67,16 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Developers */}
         {entry.developers && entry.developers.length > 0 && (
           <div>
-            <h2>Developers</h2>
+            <p className="text-lg font-semibold leading-tight lg:text-xl !mb-2">
+              Developers
+            </p>
             <div>
               {entry.developers.map((developer) => (
               <div key={developer.name} className="flex items-center">
                 {developer.github_user ? (
                   <a 
                     href={`https://github.com/${developer.github_user}`}
-                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500"
+                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500 no-underline"
                     target="_blank"
                     rel="noopener noreferrer"
                     title={`${developer.name}'s GitHub Profile`}
@@ -91,13 +96,15 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Investigators */}
         {entry.investigators && entry.investigators.length > 0 && (
           <div>
-            <h2>Investigators</h2>
+            <p className="text-lg font-semibold leading-tight lg:text-xl !mb-2">
+              Investigators
+            </p>
             <div>
               {entry.investigators.map((investigator) => (
                 <div key={investigator.name} className="flex items-center">
                   <a 
                     href={investigator.link}
-                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500"
+                    className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500 no-underline"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -113,7 +120,9 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Links */}
         {entry.links && entry.links.length > 0 && (
           <div>
-            <h2>Resources</h2>
+            <p className="text-lg font-semibold leading-tight lg:text-xl !mb-2">
+              Resources
+            </p>
             <div className="flex flex-col">
               {entry.links.map((link, index) => (
                 <a key={index} href={link.url} className="text-keppel-800 hover:text-keppel-400 active:text-keppel-400 underline" target="_blank" rel="noopener noreferrer">
