@@ -14,11 +14,11 @@ interface ProjectDetailCardProps {
 export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
   return (
     <StyledCard size="sm">
-      <CardHeader>
+      <CardHeader className="px-0 pb-0">
         <div className="flex items-center justify-between">
           <TechnicalExpertiseHeader expertiseType={entry['project-type']} />
           {entry.starred && (
-            <Badge color="sunglow" className="text-black text-md">
+            <Badge color="sunglow">
               ⭐ Featured
             </Badge>
           )}
@@ -26,69 +26,48 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
       </CardHeader>
       
       <CardContent>
-        {/* Languages */}
-        {entry.languages && entry.languages.length > 0 && (
-          <div>
-            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Languages</h3>
-            <div className="flex flex-wrap gap-2">
-              {entry.languages.map((lang) => (
-                <Badge key={lang} color="purple" className="text-md bg-purple-900/20 text-purple-900 border border-purple-900">
-                  {lang}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        )}
 
-        {/* Tags */}
-        {entry.tags && entry.tags.length > 0 && (
-          <div>
-            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Tags</h3>
-            <div className="flex flex-wrap gap-2">
-              {entry.tags.map((tag) => (
-                <Badge key={tag} color="pink" className="text-md bg-pink-500/20 text-pink-500 border border-pink-500">
-                  {tag}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Groups */}
-        {entry.groups && entry.groups.length > 0 && (
-          <div>
-            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Groups</h3>
-            <div className="flex flex-wrap gap-2">
-              {entry.groups.map((group) => (
-                <Badge key={group} color="blue" className="text-md bg-blue-500/20 text-blue-500 border border-blue-500">
-                  {group}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Department */}
-        {entry.department && entry.department.length > 0 && (
-          <div>
-            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Department</h3>
-            <div className="flex flex-wrap gap-2">
-              {entry.department.map((department) => (
-                <Badge key={department} className="text-md bg-red-university/20 text-red-university border border-red-university">
-                  {department}
-                </Badge>
-              ))}
-            </div>
-          </div>
-        )}
+        {/* Dynamic Array Fields */}
+        {Object.entries(entry)
+          .filter(([key, value]) => 
+            Array.isArray(value) && 
+            value.length > 0 && 
+            !['developers', 'links', 'investigators'].includes(key)
+          )
+          .map(([key, value]) => {
+            const fieldName = key.charAt(0).toUpperCase() + key.slice(1).replace(/-/g, ' ')
+            
+            // Generate a consistent color for each field type using a simple hash
+            const colors = ['purple', 'pink', 'blue', 'red']
+            const hash = key.split('').reduce((a, b) => a + b.charCodeAt(0), 0)
+            const colorIndex = hash % colors.length
+            
+            return (
+              <div key={key}>
+                <h2>
+                  {fieldName}
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {(value as string[]).map((item) => (
+                    <Badge 
+                      key={item} 
+                      color={colors[colorIndex] as any}
+                    >
+                      {item}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
 
         {/* Developers */}
         {entry.developers && entry.developers.length > 0 && (
           <div>
-            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Developers</h3>
-            <div className="space-y-2">
+            <h2>Developers</h2>
+            <div>
               {entry.developers.map((developer) => (
-              <div key={developer.name} className="flex items-center space-x-2">
+              <div key={developer.name} className="flex items-center">
                 {developer.github_user ? (
                   <a 
                     href={`https://github.com/${developer.github_user}`}
@@ -97,11 +76,11 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
                     rel="noopener noreferrer"
                     title={`${developer.name}'s GitHub Profile`}
                   >
-                    <FaGithub className="text-2xl" />
-                    <span className="text-lg">{developer.name}</span>
+                    <FaGithub />
+                    <span>{developer.name}</span>
                   </a>
                 ) : (
-                  <span className="text-neutral-700 text-lg">{developer.name}</span>
+                  <span className="text-neutral-700">{developer.name}</span>
                 )}
               </div>
             ))}
@@ -112,18 +91,18 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Investigators */}
         {entry.investigators && entry.investigators.length > 0 && (
           <div>
-            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Investigators</h3>
-            <div className="space-y-2">
+            <h2>Investigators</h2>
+            <div>
               {entry.investigators.map((investigator) => (
-                <div key={investigator.name} className="flex items-center space-x-2">
+                <div key={investigator.name} className="flex items-center">
                   <a 
                     href={investigator.link}
                     className="flex items-center space-x-2 text-neutral-900 hover:text-keppel-500 active:text-keppel-500"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <FaUser className="text-2xl" />
-                    <span className="text-lg">{investigator.name}</span>
+                    <FaUser />
+                    <span>{investigator.name}</span>
                   </a>
                 </div>
               ))}
@@ -134,10 +113,10 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
         {/* Links */}
         {entry.links && entry.links.length > 0 && (
           <div>
-            <h3 className="text-xl lg:text-2xl font-semibold mb-2 mt-4 lg:mt-8 text-neutral-900 pt-2 lg:pt-4">Resources</h3>
-            <div className="flex flex-col gap-2">
+            <h2>Resources</h2>
+            <div className="flex flex-col">
               {entry.links.map((link, index) => (
-                <a key={index} href={link.url} className="text-keppel-600 hover:text-keppel-400 active:text-keppel-400 underline text-lg" target="_blank" rel="noopener noreferrer">
+                <a key={index} href={link.url} className="text-keppel-800 hover:text-keppel-400 active:text-keppel-400 underline" target="_blank" rel="noopener noreferrer">
                   {humanize(link.display_text)}
                 </a>
               ))}

@@ -40,25 +40,27 @@ export default async function PortfolioDetailPage({ params }: PortfolioDetailPag
     <>
     <Hero title={entry.title} />
     <ContentSection>
-      <div className="flex flex-col lg:flex-row gap-8 mt-8">
-        <div className="prose prose-lg text-xl max-w-none lg:w-2/3 flex flex-col items-center">
+      <div className="flex flex-col lg:flex-row gap-8">
+        <div className="flex-1">
           {entry.image && (
-            <Image 
-              src={entry.image} 
-              alt={entry.title} 
-              width={0}
-              height={0}
-              sizes="400px"
-              className="w-[400px] h-auto object-contain" 
-            />
-          )}
-          <p>{entry.description}</p>
+            <div className="flex justify-center mb-4">
+              <Image 
+                src={entry.image} 
+                alt={entry.title} 
+                width={0}
+                height={0}
+                sizes="400px"
+                className="w-[400px] h-auto object-contain" 
+              />
+            </div>
+            )}
+            <p>{entry.description}</p>
+          </div>
+          <div className="lg:w-1/3">
+            <ProjectDetailCard entry={entry} />
+          </div>
         </div>
-        <div className="lg:w-1/3">
-          <ProjectDetailCard entry={entry} />
-        </div>
-      </div>
-    </ContentSection> 
+      </ContentSection> 
     </>
   )
 }
