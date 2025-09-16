@@ -300,11 +300,11 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
                   const { column } = header
                   if (header.column.id === "pin") {
                     return (
-                      <td
+                      <th
                         key={header.id}
                         className="w-12 bg-neutral-900 px-4 py-3"
                         style={{ ...getCommonPinningStyles(column) }}
-                      ></td>
+                      ></th>
                     )
                   }
                   return (
