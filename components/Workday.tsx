@@ -23,6 +23,7 @@ export function Workday({ careers }: { careers: any[] }) {
             external
             href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
             className="m-4 block"
+            size="md"
           >
             <Card className="transition-shadow hover:shadow-lg">
               <CardContent className="flex flex-col gap-6 p-6 md:flex-row md:items-center md:justify-between">

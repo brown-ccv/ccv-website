@@ -71,6 +71,7 @@ export default function StorageTool({
           </p>
           <ScrollButton
             variant="primary_outlined"
+            size="md" 
             id="table"
             aria-describedby="table-nav-desc"
             aria-label="Scroll to comparison table section"
