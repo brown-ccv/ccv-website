@@ -4,68 +4,74 @@ description: |
   Access to large language models and AI tools through CCV's computing infrastructure.
 ---
 
-<ContentSection title="Overview" >
+<ContentSection title="About ChatCCV Tools">
+CCV provides access to cutting-edge AI tools and large language models through our high-performance computing
+infrastructure. Whether you need to run LLMs for research, explore AI capabilities, or integrate AI into your
+computational workflows, we have the resources and expertise to support your needs.
 
-CCV provides access to cutting-edge AI tools and large language models through our high-performance computing infrastructure. Whether you need to run LLMs for research, explore AI capabilities, or integrate AI into your computational workflows, we have the resources and expertise to support your needs.
-
-<Button href="https://docs.ccv.brown.edu/ai-tools/privacy-statement">
+<Button
+  variant="primary_outlined"
+  size="md"
+  href="https://docs.ccv.brown.edu/ai-tools/privacy-statement"
+>
   CCV AI Tools Privacy Statement
 </Button>
 
+<CardGroup>
+  <StyledCard
+    iconName="FaComments"
+    title="LibreChat"
+    footer={<Button size="md" href="https://librechat.ccv.brown.edu/c/new">Try LibreChat</Button>}>
+
+    LibreChat is an easy-to-use, open-source chat platform that lets you talk to multiple AI models in a private,
+    customizable way. It's freely available to the Brown community and gives you full control over your data.
+
+    **This is an experimental tool*
+  </StyledCard>
+
+  <StyledCard
+    iconName="FaFileAudio"
+    title="Transcribe"
+    footer={<Button size="md" href="https://ai.ccv.brown.edu/transcribe">Try Transcribe</Button>}>
+
+     Transcribe audio files in over 20 different languages to text using state-of-the-art AI models such as Google
+     Gemini and OpenAI Whisper.
+  </StyledCard>
+
+  <StyledCard
+    iconName="FaServer"
+    title="Ask Oscar"
+    footer={<Button size="md" href="https://ai.ccv.brown.edu/retrieval">Try Ask Oscar</Button>}>
+
+    Ask Oscar is an AI assistant that specializes in answering questions about Oscar, Brown University's HPC cluster. It has
+    access to Oscar's documentation to help you find the information you need.
+
+    **This is an experimental tool*
+  </StyledCard>
+</CardGroup>
+
+***Note**: Ask Oscar is currently under development as a proof of concept. The information about the Oscar documentation
+is not up-to-date and may be incorrect.
+
 </ContentSection>
 
-<ContentSection title="ChatCCV">
+<ContentSection title="Ollama">
 
-A conversational AI assistant for CCV services and support.
+Ollama is the easiest way to run large language models directly on Brown’s Oscar high‑performance computing cluster.
+Available as a preinstalled module, Ollama uses a simple client–server approach: you start a server on your allocated
+GPU node, then connect a second terminal as the client to chat with models or launch jobs.
 
-<Button href="https://ai.ccv.brown.edu/">Try ChatCCV</Button>
-
-## Transcribe
-
-Transcribe audio files to text using Google Gemini, OpenAI Whisper, or Azure AI Speech STT.
-
-<Button href="https://docs.ccv.brown.edu/ai-tools/transcribe">
-  View Documentation
-</Button>
-
-## LibreChat
-
-LibreChat is an easy-to-use, open-source chat platform that lets you talk to AI in a private, customizable way. It's free to use and gives you full control over your data.
-
-<Button href="https://docs.ccv.brown.edu/ai-tools/services/librechat">
-  View Documentation
-</Button>
-
-## Ask Oscar
-
-Ask Oscar is an AI assistant that specializes in answering questions about CCV and its services using retrieval augmented generation (RAG). Currently, it answers questions about Oscar, Brown University's HPC cluster. It has access to Oscar's documentation and can help you find the information you need. Support for other CCV services will arrive soon.
-
-<Button href="https://docs.ccv.brown.edu/ai-tools/services/ask-oscar">
-  View Documentation
-</Button>
-
-Ask Oscar is powered by the latest version of the OpenAI GPT-4o model served by Azure OpenAI. Different from models served directly by OpenAI, information provided to the model will not be used by OpenAI or Microsoft for training purposes. Please check the Data, privacy, and security for Azure OpenAI for more information. Nevertheless, please avoid sharing sensitive information with the model.
+We at CCV host dozens of public, open‑weight models in a shared repository—such as Llama 4, DeepSeek‑r1, gpt‑oss, Mistral, and
+Gemma3—so you don’t have to download anything; you simply point the OLLAMA_MODELS environment variable to CCV’s shared
+path and run. We are also open to adding more models, so you can always contact us to request one!
 
 <ButtonGroup>
-  <Button href="https://platform.openai.com/docs/models">
-    OpenAI Models
+  <Button href="https://docs.ccv.brown.edu/oscar/large-language-models/ollama">
+    Ollama Documentation
   </Button>
-
-  <Button href="https://learn.microsoft.com/en-us/azure/ai-foundry/responsible-ai/openai/data-privacy?tabs=azure-portal">
-    Azure OpenAI Data Privacy
+  <Button variant="primary_outlined" external={false} href="/services/oscar">
+    About Oscar
   </Button>
 </ButtonGroup>
-
-**Note**: Ask Oscar is currently under development as a proof of concept. The information about the Oscar documentation is not up-to-date and may be incorrect.
-
-</ContentSection>
-
-<ContentSection title="Ollama - Large Language Models">
-
-Ollama is a framework that allows you to run large language models directly on Oscar's GPU nodes. CCV hosts dozens of open-weight LLMs including Llama 3.3, DeepSeek-r1, Mistral, and Gemma3.
-
-<Button href="https://docs.ccv.brown.edu/oscar/large-language-models/ollama">
-  View Documentation
-</Button>
 
 </ContentSection>

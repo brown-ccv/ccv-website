@@ -1,4 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/Card"
 import Icon from "@/components/ui/RenderIcon"
 import React from "react"
 import { cn } from "@/lib/utils"
@@ -11,6 +17,7 @@ interface StyledCardProps extends VariantProps<typeof CardVariants> {
   title?: string
   className?: string
   children: React.ReactNode
+  footer?: React.ReactNode
 }
 
 export const StyledCard: React.FC<StyledCardProps> = ({
@@ -20,6 +27,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   className,
   size,
   children,
+  footer,
 }) => {
   const IconComponent = iconName ? Icon : null
   return (
@@ -29,11 +37,12 @@ export const StyledCard: React.FC<StyledCardProps> = ({
           size,
           className,
         }),
-        isDisabled ? "opacity-30 grayscale" : ""
+        isDisabled ? "opacity-30 grayscale" : "",
+        "flex flex-col"
       )}
     >
       {title && (
-        <CardHeader>
+        <CardHeader className="flex-shrink-0">
           <CardTitle className="flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center">
             {IconComponent && (
               <IconComponent
@@ -45,11 +54,16 @@ export const StyledCard: React.FC<StyledCardProps> = ({
           </CardTitle>
         </CardHeader>
       )}
-      <CardContent className="pt-0">      
-        <div className="prose prose-sm lg:prose-base max-w-none">
+      <CardContent className="flex-grow pt-0">
+        <div className="prose prose-sm max-w-none lg:prose-base">
           {children}
         </div>
       </CardContent>
+      {footer && (
+        <CardFooter className="mt-auto flex flex-shrink-0 flex-col items-center gap-2">
+          {footer}
+        </CardFooter>
+      )}
     </Card>
   )
 }
