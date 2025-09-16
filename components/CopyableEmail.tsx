@@ -28,7 +28,7 @@ export const CopyableEmail = ({ email, className = "" }: CopyableEmailProps) => 
       <Tooltip open={copied}>
         <TooltipTrigger asChild>
           <span 
-            className={`cursor-pointer hover:underline hover:text-sunglow-400 ${className}`}
+            className={`text-keppel-800 font-bold cursor-pointer hover:underline hover:text-sunglow-400 ${className}`}
             onClick={copyEmail}
           >
             {email}
