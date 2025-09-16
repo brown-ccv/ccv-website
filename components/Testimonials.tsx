@@ -7,17 +7,22 @@ export function Testimonials() {
   const secondRow = reviews.slice(reviews.length / 2)
 
   return (
-    <div className="not-prose relative flex w-full flex-col items-center justify-center overflow-hidden">
-      <Marquee pauseOnHover className="[--duration:55s]">
-        {firstRow.map((review) => (
-          <ReviewCard key={review.name} {...review} />
-        ))}
-      </Marquee>
-      <Marquee reverse pauseOnHover className="[--duration:55s]">
-        {secondRow.map((review) => (
-          <ReviewCard key={review.name} {...review} />
-        ))}
-      </Marquee>
-    </div>
+    <>
+      <p className="px-12 font-semibold sm:px-16 lg:px-14 xl:px-20">
+        {reviews.length} collaborators
+      </p>
+      <div className="not-prose relative flex w-full flex-col items-center justify-center overflow-hidden">
+        <Marquee pauseOnHover className="[--duration:55s]">
+          {firstRow.map((review) => (
+            <ReviewCard key={review.name} {...review} />
+          ))}
+        </Marquee>
+        <Marquee reverse pauseOnHover className="[--duration:55s]">
+          {secondRow.map((review) => (
+            <ReviewCard key={review.name} {...review} />
+          ))}
+        </Marquee>
+      </div>
+    </>
   )
 }
