@@ -1,4 +1,5 @@
 import React from "react"
+import { cn } from "@/lib/utils"
 import { 
   FaAtom, 
   FaCode, 
@@ -25,26 +26,22 @@ const iconMap: Record<string, any> = {
 interface TechnicalExpertiseProps {
   expertiseType: string
   className?: string
-  iconClassName?: string
-  textClassName?: string
 }
 
 export function TechnicalExpertiseHeader({ 
   expertiseType, 
-  className = "", 
-  iconClassName = "", 
-  textClassName = "" 
+  className,
 }: TechnicalExpertiseProps) {
   const icon = iconMap[expertiseType]
   
   if (!icon) {
-    return <span className={`text-2xl font-bold text-neutral-900 ${textClassName}`}>{expertiseType}</span>
+    return <span>{expertiseType}</span>
   }
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      {React.createElement(icon, { className: `text-3xl text-neutral-700 ${iconClassName}` })}
-      <span className={`text-xl font-bold text-neutral-900 ${textClassName}`}>{expertiseType}</span>
+    <div className={cn("flex items-center gap-3", className)}>
+      {React.createElement(icon, {  })}
+      <span >{expertiseType}</span>
     </div>
   )
 }
