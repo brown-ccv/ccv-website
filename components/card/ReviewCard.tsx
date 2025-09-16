@@ -81,7 +81,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
           />
         </HoverCardTrigger>
         <HoverCardPortal>
-          <HoverCardContent className="bg-white">
+          <HoverCardContent className="w-96 bg-white">
             <blockquote className="mt-2 text-sm">{review}</blockquote>
           </HoverCardContent>
         </HoverCardPortal>
