@@ -43,8 +43,8 @@ export default async function Home() {
           <ButtonLink
             variant="primary_filled"
             size="lg"
-            href="mailto:ccv-support@brown.edu"
-            external={true}
+            href="/about/contact"
+            external={false}
           >
             Work with Us
           </ButtonLink>

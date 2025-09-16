@@ -25,8 +25,8 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
       </h2>
 
       <ButtonLink
-        href="mailto:ccv-support@brown.edu"
-        external={true}
+        href="/about/contact"
+        external={false}
         variant="red_outlined"
         size="sm"
         className={"px-2 py-6 sm:px-4"}
