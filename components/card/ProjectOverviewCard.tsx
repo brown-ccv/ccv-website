@@ -3,7 +3,8 @@ import Image from "next/image"
 import { PortfolioEntry } from "@/lib/portfolio-types"
 import { Badge } from "@/components/ui/Badge"
 import { ButtonLink } from "@/components/button/ButtonLink"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
+import { StyledCard } from "@/components/card/StyledCard"
+import { CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/Card"
 import { TechnicalExpertiseHeader } from "@/components/TechnicalExpertiseHeader"
 
 interface ProjectOverviewCardProps {
@@ -13,9 +14,19 @@ interface ProjectOverviewCardProps {
 
 export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCardProps) {
   return (
-    <Card className="w-full max-w-lg bg-white relative flex flex-col gap-4">
+    <StyledCard size="sm" title={entry.title} >
+        <CardHeader>
+          <div className="flex items-center justify-between">
+            <TechnicalExpertiseHeader expertiseType={entry['project-type']} />
+            {entry.starred && (
+              <Badge color="sunglow" className="text-black text-md">
+                ⭐ Featured
+              </Badge>
+            )}
+          </div>
+        </CardHeader>
          {entry.image && (
-           <div className="w-full h-96 relative overflow-hidden">
+           <div className="w-full h-64 relative overflow-hidden">
              <Image 
                src={entry.image} 
                alt={entry.title} 
@@ -24,18 +35,8 @@ export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCar
              />
            </div>
          )}
-      <CardHeader className="py-2">
-        <div className="flex items-center justify-between">
-          <TechnicalExpertiseHeader expertiseType={entry['project-type']} />
-          {entry.starred && (
-            <Badge color="sunglow" className="text-black text-md">
-              ⭐ Featured
-            </Badge>
-          )}
-        </div>
-      </CardHeader>
       <CardContent className="flex-1 flex flex-col">
-        <CardTitle className="text-center text-3xl border-t border-gray-300 py-6 flex flex-col gap-2">
+        <CardTitle>
           {entry.title}
           {entry.department && (
             <CardDescription className="text-center text-neutral-500 text-md italic">{entry.department}</CardDescription> 
@@ -47,6 +48,6 @@ export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCar
           </ButtonLink>
         </div>
       </CardContent>
-    </Card>
+    </StyledCard>
   )
 }

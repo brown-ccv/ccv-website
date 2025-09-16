@@ -3,7 +3,8 @@ import { PortfolioEntry } from "@/lib/portfolio-types"
 import { Badge } from "@/components/ui/Badge"
 import { FaGithub, FaUser } from "react-icons/fa"
 import { humanize } from "@/lib/utils"
-import { Card, CardContent, CardHeader } from "@/components/ui/Card"
+import { CardContent, CardHeader } from "@/components/ui/Card"
+import { StyledCard } from "@/components/card/StyledCard"
 import { TechnicalExpertiseHeader } from "@/components/TechnicalExpertiseHeader"
 
 interface ProjectDetailCardProps {
@@ -12,8 +13,8 @@ interface ProjectDetailCardProps {
 
 export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
   return (
-    <Card className="w-full bg-white relative flex flex-col p-6">
-      <CardHeader className="py-2">
+    <StyledCard size="sm">
+      <CardHeader>
         <div className="flex items-center justify-between">
           <TechnicalExpertiseHeader expertiseType={entry['project-type']} />
           {entry.starred && (
@@ -144,6 +145,6 @@ export function ProjectDetailCard({ entry }: ProjectDetailCardProps) {
           </div>
         )}
       </CardContent>
-    </Card>
+    </StyledCard>
   )
 }
