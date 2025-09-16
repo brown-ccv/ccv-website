@@ -63,7 +63,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
                 <Badge
                   value={feature.value}
                   autoColor={true}
-                  className="ml-6 rounded-full text-sm font-semibold"
+                  className="ml-6 text-sm"
                 >
                   {humanize(formatFeatureDisplayValue(feature))}
                 </Badge>
