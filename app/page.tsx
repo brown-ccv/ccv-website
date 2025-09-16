@@ -42,13 +42,13 @@ export default async function Home() {
         >
           <ButtonLink
             variant="primary_filled"
-            size="xl"
+            size="lg"
             href="/about/contact"
             external={false}
           >
             Work with Us
           </ButtonLink>
-          <ScrollButton id="events" variant="secondary_filled" size="xl">
+          <ScrollButton id="events" variant="secondary_filled" size="lg">
             View Events
           </ScrollButton>
         </MainHero>

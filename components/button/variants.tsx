@@ -7,7 +7,7 @@ export const ButtonVariants = cva(
       variant: {
         // ————————————————————— Primary Filled —————————————————————
         primary_filled: [
-          "bg-keppel-700 text-white",
+          "bg-keppel-800 text-white",
           "hover:bg-keppel-500",
           "focus-visible:ring-sunglow-300",
           "active:bg-keppel-600",
@@ -21,21 +21,24 @@ export const ButtonVariants = cva(
         ].join(" "),
         // ————————————————————— Primary Outlined ————————————————————
         primary_outlined: [
-          "bg-transparent border-2 border-keppel-700 text-keppel-700",
-          "hover:bg-keppel-700 hover:text-white",
+          "bg-transparent text-keppel-800",
+          "border-2 border-keppel-800", 
+          "hover:bg-keppel-800 hover:text-white",
           "focus-visible:ring-sunglow-300",
           "active:bg-keppel-600",
         ].join(" "),
         // ————————————————————— Secondary Outlined ———————————————————
         secondary_outlined: [
-          "bg-transparent border-2 border-sunglow-400 text-sunglow-400",
+          "bg-transparent text-sunglow-400",
+          "border-2 border-sunglow-400",
           "hover:bg-sunglow-400 hover:text-black",
           "focus-visible:ring-keppel-400",
           "active:bg-sunglow-300",
         ].join(" "),
         // ————————————————————— Red Outlined ————————————————————
         red_outlined: [
-          "bg-transparent border-2 border-red-university text-red-university",
+          "bg-transparent text-red-university",
+          "border-2 border-red-university",
           "hover:bg-red-university hover:text-white",
           "focus-visible:ring-keppel-400",
           "active:bg-red-university/80",
@@ -57,12 +60,11 @@ export const ButtonVariants = cva(
       },
 
       size: {
-        default: "h-8 p-4 text-sm",
-        sm: "h-8 p-3 text-sm",
-        md: "h-8 p-2 text-md",
-        lg: "h-8 p-5 text-md xl:h-10 xl:p-8 xl:text-xl",
-        xl: "h-8 p-6 text-md xl:h-14 xl:p-8 xl:text-2xl",
-        xxl: "h-8 p-6 text-md xl:h-16 xl:p-10 xl:text-3xl",
+        sm: "h-8 px-4 py-2 text-sm",
+        md: "h-10 px-5 py-2.5 text-md",
+        lg: "h-12 px-6 py-3 text-lg",
+        xl: "h-14 px-8 py-4 text-xl",
+        xxl: "h-16 px-10 py-5 text-2xl",
 
         // large icon-only
         icon: "w-8 h-8 sm:w-10 sm:h-10",
@@ -85,7 +87,7 @@ export const ButtonVariants = cva(
 
     defaultVariants: {
       variant: "primary_filled",
-      size: "default",
+      size: "md",
       iconPosition: "none",
       align: "center",
     },
