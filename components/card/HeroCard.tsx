@@ -26,7 +26,7 @@ export const HeroCard: React.FC = () => {
       className="relative z-10 -mt-[170px] mb-16 flex justify-center px-6 lg:mx-12 lg:px-8"
       size="custom"
     >
-      <div className="flex flex-col gap-10 lg:flex-row lg:gap-20">
+      <div className="flex flex-col gap-10 pt-6 lg:flex-row lg:gap-20">
         {heroCards.map((card, index) => (
           <div key={index} className="relative">
             <SectionHeader title={card.title} align="left" />
