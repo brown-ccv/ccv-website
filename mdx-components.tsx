@@ -14,6 +14,7 @@ import { ButtonGroup } from "@/components/button/ButtonGroup"
 import { CostEstimateCard } from "@/components/card/CostEstimateCard"
 import { ProjectEstimationSection } from "@/components/ProjectEstimationSection"
 import { LocationSection } from "@/components/LocationSection"
+import { CopyableEmail } from "@/components/CopyableEmail"
 
 // Server component that loads carousel data from YAML file
 async function MDXCarouselData({
@@ -55,6 +56,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     ButtonGroup,
+    CopyableEmail,
     StyledCard,
     CostEstimateCard,
     CardGroup,
