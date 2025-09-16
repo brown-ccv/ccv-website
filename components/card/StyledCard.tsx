@@ -60,7 +60,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
         </div>
       </CardContent>
       {footer && (
-        <CardFooter className="mt-auto flex flex-shrink-0 flex-col items-center">
+        <CardFooter className="mt-auto flex flex-shrink-0 flex-col items-center gap-2">
           {footer}
         </CardFooter>
       )}
