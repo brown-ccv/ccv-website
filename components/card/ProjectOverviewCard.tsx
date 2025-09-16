@@ -14,8 +14,8 @@ interface ProjectOverviewCardProps {
 
 export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCardProps) {
   return (
-    <StyledCard size="sm" >
-      <CardHeader>
+    <StyledCard size="custom" className="w-96">
+      <CardHeader className="px-0 pb-0">
         <div className="flex items-center justify-between">
           <TechnicalExpertiseHeader expertiseType={entry['project-type']} />
           {entry.starred && (
@@ -38,7 +38,7 @@ export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCar
       <CardTitle className="flex flex-col items-center justify-center gap-2 border-b border-gray-300 py-4 text-center">
         {entry.title}
         {entry.department && (
-          <p className="text-sm font-thinner italic text-center text-slate-500">
+          <p className="text-sm font-thinner italic text-center text-slate-500 !m-0">
             {entry.department}
           </p> 
         )}
