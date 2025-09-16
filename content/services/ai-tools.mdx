@@ -18,31 +18,39 @@ computational workflows, we have the resources and expertise to support your nee
 </Button>
 
 <CardGroup>
-  <StyledCard iconName="FaFlask" title="LibreChat">
+  <StyledCard
+    iconName="FaComments"
+    title="LibreChat"
+    footer={<Button size="md" href="https://librechat.ccv.brown.edu/c/new">Try LibreChat</Button>}>
+
     LibreChat is an easy-to-use, open-source chat platform that lets you talk to multiple AI models in a private,
     customizable way. It's freely available to the Brown community and gives you full control over your data.
 
-    <Button size="md" href="https://librechat.ccv.brown.edu/c/new">Try LibreChat</Button>
-
+    **This is an experimental tool*
   </StyledCard>
 
-  <StyledCard title="Transcribe">
+  <StyledCard
+    iconName="FaFileAudio"
+    title="Transcribe"
+    footer={<Button size="md" href="https://ai.ccv.brown.edu/transcribe">Try Transcribe</Button>}>
+
      Transcribe audio files in over 20 different languages to text using state-of-the-art AI models such as Google
      Gemini and OpenAI Whisper.
-
-     <Button size="md" href="https://ai.ccv.brown.edu/transcribe">Try Transcribe</Button>
-
   </StyledCard>
-  <StyledCard iconName="FaFlask" title="Ask Oscar">
+
+  <StyledCard
+    iconName="FaServer"
+    title="Ask Oscar"
+    footer={<Button size="md" href="https://ai.ccv.brown.edu/retrieval">Try Ask Oscar</Button>}>
+
     Ask Oscar is an AI assistant that specializes in answering questions about Oscar, Brown University's HPC cluster. It has
     access to Oscar's documentation to help you find the information you need.
 
-    <Button size="md" href="https://ai.ccv.brown.edu/retrieval">Try Ask Oscar</Button>
-
+    **This is an experimental tool*
   </StyledCard>
 </CardGroup>
 
-**Note**: Ask Oscar is currently under development as a proof of concept. The information about the Oscar documentation
+***Note**: Ask Oscar is currently under development as a proof of concept. The information about the Oscar documentation
 is not up-to-date and may be incorrect.
 
 </ContentSection>
