@@ -14,6 +14,7 @@ import { ButtonGroup } from "@/components/button/ButtonGroup"
 import { CostEstimateCard } from "@/components/card/CostEstimateCard"
 import { ProjectEstimationSection } from "@/components/ProjectEstimationSection"
 import { LocationSection } from "@/components/LocationSection"
+import { CopyableEmail } from "@/components/CopyableEmail"
 
 // Server component that loads carousel data from YAML file
 async function MDXCarouselData({
@@ -41,20 +42,21 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Wrapper component for all MDX content
     wrapper: ({ children }) => (
-      <div className="prose max-w-none text-xl">{children}</div>
+      <div className="prose prose-sm lg:prose-base max-w-none">{children}</div>
     ),
 
     // Global MDX components
     Button: (props) => (
       <ButtonLink
         variant="primary_filled"
-        size="lg"
-        className="my-4"
+        size="md"
+        className="my-2"
         external
         {...props}
       />
     ),
     ButtonGroup,
+    CopyableEmail,
     StyledCard,
     CostEstimateCard,
     CardGroup,

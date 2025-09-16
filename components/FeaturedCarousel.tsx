@@ -61,7 +61,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   })
 
   return (
-    <section className="my-12">
+    <section className="prose prose-sm lg:prose-base my-12">
       <div className="mx-auto w-full">
         {/* Carousel Container */}
         <div className="relative" {...handlers}>
@@ -115,34 +115,26 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 ))}
               </div>
 
-              <h3 className="text-2xl font-semibold lg:text-3xl">{title}</h3>
+              <h3>{title}</h3>
 
               {/* Organizations */}
               {organizations && organizations.length > 0 && (
-                <div className="space-y-4">
+                <div className="space-y-3" role="list" aria-label={`${title} organizations`}>
                   {organizations.map((org, index) => (
-                    <div key={index} className="flex">
+                    <div key={index} className="flex items-center gap-2 not-prose" role="listitem">
                       <Icon
                         iconName={org.icon}
-                        className="mr-3 mt-1.5 h-6 w-6"
+                        className="h-6 w-6 flex-shrink-0"
+                        aria-hidden="true"
                       />
-                      <div className="flex flex-col gap-1">
-                        <p className="text-lg font-semibold leading-snug lg:text-xl">
-                          {org.name}
-                        </p>
-                        <p className="text-sm text-gray-600 lg:text-md">
-                          {org.organization}
-                        </p>
-                        {org.pi && org.pi.length > 0 && (
-                          <p className="text-sm text-gray-600">
-                            <span>PI: </span>
-                            {org.pi?.map((pi, piIndex) => (
-                              <span key={piIndex}>
-                                {pi}
-                                {piIndex < (org.pi?.length || 0) - 1 && ", "}
-                              </span>
-                            ))}
-                            {org.pm && " • PM: " + org.pm}
+                      <div>
+                        <h4>{org.name}</h4>
+                        <p className="text-sm text-slate-600">{org.organization}</p>
+                        {(org.pi?.length || org.pm) && (
+                          <p className="text-sm text-slate-600">
+                            {org.pi?.length && `PI: ${org.pi.join(", ")}`}
+                            {org.pi?.length && org.pm && " • "}
+                            {org.pm && `PM: ${org.pm}`}
                           </p>
                         )}
                       </div>
@@ -151,7 +143,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 </div>
               )}
 
-              <div className="prose prose-lg max-w-none flex-1 text-md font-normal text-gray-800 lg:text-lg">
+              <div className="max-w-none flex-1">
                 <Markdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
@@ -166,8 +158,8 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                     <Button
                       key={index}
                       variant={button.variant}
-                      size="lg"
-                      className="whitespace-nowrap font-semibold"
+                      size="md"
+                      className="whitespace-nowrap"
                       onClick={() => window.open(button.url, "_blank")}
                     >
                       {button.text}
@@ -190,7 +182,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
               {/* Attribution if image requires it */}
               {currentItem.attribution && (
-                <div className="mt-2 text-right text-sm">
+                <div className="mt-2 text-right">
                   <Markdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}

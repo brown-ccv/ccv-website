@@ -34,7 +34,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
     >
       {title && (
         <CardHeader>
-          <CardTitle className="flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center text-3xl">
+          <CardTitle className="flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center">
             {IconComponent && (
               <IconComponent
                 iconName={iconName}
@@ -45,7 +45,11 @@ export const StyledCard: React.FC<StyledCardProps> = ({
           </CardTitle>
         </CardHeader>
       )}
-      <CardContent>{children}</CardContent>
+      <CardContent className="pt-0">      
+        <div className="prose prose-sm lg:prose-base max-w-none">
+          {children}
+        </div>
+      </CardContent>
     </Card>
   )
 }

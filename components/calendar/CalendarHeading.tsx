@@ -18,12 +18,12 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
   todayButtonFunction,
 }) => {
   return (
-    <header className="mb-2 mt-0 flex items-center justify-between rounded-md border border-gray-200 bg-gray-50 px-6 py-4 lg:flex-none">
-      <h1 className="text-xl font-semibold text-blue-500">
+    <header className="mb-2 mt-0 flex items-center justify-between rounded-md border border-gray-200 bg-gray-50 px-6 lg:flex-none">
+      <p className="text-2xl font-semibold text-blue-500">
         <time dateTime={date.toISOString()}>
           {`${ALL_MONTHS[date.getMonth()]} ${date.getFullYear()}`}
         </time>
-      </h1>
+      </p>
       <div className="flex items-center">
         <div className="relative flex items-center rounded-md bg-white shadow-sm md:items-stretch">
           <button
