@@ -228,7 +228,7 @@ export const Navbar: React.FC = () => {
   return (
     <div className="sticky top-0 z-50">
       <div className="flex justify-between bg-blue-navbar px-6 sm:px-8">
-        <div className="flex items-center px-6 py-8 sm:px-8 xl:px-10">
+        <div className="flex items-center px-6 py-4 sm:px-8 xl:px-10">
           <Link href="/">
             <span className="sr-only">CCV Home</span>
             <CCVLogo width={120} />
@@ -240,7 +240,7 @@ export const Navbar: React.FC = () => {
           <NavigationMenu.List className="flex h-full items-center">
             {routes.map((section) => (
               <NavigationMenu.Item key={section.name}>
-                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 text-2xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-6">
+                <NavigationMenu.Trigger className="group inline-flex h-9 items-center justify-center gap-2 px-3 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-6">
                   {section.name}
                   <FaChevronDown
                     className="relative top-[1px] h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180 xl:ml-1"
@@ -269,9 +269,9 @@ export const Navbar: React.FC = () => {
               <ButtonLink
                 external={false}
                 href="/about/contact"
-                className="inline-flex h-9 items-center justify-center gap-2 px-2 text-2xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
+                className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
-                <FaQuestionCircle className="stroke-[2.5] text-2xl" />
+                <FaQuestionCircle className="stroke-[2.5] text-xl" />
                 Help
               </ButtonLink>
             </NavigationMenu.Item>
@@ -281,9 +281,9 @@ export const Navbar: React.FC = () => {
               <ButtonLink
                 href="https://docs.ccv.brown.edu/documentation"
                 external={true}
-                className="inline-flex h-9 items-center justify-center gap-2 px-2 text-2xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
+                className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
-                <FaFileLines className="stroke-[2.5] text-2xl" />
+                <FaFileLines className="stroke-[2.5] text-xl" />
                 Docs
               </ButtonLink>
             </NavigationMenu.Item>
@@ -307,7 +307,7 @@ export const Navbar: React.FC = () => {
             aria-controls="main-menu"
             variant="secondary_filled"
             size="icon"
-            className="rounded-2xl text-blue-navbar"
+            className="rounded-2xl text-blue-navbar p-2"
             onClick={toggleMobileMenu}
           >
             <FaBars aria-hidden={true} focusable={false} className="h-6 w-6" />
@@ -321,7 +321,7 @@ export const Navbar: React.FC = () => {
               <React.Fragment key={section.name}>
                 <button
                   onClick={() => toggleSubmenu(section.name)}
-                  className="flex w-full items-center justify-between px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
+                  className="flex w-full items-center justify-between px-6 py-7 text-xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black active:bg-sunglow-200"
                 >
                   {section.name}
                   <FaChevronDown
@@ -340,7 +340,7 @@ export const Navbar: React.FC = () => {
                               onClick={toggleMobileMenu}
                               className="hover:bg-sunglow-400 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
                             >
-                              <p className="text-xl font-semibold">
+                              <p className="text-lg font-semibold">
                                 {route.name}
                               </p>
                               {route.description && (
@@ -356,7 +356,7 @@ export const Navbar: React.FC = () => {
                               href={route.href}
                               onClick={toggleMobileMenu}
                             >
-                              <p className="text-xl font-semibold">
+                              <p className="text-lg font-semibold">
                                 {route.name}
                               </p>
                               {route.description && (
@@ -377,14 +377,14 @@ export const Navbar: React.FC = () => {
               <Link
                 href="/about/contact"
                 onClick={toggleMobileMenu}
-                className="px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+                className="px-6 py-7 text-xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
               >
                 Help
               </Link>
               <a
                 href="https://docs.ccv.brown.edu/documentation"
                 onClick={toggleMobileMenu}
-                className="px-6 py-7 text-2xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+                className="px-6 py-7 text-xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
               >
                 Docs
               </a>
@@ -420,7 +420,7 @@ const NavigationSectionContent: React.FC<{
             }`}
           >
             {group.name && (
-              <h3 className="mb-2 max-w-[425px] pl-2 text-xl uppercase tracking-widest sm:mb-3 md:mb-4">
+              <h3 className="mb-2 max-w-[425px] pl-2 text-lg uppercase tracking-widest sm:mb-3 md:mb-4">
                 {group.name}
               </h3>
             )}
@@ -445,11 +445,11 @@ const NavigationSectionContent: React.FC<{
                       </div>
                     )}
                     <div className="flex flex-col">
-                      <span className="sm:pb-0.75 pb-0.5 text-lg font-semibold sm:text-xl md:pb-1">
+                      <span className="sm:pb-0.75 pb-0.5 text-lg font-semibold sm:text-lg md:pb-1">
                         {route.name}
                       </span>
                       {route.description && (
-                        <span className="mb-1 max-w-[425px] text-sm italic text-slate-500 sm:mb-1.5 sm:text-md md:mb-3">
+                        <span className="mb-1 max-w-[425px] text-sm italic text-slate-500 sm:mb-1.5 sm:text-sm md:mb-3">
                           {route.description}
                         </span>
                       )}

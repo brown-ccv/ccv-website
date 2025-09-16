@@ -21,7 +21,7 @@ interface PeopleCardProps {
   name: string
   title: string
   personDetails?: {
-    name: string
+    display_name: string
     title: string
     team?: string
     subteam?: string
@@ -59,40 +59,40 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
                 alt=""
-                width="500"
-                height="500"
-                className="h-[306px] w-[306px] rounded-full transition-opacity duration-300 sm:h-[350px] sm:w-[350px]"
+                width="200"
+                height="200"
+                className="rounded-full transition-opacity duration-300 h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
                 style={{ margin: 0, padding: 0 }}
               />
-              <CardTitle className="py-4 text-center text-2xl">
+              <CardTitle className="py-4 text-center">
                 {name}
               </CardTitle>
-              <CardDescription className="text-center text-xl italic">
+              <CardDescription className="text-center italic">
                 {title}
               </CardDescription>
             </div>
           </StyledCard>
         </button>
       </DialogTrigger>
-      <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-slate-500 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
+      <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-slate-600 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
         <Image
           src={imagePath}
           alt=""
-          width={180}
-          height={180}
-          className="rounded-full md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
+          width={200}
+          height={200}
+          className="rounded-full h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
-        <DialogTitle className="py-4 text-3xl font-bold">
-          {personDetails?.name || name}
+        <DialogTitle className="py-4 text-2xl">
+          {personDetails?.display_name}
         </DialogTitle>
-        <p className="mb-2 text-2xl text-slate-700">
+        <p className="font-normal text-xl">
           {personDetails?.title || title}
         </p>
         {personDetails?.team && (
-          <p className="-mb-2 text-lg">{personDetails.team}</p>
+          <p className="-mb-2 text-lg font-semibold">{personDetails.team}</p>
         )}
         {personDetails?.subteam && (
-          <p className="text-lg italic">{personDetails.subteam}</p>
+          <p className="italic">{personDetails.subteam}</p>
         )}
         <div className="flex gap-8">
           {personDetails?.github_username &&
@@ -121,7 +121,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
             )}
         </div>
         {personDetails?.bio && (
-          <div className="mt-4 text-lg text-slate-800">{personDetails.bio}</div>
+          <div className="mt-4">{personDetails.bio}</div>
         )}
       </DialogContent>
     </Dialog>

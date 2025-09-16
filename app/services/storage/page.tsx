@@ -16,7 +16,7 @@ export default async function Storage() {
             variant={
               link.variant === "primary" ? "primary_filled" : "secondary_filled"
             }
-            size="xl"
+            size="lg"
             href={link.target}
             external={!link.target.startsWith("/")}
           >

@@ -4,7 +4,7 @@ export const CardVariants = cva("bg-white", {
   variants: {
     size: {
       custom: "",
-      sm: "max-w-sm md:max-w-xs",
+      sm: "max-w-sm",
       md: "max-w-md",
       lg: "max-w-lg flex-shrink-0",
     },

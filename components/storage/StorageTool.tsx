@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useCallback, useMemo, useState } from "react"
 import { Button } from "@/components/button/Button"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import { ContentSection } from "@/components/ContentSection"
@@ -29,29 +29,55 @@ export default function StorageTool({
     initialSelectedAnswers
   )
 
-  const handleAnswerChange = (questionId: string, answer: string) => {
-    setSelectedAnswers((prev) => ({
-      ...prev,
-      [questionId]: answer,
-    }))
-  }
+  const handleAnswerChange = useCallback(
+    (questionId: string, answer: string) => {
+      setSelectedAnswers((prev) => ({
+        ...prev,
+        [questionId]: answer,
+      }))
+    },
+    []
+  )
 
-  const handleReset = () => {
+  const handleReset = useCallback(() => {
     setSelectedAnswers(initialSelectedAnswers)
-  }
+  }, [initialSelectedAnswers])
+
+  const hasModifiedAnswers = useMemo(() => {
+    return (
+      Object.keys(selectedAnswers).some(
+        (key) => selectedAnswers[key] !== initialSelectedAnswers[key]
+      ) ||
+      Object.keys(initialSelectedAnswers).some(
+        (key) => selectedAnswers[key] !== initialSelectedAnswers[key]
+      )
+    )
+  }, [selectedAnswers, initialSelectedAnswers])
 
   return (
     <>
       <ContentSection id="form" title="Storage Selection Tool">
-        <p className="my-12 text-2xl font-semibold text-gray-800">
+        <p className="mb-6 text-lg leading-tight lg:text-xl">
           Answering the questions in the form will provide a list of services
           that meet your requirements.
         </p>
-        <div className="hidden lg:flex lg:items-center lg:gap-4 lg:pb-8">
-          <p className="text-lg">Want to dive into comparing features?</p>
-          <ScrollButton variant="primary_outlined" id="table">
+        <div
+          className="hidden lg:flex lg:items-center lg:gap-4 lg:pb-8"
+          role="navigation"
+          aria-label="Page navigation"
+        >
+          <p className="text-lg" id="table-nav-desc">
+            Want to dive into comparing features?
+          </p>
+          <ScrollButton
+            variant="primary_outlined"
+            size="md" 
+            id="table"
+            aria-describedby="table-nav-desc"
+            aria-label="Scroll to comparison table section"
+          >
             View Comparison Table
-            <Icon iconName="FaAngleDoubleDown" />
+            <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
           </ScrollButton>
         </div>
         <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
@@ -60,7 +86,13 @@ export default function StorageTool({
             onAnswerChange={handleAnswerChange}
             questions={questions}
           >
-            <Button onClick={handleReset} variant="primary_outlined" size="md">
+            <Button
+              disabled={!hasModifiedAnswers}
+              onClick={handleReset}
+              variant="primary_outlined"
+              size="sm"
+            >
+              <Icon iconName="FaUndo" aria-hidden="true" className="mr-2" />
               Reset Questions
             </Button>
           </Form>
@@ -77,7 +109,7 @@ export default function StorageTool({
         title="Compare Storage Options"
         className="hidden lg:block"
       >
-        <p className="mb-6 text-xl font-semibold">
+        <p className="mb-6 text-lg leading-tight lg:text-xl">
           This tool lets you compare the available storage options at Brown to
           compare their features and decide which of these services best suits
           your needs. Select a storage service in the table for more information
