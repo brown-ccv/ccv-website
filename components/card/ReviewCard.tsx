@@ -32,7 +32,7 @@ const CollabCard: React.FC<CollabCardProps> = ({
     <figure
       className={cn(
         "relative h-full min-h-[120px] w-[300px] overflow-hidden rounded-xl border p-4 text-left md:w-[420px]",
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        "border-gray-950/[.1] bg-gray-950/[.01]",
         className
       )}
     >
@@ -77,7 +77,7 @@ const ReviewCard: React.FC<ReviewCardProps> = ({
             name={name}
             department={department}
             review={truncatedReview}
-            className="cursor-pointer"
+            className="cursor-pointer hover:bg-gray-950/[.05]"
           />
         </DialogTrigger>
         <DialogContent className="bg-white">
