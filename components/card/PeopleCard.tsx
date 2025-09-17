@@ -59,15 +59,15 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
               <Image
                 src={isHovered && hoverImagePath ? hoverImagePath : imagePath}
                 alt=""
-                width="500"
-                height="500"
-                className="h-[306px] w-[306px] rounded-full transition-opacity duration-300 sm:h-[350px] sm:w-[350px]"
+                width="200"
+                height="200"
+                className="rounded-full transition-opacity duration-300 h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
                 style={{ margin: 0, padding: 0 }}
               />
-              <CardTitle className="py-4 text-center text-2xl">
+              <CardTitle className="py-4 text-center">
                 {name}
               </CardTitle>
-              <CardDescription className="text-center text-xl italic">
+              <CardDescription className="text-center italic">
                 {title}
               </CardDescription>
             </div>
@@ -78,21 +78,21 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
         <Image
           src={imagePath}
           alt=""
-          width={180}
-          height={180}
-          className="rounded-full md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
+          width={200}
+          height={200}
+          className="rounded-full h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
-        <DialogTitle className="py-4 text-3xl font-bold">
+        <DialogTitle className="py-4 text-2xl">
           {personDetails?.display_name}
         </DialogTitle>
-        <p className="mb-2 text-2xl">
-          {personDetails?.title}
+        <p className="font-normal text-xl">
+          {personDetails?.title || title}
         </p>
         {personDetails?.team && (
-          <p className="-mb-2 text-lg">{personDetails.team}</p>
+          <p className="-mb-2 text-lg font-semibold">{personDetails.team}</p>
         )}
         {personDetails?.subteam && (
-          <p className="text-lg italic">{personDetails.subteam}</p>
+          <p className="italic">{personDetails.subteam}</p>
         )}
         <div className="flex gap-8">
           {personDetails?.github_username &&
@@ -121,7 +121,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
             )}
         </div>
         {personDetails?.bio && (
-          <div className="mt-4 text-lg text-slate-800">{personDetails.bio}</div>
+          <div className="mt-4">{personDetails.bio}</div>
         )}
       </DialogContent>
     </Dialog>

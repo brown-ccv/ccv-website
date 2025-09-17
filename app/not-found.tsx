@@ -10,7 +10,7 @@ export default function NotFound() {
           external={false}
           href={"/"}
           variant="primary_filled"
-          size="xl"
+          size="lg"
         >
           Return Home
         </ButtonLink>

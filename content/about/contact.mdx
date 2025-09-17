@@ -9,33 +9,38 @@ description: We provide support for researchers seeking help with statistical mo
 The Center for Computation and Visualization (CCV) is a center within the University's central IT organization, which is the Office of Information Technology (OIT). In addition to building and maintaining the University's hundreds of enterprise software, systems, and hardware, OIT is also responsible for driving the technological progress that enables scientific research. Executing on the University's research mission is the key role that CCV plays in OIT.
 
     <CardGroup>
-        <StyledCard title="Email" iconName="FaEnvelopeOpenText">
-            Inquire about resources, support, or a potential collaboration for a research project.
+        <StyledCard
+            title="Email"
+            iconName="FaEnvelopeOpenText"
+            footer={<Button href="mailto:support@ccv.brown.edu">Email Us</Button>}>
 
-            <Button href="mailto:support@ccv.brown.edu">
-                Email Us
-            </Button>
+            Email us at <CopyableEmail email="support@ccv.brown.edu"/> to inquire about resources, support, or a potential collaboration for a research project.
         </StyledCard>
 
-        <StyledCard title="Submit a Ticket" iconName="FaTicketAlt">
+        <StyledCard
+            title="Submit a Ticket"
+            iconName="FaTicketAlt"
+            footer={<Button href="mailto:support@ccv.brown.edu">Submit a Ticket</Button>}>
+
             Open a ticket with our user services team. We will respond as soon as possible.
-
-            <Button href="mailto:support@ccv.brown.edu">
-                Submit a Ticket
-            </Button>
         </StyledCard>
 
-        <StyledCard title="CCV Slack" iconName="FaSlack">
+        <StyledCard
+            title="CCV Slack"
+            iconName="FaSlack"
+            footer={
+                <>
+                    <Button
+                        href="https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU">
+                        Join the Slack
+                    </Button>
+                    <Button variant="primary_outlined" href="https://ithelp.brown.edu/kb/articles/terms-of-use-for-brown-enterprise-slack">
+                        Terms of Services
+                    </Button>
+                </>
+            }>
             CCV Share is a collection of Slack channels where CCV Staff and the community will be available to discuss your
             questions.
-
-            <Button
-                href="https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU">
-                Join the Slack
-            </Button>
-            <Button href="https://ithelp.brown.edu/kb/articles/terms-of-use-for-brown-enterprise-slack">
-                Terms of Services
-            </Button>
         </StyledCard>
     </CardGroup>
     </ContentSection>
@@ -47,26 +52,24 @@ The Center for Computation and Visualization (CCV) staff members will be availab
 The Computational Biology Core (CBC) staff are available at office hours to provide help with experimental design, data processing pipelines, and data analysis of high-throughput sequencing data. While we specialize in computational biology, all are welcome to join us with their questions.
 
     <CardGroup>
-        <StyledCard title="Computational Biology Core">
+        <StyledCard
+            title="Computational Biology Core"
+            footer={<Button href="https://events.brown.edu/ccv/week">Find Zoom Link</Button>}>
+
             Join us remotely.
 
             **TUESDAYS**: 11am - 12pm
 
             **WEDNESDAYS**: 3pm - 4pm
-
-            <Button href="https://events.brown.edu/ccv/week">
-                Find Zoom Link
-            </Button>
         </StyledCard>
 
-        <StyledCard title="Center for Computation and Visualization">
+        <StyledCard
+            title="Center for Computation and Visualization"
+            footer={<Button href="https://events.brown.edu/ccv/week">Find Zoom Link</Button>}>
             Join us remotely or in-person.
 
             **FRIDAYS**: 10am - 12pm
 
-            <Button href="https://events.brown.edu/ccv/week">
-                Find Zoom Link
-            </Button>
         </StyledCard>
     </CardGroup>
 

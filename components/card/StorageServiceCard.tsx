@@ -2,8 +2,6 @@ import React from "react"
 import {
   ServiceConfig,
   ServiceFeature,
-  featureIcons,
-  featureColorMap,
 } from "@/lib/storage-types"
 import { StyledCard } from "@/components/card/StyledCard"
 import { Badge } from "@/components/ui/Badge"

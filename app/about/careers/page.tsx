@@ -5,30 +5,17 @@ import { getWorkdayData } from "@/app/about/queries"
 import Spinner from "@/components/assets/Spinner"
 import { ContentSection } from "@/components/ContentSection"
 import ButtonLink from "@/components/button/ButtonLink"
+import CareersContent from "@/content/about/careers.mdx"
+import { getMDXMetadata } from "@/lib/mdx-utils"
 
-export default async function Careers() {
+const CareerData = async () => {
   try {
     const workdayData = await getWorkdayData()
 
     return (
-      <>
-        <Hero image={"/images/hero/about-kayaks.png"} title="Careers" />
-        <ContentSection title="Opportunities">
-          <div className="flex flex-col items-start gap-y-6">
-            <Suspense fallback={<Spinner />}>
-              <Workday careers={workdayData} />
-            </Suspense>
-            <ButtonLink
-              href={"/about/contact"}
-              external={false}
-              size="xl"
-              variant="primary_filled"
-            >
-              Contact Us
-            </ButtonLink>
-          </div>
-        </ContentSection>
-      </>
+      <Suspense fallback={<Spinner />}>
+        <Workday careers={workdayData} />
+      </Suspense>
     )
   } catch (err: any) {
     console.error(err)
@@ -38,4 +25,30 @@ export default async function Careers() {
       </div>
     )
   }
+}
+
+export default async function Careers() {
+  const metadata = getMDXMetadata("content/about/careers.mdx")
+  return (
+    <>
+      <Hero
+        image={metadata.image}
+        title={metadata.title}
+        description={metadata.description}
+      >
+        <ButtonLink
+          href={"/about/contact"}
+          external={false}
+          size="xl"
+          variant="primary_filled"
+        >
+          Contact Us
+        </ButtonLink>
+      </Hero>
+      <ContentSection title="Opportunities" className="bg-neutral-50">
+        {await CareerData()}
+      </ContentSection>
+      <CareersContent />
+    </>
+  )
 }

@@ -10,7 +10,7 @@ env:
   # Name for your container Registry for this project.
   gcp_container_registry: gcp-ccv-website
   # However you want to name your images in the Container Registry
-  image: '${{ github.event.repository.name }}-pr-${{ github.event.number }}'
+  image: "${{ github.event.repository.name }}-pr-${{ github.event.number }}"
 
 jobs:
   build-preview-and-deploy:
@@ -25,7 +25,7 @@ jobs:
           export_environment_variables: true
           create_credentials_file: true
 
-      - uses: 'google-github-actions/setup-gcloud@v2'
+      - uses: "google-github-actions/setup-gcloud@v2"
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -46,13 +46,13 @@ jobs:
           push: true
           tags: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_container_registry }}/${{ env.image }}:latest
 
-      - uses: 'google-github-actions/deploy-cloudrun@v2'
+      - uses: "google-github-actions/deploy-cloudrun@v2"
         id: "deploy"
         with:
           service: ${{ env.image }}
           project_id: ${{ env.gcp_project_id }}
           image: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_container_registry }}/${{ env.image }}
-          flags: '--allow-unauthenticated'
+          flags: "--allow-unauthenticated"
 
       - name: Extract Git SHA for Comment
         id: vars

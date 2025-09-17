@@ -16,7 +16,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
       className="lg:px-0 lg:py-0 xl:py-0 xl:pr-0"
     >
       <div className="flex flex-col gap-4 lg:gap-8 xl:flex-row">
-        <div className="flex flex-col lg:px-24 xl:w-1/2 xl:px-0">
+        <div className="flex flex-col lg:px-24 lg:pt-12 xl:w-1/2 xl:px-0">
           <SectionHeader title={title} />
           <p>
             Our office is on Brown's main campus in Providence's College Hill
