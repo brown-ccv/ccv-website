@@ -61,47 +61,23 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   })
 
   return (
-    <section className="prose prose-sm lg:prose-base my-12">
-      <div className="mx-auto w-full">
-        {/* Carousel Container */}
-        <div className="relative" {...handlers}>
-          {/* Navigation Buttons */}
-          <div className="flex items-center justify-center gap-4">
-            <Button
-              variant="secondary_filled"
-              size="icon"
-              aria-label="previous project"
-              onClick={prev}
-            >
-              <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
-            </Button>
-
-            {/* Pagination Dots */}
-            <div className="flex gap-1">
-              {carouselData.map((_, i) => (
-                <div
-                  key={i}
-                  className={`${
-                    i === idx ? "w-3" : "w-2"
-                  } h-2 cursor-pointer rounded-full bg-neutral-300 transition-all duration-200`}
-                  onClick={() => setIdx(i)}
-                />
-              ))}
-            </div>
-
-            <Button
-              variant="secondary_filled"
-              size="icon"
-              aria-label="next project"
-              onClick={next}
-            >
-              <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
-            </Button>
-          </div>
-
-          <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-start">
-            {/* Text Content */}
-            <div className="flex w-full max-w-[700px] flex-col space-y-6">
+    <div className="flex items-center justify-between gap-10">
+      {/* Previous button */}
+      <Button
+        variant="secondary_filled"
+        className="group flex-shrink-0"
+        size="icon"
+        aria-label="previous project"
+        onClick={prev}
+      >
+        <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
+      </Button>
+      {/* Carousel Container */}
+      <div className="relative flex flex-col items-center justify-center">
+        {/*Carousel Items*/}
+        <div className="w-full">
+          <div className="flex gap-4">
+            <div className="max-w-1/2 flex w-full flex-col gap-4">
               {/* Categories */}
               <div className="flex flex-wrap gap-2">
                 {categories.map((cat, index) => (
@@ -119,17 +95,27 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
               {/* Organizations */}
               {organizations && organizations.length > 0 && (
-                <div className="space-y-3" role="list" aria-label={`${title} organizations`}>
+                <div
+                  className="space-y-3"
+                  role="list"
+                  aria-label={`${title} organizations`}
+                >
                   {organizations.map((org, index) => (
-                    <div key={index} className="flex items-center gap-2 not-prose" role="listitem">
+                    <div
+                      key={index}
+                      className="not-prose flex gap-2"
+                      role="listitem"
+                    >
                       <Icon
                         iconName={org.icon}
-                        className="h-6 w-6 flex-shrink-0"
+                        className="mt-1 h-6 w-6 flex-shrink-0"
                         aria-hidden="true"
                       />
                       <div>
                         <h4>{org.name}</h4>
-                        <p className="text-sm text-slate-600">{org.organization}</p>
+                        <p className="text-sm text-slate-600">
+                          {org.organization}
+                        </p>
                         {(org.pi?.length || org.pm) && (
                           <p className="text-sm text-slate-600">
                             {org.pi?.length && `PI: ${org.pi.join(", ")}`}
@@ -143,22 +129,15 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 </div>
               )}
 
-              <div className="max-w-none flex-1">
-                <Markdown
-                  remarkPlugins={[remarkGfm]}
-                  rehypePlugins={[rehypeRaw]}
-                >
-                  {description}
-                </Markdown>
-              </div>
-
+              <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                {description}
+              </Markdown>
               {buttons && buttons.length > 0 && (
                 <div className="flex flex-wrap gap-4">
                   {buttons.map((button, index) => (
                     <Button
                       key={index}
                       variant={button.variant}
-                      size="md"
                       className="whitespace-nowrap"
                       onClick={() => window.open(button.url, "_blank")}
                     >
@@ -168,9 +147,8 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 </div>
               )}
             </div>
-
             {/* Desktop Image Only */}
-            <div className="hidden w-full max-w-[700px] lg:block xl:ml-auto">
+            <div className="max-w-1/3 hidden w-full lg:block xl:ml-auto">
               <Image
                 src={image}
                 alt={title}
@@ -194,7 +172,31 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
             </div>
           </div>
         </div>
+        {/* Indicators */}
+        <div className="flex items-center gap-2 pt-2">
+          {carouselData.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              className={`h-2 rounded-full bg-neutral-300 transition-all duration-300 ${
+                index === idx ? "w-3" : "w-2"
+              }`}
+              onClick={() => setIdx(index)}
+              aria-label={`Slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
-    </section>
+      {/* Next button */}
+      <Button
+        variant="secondary_filled"
+        className="group flex-shrink-0"
+        size="icon"
+        aria-label="next project"
+        onClick={next}
+      >
+        <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
+      </Button>
+    </div>
   )
 }
