@@ -11,16 +11,11 @@ import { getMDXMetadata } from "@/lib/mdx-utils"
 const CareerData = async () => {
   try {
     const workdayData = await getWorkdayData()
-
-    return (
-      <Suspense fallback={<Spinner />}>
-        <Workday careers={workdayData} />
-      </Suspense>
-    )
+    return <Workday careers={workdayData} />
   } catch (err: any) {
     console.error(err)
     return (
-      <div className="py-10 text-center text-3xl font-semibold">
+      <div>
         Error loading careers{" "}
       </div>
     )
@@ -39,14 +34,16 @@ export default async function Careers() {
         <ButtonLink
           href={"/about/contact"}
           external={false}
-          size="xl"
+          size="lg"
           variant="primary_filled"
         >
           Contact Us
         </ButtonLink>
       </Hero>
       <ContentSection title="Opportunities" className="bg-neutral-50">
-        {await CareerData()}
+        <Suspense fallback={<Spinner />}>
+          <CareerData />
+        </Suspense>
       </ContentSection>
       <CareersContent />
     </>
