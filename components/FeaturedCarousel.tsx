@@ -17,7 +17,10 @@ export interface FeaturedCarouselItem {
   categories: string[]
   description: string
   image: string
-  attribution?: string
+  attribution?: {
+    display_text: string
+    href: string
+  }[]
   organizations?: {
     name: string
     organization: string
@@ -181,14 +184,22 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
               />
 
               {/* Attribution if image requires it */}
-              {currentItem.attribution && (
+              {currentItem.attribution && currentItem.attribution.length > 0 && (
                 <div className="mt-2 text-right">
-                  <Markdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {currentItem.attribution}
-                  </Markdown>
+                  <span className="sr-only">Image attribution: </span>
+                  {currentItem.attribution.map((attribution, index) => (
+                    <span key={index}>
+                      <a 
+                        href={attribution.href} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        aria-label={`${attribution.display_text} (opens in new tab)`}
+                      >
+                        {attribution.display_text}
+                      </a>
+                      {index < currentItem.attribution!.length - 1 && ", "}
+                    </span>
+                  ))}
                 </div>
               )}
             </div>
