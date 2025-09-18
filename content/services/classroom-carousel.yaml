@@ -7,7 +7,7 @@ carousel:
       - display_text: open{code}.md
         href: 'https://opencode.md/en/news/why-use-linux/'
       - display_text: "Larry Ewing"
-        href: 'lewing@isc.tamu.edu'
+        href: 'mailto:lewing@isc.tamu.edu'
       - display_text: "The GIMP"
         href: 'https://web.archive.org/web/20190927022731/https://isc.tamu.edu/~lewing/gimp/'
     buttons:
