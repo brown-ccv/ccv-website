@@ -184,15 +184,14 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
               {/* Attribution if image requires it */}
               {attribution && attribution.length > 0 && (
-                <div className="mt-2 text-right">
-                  <span className="sr-only">Image attribution: </span>
+                <div className="mt-2 text-right" aria-label="Image attribution">
                   {attribution.map((attributionItem, index) => (
                     <span key={index}>
                       <a 
                         href={attributionItem.href} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        aria-label={`Image attribution: ${attributionItem.display_text}`}
+                        aria-label={attributionItem.display_text}
                       >
                         {attributionItem.display_text}
                       </a>
