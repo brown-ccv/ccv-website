@@ -75,8 +75,4 @@
         white-space: pre-wrap;
         word-wrap: break-word;
     }
-
-    .prose img {
-        @apply my-4;
-    }
 }

@@ -1132,6 +1132,28 @@ module.exports = {
       50: "50",
     },
     extend: {
+      keyframes: {
+        marquee: {
+          from: {
+            transform: "translateX(0)",
+          },
+          to: {
+            transform: "translateX(calc(-100% - var(--gap)))",
+          },
+        },
+        "marquee-vertical": {
+          from: {
+            transform: "translateY(0)",
+          },
+          to: {
+            transform: "translateY(calc(-100% - var(--gap)))",
+          },
+        },
+      },
+      animation: {
+        marquee: "marquee var(--duration) infinite linear",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
+      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
@@ -1174,16 +1196,6 @@ module.exports = {
     },
   },
   plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
-  //   1. Tailwind's Purge/Tree-Shaking (Most Common Cause)
-  // Tailwind CSS works by scanning your code for utility classes and generating only the CSS you actually use. This process is called "purging" or "tree-shaking."
-
-  // The Problem: When you construct class names dynamically, like using featureColorMap[featureClassLower], Tailwind's build process often can't "see" these dynamically generated strings. It only looks for literal strings that match its class patterns.
-
-  // Example:
-  // If you have 'text-red-university' in your map, Tailwind's purger won't necessarily know that this string is intended to be a CSS class unless it's explicitly present elsewhere in your static HTML/JSX/TSX files.
-
-  // The Fix (Safelist Classes):
-  // The most robust solution is to explicitly tell Tailwind to include these dynamic classes in its generated CSS by "safelisting" them in your tailwind.config.js file.
   safelist: [
     "text-red-university",
     "text-amber-600",

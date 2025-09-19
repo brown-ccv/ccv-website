@@ -5,17 +5,25 @@ import rehypePrismPlus from "rehype-prism-plus"
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "",
-  pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
-  output: "standalone",
+    basePath: "",
+    pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
+    output: "standalone",
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'avatar.vercel.sh',
+            },
+        ],
+    },
 }
 
 const withMDX = createMDX({
-  extension: /\.(md|mdx)$/,
-  options: {
-    remarkPlugins: [remarkFrontmatter, remarkGfm],
-    rehypePlugins: [rehypePrismPlus],
-  },
+    extension: /\.(md|mdx)$/,
+    options: {
+        remarkPlugins: [remarkFrontmatter, remarkGfm],
+        rehypePlugins: [rehypePrismPlus],
+    },
 })
 
 export default withMDX(nextConfig)

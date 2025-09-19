@@ -15,6 +15,7 @@ import { ScrollButton } from "@/components/button/ScrollButton"
 import ButtonLink from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
 import { ContentSection } from "@/components/ContentSection"
+import { Testimonials } from "@/components/Testimonials"
 
 export default async function Home() {
   // Load featured carousel data from YAML
@@ -67,6 +68,12 @@ export default async function Home() {
                 today={today}
               />
             </Suspense>
+          </ContentSection>
+          <ContentSection
+            className="px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0"
+            title="Collaborations"
+          >
+            <Testimonials />
           </ContentSection>
         </div>
       </>
