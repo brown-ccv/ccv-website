@@ -26,10 +26,6 @@ export async function getWorkdayData() {
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
-<<<<<<< HEAD
-  )
-  return await response.json().jobPostings
-=======
 
     const data = await response.json()
     return data.jobPostings || []
@@ -38,5 +34,4 @@ export async function getWorkdayData() {
     // Return empty array as fallback to prevent component crashes
     return []
   }
->>>>>>> main
 }
