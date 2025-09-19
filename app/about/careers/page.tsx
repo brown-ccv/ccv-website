@@ -15,9 +15,11 @@ export default async function Careers() {
   try {
     workdayData = await getWorkdayData()
   } catch (err: any) {
-    <div>
-      Error loading careers{" "}
-    </div>
+    return (
+      <div>
+        Error loading careers{" "}
+      </div>
+    )
   }
 
   return (
