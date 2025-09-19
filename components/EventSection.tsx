@@ -55,10 +55,10 @@ export function EventSection({
       </div>
 
       {/* Right: Toggle and Views */}
-      <StyledTabs
-        className="hidden md:flex"
-        variant="neutral"
-        tabs={[
+      <div className="hidden md:block">
+        <StyledTabs
+          variant="neutral"
+          tabs={[
           {
             value: "upcoming",
             label: "Upcoming",
@@ -87,7 +87,8 @@ export function EventSection({
             ),
           },
         ]}
-      />
+        />
+      </div>
     </div>
   )
 }
