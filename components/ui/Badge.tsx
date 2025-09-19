@@ -41,7 +41,7 @@ import { cva, VariantProps } from "class-variance-authority"
  */
 
 export const BadgeVariants = cva(
-  "inline-flex items-center px-2 py-0.5 text-xs font-semibold rounded-full whitespace-nowrap",
+  "inline-flex items-center px-2 py-1 text-xs font-semibold rounded-full whitespace-nowrap",
   {
     variants: {
       color: {
@@ -138,7 +138,7 @@ export const Badge = ({
     return (
       <div
         className={cn(
-          "inline-flex items-center whitespace-nowrap rounded-full px-2 py-0.5 text-xs font-semibold",
+          "inline-flex items-center whitespace-nowrap rounded-full px-2 py-1 text-xs font-semibold",
           styling.className,
           className
         )}
