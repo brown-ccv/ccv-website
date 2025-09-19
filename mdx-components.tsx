@@ -16,6 +16,7 @@ import { ProjectEstimationSection } from "@/components/ProjectEstimationSection"
 import { LocationSection } from "@/components/LocationSection"
 import { CopyableEmail } from "@/components/CopyableEmail"
 import { LinkList } from "@/components/LinkList"
+import { TwoColumns } from "@/components/TwoColumns"
 
 // Server component that loads carousel data from YAML file
 async function MDXCarouselData({
@@ -67,6 +68,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     LocationSection,
     ProjectEstimationSection,
     LinkList,
+    TwoColumns,
     img: (props) => (
       <Image
         {...props}
