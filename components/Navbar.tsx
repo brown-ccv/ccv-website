@@ -8,6 +8,7 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
   FaBars,
   FaBook,
+  FaBuilding,
   FaChalkboardTeacher,
   FaChevronDown,
   FaCloud,
@@ -81,6 +82,12 @@ const routes: NavSection[] = [
             href: "/services/user-support",
             description: "We help with compute infrastructure",
             icon: FaUserCheck,
+          },
+          {
+            name: "Department Support",
+            href: "/services/department-support",
+            description: "We provide advanced support for specific departments",
+            icon: FaBuilding,
           },
           {
             name: "Classroom Support",
@@ -307,7 +314,7 @@ export const Navbar: React.FC = () => {
             aria-controls="main-menu"
             variant="secondary_filled"
             size="icon"
-            className="rounded-2xl text-blue-navbar p-2"
+            className="rounded-2xl p-2 text-blue-navbar"
             onClick={toggleMobileMenu}
           >
             <FaBars aria-hidden={true} focusable={false} className="h-6 w-6" />
