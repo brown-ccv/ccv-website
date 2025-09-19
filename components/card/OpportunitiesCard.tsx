@@ -24,15 +24,15 @@ export const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({ position }
       <StyledCard size="custom" className="w-full mb-16">
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
-            <p className="flex items-center pt-2 gap-x-2 font-normal text-sm">
+            <p className="flex items-center pt-2 gap-x-2 font-normal">
               <Icon iconName="FaMapMarkerAlt"/>
               Providence, RI - United States
             </p>
-            <p className="font-normal text-lg">
+            <p className="font-normal">
               {position.title}
             </p>
           </div>
-          <div className="flex items-center gap-2 text-sm font-medium text-slate-700">
+          <div className="flex items-center gap-2 font-medium text-slate-700">
             <span>Learn More</span>
             <Icon iconName="FaArrowRight" />
           </div>
