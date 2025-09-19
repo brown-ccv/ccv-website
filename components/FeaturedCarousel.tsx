@@ -192,7 +192,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                         href={attributionItem.href} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        aria-label={attributionItem.display_text}
+                        aria-label={`Image attribution: ${attributionItem.display_text}`}
                       >
                         {attributionItem.display_text}
                       </a>
