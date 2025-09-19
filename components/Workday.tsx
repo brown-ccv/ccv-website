@@ -13,7 +13,7 @@ export function Workday({ careers }: { careers: any[] }) {
     <div>
       {careers?.length > 0 ? (
         careers.map((position: PositionProps, index) => (
-          <div key={position.externalPath} style={{ marginBottom: index < careers.length - 1 ? '16px' : '0' }}>
+          <div key={position.externalPath} className="mb-4 last:mb-0">
             <OpportunitiesCard position={position} />
           </div>
         ))
