@@ -95,7 +95,7 @@ const Footer = () => {
                 aria-label="Email Icon"
                 className="mr-2 inline-block text-stone-400"
               />
-              <CopyableEmail email="support@ccv.brown.edu" className="font-normal !text-keppel-500"/>
+              <CopyableEmail email="support@ccv.brown.edu" className="font-normal text-white hover:text-white"/>
             </div>
           </div>
         </div>
