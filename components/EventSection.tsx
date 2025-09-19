@@ -55,7 +55,7 @@ export function EventSection({
       </div>
 
       {/* Right: Toggle and Views */}
-      <div className="hidden md:block">
+      <div className="hidden md:flex">
         <StyledTabs
           variant="neutral"
           tabs={[
