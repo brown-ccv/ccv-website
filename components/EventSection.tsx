@@ -54,11 +54,16 @@ export function EventSection({
         </ButtonLink>
       </div>
 
-      {/* Right: Toggle and Views */}
-      <StyledTabs
-        className="hidden md:flex"
-        variant="neutral"
-        tabs={[
+      {/* Mobile: Show only upcoming events */}
+      <div className="md:hidden">
+        <UpcomingEvents events={dataFuture} />
+      </div>
+
+      {/* Desktop: Toggle and Views */}
+      <div className="hidden md:flex">
+        <StyledTabs
+          variant="neutral"
+          tabs={[
           {
             value: "upcoming",
             label: "Upcoming",
@@ -87,7 +92,8 @@ export function EventSection({
             ),
           },
         ]}
-      />
+        />
+      </div>
     </div>
   )
 }
