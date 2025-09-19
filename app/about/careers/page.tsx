@@ -8,27 +8,20 @@ import ButtonLink from "@/components/button/ButtonLink"
 import CareersContent from "@/content/about/careers.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
-const CareerData = async () => {
+export default async function Careers() {
+  const metadata = getMDXMetadata("content/about/careers.mdx")
+  
+  let workdayData = []
   try {
-    const workdayData = await getWorkdayData()
-
-    return (
-      <Suspense fallback={<Spinner />}>
-        <Workday careers={workdayData} />
-      </Suspense>
-    )
+    workdayData = await getWorkdayData()
   } catch (err: any) {
-    console.error(err)
     return (
-      <div className="py-10 text-center text-3xl font-semibold">
+      <div>
         Error loading careers{" "}
       </div>
     )
   }
-}
 
-export default async function Careers() {
-  const metadata = getMDXMetadata("content/about/careers.mdx")
   return (
     <>
       <Hero
@@ -39,14 +32,16 @@ export default async function Careers() {
         <ButtonLink
           href={"/about/contact"}
           external={false}
-          size="xl"
+          size="lg"
           variant="primary_filled"
         >
           Contact Us
         </ButtonLink>
       </Hero>
       <ContentSection title="Opportunities" className="bg-neutral-50">
-        {await CareerData()}
+        <Suspense fallback={<Spinner />}>
+          <Workday careers={workdayData} />
+        </Suspense>
       </ContentSection>
       <CareersContent />
     </>
