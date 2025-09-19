@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Badge } from "@/components/ui/Badge"
 import { getColorForTag } from "@/lib/utils"
 import { Button } from "@/components/button/Button"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import Image from "next/image"
 import Icon from "@/components/ui/RenderIcon"
@@ -50,6 +51,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   const currentItem = carouselData[idx]
   const { title, categories, description, image, organizations, buttons } =
     currentItem
+  const attribution = currentItem.attribution
 
   const prev = () => setIdx((i) => (i === 0 ? carouselData.length - 1 : i - 1))
   const next = () => setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1))
@@ -72,12 +74,10 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
           <div className="flex items-center justify-center gap-4">
             <Button
               variant="secondary_filled"
-              size="icon"
+              iconOnly={<ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />}
               aria-label="previous project"
               onClick={prev}
-            >
-              <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
-            </Button>
+            />
 
             {/* Pagination Dots */}
             <div className="flex gap-1">
@@ -94,12 +94,10 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
             <Button
               variant="secondary_filled"
-              size="icon"
+              iconOnly={<ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />}
               aria-label="next project"
               onClick={next}
-            >
-              <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
-            </Button>
+            />
           </div>
 
           <div className="mt-8 flex flex-col gap-8 lg:flex-row lg:items-start">
@@ -158,15 +156,16 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
               {buttons && buttons.length > 0 && (
                 <div className="flex flex-wrap gap-4">
                   {buttons.map((button, index) => (
-                    <Button
+                    <ButtonLink
                       key={index}
                       variant={button.variant}
                       size="md"
                       className="whitespace-nowrap"
-                      onClick={() => window.open(button.url, "_blank")}
+                      href={button.url}
+                      external={true}
                     >
                       {button.text}
-                    </Button>
+                    </ButtonLink>
                   ))}
                 </div>
               )}
@@ -184,20 +183,20 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
               />
 
               {/* Attribution if image requires it */}
-              {currentItem.attribution && currentItem.attribution.length > 0 && (
+              {attribution && attribution.length > 0 && (
                 <div className="mt-2 text-right">
                   <span className="sr-only">Image attribution: </span>
-                  {currentItem.attribution.map((attribution, index) => (
+                  {attribution.map((attributionItem, index) => (
                     <span key={index}>
                       <a 
-                        href={attribution.href} 
+                        href={attributionItem.href} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        aria-label={`${attribution.display_text} (opens in new tab)`}
+                        aria-label={`${attributionItem.display_text}`}
                       >
-                        {attribution.display_text}
+                        {attributionItem.display_text}
                       </a>
-                      {index < currentItem.attribution!.length - 1 && ", "}
+                      {index < attribution.length - 1 && ", "}
                     </span>
                   ))}
                 </div>
