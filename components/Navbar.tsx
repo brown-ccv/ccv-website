@@ -8,6 +8,7 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
   FaBars,
   FaBook,
+  FaBuilding,
   FaChalkboardTeacher,
   FaChevronDown,
   FaCloud,
@@ -81,6 +82,12 @@ const routes: NavSection[] = [
             href: "/services/user-support",
             description: "We help with compute infrastructure",
             icon: FaUserCheck,
+          },
+          {
+            name: "Department Support",
+            href: "/services/department-support",
+            description: "We provide advanced support for specific departments",
+            icon: FaBuilding,
           },
           {
             name: "Classroom Support",
