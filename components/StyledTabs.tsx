@@ -51,7 +51,7 @@ export const StyledTabs: React.FC<TabsProps> = ({
   return (
     <Tabs
       defaultValue={defaultTab}
-      className={`prose prose-sm lg:prose-base flex flex-col items-end justify-end gap-4 ${tabsWrapperClass}`}
+      className={`prose prose-sm flex flex-col items-end justify-end gap-4 lg:prose-base ${tabsWrapperClass}`}
     >
       <TabsList className={`${config.tabsList} ${tabsListBaseStyles}`}>
         {tabs?.map((tab) => (
@@ -66,7 +66,11 @@ export const StyledTabs: React.FC<TabsProps> = ({
       </TabsList>
 
       {tabs?.map((tab) => (
-        <TabsContent key={tab.value} value={tab.value} className="w-full">
+        <TabsContent
+          key={tab.value}
+          value={tab.value}
+          className="not-prose w-full"
+        >
           {tab.content}
         </TabsContent>
       ))}

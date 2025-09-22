@@ -60,38 +60,38 @@ export function EventSection({
       </div>
 
       {/* Desktop: Toggle and Views */}
-      <div className="hidden md:flex">
+      <div className="hidden md:flex md:justify-end">
         <StyledTabs
           variant="neutral"
           tabs={[
-          {
-            value: "upcoming",
-            label: "Upcoming",
-            content: <UpcomingEvents events={dataFuture} />,
-          },
-          {
-            value: "weekly",
-            label: "Weekly",
-            content: (
-              <CalendarWeekly
-                events={dataPast.concat(dataFuture)}
-                currentDate={currentDate}
-                today={today}
-              />
-            ),
-          },
-          {
-            value: "monthly",
-            label: "Monthly",
-            content: (
-              <CalendarMonth
-                events={dataPast.concat(dataFuture)}
-                currentDate={currentDate}
-                today={today}
-              />
-            ),
-          },
-        ]}
+            {
+              value: "upcoming",
+              label: "Upcoming",
+              content: <UpcomingEvents events={dataFuture} />,
+            },
+            {
+              value: "weekly",
+              label: "Weekly",
+              content: (
+                <CalendarWeekly
+                  events={dataPast.concat(dataFuture)}
+                  currentDate={currentDate}
+                  today={today}
+                />
+              ),
+            },
+            {
+              value: "monthly",
+              label: "Monthly",
+              content: (
+                <CalendarMonth
+                  events={dataPast.concat(dataFuture)}
+                  currentDate={currentDate}
+                  today={today}
+                />
+              ),
+            },
+          ]}
         />
       </div>
     </div>
