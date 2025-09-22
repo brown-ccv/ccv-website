@@ -89,7 +89,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
       return (
         <div
           key={day}
-          className={`flex items-center justify-center py-3 lg:py-4 xl:w-32 ${
+          className={`flex items-center justify-center py-3 lg:py-4 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""} ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-50" : "bg-white"}`}
           onClick={() => {
@@ -143,12 +143,12 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           <ButtonLink
             href={event.url}
             external={true}
-            className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5 md:text-sm lg:text-md`}
+            className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-tight`}
             isCalendarEvent={true}
           >
-            <p className="font-semibold text-blue-500">{event.title}</p>
-            <p className="weekly-datetime flex items-center py-2 text-keppel-700">
-              <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />
+            <p className="font-semibold text-blue-navbar">{event.title}</p>
+            <p className="flex items-center gap-2 py-2 text-keppel-800">
+              <ClockIcon className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
               <time dateTime={event.date_utc}>{event.date_time}</time>
             </p>
           </ButtonLink>
@@ -159,7 +159,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
   }
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="flex h-full w-full flex-grow flex-col">
       <CalendarHeading
         date={activeDate}
         srButtonText="week"
