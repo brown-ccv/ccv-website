@@ -162,7 +162,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
     <div className="flex h-full w-full flex-col">
       <CalendarHeading
         date={activeDate}
-        srButtonText={"week"}
+        srButtonText="week"
         nextButtonFunction={() => setActiveDate(addDays(activeDate, 7))}
         prevButtonFunction={() => setActiveDate(subDays(activeDate, 7))}
         todayButtonFunction={() => setActiveDate(currentDate)}
@@ -171,13 +171,15 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
       <div
         ref={container}
         className="isolate flex max-h-screen flex-auto flex-col overflow-auto border-t-2 border-white bg-white shadow ring-1 ring-black ring-opacity-5"
+        role="grid"
+        aria-label="Weekly calendar view"
       >
         <div className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full">
           <div
             ref={containerNav}
             className="bg-gray sticky top-0 z-30 flex-none border-white bg-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
           >
-            <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-500 sm:grid">
+            <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-700 sm:grid">
               <div className="col-end-1 w-14 bg-white" />
               {generateDatesForCurrentWeek(
                 activeDate,
@@ -198,8 +200,8 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 {TIMES_ARRAY.map(({ key, time }) => (
                   <React.Fragment key={key}>
                     <div>
-                      <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                        {time}
+                      <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-600">
+                        <time dateTime={time}>{time}</time>
                       </div>
                     </div>
                     <div />
@@ -230,6 +232,8 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 style={{
                   gridTemplateRows: "1.75rem repeat(288, minmax(0, 1fr)) auto",
                 }}
+                role="grid"
+                aria-label="Calendar events"
               >
                 {generateEventsForCurrentWeek(activeDate)}
               </ol>
