@@ -301,7 +301,6 @@ export const Navbar: React.FC = () => {
                 variant="secondary_filled"
                 className="flex items-center justify-center ml-6"
                 iconOnly={<FaSearch />}
-                size="icon"
               />
             </NavigationMenu.Item> */}
           </NavigationMenu.List>
@@ -313,12 +312,10 @@ export const Navbar: React.FC = () => {
             aria-label="Main Menu"
             aria-controls="main-menu"
             variant="secondary_filled"
-            size="icon"
-            className="rounded-2xl p-2 text-blue-navbar"
+            iconOnly={<FaBars aria-hidden focusable={false} className="h-6 w-6" />}
+            className="rounded-2xl text-blue-navbar p-2"
             onClick={toggleMobileMenu}
-          >
-            <FaBars aria-hidden={true} focusable={false} className="h-6 w-6" />
-          </Button>
+          />
         </div>
 
         {/* Mobile Menu Content */}
