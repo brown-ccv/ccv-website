@@ -148,7 +148,10 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           >
             <p className="font-semibold text-blue-navbar">{event.title}</p>
             <p className="flex items-center gap-2 py-2 text-keppel-800">
-              <ClockIcon className="h-3 w-3 flex-shrink-0" aria-hidden="true" />
+              <ClockIcon
+                className="hidden h-3 w-3 flex-shrink-0 lg:block"
+                aria-hidden="true"
+              />
               <time dateTime={event.date_utc}>{event.date_time}</time>
             </p>
           </ButtonLink>

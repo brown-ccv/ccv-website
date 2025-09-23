@@ -26,6 +26,7 @@ import {
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
 import ButtonLink from "@/components/button/ButtonLink"
+import { Button } from "@/components/button/Button"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -112,11 +113,11 @@ const CalendarMonth: React.FC<CalendarProps> = ({
                 asChild
                 className="max-w-full rounded-md px-2 hover:bg-neutral-50"
               >
-                <ButtonLink href={event.url} external={true}>
+                <Button variant="unstyled">
                   <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
                     {event.title}
                   </p>
-                </ButtonLink>
+                </Button>
               </TooltipTrigger>
               <TooltipContent>
                 <p className="pb-2 font-semibold">{event.date}</p>
@@ -171,10 +172,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             </ButtonLink>
             <time
               dateTime={event.date_utc}
-              className="mt-2 flex items-center text-keppel-500"
+              className="mt-2 flex items-center text-keppel-700"
             >
               <ClockIcon
-                className="mr-2 h-5 w-5 text-keppel-500"
+                className="mr-2 h-5 w-5 text-keppel-700"
                 aria-hidden="true"
               />
               {event.date_time}
