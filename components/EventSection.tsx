@@ -38,12 +38,10 @@ export function EventSection({
   const dataPast = use(streamedDataPast)
 
   return (
-    <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-8">
+    <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">
       <div className="flex flex-col items-center gap-4">
         <SectionHeader title={"Events"} icon={<FaCalendarAlt />} />
-        <h3 className="mb-6 font-serif font-normal italic">
-          What's next at CCV
-        </h3>
+        <h3 className="font-serif font-normal italic">What's next at CCV</h3>
         <ButtonLink
           variant="primary_filled"
           size="lg"
@@ -54,40 +52,46 @@ export function EventSection({
         </ButtonLink>
       </div>
 
-      {/* Right: Toggle and Views */}
-      <StyledTabs
-        className="hidden md:flex"
-        variant="neutral"
-        tabs={[
-          {
-            value: "upcoming",
-            label: "Upcoming",
-            content: <UpcomingEvents events={dataFuture} />,
-          },
-          {
-            value: "weekly",
-            label: "Weekly",
-            content: (
-              <CalendarWeekly
-                events={dataPast.concat(dataFuture)}
-                currentDate={currentDate}
-                today={today}
-              />
-            ),
-          },
-          {
-            value: "monthly",
-            label: "Monthly",
-            content: (
-              <CalendarMonth
-                events={dataPast.concat(dataFuture)}
-                currentDate={currentDate}
-                today={today}
-              />
-            ),
-          },
-        ]}
-      />
+      {/* Mobile: Show only upcoming events */}
+      <div className="md:hidden">
+        <UpcomingEvents events={dataFuture} />
+      </div>
+
+      {/* Desktop: Toggle and Views */}
+      <div className="hidden w-full md:flex">
+        <StyledTabs
+          variant="neutral"
+          tabs={[
+            {
+              value: "upcoming",
+              label: "Upcoming",
+              content: <UpcomingEvents events={dataFuture} />,
+            },
+            {
+              value: "weekly",
+              label: "Weekly",
+              content: (
+                <CalendarWeekly
+                  events={dataPast.concat(dataFuture)}
+                  currentDate={currentDate}
+                  today={today}
+                />
+              ),
+            },
+            {
+              value: "monthly",
+              label: "Monthly",
+              content: (
+                <CalendarMonth
+                  events={dataPast.concat(dataFuture)}
+                  currentDate={currentDate}
+                  today={today}
+                />
+              ),
+            },
+          ]}
+        />
+      </div>
     </div>
   )
 }

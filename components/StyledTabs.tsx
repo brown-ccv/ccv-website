@@ -51,22 +51,30 @@ export const StyledTabs: React.FC<TabsProps> = ({
   return (
     <Tabs
       defaultValue={defaultTab}
-      className={`prose prose-sm lg:prose-base flex flex-col items-end justify-end gap-4 ${tabsWrapperClass}`}
+      className={`prose prose-sm flex w-full flex-col gap-4 lg:prose-base ${tabsWrapperClass}`}
     >
-      <TabsList className={`${config.tabsList} ${tabsListBaseStyles}`}>
-        {tabs?.map((tab) => (
-          <TabsTrigger
-            key={tab.value}
-            value={tab.value}
-            className={cn(tabsTriggerBaseStyles, config.tabsTrigger, className)}
-          >
-            {tab.label}
-          </TabsTrigger>
-        ))}
-      </TabsList>
+      <div className="flex w-full justify-end">
+        <TabsList
+          className={`${config.tabsList} ${tabsListBaseStyles} ml-auto`}
+        >
+          {tabs?.map((tab) => (
+            <TabsTrigger
+              key={tab.value}
+              value={tab.value}
+              className={cn(
+                tabsTriggerBaseStyles,
+                config.tabsTrigger,
+                className
+              )}
+            >
+              {tab.label}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </div>
 
       {tabs?.map((tab) => (
-        <TabsContent key={tab.value} value={tab.value} className="w-full">
+        <TabsContent key={tab.value} value={tab.value}>
           {tab.content}
         </TabsContent>
       ))}

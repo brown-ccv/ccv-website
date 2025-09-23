@@ -79,4 +79,8 @@
     .prose img {
         @apply my-4;
     }
+
+    .prose ul {
+        @apply marker:text-current;
+    }
 }

@@ -89,7 +89,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
       return (
         <div
           key={day}
-          className={`flex items-center justify-center py-3 lg:py-4 xl:w-32 ${
+          className={`flex items-center justify-center py-3 lg:py-4 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""} ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-50" : "bg-white"}`}
           onClick={() => {
@@ -143,12 +143,15 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           <ButtonLink
             href={event.url}
             external={true}
-            className={`${calColor} group absolute inset-1 flex flex-col overflow-y-auto rounded-lg p-2 text-xs leading-5 md:text-sm lg:text-md`}
+            className={`${calColor} group absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg p-2 text-xs leading-tight lg:text-base`}
             isCalendarEvent={true}
           >
-            <p className="font-semibold text-blue-500">{event.title}</p>
-            <p className="weekly-datetime flex items-center py-2 text-keppel-700">
-              <ClockIcon className="mr-2 h-4 w-4" aria-hidden="true" />
+            <p className="font-semibold text-blue-navbar">{event.title}</p>
+            <p className="flex items-center gap-2 text-keppel-800">
+              <ClockIcon
+                className="hidden h-3 w-3 flex-shrink-0 lg:block"
+                aria-hidden="true"
+              />
               <time dateTime={event.date_utc}>{event.date_time}</time>
             </p>
           </ButtonLink>
@@ -159,10 +162,10 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
   }
 
   return (
-    <div className="flex h-full w-full flex-col">
+    <div className="not-prose flex h-full w-full flex-grow flex-col">
       <CalendarHeading
         date={activeDate}
-        srButtonText={"week"}
+        srButtonText="week"
         nextButtonFunction={() => setActiveDate(addDays(activeDate, 7))}
         prevButtonFunction={() => setActiveDate(subDays(activeDate, 7))}
         todayButtonFunction={() => setActiveDate(currentDate)}
@@ -171,13 +174,15 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
       <div
         ref={container}
         className="isolate flex max-h-screen flex-auto flex-col overflow-auto border-t-2 border-white bg-white shadow ring-1 ring-black ring-opacity-5"
+        role="grid"
+        aria-label="Weekly calendar view"
       >
         <div className="flex max-w-full flex-none flex-col sm:max-w-none md:max-w-full">
           <div
             ref={containerNav}
             className="bg-gray sticky top-0 z-30 flex-none border-white bg-white shadow ring-1 ring-black ring-opacity-5 sm:pr-8"
           >
-            <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-500 sm:grid">
+            <div className="-mr-px hidden grid-cols-7 divide-x divide-gray-100 border-r border-white text-sm leading-6 text-gray-700 sm:grid">
               <div className="col-end-1 w-14 bg-white" />
               {generateDatesForCurrentWeek(
                 activeDate,
@@ -198,8 +203,8 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 {TIMES_ARRAY.map(({ key, time }) => (
                   <React.Fragment key={key}>
                     <div>
-                      <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-400">
-                        {time}
+                      <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-600">
+                        <time dateTime={time}>{time}</time>
                       </div>
                     </div>
                     <div />
@@ -230,6 +235,8 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
                 style={{
                   gridTemplateRows: "1.75rem repeat(288, minmax(0, 1fr)) auto",
                 }}
+                role="grid"
+                aria-label="Calendar events"
               >
                 {generateEventsForCurrentWeek(activeDate)}
               </ol>
