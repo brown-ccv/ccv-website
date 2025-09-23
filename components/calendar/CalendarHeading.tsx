@@ -18,8 +18,8 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
   todayButtonFunction,
 }) => {
   return (
-    <header className="mb-2 mt-0 flex items-center justify-between rounded-md border border-gray-200 bg-gray-50 px-6 lg:flex-none">
-      <p className="text-2xl font-semibold text-blue-500">
+    <header className="mb-2 flex items-center justify-between rounded-md border border-gray-200 bg-gray-50 p-2 px-6 lg:flex-none">
+      <p className="text-2xl font-semibold text-blue-navbar">
         <time dateTime={date.toISOString()}>
           {`${ALL_MONTHS[date.getMonth()]} ${date.getFullYear()}`}
         </time>
@@ -28,7 +28,7 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
         <div className="relative flex items-center rounded-md bg-white shadow-sm md:items-stretch">
           <button
             type="button"
-            className="flex h-9 w-12 items-center justify-center rounded-l-md border-y border-l border-gray-300 pr-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pr-0 md:hover:bg-gray-50"
+            className="flex h-9 w-12 items-center justify-center rounded-l-md border-y border-l border-gray-300 pr-1 text-gray-600 hover:text-gray-500 focus:relative md:w-9 md:pr-0 md:hover:bg-gray-50"
             onClick={() => prevButtonFunction()}
           >
             <span className="sr-only">Previous {srButtonText}</span>
@@ -44,7 +44,7 @@ export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
           <span className="relative -mx-px h-5 w-px bg-gray-300 md:hidden" />
           <button
             type="button"
-            className="flex h-9 w-12 items-center justify-center rounded-r-md border-y border-r border-gray-300 pl-1 text-gray-400 hover:text-gray-500 focus:relative md:w-9 md:pl-0 md:hover:bg-gray-50"
+            className="flex h-9 w-12 items-center justify-center rounded-r-md border-y border-r border-gray-300 pl-1 text-gray-600 hover:text-gray-500 focus:relative md:w-9 md:pl-0 md:hover:bg-gray-50"
             onClick={() => nextButtonFunction()}
           >
             <span className="sr-only text-xl">Next {srButtonText}</span>

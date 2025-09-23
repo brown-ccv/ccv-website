@@ -1,11 +1,10 @@
 "use client"
 
 import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/Tooltip"
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover"
 import { ClockIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid"
 import React, { useState } from "react"
 import { CalendarProps } from "@/components/calendar/types"
@@ -26,6 +25,7 @@ import {
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
 import ButtonLink from "@/components/button/ButtonLink"
+import { Button } from "@/components/button/Button"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
@@ -106,46 +106,44 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     const formattedCalEvents = validDayEvents.map((event: DataProps) => {
       return (
         <li key={self.crypto.randomUUID()}>
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger
-                asChild
-                className="max-w-full rounded-md px-2 hover:bg-neutral-50"
+          <Popover>
+            <PopoverTrigger
+              asChild
+              className="max-w-full rounded-md px-2 hover:bg-neutral-50"
+            >
+              <Button variant="unstyled">
+                <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
+                  {event.title}
+                </p>
+              </Button>
+            </PopoverTrigger>
+            <PopoverContent className="bg-neutral-50">
+              <p className="pb-2 font-semibold">{event.date}</p>
+              <ButtonLink
+                href={event.url}
+                external={true}
+                className="flex gap-1 text-blue-500"
+                isCalendarEvent={true}
               >
-                <ButtonLink href={event.url} external={true}>
-                  <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
-                    {event.title}
-                  </p>
-                </ButtonLink>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p className="pb-2 font-semibold">{event.date}</p>
-                <ButtonLink
-                  href={event.url}
-                  external={true}
-                  className="flex gap-1 text-blue-500"
-                  isCalendarEvent={true}
-                >
-                  <p className="font-semibold hover:underline">{event.title}</p>
-                  <ArrowTopRightOnSquareIcon
-                    className="mr-2 h-3 w-3"
-                    aria-hidden="true"
-                  />
-                </ButtonLink>
+                <p className="font-semibold hover:underline">{event.title}</p>
+                <ArrowTopRightOnSquareIcon
+                  className="mr-2 h-3 w-3"
+                  aria-hidden="true"
+                />
+              </ButtonLink>
 
-                <time
-                  dateTime={event.date_utc}
-                  className="hidden flex-none text-keppel-700 group-hover:font-semibold group-hover:text-keppel-700 xl:flex xl:items-center"
-                >
-                  <ClockIcon
-                    className="mr-1 h-4 w-4 text-keppel-700"
-                    aria-hidden="true"
-                  />
-                  {event.date_time}
-                </time>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+              <time
+                dateTime={event.date_utc}
+                className="hidden flex-none text-keppel-700 group-hover:font-semibold group-hover:text-keppel-700 xl:flex xl:items-center"
+              >
+                <ClockIcon
+                  className="mr-1 h-4 w-4 text-keppel-700"
+                  aria-hidden="true"
+                />
+                {event.date_time}
+              </time>
+            </PopoverContent>
+          </Popover>
         </li>
       )
     })
@@ -171,10 +169,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             </ButtonLink>
             <time
               dateTime={event.date_utc}
-              className="mt-2 flex items-center text-keppel-500"
+              className="mt-2 flex items-center text-keppel-700"
             >
               <ClockIcon
-                className="mr-2 h-5 w-5 text-keppel-500"
+                className="mr-2 h-5 w-5 text-keppel-700"
                 aria-hidden="true"
               />
               {event.date_time}
@@ -324,7 +322,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
   }
 
   return (
-    <div className="lg:flex lg:h-full lg:flex-col">
+    <div className="not-prose lg:flex lg:h-full lg:flex-col">
       <CalendarHeading
         date={activeDate}
         srButtonText={"month"}
