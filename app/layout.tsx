@@ -5,6 +5,7 @@ import BrownBanner from "@/components/BrownBanner"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import ConditionalStatusBanner from "@/components/ConditionalStatusBanner"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 // Only import server actions when not in static export mode
 let getCachedOpenIssues: () => Promise<any[]>
@@ -69,6 +70,7 @@ export default async function RootLayoutWrapper({
         <BrownBanner />
         <Navbar />
         <>{children}</>
+        <GoogleAnalytics gaId="G-F94VC913EH" />
         <Footer />
       </body>
     </html>
