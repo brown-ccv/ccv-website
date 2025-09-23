@@ -11,6 +11,7 @@ import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
 import { useSwipeable } from "react-swipeable"
+import { StyledCard } from "@/components/card/StyledCard"
 
 export interface FeaturedCarouselItem {
   title: string
@@ -61,7 +62,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   })
 
   return (
-    <div className="flex items-center justify-between gap-10">
+    <div className="flex items-center justify-between gap-2">
       {/* Previous button */}
       <Button
         variant="secondary_filled"
@@ -75,103 +76,103 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
       {/* Carousel Container */}
       <div className="relative flex flex-col items-center justify-center">
         {/*Carousel Items*/}
-        <div className="w-full">
-          <div className="flex gap-4">
-            <div className="max-w-1/2 flex w-full flex-col gap-4">
-              {/* Categories */}
-              <div className="flex flex-wrap gap-2">
-                {categories.map((cat, index) => (
-                  <Badge
+
+        <div className="flex items-center justify-center">
+          <div className="max-w-1/2 flex w-full flex-col space-y-6">
+            {/* Categories */}
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat, index) => (
+                <Badge
+                  key={index}
+                  color={getColorForTag(cat)}
+                  className="rounded-full text-sm font-semibold"
+                >
+                  {cat}
+                </Badge>
+              ))}
+            </div>
+
+            <h3>{title}</h3>
+
+            {/* Organizations */}
+            {organizations && organizations.length > 0 && (
+              <div
+                className="space-y-3"
+                role="list"
+                aria-label={`${title} organizations`}
+              >
+                {organizations.map((org, index) => (
+                  <div
                     key={index}
-                    color={getColorForTag(cat)}
-                    className="rounded-full text-sm font-semibold"
+                    className="not-prose flex gap-2"
+                    role="listitem"
                   >
-                    {cat}
-                  </Badge>
+                    <Icon
+                      iconName={org.icon}
+                      className="mt-1 h-6 w-6 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                    <div>
+                      <h4>{org.name}</h4>
+                      <p className="text-sm text-slate-600">
+                        {org.organization}
+                      </p>
+                      {(org.pi?.length || org.pm) && (
+                        <p className="text-sm text-slate-600">
+                          {org.pi?.length && `PI: ${org.pi.join(", ")}`}
+                          {org.pi?.length && org.pm && " • "}
+                          {org.pm && `PM: ${org.pm}`}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 ))}
               </div>
+            )}
 
-              <h3>{title}</h3>
-
-              {/* Organizations */}
-              {organizations && organizations.length > 0 && (
-                <div
-                  className="space-y-3"
-                  role="list"
-                  aria-label={`${title} organizations`}
-                >
-                  {organizations.map((org, index) => (
-                    <div
-                      key={index}
-                      className="not-prose flex gap-2"
-                      role="listitem"
-                    >
-                      <Icon
-                        iconName={org.icon}
-                        className="mt-1 h-6 w-6 flex-shrink-0"
-                        aria-hidden="true"
-                      />
-                      <div>
-                        <h4>{org.name}</h4>
-                        <p className="text-sm text-slate-600">
-                          {org.organization}
-                        </p>
-                        {(org.pi?.length || org.pm) && (
-                          <p className="text-sm text-slate-600">
-                            {org.pi?.length && `PI: ${org.pi.join(", ")}`}
-                            {org.pi?.length && org.pm && " • "}
-                            {org.pm && `PM: ${org.pm}`}
-                          </p>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                {description}
-              </Markdown>
-              {buttons && buttons.length > 0 && (
-                <div className="flex flex-wrap gap-4">
-                  {buttons.map((button, index) => (
-                    <Button
-                      key={index}
-                      variant={button.variant}
-                      className="whitespace-nowrap"
-                      onClick={() => window.open(button.url, "_blank")}
-                    >
-                      {button.text}
-                    </Button>
-                  ))}
-                </div>
-              )}
-            </div>
-            {/* Desktop Image Only */}
-            <div className="max-w-1/3 hidden w-full lg:block xl:ml-auto">
-              <Image
-                src={image}
-                alt={title}
-                width={600}
-                height={400}
-                className="object-contain"
-                style={{ width: "700px", height: "500px" }}
-              />
-
-              {/* Attribution if image requires it */}
-              {currentItem.attribution && (
-                <div className="mt-2 text-right">
-                  <Markdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
+            <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              {description}
+            </Markdown>
+            {buttons && buttons.length > 0 && (
+              <div className="flex flex-wrap gap-4">
+                {buttons.map((button, index) => (
+                  <Button
+                    key={index}
+                    variant={button.variant}
+                    className="whitespace-nowrap"
+                    onClick={() => window.open(button.url, "_blank")}
                   >
-                    {currentItem.attribution}
-                  </Markdown>
-                </div>
-              )}
-            </div>
+                    {button.text}
+                  </Button>
+                ))}
+              </div>
+            )}
+          </div>
+          {/* Desktop Image Only */}
+          <div className="max-w-1/3 mx-auto hidden w-full items-center lg:flex lg:justify-end">
+            <Image
+              src={image}
+              alt={title}
+              width={600}
+              height={400}
+              className="object-contain"
+              style={{ width: "700px", height: "500px" }}
+            />
+
+            {/* Attribution if image requires it */}
+            {currentItem.attribution && (
+              <div className="mt-2 text-right">
+                <Markdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}
+                >
+                  {currentItem.attribution}
+                </Markdown>
+              </div>
+            )}
           </div>
         </div>
+
         {/* Indicators */}
         <div className="flex items-center gap-2 pt-2">
           {carouselData.map((_, index) => (
