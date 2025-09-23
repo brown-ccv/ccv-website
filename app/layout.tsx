@@ -70,7 +70,7 @@ export default async function RootLayoutWrapper({
         <BrownBanner />
         <Navbar />
         <>{children}</>
-        <GoogleAnalytics gaId="G-GQM3XSNPH1" />
+        <GoogleAnalytics gaId="G-F94VC913EH" />
         <Footer />
       </body>
     </html>
