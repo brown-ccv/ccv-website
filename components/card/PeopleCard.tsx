@@ -61,12 +61,10 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
                 alt=""
                 width="200"
                 height="200"
-                className="rounded-full transition-opacity duration-300 h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
+                className="h-[200px] w-[200px] rounded-full transition-opacity duration-300 md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
                 style={{ margin: 0, padding: 0 }}
               />
-              <CardTitle className="py-4 text-center">
-                {name}
-              </CardTitle>
+              <CardTitle className="py-4 text-center">{name}</CardTitle>
               <CardDescription className="text-center italic">
                 {title}
               </CardDescription>
@@ -80,14 +78,12 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           alt=""
           width={200}
           height={200}
-          className="rounded-full h-[200px] w-[200px] md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
+          className="h-[200px] w-[200px] rounded-full md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
         <DialogTitle className="py-4 text-2xl">
           {personDetails?.display_name}
         </DialogTitle>
-        <p className="font-normal text-xl">
-          {personDetails?.title || title}
-        </p>
+        <p className="text-xl font-normal">{personDetails?.title || title}</p>
         {personDetails?.team && (
           <p className="-mb-2 text-lg font-semibold">{personDetails.team}</p>
         )}
@@ -120,9 +116,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
               ></ButtonLink>
             )}
         </div>
-        {personDetails?.bio && (
-          <div className="mt-4">{personDetails.bio}</div>
-        )}
+        {personDetails?.bio && <div className="mt-4">{personDetails.bio}</div>}
       </DialogContent>
     </Dialog>
   )
