@@ -312,8 +312,10 @@ export const Navbar: React.FC = () => {
             aria-label="Main Menu"
             aria-controls="main-menu"
             variant="secondary_filled"
-            iconOnly={<FaBars aria-hidden focusable={false} className="h-6 w-6" />}
-            className="rounded-2xl text-blue-navbar p-2"
+            iconOnly={
+              <FaBars aria-hidden focusable={false} className="h-6 w-6" />
+            }
+            className="rounded-2xl p-2 text-blue-navbar"
             onClick={toggleMobileMenu}
           />
         </div>
