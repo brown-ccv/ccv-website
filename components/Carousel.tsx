@@ -2,6 +2,13 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react"
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react"
 import { Button } from "@/components/button/Button"
+import { StyledCard } from "@/components/card/StyledCard"
+import Image from "next/image"
+import Markdown from "react-markdown"
+import remarkGfm from "remark-gfm"
+import rehypeRaw from "rehype-raw"
+import { Badge } from "@/components/ui/Badge"
+import { getColorForTag } from "@/lib/utils"
 
 export interface FeaturedCarouselItem {
   title: string
@@ -81,51 +88,76 @@ export const Carousel: React.FC<FeaturedCarouselProps> = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Main carousel container */}
-      <div className="relative h-80 overflow-hidden md:h-96">
+      <div className="relative h-80 overflow-hidden md:h-[600px]">
         {/* Carousel items */}
         <div className="flex h-full justify-center p-4 transition-transform duration-700 ease-in-out">
           {getVisibleItems().map((item, index) => (
-            <div
+            <StyledCard
+              size="custom"
               key={`${item.title}-${currentIndex}-${index}`}
-              className={`relative mx-2 flex-shrink-0 overflow-hidden rounded-lg transition-all duration-500 ${
-                index === 1 && 3 === 3
-                  ? "z-10 w-80 scale-110 transform"
-                  : "w-64 opacity-80"
+              className={`relative mx-2 w-3/4 flex-shrink-0 overflow-hidden rounded-lg transition-all duration-500 ${
+                index === 1 && 3 === 3 ? "z-10 transform" : "opacity-40"
               }`}
-              style={{
-                backgroundImage: `url(${item.image})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
             >
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-
               {/* Content */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                {/* Title */}
-                <h3 className="mb-2 line-clamp-2 text-xl font-bold">
-                  {item.title}
-                </h3>
+              <div className="absolute left-0 right-0 top-0 p-4">
+                <div className="max-w-1/2 flex-shrink-0">
+                  {/* Desktop Image Only */}
+                  <div className="hidden lg:block">
+                    <Image
+                      src={item.image}
+                      alt=""
+                      width={400}
+                      height={200}
+                      className="h-[200px] w-[400px] lg:h-[400px] lg:w-[600px]"
+                    />
+
+                    {/* Attribution if image requires it */}
+                    {item.attribution && (
+                      <div className="mt-2 text-right">
+                        <Markdown
+                          remarkPlugins={[remarkGfm]}
+                          rehypePlugins={[rehypeRaw]}
+                        >
+                          {item.attribution}
+                        </Markdown>
+                      </div>
+                    )}
+                  </div>
+                  {/* Title */}
+                  <h3 className="mb-2 line-clamp-2 text-xl font-bold">
+                    {item.title}
+                  </h3>
+                </div>
 
                 {/* Meta info */}
-                <div className="flex items-center space-x-3 text-sm text-gray-300"></div>
+                <div className="max-w-1/2 flex items-center space-x-3 text-sm text-gray-300">
+                  <div className="flex flex-wrap gap-2">
+                    {item.categories.map((cat, index) => (
+                      <Badge
+                        key={index}
+                        color={getColorForTag(cat)}
+                        className="rounded-full text-xs font-semibold"
+                      >
+                        {cat}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
               </div>
-            </div>
+            </StyledCard>
           ))}
         </div>
       </div>
 
       {/* Indicators */}
-      <div className="absolute bottom-5 left-1/2 z-30 flex -translate-x-1/2 transform space-x-3">
+      <div className="absolute bottom-0 left-1/2 z-30 flex -translate-x-1/2 transform space-x-3">
         {carouselData.map((_, index) => (
           <button
             key={index}
             type="button"
-            className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex
-                ? "w-3 bg-white"
-                : "w-2 bg-white/30 hover:bg-white/50"
+            className={`h-2 rounded-full bg-neutral-300 transition-all duration-300 ${
+              index === currentIndex ? "w-3" : "w-2"
             }`}
             onClick={() => setCurrentIndex(index)}
             aria-label={`Slide ${index + 1}`}

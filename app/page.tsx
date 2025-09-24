@@ -6,6 +6,7 @@ import {
   FeaturedCarousel,
   FeaturedCarouselItem,
 } from "@/components/FeaturedCarousel"
+import { Carousel } from "@/components/Carousel"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
@@ -57,6 +58,9 @@ export default async function Home() {
         <div>
           <ContentSection title="Featured Projects">
             <FeaturedCarousel carouselData={featuredCarouselData} />
+          </ContentSection>
+          <ContentSection title="TESTING">
+            <Carousel carouselData={featuredCarouselData} />
           </ContentSection>
           <ContentSection title={"Events"} align={"left"} id={"events"}>
             <Suspense fallback={<Spinner />}>
