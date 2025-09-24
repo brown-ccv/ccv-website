@@ -45,12 +45,12 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
   const pageContent = loadedContent.data
 
   return (
-      <div className="xs:w-1/2 flex flex-wrap justify-center gap-4">
-        {pageContent?.people &&
-          (await Promise.all(
-            pageContent.people
-              .sort((a, b) => a.last_name.localeCompare(b.last_name))
-              .map(async (person: PeopleTypes) => {
+    <div className="xs:w-1/2 flex flex-wrap justify-center gap-4">
+      {pageContent?.people &&
+        (await Promise.all(
+          pageContent.people
+            .sort((a, b) => a.last_name.localeCompare(b.last_name))
+            .map(async (person: PeopleTypes) => {
               const { main, hover } = await getImagePaths(person.image)
               return (
                 <React.Fragment key={person.display_name}>
@@ -64,7 +64,7 @@ async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
                 </React.Fragment>
               )
             })
-          ))}
+        ))}
     </div>
   )
 }
