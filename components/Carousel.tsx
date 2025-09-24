@@ -9,6 +9,7 @@ import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 import { Badge } from "@/components/ui/Badge"
 import { getColorForTag } from "@/lib/utils"
+import Icon from "@/components/ui/RenderIcon"
 
 export interface FeaturedCarouselItem {
   title: string
@@ -88,7 +89,7 @@ export const Carousel: React.FC<FeaturedCarouselProps> = ({
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Main carousel container */}
-      <div className="relative h-80 overflow-hidden md:h-[600px]">
+      <div className="relative h-96 overflow-hidden md:h-[600px]">
         {/* Carousel items */}
         <div className="flex h-full justify-center p-4 transition-transform duration-700 ease-in-out">
           {getVisibleItems().map((item, index) => (
@@ -128,7 +129,51 @@ export const Carousel: React.FC<FeaturedCarouselProps> = ({
                   <h3 className="mb-2 line-clamp-2 text-xl font-bold">
                     {item.title}
                   </h3>
+                  {/* Organizations */}
+                  {item.organizations && item.organizations.length > 0 && (
+                    <div
+                      className="space-y-3"
+                      role="list"
+                      aria-label={`${item.title} organizations`}
+                    >
+                      {item.organizations.map((org, index) => (
+                        <div
+                          key={index}
+                          className="not-prose flex gap-2"
+                          role="listitem"
+                        >
+                          <Icon
+                            iconName={org.icon}
+                            className="mt-1 h-4 w-4 flex-shrink-0"
+                            aria-hidden="true"
+                          />
+                          <div>
+                            <h4 className="text-base leading-tight">
+                              {org.name}
+                            </h4>
+                            <p className="text-sm text-slate-600">
+                              {org.organization}
+                            </p>
+                            {(org.pi?.length || org.pm) && (
+                              <p className="text-sm text-slate-600">
+                                {org.pi?.length && `PI: ${org.pi.join(", ")}`}
+                                {org.pi?.length && org.pm && " • "}
+                                {org.pm && `PM: ${org.pm}`}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
+
+                <Markdown
+                  remarkPlugins={[remarkGfm]}
+                  rehypePlugins={[rehypeRaw]}
+                >
+                  {item.description}
+                </Markdown>
 
                 {/* Meta info */}
                 <div className="max-w-1/2 flex items-center space-x-3 text-sm text-gray-300">
