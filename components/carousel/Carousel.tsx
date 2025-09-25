@@ -58,6 +58,9 @@ export const Dots = ({ carouselData, cardIndex, setCardIndex }: DotsProps) => {
             className={`h-2 rounded-full transition-colors ${
               idx === cardIndex ? "w-3 bg-neutral-500" : "w-2 bg-neutral-300"
             }`}
+            aria-label={`Go to slide ${idx + 1}: ${_.title}`}
+            aria-current={cardIndex === idx ? "true" : "false"}
+            title={_.title}
           />
         )
       })}
