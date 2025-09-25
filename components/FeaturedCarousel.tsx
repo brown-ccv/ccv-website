@@ -10,22 +10,15 @@ import Icon from "@/components/ui/RenderIcon"
 import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
-import { useSwipeable } from "react-swipeable"
-import { StyledCard } from "@/components/card/StyledCard"
+import { Transition } from "motion"
 
-export interface FeaturedCarouselItem {
+export interface CarouselItem {
   title: string
   categories: string[]
   description: string
   image: string
   attribution?: string
-  organizations?: {
-    name: string
-    organization: string
-    pi?: string[]
-    pm?: string
-    icon?: string
-  }[]
+  organizations?: OrganizationItem[]
   buttons?: {
     text: string
     url: string
@@ -37,8 +30,40 @@ export interface FeaturedCarouselItem {
   }[]
 }
 
-interface FeaturedCarouselProps {
-  carouselData: FeaturedCarouselItem[]
+export interface FeaturedCarouselProps {
+  carouselData: CarouselItem[]
+}
+
+export interface OrganizationItem {
+  name: string
+  organization: string
+  pi?: string[]
+  pm?: string
+  icon?: string
+}
+
+export interface DotsProps {
+  carouselData: CarouselItem[]
+  cardIndex: number
+  setCardIndex: (index: number) => void
+}
+
+export const Dots = ({ carouselData, cardIndex, setCardIndex }: DotsProps) => {
+  return (
+    <div className="mt-4 flex w-full justify-center gap-2">
+      {carouselData.map((_, idx) => {
+        return (
+          <button
+            key={idx}
+            onClick={() => setCardIndex(idx)}
+            className={`h-2 rounded-full transition-colors ${
+              idx === cardIndex ? "w-3 bg-neutral-500" : "w-2 bg-neutral-300"
+            }`}
+          />
+        )
+      })}
+    </div>
+  )
 }
 
 export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
@@ -51,15 +76,6 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
   const prev = () => setIdx((i) => (i === 0 ? carouselData.length - 1 : i - 1))
   const next = () => setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1))
-
-  // Swipe handlers
-  const handlers = useSwipeable({
-    onSwipedLeft: () => next(),
-    onSwipedRight: () => prev(),
-    trackMouse: false,
-    delta: 50, // Minimum distance for swipe
-    swipeDuration: 500, // Maximum time for swipe
-  })
 
   return (
     <div className="flex items-center justify-between gap-2">
@@ -76,7 +92,6 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
       {/* Carousel Container */}
       <div className="relative flex flex-col items-center justify-center">
         {/*Carousel Items*/}
-
         <div className="flex items-center justify-center">
           <div className="max-w-1/2 flex w-full flex-col space-y-6">
             {/* Categories */}
@@ -112,19 +127,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                       className="mt-1 h-6 w-6 flex-shrink-0"
                       aria-hidden="true"
                     />
-                    <div>
-                      <h4>{org.name}</h4>
-                      <p className="text-sm text-slate-600">
-                        {org.organization}
-                      </p>
-                      {(org.pi?.length || org.pm) && (
-                        <p className="text-sm text-slate-600">
-                          {org.pi?.length && `PI: ${org.pi.join(", ")}`}
-                          {org.pi?.length && org.pm && " • "}
-                          {org.pm && `PM: ${org.pm}`}
-                        </p>
-                      )}
-                    </div>
+                    <Organization {...org} />
                   </div>
                 ))}
               </div>
@@ -174,19 +177,11 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
         </div>
 
         {/* Indicators */}
-        <div className="flex items-center gap-2 pt-2">
-          {carouselData.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              className={`h-2 rounded-full bg-neutral-300 transition-all duration-300 ${
-                index === idx ? "w-3" : "w-2"
-              }`}
-              onClick={() => setIdx(index)}
-              aria-label={`Slide ${index + 1}`}
-            />
-          ))}
-        </div>
+        <Dots
+          carouselData={carouselData}
+          cardIndex={idx}
+          setCardIndex={setIdx}
+        />
       </div>
       {/* Next button */}
       <Button
@@ -198,6 +193,27 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
       >
         <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
       </Button>
+    </div>
+  )
+}
+
+export const Organization = ({
+  organization,
+  pi,
+  pm,
+  name,
+}: OrganizationItem) => {
+  return (
+    <div>
+      <h4>{name}</h4>
+      <p className="text-sm text-slate-600">{organization}</p>
+      {(pi?.length || pm) && (
+        <p className="text-sm text-slate-600">
+          {pi?.length && `PI: ${pi.join(", ")}`}
+          {pi?.length && pm && " • "}
+          {pm && `PM: ${pm}`}
+        </p>
+      )}
     </div>
   )
 }
