@@ -1,6 +1,6 @@
 carousel:
   - title: "CCV AI Tools"
-    categories: ["Web Development", "LLMs", "AI"]
+    categories: [ "Web Development", "LLMs", "AI" ]
     description: |
       CCV AI Tools provides a set of generative AI tools that are built and deployed in-house at Brown for all members of the Brown community. These tools include:
       - **LibreChat** (under construction): A chat interface that lets you talk to multiple AI models in a private, customizable way
@@ -13,7 +13,7 @@ carousel:
         variant: "primary_filled"
 
   - title: "Gearshift Fellowship"
-    categories: ["Web Development", "jsPsych", "Cognitive Science"]
+    categories: [ "Web Development", "jsPsych", "Cognitive Science" ]
     description: |
       The Gearshift Fellowship is a car-driving game where players take the role of a driver and aim to complete five 
       missions, each with distinct goals and challenges, while collecting as many reward points as possible. Developed 
@@ -24,7 +24,7 @@ carousel:
     organizations:
       - name: "Cognitive and Psychological Sciences"
         organization: "Brown University"
-        pi: ["Nadja Ging-Jehli"]
+        pi: [ "Nadja Ging-Jehli" ]
         icon: "FaUser"
     buttons:
       - text: "Gearshift Website"
@@ -35,7 +35,7 @@ carousel:
         variant: "secondary_filled"
 
   - title: "Ice Floe Tracker"
-    categories: ["Data Science", "Julia", "HPC"]
+    categories: [ "Data Science", "Julia", "HPC" ]
     description: |
       IceFloeTracker.jl is an open-source Julia package for tracking Arctic Ocean ice floes using data from the Aqua 
       and Terra Earth-observation satellites. It detects floe trajectories and rotation rates to infer ocean currents 
@@ -45,7 +45,7 @@ carousel:
     organizations:
       - name: "Department of Engineering"
         organization: "Brown University"
-        pi: ["Monica Martinez Wilhelmus"]
+        pi: [ "Monica Martinez Wilhelmus" ]
         icon: "FaUser"
     buttons:
       - text: "Wilhelmus Lab"
@@ -56,14 +56,14 @@ carousel:
         variant: "secondary_filled"
 
   - title: "SOMA Pain Manager"
-    categories: ["Mobile Applications", "React Native", "JavaScript"]
+    categories: [ "Mobile Applications", "React Native", "JavaScript" ]
     description: |
       SOMA is a new app from Brown University researchers designed to help people with acute and chronic pain. By allowing you to track symptoms and daily activities, SOMA provides insights into your pain and recovery patterns. You can use this data for your own understanding or share it with your healthcare provider to help guide your treatment. Available for free on the App Store and Google Play, SOMA is designed to empower you with a better understanding of your pain.
     image: "/images/home/featured-carousel/soma.webp"
     organizations:
       - name: "Carney Institute for Brain Science, Center for Digital Health"
         organization: "Brown University"
-        pi: ["Frederike Petzschner"]
+        pi: [ "Frederike Petzschner" ]
         icon: "FaUser"
     buttons:
       - text: "SOMA Website"
@@ -71,13 +71,13 @@ carousel:
         variant: "primary_filled"
 
   - title: "Unsupervised Cell Segmentation in 3D Data"
-    categories: ["3D Visualization", "Image Processing", "Neuroscience"]
+    categories: [ "3D Visualization", "Image Processing", "Neuroscience" ]
     description: |
-      - Implement a pipeline and develop an application to assist researchers in identifying, labeling, and counting cells in mouse brain scans
-      - Utilize Pre-trained deep learning models to analyze 3D image data, automatically segment cells, and generate structured results. This approach reduces manual effort, accelerates research workflows, and improves consistency by minimizing human bias in segmentation and labeling
+      This project implements a comprehensive pipeline and application designed to assist researchers in identifying, labeling, and counting cells in mouse brain scans. Utilizing pre-trained deep learning models, the system analyzes 3D image data to automatically segment cells and generate structured results. This automated approach significantly reduces manual effort, accelerates research workflows, and improves consistency by minimizing human bias in segmentation and labeling processes, enabling neuroscience researchers to focus on analysis and interpretation rather than time-intensive manual cell identification.
+
     image: "/images/home/featured-carousel/cell-segmentation.png"
     organizations:
       - name: "Department of Neuroscience"
         organization: "Brown University"
-        pi: ["Alexander Jaworski"]
+        pi: [ "Alexander Jaworski" ]
         icon: "FaUser"
