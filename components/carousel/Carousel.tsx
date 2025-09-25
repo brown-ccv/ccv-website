@@ -111,7 +111,7 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
       {/* Carousel Container */}
       <div className="relative flex flex-col items-center justify-center">
         {/*Carousel Items*/}
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center gap-6">
           <div className="max-w-1/2 flex w-full flex-col space-y-6">
             {/* Categories */}
             <div className="flex flex-wrap gap-2">
@@ -171,7 +171,7 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
             )}
           </div>
           {/* Desktop Image Only */}
-          <div className="max-w-1/3 mx-auto hidden w-full items-center lg:flex lg:justify-end">
+          <div className="max-w-1/3 mx-auto flex w-full flex-col items-end justify-end">
             <Image
               src={image}
               alt={title}
@@ -183,7 +183,7 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
 
             {/* Attribution if image requires it */}
             {currentItem.attribution && (
-              <div className="mt-2 text-right">
+              <div className="text-right">
                 <Markdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
@@ -213,18 +213,5 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
         <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
       </Button>
     </div>
-  )
-}
-
-export const FeaturedCarousel = (data: CarouselItem[]) => {
-  return (
-    <>
-      <div>
-        <Carousel carouselData={data} />
-      </div>
-      <div>
-        <SwipeCarousel carouselData={data} />
-      </div>
-    </>
   )
 }
