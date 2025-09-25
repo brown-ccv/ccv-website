@@ -10,7 +10,6 @@ import Icon from "@/components/ui/RenderIcon"
 import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
-import { SwipeCarousel } from "@/components/carousel/SwipeCarousel"
 
 export interface CarouselItem {
   title: string
@@ -97,21 +96,31 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
   const next = () => setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1))
 
   return (
-    <div className="flex items-center justify-between gap-2 px-2">
+    <div className="relative flex items-center gap-2 px-2 xl:px-8">
       {/* Previous button */}
       <Button
         variant="secondary_filled"
-        className="group flex-shrink-0"
+        className="group absolute left-5 top-1/2 z-10 flex-shrink-0 -translate-y-1/2 transform p-2 xl:left-14"
         size="icon"
         aria-label="previous project"
         onClick={prev}
       >
         <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
       </Button>
+      {/* Next button */}
+      <Button
+        variant="secondary_filled"
+        className="group absolute right-5 top-1/2 z-10 flex-shrink-0 -translate-y-1/2 transform p-2 xl:right-14"
+        size="icon"
+        aria-label="next project"
+        onClick={next}
+      >
+        <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
+      </Button>
       {/* Carousel Container */}
-      <div className="relative flex flex-col items-center justify-center">
+      <div className="flex min-h-[585px] w-full flex-col items-center justify-center px-16 xl:px-24 xxl:px-48">
         {/*Carousel Items*/}
-        <div className="flex items-center justify-center gap-6">
+        <div className="flex h-full w-full items-center justify-center gap-6">
           <div className="max-w-1/2 flex w-full flex-col space-y-6">
             {/* Categories */}
             <div className="flex flex-wrap gap-2">
@@ -171,19 +180,18 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
             )}
           </div>
           {/* Desktop Image Only */}
-          <div className="max-w-1/3 mx-auto flex w-full flex-col items-end justify-end">
+          <div className="max-w-1/3 flex w-full flex-col items-end justify-end">
             <Image
               src={image}
               alt={title}
               width={600}
               height={400}
-              className="object-contain"
-              style={{ width: "700px", height: "500px" }}
+              className="aspect-video object-cover xl:w-[800px]"
             />
 
             {/* Attribution if image requires it */}
             {currentItem.attribution && (
-              <div className="absolute bottom-0 right-0 text-right">
+              <div className="text-right">
                 <Markdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
@@ -202,16 +210,6 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
           setCardIndex={setIdx}
         />
       </div>
-      {/* Next button */}
-      <Button
-        variant="secondary_filled"
-        className="group flex-shrink-0"
-        size="icon"
-        aria-label="next project"
-        onClick={next}
-      >
-        <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
-      </Button>
     </div>
   )
 }
