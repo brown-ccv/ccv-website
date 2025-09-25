@@ -2,11 +2,8 @@
 import { MainHero } from "@/components/Hero"
 import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
-import {
-  FeaturedCarousel,
-  FeaturedCarouselItem,
-} from "@/components/FeaturedCarousel"
-import { Carousel } from "@/components/Carousel"
+import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
+import { CarouselItem } from "@/components/carousel/Carousel"
 import EventSection from "@/components/EventSection"
 import { getEventData } from "@/app/queries"
 import { getStringDate } from "@/components/calendar/utils"
@@ -20,7 +17,7 @@ import { ContentSection } from "@/components/ContentSection"
 export default async function Home() {
   // Load featured carousel data from YAML
   const featuredCarouselRaw = await readContentFile<{
-    carousel: FeaturedCarouselItem[]
+    carousel: CarouselItem[]
   }>("content/home/featured-carousel.yaml")
   const featuredCarouselData = featuredCarouselRaw.data.carousel
 
@@ -56,11 +53,11 @@ export default async function Home() {
         <HeroCard />
         <ImpactBanner />
         <div>
-          <ContentSection title="Featured Projects">
+          <ContentSection
+            title="Featured Projects"
+            className="px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0"
+          >
             <FeaturedCarousel carouselData={featuredCarouselData} />
-          </ContentSection>
-          <ContentSection title="TESTING">
-            <Carousel carouselData={featuredCarouselData} />
           </ContentSection>
           <ContentSection title={"Events"} align={"left"} id={"events"}>
             <Suspense fallback={<Spinner />}>

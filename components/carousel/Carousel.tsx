@@ -10,7 +10,7 @@ import Icon from "@/components/ui/RenderIcon"
 import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
-import { Transition } from "motion"
+import { SwipeCarousel } from "@/components/carousel/SwipeCarousel"
 
 export interface CarouselItem {
   title: string
@@ -30,7 +30,7 @@ export interface CarouselItem {
   }[]
 }
 
-export interface FeaturedCarouselProps {
+export interface CarouselProps {
   carouselData: CarouselItem[]
 }
 
@@ -50,7 +50,7 @@ export interface DotsProps {
 
 export const Dots = ({ carouselData, cardIndex, setCardIndex }: DotsProps) => {
   return (
-    <div className="mt-4 flex w-full justify-center gap-2">
+    <div className="mt-4 flex w-full justify-center gap-2 md:mt-0 lg:mt-4">
       {carouselData.map((_, idx) => {
         return (
           <button
@@ -66,9 +66,28 @@ export const Dots = ({ carouselData, cardIndex, setCardIndex }: DotsProps) => {
   )
 }
 
-export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
-  carouselData,
-}) => {
+export const Organization = ({
+  organization,
+  pi,
+  pm,
+  name,
+}: OrganizationItem) => {
+  return (
+    <div>
+      <h4>{name}</h4>
+      <p className="text-sm text-slate-600">{organization}</p>
+      {(pi?.length || pm) && (
+        <p className="text-sm text-slate-600">
+          {pi?.length && `PI: ${pi.join(", ")}`}
+          {pi?.length && pm && " • "}
+          {pm && `PM: ${pm}`}
+        </p>
+      )}
+    </div>
+  )
+}
+
+export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
   const [idx, setIdx] = useState(0)
   const currentItem = carouselData[idx]
   const { title, categories, description, image, organizations, buttons } =
@@ -78,7 +97,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   const next = () => setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1))
 
   return (
-    <div className="flex items-center justify-between gap-2">
+    <div className="flex items-center justify-between gap-2 px-2">
       {/* Previous button */}
       <Button
         variant="secondary_filled"
@@ -197,23 +216,15 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   )
 }
 
-export const Organization = ({
-  organization,
-  pi,
-  pm,
-  name,
-}: OrganizationItem) => {
+export const FeaturedCarousel = (data: CarouselItem[]) => {
   return (
-    <div>
-      <h4>{name}</h4>
-      <p className="text-sm text-slate-600">{organization}</p>
-      {(pi?.length || pm) && (
-        <p className="text-sm text-slate-600">
-          {pi?.length && `PI: ${pi.join(", ")}`}
-          {pi?.length && pm && " • "}
-          {pm && `PM: ${pm}`}
-        </p>
-      )}
-    </div>
+    <>
+      <div>
+        <Carousel carouselData={data} />
+      </div>
+      <div>
+        <SwipeCarousel carouselData={data} />
+      </div>
+    </>
   )
 }

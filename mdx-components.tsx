@@ -5,7 +5,7 @@ import { ButtonLink } from "@/components/button/ButtonLink"
 import {
   FeaturedCarousel,
   FeaturedCarouselItem,
-} from "@/components/FeaturedCarousel"
+} from "@/components/carousel/FeaturedCarousel"
 import { readContentFile } from "@/lib/content-utils"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
