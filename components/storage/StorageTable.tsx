@@ -236,7 +236,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
     })
 
     return [pinColumn, serviceColumn, ...featureColumns]
-  }, [featureNames, featureMetadata])
+  }, [featureNames, featureMetadata, columnHelper])
 
   const table = useReactTable({
     data: tableData,

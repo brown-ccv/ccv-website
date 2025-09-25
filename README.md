@@ -87,3 +87,9 @@ hierarchy, tabbing, and dynamic content changes.
 
 This site aims to be environmentally conscious. We use the [Website Carbon Calculator](https://www.websitecarbon.com/)
 to measure our digital carbon footprint.
+
+## Analytics
+
+This project uses Google Analytics. The container name is ccv-website-next_1. Use
+[Google Tag Manager](https://support.google.com/tagmanager/answer/14842872?hl=en&ref_topic=15191151&sjid=3017510881481598742-NA)
+to set up and manage tags without managing the code further.
