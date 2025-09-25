@@ -183,7 +183,7 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
 
             {/* Attribution if image requires it */}
             {currentItem.attribution && (
-              <div className="text-right">
+              <div className="absolute bottom-0 right-0 text-right">
                 <Markdown
                   remarkPlugins={[remarkGfm]}
                   rehypePlugins={[rehypeRaw]}
