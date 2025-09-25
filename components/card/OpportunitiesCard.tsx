@@ -12,7 +12,9 @@ interface OpportunitiesCardProps {
   position: PositionProps
 }
 
-export const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({ position }) => {
+export const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({
+  position,
+}) => {
   return (
     <ButtonLink
       key={position.externalPath}
@@ -21,16 +23,14 @@ export const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({ position }
       className="w-full"
       size="md"
     >
-      <StyledCard size="custom" className="w-full mb-16">
+      <StyledCard size="custom" className="mb-16 w-full">
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
-            <p className="flex items-center pt-2 gap-x-2 font-normal">
-              <Icon iconName="FaMapMarkerAlt"/>
+            <p className="flex items-center gap-x-2 pt-2 font-normal">
+              <Icon iconName="FaMapMarkerAlt" />
               Providence, RI - United States
             </p>
-            <p className="font-normal">
-              {position.title}
-            </p>
+            <p className="font-normal">{position.title}</p>
           </div>
           <div className="flex items-center gap-2 font-medium text-slate-700">
             <span>Learn More</span>

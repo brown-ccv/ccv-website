@@ -25,7 +25,7 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
   alt,
 }) => {
   return (
-    <div className="prose prose-sm lg:prose-base flex flex-col">
+    <div className="prose prose-sm flex flex-col lg:prose-base">
       <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
         {/*Project Section*/}
         <div>
@@ -36,7 +36,7 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
             <span className="font-semibold">{group}</span>
           </div>
           {/* Time to Complete */}
-          <div className="flex items-center gap-2 mt-2">
+          <div className="mt-2 flex items-center gap-2">
             <Icon iconName="FaClock" className="h-6 w-6 text-keppel-700" />
             <span className="font-semibold">{time}</span>
           </div>

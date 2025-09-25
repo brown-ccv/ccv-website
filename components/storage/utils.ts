@@ -1,4 +1,8 @@
-import {FormQuestions, SelectedAnswers, ServiceConfig,} from "@/lib/storage-types"
+import {
+  FormQuestions,
+  SelectedAnswers,
+  ServiceConfig,
+} from "@/lib/storage-types"
 
 /**
  * Returns an array of services that match the selected answers

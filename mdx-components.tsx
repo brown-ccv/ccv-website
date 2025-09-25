@@ -15,6 +15,8 @@ import { CostEstimateCard } from "@/components/card/CostEstimateCard"
 import { ProjectEstimationSection } from "@/components/ProjectEstimationSection"
 import { LocationSection } from "@/components/LocationSection"
 import { CopyableEmail } from "@/components/CopyableEmail"
+import { LinkList } from "@/components/LinkList"
+import { TwoColumns } from "@/components/TwoColumns"
 
 // Server component that loads carousel data from YAML file
 async function MDXCarouselData({
@@ -42,7 +44,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Wrapper component for all MDX content
     wrapper: ({ children }) => (
-      <div className="prose prose-sm lg:prose-base max-w-none">{children}</div>
+      <div className="prose prose-sm max-w-none lg:prose-base">{children}</div>
     ),
 
     // Global MDX components
@@ -65,6 +67,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     PeopleSection,
     LocationSection,
     ProjectEstimationSection,
+    LinkList,
+    TwoColumns,
     img: (props) => (
       <Image
         {...props}

@@ -66,7 +66,7 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
   })
 
   return (
-    <section className="prose prose-sm lg:prose-base my-12">
+    <section className="prose prose-sm my-12 lg:prose-base">
       <div className="mx-auto w-full">
         {/* Carousel Container */}
         <div className="relative" {...handlers}>
@@ -74,7 +74,9 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
           <div className="flex items-center justify-center gap-4">
             <Button
               variant="secondary_filled"
-              iconOnly={<ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />}
+              iconOnly={
+                <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
+              }
               aria-label="previous project"
               onClick={prev}
             />
@@ -94,7 +96,9 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
             <Button
               variant="secondary_filled"
-              iconOnly={<ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />}
+              iconOnly={
+                <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
+              }
               aria-label="next project"
               onClick={next}
             />
@@ -119,9 +123,17 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
 
               {/* Organizations */}
               {organizations && organizations.length > 0 && (
-                <div className="space-y-3" role="list" aria-label={`${title} organizations`}>
+                <div
+                  className="space-y-3"
+                  role="list"
+                  aria-label={`${title} organizations`}
+                >
                   {organizations.map((org, index) => (
-                    <div key={index} className="flex items-center gap-2 not-prose" role="listitem">
+                    <div
+                      key={index}
+                      className="not-prose flex items-center gap-2"
+                      role="listitem"
+                    >
                       <Icon
                         iconName={org.icon}
                         className="h-6 w-6 flex-shrink-0"
@@ -129,7 +141,9 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                       />
                       <div>
                         <h4>{org.name}</h4>
-                        <p className="text-sm text-slate-600">{org.organization}</p>
+                        <p className="text-sm text-slate-600">
+                          {org.organization}
+                        </p>
                         {(org.pi?.length || org.pm) && (
                           <p className="text-sm text-slate-600">
                             {org.pi?.length && `PI: ${org.pi.join(", ")}`}
@@ -186,9 +200,9 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                 <div className="mt-2 text-right" aria-label="Image attribution">
                   {attribution.map((attributionItem, index) => (
                     <span key={index}>
-                      <a 
-                        href={attributionItem.href} 
-                        target="_blank" 
+                      <a
+                        href={attributionItem.href}
+                        target="_blank"
                         rel="noopener noreferrer"
                         aria-label={attributionItem.display_text}
                       >

@@ -23,7 +23,7 @@ export const ContentSection = ({
     <section
       id={id}
       className={cn(
-        "prose prose-sm lg:prose-base w-full p-12 even:bg-neutral-50 sm:px-16 lg:px-14 xl:px-20",
+        "prose prose-sm w-full p-12 lg:prose-base even:bg-neutral-50 sm:px-16 lg:px-14 xl:px-20",
         className
       )}
     >
