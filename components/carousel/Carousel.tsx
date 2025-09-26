@@ -49,7 +49,7 @@ export interface DotsProps {
 
 export const Dots = ({ carouselData, cardIndex, setCardIndex }: DotsProps) => {
   return (
-    <div className="mt-4 flex w-full justify-center gap-2 md:mt-0 lg:mt-4">
+    <div className="absolute bottom-5 flex w-full justify-center gap-2">
       {carouselData.map((_, idx) => {
         return (
           <button
@@ -91,9 +91,6 @@ export const Organization = ({
 
 export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
   const [idx, setIdx] = useState(0)
-  const currentItem = carouselData[idx]
-  const { title, categories, description, image, organizations, buttons } =
-    currentItem
 
   const prev = () => setIdx((i) => (i === 0 ? carouselData.length - 1 : i - 1))
   const next = () => setIdx((i) => (i === carouselData.length - 1 ? 0 : i + 1))
@@ -121,91 +118,99 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
         <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
       </Button>
       {/* Carousel Container */}
-      <div className="flex min-h-[585px] w-full flex-col items-center justify-center px-16 xl:px-24 xxl:px-48">
+      <div className="relative flex min-h-[585px] w-full flex-col items-center justify-center overflow-hidden">
         {/*Carousel Items*/}
-        <div className="flex h-full w-full items-center justify-center gap-6">
-          <div className="max-w-1/2 flex w-full flex-col space-y-6">
-            {/* Categories */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((cat, index) => (
-                <Badge
-                  key={index}
-                  color={getColorForTag(cat)}
-                  className="rounded-full text-sm font-semibold"
-                >
-                  {cat}
-                </Badge>
-              ))}
-            </div>
+        {carouselData.map((carouselItem, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 flex h-full transform items-center justify-center gap-6 px-16 transition-transform xl:px-24 xxl:px-48 ${
+              index === idx ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="max-w-1/2 flex w-full flex-col space-y-6">
+              {/* Categories */}
+              <div className="flex flex-wrap gap-2">
+                {carouselItem.categories.map((cat, index) => (
+                  <Badge
+                    key={index}
+                    color={getColorForTag(cat)}
+                    className="rounded-full text-sm font-semibold"
+                  >
+                    {cat}
+                  </Badge>
+                ))}
+              </div>
 
-            <h3>{title}</h3>
+              <h3>{carouselItem.title}</h3>
 
-            {/* Organizations */}
-            {organizations && organizations.length > 0 && (
-              <div
-                className="space-y-3"
-                role="list"
-                aria-label={`${title} organizations`}
-              >
-                {organizations.map((org, index) => (
+              {/* Organizations */}
+              {carouselItem.organizations &&
+                carouselItem.organizations.length > 0 && (
                   <div
-                    key={index}
-                    className="not-prose flex gap-2"
-                    role="listitem"
+                    className="space-y-3"
+                    role="list"
+                    aria-label={`${carouselItem.title} organizations`}
                   >
-                    <Icon
-                      iconName={org.icon}
-                      className="mt-1 h-6 w-6 flex-shrink-0"
-                      aria-hidden="true"
-                    />
-                    <Organization {...org} />
+                    {carouselItem.organizations.map((org, index) => (
+                      <div
+                        key={index}
+                        className="not-prose flex gap-2"
+                        role="listitem"
+                      >
+                        <Icon
+                          iconName={org.icon}
+                          className="mt-1 h-6 w-6 flex-shrink-0"
+                          aria-hidden="true"
+                        />
+                        <Organization {...org} />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            )}
+                )}
 
-            <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-              {description}
-            </Markdown>
-            {buttons && buttons.length > 0 && (
-              <div className="flex flex-wrap gap-4">
-                {buttons.map((button, index) => (
-                  <Button
-                    key={index}
-                    variant={button.variant}
-                    className="whitespace-nowrap"
-                    onClick={() => window.open(button.url, "_blank")}
-                    aria-label={`Open ${button.text}`}
+              <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                {carouselItem.description}
+              </Markdown>
+              {carouselItem.buttons && carouselItem.buttons.length > 0 && (
+                <div className="flex flex-wrap gap-4">
+                  {carouselItem.buttons.map((button, index) => (
+                    <Button
+                      key={index}
+                      variant={button.variant}
+                      className="whitespace-nowrap"
+                      onClick={() => window.open(button.url, "_blank")}
+                      aria-label={`Open ${button.text}`}
+                    >
+                      {button.text}
+                    </Button>
+                  ))}
+                </div>
+              )}
+            </div>
+            {/* Desktop Image Only */}
+            <div className="max-w-1/3 flex w-full flex-col items-end justify-end">
+              <Image
+                src={carouselItem.image}
+                alt=""
+                width={600}
+                height={400}
+                className="aspect-video object-cover xl:w-[800px]"
+              />
+
+              {/* Attribution if image requires it */}
+              {carouselItem.attribution && (
+                <div className="text-right">
+                  <Markdown
+                    remarkPlugins={[remarkGfm]}
+                    rehypePlugins={[rehypeRaw]}
                   >
-                    {button.text}
-                  </Button>
-                ))}
-              </div>
-            )}
+                    {carouselItem.attribution}
+                  </Markdown>
+                </div>
+              )}
+            </div>
           </div>
-          {/* Desktop Image Only */}
-          <div className="max-w-1/3 flex w-full flex-col items-end justify-end">
-            <Image
-              src={image}
-              alt={title}
-              width={600}
-              height={400}
-              className="aspect-video object-cover xl:w-[800px]"
-            />
-
-            {/* Attribution if image requires it */}
-            {currentItem.attribution && (
-              <div className="text-right">
-                <Markdown
-                  remarkPlugins={[remarkGfm]}
-                  rehypePlugins={[rehypeRaw]}
-                >
-                  {currentItem.attribution}
-                </Markdown>
-              </div>
-            )}
-          </div>
-        </div>
+        ))}
 
         {/* Indicators */}
         <Dots
