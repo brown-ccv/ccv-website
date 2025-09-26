@@ -258,5 +258,5 @@ workshops:
       - name: Ellen Duong
         github_user: eldu
     links:
-      - category: slides
+      - display_text: slides
         url: https://docs.google.com/presentation/d/104aGeYJ_W3mgbtPtlVjNsR0FLOOsApGAXvxJOpBa7TE/edit?usp=sharing
