@@ -1,10 +1,12 @@
+"use client"
+
 import React from "react"
 import Image from "next/image"
 import { PortfolioEntry } from "@/lib/portfolio-types"
 import { Badge } from "@/components/ui/Badge"
-import { ButtonLink } from "@/components/button/ButtonLink"
+import { IconButton } from "@/components/button/IconButton"
 import { StyledCard } from "@/components/card/StyledCard"
-import { CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
+import { CardHeader, CardTitle } from "@/components/ui/Card"
 import { TechnicalExpertiseHeader } from "@/components/TechnicalExpertiseHeader"
 
 interface ProjectOverviewCardProps {
@@ -13,16 +15,37 @@ interface ProjectOverviewCardProps {
 }
 
 export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCardProps) {
+
   return (
-    <StyledCard size="custom" className="w-96">
+    <StyledCard
+      size="custom"
+      className="w-96 relative"
+      footer={
+        <div className="relative w-full">
+          <span className="block text-lg pr-10 pb-0">{entry.title}</span>
+          <IconButton
+            iconName="FaExternalLinkAlt"
+            variant="icon_only"
+            size="icon-sm"
+            onClick={() => {
+              window.location.href = `/portfolio/${portfolioType}/${entry.slug}`
+            }}
+            aria-label="Learn more about this project"
+            className="absolute bottom-0 right-0 hover:text-keppel-600"
+          />
+        </div>
+      }
+    >
       <CardHeader className="px-0 pb-0">
         <div className="flex items-center justify-between">
           <TechnicalExpertiseHeader expertiseType={entry['project-type']} />
-          {entry.starred && (
-            <Badge color="sunglow">
-              ⭐ Featured
-            </Badge>
-          )}
+          <div className="flex items-center gap-2">
+            {entry.starred && (
+              <Badge color="sunglow">
+                ⭐ Featured
+              </Badge>
+            )}
+          </div>
         </div>
       </CardHeader>
       {entry.image && (
@@ -35,24 +58,11 @@ export function ProjectOverviewCard({ entry, portfolioType }: ProjectOverviewCar
           />
         </div>
       )}
-      <CardTitle className="flex flex-col items-center justify-center gap-2 border-b border-gray-300 py-4 text-center">
-        {entry.title}
-        {entry.department && (
-          <p className="text-sm font-thinner italic text-center text-slate-500 !m-0">
-            {entry.department}
-          </p> 
-        )}
-      </CardTitle>
-      <CardContent className="flex justify-center">
-        <ButtonLink 
-          href={`/portfolio/${portfolioType}/${entry.slug}`} 
-          variant="primary_filled" 
-          size="md" 
-          external={false}
-        >
-          Learn More
-        </ButtonLink>
-      </CardContent>
+      {entry.department && (
+        <p className="text-sm font-thinner italic text-center text-slate-500">
+          {entry.department}
+        </p> 
+      )}
     </StyledCard>
   )
 } 
