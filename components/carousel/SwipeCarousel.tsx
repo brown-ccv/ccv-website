@@ -12,7 +12,9 @@ import {
 } from "@/components/carousel/Carousel"
 import {
   Dialog,
+  DialogClose,
   DialogContent,
+  DialogFooter,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/Dialog"
@@ -165,47 +167,43 @@ const DialogCard = ({
   organizations,
 }: CarouselItem) => {
   return (
-    <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
-      <Image
-        src={image}
-        alt=""
-        width={200}
-        height={200}
-        className="h-[200px] w-[200px] rounded-xl md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
-      />
-      {/* Attribution if image requires it */}
-      {attribution && (
-        <div className="mt-2 text-right">
-          <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-            {attribution}
-          </Markdown>
-        </div>
-      )}
-      <DialogTitle className="py-4 text-xl">{title}</DialogTitle>
-      {/* Organizations */}
-      {organizations && organizations.length > 0 && (
-        <div
-          className="space-y-3"
-          role="list"
-          aria-label={`${title} organizations`}
-        >
-          {organizations.map((org, index) => (
-            <div key={index} className="not-prose flex gap-2" role="listitem">
-              <Icon
-                iconName={org.icon}
-                className="w-45 mt-1 h-5 flex-shrink-0"
-                aria-hidden="true"
-              />
-              <Organization {...org} />
-            </div>
-          ))}
-        </div>
-      )}
-      <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-        {description}
-      </Markdown>
+    <DialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
+      <div
+        style={{
+          backgroundImage: `url(${image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+        className="aspect-video w-full shrink-0 rounded-xl bg-neutral-900 object-cover"
+      ></div>
+      <DialogTitle className="pt-4 text-xl font-bold">{title}</DialogTitle>
+      {/* Content */}
+      <div className="flex flex-col items-center gap-10 px-8">
+        {/* Organizations */}
+        {organizations && organizations.length > 0 && (
+          <div
+            className="space-y-3"
+            role="list"
+            aria-label={`${title} organizations`}
+          >
+            {organizations.map((org, index) => (
+              <div key={index} className="not-prose flex gap-2" role="listitem">
+                <Icon
+                  iconName={org.icon}
+                  className="w-45 mt-1 h-5 flex-shrink-0"
+                  aria-hidden="true"
+                />
+                <Organization {...org} />
+              </div>
+            ))}
+          </div>
+        )}
+        <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+          {description}
+        </Markdown>
+      </div>
       {buttons && buttons.length > 0 && (
-        <div className="flex flex-wrap gap-4">
+        <div className="flex flex-wrap gap-4 pb-4">
           {buttons.map((button, index) => (
             <ButtonLink
               key={index}
@@ -218,6 +216,16 @@ const DialogCard = ({
             </ButtonLink>
           ))}
         </div>
+      )}
+      {/* Attribution if image requires it */}
+      {attribution && (
+        <DialogFooter className="px-8 pb-2">
+          <div className="mt-2 text-xs">
+            <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              {attribution}
+            </Markdown>
+          </div>
+        </DialogFooter>
       )}
     </DialogContent>
   )
