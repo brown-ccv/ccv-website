@@ -175,6 +175,7 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
                     variant={button.variant}
                     className="whitespace-nowrap"
                     onClick={() => window.open(button.url, "_blank")}
+                    aria-label={`Open ${button.text}`}
                   >
                     {button.text}
                   </Button>

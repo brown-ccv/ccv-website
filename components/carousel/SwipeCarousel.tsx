@@ -119,6 +119,7 @@ const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
                     <DialogTrigger asChild>
                       <Button
                         variant="icon_only"
+                        aria-label="More Details"
                         iconOnly={<RenderIcon iconName="FaEllipsisV" />}
                       />
                     </DialogTrigger>
