@@ -5,82 +5,90 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    @apply font-sans;
-    @apply text-slate-800;
-    --accent: 0, 128, 108;
-    --accent-light: 0, 230, 195;
-    --accent-dark: 49, 10, 101;
-    --accent-gradient: linear-gradient(
-      45deg,
-      rgb(var(--accent)),
-      rgb(var(--accent-light)) 30%,
-      white 60%
-    );
-  }
+    :root {
+        @apply font-sans;
+        @apply text-slate-800;
+        --accent: 0, 128, 108;
+        --accent-light: 0, 230, 195;
+        --accent-dark: 49, 10, 101;
+        --accent-gradient: linear-gradient(
+                45deg,
+                rgb(var(--accent)),
+                rgb(var(--accent-light)) 30%,
+                white 60%
+        );
+    }
 
-  html,
-  body {
-    @apply bg-white;
-  }
+    html,
+    body {
+        @apply bg-white;
+    }
 
-  p > a {
-    @apply text-keppel-800 underline;
-  }
+    p > a {
+        @apply text-keppel-800 underline;
+    }
 
-  p > a:hover {
-    @apply text-keppel-500 underline;
-  }
+    p > a:hover {
+        @apply text-keppel-500 underline;
+    }
 
-  p > a:focus {
-    @apply text-keppel-600 underline outline-2 outline-keppel-400;
-  }
+    p > a:focus {
+        @apply text-keppel-600 underline outline-2 outline-keppel-400;
+    }
 
-  h1 {
-    @apply text-3xl font-semibold leading-tight lg:text-4xl;
-  }
+    h1 {
+        @apply text-3xl font-semibold leading-tight lg:text-4xl;
+    }
 
-  h2 {
-    @apply text-2xl font-semibold leading-tight lg:text-3xl;
-  }
+    h2 {
+        @apply text-2xl font-semibold leading-tight lg:text-3xl;
+    }
 
-  h3 {
-    @apply text-xl font-semibold leading-tight lg:text-2xl;
-  }
+    h3 {
+        @apply text-xl font-semibold leading-tight lg:text-2xl;
+    }
 
-  h4 {
-    @apply text-lg font-semibold leading-tight lg:text-xl;
-  }
+    h4 {
+        @apply text-lg font-semibold leading-tight lg:text-xl;
+    }
 
-  h5 {
-    @apply text-md font-semibold leading-tight lg:text-lg;
-  }
+    h5 {
+        @apply text-md font-semibold leading-tight lg:text-lg;
+    }
 
-  h6 {
-    @apply text-sm font-semibold leading-tight lg:text-md;
-  }
+    h6 {
+        @apply text-sm font-semibold leading-tight lg:text-md;
+    }
 }
 
 @layer components {
-  .prose {
-    @apply prose-sm lg:prose-base;
-  }
+    .px-page {
+        @apply px-12 sm:px-16 lg:px-14 xl:px-20;
+    }
 
-  /* Simple fix for CardTitle - make it h2 sized */
-  .font-bold.leading-none.tracking-tight {
-    @apply text-lg font-semibold leading-tight lg:text-xl;
-  }
+    .px-none {
+        @apply px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0;
+    }
 
-  .prose pre code {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
+    .prose {
+        @apply prose-sm lg:prose-base;
+    }
 
-  .prose img {
-    @apply my-4;
-  }
+    /* Simple fix for CardTitle - make it h2 sized */
+    .font-bold.leading-none.tracking-tight {
+        @apply text-lg font-semibold leading-tight lg:text-xl;
+    }
 
-  .prose ul {
-    @apply marker:text-current;
-  }
+    .prose pre code {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    .prose img {
+        @apply my-4;
+    }
+
+    .prose ul {
+        @apply marker:text-current;
+    }
 }
