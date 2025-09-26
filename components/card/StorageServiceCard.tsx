@@ -24,23 +24,6 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
     return String(feature.value)
   }
 
-  // Helper to render notes
-  const renderNotes = (notes: string[]) => {
-    if (!notes || notes.length === 0) return null
-
-    return (
-      <div className="ml-6 text-sm font-normal italic tracking-tight text-neutral-500">
-        <ul className="list-inside list-disc space-y-0.5">
-          {notes.map((note, index) => (
-            <li key={index} className="break-words">
-              {note}
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
-  }
-
   return (
     <StyledCard
       title={humanize(service.serviceName)}
