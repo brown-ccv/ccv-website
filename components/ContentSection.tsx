@@ -4,10 +4,11 @@ import { SectionHeader } from "@/components/SectionHeader"
 
 interface ContentSectionProps {
   children: ReactNode
-  title: string
+  title?: string
   id?: string
   align?: "left" | "center"
   className?: string
+  header?: boolean
 }
 
 export const ContentSection = ({
@@ -16,6 +17,7 @@ export const ContentSection = ({
   id,
   align = "center",
   className,
+  header = true,
 }: ContentSectionProps) => {
   return (
     <section
@@ -25,7 +27,7 @@ export const ContentSection = ({
         className
       )}
     >
-      {align === "center" && <SectionHeader title={title} align={align} />}
+      {header && title && <SectionHeader title={title} align={align} />}
       {children}
     </section>
   )

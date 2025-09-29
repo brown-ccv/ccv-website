@@ -113,7 +113,6 @@ export const FeaturedCarousel: React.FC<FeaturedCarouselProps> = ({
                   <Badge
                     key={index}
                     color={getColorForTag(cat)}
-                    className="rounded-full text-sm font-semibold"
                   >
                     {cat}
                   </Badge>
