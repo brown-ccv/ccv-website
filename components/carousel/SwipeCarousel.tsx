@@ -168,14 +168,14 @@ const DialogCard = ({
   organizations,
 }: CarouselItem) => {
   return (
-    <DialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
+    <DialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl border-none bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
       <div
         style={{
           backgroundImage: `url(${image})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
-        className="aspect-video w-full shrink-0 rounded-xl bg-neutral-900 object-cover"
+        className="aspect-video w-full shrink-0 bg-neutral-900 object-cover"
       ></div>
       <DialogTitle className="pt-4 text-xl font-bold">{title}</DialogTitle>
       {/* Content */}
