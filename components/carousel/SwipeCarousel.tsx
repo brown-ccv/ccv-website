@@ -25,7 +25,7 @@ import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 import Icon from "@/components/ui/RenderIcon"
-import { cn } from "@/lib/utils"
+import { cn, getColorForTag } from "@/lib/utils"
 
 const DRAG_BUFFER = 50
 
@@ -123,6 +123,7 @@ const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
                         variant="icon_only"
                         aria-label="More Details"
                         iconOnly={<RenderIcon iconName="FaEllipsisV" />}
+                        className="rounded-xl"
                       />
                     </DialogTrigger>
                     <DialogCard {...item} />
@@ -142,7 +143,7 @@ const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
                   {item.categories.map((cat, index) => (
                     <Badge
                       key={index}
-                      color="blue"
+                      color={getColorForTag(cat)}
                       className="rounded-full text-xs font-semibold"
                     >
                       {cat}
