@@ -15,17 +15,6 @@ import { cva, VariantProps } from "class-variance-authority"
 // 3. **Combine with custom styling** - Add custom classes for specific design requirements
 // 4. **Test accessibility** - The system automatically handles text contrast, but verify in your specific use case
 
-// ## Color Mapping Logic
-
-// The automatic color system maps values to colors based on semantic meaning:
-
-// - **High/True/Positive** → Green (keppel)
-// - **Medium/Partial** → Yellow (sunglow/amber)
-// - **Low/False/Negative** → Red (red-university)
-// - **Storage temperatures** → Red (hot), Yellow (warm), Cyan (cold)
-// - **Speed levels** → Green (fastest), Amber (faster), Yellow (fast), Red (slow)
-// - **Storage sizes** → Based on capacity (small → cyan, large → yellow, unlimited → green)
-
 /**
  * Badge component with automatic color determination
  *
@@ -51,7 +40,7 @@ export const BadgeVariants = cva(
         purple: "bg-purple-900 text-white",
         blue: "bg-blue-500 text-white",
         red: "bg-red-university text-white",
-        pink: "bg-pink-500 text-white",
+        gray: "bg-gray-500 text-white",
       },
     },
     defaultVariants: {
