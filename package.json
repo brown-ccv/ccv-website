@@ -7,8 +7,10 @@
     "build": "tsx lib/build-utils.ts && next build",
     "start": "next start",
     "lint": "next lint",
+    "format": "prettier . --write",
     "typecheck": "tsc --noEmit",
-    "copy-images": "tsx lib/build-utils.ts"
+    "copy-images": "tsx lib/build-utils.ts",
+    "prepare": "husky"
   },
   "dependencies": {
     "@google-cloud/secret-manager": "^6.0.1",
@@ -77,6 +79,7 @@
     "eslint-plugin-react": "^7.37.5",
     "fs-extra": "^11.3.0",
     "globals": "^16.2.0",
+    "husky": "^9.1.7",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^3.4.10",
