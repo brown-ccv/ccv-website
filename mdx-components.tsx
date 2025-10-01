@@ -2,11 +2,6 @@ import type { MDXComponents } from "mdx/types"
 import Image from "next/image"
 import { ContentSection } from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
-import {
-  FeaturedCarousel,
-  FeaturedCarouselItem,
-} from "@/components/FeaturedCarousel"
-import { readContentFile } from "@/lib/content-utils"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
 import { PeopleSection } from "@/components/PeopleSection"
@@ -17,28 +12,6 @@ import { LocationSection } from "@/components/LocationSection"
 import { CopyableEmail } from "@/components/CopyableEmail"
 import { LinkList } from "@/components/LinkList"
 import { TwoColumns } from "@/components/TwoColumns"
-
-// Server component that loads carousel data from YAML file
-async function MDXCarouselData({
-  carouselContentPath,
-}: {
-  carouselContentPath: string
-}) {
-  const carouselRaw = await readContentFile<{
-    carousel: FeaturedCarouselItem[]
-  }>(carouselContentPath)
-  const carouselData = carouselRaw.data.carousel
-  return <FeaturedCarousel carouselData={carouselData} />
-}
-
-// Client component wrapper for MDX compatibility
-export const MDXCarousel = ({
-  carouselContentPath,
-}: {
-  carouselContentPath: string
-}) => {
-  return <MDXCarouselData carouselContentPath={carouselContentPath} />
-}
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -63,7 +36,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     CostEstimateCard,
     CardGroup,
     ContentSection,
-    MDXCarousel,
     PeopleSection,
     LocationSection,
     ProjectEstimationSection,
