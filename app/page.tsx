@@ -67,11 +67,6 @@ export default async function Home() {
               />
             </Suspense>
           </ContentSection>
-          <ContentSection title="Test">
-            <CollapsableCard title="Storage" size="sm">
-              <p>Yes chef</p>
-            </CollapsableCard>
-          </ContentSection>
         </div>
       </>
     )
