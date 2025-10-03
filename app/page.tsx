@@ -13,7 +13,6 @@ import { ScrollButton } from "@/components/button/ScrollButton"
 import ButtonLink from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
 import { ContentSection } from "@/components/ContentSection"
-import { CollapsableCard } from "@/components/card/CollapsableCard"
 
 export default async function Home() {
   // Load featured carousel data from YAML
