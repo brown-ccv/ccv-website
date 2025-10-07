@@ -23,7 +23,7 @@ export default async function Oscar() {
           external={true}
           href="https://docs.ccv.brown.edu/oscar"
         >
-          Read the Docs
+          Documentation
         </ButtonLink>
       </Hero>
       <OscarContent />
