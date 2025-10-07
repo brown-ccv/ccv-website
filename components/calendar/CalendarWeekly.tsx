@@ -118,7 +118,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         isBefore(event.date_utc, addDays(startDate, 7))
     )
 
-    const formattedWeekEvents = weekEvents.map((event, i) => {
+    const formattedWeekEvents = weekEvents.map((event: any, i) => {
       thisDate = addDays(startDate, i)
       const lengthOfTime = differenceInHours(event.date2_utc, event.date_utc)
       const dayOfWeek = getDay(addDays(event.date_iso, 1))
@@ -141,7 +141,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
           }}
         >
           <ButtonLink
-            href={event.url}
+            href={event.online_url != null ? event.online_url : event.url}
             external={true}
             className={`${calColor} group absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg p-2 text-xs leading-tight lg:text-base`}
             isCalendarEvent={true}
