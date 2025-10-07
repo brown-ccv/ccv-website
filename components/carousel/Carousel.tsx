@@ -191,6 +191,7 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
             <div className="max-w-1/3 flex w-full flex-col items-end justify-end">
               <Image
                 src={carouselItem.image}
+                priority={index === 0}
                 alt=""
                 width={600}
                 height={400}
