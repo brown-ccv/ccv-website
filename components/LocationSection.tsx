@@ -1,6 +1,7 @@
 import React from "react"
 import { ContentSection } from "@/components/ContentSection"
 import { SectionHeader } from "@/components/SectionHeader"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 interface LocationSectionProps {
   title?: string
@@ -31,6 +32,15 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
             Today, it hosts the Center for Computation and Visualization,
             supporting research at Brown.
           </p>
+          <ButtonLink
+            variant="primary_filled"
+            size="md"
+            href="https://en.wikipedia.org/wiki/Brown_University_Computing_Laboratory"
+            external
+            className="mx-auto my-2 w-auto"
+          >
+            Brown University Computing Laboratory
+          </ButtonLink>
         </div>
         <iframe
           title={"Map of 180 George Street"}
