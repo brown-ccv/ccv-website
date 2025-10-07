@@ -23,7 +23,7 @@ const heroCards = [
 export const HeroCard: React.FC = () => {
   return (
     <StyledCard
-      className="relative z-10 -mt-[170px] mb-16 flex justify-center mx-6 px-2 sm:px-6 lg:mx-12 lg:px-8"
+      className="relative z-10 mx-6 -mt-[170px] mb-16 flex justify-center px-2 sm:px-6 lg:mx-12 lg:px-8"
       size="custom"
     >
       <div className="flex flex-col gap-10 pt-6 lg:flex-row lg:gap-20">
