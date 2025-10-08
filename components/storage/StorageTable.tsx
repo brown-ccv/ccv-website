@@ -27,11 +27,11 @@ import {
 import { Button } from "@/components/button/Button"
 import Icon from "@/components/ui/RenderIcon"
 import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-  HoverCardPortal,
-} from "@/components/ui/HoverCard"
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/Tooltip"
 
 export interface TableProps {
   services: StorageData
@@ -113,30 +113,30 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
   }) => {
     if (feature.notes) {
       return (
-        <HoverCard>
-          <HoverCardTrigger className="group flex gap-2">
-            <div className="flex items-center gap-2">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger className="group flex gap-2">
+              <div className="flex items-center gap-2">
+                <Icon
+                  iconName={iconName}
+                  className={cn("h-4 w-4 flex-shrink-0", colorClass)}
+                />
+                <span className="font-medium uppercase tracking-wider">
+                  {String(feature.value)}
+                </span>
+              </div>
               <Icon
-                iconName={iconName}
-                className={cn("h-4 w-4 flex-shrink-0", colorClass)}
+                iconName="FaInfoCircle"
+                className="h-3 w-3 group-hover:text-keppel-600"
               />
-              <span className="font-medium uppercase tracking-wider">
-                {String(feature.value)}
-              </span>
-            </div>
-            <Icon
-              iconName="FaInfoCircle"
-              className="h-3 w-3 group-hover:text-keppel-600"
-            />
-          </HoverCardTrigger>
-          <HoverCardPortal>
-            <HoverCardContent className="bg-white">
+            </TooltipTrigger>
+            <TooltipContent className="rounded-md border bg-white shadow">
               {feature.notes.map((note, index) => (
                 <p key={index}>{note}</p>
               ))}
-            </HoverCardContent>
-          </HoverCardPortal>
-        </HoverCard>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       )
     }
     return (
