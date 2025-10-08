@@ -68,37 +68,6 @@ const routes: NavSection[] = [
     name: "Services",
     groups: [
       {
-        name: "Research Support & Consulting",
-        routes: [
-          {
-            name: "Project Consulting",
-            href: "/services/project-consulting",
-            description:
-              "We help with: Computational Biology, AI / Machine Learning, Software Engineering, Scientific Visualization, and more",
-            icon: FaComments,
-          },
-          {
-            name: "User Support",
-            href: "/services/user-support",
-            description: "We help with compute infrastructure",
-            icon: FaUserCheck,
-          },
-          {
-            name: "Department Support",
-            href: "/services/department-support",
-            description: "We provide advanced support for specific departments",
-            icon: FaBuilding,
-          },
-          {
-            name: "Classroom Support",
-            href: "/services/classroom",
-            description:
-              "We provide technology and training for teaching with code",
-            icon: FaUserGraduate,
-          },
-        ],
-      },
-      {
         name: "Compute Infrastructure",
         routes: [
           {
@@ -131,6 +100,37 @@ const routes: NavSection[] = [
             href: "/services/virtual-machine-hosting",
             description: "Brown-hosted Windows and Linux servers",
             icon: FaDesktop,
+          },
+        ],
+      },
+      {
+        name: "Research Support & Consulting",
+        routes: [
+          {
+            name: "Project Consulting",
+            href: "/services/project-consulting",
+            description:
+              "We help with: Computational Biology, AI / Machine Learning, Software Engineering, Scientific Visualization, and more",
+            icon: FaComments,
+          },
+          {
+            name: "User Support",
+            href: "/services/user-support",
+            description: "We help with compute infrastructure",
+            icon: FaUserCheck,
+          },
+          {
+            name: "Department Support",
+            href: "/services/department-support",
+            description: "We provide advanced support for specific departments",
+            icon: FaBuilding,
+          },
+          {
+            name: "Classroom Support",
+            href: "/services/classroom",
+            description:
+              "We provide technology and training for teaching with code",
+            icon: FaUserGraduate,
           },
         ],
       },
