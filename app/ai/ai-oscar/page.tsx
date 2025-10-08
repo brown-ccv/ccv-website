@@ -1,5 +1,4 @@
 import { Hero } from "@/components/Hero"
-import { ButtonLink } from "@/components/button/ButtonLink"
 import AIOscarContent from "@/content/ai/ai-oscar.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
@@ -8,16 +7,7 @@ export default function AIOscar() {
 
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description}>
-        {/* <ButtonLink
-          variant="primary_filled"
-          size="lg"
-          href="https://ai.ccv.brown.edu"
-          external={true}
-        >
-          Access CCV AI Tools
-        </ButtonLink> */}
-      </Hero>
+      <Hero title={metadata.title} description={metadata.description} />
       <AIOscarContent />
     </>
   )
