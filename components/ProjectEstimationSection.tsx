@@ -19,7 +19,7 @@ export const ProjectEstimationSection = () => {
             "Develop a Python-based application that integrates pre-trained deep learning models to analyze 3D image data for automated cell segmentation and structured result generation. The project includes implementing a complete processing pipeline, integrating the application as a plugin within Napari, and deploying the final solution on the lab's PC for routine use."
           }
           image={
-            "/images/services/consulting/project-estimation/cell-seg-3d.png"
+            "/images/services/consulting/project-estimation/cell-seg-3d.webp"
           }
           alt={
             "Display of initial brain scan, adjusting hyper parameters, finding binary map of the region of interest, and finally finding labels located in the region of interest"
@@ -75,7 +75,7 @@ export const ProjectEstimationSection = () => {
           goal={
             "SOMA is designed to improve the lives of people living with chronic pain by enabling clinicians to improve treatment options for patients."
           }
-          image={"/images/services/consulting/project-estimation/soma.png"}
+          image={"/images/services/consulting/project-estimation/soma.webp"}
           alt={"Screenshots of the SOMA app"}
         />
       ),

@@ -1,5 +1,5 @@
 import Image from "next/image"
-import CCVBarsImage from "@/assets/CCVBars.png"
+import CCVBarsImage from "@/assets/CCVBars.webp"
 
 export default function CCVBars({ className }: { className?: string }) {
   return (

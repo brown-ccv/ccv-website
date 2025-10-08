@@ -34,7 +34,7 @@ export default async function Home() {
     return (
       <>
         <MainHero
-          image={"/images/hero/ccv-original.png"}
+          image={"/images/hero/ccv-original.webp"}
           title="Center for Computation and Visualization"
           description="Advancing computational research with scientific and computing expertise."
         >
