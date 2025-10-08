@@ -11,14 +11,12 @@ import {
   Organization,
 } from "@/components/carousel/Carousel"
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/Dialog"
-import Image from "next/image"
+  StyledDialog,
+  StyledDialogContent,
+  StyledDialogFooter,
+  StyledDialogTitle,
+  StyledDialogTrigger,
+} from "@/components/StyledDialog"
 import ButtonLink from "@/components/button/ButtonLink"
 import { Button } from "@/components/button/Button"
 import Markdown from "react-markdown"
@@ -117,17 +115,17 @@ const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
                 ></div>
                 <div className="flex items-center justify-between px-3">
                   <h3 className="mt-2 font-bold">{item.title}</h3>
-                  <Dialog>
-                    <DialogTrigger asChild>
+                  <StyledDialog>
+                    <StyledDialogTrigger asChild>
                       <Button
                         variant="icon_only"
                         aria-label="More Details"
                         iconOnly={<RenderIcon iconName="FaEllipsisV" />}
                         className="rounded-xl"
                       />
-                    </DialogTrigger>
-                    <DialogCard {...item} />
-                  </Dialog>
+                    </StyledDialogTrigger>
+                    <StyledDialogCard {...item} />
+                  </StyledDialog>
                 </div>
                 <div className="hidden px-3 md:line-clamp-2">
                   <Markdown
@@ -159,7 +157,7 @@ const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
   )
 }
 
-const DialogCard = ({
+const StyledDialogCard = ({
   title,
   description,
   image,
@@ -168,7 +166,7 @@ const DialogCard = ({
   organizations,
 }: CarouselItem) => {
   return (
-    <DialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl border-none bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
+    <StyledDialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl border-none bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
       <div
         style={{
           backgroundImage: `url(${image})`,
@@ -177,7 +175,9 @@ const DialogCard = ({
         }}
         className="aspect-video w-full shrink-0 bg-neutral-900 object-cover"
       ></div>
-      <DialogTitle className="pt-4 text-xl font-bold">{title}</DialogTitle>
+      <StyledDialogTitle className="pt-4 text-xl font-bold">
+        {title}
+      </StyledDialogTitle>
       {/* Content */}
       <div className="flex flex-col items-center gap-10 px-8">
         {/* Organizations */}
@@ -220,14 +220,14 @@ const DialogCard = ({
       )}
       {/* Attribution if image requires it */}
       {attribution && (
-        <DialogFooter className="px-8 pb-2">
+        <StyledDialogFooter className="px-8 pb-2">
           <div className="mt-2 text-xs">
             <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
               {attribution}
             </Markdown>
           </div>
-        </DialogFooter>
+        </StyledDialogFooter>
       )}
-    </DialogContent>
+    </StyledDialogContent>
   )
 }
