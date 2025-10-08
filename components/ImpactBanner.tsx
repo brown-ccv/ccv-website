@@ -4,7 +4,7 @@ export const ImpactBanner = (): JSX.Element => {
   const impactMetrics = [
     { count: "650+", label: "Publication Contributions" },
     { count: "300+", label: "Yearly Office Hours Attendees" },
-    { count: "1600+", label: "Yearly Oscar Users" },
+    { count: "2000+", label: "Yearly Oscar Users" },
   ]
 
   return (
