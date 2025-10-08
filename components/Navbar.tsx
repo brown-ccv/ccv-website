@@ -102,6 +102,12 @@ const routes: NavSection[] = [
         name: "Compute Infrastructure",
         routes: [
           {
+            name: "Rates",
+            href: "/services/rates",
+            description: "Learn about the cost of our compute infrastructure",
+            icon: FaDollarSign,
+          },
+          {
             name: "Oscar",
             href: "/services/oscar",
             description: "Brown's high-performance computing cluster",
@@ -111,7 +117,7 @@ const routes: NavSection[] = [
             name: "Stronghold",
             href: "/services/stronghold",
             description:
-              "Brown's highly secure computing & storage environment",
+              "Brown's highly secure computing & storage enclave",
             icon: FaWindowRestore,
           },
           {
@@ -125,19 +131,6 @@ const routes: NavSection[] = [
             href: "/services/virtual-machine-hosting",
             description: "Brown-hosted Windows and Linux servers",
             icon: FaDesktop,
-          },
-          {
-            name: "AI Tools",
-            href: "/services/ai-tools",
-            description:
-              "Access to large language models and AI tools through CCV's computing infrastructure",
-            icon: FaRobot,
-          },
-          {
-            name: "Rates",
-            href: "/services/rates",
-            description: "Learn about the cost of our services",
-            icon: FaDollarSign,
           },
         ],
       },
@@ -176,6 +169,28 @@ const routes: NavSection[] = [
         ],
       },
     ],
+  },
+  {
+    name: "AI",
+    groups: [
+      {
+        name: "",
+        routes: [
+          {
+            name: "AI Tools",
+            href: "/ai/ai-tools",
+            description: "",
+            icon: FaRobot,
+          },
+          {
+            name: "AI on Oscar",
+            href: "/ai/ai-oscar",
+            description: "",
+            icon: FaCloud,
+          },
+        ],
+      },
+    ]
   },
   {
     name: "About",
@@ -272,16 +287,6 @@ export const Navbar: React.FC = () => {
           </NavigationMenu.List>
 
           <NavigationMenu.List className="flex h-full items-center">
-            <NavigationMenu.Item>
-              <ButtonLink
-                external={false}
-                href="/about/contact"
-                className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
-              >
-                <FaQuestionCircle className="stroke-[2.5] text-xl" />
-                Help
-              </ButtonLink>
-            </NavigationMenu.Item>
 
             {/* Documentation */}
             <NavigationMenu.Item>
@@ -292,6 +297,18 @@ export const Navbar: React.FC = () => {
               >
                 <FaFileLines className="stroke-[2.5] text-xl" />
                 Docs
+              </ButtonLink>
+            </NavigationMenu.Item>
+            
+            {/* Help */}
+            <NavigationMenu.Item>
+              <ButtonLink
+                external={false}
+                href="/about/contact"
+                className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
+              >
+                <FaQuestionCircle className="stroke-[2.5] text-xl" />
+                Help
               </ButtonLink>
             </NavigationMenu.Item>
 
@@ -380,13 +397,6 @@ export const Navbar: React.FC = () => {
               </React.Fragment>
             ))}
             <div className="flex flex-col">
-              <Link
-                href="/about/contact"
-                onClick={toggleMobileMenu}
-                className="px-6 py-7 text-xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
-              >
-                Help
-              </Link>
               <a
                 href="https://docs.ccv.brown.edu/documentation"
                 onClick={toggleMobileMenu}
@@ -394,6 +404,13 @@ export const Navbar: React.FC = () => {
               >
                 Docs
               </a>
+              <Link
+                href="/about/contact"
+                onClick={toggleMobileMenu}
+                className="px-6 py-7 text-xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
+              >
+                Help
+              </Link>
             </div>
           </div>
         )}
