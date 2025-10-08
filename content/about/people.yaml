@@ -15,7 +15,7 @@ people:
       computing and providing user friendly solutions for analysis and visualization
       of large data sets. Otherwise he keeps busy with two boys, two pups and life near
       the beach.
-    image: ashok_main.jpg
+    image: ashok_main.webp
   - display_name: Isabel Restrepo
     last_name: Restrepo
     type: Full Time
@@ -29,7 +29,7 @@ people:
       Engineering with a focus in Computer Vision. She enjoys machine learning, reproducible
       science, reverse engineering, playing squash, the sea, and dancing with her wild
       children.
-    image: isabel_main.jpg
+    image: isabel_main.webp
   - display_name: Linnea Wolfe
     last_name: Wolfe
     type: Full Time
@@ -37,7 +37,7 @@ people:
     subteam: Infrastructure and Research Computing
     title: Assistant Chief Information Officer
     brown_directory_uuid: 3ddfe2bd-672a-0f09-03bc-cbb37339a434
-    image: linnea_main.jpg
+    image: linnea_main.webp
   - display_name: Paul Stey
     last_name: Stey
     type: Full Time
@@ -50,14 +50,14 @@ people:
       Paul is a data scientist interested in using data and machine learning to solve
       challenging problems. Before coming to Brown he was a statistician at the EPA.
       He has a PhD in Developmental Psychology.
-    image: stey_main.jpg
+    image: stey_main.webp
   - display_name: Sam Fulcomer
     last_name: Fulcomer
     type: Full Time
     team: Leadership
     title: HPC IT Architect
     brown_directory_uuid: 0d83d4b5-85a5-62fc-44a3-81eaff49e183
-    image: fulcomer_main.jpg
+    image: fulcomer_main.webp
   - display_name: Thomas Serre
     last_name: Serre
     type: Full Time
@@ -69,7 +69,7 @@ people:
       Sciences at Brown University. Dr. Serre is a computational neuroscientist by training.
       He received a Ph.D. in Neuroscience from MIT in 2006 and an MSc in EECS from Télécom
       Bretagne (France) in 2000.
-    image: thomas_main.jpg
+    image: thomas_main.webp
   - display_name: David D Johnson
     last_name: Johnson
     type: Full Time
@@ -77,7 +77,7 @@ people:
     subteam: High-Performance Computing Systems
     title: Senior HPC Systems Engineer
     brown_directory_uuid: c14eb6ba-4b51-aabd-bf11-ef4071826060
-    image: dave_main.jpg
+    image: dave_main.webp
   - display_name: Geoffrey Avila
     last_name: Avila
     type: Full Time
@@ -85,7 +85,7 @@ people:
     subteam: High-Performance Computing Systems
     title: Senior HPC Systems Engineer
     brown_directory_uuid: f904bb23-202f-48fb-bf93-7b7d326c7043
-    image: avila_main.jpg
+    image: avila_main.webp
   - display_name: Nathan Wood
     last_name: Wood
     type: Full Time
@@ -94,7 +94,7 @@ people:
     title: Senior Research Systems Administrator
     github_username: n8wood-brown
     brown_directory_uuid: 857b928c-2ce1-fb2a-cde7-1a4ff21fa2d3
-    image: nate_main.jpg
+    image: nate_main.webp
   - display_name: Timothy Poli
     last_name: Poli
     type: Full Time
@@ -124,7 +124,7 @@ people:
     title: Manager - Research Systems
     github_username: paulobaptista
     brown_directory_uuid: 6e74d82d-bce5-0512-4ba0-f91ff313675a
-    image: paulo_main.jpg
+    image: paulo_main.webp
   - display_name: Yang Liu
     last_name: Liu
     type: Full Time
@@ -133,7 +133,7 @@ people:
     title: Assistant Director Research Computing Services
     github_username: yangliu2009
     brown_directory_uuid: e0e55df3-9f2c-4a12-a1de-742955164e1e
-    image: yang_main.jpg
+    image: yang_main.webp
   - display_name: Prasad Bandarkar
     last_name: Bandarkar
     type: Full Time
@@ -142,7 +142,7 @@ people:
     title: Senior Research Computing Consultant
     github_username: prasadbandarkar
     brown_directory_uuid: 11533980-c5cd-4969-81ca-537543da9b72
-    image: prasad_main.jpg
+    image: prasad_main.webp
   - display_name: August Guang
     last_name: Guang
     type: Full Time
@@ -157,7 +157,7 @@ people:
       state. Both their research practices and organizing work are guided by the belief
       that crisis and uncertainty are a gift and that we must be involved in shaping
       how change happens.
-    image: august_main.jpg
+    image: august_main.webp
   - display_name: Paul Cao
     last_name: Cao
     type: Full Time
@@ -179,7 +179,7 @@ people:
       Jordan is a Research Software Engineer in the Computational Biology Core at CCV.
       He did his Ph.D. in Applied Statistics at Boston College, with an emphasis on causal inference. He
       loves learning about natural and formal languages, superhero movies, boxing, and basketball.
-    image: jordan_main.jpg
+    image: jordan_main.webp
   - display_name: Joselynn Wallace
     last_name: Wallace
     type: Full Time
@@ -192,7 +192,7 @@ people:
       Joselynn is a genomics data scientist. Before coming to Brown, she got her
       PhD from the University of Rhode Island. Her background is primarily in studying
       microbes.
-    image: joselynn_main.jpg
+    image: joselynn_main.webp
   - display_name: Ashley S. Lee
     last_name: Lee
     type: Full Time
@@ -205,7 +205,7 @@ people:
       University of Virginia Data Science Institute. Her range of experience is in
       machine learning, statistical analysis, data visualization, and web development projects in React.
       Her personal interests include muay thai, running, reading, thrifting, and dogs.
-    image: ashley_main.jpg
+    image: ashley_main.webp
   - display_name: Bradford N. Roarr
     last_name: Roarr
     type: Full Time
@@ -219,7 +219,7 @@ people:
       firmware engineering, devops, full-stack programming, and more. His professional
       interests include systems programming, infrastructure-as-code, and automation.
       Before Brown, Bradford worked for various startups in the Silicon Valley.
-    image: bradford_main.jpg
+    image: bradford_main.webp
   - display_name: Camilo Diaz
     last_name: Diaz
     type: Full Time
@@ -232,7 +232,7 @@ people:
       Camilo is a software engineer who specializes in realtime simulation engines, 3D modeling and rendering, animations and VR technologies.
       He loves learning programing languages and enjoys developing applications in multiple frameworks. Outside of work, he passes his time developing his own video games,
       playing soccer and volunteering for multiple events across Rhode Island.
-    image: camilo_main.jpg
+    image: camilo_main.webp
   - display_name: Ellen Duong
     last_name: Duong
     type: Full Time
@@ -241,7 +241,7 @@ people:
     title: Lead Research Software Engineer
     github_username: eldu
     brown_directory_uuid: 1dee85fb-a5e4-474d-9f5e-ebef7d9d5ab7
-    image: ellen_main.jpg
+    image: ellen_main.webp
   - display_name: Paul Xu
     last_name: Xu
     type: Full Time
@@ -251,7 +251,7 @@ people:
     github_username: digicosmos86
     brown_directory_uuid: 58724daa-f619-4f86-88f0-30635dc5178b
     bio: Paul's diverse interests as a Lead Data Scientist include building generative AI applications in computer vision and natural language processing, engineering data science software, and maintaining cloud compute infrastructure for data science. Paul received his Sc.M. in Computer Science with focus on AI/ML from Brown University and Ph.D. in Curriculum and Instruction with focus on CS Education from Boston College. In his own time, Paul likes to geek out on computer and natural languages. He is also an avid photographer with his work published in an international magazine.
-    image: px_main.jpg
+    image: px_main.webp
   - display_name: Robert Gemma, Jr.
     last_name: Gemma
     type: Full Time
@@ -265,7 +265,7 @@ people:
       in the intersection of XR technologies with science, data, art, and visualization. Robert
       received his undergraduate degree in Computer Science from the University of Rhode Island
       where he also minored in music.
-    image: robert_main.jpg
+    image: robert_main.webp
   - display_name: Paul Hall
     last_name: Hall
     type: Full Time
@@ -277,7 +277,7 @@ people:
     bio:
       Paul has a background in computational fluid dynamics and geophysics. He received
       his Ph.D. in Oceanography from the URI.
-    image: hall_main.jpg
+    image: hall_main.webp
   - display_name: Timothy Divoll
     last_name: Divoll
     type: Full Time
@@ -291,7 +291,7 @@ people:
       bioinformatics for metabarcoding, and statistics for ecological inference. He studied the foraging
       ecology of bats at Indiana State University for his PhD. Overall, he enjoys reproducible science
       and making pipelines accessible.
-    image: tim_main.jpg
+    image: tim_main.webp
   - display_name: John Gerrard Holland
     last_name: Holland
     type: Full Time
@@ -304,7 +304,7 @@ people:
       Earth observation and sustainability. Prior to starting at the CCV, John studied physics,
       received his doctorate for research in astronomy,
       and worked for a boutique management and IT consultancy in Germany.
-    image: john_main.jpg
+    image: john_main.webp
   - display_name: Carlos Paniagua
     last_name: Paniagua
     type: Full Time
@@ -314,7 +314,7 @@ people:
     github_username: cpaniaguam
     brown_directory_uuid: 504c3db1-c3ec-4b15-9350-704e8bbe3036
     bio: Carlos is a data scientist at the CCV. Previously a Mathematics tenure-track faculty member at universities in the US and the Dominican Republic, Carlos likes using his skills working with data for wider social impact.
-    image: carlos_main.jpg
+    image: carlos_main.webp
   - display_name: George Dang
     last_name: Dang
     type: Full Time
@@ -326,7 +326,7 @@ people:
     bio:
       George is a data scientist with a background in biology and environmental science.
       Prior to joining CCV, worked in environmental consulting specializing in water quality and geospatial analytics.
-    image: dang_main.jpg
+    image: dang_main.webp
   - display_name: Ford McDonald
     last_name: McDonald
     type: Full Time
@@ -336,7 +336,7 @@ people:
     github_username: fordmcdonald
     brown_directory_uuid: c694e24f-287d-4816-9f96-2753568d085c
     bio: Ford is a software engineer here at CCV, with a background in simulation-based prototyping and user interface development. His favorite weekend ventures include hiking a new trail in the White Mountains, or heading down to Narragansett Beach for a surf.
-    image: ford_main.jpg
+    image: ford_main.webp
   - display_name: Eric Salomaki
     last_name: Salomaki
     type: Full Time
@@ -346,7 +346,7 @@ people:
     github_username: EricSalomaki
     brown_directory_uuid: 0b047bf7-47f2-4873-8eef-87d4d69aba98
     bio: Eric is a genomics data scientist at the CCV. Before coming to Brown, he was a postdoc investigating genome evolution, organellar metabolism, and biodiversity of protists at the Czech Academy of Sciences. He earned his PhD from the University of Rhode Island studying the evolution of parasitism in red algae.
-    image: eric_main.jpg
+    image: eric_main.webp
   - display_name: Heather Yu
     last_name: Yu
     type: Full Time
@@ -356,7 +356,7 @@ people:
     github_username: hetd54
     brown_directory_uuid: 347df47c-4a2d-4c43-b6f9-3e88c8a5c146
     bio: Heather is a research software engineer with a background in research applications and database creation. Prior to joining CCV, she was a Research Manager at Brown in the Department of Cognitive, Linguistic, and Psychological Sciences (CLPS).
-    image: heather_main.jpg
+    image: heather_main.webp
   - display_name: Anna Murphy
     last_name: Murphy
     type: Full Time
@@ -366,7 +366,7 @@ people:
     github_username: anna-murphy
     brown_directory_uuid: 0b37438d-b5c2-41d6-9d87-14c446698a07
     bio: Anna is a software engineer and researcher with the CCV with a background in full-stack web development. She loves thinking about technology and media, and the different impacts they both have on the world.
-    image: anna_main.jpg
+    image: anna_main.webp
   - display_name: Rain Fan
     last_name: Fan
     type: Full Time
@@ -375,7 +375,7 @@ people:
     title: Research Computing Consultant
     github_username: rainxfan
     brown_directory_uuid: D5bc11b8-b031-4402-8f40-d08ccee18b60
-    image: rain_main.jpg
+    image: rain_main.webp
   - display_name: Prithvi Thakur
     last_name: Thakur
     type: Full Time
@@ -385,7 +385,7 @@ people:
     github_username: thehalfspace
     brown_directory_uuid: cb6e1744-8240-430c-89b5-0bd1cf78d0a3
     bio: Prithvi is a research software engineer in the High Performance Computing division at CCV. He did his PhD in computational seismology from UMich, and later spent a year modeling extreme events and natural catastrophes at Karen Clark and Company. His professional interests include high performance computing, statistical modeling, software development, and earthquake source processes. Outside of work, you can find him hiking in the woods or playing music.
-    image: prithvi_main.jpg
+    image: prithvi_main.webp
   - display_name: Sam Bessey
     last_name: Bessey
     type: Full Time
@@ -398,4 +398,4 @@ people:
       for epidemiology. Before coming to CCV, Sam worked at Brown's People, Place,
       and Health Collective in the school of public health, where they developed
       software to study the spread of HIV through sexual and needle-sharing networks.
-    image: sam_main.jpeg
+    image: sam_main.webp

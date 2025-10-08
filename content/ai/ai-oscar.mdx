@@ -1,0 +1,26 @@
+---
+title: AI on Oscar
+description: |
+  Access to large language models and AI tools through Brown's high-performance computing cluster.
+---
+
+<ContentSection title="Ollama">
+
+Ollama is the easiest way to run large language models directly on Brown’s Oscar high‑performance computing cluster.
+Available as a preinstalled module, Ollama uses a simple client–server approach: you start a server on your allocated
+GPU node, then connect a second terminal as the client to chat with models or launch jobs.
+
+We at CCV host dozens of public, open‑weight models in a shared repository—such as Llama 4, DeepSeek‑r1, gpt‑oss, Mistral, and
+Gemma3—so you don’t have to download anything; you simply point the OLLAMA_MODELS environment variable to CCV’s shared
+path and run. We are also open to adding more models, so you can always contact us to request one!
+
+<ButtonGroup>
+  <Button href="https://docs.ccv.brown.edu/oscar/large-language-models/ollama">
+    Ollama Documentation
+  </Button>
+  <Button variant="primary_outlined" external={false} href="/services/oscar">
+    About Oscar
+  </Button>
+</ButtonGroup>
+
+</ContentSection>
