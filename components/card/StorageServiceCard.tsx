@@ -29,7 +29,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
       title={humanize(service.serviceName)}
       isDisabled={isDisabled}
       size="sm"
-      className="w-full min-w-96"
+      className="min-w-80 md:min-w-96"
     >
       <ul className="space-y-3 p-2">
         {Object.entries(service).map(([key, value]) => {
