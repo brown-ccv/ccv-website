@@ -3,7 +3,7 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/Accordion"
+} from "@/components/StyledAccordion"
 import React from "react"
 import { StyledCardProps } from "@/components/card/StyledCard"
 import { cn } from "@/lib/utils"
@@ -42,7 +42,7 @@ export const CollapsableCard: React.FC<StyledCardProps> = ({
         <AccordionItem className="border-none" value="item-1">
           {title && (
             <CardHeader className="flex-shrink-0">
-              <CardTitle className="flex items-center justify-center gap-4 border-b border-gray-300 text-center">
+              <CardTitle>
                 {IconComponent && (
                   <IconComponent
                     iconName={iconName}
