@@ -43,17 +43,6 @@ export default function StorageTool({
     setSelectedAnswers(initialSelectedAnswers)
   }, [initialSelectedAnswers])
 
-  const hasModifiedAnswers = useMemo(() => {
-    return (
-      Object.keys(selectedAnswers).some(
-        (key) => selectedAnswers[key] !== initialSelectedAnswers[key]
-      ) ||
-      Object.keys(initialSelectedAnswers).some(
-        (key) => selectedAnswers[key] !== initialSelectedAnswers[key]
-      )
-    )
-  }, [selectedAnswers, initialSelectedAnswers])
-
   return (
     <>
       <ContentSection id="form" title="Storage Selection Tool">
@@ -87,7 +76,6 @@ export default function StorageTool({
             questions={questions}
           >
             <Button
-              disabled={!hasModifiedAnswers}
               onClick={handleReset}
               variant="primary_outlined"
               size="sm"
