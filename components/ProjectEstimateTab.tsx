@@ -7,7 +7,6 @@ interface ProjectEstimateTabProps {
   title: string
   description: string
   group: string
-  time: string
   link?: string
   goal: string
   image?: string
@@ -18,7 +17,6 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
   title,
   description,
   group,
-  time,
   link,
   goal,
   image,
@@ -34,11 +32,6 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
           <div className="flex items-center gap-2">
             <Icon iconName="FaUser" className="h-6 w-6" />
             <span className="font-semibold">{group}</span>
-          </div>
-          {/* Time to Complete */}
-          <div className="mt-2 flex items-center gap-2">
-            <Icon iconName="FaClock" className="h-6 w-6 text-keppel-700" />
-            <span className="font-semibold">{time}</span>
           </div>
           <p>{description}</p>
           {link && (
