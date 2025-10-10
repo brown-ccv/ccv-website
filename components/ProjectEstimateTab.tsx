@@ -2,12 +2,15 @@ import React from "react"
 import Image from "next/image"
 import Icon from "@/components/ui/RenderIcon"
 import ButtonLink from "@/components/button/ButtonLink"
+import remarkGfm from "remark-gfm"
+import rehypeRaw from "rehype-raw"
+import Markdown from "react-markdown"
 
 interface ProjectEstimateTabProps {
   title: string
   description: string
   group: string
-  time: string
+  fte: string
   link?: string
   goal: string
   image?: string
@@ -18,46 +21,40 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
   title,
   description,
   group,
-  time,
+  fte,
   link,
   goal,
   image,
   alt,
 }) => {
   return (
-    <div className="prose prose-sm flex flex-col lg:prose-base">
-      <div className="flex flex-col items-center justify-between gap-4 lg:flex-row">
-        {/*Project Section*/}
-        <div>
-          <h3>{title}</h3>
-          {/* Group Name */}
-          <div className="flex items-center gap-2">
-            <Icon iconName="FaUser" className="h-6 w-6" />
-            <span className="font-semibold">{group}</span>
-          </div>
-          {/* Time to Complete */}
-          <div className="mt-2 flex items-center gap-2">
-            <Icon iconName="FaClock" className="h-6 w-6 text-keppel-700" />
-            <span className="font-semibold">{time}</span>
-          </div>
-          <p>{description}</p>
-          {link && (
-            <ButtonLink href={link} external={true} title={title} size="md" />
-          )}
-        </div>
-        {/*Image*/}
-        {image && image.trim() !== "" && (
-          <div className="relative flex w-full justify-end">
-            <Image
-              height={600}
-              width={600}
-              src={image}
-              alt={alt}
-              className="object-center"
-            />
-          </div>
-        )}
+    <div className="prose prose-sm flex flex-col lg:prose-base md:inline">
+      {/*Image*/}
+      {image && image.trim() !== "" && (
+        <Image
+          height={400}
+          width={400}
+          src={image}
+          alt={alt}
+          className="float-right"
+        />
+      )}
+      <h3>{title}</h3>
+      {/* Group Name */}
+      <div className="flex items-center gap-2">
+        <span className="font-semibold italic">{group}</span>
       </div>
+      {/* FTE Percentage info */}
+      <div className="mt-2 flex items-center gap-2">
+        <Icon iconName="FaUser" className="h-6 w-6" />
+        <span className="font-semibold">{fte} FTE</span>
+      </div>
+
+      <p>{description}</p>
+      {link && (
+        <ButtonLink href={link} external={true} title={title} size="md" />
+      )}
+      <h4>CCV's Role</h4>
       <p>{goal}</p>
     </div>
   )
