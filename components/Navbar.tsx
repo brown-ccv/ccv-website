@@ -85,8 +85,7 @@ const routes: NavSection[] = [
           {
             name: "Stronghold",
             href: "/services/stronghold",
-            description:
-              "Brown's highly secure computing & storage enclave",
+            description: "Brown's highly secure computing & storage enclave",
             icon: FaWindowRestore,
           },
           {
@@ -190,7 +189,7 @@ const routes: NavSection[] = [
           },
         ],
       },
-    ]
+    ],
   },
   {
     name: "About",
@@ -287,7 +286,6 @@ export const Navbar: React.FC = () => {
           </NavigationMenu.List>
 
           <NavigationMenu.List className="flex h-full items-center">
-
             {/* Documentation */}
             <NavigationMenu.Item>
               <ButtonLink
@@ -299,7 +297,7 @@ export const Navbar: React.FC = () => {
                 Docs
               </ButtonLink>
             </NavigationMenu.Item>
-            
+
             {/* Help */}
             <NavigationMenu.Item>
               <ButtonLink
