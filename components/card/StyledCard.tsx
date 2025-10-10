@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 import { CardVariants } from "@/components/card/variants"
 import { VariantProps } from "class-variance-authority"
 
-interface StyledCardProps extends VariantProps<typeof CardVariants> {
+export interface StyledCardProps extends VariantProps<typeof CardVariants> {
   iconName?: string
   isDisabled?: boolean
   title?: string
