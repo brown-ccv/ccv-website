@@ -103,7 +103,8 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       (event) => event.date_time !== undefined
     )
 
-    const formattedCalEvents = validDayEvents.map((event: DataProps) => {
+    const formattedCalEvents = validDayEvents.map((event: DataProps & { online_url?: string | null }) => {
+      const eventUrl = event.online_url != null ? event.online_url : event.url
       return (
         <li key={self.crypto.randomUUID()}>
           <Popover>
@@ -120,7 +121,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
             <PopoverContent className="bg-neutral-50">
               <p className="pb-2 font-semibold">{event.date}</p>
               <ButtonLink
-                href={event.url}
+                href={eventUrl}
                 external={true}
                 className="flex gap-1 text-blue-500"
                 isCalendarEvent={true}
@@ -148,7 +149,8 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       )
     })
 
-    const formattedContainerEvents = dayEvents.map((event, i) => {
+    const formattedContainerEvents = dayEvents.map((event: DataProps & { online_url?: string | null }, i) => {
+      const eventUrl = event.online_url != null ? event.online_url : event.url
       return (
         <li
           key={self.crypto.randomUUID()}
@@ -156,7 +158,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
         >
           <div className="flex-auto">
             <ButtonLink
-              href={event.url}
+              href={eventUrl}
               external={true}
               className="flex gap-1 text-blue-500"
               isCalendarEvent={true}
@@ -320,6 +322,8 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       </div>
     )
   }
+
+  console.log(events)
 
   return (
     <div className="not-prose lg:flex lg:h-full lg:flex-col">
