@@ -11,7 +11,7 @@ export const ProjectEstimationSection = () => {
         <ProjectEstimateTab
           title={"Unsupervised Cell Segmentation in 3D Data"}
           description={
-            "A 3D visualization pipeline and application that researchers us to identify, label, and count cells in mouse brain scans."
+            "A 3D visualization pipeline and application that researchers use to identify, label, and count cells in mouse brain scans."
           }
           group={"Brown Department of Neuroscience"}
           goal={
