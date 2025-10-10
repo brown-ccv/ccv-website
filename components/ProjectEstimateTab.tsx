@@ -2,9 +2,6 @@ import React from "react"
 import Image from "next/image"
 import Icon from "@/components/ui/RenderIcon"
 import ButtonLink from "@/components/button/ButtonLink"
-import remarkGfm from "remark-gfm"
-import rehypeRaw from "rehype-raw"
-import Markdown from "react-markdown"
 
 interface ProjectEstimateTabProps {
   title: string
