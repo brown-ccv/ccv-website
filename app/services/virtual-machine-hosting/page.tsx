@@ -10,16 +10,7 @@ export default function VirtualMachineHosting() {
 
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description}>
-        <ButtonLink
-          variant="primary_filled"
-          external={true}
-          size="lg"
-          href="https://brown.atlassian.net/servicedesk/customer/portal/12/create/200"
-        >
-          Request Virtual Hosting
-        </ButtonLink>
-      </Hero>
+      <Hero title={metadata.title} description={metadata.description} />
       <VirtualMachineContent />
     </>
   )
