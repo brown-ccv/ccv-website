@@ -14,7 +14,6 @@ export const ProjectEstimationSection = () => {
             "A 3D visualization pipeline and application that researchers us to identify, label, and count cells in mouse brain scans."
           }
           group={"Brown Department of Neuroscience"}
-          time={"2 months"}
           goal={
             "Develop a Python-based application that integrates pre-trained deep learning models to analyze 3D image data for automated cell segmentation and structured result generation. The project includes implementing a complete processing pipeline, integrating the application as a plugin within Napari, and deploying the final solution on the lab's PC for routine use."
           }
@@ -36,7 +35,6 @@ export const ProjectEstimationSection = () => {
         //   title={""}
         //   description={""}
         //   group={""}
-        //   time={""}
         //   goal={""}
         //   image={""}
         //   alt={""}
@@ -55,7 +53,6 @@ export const ProjectEstimationSection = () => {
         //   }
         //   image={""}
         //   group={""}
-        //   time={""}
         //   goal={""}
         //   alt={""}
         // />
@@ -71,7 +68,6 @@ export const ProjectEstimationSection = () => {
             "A web and mobile app that combines symptom tracking with neuroscientific assessments and tailored interventions. SOMA is designed to directly support individuals on their journeys to overcome pain. SOMA is designed to directly support individuals on their journeys to overcome pain."
           }
           group={"Performance and Energy Aware Computing Lab"}
-          time={"2+ years"}
           goal={
             "SOMA is designed to improve the lives of people living with chronic pain by enabling clinicians to improve treatment options for patients."
           }
