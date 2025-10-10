@@ -14,9 +14,8 @@ export const ProjectEstimationSection = () => {
             "A 3D visualization pipeline and application that researchers us to identify, label, and count cells in mouse brain scans."
           }
           group={"Brown Department of Neuroscience"}
-          time={"2 months"}
           goal={
-            "Develop a Python-based application that integrates pre-trained deep learning models to analyze 3D image data for automated cell segmentation and structured result generation. The project includes implementing a complete processing pipeline, integrating the application as a plugin within Napari, and deploying the final solution on the lab's PC for routine use."
+            "CCV was responsible for developing a Python-based application that integrated pre-trained deep learning models to analyze 3D image data for automated cell segmentation and structured result generation. The project included implementing a complete processing pipeline, integrating the application as a plugin within Napari, and deploying the final solution on the lab's PC for routine use."
           }
           image={
             "/images/services/consulting/project-estimation/cell-seg-3d.webp"
@@ -24,6 +23,7 @@ export const ProjectEstimationSection = () => {
           alt={
             "Display of initial brain scan, adjusting hyper parameters, finding binary map of the region of interest, and finally finding labels located in the region of interest"
           }
+          fte={"60%"}
         />
       ),
     },
@@ -33,10 +33,10 @@ export const ProjectEstimationSection = () => {
       content: (
         <h3 className="text-center">*Coming Soon*</h3>
         // <ProjectEstimateTab
-        //   title={""}
+        //   title={"Covid19 Visualization"}
         //   description={""}
         //   group={""}
-        //   time={""}
+        //   fte={""}
         //   goal={""}
         //   image={""}
         //   alt={""}
@@ -47,18 +47,19 @@ export const ProjectEstimationSection = () => {
       value: "md",
       label: "Medium",
       content: (
-        <h3 className="text-center">*Coming Soon*</h3>
-        // <ProjectEstimateTab
-        //   title={""}
-        //   description={
-        //     ""
-        //   }
-        //   image={""}
-        //   group={""}
-        //   time={""}
-        //   goal={""}
-        //   alt={""}
-        // />
+        <ProjectEstimateTab
+          title={"MAPPS App"}
+          description={
+            "A mobile application used to track participants  in an indoor environment to simulate the transfer of a pathogen."
+          }
+          image={"/images/home/featured-carousel/mapps.webp"}
+          group={"Pandemic Center, School of Public Health"}
+          fte={"80%"}
+          goal={
+            "CCV was responsible for developing a cross-platform mobile application, which included designing and implementing native code to facilitate interaction with Bluetooth devices. Additionally, CCV managed the submission process for the app to both the iOS and Android app stores."
+          }
+          alt={"Mobile app phone mockups of the MAPPS app"}
+        />
       ),
     },
     {
@@ -66,17 +67,17 @@ export const ProjectEstimationSection = () => {
       label: "Large",
       content: (
         <ProjectEstimateTab
-          title={"Soma Pain and Recovery"}
+          title={"Ice Floe Tracker"}
           description={
-            "A web and mobile app that combines symptom tracking with neuroscientific assessments and tailored interventions. SOMA is designed to directly support individuals on their journeys to overcome pain. SOMA is designed to directly support individuals on their journeys to overcome pain."
+            "An open-source Julia package for tracking Arctic Ocean ice floes using data from the Aqua and Terra Earth-observation satellites."
           }
-          group={"Performance and Energy Aware Computing Lab"}
-          time={"2+ years"}
+          group={"School of Engineering"}
           goal={
-            "SOMA is designed to improve the lives of people living with chronic pain by enabling clinicians to improve treatment options for patients."
+            "CCV was responsible for translating code from MATLAB to Julia, reimplementing functionality that was available in MATLAB but not in Julia. The team added versatile interfaces, including functions for interactive analyses, and introduced new variants of processing steps, such as an alternative image segmentation algorithm."
           }
-          image={"/images/services/consulting/project-estimation/soma.webp"}
-          alt={"Screenshots of the SOMA app"}
+          image={"/images/home/featured-carousel/icefloe.webp"}
+          alt={"Wilhelm Lab Home Page"}
+          fte={"80%"}
         />
       ),
     },
