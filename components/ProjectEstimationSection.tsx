@@ -23,7 +23,6 @@ export const ProjectEstimationSection = () => {
           alt={
             "Display of initial brain scan, adjusting hyper parameters, finding binary map of the region of interest, and finally finding labels located in the region of interest"
           }
-          fte={"60%"}
         />
       ),
     },
@@ -36,7 +35,6 @@ export const ProjectEstimationSection = () => {
         //   title={"Covid19 Visualization"}
         //   description={""}
         //   group={""}
-        //   fte={""}
         //   goal={""}
         //   image={""}
         //   alt={""}
@@ -54,7 +52,6 @@ export const ProjectEstimationSection = () => {
           }
           image={"/images/home/featured-carousel/mapps.webp"}
           group={"Pandemic Center, School of Public Health"}
-          fte={"80%"}
           goal={
             "CCV was responsible for developing a cross-platform mobile application, which included designing and implementing native code to facilitate interaction with Bluetooth devices. Additionally, CCV managed the submission process for the app to both the iOS and Android app stores."
           }
@@ -77,7 +74,6 @@ export const ProjectEstimationSection = () => {
           }
           image={"/images/home/featured-carousel/icefloe.webp"}
           alt={"Wilhelm Lab Home Page"}
-          fte={"80%"}
         />
       ),
     },
