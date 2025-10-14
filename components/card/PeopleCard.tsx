@@ -5,11 +5,11 @@ import Image from "next/image"
 import { CardDescription, CardTitle } from "@/components/ui/Card"
 import { StyledCard } from "@/components/card/StyledCard"
 import {
-  Dialog,
-  DialogContent,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/Dialog"
+  StyledDialog,
+  StyledDialogContent,
+  StyledDialogTitle,
+  StyledDialogTrigger,
+} from "@/components/StyledDialog"
 
 import { FaGithub, FaInfoCircle } from "react-icons/fa"
 import ButtonLink from "@/components/button/ButtonLink"
@@ -42,8 +42,8 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false)
   return (
-    <Dialog>
-      <DialogTrigger asChild>
+    <StyledDialog>
+      <StyledDialogTrigger asChild>
         <button
           onFocus={() => setIsHovered(true)}
           onBlur={() => setIsHovered(false)}
@@ -71,8 +71,8 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
             </div>
           </StyledCard>
         </button>
-      </DialogTrigger>
-      <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-slate-600 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
+      </StyledDialogTrigger>
+      <StyledDialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-slate-600 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
         <Image
           src={imagePath}
           alt=""
@@ -80,9 +80,9 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
           height={200}
           className="h-[200px] w-[200px] rounded-full md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
-        <DialogTitle className="py-4 text-2xl">
+        <StyledDialogTitle className="py-4 text-2xl">
           {personDetails?.display_name}
-        </DialogTitle>
+        </StyledDialogTitle>
         <p className="text-xl font-normal">{personDetails?.title || title}</p>
         {personDetails?.team && (
           <p className="-mb-2 text-lg font-semibold">{personDetails.team}</p>
@@ -117,7 +117,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
             )}
         </div>
         {personDetails?.bio && <div className="mt-4">{personDetails.bio}</div>}
-      </DialogContent>
-    </Dialog>
+      </StyledDialogContent>
+    </StyledDialog>
   )
 }
