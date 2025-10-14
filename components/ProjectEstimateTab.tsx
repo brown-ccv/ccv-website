@@ -7,7 +7,6 @@ interface ProjectEstimateTabProps {
   title: string
   description: string
   group: string
-  fte: string
   link?: string
   goal: string
   image?: string
@@ -18,7 +17,6 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
   title,
   description,
   group,
-  fte,
   link,
   goal,
   image,
@@ -41,12 +39,6 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
       <div className="flex items-center gap-2">
         <span className="font-semibold italic">{group}</span>
       </div>
-      {/* FTE Percentage info */}
-      <div className="mt-2 flex items-center gap-2">
-        <Icon iconName="FaUser" className="h-6 w-6" />
-        <span className="font-semibold">{fte} FTE</span>
-      </div>
-
       <p>{description}</p>
       {link && (
         <ButtonLink href={link} external={true} title={title} size="md" />
