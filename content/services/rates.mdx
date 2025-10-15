@@ -19,7 +19,7 @@ allows users to run larger jobs with more CPU cores, memory, walltime, faster st
     - **CPU Cores:** 64
     - **Memory:** 492 GB
     - **GPU:** None
-    - **Max Walltime:** 48hr
+    - **Max Resource Walltime:** 48hr\*\*
     - **Cost:** $0/month
     - **Quality-of-Service:** Basic
   </StyledCard>
@@ -28,8 +28,8 @@ allows users to run larger jobs with more CPU cores, memory, walltime, faster st
     - **Partition:** batch
     - **CPU Cores:** 208
     - **Memory:** 1500 GB
-    - **GPU:** 2 Std.
-    - **Max Walltime:** 96hr
+    - **GPU:** 2 Std.\*
+    - **Max Resource Walltime:** 96hr\*\*
     - **Cost:** $67/month
     - **Quality-of-Service:** Faster start times
   </StyledCard>
@@ -38,8 +38,8 @@ allows users to run larger jobs with more CPU cores, memory, walltime, faster st
     - **Partition:** batch
     - **CPU Cores:** 416
     - **Memory:** 3000 GB
-    - **GPU:** 2 Std.
-    - **Max Walltime:** 96hr
+    - **GPU:** 2 Std.\*
+    - **Max Resource Walltime:** 96hr\*\*
     - **Cost:** $133/month
     - **Quality-of-Service:** Faster start times
   </StyledCard>
@@ -54,8 +54,8 @@ larger jobs with more GPU & CPU cores, memory, walltime and faster start times.
     - **Partition:** gpu
     - **CPU Cores:** 12
     - **Memory:** 192 GB
-    - **GPU:** 2 Std.
-    - **Max Walltime:** 48hr
+    - **GPU:** 2 Std.\*
+    - **Max Resource Walltime:** 48hr\*\*
     - **Cost:** $0/month
     - **Quality-of-Service:** Basic
   </StyledCard>
@@ -64,8 +64,8 @@ larger jobs with more GPU & CPU cores, memory, walltime and faster start times.
     - **Partition:** gpu
     - **CPU Cores:** 24
     - **Memory:** 192 GB
-    - **GPU:** 4 Std.
-    - **Max Walltime:** 96hr
+    - **GPU:** 4 Std.\*
+    - **Max Resource Walltime:** 96hr\*\*
     - **Cost:** $67/month
     - **Quality-of-Service:** Faster start times
   </StyledCard>
@@ -74,8 +74,8 @@ larger jobs with more GPU & CPU cores, memory, walltime and faster start times.
     - **Partition:** gpu
     - **CPU Cores:** 48
     - **Memory:** 384 GB
-    - **GPU:** 8 Std.
-    - **Max Walltime:** 96hr
+    - **GPU:** 8 Std.\*
+    - **Max Resource Walltime:** 96hr\*\*
     - **Cost:** $133/month
     - **Quality-of-Service:** Faster start times
   </StyledCard>
@@ -89,8 +89,8 @@ The gpu-he partition is designed for jobs that require High-End GPUs.
     - **Partition:** gpu-he
     - **CPU Cores:** 24
     - **Memory:** 256 GB
-    - **GPU:** 4 High-End
-    - **Max Walltime:** 96hr
+    - **GPU:** 4 High-End\*
+    - **Max Resource Walltime:** 96hr\*\*
     - **Cost:** $133/month
   </StyledCard>
 </CardGroup>
@@ -100,11 +100,13 @@ documentation](https://docs.ccv.brown.edu/oscar/system-overview).
 
 \*__GPU Definitions__: _Std._ - QuadroRTX or lower, _High-End_ - Tesla V100
 
-\*\*__Quality-of-Service__: The maximum number of cores and duration may change based on cluster utilization. 
-HPC Priority account has a Quality-of-Service (QOS) allowing up to 208 cores, 1TB memory, and a total per-job limit 
-of 1,198,080 core-minutes. This allows a 208-core job to run for 96 hours, a 104-core job to run for 192 hours, or 
-208 1-core jobs to run for 96 hours. Exploratory account has a Quality-of-Service (QOS) allowing up to 2 GPUs and a 
-total of 5760 GPU-minutes. This allows a 2 GPU job to run for 48 hours or 1 GPU job to run for 96 hours.
+\*\*__Max Resource Walltime:__ The time limit when using the maximum of available CPUs or GPUs of an account. 
+Using less of the allotted CPUs or GPUs allows for longer walltimes. This is because the resource allocation is 
+actually governed by a fixed total compute budget measured in CPU-minutes or GPU-minutes that is distributed 
+across your concurrent jobs. For example, HPC Priority accounts have a compute budget of 19,968 core-hours. Using all 
+208 cores results in a walltime of 96 hours (19,968 / 208); however using half of the available cores with 104 CPUs 
+would result in double the walltime at 192 hours (19,968 / 104).
+
 
 <Button href="/about/contact">Contact Us</Button>
 </ContentSection>
