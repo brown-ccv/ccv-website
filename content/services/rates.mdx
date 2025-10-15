@@ -6,11 +6,15 @@ description: We provide services with limited resources at no cost to all member
 <ContentSection title="High Performance Computing Cluster (Oscar)">
 
 The number and size of jobs allowed on Oscar vary with both partition and type of user account. 
+All Brown users can request a free exploratory account with basic access to a resources on our Batch and GPU partitions.
+Researchers with more intensive computing needs can purchase priority accounts, 
+which provide access to more CPU cores, GPUs, and longer walltimes.
 
-### Exploratory Account
-We offer free exploratory accounts for all users. Resources vary by the partition you run your jobs on.
+### Batch Partition
+The batch partition is designed for high-throughput computing jobs that require many CPU cores. Upgrading to priority accounts
+allows users to run larger jobs with more CPU cores, memory, walltime, faster start times, and limited GPUs. 
 <CardGroup>
-  <StyledCard title="Batch" size="md">
+  <StyledCard title="Exploratory" size="md">
     - **Partition:** batch
     - **CPU Cores:** 64
     - **Memory:** 492 GB
@@ -20,33 +24,7 @@ We offer free exploratory accounts for all users. Resources vary by the partitio
     - **Quality-of-Service:** Basic
   </StyledCard>
 
-  <StyledCard title="GPU" size="md">
-    - **Partition:** gpu
-    - **CPU Cores:** 12
-    - **Memory:** 192 GB
-    - **GPU:** 2 Std.
-    - **Max Walltime:** 48hr
-    - **Cost:** $0/month
-    - **Quality-of-Service:** Basic
-  </StyledCard>
-
-  <StyledCard title="BigMem" size="md">
-    - **Partition:** bigmem
-    - **CPU Cores:** 32
-    - **Memory:** 752 GB
-    - **GPU:** None
-    - **Max Walltime:** 48hr
-    - **Cost:** $0/month
-    - **Quality-of-Service:** Basic
-  </StyledCard>
-</CardGroup>
-
-### Priority Accounts
-Researchers with more intensive computing needs can purchase priority accounts, 
-which provide access to more CPU cores, GPUs, and longer walltimes.
-<CardGroup>
-
-  <StyledCard title="HPC" size="md">
+  <StyledCard title="HPC Priority" size="md">
     - **Partition:** batch
     - **CPU Cores:** 208
     - **Memory:** 1500 GB
@@ -61,18 +39,35 @@ which provide access to more CPU cores, GPUs, and longer walltimes.
     - **CPU Cores:** 416
     - **Memory:** 3000 GB
     - **GPU:** 2 Std.
-    - **Max Walltime:** 48hr
+    - **Max Walltime:** 96hr
     - **Cost:** $133/month
     - **Quality-of-Service:** Faster start times
   </StyledCard>
 
-  <StyledCard title="Standard GPU" size="md">
+</CardGroup>
+
+### GPU Partition
+The gpu partition is designed for jobs that prioritize GPUs. Upgrading to priority accounts allows users to run 
+larger jobs with more GPU & CPU cores, memory, walltime and faster start times.
+<CardGroup>
+  <StyledCard title="Exploratory" size="md">
+    - **Partition:** gpu
+    - **CPU Cores:** 12
+    - **Memory:** 192 GB
+    - **GPU:** 2 Std.
+    - **Max Walltime:** 48hr
+    - **Cost:** $0/month
+    - **Quality-of-Service:** Basic
+  </StyledCard>
+
+  <StyledCard title="Standard GPU Priority" size="md">
     - **Partition:** gpu
     - **CPU Cores:** 24
     - **Memory:** 192 GB
     - **GPU:** 4 Std.
     - **Max Walltime:** 96hr
     - **Cost:** $67/month
+    - **Quality-of-Service:** Faster start times
   </StyledCard>
 
   <StyledCard title="Standard GPU Priority+" size="md">
@@ -82,8 +77,16 @@ which provide access to more CPU cores, GPUs, and longer walltimes.
     - **GPU:** 8 Std.
     - **Max Walltime:** 96hr
     - **Cost:** $133/month
+    - **Quality-of-Service:** Faster start times
   </StyledCard>
 
+</CardGroup>
+
+### High-End GPU Partition
+The gpu-he partition is designed for jobs that require high-end GPUs. Jobs in this partition also have access to CPU cores.
+
+<CardGroup>
+  
   <StyledCard title="High-End GPU" size="md">
     - **Partition:** gpu-he
     - **CPU Cores:** 24
@@ -93,21 +96,18 @@ which provide access to more CPU cores, GPUs, and longer walltimes.
     - **Cost:** $133/month
   </StyledCard>
 
-  <StyledCard title="Large Memory" size="md">
-    - **Partition:** bigmem
-    - **CPU Cores:** 32
-    - **Memory:** 2 TB
-    - **GPU:** None
-    - **Max Walltime:** 96hr
-    - **Cost:** $33/month
-  </StyledCard>
 </CardGroup>
 
-Note, these values are subject to periodic review and changes. For more technical details, review the system hardware documentation.
+Note, these values are subject to periodic review and changes. For more technical details, review the system hardware 
+documentation.
 
 \*GPU Definitions: Std. - QuadroRTX or lower, High-end - Tesla V100
 
-\*\*Quality-of-Service: The maximum number of cores and duration may change based on cluster utilization. HPC Priority account has a Quality-of-Service (QOS) allowing up to 208 cores, 1TB memory, and a total per-job limit of 1,198,080 core-minutes. This allows a 208-core job to run for 96 hours, a 104-core job to run for 192 hours, or 208 1-core jobs to run for 96 hours. Exploratory account has a Quality-of-Service (QOS) allowing up to 2 GPUs and a total of 5760 GPU-minutes. This allows a 2 GPU job to run for 48 hours or 1 GPU job to run for 96 hours.
+\*\*Quality-of-Service: The maximum number of cores and duration may change based on cluster utilization. 
+HPC Priority account has a Quality-of-Service (QOS) allowing up to 208 cores, 1TB memory, and a total per-job limit 
+of 1,198,080 core-minutes. This allows a 208-core job to run for 96 hours, a 104-core job to run for 192 hours, or 
+208 1-core jobs to run for 96 hours. Exploratory account has a Quality-of-Service (QOS) allowing up to 2 GPUs and a 
+total of 5760 GPU-minutes. This allows a 2 GPU job to run for 48 hours or 1 GPU job to run for 96 hours.
 
 </ContentSection>
 
