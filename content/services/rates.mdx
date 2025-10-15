@@ -7,8 +7,8 @@ description: We provide services with limited resources at no cost to all member
 
 The number and size of jobs allowed on Oscar vary with both partition and type of user account. 
 All Brown users can request a free exploratory account with basic access to a resources on our Batch and GPU partitions.
-Researchers with more intensive computing needs can purchase priority accounts, 
-which provide access to more CPU cores, GPUs, and longer walltimes.
+Researchers with more intensive computing needs can upgrade to priority accounts, which provide access to more GPU & CPU 
+cores, memory, walltime and faster start times.
 
 ### Batch Partition
 The batch partition is designed for high-throughput computing jobs that require many CPU cores. Upgrading to priority accounts
@@ -83,27 +83,24 @@ larger jobs with more GPU & CPU cores, memory, walltime and faster start times.
 </CardGroup>
 
 ### High-End GPU Partition
-The gpu-he partition is designed for jobs that require high-end GPUs. Jobs in this partition also have access to CPU cores.
-
+The gpu-he partition is designed for jobs that require High-End GPUs.
 <CardGroup>
-  
   <StyledCard title="High-End GPU" size="md">
     - **Partition:** gpu-he
     - **CPU Cores:** 24
     - **Memory:** 256 GB
-    - **GPU:** 4 high-end
+    - **GPU:** 4 High-End
     - **Max Walltime:** 96hr
     - **Cost:** $133/month
   </StyledCard>
-
 </CardGroup>
 
 Note, these values are subject to periodic review and changes. For more technical details, review the system hardware 
 documentation.
 
-\*GPU Definitions: Std. - QuadroRTX or lower, High-end - Tesla V100
+\*__GPU Definitions__: _Std._ - QuadroRTX or lower, _High-End_ - Tesla V100
 
-\*\*Quality-of-Service: The maximum number of cores and duration may change based on cluster utilization. 
+\*\*__Quality-of-Service__: The maximum number of cores and duration may change based on cluster utilization. 
 HPC Priority account has a Quality-of-Service (QOS) allowing up to 208 cores, 1TB memory, and a total per-job limit 
 of 1,198,080 core-minutes. This allows a 208-core job to run for 96 hours, a 104-core job to run for 192 hours, or 
 208 1-core jobs to run for 96 hours. Exploratory account has a Quality-of-Service (QOS) allowing up to 2 GPUs and a 
