@@ -125,14 +125,9 @@ const Footer = () => {
       </div>
 
       {/* Copyright Section */}
-      <div className="flex w-full flex-col items-center justify-between bg-black px-6 py-4 font-serif text-md text-cream sm:flex-row sm:px-8 md:px-12 md:text-lg lg:px-32 xl:px-40">
-        <div className="flex flex-col items-center gap-4 sm:items-start">
-          <CCVLogo />
-          <p>&copy; Brown University</p>
-        </div>
-        <div className="scale-75 sm:scale-100">
-          <CarbonBadge className="scale-75 sm:scale-100" />
-        </div>
+      <div className="flex w-full items-center justify-between bg-black px-8 py-4 text-cream">
+        <CCVLogo />
+        <p className="font-serif text-sm">&copy; Brown University</p>
       </div>
     </footer>
   )
