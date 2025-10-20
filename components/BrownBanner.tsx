@@ -32,7 +32,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
         className={"px-2 py-6 sm:px-4"}
       >
         <FaHandshake className="text-lg sm:text-2xl" />
-        Work with Us
+        Work With Us
       </ButtonLink>
     </header>
   )
