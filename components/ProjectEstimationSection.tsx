@@ -13,13 +13,15 @@ export const ProjectEstimationSection = () => {
           description={
             "A 3D visualization pipeline and application that researchers use to identify, label, and count cells in mouse brain scans."
           }
-          group={"Brown Department of Neuroscience"}
+          group={"Department of Neuroscience"}
+          pi={"Alexander Jaworski"}
           goal={
             "CCV was responsible for developing a Python-based application that integrated pre-trained deep learning models to analyze 3D image data for automated cell segmentation and structured result generation. The project included implementing a complete processing pipeline, integrating the application as a plugin within Napari, and deploying the final solution on the lab's PC for routine use."
           }
           image={
             "/images/services/consulting/project-estimation/cell-seg-3d.webp"
           }
+          attribution={"Images by Hanna Hameedy"}
           alt={
             "Display of initial brain scan, adjusting hyper parameters, finding binary map of the region of interest, and finally finding labels located in the region of interest"
           }
