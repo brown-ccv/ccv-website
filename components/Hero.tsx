@@ -24,7 +24,7 @@ export const Hero = ({
 }: HeroProps) => {
   const hasImage = !!image
   const gradientOpacity = hasImage ? 0.4 : 1.0
-  
+
   const backgroundImageStyles = [
     `linear-gradient(135deg, rgba(17, 24, 39, ${gradientOpacity}) 0%, rgba(243, 244, 246, ${gradientOpacity}) 100%)`,
     `radial-gradient(circle at 0% 0%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,
@@ -78,7 +78,7 @@ export const MainHero = ({
   // Make gradients more transparent when there's a background image
   const hasImage = !!image
   const gradientOpacity = hasImage ? 0.4 : 1.0
-  
+
   const backgroundImageStyles = [
     `linear-gradient(135deg, rgba(17, 24, 39, ${gradientOpacity}) 0%, rgba(243, 244, 246, ${gradientOpacity}) 100%)`,
     `radial-gradient(circle at 0% 0%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,

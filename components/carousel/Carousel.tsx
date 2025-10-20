@@ -189,26 +189,26 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
             </div>
             {/* Desktop Image Only */}
             <div className="max-w-1/3 flex w-full flex-col items-end justify-end">
-              <Image
-                src={carouselItem.image}
-                priority={index === 0}
-                alt=""
-                width={600}
-                height={400}
-                className="aspect-video object-cover xl:w-[800px]"
-              />
-
-              {/* Attribution if image requires it */}
-              {carouselItem.attribution && (
-                <div className="text-right">
-                  <Markdown
-                    remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw]}
-                  >
-                    {carouselItem.attribution}
-                  </Markdown>
-                </div>
-              )}
+              <figure>
+                <Image
+                  src={carouselItem.image}
+                  priority={index === 0}
+                  alt=""
+                  width={600}
+                  height={400}
+                  className="aspect-video object-cover xl:w-[800px]"
+                />
+                {carouselItem.attribution ? (
+                  <figcaption className="text-right">
+                    <Markdown
+                      remarkPlugins={[remarkGfm]}
+                      rehypePlugins={[rehypeRaw]}
+                    >
+                      {carouselItem.attribution}
+                    </Markdown>
+                  </figcaption>
+                ) : null}
+              </figure>
             </div>
           </div>
         ))}
