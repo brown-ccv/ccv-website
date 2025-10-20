@@ -19,7 +19,7 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
   title,
   description,
   group,
-  pi, 
+  pi,
   link,
   goal,
   image,
@@ -31,17 +31,17 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
       {/*Image*/}
       {image && image.trim() !== "" && (
         <figure className="float-right">
-          <Image
-            height={400}
-            width={400}
-            src={image}
-            alt={alt ?? ''}
-          />
-          {attribution ? <figcaption className="text-right">{attribution}</figcaption> : null}
+          <Image height={400} width={400} src={image} alt={alt ?? ""} />
+          {attribution ? (
+            <figcaption className="text-right">{attribution}</figcaption>
+          ) : null}
         </figure>
       )}
       <h3 className="text-xl">{title}</h3>
-      <p className="font-semibold italic">{group}{pi ? `, ${pi}`: ''}</p>
+      <p className="font-semibold italic">
+        {group}
+        {pi ? `, ${pi}` : ""}
+      </p>
       <p>{description}</p>
       {link && (
         <ButtonLink href={link} external={true} title={title} size="md" />

@@ -7,10 +7,7 @@ export default function UserSupport() {
 
   return (
     <>
-      <Hero
-        title={metadata.title}
-        description={metadata.description}
-      />
+      <Hero title={metadata.title} description={metadata.description} />
       <UserSupportContent />
     </>
   )
