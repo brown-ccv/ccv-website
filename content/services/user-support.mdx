@@ -52,18 +52,22 @@ description: |
 </ContentSection>
 
 <ContentSection title="Workshops & Tutorials">
-  ### High Performance Computing Tutorials
-  Join our **weekly online HPC tutorials** during the spring and fall semesters. Please check out our
-  events schedule for upcoming sessions.
+We offer workshops and tutorials to help you employ research computing best practices and get the most out of our systems.
+  <CardGroup>
+      <StyledCard
+          title="High Performance Computing Tutorials"
+          footer={<Button href="https://events.brown.edu/ccv/all">View Events Schedule</Button>}>
+          Join our **weekly online HPC tutorials** during the spring and fall semesters. Please check out our events 
+          schedule for upcoming sessions.
+      </StyledCard>
 
-  <Button href="https://events.brown.edu/ccv/all">View Events Schedule</Button>
-
-  ### CCV Bootcamp
-  Our annual CCV Bootcamp combines our weekly tutorials in a condensed format each June. 
-  All sessions are recorded and available for you to watch at your convenience on our bootcamp website.
-
-  <Button href="https://docs.ccv.brown.edu/bootcamp/bootcamp-2025">Bootcamp Website</Button>
-
+      <StyledCard
+          title="CCV Bootcamp"
+          footer={<Button href="https://docs.ccv.brown.edu/bootcamp/bootcamp-2025">Bootcamp Website</Button>}>
+          Our annual CCV Bootcamp combines our weekly tutorials in a condensed format. All sessions are recorded and 
+          available on our bootcamp website.
+      </StyledCard>
+  </CardGroup>
 </ContentSection>
 
 <ContentSection title="Contact Us">
@@ -71,4 +75,4 @@ description: |
   See details on our contact page.
 
   <Button href="/about/contact">Contact Us</Button>
-  </ContentSection>
+</ContentSection>
