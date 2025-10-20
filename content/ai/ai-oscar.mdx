@@ -4,14 +4,32 @@ description: |
   Access to large language models and AI tools through Brown's high-performance computing cluster.
 ---
 
+<ContentSection title="GPUs on Oscar">
+
+Building modern deep learning models requires specialized hardware called graphics processing units (GPUs). Originally designed 
+for graphics rendering in computer games, GPUs' massively parallel architecture make them exceptionally well suited to the 
+linear algebraic operations that are ubiquitous in modern deep learning models. As such, GPUs have become an essential component
+of deep learning and AI. 
+
+We have more than 800 NVIDIA GPUs on Oscar. These are available to anyone with an Oscar account. There are a wide range of GPUs on 
+Oscar, from Titan RTX (24 GB VRAM) to B200 (180 GB VRAM).  
+
+<ButtonGroup>
+  <Button href="https://docs.ccv.brown.edu/oscar/gpu-computing/gpus">
+    Oscar GPUs Documentation
+  </Button>
+</ButtonGroup>
+
+</ContentSection>
+
 <ContentSection title="Ollama">
 
 Ollama is the easiest way to run large language models directly on Brown’s Oscar high‑performance computing cluster.
 Available as a preinstalled module, Ollama uses a simple client–server approach: you start a server on your allocated
 GPU node, then connect a second terminal as the client to chat with models or launch jobs.
 
-We at CCV host dozens of public, open‑weight models in a shared repository—such as Llama 4, DeepSeek‑r1, gpt‑oss, Mistral, and
-Gemma3—so you don’t have to download anything; you simply point the OLLAMA_MODELS environment variable to CCV’s shared
+We at CCV host more than 100 public, open‑weight models in a shared repository—such as Llama 4, DeepSeek‑r1, gpt‑oss, Mistral, and
+Gemma3—so you don’t have to download anything; you simply point the `OLLAMA_MODELS` environment variable to CCV’s shared
 path and run. We are also open to adding more models, so you can always contact us to request one!
 
 <ButtonGroup>
