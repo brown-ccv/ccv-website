@@ -14,6 +14,7 @@ import {
   FaCloud,
   FaCode,
   FaComments,
+  FaCompass,
   FaDesktop,
   FaDollarSign,
   FaFileImport,
@@ -111,7 +112,7 @@ const routes: NavSection[] = [
             href: "/services/project-consulting",
             description:
               "We help with: Computational Biology, AI / Machine Learning, Software Engineering, Scientific Visualization, and more",
-            icon: FaComments,
+            icon: FaCompass,
           },
           {
             name: "User Support",
