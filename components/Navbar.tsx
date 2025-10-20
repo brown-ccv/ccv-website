@@ -18,6 +18,7 @@ import {
   FaDollarSign,
   FaFileImport,
   FaHandshake,
+  FaEnvelope,
   FaQuestionCircle,
   FaRobot,
   FaUser,
@@ -207,7 +208,7 @@ const routes: NavSection[] = [
             name: "Contact Us",
             href: "/about/contact",
             description: "",
-            icon: FaComments,
+            icon: FaEnvelope,
           },
           {
             name: "Careers",
