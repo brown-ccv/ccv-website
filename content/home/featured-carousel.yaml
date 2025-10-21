@@ -76,6 +76,7 @@ carousel:
       This project implements a comprehensive pipeline and application designed to assist researchers in identifying, labeling, and counting cells in mouse brain scans. Utilizing pre-trained deep learning models, the system analyzes 3D image data to automatically segment cells and generate structured results. This automated approach significantly reduces manual effort, accelerates research workflows, and improves consistency by minimizing human bias in segmentation and labeling processes, enabling neuroscience researchers to focus on analysis and interpretation rather than time-intensive manual cell identification.
 
     image: "/images/home/featured-carousel/cell-segmentation.webp"
+    attribution: "Images by Hanna Hameedy"
     organizations:
       - name: "Department of Neuroscience"
         organization: "Brown University"
