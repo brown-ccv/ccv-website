@@ -14,7 +14,7 @@ export default function ProjectConsulting() {
             {metadata.links.map((link: any, index: number) => (
               <ButtonLink
                 key={index}
-                variant="secondary_filled"
+                variant="primary_filled"
                 size="lg"
                 href={link.target}
                 external={!link.target.startsWith("/")}
