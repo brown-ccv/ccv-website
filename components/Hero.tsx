@@ -33,6 +33,7 @@ export const Hero = ({
     `radial-gradient(circle at 30% 70%, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 60%)`,
     `radial-gradient(ellipse at 50% 50%, rgba(4, 200, 166, ${gradientOpacity}) 0%, transparent 40%)`,
     `linear-gradient(135deg, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 30%, transparent 70%, rgba(236, 72, 153, ${gradientOpacity}) 100%)`,
+    `linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 99%)`,
   ]
 
   if (image) {
@@ -46,7 +47,7 @@ export const Hero = ({
         backgroundImage: backgroundImageStyles.join(", "),
         backgroundSize: "cover",
         backgroundBlendMode:
-          "overlay, multiply, multiply, overlay, soft-light, overlay, overlay, normal",
+          "overlay, multiply, multiply, overlay, soft-light, overlay, overlay, normal, normal",
       }}
     >
       {showGradient ? (
@@ -87,6 +88,7 @@ export const MainHero = ({
     `radial-gradient(circle at 30% 70%, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 60%)`,
     `radial-gradient(ellipse at 50% 50%, rgba(4, 200, 166, ${gradientOpacity}) 0%, transparent 40%)`,
     `linear-gradient(135deg, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 30%, transparent 70%, rgba(236, 72, 153, ${gradientOpacity}) 100%)`,
+    `linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, transparent 70%)`,
   ]
 
   if (image) {
@@ -100,7 +102,7 @@ export const MainHero = ({
         backgroundImage: backgroundImageStyles.join(", "),
         backgroundSize: "cover",
         backgroundBlendMode:
-          "overlay, multiply, multiply, overlay, soft-light, overlay, overlay, normal",
+          "overlay, multiply, multiply, overlay, soft-light, overlay, overlay, normal, normal",
       }}
     >
       {showGradient ? (
