@@ -19,7 +19,7 @@ export const CostEstimateCard: React.FC<RatesCardProps> = ({
 }) => {
   return (
     <StyledCard title={title} iconName={"FaTshirt"} size="xs">
-      <div className="flex flex-col items-center justify-center gap-6">
+      <div className="flex flex-col items-center justify-center">
         <div className="flex items-center gap-6">
           <FaClock className="text-keppel-700" />
           <p>
