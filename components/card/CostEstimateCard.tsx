@@ -22,13 +22,13 @@ export const CostEstimateCard: React.FC<RatesCardProps> = ({
       <div className="flex flex-col items-center justify-center">
         <div className="flex items-center gap-6">
           <FaClock className="text-keppel-700" />
-          <p>
+          <p className="!my-2">
             <span className="font-semibold">{time}</span> {units}
           </p>
         </div>
         <div className="flex items-center gap-6">
           <FaUserClock className="text-sunglow-500" />
-          <p>
+          <p className="!my-2">
             <span className="font-semibold">{engineers}</span> {fte} FTE*
           </p>
         </div>
