@@ -4,9 +4,7 @@ import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 import { CarouselItem } from "@/components/carousel/Carousel"
-import EventSection from "@/components/EventSection"
-import { getEventData } from "@/app/queries"
-import { getStringDate } from "@/components/calendar/utils"
+import EventSectionClient from "@/components/EventSectionClient"
 import React, { Suspense } from "react"
 import Spinner from "@/components/assets/Spinner"
 import { ScrollButton } from "@/components/button/ScrollButton"
@@ -22,15 +20,6 @@ export default async function Home() {
   const featuredCarouselData = featuredCarouselRaw.data.carousel
 
   try {
-    const currentDate = new Date()
-    const today = getStringDate(
-      currentDate.getMonth() + 1,
-      currentDate.getDate(),
-      currentDate.getFullYear()
-    )
-    const futureDates = getEventData(today)
-    const pastDates = getEventData(`-2 months${today}`)
-
     return (
       <>
         <MainHero
@@ -58,12 +47,7 @@ export default async function Home() {
           </ContentSection>
           <ContentSection title={"Events"} align={"left"} id={"events"}>
             <Suspense fallback={<Spinner />}>
-              <EventSection
-                streamedDataPast={pastDates}
-                streamedDataFuture={futureDates}
-                currentDate={currentDate}
-                today={today}
-              />
+              <EventSectionClient />
             </Suspense>
           </ContentSection>
         </div>
