@@ -1,11 +1,11 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
-import AboutUsContent from "@/content/about/publication-and-grant-materials.mdx"
+import MaterialsForPublicationsAndGrantsContent from "@/content/about/materials-for-publications-and-grants.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default async function PublicationAndGrantMaterials() {
   const metadata = getMDXMetadata(
-    "content/about/publication-and-grant-materials.mdx"
+    "content/about/materials-for-publications-and-grants.mdx"
   )
 
   return (
@@ -15,7 +15,7 @@ export default async function PublicationAndGrantMaterials() {
         title={metadata.title}
         description={metadata.description}
       />
-      <AboutUsContent />
+      <MaterialsForPublicationsAndGrantsContent />
     </>
   )
 }
