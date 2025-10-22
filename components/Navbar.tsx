@@ -160,7 +160,7 @@ const routes: NavSection[] = [
           {
             name: "Publications",
             href: "https://publications.ccv.brown.edu",
-            description: "Learn how to cite CCV ",
+            description: "",
             icon: FaBook,
           },
         ],
@@ -208,8 +208,8 @@ const routes: NavSection[] = [
             icon: FaComments,
           },
           {
-            name: "Materials for Publication and Grants",
-            href: "/about/publication-and-grant-materials",
+            name: "Grant and Publication Materials",
+            href: "/about/grant-and-publication-materials",
             description: "",
             icon: FaPenNib,
           },
