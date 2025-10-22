@@ -9,15 +9,13 @@ import {
   FaBars,
   FaBook,
   FaBuilding,
-  FaChalkboardTeacher,
   FaChevronDown,
   FaCloud,
-  FaCode,
   FaComments,
   FaDesktop,
   FaDollarSign,
   FaFileImport,
-  FaHandshake,
+  FaPenNib,
   FaQuestionCircle,
   FaRobot,
   FaUser,
@@ -162,7 +160,7 @@ const routes: NavSection[] = [
           {
             name: "Publications",
             href: "https://publications.ccv.brown.edu",
-            description: "",
+            description: "Learn how to cite CCV ",
             icon: FaBook,
           },
         ],
@@ -208,6 +206,12 @@ const routes: NavSection[] = [
             href: "/about/contact",
             description: "",
             icon: FaComments,
+          },
+          {
+            name: "Materials for Publication and Grants",
+            href: "/about/publication-and-grant-materials",
+            description: "",
+            icon: FaPenNib
           },
           {
             name: "Careers",
