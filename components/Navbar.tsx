@@ -211,7 +211,7 @@ const routes: NavSection[] = [
             name: "Materials for Publication and Grants",
             href: "/about/publication-and-grant-materials",
             description: "",
-            icon: FaPenNib
+            icon: FaPenNib,
           },
           {
             name: "Careers",

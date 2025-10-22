@@ -4,7 +4,9 @@ import AboutUsContent from "@/content/about/publication-and-grant-materials.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default async function PublicationAndGrantMaterials() {
-  const metadata = getMDXMetadata("content/about/publication-and-grant-materials.mdx")
+  const metadata = getMDXMetadata(
+    "content/about/publication-and-grant-materials.mdx"
+  )
 
   return (
     <>
