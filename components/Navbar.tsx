@@ -113,9 +113,10 @@ const routes: NavSection[] = [
             icon: FaComments,
           },
           {
-            name: "User Support",
-            href: "/services/user-support",
-            description: "We help with compute infrastructure",
+            name: "Workshops and Tutorials",
+            href: "/services/workshops",
+            description:
+              "Trainings on using computational tools and techniques",
             icon: FaUserCheck,
           },
           {
@@ -302,7 +303,7 @@ export const Navbar: React.FC = () => {
             <NavigationMenu.Item>
               <ButtonLink
                 external={false}
-                href="/services/user-support"
+                href="/about/contact"
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
                 <FaQuestionCircle className="stroke-[2.5] text-xl" />
