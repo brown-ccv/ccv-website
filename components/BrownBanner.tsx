@@ -25,7 +25,7 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
       </h2>
 
       <ButtonLink
-        href="/about/contact"
+        href="/about/help"
         external={false}
         variant="red_outlined"
         size="sm"

@@ -41,7 +41,7 @@ export default async function Home() {
           <ButtonLink
             variant="primary_filled"
             size="lg"
-            href="/about/contact"
+            href="/about/help"
             external={false}
           >
             Work with Us

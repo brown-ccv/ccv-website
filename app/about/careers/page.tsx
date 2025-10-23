@@ -37,7 +37,7 @@ export default async function Careers() {
         description={metadata.description}
       >
         <ButtonLink
-          href={"/about/contact"}
+          href={"/about/help"}
           external={false}
           size="xl"
           variant="primary_filled"
