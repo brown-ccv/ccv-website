@@ -43,7 +43,7 @@ carousel:
       workflow manager scales analyses from regional studies to the entire Arctic over decade-long timescales.
     image: "/images/home/featured-carousel/icefloe.webp"
     organizations:
-      - name: "Department of Engineering"
+      - name: "Wilhelmus Lab, Department of Engineering"
         organization: "Brown University"
         pi: ["Monica Martinez Wilhelmus"]
         icon: "FaUser"
