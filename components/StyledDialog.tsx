@@ -54,7 +54,7 @@ const StyledDialogContent = React.forwardRef<
           iconName={"FaTimes"}
           aria-label="Close"
           className={
-            "data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute right-4 top-4 bg-white opacity-70 transition-opacity hover:opacity-100 disabled:pointer-events-none"
+            "data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute right-4 top-4 bg-white opacity-80 transition-opacity hover:opacity-100 disabled:pointer-events-none"
           }
         />
       </StyledDialogClose>
