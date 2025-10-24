@@ -46,9 +46,7 @@ export default async function Home() {
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>
           <ContentSection title={"Events"} align={"left"} id={"events"}>
-            <Suspense fallback={<Spinner />}>
-              <EventSectionClient />
-            </Suspense>
+            <EventSectionClient />
           </ContentSection>
         </div>
       </>
