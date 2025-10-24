@@ -16,6 +16,7 @@ export interface CarouselItem {
   categories: string[]
   description: string
   image: string
+  alt: string
   attribution?: string
   organizations?: OrganizationItem[]
   buttons?: {
@@ -75,7 +76,7 @@ export const Organization = ({
   name,
 }: OrganizationItem) => {
   return (
-    <div>
+    <>
       <h4>{name}</h4>
       <p className="text-sm text-slate-600">{organization}</p>
       {(pi?.length || pm) && (
@@ -85,7 +86,7 @@ export const Organization = ({
           {pm && `PM: ${pm}`}
         </p>
       )}
-    </div>
+    </>
   )
 }
 
@@ -193,7 +194,7 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
                 <Image
                   src={carouselItem.image}
                   priority={index === 0}
-                  alt=""
+                  alt={carouselItem.alt}
                   width={600}
                   height={400}
                   className="aspect-video object-cover xl:w-[800px]"
