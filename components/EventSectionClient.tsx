@@ -13,6 +13,14 @@ export default function EventSectionClient() {
   const [today, setToday] = useState<string>("")
   const [loading, setLoading] = useState(true)
 
+  async function fetchData(today: string) {
+    const [past, future] = await Promise.all([
+      getEventData(`-2 months${today}`),
+      getEventData(today),
+    ])
+    return [past, future]
+  }
+
   useEffect(() => {
     const now = new Date()
     setCurrentDate(now)
@@ -23,17 +31,12 @@ export default function EventSectionClient() {
     )
     setToday(todayStr)
 
-    const fetchData = async () => {
-      setLoading(true)
-      const [past, future] = await Promise.all([
-        getEventData(`-2 months${todayStr}`),
-        getEventData(todayStr),
-      ])
+    setLoading(true)
+    fetchData(todayStr).then(([past, future]) => {
       setPastDates(past)
       setFutureDates(future)
       setLoading(false)
-    }
-    fetchData()
+    })
   }, [])
 
   if (loading || !currentDate) return <Spinner />
