@@ -93,9 +93,7 @@
         "name": "storage_threshold",
         "value": "1 TB +",
         "sortValue": 1000,
-        "notes": [
-          "Not for large storage needs"
-        ]
+        "notes": ["Not for large storage needs"]
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -113,10 +111,7 @@
         "name": "security",
         "value": 2,
         "sortValue": 2,
-        "notes": [
-          "prevent editors from resharing",
-          "set expiration date"
-        ]
+        "notes": ["prevent editors from resharing", "set expiration date"]
       },
       "data_protection_replication": {
         "name": "data_protection_replication",
@@ -128,9 +123,7 @@
         "name": "data_protection_snapshots",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "up to 30 days"
-        ]
+        "notes": ["up to 30 days"]
       },
       "storage_warmth": {
         "name": "storage_warmth",
@@ -142,9 +135,7 @@
         "name": "access_from_oscar",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "accessible via Globus"
-        ]
+        "notes": ["accessible via Globus"]
       },
       "brown_network_required": {
         "name": "brown_network_required",
@@ -194,9 +185,7 @@
         "name": "max_file_size",
         "value": "128 TB",
         "sortValue": 128000,
-        "notes": [
-          "1 TB for best performance"
-        ]
+        "notes": ["1 TB for best performance"]
       },
       "relative_speed": {
         "name": "relative_speed",
@@ -222,9 +211,7 @@
         "name": "data_protection_snapshots",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "up to 6 months"
-        ]
+        "notes": ["up to 6 months"]
       },
       "storage_warmth": {
         "name": "storage_warmth",
@@ -236,17 +223,13 @@
         "name": "access_from_oscar",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "Multi-Protocol Share"
-        ]
+        "notes": ["Multi-Protocol Share"]
       },
       "brown_network_required": {
         "name": "brown_network_required",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "except with Globus"
-        ]
+        "notes": ["except with Globus"]
       },
       "canvas_integration": {
         "name": "canvas_integration",
@@ -264,9 +247,7 @@
         "name": "shareable_link",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "via Globus"
-        ]
+        "notes": ["via Globus"]
       },
       "DOI_provided": {
         "name": "DOI_provided",
@@ -292,9 +273,7 @@
         "name": "max_file_size",
         "value": "128 TB",
         "sortValue": 128000,
-        "notes": [
-          "1 TB for best performance"
-        ]
+        "notes": ["1 TB for best performance"]
       },
       "relative_speed": {
         "name": "relative_speed",
@@ -320,9 +299,7 @@
         "name": "data_protection_snapshots",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "up to 6 months"
-        ]
+        "notes": ["up to 6 months"]
       },
       "storage_warmth": {
         "name": "storage_warmth",
@@ -334,17 +311,13 @@
         "name": "access_from_oscar",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "Multi-Protocol Share"
-        ]
+        "notes": ["Multi-Protocol Share"]
       },
       "brown_network_required": {
         "name": "brown_network_required",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "except with Globus"
-        ]
+        "notes": ["except with Globus"]
       },
       "canvas_integration": {
         "name": "canvas_integration",
@@ -362,9 +335,7 @@
         "name": "shareable_link",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "via Globus"
-        ]
+        "notes": ["via Globus"]
       },
       "DOI_provided": {
         "name": "DOI_provided",
@@ -380,17 +351,13 @@
         "name": "storage_threshold",
         "value": "1 TB",
         "sortValue": 1000,
-        "notes": [
-          "Contact the Library for greater needs"
-        ]
+        "notes": ["Contact the Library for greater needs"]
       },
       "max_file_size": {
         "name": "max_file_size",
         "value": "4 GB",
         "sortValue": 4,
-        "notes": [
-          "1 TB for best performance"
-        ]
+        "notes": ["1 TB for best performance"]
       },
       "relative_speed": {
         "name": "relative_speed",
@@ -416,9 +383,7 @@
         "name": "data_protection_snapshots",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "up to 60 days"
-        ]
+        "notes": ["up to 60 days"]
       },
       "storage_warmth": {
         "name": "storage_warmth",
@@ -436,9 +401,7 @@
         "name": "brown_network_required",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "except with Globus"
-        ]
+        "notes": ["except with Globus"]
       },
       "canvas_integration": {
         "name": "canvas_integration",
@@ -472,9 +435,7 @@
         "name": "storage_threshold",
         "value": "1 TB",
         "sortValue": 1000,
-        "notes": [
-          "Contact the Library for greater needs"
-        ]
+        "notes": ["Contact the Library for greater needs"]
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -506,9 +467,7 @@
         "name": "data_protection_snapshots",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "up to 60 days"
-        ]
+        "notes": ["up to 60 days"]
       },
       "storage_warmth": {
         "name": "storage_warmth",
@@ -570,9 +529,7 @@
         "name": "max_file_size",
         "value": "128 TB",
         "sortValue": 128000,
-        "notes": [
-          "1 TB for best performance"
-        ]
+        "notes": ["1 TB for best performance"]
       },
       "relative_speed": {
         "name": "relative_speed",
@@ -598,9 +555,7 @@
         "name": "data_protection_snapshots",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "up to 30 days"
-        ]
+        "notes": ["up to 30 days"]
       },
       "storage_warmth": {
         "name": "storage_warmth",
@@ -618,9 +573,7 @@
         "name": "brown_network_required",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "except with Globus"
-        ]
+        "notes": ["except with Globus"]
       },
       "canvas_integration": {
         "name": "canvas_integration",
@@ -638,9 +591,7 @@
         "name": "shareable_link",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "via Globus"
-        ]
+        "notes": ["via Globus"]
       },
       "DOI_provided": {
         "name": "DOI_provided",
@@ -666,9 +617,7 @@
         "name": "max_file_size",
         "value": "4 TB",
         "sortValue": 4000,
-        "notes": [
-          "1 TB for best performance"
-        ]
+        "notes": ["1 TB for best performance"]
       },
       "relative_speed": {
         "name": "relative_speed",
@@ -694,9 +643,7 @@
         "name": "data_protection_snapshots",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "up to 6 weeks"
-        ]
+        "notes": ["up to 6 weeks"]
       },
       "storage_warmth": {
         "name": "storage_warmth",
@@ -714,9 +661,7 @@
         "name": "brown_network_required",
         "value": "true",
         "sortValue": 1,
-        "notes": [
-          "except with Globus"
-        ]
+        "notes": ["except with Globus"]
       },
       "canvas_integration": {
         "name": "canvas_integration",
