@@ -22,8 +22,8 @@ export interface DataProps {
 }
 
 interface EventSectionProps {
-  streamedDataFuture: any[]
-  streamedDataPast: any[]
+  streamedDataFuture: DataProps[]
+  streamedDataPast: DataProps[]
   today: string
   currentDate: Date
 }
