@@ -25,10 +25,12 @@ export default function EventSectionClient() {
 
     const fetchData = async () => {
       setLoading(true)
-      const future = await getEventData(todayStr)
-      const past = await getEventData(`-2 months${todayStr}`)
-      setFutureDates(future)
+      const [past, future] = await Promise.all([
+        getEventData(`-2 months${todayStr}`),
+        getEventData(todayStr),
+      ])
       setPastDates(past)
+      setFutureDates(future)
       setLoading(false)
     }
     fetchData()
