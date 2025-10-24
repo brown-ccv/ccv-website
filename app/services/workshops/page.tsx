@@ -1,9 +1,9 @@
 import { Hero } from "@/components/Hero"
-import UserSupportContent from "@/content/services/user-support.mdx"
+import UserSupportContent from "@/content/services/workshops.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default function UserSupport() {
-  const metadata = getMDXMetadata("content/services/user-support.mdx")
+  const metadata = getMDXMetadata("content/services/workshops.mdx")
 
   return (
     <>

@@ -1,0 +1,69 @@
+---
+title: Help
+image: "/images/hero/about-kayaks.webp"
+description:  We offer a variety of support options designed to fit your needs. Choose the method that works best for you.
+---
+
+<ContentSection title="Documentation">
+  Check out our <a href="https://docs.ccv.brown.edu/documentation/" target="_blank" rel="noopener noreferrer">documentation</a> 
+  to find information and answers to common questions about using our systems.
+
+  <LinkList links={[
+  {label: "Stronghold", url: "https://docs.ccv.brown.edu/stronghold"},
+  {label: "Oscar", url: "https://docs.ccv.brown.edu/oscar"},
+  {label: "JupyterHub", url: "https://docs.ccv.brown.edu/jupyterhub"},
+  {label: "Globus", url: "https://docs.ccv.brown.edu/globus/"},
+  {label: "Hibernate", url: "https://docs.ccv.brown.edu/hibernate/"},
+  {label: "Starfish", url: "https://docs.ccv.brown.edu/starfish/"},
+  ]}/>
+
+</ContentSection>
+
+<ContentSection title="Contact Us" id="contact-us">
+    Need assistance?
+    Please reach out to us with any questions or issues with our services or for any general inquiries.
+
+    <CardGroup>
+        <StyledCard
+            title="Submit a Ticket"
+            iconName="FaTicketAlt"
+            footer={<Button href="mailto:support@ccv.brown.edu">Submit a Ticket</Button>}>
+
+            Email us at <CopyableEmail email="support@ccv.brown.edu"/> to inquire about resources, support, or a potential collaboration for a research project.
+        </StyledCard>
+
+        <StyledCard
+            title="CCV Slack"
+            iconName="FaSlack"
+            footer={
+                <>
+                    <Button
+                        href="https://join.slack.com/t/ccv-share/shared_invite/enQtODY5OTQ3MTk0ODU1LTM4OWQyZjVlYWRmY2QxNWEyZjQ0NzEwMmRlNTRlZjYyMjM1Y2U5MDU1ZGFmMmRhZWIzNjliYmQzYTBiMzY2NzU">
+                        Join the Slack
+                    </Button>
+                    <Button variant="secondary_filled" href="https://ithelp.brown.edu/kb/articles/terms-of-use-for-brown-enterprise-slack">
+                        Terms of Service
+                    </Button>
+                </>
+            }>
+            CCV Share is a collection of Slack channels where CCV Staff and the community will be available to discuss your
+            questions.
+        </StyledCard>
+
+        <StyledCard
+            title="Office Hours"
+            iconName="FaChalkboardTeacher"
+            footer={
+                <>
+                    <Button
+                        href="https://events.brown.edu/ccv/week">
+                        Find the Event
+                    </Button>
+                </>
+            }>
+            Come talk to us at office hours every week both in-person and virtually. 
+            We offer both general support and specialized computational biology office hours.
+        </StyledCard>
+
+    </CardGroup>
+</ContentSection>

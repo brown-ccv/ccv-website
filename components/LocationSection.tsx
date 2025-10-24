@@ -20,8 +20,8 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
         <div className="flex flex-col lg:px-24 lg:pt-12 xl:w-1/2">
           <SectionHeader title={title} />
           <p>
-            Our office is on Brown's main campus in Providence's College Hill
-            neighborhood.
+            Our office is located at <strong>180 George Street</strong> on
+            Brown's main campus in Providence's College Hill neighborhood.
           </p>
           <p>
             Built in 1960 and dedicated to Thomas J. Watson in 1961, the

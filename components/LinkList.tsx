@@ -19,6 +19,8 @@ export const LinkList: React.FC<LinkListProps> = ({ links }) => {
             <a
               className="group flex items-center gap-3 border-b border-slate-300 pb-3 leading-tight no-underline hover:border-keppel-500"
               href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
             >
               {link.label}
               <Icon
