@@ -3,6 +3,8 @@ import { ServiceConfig, ServiceFeature } from "@/lib/storage-types"
 import { StyledCard } from "@/components/card/StyledCard"
 import { Badge } from "@/components/ui/Badge"
 import { humanize } from "@/lib/utils"
+import Link from "next/link"
+import Icon from "@/components/ui/RenderIcon"
 
 interface ServiceCardProps {
   service: ServiceConfig
@@ -25,12 +27,16 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
   }
 
   return (
-    <StyledCard
-      title={humanize(service.serviceName)}
-      isDisabled={isDisabled}
-      size="sm"
-      className="w-full"
-    >
+    <StyledCard isDisabled={isDisabled} size="sm" className="w-full">
+      <div className="flex flex-col items-center justify-center border-b border-gray-300 py-4 text-center">
+        <p className="mb-2 text-xl font-bold tracking-tight sm:mb-2 md:mb-2 lg:mb-2 xl:mb-2">
+          {humanize(service.serviceName)}
+        </p>
+        <Link className="flex gap-2 text-sm" href={service.documentation}>
+          Learn More
+          <Icon className="mt-1" size={10} iconName="FaExternalLinkAlt" />
+        </Link>
+      </div>
       <ul className="space-y-3 p-2">
         {Object.entries(service).map(([key, value]) => {
           const feature = value as ServiceFeature
