@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react"
 import { getEventData } from "@/app/queries"
-import { getStringDate } from "@/components/calendar/utils"
 import EventSection from "@/components/EventSection"
 import Spinner from "@/components/assets/Spinner"
 
@@ -24,11 +23,7 @@ export default function EventSectionClient() {
   useEffect(() => {
     const now = new Date()
     setCurrentDate(now)
-    const todayStr = getStringDate(
-      now.getMonth() + 1,
-      now.getDate(),
-      now.getFullYear()
-    )
+    const todayStr = now.toISOString().split("T")[0]
     setToday(todayStr)
 
     setLoading(true)
