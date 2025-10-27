@@ -26,12 +26,13 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
 
   return (
     <CollapsableCard
+      id={service.serviceName}
       title={humanize(service.serviceName)}
       isDisabled={isDisabled}
       size="sm"
       className="min-w-80 md:min-w-96"
     >
-      <ul className="space-y-3 p-2">
+      <ul className="mx-2 space-y-3 p-2">
         {Object.entries(service).map(([key, value]) => {
           const feature = value as ServiceFeature
           if (feature.name) {

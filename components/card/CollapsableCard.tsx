@@ -17,7 +17,12 @@ import {
 import Icon from "@/components/ui/RenderIcon"
 import { CardVariants } from "@/components/card/variants"
 
-export const CollapsableCard: React.FC<StyledCardProps> = ({
+interface CollapsableCardProps extends StyledCardProps {
+  id: string
+}
+
+export const CollapsableCard: React.FC<CollapsableCardProps> = ({
+  id,
   iconName,
   isDisabled = false,
   title,
@@ -39,10 +44,10 @@ export const CollapsableCard: React.FC<StyledCardProps> = ({
       )}
     >
       <Accordion type="single" collapsible>
-        <AccordionItem className="border-none" value="item-1">
+        <AccordionItem className="border-none p-4" value={id}>
           {title && (
             <CardHeader className="flex-shrink-0">
-              <CardTitle>
+              <CardTitle className="not-prose">
                 {IconComponent && (
                   <IconComponent
                     iconName={iconName}
@@ -55,8 +60,8 @@ export const CollapsableCard: React.FC<StyledCardProps> = ({
               </CardTitle>
             </CardHeader>
           )}
-          <CardContent className="flex-grow pt-0">
-            <AccordionContent className="prose prose-sm max-w-none lg:prose-base">
+          <CardContent className="flex-grow p-0">
+            <AccordionContent className="not-prose max-w-none">
               {children}
             </AccordionContent>
           </CardContent>
