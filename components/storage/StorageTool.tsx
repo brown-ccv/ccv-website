@@ -43,17 +43,6 @@ export default function StorageTool({
     setSelectedAnswers(initialSelectedAnswers)
   }, [initialSelectedAnswers])
 
-  const hasModifiedAnswers = useMemo(() => {
-    return (
-      Object.keys(selectedAnswers).some(
-        (key) => selectedAnswers[key] !== initialSelectedAnswers[key]
-      ) ||
-      Object.keys(initialSelectedAnswers).some(
-        (key) => selectedAnswers[key] !== initialSelectedAnswers[key]
-      )
-    )
-  }, [selectedAnswers, initialSelectedAnswers])
-
   return (
     <>
       <ContentSection id="form" title="Storage Selection Tool">
@@ -70,7 +59,7 @@ export default function StorageTool({
             Want to dive into comparing features?
           </p>
           <ScrollButton
-            variant="primary_outlined"
+            variant="primary_filled"
             size="md"
             id="table"
             aria-describedby="table-nav-desc"
@@ -87,9 +76,8 @@ export default function StorageTool({
             questions={questions}
           >
             <Button
-              disabled={!hasModifiedAnswers}
               onClick={handleReset}
-              variant="primary_outlined"
+              variant="primary_filled"
               size="sm"
               leftIcon={<Icon iconName="FaUndo" aria-hidden="true" />}
             >

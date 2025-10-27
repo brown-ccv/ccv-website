@@ -85,6 +85,7 @@ export interface StorageData {
 
 export interface ServiceConfig {
   serviceName: string
+  documentation: string
   description?: string
   links?: ServiceLink[]
 

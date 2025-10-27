@@ -1,5 +1,5 @@
 import React from "react"
-import { FaComments } from "react-icons/fa"
+import { FaHandshake } from "react-icons/fa"
 import BrownLogo from "@/components/assets/BrownLogo"
 import ButtonLink from "@/components/button/ButtonLink"
 
@@ -31,8 +31,8 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
         size="sm"
         className={"px-2 py-6 sm:px-4"}
       >
-        <FaComments className="text-lg sm:text-xl" />
-        Work with Us
+        <FaHandshake className="text-lg sm:text-2xl" />
+        Work With Us
       </ButtonLink>
     </header>
   )

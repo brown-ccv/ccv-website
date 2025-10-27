@@ -7,11 +7,7 @@ export default function DepartmentSupport() {
 
   return (
     <>
-      <Hero
-        image={metadata.image}
-        title={metadata.title}
-        description={metadata.description}
-      />
+      <Hero title={metadata.title} description={metadata.description} />
       <DepartmentSupportContent />
     </>
   )

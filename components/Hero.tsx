@@ -22,14 +22,17 @@ export const Hero = ({
   titleClassName = "font-semibold xl:text-5xl",
   descriptionClassName = "text-xl xl:text-2xl",
 }: HeroProps) => {
+  const hasImage = !!image
+  const gradientOpacity = hasImage ? 0.4 : 1.0
+
   const backgroundImageStyles = [
-    "linear-gradient(135deg, rgb(17 24 39) 0%, rgb(243 244 246) 100%)",
-    "radial-gradient(circle at 0% 0%, #060839 0%, transparent 85%)",
-    "radial-gradient(circle at 100% 100%, #060839 0%, transparent 85%)",
-    "radial-gradient(circle at 70% 30%, #EC4899 0%, #8B5CF6 50%, transparent 70%)",
-    "radial-gradient(circle at 30% 70%, #00b398 0%, transparent 60%)",
-    "radial-gradient(ellipse at 50% 50%, #04c8a6 0%, transparent 40%)",
-    "linear-gradient(135deg, #00b398 0%, transparent 30%, transparent 70%, #EC4899 100%)",
+    `linear-gradient(135deg, rgba(17, 24, 39, ${gradientOpacity}) 0%, rgba(243, 244, 246, ${gradientOpacity}) 100%)`,
+    `radial-gradient(circle at 0% 0%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,
+    `radial-gradient(circle at 100% 100%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,
+    `radial-gradient(circle at 70% 30%, rgba(236, 72, 153, ${gradientOpacity}) 0%, rgba(139, 92, 246, ${gradientOpacity}) 50%, transparent 70%)`,
+    `radial-gradient(circle at 30% 70%, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 60%)`,
+    `radial-gradient(ellipse at 50% 50%, rgba(4, 200, 166, ${gradientOpacity}) 0%, transparent 40%)`,
+    `linear-gradient(135deg, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 30%, transparent 70%, rgba(236, 72, 153, ${gradientOpacity}) 100%)`,
   ]
 
   if (image) {
@@ -72,14 +75,18 @@ export const MainHero = ({
   titleClassName = "font-semibold xl:text-5xl",
   descriptionClassName = "text-xl xl:text-2xl",
 }: HeroProps) => {
+  // Make gradients more transparent when there's a background image
+  const hasImage = !!image
+  const gradientOpacity = hasImage ? 0.4 : 1.0
+
   const backgroundImageStyles = [
-    "linear-gradient(135deg, rgb(17 24 39) 0%, rgb(243 244 246) 100%)",
-    "radial-gradient(circle at 0% 0%, #060839 0%, transparent 85%)",
-    "radial-gradient(circle at 100% 100%, #060839 0%, transparent 85%)",
-    "radial-gradient(circle at 70% 30%, #EC4899 0%, #8B5CF6 50%, transparent 70%)",
-    "radial-gradient(circle at 30% 70%, #00b398 0%, transparent 60%)",
-    "radial-gradient(ellipse at 50% 50%, #04c8a6 0%, transparent 40%)",
-    "linear-gradient(135deg, #00b398 0%, transparent 30%, transparent 70%, #EC4899 100%)",
+    `linear-gradient(135deg, rgba(17, 24, 39, ${gradientOpacity}) 0%, rgba(243, 244, 246, ${gradientOpacity}) 100%)`,
+    `radial-gradient(circle at 0% 0%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,
+    `radial-gradient(circle at 100% 100%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,
+    `radial-gradient(circle at 70% 30%, rgba(236, 72, 153, ${gradientOpacity}) 0%, rgba(139, 92, 246, ${gradientOpacity}) 50%, transparent 70%)`,
+    `radial-gradient(circle at 30% 70%, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 60%)`,
+    `radial-gradient(ellipse at 50% 50%, rgba(4, 200, 166, ${gradientOpacity}) 0%, transparent 40%)`,
+    `linear-gradient(135deg, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 30%, transparent 70%, rgba(236, 72, 153, ${gradientOpacity}) 100%)`,
   ]
 
   if (image) {
