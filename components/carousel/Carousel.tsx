@@ -124,7 +124,7 @@ export const Carousel: React.FC<CarouselProps> = ({ carouselData }) => {
         {carouselData.map((carouselItem, index) => (
           <div
             key={index}
-            className={`absolute inset-0 flex h-full transform items-center justify-center gap-6 px-16 transition-transform xl:px-24 xxl:px-48 ${
+            className={`absolute inset-0 flex h-full transform items-center justify-center gap-6 bg-white px-16 transition-transform duration-700 ease-out xl:px-24 xxl:px-48 ${
               index === idx ? "translate-x-0" : "translate-x-full"
             }`}
           >
