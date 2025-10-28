@@ -88,6 +88,7 @@
   "table_data": [
     {
       "serviceName": "Google Drive",
+      "documentation": "https://support.google.com/a/users/answer/9282958?sjid=14453272908274340665-NA",
       "storage_threshold": {
         "name": "storage_threshold",
         "value": "1 TB +",
@@ -169,6 +170,7 @@
     },
     {
       "serviceName": "Campus File Storage Non-Replicated / Research Services",
+      "documentation": "https://ithelp.brown.edu/kb/campus-file-storage",
       "storage_threshold": {
         "name": "storage_threshold",
         "value": "2 TB +",
@@ -256,6 +258,7 @@
     },
     {
       "serviceName": "Campus File Storage Replicated / Research Services",
+      "documentation": "https://ithelp.brown.edu/kb/campus-file-storage",
       "storage_threshold": {
         "name": "storage_threshold",
         "value": "1 TB +",
@@ -343,6 +346,7 @@
     },
     {
       "serviceName": "Brown_Digital_Repository",
+      "documentation": "https://repository.library.brown.edu/studio/about/",
       "storage_threshold": {
         "name": "storage_threshold",
         "value": "1 TB",
@@ -426,6 +430,7 @@
     },
     {
       "serviceName": "LabArchives",
+      "documentation": "https://libguides.brown.edu/data_management",
       "storage_threshold": {
         "name": "storage_threshold",
         "value": "1 TB",
@@ -509,6 +514,7 @@
     },
     {
       "serviceName": "oscar_storage",
+      "documentation": "https://docs.ccv.brown.edu/oscar#storage",
       "storage_threshold": {
         "name": "storage_threshold",
         "value": "1 TB +",
@@ -596,6 +602,7 @@
     },
     {
       "serviceName": "stronghold",
+      "documentation": "https://docs.ccv.brown.edu/stronghold",
       "storage_threshold": {
         "name": "storage_threshold",
         "value": "1 TB +",
@@ -683,6 +690,7 @@
     },
     {
       "serviceName": "Hibernate",
+      "documentation": "https://docs.ccv.brown.edu/hibernate/",
       "storage_threshold": {
         "name": "storage_threshold",
         "value": "2 TB +",

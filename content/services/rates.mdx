@@ -6,52 +6,31 @@ description: We provide services with limited resources at no cost to all member
 <ContentSection title="High Performance Computing Cluster (Oscar)">
 
 The number and size of jobs allowed on Oscar vary with both partition and type of user account. 
+All Brown users can request a free exploratory account with basic access to a resources on our Batch and GPU partitions.
+Researchers with more intensive computing needs can upgrade to priority accounts, which provide access to more GPU & CPU 
+cores, memory, walltime and faster start times.
 
-### Exploratory Account
-We offer free exploratory accounts for all users. Resources vary by the partition you run your jobs on.
+### Batch Partition
+The _batch_ partition is designed for high-throughput computing jobs that require many CPU cores. Upgrading to priority 
+accounts allows users to run larger jobs with more CPU cores, memory, walltime, faster start times, and limited 
+standard GPUs. 
 <CardGroup>
-  <StyledCard title="Batch" size="md">
+  <StyledCard title="Exploratory" size="md">
     - **Partition:** batch
     - **CPU Cores:** 64
     - **Memory:** 492 GB
     - **GPU:** None
-    - **Max Walltime:** 48hr
+    - **Max Resource Walltime:** 48hr\*
     - **Cost:** $0/month
     - **Quality-of-Service:** Basic
   </StyledCard>
 
-  <StyledCard title="GPU" size="md">
-    - **Partition:** gpu
-    - **CPU Cores:** 12
-    - **Memory:** 192 GB
-    - **GPU:** 2 Std.
-    - **Max Walltime:** 48hr
-    - **Cost:** $0/month
-    - **Quality-of-Service:** Basic
-  </StyledCard>
-
-  <StyledCard title="BigMem" size="md">
-    - **Partition:** bigmem
-    - **CPU Cores:** 32
-    - **Memory:** 752 GB
-    - **GPU:** None
-    - **Max Walltime:** 48hr
-    - **Cost:** $0/month
-    - **Quality-of-Service:** Basic
-  </StyledCard>
-</CardGroup>
-
-### Priority Accounts
-Researchers with more intensive computing needs can purchase priority accounts, 
-which provide access to more CPU cores, GPUs, and longer walltimes.
-<CardGroup>
-
-  <StyledCard title="HPC" size="md">
+  <StyledCard title="HPC Priority" size="md">
     - **Partition:** batch
     - **CPU Cores:** 208
     - **Memory:** 1500 GB
-    - **GPU:** 2 Std.
-    - **Max Walltime:** 96hr
+    - **GPU:** 2 Standard
+    - **Max Resource Walltime:** 96hr\*
     - **Cost:** $67/month
     - **Quality-of-Service:** Faster start times
   </StyledCard>
@@ -60,54 +39,77 @@ which provide access to more CPU cores, GPUs, and longer walltimes.
     - **Partition:** batch
     - **CPU Cores:** 416
     - **Memory:** 3000 GB
-    - **GPU:** 2 Std.
-    - **Max Walltime:** 48hr
+    - **GPU:** 2 Standard
+    - **Max Resource Walltime:** 96hr\*
     - **Cost:** $133/month
     - **Quality-of-Service:** Faster start times
   </StyledCard>
 
-  <StyledCard title="Standard GPU" size="md">
+</CardGroup>
+
+### GPU Partition
+The _gpu_ partition is designed for jobs that prioritize GPUs. The nodes are equipped with our standard GPUs such as 
+NVIDIA Quadro RTX or A5000. This partition is ideal for standard parallel workloads, model training, and GPU-accelerated 
+visualization. Upgrading to priority accounts allows users to run larger jobs with more GPU & CPU cores, memory, 
+walltime and faster start times.
+<CardGroup>
+  <StyledCard title="Exploratory" size="md">
+    - **Partition:** gpu
+    - **CPU Cores:** 12
+    - **Memory:** 192 GB
+    - **GPU:** 2 Standard
+    - **Max Resource Walltime:** 48hr\*
+    - **Cost:** $0/month
+    - **Quality-of-Service:** Basic
+  </StyledCard>
+
+  <StyledCard title="Standard GPU Priority" size="md">
     - **Partition:** gpu
     - **CPU Cores:** 24
     - **Memory:** 192 GB
-    - **GPU:** 4 Std.
-    - **Max Walltime:** 96hr
+    - **GPU:** 4 Standard
+    - **Max Resource Walltime:** 96hr\*
     - **Cost:** $67/month
+    - **Quality-of-Service:** Faster start times
   </StyledCard>
 
   <StyledCard title="Standard GPU Priority+" size="md">
     - **Partition:** gpu
     - **CPU Cores:** 48
     - **Memory:** 384 GB
-    - **GPU:** 8 Std.
-    - **Max Walltime:** 96hr
+    - **GPU:** 8 Standard
+    - **Max Resource Walltime:** 96hr\*
     - **Cost:** $133/month
+    - **Quality-of-Service:** Faster start times
   </StyledCard>
 
+</CardGroup>
+
+### High-End GPU Partition
+The _gpu-he_ partition provides access to GPUs with higher memory and compute performance such as NVIDIA Tesla V100 or 
+A6000 GPUs. Recommended for large-scale deep learning, molecular dynamics, and scientific simulations requiring high 
+memory or compute throughput.
+
+<CardGroup>
   <StyledCard title="High-End GPU" size="md">
     - **Partition:** gpu-he
     - **CPU Cores:** 24
     - **Memory:** 256 GB
-    - **GPU:** 4 high-end
-    - **Max Walltime:** 96hr
+    - **GPU:** 4 High-End
+    - **Max Resource Walltime:** 96hr\*
     - **Cost:** $133/month
-  </StyledCard>
-
-  <StyledCard title="Large Memory" size="md">
-    - **Partition:** bigmem
-    - **CPU Cores:** 32
-    - **Memory:** 2 TB
-    - **GPU:** None
-    - **Max Walltime:** 96hr
-    - **Cost:** $33/month
   </StyledCard>
 </CardGroup>
 
-Note, these values are subject to periodic review and changes. For more technical details, review the system hardware documentation.
+Note, these values are subject to periodic review and changes. For more technical details, review the [system hardware 
+documentation](https://docs.ccv.brown.edu/oscar/system-overview).
 
-\*GPU Definitions: Std. - QuadroRTX or lower, High-end - Tesla V100
-
-\*\*Quality-of-Service: The maximum number of cores and duration may change based on cluster utilization. HPC Priority account has a Quality-of-Service (QOS) allowing up to 208 cores, 1TB memory, and a total per-job limit of 1,198,080 core-minutes. This allows a 208-core job to run for 96 hours, a 104-core job to run for 192 hours, or 208 1-core jobs to run for 96 hours. Exploratory account has a Quality-of-Service (QOS) allowing up to 2 GPUs and a total of 5760 GPU-minutes. This allows a 2 GPU job to run for 48 hours or 1 GPU job to run for 96 hours.
+\*__Max Resource Walltime:__ The time limit when using the maximum of available CPUs or GPUs of an account. 
+Using less of the allotted CPUs or GPUs allows for longer walltimes. This is because the resource allocation is 
+actually governed by a fixed total compute budget measured in CPU-minutes or GPU-minutes that is distributed 
+across your concurrent jobs. For example, HPC Priority accounts have a compute budget of 19,968 core-hours. Using all 
+208 cores results in a walltime of 96 hours (19,968 / 208); however using half of the available cores with 104 CPUs 
+would result in double the walltime at 192 hours (19,968 / 104).
 
 </ContentSection>
 
@@ -123,47 +125,44 @@ Investigators may purchase condos to share access to computing resources with th
 - Support - CCV staff will install, upgrade and maintain condo hardware throughout its life cycle.
 - High job priority - Jobs submitted to a condo have the highest priority to schedule.
 
-<Button href="/about/contact">Contact Us</Button>
-
 </ContentSection>
 
 <ContentSection title="Research Data Storage">
 
-### Default Basic Allocation
+### Brown Sponsored Allocation
 
-CCV provides several storage options for research data. Brown Faculty members are allocated 1TB of default storage.
+CCV provides several storage options for research data. Brown Faculty members are allocated 1TB of default storage with 
+an additional 10TB per active grant.
 <CardGroup>
   <StyledCard title="Basic" size="md">
     - **Location:** Oscar, Campus Files, Stronghold
     - **Storage:** 1TB
     - **Cost:** $0/year
   </StyledCard>
-</CardGroup>
 
-### Additional Research Storage
-Additional research storage is available either through a free allocation per active grant 
-or on a pay-as-you-go basis. A complementary 10TB additional storage is granted per active grant.
-Purchased storage is available in two types: unreplicated (a single copy) or replicated 
-(multiple copies at different locations). 
-
-<CardGroup>
-    <StyledCard title="Active Grant Allocation" size="md">
+  <StyledCard title="Active Grant Allocation" size="md">
       - **Location:** Oscar, Campus Files, Stronghold
       - **Storage:** 10TB
       - **Cost:** $0 (per 10TB/grant)
     </StyledCard>
-  
-    <StyledCard title="Unreplicated" size="md">
-      - **Location:** Oscar, Campus Files, Stronghold
-      - **Storage:** User-specified
-      - **Cost:** $50/TB/year
-    </StyledCard>
+</CardGroup>
 
-    <StyledCard title="Replicated" size="md">
-      - **Location:** Campus Files
-      - **Storage:** User-specified
-      - **Cost:** $100/TB/year
-    </StyledCard>
+### Additional Research Storage
+Additional research storage can be purchased. Purchased storage is available in two types: Unreplicated (a single copy) 
+or Replicated (multiple copies at different locations). 
+
+<CardGroup>
+  <StyledCard title="Unreplicated" size="md">
+    - **Location:** Campus Files
+    - **Storage:** User-specified
+    - **Cost:** $50/TB/year
+  </StyledCard>
+  
+  <StyledCard title="Replicated" size="md">
+    - **Location:** Oscar, Campus Files, Stronghold
+    - **Storage:** User-specified
+    - **Cost:** $100/TB/year
+  </StyledCard>
 </CardGroup>
 
 ### Pooled Storage Allocations
@@ -175,5 +174,15 @@ We are able to accommodate group payment plans where individual and grant alloca
 - A list of researchers in the group
 - A list of grants with end dates for any PIs in the group
 - Who will handle the invoicing
+
+</ContentSection>
+
+<ContentSection title="Contact Us">
+
+Have questions about our resources & rates or ready to upgrade your account? CCV can help! We offer consultations to determine the most cost-effective resources for your research needs.
+
+<Button size="md" href="/about/contact">
+  Contact Us
+</Button>
 
 </ContentSection>

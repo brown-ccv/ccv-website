@@ -22,8 +22,8 @@ export interface DataProps {
 }
 
 interface EventSectionProps {
-  streamedDataFuture: Promise<any>
-  streamedDataPast: Promise<any>
+  streamedDataFuture: DataProps[]
+  streamedDataPast: DataProps[]
   today: string
   currentDate: Date
 }
@@ -34,8 +34,8 @@ export function EventSection({
   today,
   currentDate,
 }: EventSectionProps): JSX.Element {
-  const dataFuture = use(streamedDataFuture)
-  const dataPast = use(streamedDataPast)
+  const dataFuture = streamedDataFuture
+  const dataPast = streamedDataPast
 
   return (
     <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">

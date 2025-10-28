@@ -53,7 +53,8 @@ export const ProjectEstimationSection = () => {
             "A mobile application used to track participants  in an indoor environment to simulate the transfer of a pathogen."
           }
           image={"/images/home/featured-carousel/mapps.webp"}
-          group={"Pandemic Center, School of Public Health"}
+          group={"Department of Epidemiology, School of Public Health"}
+          pi="Mark Lurie"
           goal={
             "CCV was responsible for developing a cross-platform mobile application, which included designing and implementing native code to facilitate interaction with Bluetooth devices. Additionally, CCV managed the submission process for the app to both the iOS and Android app stores."
           }
@@ -70,7 +71,8 @@ export const ProjectEstimationSection = () => {
           description={
             "An open-source Julia package for tracking Arctic Ocean ice floes using data from the Aqua and Terra Earth-observation satellites."
           }
-          group={"School of Engineering"}
+          group={"Wilhelmus Lab, School of Engineering"}
+          pi={"Monica Martinez Wilhelmus"}
           goal={
             "CCV was responsible for translating code from MATLAB to Julia, reimplementing functionality that was available in MATLAB but not in Julia. The team added versatile interfaces, including functions for interactive analyses, and introduced new variants of processing steps, such as an alternative image segmentation algorithm."
           }

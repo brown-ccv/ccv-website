@@ -186,7 +186,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
       header: "Service",
       cell: (info) => (
         <Link
-          href={`/services/storage#${info.getValue()}`}
+          href={info.row.original.documentation}
           className={cn(
             "font-medium text-keppel-800 transition-colors hover:text-keppel-600 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
           )}
