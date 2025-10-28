@@ -1,7 +1,9 @@
 "use client"
 
-import { ReactNode } from "react"
+import React, { ReactNode } from "react"
+import Image from "next/image"
 import { TextAnimate } from "@/components/magicui/TextAnimate"
+import { cn } from "@/lib/utils"
 
 interface HeroProps {
   image?: string
@@ -13,6 +15,110 @@ interface HeroProps {
   descriptionClassName?: string
 }
 
+// Shared gradient overlay styles
+const GRADIENT_OVERLAY_STYLE = {
+  backgroundImage: [
+    "linear-gradient(135deg, rgb(17 24 39) 0%, rgb(243 244 246) 100%)",
+    "radial-gradient(circle at 0% 0%, #060839 0%, transparent 85%)",
+    "radial-gradient(circle at 100% 100%, #060839 0%, transparent 85%)",
+    "radial-gradient(circle at 70% 30%, #EC4899 0%, #8B5CF6 50%, transparent 70%)",
+    "radial-gradient(circle at 30% 70%, #00b398 0%, transparent 60%)",
+    "radial-gradient(ellipse at 50% 50%, #04c8a6 0%, transparent 40%)",
+    "linear-gradient(135deg, #00b398 0%, transparent 30%, transparent 70%, #EC4899 100%)",
+  ].join(", "),
+  backgroundBlendMode:
+    "overlay, multiply, multiply, overlay, soft-light, overlay, overlay",
+}
+
+// Shared content component
+interface HeroContentProps {
+  title?: string
+  description?: string
+  children?: ReactNode
+  titleClassName: string
+  descriptionClassName: string
+  showGradient: boolean
+  animated?: boolean
+}
+
+const HeroContent = ({
+  title,
+  description,
+  children,
+  titleClassName,
+  descriptionClassName,
+  showGradient,
+  animated = false,
+}: HeroContentProps) => {
+  if (!showGradient) {
+    return <>{children}</>
+  }
+
+  return (
+    <div className="text-shadow-md flex w-full max-w-[1400px] flex-col gap-9">
+      {title && <h1 className={titleClassName}>{title}</h1>}
+      {description &&
+        (animated ? (
+          <TextAnimate
+            as="p"
+            className={descriptionClassName}
+            animation="fadeIn"
+            by="word"
+            delay={0.2}
+            duration={0.5}
+          >
+            {description}
+          </TextAnimate>
+        ) : (
+          <p className={descriptionClassName}>{description}</p>
+        ))}
+      {children && (
+        <div className="flex flex-col flex-wrap gap-2 pt-8 sm:flex-row sm:gap-4 md:pt-16">
+          {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// Base Hero wrapper component
+interface HeroWrapperProps {
+  children: ReactNode
+  className: string
+  image?: string
+}
+
+const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
+  const gradientOpacity = image ? "opacity-55" : ""
+  return (
+    <div
+      className={`relative flex w-full flex-col overflow-hidden text-white ${className}`}
+    >
+      {/* Background Image */}
+      {image && (
+        <Image
+          src={image}
+          alt="Hero background"
+          fill
+          priority
+          className="object-cover object-[center_65%]"
+          quality={90}
+        />
+      )}
+
+      {/* Gradient Overlay */}
+      <div
+        className={cn("absolute inset-0 z-0", gradientOpacity)}
+        style={GRADIENT_OVERLAY_STYLE}
+      />
+
+      {/* Content */}
+      <div className="relative z-10">{children}</div>
+    </div>
+  )
+}
+
+// Standard Hero Component
 export const Hero = ({
   image,
   title,
@@ -22,51 +128,25 @@ export const Hero = ({
   titleClassName = "font-semibold xl:text-5xl",
   descriptionClassName = "text-xl xl:text-2xl",
 }: HeroProps) => {
-  const hasImage = !!image
-  const gradientOpacity = hasImage ? 0.4 : 1.0
-
-  const backgroundImageStyles = [
-    `linear-gradient(135deg, rgba(17, 24, 39, ${gradientOpacity}) 0%, rgba(243, 244, 246, ${gradientOpacity}) 100%)`,
-    `radial-gradient(circle at 0% 0%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,
-    `radial-gradient(circle at 100% 100%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,
-    `radial-gradient(circle at 70% 30%, rgba(236, 72, 153, ${gradientOpacity}) 0%, rgba(139, 92, 246, ${gradientOpacity}) 50%, transparent 70%)`,
-    `radial-gradient(circle at 30% 70%, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 60%)`,
-    `radial-gradient(ellipse at 50% 50%, rgba(4, 200, 166, ${gradientOpacity}) 0%, transparent 40%)`,
-    `linear-gradient(135deg, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 30%, transparent 70%, rgba(236, 72, 153, ${gradientOpacity}) 100%)`,
-    `linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 99%)`,
-  ]
-
-  if (image) {
-    backgroundImageStyles.push(`url(${image})`)
-  }
-
   return (
-    <div
-      className="relative flex w-full flex-col overflow-hidden bg-cover bg-[center_65%] p-12 text-white sm:px-16 lg:px-14 lg:py-32 xl:px-20"
-      style={{
-        backgroundImage: backgroundImageStyles.join(", "),
-        backgroundSize: "cover",
-        backgroundBlendMode:
-          "overlay, multiply, multiply, overlay, soft-light, overlay, overlay, normal, normal",
-      }}
+    <HeroWrapper
+      className="p-12 sm:px-16 lg:px-14 lg:py-32 xl:px-20"
+      image={image}
     >
-      {showGradient ? (
-        <div className="flex w-full max-w-[1400px] flex-col gap-9">
-          {title && <h1 className={titleClassName}>{title}</h1>}
-          {description && <p className={descriptionClassName}>{description}</p>}
-          {children && (
-            <div className="flex flex-col flex-wrap gap-2 pt-8 sm:flex-row sm:gap-4">
-              {children}
-            </div>
-          )}
-        </div>
-      ) : (
-        children
-      )}
-    </div>
+      <HeroContent
+        title={title}
+        description={description}
+        titleClassName={titleClassName}
+        descriptionClassName={descriptionClassName}
+        showGradient={showGradient}
+      >
+        {children}
+      </HeroContent>
+    </HeroWrapper>
   )
 }
 
+// Main Hero Component (with animations and different layout)
 export const MainHero = ({
   image,
   title,
@@ -76,60 +156,22 @@ export const MainHero = ({
   titleClassName = "font-semibold xl:text-5xl",
   descriptionClassName = "text-xl xl:text-2xl",
 }: HeroProps) => {
-  // Make gradients more transparent when there's a background image
-  const hasImage = !!image
-  const gradientOpacity = hasImage ? 0.4 : 1.0
-
-  const backgroundImageStyles = [
-    `linear-gradient(135deg, rgba(17, 24, 39, ${gradientOpacity}) 0%, rgba(243, 244, 246, ${gradientOpacity}) 100%)`,
-    `radial-gradient(circle at 0% 0%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,
-    `radial-gradient(circle at 100% 100%, rgba(6, 8, 57, ${gradientOpacity}) 0%, transparent 85%)`,
-    `radial-gradient(circle at 70% 30%, rgba(236, 72, 153, ${gradientOpacity}) 0%, rgba(139, 92, 246, ${gradientOpacity}) 50%, transparent 70%)`,
-    `radial-gradient(circle at 30% 70%, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 60%)`,
-    `radial-gradient(ellipse at 50% 50%, rgba(4, 200, 166, ${gradientOpacity}) 0%, transparent 40%)`,
-    `linear-gradient(135deg, rgba(0, 179, 152, ${gradientOpacity}) 0%, transparent 30%, transparent 70%, rgba(236, 72, 153, ${gradientOpacity}) 100%)`,
-    `linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, transparent 70%)`,
-  ]
-
-  if (image) {
-    backgroundImageStyles.push(`url(${image})`)
-  }
-
   return (
-    <div
-      className="relative flex min-h-[clamp(1000px,50vh,60vh)] w-full flex-col overflow-hidden bg-cover bg-[center_65%] px-6 pb-16 pt-[12%] text-white md:px-14 xl:pl-36 xl:pr-96"
-      style={{
-        backgroundImage: backgroundImageStyles.join(", "),
-        backgroundSize: "cover",
-        backgroundBlendMode:
-          "overlay, multiply, multiply, overlay, soft-light, overlay, overlay, normal, normal",
-      }}
+    <HeroWrapper
+      className="min-h-[clamp(1000px,50vh,60vh)] px-6 pb-16 pt-[12%] md:px-14 xl:pl-36 xl:pr-96"
+      image={image}
     >
-      {showGradient ? (
-        <div className="flex w-full max-w-[1400px] flex-col gap-9">
-          {title && <h1 className={titleClassName}>{title}</h1>}
-          {description && (
-            <TextAnimate
-              as="p"
-              className={descriptionClassName}
-              animation="fadeIn"
-              by="word"
-              delay={0.2}
-              duration={0.5}
-            >
-              {description}
-            </TextAnimate>
-          )}
-          {children && (
-            <div className="flex flex-col flex-wrap gap-2 pt-8 sm:flex-row sm:gap-4 md:pt-16">
-              {children}
-            </div>
-          )}
-        </div>
-      ) : (
-        children
-      )}
-    </div>
+      <HeroContent
+        title={title}
+        description={description}
+        titleClassName={titleClassName}
+        descriptionClassName={descriptionClassName}
+        showGradient={showGradient}
+        animated
+      >
+        {children}
+      </HeroContent>
+    </HeroWrapper>
   )
 }
 
