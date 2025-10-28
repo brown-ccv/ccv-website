@@ -76,7 +76,7 @@ export const Organization = ({
   name,
 }: OrganizationItem) => {
   return (
-    <>
+    <div className="flex flex-col">
       <h4>{name}</h4>
       <p className="text-sm text-slate-600">{organization}</p>
       {(pi?.length || pm) && (
@@ -86,7 +86,7 @@ export const Organization = ({
           {pm && `PM: ${pm}`}
         </p>
       )}
-    </>
+    </div>
   )
 }
 
