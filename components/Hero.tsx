@@ -89,7 +89,7 @@ interface HeroWrapperProps {
 }
 
 const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
-  const gradientOpacity = image ? "opacity-55" : ""
+  const gradientOpacity = image ? "opacity-60" : ""
   return (
     <div
       className={`relative flex w-full flex-col overflow-hidden text-white ${className}`}
@@ -125,8 +125,8 @@ export const Hero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "font-semibold xl:text-5xl",
-  descriptionClassName = "text-xl xl:text-2xl",
+  titleClassName = "font-semibold drop-shadow-md xl:text-5xl",
+  descriptionClassName = "text-xl drop-shadow-md xl:text-2xl",
 }: HeroProps) => {
   return (
     <HeroWrapper
@@ -153,8 +153,8 @@ export const MainHero = ({
   description,
   children,
   showGradient = true,
-  titleClassName = "font-semibold xl:text-5xl",
-  descriptionClassName = "text-xl xl:text-2xl",
+  titleClassName = "font-semibold drop-shadow-md xl:text-5xl",
+  descriptionClassName = "text-xl drop-shadow-md xl:text-2xl",
 }: HeroProps) => {
   return (
     <HeroWrapper
