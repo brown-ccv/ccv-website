@@ -90,6 +90,7 @@ interface HeroWrapperProps {
 
 const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
   const gradientOpacity = image ? "opacity-60" : ""
+  const backgroundColor = image ? "" : "bg-black"
   return (
     <div
       className={`relative flex w-full flex-col overflow-hidden text-white ${className}`}
@@ -106,14 +107,30 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
         />
       )}
 
-      {/* Gradient Overlay */}
-      <div
-        className={cn("absolute inset-0 z-0", gradientOpacity)}
-        style={GRADIENT_OVERLAY_STYLE}
-      />
+      {/* Gradient Overlays */}
+      <div className={cn("absolute inset-0 z-0", backgroundColor)}>
+        {/* Base gradient - black to transparent */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
+        <div className={cn("absolute inset-0 z-0", gradientOpacity)}>
+          {/* Dark blue radial gradient - top left */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_0%_0%,_rgba(6,8,57,0.8)_0%,_transparent_85%)]" />
+
+          {/* Dark blue radial gradient - bottom right */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_100%_100%,_rgba(6,8,57,0.8)_0%,_transparent_85%)]" />
+
+          {/* Pink to purple radial gradient - upper right area */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,_rgba(236,72,153,0.6)_0%,_rgba(139,92,246,0.4)_50%,_transparent_70%)] mix-blend-overlay" />
+
+          {/* Teal radial gradient - lower left area */}
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_70%,_rgba(0,179,152,0.5)_0%,_transparent_60%)] opacity-55" />
+
+          {/* Teal ellipse - center */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,_rgba(4,200,166,0.4)_0%,_transparent_40%)] opacity-25 mix-blend-soft-light" />
+        </div>
+      </div>
 
       {/* Content */}
-      <div className="relative z-10">{children}</div>
+      <div className="relative z-10 mt-auto">{children}</div>
     </div>
   )
 }
@@ -158,7 +175,7 @@ export const MainHero = ({
 }: HeroProps) => {
   return (
     <HeroWrapper
-      className="min-h-[clamp(1000px,50vh,60vh)] px-6 pb-16 pt-[12%] md:px-14 xl:pl-36 xl:pr-96"
+      className="min-h-[clamp(1000px,50vh,60vh)] px-6 pb-52 md:px-14 xl:pl-36 xl:pr-96"
       image={image}
     >
       <HeroContent
