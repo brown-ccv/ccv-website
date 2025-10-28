@@ -13,7 +13,6 @@ import {
 import {
   StyledDialog,
   StyledDialogContent,
-  StyledDialogFooter,
   StyledDialogTitle,
   StyledDialogTrigger,
 } from "@/components/StyledDialog"
@@ -112,20 +111,22 @@ const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
                   src={item.image}
                   alt={item.alt}
                 />
-                <div className="flex items-center justify-between px-3">
-                  <h3 className="mt-2 font-bold">{item.title}</h3>
-                  <StyledDialog>
-                    <StyledDialogTrigger asChild>
-                      <Button
-                        variant="icon_only"
-                        aria-label="More Details"
-                        iconOnly={<RenderIcon iconName="FaEllipsisV" />}
-                        className="rounded-xl"
-                      />
-                    </StyledDialogTrigger>
-                    <StyledDialogCard {...item} />
-                  </StyledDialog>
-                </div>
+                <StyledDialog>
+                  <StyledDialogTrigger
+                    asChild
+                    className="mx-3 flex items-center justify-between px-3"
+                  >
+                    <Button
+                      variant="unstyled"
+                      aria-label="More Details"
+                      className="rounded-xl bg-slate-100"
+                    >
+                      <h3 className="font-bold">{item.title}</h3>
+                      <RenderIcon iconName="FaEllipsisV" />
+                    </Button>
+                  </StyledDialogTrigger>
+                  <StyledDialogCard {...item} />
+                </StyledDialog>
                 <div className="hidden px-3 md:line-clamp-2">
                   <Markdown
                     remarkPlugins={[remarkGfm]}
