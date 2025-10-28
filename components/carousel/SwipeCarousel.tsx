@@ -11,14 +11,12 @@ import {
   Organization,
 } from "@/components/carousel/Carousel"
 import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogFooter,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/Dialog"
-import Image from "next/image"
+  StyledDialog,
+  StyledDialogContent,
+  StyledDialogFooter,
+  StyledDialogTitle,
+  StyledDialogTrigger,
+} from "@/components/StyledDialog"
 import ButtonLink from "@/components/button/ButtonLink"
 import { Button } from "@/components/button/Button"
 import Markdown from "react-markdown"
@@ -26,6 +24,7 @@ import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 import Icon from "@/components/ui/RenderIcon"
 import { cn, getColorForTag } from "@/lib/utils"
+import Image from "next/image"
 
 const DRAG_BUFFER = 50
 
@@ -82,7 +81,6 @@ export const SwipeCarousel = ({ carouselData, className }: CarouselProps) => {
         setCardIndex={setCardIndex}
         carouselData={carouselData}
       />
-      {/*<GradientEdges />*/}
     </div>
   )
 }
@@ -107,27 +105,26 @@ const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
           >
             <Card className="bg-white">
               <CardContent className="flex flex-col p-0">
-                <div
-                  style={{
-                    backgroundImage: `url(${item.image})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
+                <Image
                   className="max-h-3/4 aspect-video w-full shrink-0 rounded-t-xl bg-neutral-900 object-cover p-0"
-                ></div>
+                  width={800}
+                  height={400}
+                  src={item.image}
+                  alt={item.alt}
+                />
                 <div className="flex items-center justify-between px-3">
                   <h3 className="mt-2 font-bold">{item.title}</h3>
-                  <Dialog>
-                    <DialogTrigger asChild>
+                  <StyledDialog>
+                    <StyledDialogTrigger asChild>
                       <Button
                         variant="icon_only"
                         aria-label="More Details"
                         iconOnly={<RenderIcon iconName="FaEllipsisV" />}
                         className="rounded-xl"
                       />
-                    </DialogTrigger>
-                    <DialogCard {...item} />
-                  </Dialog>
+                    </StyledDialogTrigger>
+                    <StyledDialogCard {...item} />
+                  </StyledDialog>
                 </div>
                 <div className="hidden px-3 md:line-clamp-2">
                   <Markdown
@@ -159,25 +156,34 @@ const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
   )
 }
 
-const DialogCard = ({
+const StyledDialogCard = ({
   title,
   description,
   image,
+  alt,
   attribution,
   buttons,
   organizations,
 }: CarouselItem) => {
   return (
-    <DialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl border-none bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
-      <div
-        style={{
-          backgroundImage: `url(${image})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+    <StyledDialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl border-none bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
+      <Image
         className="aspect-video w-full shrink-0 bg-neutral-900 object-cover"
-      ></div>
-      <DialogTitle className="pt-4 text-xl font-bold">{title}</DialogTitle>
+        width={800}
+        height={400}
+        src={image}
+        alt={alt}
+      />
+      {attribution && (
+        <div className="mt-2 text-xs">
+          <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+            {attribution}
+          </Markdown>
+        </div>
+      )}
+      <StyledDialogTitle className="pt-4 text-center text-xl font-bold">
+        {title}
+      </StyledDialogTitle>
       {/* Content */}
       <div className="flex flex-col items-center gap-10 px-8">
         {/* Organizations */}
@@ -218,16 +224,6 @@ const DialogCard = ({
           ))}
         </div>
       )}
-      {/* Attribution if image requires it */}
-      {attribution && (
-        <DialogFooter className="px-8 pb-2">
-          <div className="mt-2 text-xs">
-            <Markdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-              {attribution}
-            </Markdown>
-          </div>
-        </DialogFooter>
-      )}
-    </DialogContent>
+    </StyledDialogContent>
   )
 }

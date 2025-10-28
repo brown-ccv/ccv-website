@@ -1,8 +1,8 @@
 import React from "react"
 import { ServiceConfig, ServiceFeature } from "@/lib/storage-types"
-import { StyledCard } from "@/components/card/StyledCard"
 import { Badge } from "@/components/ui/Badge"
 import { humanize } from "@/lib/utils"
+import { CollapsableCard } from "@/components/card/CollapsableCard"
 
 interface ServiceCardProps {
   service: ServiceConfig
@@ -25,13 +25,14 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
   }
 
   return (
-    <StyledCard
+    <CollapsableCard
+      id={service.serviceName}
       title={humanize(service.serviceName)}
       isDisabled={isDisabled}
       size="sm"
-      className="w-full"
+      className="min-w-80 md:min-w-96"
     >
-      <ul className="space-y-3 p-2">
+      <ul className="mx-2 space-y-3 p-2">
         {Object.entries(service).map(([key, value]) => {
           const feature = value as ServiceFeature
           if (feature.name) {
@@ -52,7 +53,7 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
           }
         })}
       </ul>
-    </StyledCard>
+    </CollapsableCard>
   )
 }
 

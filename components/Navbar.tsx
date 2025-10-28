@@ -15,6 +15,7 @@ import {
   FaDesktop,
   FaDollarSign,
   FaFileImport,
+  FaPenNib,
   FaEnvelope,
   FaQuestionCircle,
   FaRobot,
@@ -201,6 +202,12 @@ const routes: NavSection[] = [
             href: "/about/us",
             description: "",
             icon: FaUser,
+          },
+          {
+            name: "Grant and Publication Materials",
+            href: "/about/grant-and-publication-materials",
+            description: "",
+            icon: FaPenNib,
           },
           {
             name: "Careers",
