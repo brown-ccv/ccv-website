@@ -71,7 +71,8 @@ export const ProjectEstimationSection = () => {
           description={
             "An open-source Julia package for tracking Arctic Ocean ice floes using data from the Aqua and Terra Earth-observation satellites."
           }
-          group={"School of Engineering"}
+          group={"Wilhelmus Lab, School of Engineering"}
+          pi={"Monica Martinez Wilhelmus"}
           goal={
             "CCV was responsible for translating code from MATLAB to Julia, reimplementing functionality that was available in MATLAB but not in Julia. The team added versatile interfaces, including functions for interactive analyses, and introduced new variants of processing steps, such as an alternative image segmentation algorithm."
           }
