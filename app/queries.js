@@ -1,5 +1,3 @@
-import { get } from "http"
-
 async function getCCVData(time) {
   const response = await fetch(
     `https://events.brown.edu/live/json/events/description_long/true/group/Center%20for%20Computation%20and%20Visualization%20%28CCV%29/start_date/${time}/`
