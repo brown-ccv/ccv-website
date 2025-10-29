@@ -204,6 +204,12 @@ const routes: NavSection[] = [
             icon: FaUser,
           },
           {
+            name: "Contact Us",
+            href: "/about/help#contact-us",
+            description: "",
+            icon: FaEnvelope,
+          },
+          {
             name: "Grant and Publication Materials",
             href: "/about/grant-and-publication-materials",
             description: "",
