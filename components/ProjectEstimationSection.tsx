@@ -32,15 +32,21 @@ export const ProjectEstimationSection = () => {
       value: "sm",
       label: "Small",
       content: (
-        <h3 className="text-center">*Coming Soon*</h3>
-        // <ProjectEstimateTab
-        //   title={"Covid19 Visualization"}
-        //   description={""}
-        //   group={""}
-        //   goal={""}
-        //   image={""}
-        //   alt={""}
-        // />
+        <ProjectEstimateTab
+          title={
+            "Assessing Ethylene Glycol Monomethyl Ether (EGME) impact on sperm small RNAs in Rattus norvegicus"
+          }
+          description={
+            "A bioinformatics pipeline and analysis of small RNAs including miRNA, piRNA, tRNAs for assessing the impact of the EGME toxin on sperm small RNA in rats with implications for reproductive health."
+          }
+          group={"Department of Pathology and Laboratory Medicine"}
+          pi={"Daniel Spade"}
+          goal={
+            "Codify a reproducible bioinformatics pipeline with conda environments and singularity images to process and annotate small RNAs that is generalized, and analyze differential expression of different small RNAs, annotate RNA targets and compute overlap, and perform pathway analysis with the end goal of a publication."
+          }
+          image={"/images/services/consulting/project-estimation/covid19.png"}
+          alt={"Molecular structure of EGME"}
+        />
       ),
     },
     {
