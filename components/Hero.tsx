@@ -157,7 +157,7 @@ export const MainHero = ({
 }: HeroProps) => {
   return (
     <HeroWrapper
-      className="min-h-screen px-6 pb-16 md:px-14 xl:pl-36 xl:pr-96"
+      className="min-h-screen px-6 pb-52 md:px-14 xl:pl-36 xl:pr-96"
       image={image}
     >
       <HeroContent
