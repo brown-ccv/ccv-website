@@ -96,7 +96,6 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
       className={`relative flex w-full flex-col overflow-hidden text-white ${className}`}
     >
       {/* Gradient Overlays */}
-
       <div className={"absolute inset-0 z-0 bg-blue-navbar"}>
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
         {/* Dark blue radial gradient - top left */}
@@ -127,8 +126,8 @@ export const Hero = ({
   title,
   description,
   children,
-  titleClassName = "font-semibold xl:text-5xl",
-  descriptionClassName = "text-xl xl:text-2xl",
+  titleClassName = "font-semibold drop-shadow-md xl:text-5xl",
+  descriptionClassName = "text-xl drop-shadow-md xl:text-2xl",
 }: HeroProps) => {
   return (
     <HeroWrapper
@@ -153,8 +152,8 @@ export const MainHero = ({
   title,
   description,
   children,
-  titleClassName = "font-semibold xl:text-5xl",
-  descriptionClassName = "text-xl xl:text-2xl",
+  titleClassName = "font-semibold drop-shadow-md xl:text-5xl",
+  descriptionClassName = "text-xl drop-shadow-md xl:text-2xl",
 }: HeroProps) => {
   return (
     <HeroWrapper
