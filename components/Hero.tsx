@@ -84,8 +84,6 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
         )}
         {/* Gradient Overlay - Black to transparent */}
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-black to-transparent" />
-
-        {/* Content with gradient background */}
         <div className="relative z-10 mt-auto bg-black bg-opacity-10">
           {children}
         </div>
@@ -115,8 +113,9 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,_rgba(4,200,166,0.4)_0%,_transparent_40%)] opacity-75 mix-blend-soft-light" />
       </div>
 
-      {/* Content - Positioned at bottom */}
-      <div className="relative z-10 mt-auto">{children}</div>
+      <div className="relative z-10 mt-auto bg-black bg-opacity-5">
+        {children}
+      </div>
     </div>
   )
 }
