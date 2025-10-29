@@ -1,31 +1,10 @@
-import React, { Suspense } from "react"
-import { Workday } from "@/components/Workday"
+import React from "react"
 import { Hero } from "@/components/Hero"
-import { getWorkdayData } from "@/app/about/queries"
-import Spinner from "@/components/assets/Spinner"
 import { ContentSection } from "@/components/ContentSection"
 import ButtonLink from "@/components/button/ButtonLink"
 import CareersContent from "@/content/about/careers.mdx"
+import CareerData from "@/components/CareerData"
 import { getMDXMetadata } from "@/lib/mdx-utils"
-
-const CareerData = async () => {
-  try {
-    const workdayData = await getWorkdayData()
-
-    return (
-      <Suspense fallback={<Spinner />}>
-        <Workday careers={workdayData} />
-      </Suspense>
-    )
-  } catch (err: any) {
-    console.error(err)
-    return (
-      <div className="py-10 text-center text-3xl font-semibold">
-        Error loading careers{" "}
-      </div>
-    )
-  }
-}
 
 export default async function Careers() {
   const metadata = getMDXMetadata("content/about/careers.mdx")
@@ -46,7 +25,7 @@ export default async function Careers() {
         </ButtonLink>
       </Hero>
       <ContentSection title="Opportunities" className="bg-neutral-50">
-        {await CareerData()}
+        <CareerData />
       </ContentSection>
       <CareersContent />
     </>

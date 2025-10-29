@@ -1,4 +1,4 @@
-export async function getWorkdayData() {
+async function getWorkdayData() {
   try {
     const myHeaders = new Headers()
     myHeaders.append("Content-Type", "application/json")
@@ -34,4 +34,11 @@ export async function getWorkdayData() {
     // Return empty array as fallback to prevent component crashes
     return []
   }
+}
+
+export async function GET(req: Request): Promise<Response> {
+  const data = await getWorkdayData()
+  return new Response(JSON.stringify(data), {
+    headers: { "Content-Type": "application/json" },
+  })
 }
