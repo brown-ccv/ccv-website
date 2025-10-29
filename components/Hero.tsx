@@ -32,7 +32,7 @@ const HeroContent = ({
   animated = false,
 }: HeroContentProps) => {
   return (
-    <div className="text-shadow-md flex w-full max-w-[1400px] flex-col gap-6">
+    <div className="flex w-full max-w-[1400px] flex-col gap-6">
       {title && <h1 className={titleClassName}>{title}</h1>}
       {description &&
         (animated ? (
@@ -82,12 +82,13 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
             quality={90}
           />
         )}
-
         {/* Gradient Overlay - Black to transparent */}
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-black to-transparent" />
 
-        {/* Content - Positioned at bottom */}
-        <div className="relative z-10 mt-auto">{children}</div>
+        {/* Content with gradient background */}
+        <div className="relative z-10 mt-auto bg-black bg-opacity-10">
+          {children}
+        </div>
       </div>
     )
   }
