@@ -112,9 +112,10 @@ const routes: NavSection[] = [
             icon: FaCompass,
           },
           {
-            name: "User Support",
-            href: "/services/user-support",
-            description: "We help with compute infrastructure",
+            name: "Workshops and Tutorials",
+            href: "/services/workshops",
+            description:
+              "Trainings on using computational tools and techniques",
             icon: FaUserCheck,
           },
           {
@@ -204,7 +205,7 @@ const routes: NavSection[] = [
           },
           {
             name: "Contact Us",
-            href: "/about/contact",
+            href: "/about/help#contact-us",
             description: "",
             icon: FaEnvelope,
           },
@@ -307,7 +308,7 @@ export const Navbar: React.FC = () => {
             <NavigationMenu.Item>
               <ButtonLink
                 external={false}
-                href="/about/contact"
+                href="/about/help"
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
                 <FaQuestionCircle className="stroke-[2.5] text-xl" />
@@ -408,7 +409,7 @@ export const Navbar: React.FC = () => {
                 Docs
               </a>
               <Link
-                href="/about/contact"
+                href="/about/help"
                 onClick={toggleMobileMenu}
                 className="px-6 py-7 text-xl font-semibold text-sunglow-400 hover:bg-sunglow-400 hover:text-black focus-visible:ring-2 focus-visible:ring-sunglow-400 active:bg-sunglow-200"
               >
