@@ -69,7 +69,7 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
   if (image) {
     return (
       <div
-        className={`relative flex w-full flex-col overflow-hidden text-white ${className}`}
+        className={`relative flex w-full flex-col overflow-hidden bg-blue-navbar text-white ${className}`}
       >
         {/* Background Image */}
         {image && (
@@ -84,15 +84,13 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
         )}
         {/* Gradient Overlay - Black to transparent */}
         <div className="absolute inset-0 z-0 bg-gradient-to-t from-black to-transparent" />
-        <div className="relative z-10 mt-auto bg-black bg-opacity-10">
-          {children}
-        </div>
+        <div className="relative z-10 mt-auto">{children}</div>
       </div>
     )
   }
   return (
     <div
-      className={`relative flex w-full flex-col overflow-hidden text-white ${className}`}
+      className={`relative flex w-full flex-col overflow-hidden bg-blue-navbar text-white ${className}`}
     >
       {/* Gradient Overlays */}
       <div className={"absolute inset-0 z-0 bg-blue-navbar"}>
@@ -113,9 +111,7 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_50%,_rgba(4,200,166,0.4)_0%,_transparent_40%)] opacity-75 mix-blend-soft-light" />
       </div>
 
-      <div className="relative z-10 mt-auto bg-black bg-opacity-5">
-        {children}
-      </div>
+      <div className="relative z-10 mt-auto">{children}</div>
     </div>
   )
 }
