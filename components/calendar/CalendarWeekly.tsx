@@ -120,7 +120,10 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
 
     const formattedWeekEvents = weekEvents.map((event, i) => {
       thisDate = addDays(startDate, i)
-      const lengthOfTime = differenceInHours(event.date2_utc, event.date_utc)
+      const lengthOfTime =
+        event.date2_utc && event.date_utc
+          ? differenceInHours(event.date2_utc, event.date_utc)
+          : 1
       const dayOfWeek = getDay(addDays(event.date_iso, 1))
       const yearEvent = getYear(event.date_utc)
       const monthEvent = getMonth(event.date_utc)
