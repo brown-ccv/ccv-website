@@ -67,7 +67,8 @@ export const StyledTabs: React.FC<TabsProps> = ({
                 className
               )}
             >
-              {tab.label}
+              <span className="uppercase md:hidden">{tab.value}</span>
+              <span className="hidden md:block">{tab.label}</span>
             </TabsTrigger>
           ))}
         </TabsList>
