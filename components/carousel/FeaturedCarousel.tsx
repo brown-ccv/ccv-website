@@ -7,7 +7,7 @@ export const FeaturedCarousel: React.FC<StyledCarouselProps> = ({
 }) => {
   return (
     <>
-      <div className="hidden lg:block">
+      <div className="px-page hidden lg:block">
         <StyledCarousel carouselData={carouselData} />
       </div>
       <SwipeCarousel className="lg:hidden" carouselData={carouselData} />

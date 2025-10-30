@@ -41,7 +41,7 @@ export default async function Home() {
         <HeroCard />
         <ImpactBanner />
         <div>
-          <ContentSection title="Featured Projects">
+          <ContentSection title="Featured Projects" className="px-none">
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>
           <ContentSection title={"Events"} align={"left"} id={"events"}>
