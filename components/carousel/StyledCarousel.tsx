@@ -11,7 +11,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/Carousel"
-import { Card, CardContent } from "@/components/ui/Card"
 import Image from "next/image"
 import Icon from "@/components/ui/RenderIcon"
 import Markdown from "react-markdown"
