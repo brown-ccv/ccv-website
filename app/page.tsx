@@ -3,10 +3,9 @@ import { MainHero } from "@/components/Hero"
 import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
-import { CarouselItem } from "@/components/carousel/Carousel"
+import { StyledCarouselItem } from "@/components/carousel/StyledCarousel"
 import EventSectionClient from "@/components/EventSectionClient"
-import React, { Suspense } from "react"
-import Spinner from "@/components/assets/Spinner"
+import React from "react"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import ButtonLink from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
@@ -15,7 +14,7 @@ import { ContentSection } from "@/components/ContentSection"
 export default async function Home() {
   // Load featured carousel data from YAML
   const featuredCarouselRaw = await readContentFile<{
-    carousel: CarouselItem[]
+    carousel: StyledCarouselItem[]
   }>("content/home/featured-carousel.yaml")
   const featuredCarouselData = featuredCarouselRaw.data.carousel
 

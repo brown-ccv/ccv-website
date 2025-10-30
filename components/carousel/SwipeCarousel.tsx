@@ -7,13 +7,12 @@ import RenderIcon from "@/components/ui/RenderIcon"
 import { Badge } from "@/components/ui/Badge"
 import {
   Dots,
-  CarouselItem,
+  StyledCarouselItem,
   Organization,
-} from "@/components/carousel/Carousel"
+} from "@/components/carousel/StyledCarousel"
 import {
   StyledDialog,
   StyledDialogContent,
-  StyledDialogFooter,
   StyledDialogTitle,
   StyledDialogTrigger,
 } from "@/components/StyledDialog"
@@ -36,7 +35,7 @@ const SPRING_OPTIONS: Transition = {
 }
 
 interface CarouselProps {
-  carouselData: CarouselItem[]
+  carouselData: StyledCarouselItem[]
   className?: string
 }
 
@@ -73,7 +72,7 @@ export const SwipeCarousel = ({ carouselData, className }: CarouselProps) => {
         onDragEnd={onDragEnd}
         className="flex cursor-grab items-center active:cursor-grabbing"
       >
-        <Cards carouselItems={carouselData} cardIndex={cardIndex} />
+        <Cards StyledCarouselItems={carouselData} cardIndex={cardIndex} />
       </motion.div>
 
       <Dots
@@ -86,14 +85,14 @@ export const SwipeCarousel = ({ carouselData, className }: CarouselProps) => {
 }
 
 interface CardsProps {
-  carouselItems: CarouselItem[]
+  StyledCarouselItems: StyledCarouselItem[]
   cardIndex: number
 }
 
-const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
+const Cards = ({ StyledCarouselItems, cardIndex }: CardsProps) => {
   return (
     <>
-      {carouselItems.map((item, idx) => {
+      {StyledCarouselItems.map((item, idx) => {
         return (
           <motion.div
             key={idx}
@@ -112,20 +111,22 @@ const Cards = ({ carouselItems, cardIndex }: CardsProps) => {
                   src={item.image}
                   alt={item.alt}
                 />
-                <div className="flex items-center justify-between px-3">
-                  <h3 className="mt-2 font-bold">{item.title}</h3>
-                  <StyledDialog>
-                    <StyledDialogTrigger asChild>
-                      <Button
-                        variant="icon_only"
-                        aria-label="More Details"
-                        iconOnly={<RenderIcon iconName="FaEllipsisV" />}
-                        className="rounded-xl"
-                      />
-                    </StyledDialogTrigger>
-                    <StyledDialogCard {...item} />
-                  </StyledDialog>
-                </div>
+                <StyledDialog>
+                  <StyledDialogTrigger
+                    asChild
+                    className="mx-3 flex items-center justify-between px-3"
+                  >
+                    <Button
+                      variant="unstyled"
+                      aria-label="More Details"
+                      className="rounded-xl bg-slate-100"
+                    >
+                      <h3 className="font-bold">{item.title}</h3>
+                      <RenderIcon iconName="FaEllipsisV" />
+                    </Button>
+                  </StyledDialogTrigger>
+                  <StyledDialogCard {...item} />
+                </StyledDialog>
                 <div className="hidden px-3 md:line-clamp-2">
                   <Markdown
                     remarkPlugins={[remarkGfm]}
@@ -164,7 +165,7 @@ const StyledDialogCard = ({
   attribution,
   buttons,
   organizations,
-}: CarouselItem) => {
+}: StyledCarouselItem) => {
   return (
     <StyledDialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl border-none bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
       <Image
