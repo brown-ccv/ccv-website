@@ -3,7 +3,7 @@ import ClassroomContent from "@/content/services/classroom.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 import classroomCarousel from "@/content/services/classroom-carousel.json"
-import { CarouselItem } from "@/components/carousel/Carousel"
+import { CarouselItem } from "@/components/carousel/StyledCarousel"
 import { ContentSection } from "@/components/ContentSection"
 
 export default async function ClassroomSupport() {
