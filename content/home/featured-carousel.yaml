@@ -21,7 +21,9 @@ carousel:
       with HTML, CSS, and JavaScript, the experiment and data collection run on jsPsych and are built on Honeycomb, 
       an open-source template that integrates cognitive science and web development, enabling researchers to create 
       psychophysiological tasks that interface with lab equipment such as EEG.
-    image: "/images/home/featured-carousel/gearshift.webp"
+
+      Our team supported early software development for the Gearshift Fellowship prototype, a research platform conceptualized and designed by Dr. Nadja Ging-Jehli to study adaptive decision-making.
+    image: "/images/home/featured-carousel/gearshift.jpg"
     alt: "Motorcycle racing game interface showing a player riding a motorcycle towards a red truck on a two-lane road, with game controls and progress indicators displayed at the bottom."
     organizations:
       - name: "Cognitive and Psychological Sciences"
