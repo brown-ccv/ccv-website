@@ -22,6 +22,18 @@ async function getDscovData(time) {
   return filteredData
 }
 
+function compareDate2Utc(a, b) {
+  const dateA = new Date(a.date2_utc)
+  const dateB = new Date(b.date2_utc)
+  const validA = !isNaN(dateA.getTime())
+  const validB = !isNaN(dateB.getTime())
+
+  if (!validA && !validB) return 0
+  if (!validA) return 1 // a is invalid, push to end
+  if (!validB) return -1 // b is invalid, push to end
+  return dateA - dateB
+}
+
 export async function getEventData(time) {
   const [ccvData, dscovData] = await Promise.all([
     getCCVData(time),
@@ -29,6 +41,7 @@ export async function getEventData(time) {
   ])
 
   const combinedData = [...ccvData, ...dscovData]
+  combinedData.sort(compareDate2Utc)
 
   return combinedData
 }
