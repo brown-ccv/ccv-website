@@ -20,10 +20,7 @@ export const ContentSection = ({
   return (
     <section
       id={id}
-      className={cn(
-        "px-page prose prose-sm w-full py-12 lg:prose-base even:bg-neutral-50",
-        className
-      )}
+      className={cn("px-page w-full py-12 even:bg-neutral-50", className)}
     >
       {align === "center" && <SectionHeader title={title} align={align} />}
       {children}
