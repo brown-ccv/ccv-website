@@ -10,7 +10,7 @@ const nextConfig = {
   output: "standalone",
   images: {
     qualities: [75, 90, 100],
-    formats: ["image/webp", "image/avif", "image/jpeg"],
+    formats: ["image/webp", "image/avif"],
   },
 }
 
