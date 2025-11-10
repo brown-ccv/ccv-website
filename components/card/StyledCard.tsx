@@ -18,6 +18,7 @@ export interface StyledCardProps extends VariantProps<typeof CardVariants> {
   className?: string
   children: React.ReactNode
   footer?: React.ReactNode
+  titleBgColor?: string
 }
 
 export const StyledCard: React.FC<StyledCardProps> = ({
@@ -28,8 +29,13 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   size,
   children,
   footer,
+  titleBgColor,
 }) => {
   const IconComponent = iconName ? Icon : null
+  const titleClassName = cn(
+    "flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center rounded-md",
+    titleBgColor
+  )
   return (
     <Card
       className={cn(
@@ -43,7 +49,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
     >
       {title && (
         <CardHeader className="flex-shrink-0">
-          <CardTitle className="flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center">
+          <CardTitle className={titleClassName}>
             {IconComponent && (
               <IconComponent
                 iconName={iconName}
