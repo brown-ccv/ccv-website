@@ -8,8 +8,10 @@ import {
 import Icon from "@/components/ui/RenderIcon"
 import React from "react"
 import { cn } from "@/lib/utils"
-import { CardVariants } from "@/components/card/variants"
+import { CardVariants, CardHeaderVariants } from "@/components/card/variants"
 import { VariantProps } from "class-variance-authority"
+
+
 
 export interface StyledCardProps extends VariantProps<typeof CardVariants> {
   iconName?: string
@@ -18,7 +20,7 @@ export interface StyledCardProps extends VariantProps<typeof CardVariants> {
   className?: string
   children: React.ReactNode
   footer?: React.ReactNode
-  titleBgColor?: string
+  headerColor?: VariantProps<typeof CardHeaderVariants>["color"]
 }
 
 export const StyledCard: React.FC<StyledCardProps> = ({
@@ -29,12 +31,12 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   size,
   children,
   footer,
-  titleBgColor,
+  headerColor,
 }) => {
   const IconComponent = iconName ? Icon : null
   const titleClassName = cn(
     "flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center rounded-md",
-    titleBgColor
+    CardHeaderVariants({ color: headerColor })
   )
   return (
     <Card

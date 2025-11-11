@@ -15,3 +15,13 @@ export const CardVariants = cva("bg-white", {
     size: "sm",
   },
 })
+
+export const CardHeaderVariants = cva("", {
+  variants: {
+    color: {
+      basic: "bg-gray-200",
+      plus: "bg-keppel-500",
+      premium: "bg-sunglow-400",
+    },
+  },
+})
