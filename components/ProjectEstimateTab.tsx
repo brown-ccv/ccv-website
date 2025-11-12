@@ -27,7 +27,7 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
   alt,
 }) => {
   return (
-    <div className="flex flex-col md:inline">
+    <div className="flex flex-col space-y-2 md:inline">
       {/*Image*/}
       {image && image.trim() !== "" && (
         <figure className="float-right">

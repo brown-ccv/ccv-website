@@ -25,7 +25,7 @@ export const ContentSection = ({
     <section
       id={id}
       className={cn(
-        "px-page w-full py-12 even:bg-neutral-50",
+        "px-page w-full space-y-4 py-12 even:bg-neutral-50",
         align === "left" ? "flex justify-between gap-10" : "",
         className
       )}

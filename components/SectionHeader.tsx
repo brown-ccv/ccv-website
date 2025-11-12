@@ -24,7 +24,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div
       className={cn(
-        `flex flex-col ${align === "center" ? "items-center" : "items-start"}`,
+        `flex flex-col pb-6 ${align === "center" ? "items-center" : "items-start"}`,
         className
       )}
     >
