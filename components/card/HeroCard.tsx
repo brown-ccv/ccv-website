@@ -28,8 +28,12 @@ export const HeroCard: React.FC = () => {
     >
       <div className="flex flex-col gap-10 pt-6 lg:flex-row lg:gap-20">
         {heroCards.map((card, index) => (
-          <div key={index} className="relative">
-            <SectionHeader title={card.title} align="left" />
+          <div key={index} className="relative space-y-4">
+            <SectionHeader
+              titleClassName="text-2xl"
+              title={card.title}
+              align="left"
+            />
             <p>{card.description}</p>
           </div>
         ))}

@@ -55,9 +55,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
         </CardHeader>
       )}
       <CardContent className="flex-grow pt-0">
-        <div className="prose prose-sm max-w-none lg:prose-base">
-          {children}
-        </div>
+        <div className="max-w-none">{children}</div>
       </CardContent>
       {footer && (
         <CardFooter className="mt-auto flex flex-shrink-0 flex-col items-center gap-2">

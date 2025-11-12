@@ -9,6 +9,7 @@ interface SectionHeaderProps {
   icon?: React.ReactNode
   subHeader?: React.ReactNode
   className?: string
+  titleClassName?: string
 }
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
@@ -18,6 +19,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   subHeader,
   icon,
   className,
+  titleClassName,
 }) => {
   return (
     <div
@@ -28,7 +30,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     >
       {bars && <CCVBars />}
       <h2
-        className={cn("tracking-tighter", icon ? "flex" : "")}
+        className={cn("tracking-tighter", icon ? "flex" : "", titleClassName)}
         aria-label={title}
       >
         {icon && (
