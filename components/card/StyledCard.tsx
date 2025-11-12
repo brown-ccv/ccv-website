@@ -34,29 +34,6 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   headerColor,
 }) => {
   const IconComponent = iconName ? Icon : null
-  const allowedHeaderColors = ["basic", "plus", "premium"] as const
-  const isHeaderColor = (value: unknown): value is HeaderColor =>
-    typeof value === "string" &&
-    (allowedHeaderColors as readonly string[]).includes(value)
-
-  const resolvedHeaderColor = isHeaderColor(headerColor)
-    ? headerColor
-    : (() => {
-        if (
-          headerColor &&
-          process.env.NODE_ENV !== "production" &&
-          typeof console !== "undefined"
-        ) {
-          console.warn(
-            `[StyledCard] Invalid headerColor "${headerColor}". Expected one of ${(
-              allowedHeaderColors as readonly string[]
-            ).join(
-              ", "
-            )}.`
-          )
-        }
-        return undefined
-      })()
 
   const headerColorClass: Record<HeaderColor, string> = {
     basic: "bg-gray-200",
@@ -66,7 +43,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
 
   const titleClassName = cn(
     "flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center rounded-md",
-    resolvedHeaderColor ? headerColorClass[resolvedHeaderColor] : undefined
+    headerColor ? headerColorClass[headerColor] : undefined
   )
   return (
     <Card
