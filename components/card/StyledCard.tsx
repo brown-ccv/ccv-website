@@ -42,7 +42,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   }
 
   const titleClassName = cn(
-    "flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center rounded-md",
+    "flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center rounded-md text-black",
     headerColor ? headerColorClass[headerColor] : undefined
   )
   return (
