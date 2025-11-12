@@ -10,6 +10,7 @@ import { ScrollButton } from "@/components/button/ScrollButton"
 import ButtonLink from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
 import { ContentSection } from "@/components/ContentSection"
+import { FaCalendarAlt } from "react-icons/fa"
 
 export default async function Home() {
   // Load featured carousel data from YAML
@@ -44,7 +45,27 @@ export default async function Home() {
           <ContentSection title="Featured Projects" className="px-none">
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>
-          <ContentSection title={"Events"} align={"left"} id={"events"}>
+          <ContentSection
+            title={"Events"}
+            align={"left"}
+            icon={<FaCalendarAlt />}
+            id={"events"}
+            subHeader={
+              <>
+                <h3 className="font-serif font-normal italic">
+                  What's next at CCV
+                </h3>
+                <ButtonLink
+                  variant="primary_filled"
+                  size="lg"
+                  href="https://events.brown.edu/ccv/all"
+                  external={true}
+                >
+                  View All Events
+                </ButtonLink>
+              </>
+            }
+          >
             <EventSectionClient />
           </ContentSection>
         </div>
