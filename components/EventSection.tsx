@@ -38,7 +38,7 @@ export function EventSection({
   const dataPast = streamedDataPast
 
   return (
-    <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">
+    <div className="flex w-full flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">
       {/* Mobile: Show only upcoming events */}
       <div className="md:hidden">
         <UpcomingEvents events={dataFuture} />

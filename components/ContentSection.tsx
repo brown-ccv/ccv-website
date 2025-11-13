@@ -27,7 +27,7 @@ export const ContentSection = ({
       className={cn(
         "px-page w-full space-y-4 py-12 even:bg-neutral-50",
         align === "left"
-          ? "flex flex-col gap-10 lg:flex-row lg:justify-between lg:space-y-0"
+          ? "flex flex-col gap-24 lg:flex-row lg:justify-between lg:space-y-0"
           : "",
         className
       )}
