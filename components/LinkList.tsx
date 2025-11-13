@@ -1,8 +1,10 @@
 import React from "react"
 import Icon from "@/components/ui/RenderIcon"
+import { cn } from "@/lib/utils"
 
 interface LinkListProps {
   links: LinkProps[]
+  className?: string
 }
 
 interface LinkProps {
@@ -10,9 +12,14 @@ interface LinkProps {
   url: string
 }
 
-export const LinkList: React.FC<LinkListProps> = ({ links }) => {
+export const LinkList: React.FC<LinkListProps> = ({ links, className }) => {
   return (
-    <ul className="flex list-none flex-col flex-wrap md:flex-row md:items-end lg:px-12">
+    <ul
+      className={cn(
+        "flex list-none flex-col flex-wrap md:flex-row md:items-end lg:px-12",
+        className
+      )}
+    >
       {links.map((link, i) => {
         return (
           <li className="p-2 md:w-1/2 md:px-6" key={i}>

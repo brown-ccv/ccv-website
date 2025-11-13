@@ -1,5 +1,6 @@
 import React from "react"
 import type { MDXComponents } from "mdx/types"
+import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { ContentSection } from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
@@ -14,11 +15,11 @@ import { CopyableEmail } from "@/components/CopyableEmail"
 import { LinkList } from "@/components/LinkList"
 import { TwoColumns } from "@/components/TwoColumns"
 
-const withNotProse = (Component: React.ComponentType<any>) => {
-  return (props: any) => (
-    <div className="not-prose">
-      <Component {...props} />
-    </div>
+const withNotProse = <T extends { className?: string }>(
+  Component: React.ComponentType<T>
+) => {
+  return (props: T) => (
+    <Component {...props} className={cn("not-prose", props.className)} />
   )
 }
 
