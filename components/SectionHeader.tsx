@@ -24,13 +24,17 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div
       className={cn(
-        `flex flex-col pb-6 ${align === "center" ? "items-center" : "items-start"}`,
+        `flex flex-col pb-6 ${align === "center" ? "items-center" : "max-w-1/2 items-center lg:items-start"}`,
         className
       )}
     >
       {bars && <CCVBars />}
       <h2
-        className={cn("tracking-tighter", icon ? "flex" : "", titleClassName)}
+        className={cn(
+          "pb-2 tracking-tighter",
+          icon ? "flex" : "",
+          titleClassName
+        )}
         aria-label={title}
       >
         {icon && (
