@@ -38,20 +38,7 @@ export function EventSection({
   const dataPast = streamedDataPast
 
   return (
-    <div className="flex flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">
-      <div className="flex flex-col items-center gap-4">
-        <SectionHeader title={"Events"} icon={<FaCalendarAlt />} />
-        <h3 className="font-serif font-normal italic">What's next at CCV</h3>
-        <ButtonLink
-          variant="primary_filled"
-          size="lg"
-          href="https://events.brown.edu/ccv/all"
-          external={true}
-        >
-          View All Events
-        </ButtonLink>
-      </div>
-
+    <div className="flex w-full flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">
       {/* Mobile: Show only upcoming events */}
       <div className="md:hidden">
         <UpcomingEvents events={dataFuture} />

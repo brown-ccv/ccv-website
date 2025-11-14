@@ -131,7 +131,7 @@ const FeatCarouselContent = ({
             aria-label={`${title} organizations`}
           >
             {organizations.map((org, index) => (
-              <div key={index} className="not-prose flex gap-2" role="listitem">
+              <div key={index} className="flex gap-2" role="listitem">
                 <Icon
                   iconName={org.icon}
                   className="mt-1 h-6 w-6 flex-shrink-0"

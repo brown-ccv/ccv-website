@@ -51,7 +51,7 @@ export const StyledTabs: React.FC<TabsProps> = ({
   return (
     <Tabs
       defaultValue={defaultTab}
-      className={`prose prose-sm flex w-full flex-col gap-4 lg:prose-base ${tabsWrapperClass}`}
+      className={`flex w-full flex-col gap-4 ${tabsWrapperClass}`}
     >
       <div className="flex w-full justify-end">
         <TabsList

@@ -322,7 +322,7 @@ const CalendarMonth: React.FC<CalendarProps> = ({
   }
 
   return (
-    <div className="not-prose lg:flex lg:h-full lg:flex-col">
+    <div className="lg:flex lg:h-full lg:flex-col">
       <CalendarHeading
         date={activeDate}
         srButtonText={"month"}

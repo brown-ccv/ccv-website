@@ -1,4 +1,6 @@
+import React from "react"
 import type { MDXComponents } from "mdx/types"
+import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { ContentSection } from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
@@ -13,6 +15,14 @@ import { CopyableEmail } from "@/components/CopyableEmail"
 import { LinkList } from "@/components/LinkList"
 import { TwoColumns } from "@/components/TwoColumns"
 
+const withNotProse = <T extends { className?: string }>(
+  Component: React.ComponentType<T>
+) => {
+  return (props: T) => (
+    <Component {...props} className={cn("not-prose", props.className)} />
+  )
+}
+
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     // Wrapper component for all MDX content
@@ -25,21 +35,21 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <ButtonLink
         variant="primary_filled"
         size="md"
-        className="my-2"
+        className="not-prose my-2"
         external
         {...props}
       />
     ),
     ButtonGroup,
     CopyableEmail,
-    StyledCard,
-    CostEstimateCard,
+    StyledCard: withNotProse(StyledCard),
+    CostEstimateCard: withNotProse(CostEstimateCard),
     CardGroup,
     ContentSection,
-    PeopleSection,
-    LocationSection,
+    PeopleSection: withNotProse(PeopleSection),
+    LocationSection: withNotProse(LocationSection),
     ProjectEstimationSection,
-    LinkList,
+    LinkList: withNotProse(LinkList),
     TwoColumns,
     img: (props) => (
       <Image

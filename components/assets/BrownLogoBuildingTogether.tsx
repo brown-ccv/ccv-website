@@ -1,5 +1,5 @@
 import Image from "next/image"
-import BrownLogoBuildingTogetherImage from "@/assets/BrownLogoBuildingTogether.webp"
+import BrownLogoBuildingTogetherImage from "../../content/images/BrownLogoBuildingTogether.webp"
 
 export default function BrownLogoBuildingTogether() {
   return (

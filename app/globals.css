@@ -69,26 +69,4 @@
   .px-none {
     @apply px-0 sm:px-0 md:px-0 lg:px-0 xl:px-0;
   }
-
-  .prose {
-    @apply prose-sm lg:prose-base;
-  }
-
-  /* Simple fix for CardTitle - make it h2 sized */
-  .font-bold.leading-none.tracking-tight {
-    @apply text-lg font-semibold leading-tight lg:text-xl;
-  }
-
-  .prose pre code {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-
-  .prose img {
-    @apply my-4;
-  }
-
-  .prose ul {
-    @apply marker:text-current;
-  }
 }

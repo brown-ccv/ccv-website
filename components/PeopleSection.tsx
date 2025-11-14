@@ -4,9 +4,11 @@ import { PeopleTypes, PageContentData } from "@/lib/about-types"
 import { readContentFile } from "@/lib/content-utils"
 import path from "path"
 import fs from "fs/promises"
+import { cn } from "@/lib/utils"
 
 interface PeopleSectionProps {
   peopleContentPath: string
+  className?: string
 }
 
 function imagePath(imageName: string) {
@@ -39,13 +41,18 @@ async function getImagePaths(imageName: string | undefined | null) {
 }
 
 // Server component that loads people data
-async function PeopleSectionData({ peopleContentPath }: PeopleSectionProps) {
+async function PeopleSectionData({
+  peopleContentPath,
+  className,
+}: PeopleSectionProps) {
   const loadedContent =
     await readContentFile<PageContentData>(peopleContentPath)
   const pageContent = loadedContent.data
 
   return (
-    <div className="xs:w-1/2 flex flex-wrap justify-center gap-4">
+    <div
+      className={cn("xs:w-1/2 flex flex-wrap justify-center gap-4", className)}
+    >
       {pageContent?.people &&
         (await Promise.all(
           pageContent.people

@@ -195,7 +195,7 @@ const StyledDialogCard = ({
             aria-label={`${title} organizations`}
           >
             {organizations.map((org, index) => (
-              <div key={index} className="not-prose flex gap-2" role="listitem">
+              <div key={index} className="flex gap-2" role="listitem">
                 <Icon
                   iconName={org.icon}
                   className="w-45 mt-1 h-5 flex-shrink-0"
