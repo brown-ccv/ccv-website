@@ -62,11 +62,12 @@ people:
     last_name: Serre
     type: Full Time
     team: Leadership
-    title: Faculty Director, Professor of Cognitive, Linguistic, and Psychological Sciences
+    title: Faculty Director, Thomas J. Watson, Sr. Professor of Science
     github_username: tserre
     brown_directory_uuid: 9517d64b-6924-1c56-1f7e-2452b2304030
-    bio: Dr. Serre is a Professor in the Cognitive Linguistic & Psychological
-      Sciences at Brown University. Dr. Serre is a computational neuroscientist by training.
+    bio:
+      Dr. Serre is a Professor of Cognitive & Psychological Sciences and Computer Science
+      at Brown University. Dr. Serre is a computational neuroscientist by training.
       He received a Ph.D. in Neuroscience from MIT in 2006 and an MSc in EECS from Télécom
       Bretagne (France) in 2000.
     image: thomas_main.webp
