@@ -8,6 +8,10 @@ const nextConfig = {
   basePath: "",
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   output: "standalone",
+  images: {
+    qualities: [75, 90, 100],
+    formats: ["image/webp", "image/avif"],
+  },
 }
 
 const withMDX = createMDX({

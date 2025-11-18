@@ -11,6 +11,8 @@ import { cn } from "@/lib/utils"
 import { CardVariants } from "@/components/card/variants"
 import { VariantProps } from "class-variance-authority"
 
+type HeaderColor = "basic" | "plus" | "premium"
+
 export interface StyledCardProps extends VariantProps<typeof CardVariants> {
   iconName?: string
   isDisabled?: boolean
@@ -18,6 +20,7 @@ export interface StyledCardProps extends VariantProps<typeof CardVariants> {
   className?: string
   children: React.ReactNode
   footer?: React.ReactNode
+  headerColor?: HeaderColor
 }
 
 export const StyledCard: React.FC<StyledCardProps> = ({
@@ -28,8 +31,20 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   size,
   children,
   footer,
+  headerColor,
 }) => {
   const IconComponent = iconName ? Icon : null
+
+  const headerColorClass: Record<HeaderColor, string> = {
+    basic: "bg-gray-200",
+    plus: "bg-keppel-500",
+    premium: "bg-sunglow-400",
+  }
+
+  const titleClassName = cn(
+    "flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center rounded-md text-black",
+    headerColor ? headerColorClass[headerColor] : undefined
+  )
   return (
     <Card
       className={cn(
@@ -43,7 +58,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
     >
       {title && (
         <CardHeader className="flex-shrink-0">
-          <CardTitle className="flex items-center justify-center gap-4 border-b border-gray-300 py-4 text-center">
+          <CardTitle className={titleClassName}>
             {IconComponent && (
               <IconComponent
                 iconName={iconName}
