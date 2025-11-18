@@ -1132,6 +1132,16 @@ module.exports = {
       50: "50",
     },
     extend: {
+      animation: {
+        gradient: "gradient 8s linear infinite",
+      },
+      keyframes: {
+        gradient: {
+          to: {
+            backgroundPosition: "var(--bg-size) 0",
+          },
+        },
+      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {
