@@ -2,6 +2,9 @@ import React from "react"
 import { FaHandshake } from "react-icons/fa"
 import BrownLogo from "@/components/assets/BrownLogo"
 import ButtonLink from "@/components/button/ButtonLink"
+import { AnimatedGradientText } from "@/components/magicui/AnimatedGradientText"
+import { cn } from "@/lib/utils"
+import { ShineBorder } from "@/components/magicui/ShineBorder"
 
 interface BrownBannerProps {
   id?: string
@@ -23,16 +26,15 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
       <h2 className="hidden pl-6 lg:flex lg:flex-1 lg:justify-start">
         Center for Computation and Visualization
       </h2>
-
       <ButtonLink
-        href="/about/help#contact-us"
-        external={false}
-        variant="red_outlined"
-        size="sm"
-        className={"px-2 py-6 sm:px-4"}
+        href="/"
+        variant="unstyled"
+        className="relative overflow-hidden border border-purple-900 border-opacity-20 shadow-[inset_0_-8px_10px_#8fdfff1f] duration-500 ease-out hover:bg-neutral-100 hover:shadow-[inset_0_-5px_10px_#8fdfff3f] motion-safe:transition-shadow"
       >
-        <FaHandshake className="text-lg sm:text-2xl" />
-        Work With Us
+        <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
+        <AnimatedGradientText className="text-sm font-medium">
+          Request an Oscar Account!
+        </AnimatedGradientText>
       </ButtonLink>
     </header>
   )
