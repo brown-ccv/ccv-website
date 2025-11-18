@@ -24,7 +24,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   return (
     <div
       className={cn(
-        `flex flex-col pb-6 ${align === "center" ? "items-center" : "max-w-1/2 items-center lg:items-start"}`,
+        `not-prose flex flex-col pb-6 ${align === "center" ? "items-center" : "max-w-1/2 items-center lg:items-start"}`,
         className
       )}
     >
