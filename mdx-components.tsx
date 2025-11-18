@@ -2,7 +2,11 @@ import React from "react"
 import type { MDXComponents } from "mdx/types"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
-import { ContentSection } from "@/components/ContentSection"
+import {
+  ContentSection,
+  ContentHeader,
+  ContentTitle,
+} from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
@@ -22,6 +26,21 @@ const withNotProse = <T extends { className?: string }>(
     <Component {...props} className={cn("not-prose", props.className)} />
   )
 }
+
+const MDXContentSection = ({
+  title,
+  children,
+}: {
+  title: string
+  children: React.ReactNode
+}) => (
+  <ContentSection>
+    <ContentHeader>
+      <ContentTitle className="not-prose" title={title} />
+    </ContentHeader>
+    {children}
+  </ContentSection>
+)
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -45,7 +64,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     StyledCard: withNotProse(StyledCard),
     CostEstimateCard: withNotProse(CostEstimateCard),
     CardGroup,
-    ContentSection,
+    ContentSection: (props: { title: string; children: React.ReactNode }) => (
+      <MDXContentSection {...props} />
+    ),
     PeopleSection: withNotProse(PeopleSection),
     LocationSection: withNotProse(LocationSection),
     ProjectEstimationSection,

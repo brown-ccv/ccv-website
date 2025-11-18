@@ -1,5 +1,10 @@
 import React from "react"
-import { ContentSection } from "@/components/ContentSection"
+import {
+  ContentHeader,
+  ContentSection,
+  ContentSubHeader,
+  ContentTitle,
+} from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { cn } from "@/lib/utils"
 
@@ -12,13 +17,15 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
 }) => {
   return (
     <ContentSection
-      title="Our Home"
       className={cn(
         "lg:items-center lg:py-0 lg:pr-0 xl:py-0 xl:pr-0",
         className
       )}
-      subHeader={
-        <>
+      align="left"
+    >
+      <ContentHeader>
+        <ContentTitle title="Our Home" />
+        <ContentSubHeader>
           <p>
             Our office is located at <strong>180 George Street</strong> on
             Brown's main campus in Providence's College Hill neighborhood.
@@ -41,10 +48,8 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
           >
             Brown University Computing Laboratory
           </ButtonLink>
-        </>
-      }
-      align={"left"}
-    >
+        </ContentSubHeader>
+      </ContentHeader>
       <iframe
         title="Map of 180 George Street"
         className="min-w-1/2 w-full flex-shrink-0 lg:w-1/2"

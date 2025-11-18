@@ -1,6 +1,10 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
-import { ContentSection } from "@/components/ContentSection"
+import {
+  ContentHeader,
+  ContentSection,
+  ContentTitle,
+} from "@/components/ContentSection"
 import ButtonLink from "@/components/button/ButtonLink"
 import CareersContent from "@/content/about/careers.mdx"
 import CareerData from "@/components/CareerData"
@@ -24,7 +28,10 @@ export default async function Careers() {
           Contact Us
         </ButtonLink>
       </Hero>
-      <ContentSection title="Opportunities" className="bg-neutral-50">
+      <ContentSection className="bg-neutral-50">
+        <ContentHeader>
+          <ContentTitle title="Opportunities" />
+        </ContentHeader>
         <CareerData />
       </ContentSection>
       <CareersContent />
