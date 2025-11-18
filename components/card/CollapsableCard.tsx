@@ -47,7 +47,7 @@ export const CollapsableCard: React.FC<CollapsableCardProps> = ({
         <AccordionItem className="border-none p-4" value={id}>
           {title && (
             <CardHeader className="flex-shrink-0">
-              <CardTitle className="not-prose">
+              <CardTitle>
                 {IconComponent && (
                   <IconComponent
                     iconName={iconName}
@@ -61,7 +61,7 @@ export const CollapsableCard: React.FC<CollapsableCardProps> = ({
             </CardHeader>
           )}
           <CardContent className="flex-grow p-0">
-            <AccordionContent className="not-prose max-w-none">
+            <AccordionContent className="max-w-none">
               {children}
             </AccordionContent>
           </CardContent>

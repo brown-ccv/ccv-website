@@ -165,7 +165,7 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
   }
 
   return (
-    <div className="not-prose flex h-full w-full flex-grow flex-col">
+    <div className="flex h-full w-full flex-grow flex-col">
       <CalendarHeading
         date={activeDate}
         srButtonText="week"

@@ -1,4 +1,5 @@
 .next
 out
+app/globals.css
 *node_modules
 *.mdx

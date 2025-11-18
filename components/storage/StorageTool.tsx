@@ -3,7 +3,11 @@
 import React, { useCallback, useMemo, useState } from "react"
 import { Button } from "@/components/button/Button"
 import { ScrollButton } from "@/components/button/ScrollButton"
-import { ContentSection } from "@/components/ContentSection"
+import {
+  ContentHeader,
+  ContentSection,
+  ContentTitle,
+} from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
 import StorageTable from "@/components/storage/StorageTable"
 import {
@@ -45,7 +49,11 @@ export default function StorageTool({
 
   return (
     <>
-      <ContentSection id="form" title="Storage Selection Tool">
+      <ContentSection id="form">
+        <ContentHeader>
+          <ContentTitle title="Storage Selection Tool" />
+        </ContentHeader>
+
         <p className="mb-6 text-lg leading-tight lg:text-xl">
           Answering the questions in the form will provide a list of services
           that meet your requirements.
@@ -92,11 +100,10 @@ export default function StorageTool({
           />
         </div>
       </ContentSection>
-      <ContentSection
-        id="table"
-        title="Compare Storage Options"
-        className="hidden lg:block"
-      >
+      <ContentSection id="table" className="hidden lg:block">
+        <ContentHeader>
+          <ContentTitle title="Compare Storage Options" />
+        </ContentHeader>
         <p className="mb-6 text-lg leading-tight lg:text-xl">
           This tool lets you compare the available storage options at Brown to
           compare their features and decide which of these services best suits

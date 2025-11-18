@@ -8,6 +8,7 @@ interface RatesCardProps {
   units: "month" | "months" | "year" | "years"
   engineers: string
   fte?: string
+  className?: string
 }
 
 export const CostEstimateCard: React.FC<RatesCardProps> = ({
@@ -16,9 +17,15 @@ export const CostEstimateCard: React.FC<RatesCardProps> = ({
   units,
   engineers,
   fte = "40%",
+  className,
 }) => {
   return (
-    <StyledCard title={title} iconName={"FaTshirt"} size="xs">
+    <StyledCard
+      title={title}
+      iconName={"FaTshirt"}
+      size="xs"
+      className={className}
+    >
       <div className="flex flex-col items-center justify-center">
         <div className="flex items-center gap-6">
           <FaClock className="text-keppel-700" />
