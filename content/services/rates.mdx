@@ -5,15 +5,15 @@ description: We provide services with limited resources at no cost to all member
 
 <ContentSection title="High Performance Computing Cluster (Oscar)">
 
-The number and size of jobs allowed on Oscar vary with both partition and type of user account. 
+The number and size of jobs allowed on Oscar vary with both partition and type of user account.
 All Brown users can request a free exploratory account with basic access to a resources on our Batch and GPU partitions.
-Researchers with more intensive computing needs can upgrade to priority accounts, which provide access to more GPU & CPU 
+Researchers with more intensive computing needs can upgrade to priority accounts, which provide access to more GPU & CPU
 cores, memory, walltime and faster start times.
 
 ### Batch Partition
-The _batch_ partition is designed for high-throughput computing jobs that require many CPU cores. Upgrading to priority 
-accounts allows users to run larger jobs with more CPU cores, memory, walltime, faster start times, and limited 
-standard GPUs. 
+The _batch_ partition is designed for high-throughput computing jobs that require many CPU cores. Upgrading to priority
+accounts allows users to run larger jobs with more CPU cores, memory, walltime, faster start times, and limited
+standard GPUs.
 <CardGroup>
   <StyledCard title="Exploratory" size="md" headerColor="basic">
     - **Partition:** batch
@@ -48,9 +48,9 @@ standard GPUs.
 </CardGroup>
 
 ### GPU Partition
-The _gpu_ partition is designed for jobs that prioritize GPUs. The nodes are equipped with our standard GPUs such as 
-NVIDIA Quadro RTX or A5000. This partition is ideal for standard parallel workloads, model training, and GPU-accelerated 
-visualization. Upgrading to priority accounts allows users to run larger jobs with more GPU & CPU cores, memory, 
+The _gpu_ partition is designed for jobs that prioritize GPUs. The nodes are equipped with our standard GPUs such as
+NVIDIA Quadro RTX or A5000. This partition is ideal for standard parallel workloads, model training, and GPU-accelerated
+visualization. Upgrading to priority accounts allows users to run larger jobs with more GPU & CPU cores, memory,
 walltime and faster start times.
 <CardGroup>
   <StyledCard title="Exploratory" size="md" headerColor="basic">
@@ -86,8 +86,8 @@ walltime and faster start times.
 </CardGroup>
 
 ### High-End GPU Partition
-The _gpu-he_ partition provides access to GPUs with higher memory and compute performance such as NVIDIA Tesla V100 or 
-A6000 GPUs. Recommended for large-scale deep learning, molecular dynamics, and scientific simulations requiring high 
+The _gpu-he_ partition provides access to GPUs with higher memory and compute performance such as NVIDIA Tesla V100 or
+A6000 GPUs. Recommended for large-scale deep learning, molecular dynamics, and scientific simulations requiring high
 memory or compute throughput.
 
 <CardGroup>
@@ -101,14 +101,14 @@ memory or compute throughput.
   </StyledCard>
 </CardGroup>
 
-Note, these values are subject to periodic review and changes. For more technical details, review the [system hardware 
+Note, these values are subject to periodic review and changes. For more technical details, review the [system hardware
 documentation](https://docs.ccv.brown.edu/oscar/system-overview).
 
-\*__Max Resource Walltime:__ The time limit when using the maximum of available CPUs or GPUs of an account. 
-Using less of the allotted CPUs or GPUs allows for longer walltimes. This is because the resource allocation is 
-actually governed by a fixed total compute budget measured in CPU-minutes or GPU-minutes that is distributed 
-across your concurrent jobs. For example, HPC Priority accounts have a compute budget of 19,968 core-hours. Using all 
-208 cores results in a walltime of 96 hours (19,968 / 208); however using half of the available cores with 104 CPUs 
+\*__Max Resource Walltime:__ The time limit when using the maximum of available CPUs or GPUs of an account.
+Using less of the allotted CPUs or GPUs allows for longer walltimes. This is because the resource allocation is
+actually governed by a fixed total compute budget measured in CPU-minutes or GPU-minutes that is distributed
+across your concurrent jobs. For example, HPC Priority accounts have a compute budget of 19,968 core-hours. Using all
+208 cores results in a walltime of 96 hours (19,968 / 208); however using half of the available cores with 104 CPUs
 would result in double the walltime at 192 hours (19,968 / 104).
 
 </ContentSection>
