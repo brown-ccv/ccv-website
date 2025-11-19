@@ -65,7 +65,7 @@ carousel:
     image: "/images/home/featured-carousel/soma.webp"
     alt: "Three smartphone screens displaying a health tracking app with graphs for pain and a body map for pain location assessment."
     organizations:
-      - name: "Psychiatry, Embodiment and Computation (PEAC) Lab, Carney Institute for Brain Science"
+      - name: "Psychiatry, Embodiment and Computation (PEAC) Lab, Carney Institute for Brain Science, Department of Cognitive and Psychological Sciences"
         organization: "Brown University"
         pi: ["Frederike Petzschner"]
         icon: "FaUser"
