@@ -1133,28 +1133,6 @@ module.exports = {
       50: "50",
     },
     extend: {
-      animation: {
-        gradient: "gradient 8s linear infinite",
-        shine: "shine var(--duration) infinite linear",
-      },
-      keyframes: {
-        shine: {
-          "0%": {
-            "background-position": "0% 0%",
-          },
-          "50%": {
-            "background-position": "100% 100%",
-          },
-          to: {
-            "background-position": "0% 0%",
-          },
-        },
-        gradient: {
-          to: {
-            backgroundPosition: "var(--bg-size) 0",
-          },
-        },
-      },
       typography: ({ theme }) => ({
         DEFAULT: {
           css: {

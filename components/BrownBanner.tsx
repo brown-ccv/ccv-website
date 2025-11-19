@@ -1,10 +1,6 @@
 import React from "react"
-import { FaHandshake } from "react-icons/fa"
 import BrownLogo from "@/components/assets/BrownLogo"
 import ButtonLink from "@/components/button/ButtonLink"
-import { AnimatedGradientText } from "@/components/magicui/AnimatedGradientText"
-import { cn } from "@/lib/utils"
-import { ShineBorder } from "@/components/magicui/ShineBorder"
 
 interface BrownBannerProps {
   id?: string
@@ -27,14 +23,11 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
         Center for Computation and Visualization
       </h2>
       <ButtonLink
-        href="/"
-        variant="unstyled"
-        className="relative overflow-hidden border border-purple-900 border-opacity-20 shadow-[inset_0_-8px_10px_#8fdfff1f] duration-500 ease-out hover:bg-neutral-100 hover:shadow-[inset_0_-5px_10px_#8fdfff3f] motion-safe:transition-shadow"
+        href="https://brown.co1.qualtrics.com/jfe/form/SV_0GtBE8kWJpmeG4B"
+        external={true}
+        variant="red_outlined"
       >
-        <ShineBorder shineColor={["#A07CFE", "#FE8FB5", "#FFBE7B"]} />
-        <AnimatedGradientText className="text-sm font-medium">
-          Request an Oscar Account!
-        </AnimatedGradientText>
+        Request an Oscar Account
       </ButtonLink>
     </header>
   )
