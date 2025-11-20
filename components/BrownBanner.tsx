@@ -1,5 +1,4 @@
 import React from "react"
-import { FaHandshake } from "react-icons/fa"
 import BrownLogo from "@/components/assets/BrownLogo"
 import ButtonLink from "@/components/button/ButtonLink"
 
@@ -23,16 +22,12 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
       <h2 className="hidden pl-6 lg:flex lg:flex-1 lg:justify-start">
         Center for Computation and Visualization
       </h2>
-
       <ButtonLink
-        href="/about/help#contact-us"
-        external={false}
+        href="https://brown.co1.qualtrics.com/jfe/form/SV_0GtBE8kWJpmeG4B"
+        external={true}
         variant="red_outlined"
-        size="sm"
-        className={"px-2 py-6 sm:px-4"}
       >
-        <FaHandshake className="text-lg sm:text-2xl" />
-        Work With Us
+        Request an Oscar Account
       </ButtonLink>
     </header>
   )
