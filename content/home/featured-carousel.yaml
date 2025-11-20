@@ -63,11 +63,11 @@ carousel:
   - title: "SOMA Pain Manager"
     categories: ["Mobile Applications", "React Native", "JavaScript"]
     description: |
-      SOMA is a new app from Brown University researchers designed to help people with acute and chronic pain. By allowing you to track symptoms and daily activities, SOMA provides insights into your pain and recovery patterns. You can use this data for your own understanding or share it with your healthcare provider to help guide your treatment. Available for free on the App Store and Google Play, SOMA is designed to empower you with a better understanding of your pain.
+      SOMA is an app from Brown University researchers designed to help people with acute and chronic pain. By allowing you to track symptoms and daily activities, SOMA provides insights into your pain and recovery patterns. You can use this data for your own understanding or share it with your healthcare provider to help guide your treatment. Available for free on the App Store and Google Play, SOMA is designed to empower you with a better understanding of your pain.
     image: "/images/home/featured-carousel/soma.webp"
     alt: "Three smartphone screens displaying a health tracking app with graphs for pain and a body map for pain location assessment."
     organizations:
-      - name: "Carney Institute for Brain Science, Center for Digital Health"
+      - name: "Psychiatry, Embodiment and Computation (PEAC) Lab, Carney Institute for Brain Science, Department of Cognitive and Psychological Sciences"
         organization: "Brown University"
         pi: ["Frederike Petzschner"]
         icon: "FaUser"
