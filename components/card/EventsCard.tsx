@@ -1,5 +1,8 @@
-import { StyledCard } from "@/components/card/StyledCard"
 import React from "react"
+
+import sanitizeHtml from "sanitize-html"
+
+import { StyledCard } from "@/components/card/StyledCard"
 import { DataProps } from "@/components/EventSection"
 import Icon from "@/components/ui/RenderIcon"
 
@@ -11,7 +14,10 @@ export const EventsCard: React.FC<DataProps> = ({
   date_utc,
   description_long,
 }) => {
-  const descriptionLong = description_long.replace(/<(.|\n)*?>/g, "")
+  const descriptionLong = sanitizeHtml(description_long, {
+    allowedTags: [],
+    allowedAttributes: {},
+  })
   const dateTime = new Date(date_utc.replace(/-/g, "/"))
   const normalDate =
     new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(dateTime) +
