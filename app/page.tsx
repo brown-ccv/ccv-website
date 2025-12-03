@@ -53,7 +53,7 @@ export default async function Home() {
             </ContentHeader>
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>
-          <ContentSection id="Events" align="left">
+          <ContentSection id="events" align="left">
             <ContentHeader>
               <ContentTitle title="Events" icon={<FaCalendarAlt />} />
               <ContentSubHeader>
