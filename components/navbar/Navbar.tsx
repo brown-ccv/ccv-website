@@ -12,16 +12,17 @@ import {
   DialogTitle,
   DialogContent,
   DialogHeader,
+  DialogClose,
 } from "@/components/ui/Dialog"
 import { RouteGroup } from "@/components/navbar/navbar-types"
 import { FaBars, FaChevronDown, FaQuestionCircle } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
 import { routes } from "@/components/navbar/routes"
 import { cn } from "@/lib/utils"
+import { XMarkIcon } from "@heroicons/react/16/solid"
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [openSubmenus, setOpenSubmenus] = useState<string[]>([])
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
@@ -35,14 +36,6 @@ export const Navbar: React.FC = () => {
       document.body.style.overflow = "auto" // ensures body scrolling is re-enabled
     }
   }, [])
-
-  const toggleSubmenu = (sectionName: string) => {
-    if (openSubmenus.includes(sectionName)) {
-      setOpenSubmenus(openSubmenus.filter((name) => name !== sectionName))
-    } else {
-      setOpenSubmenus([...openSubmenus, sectionName])
-    }
-  }
 
   return (
     <div className="sticky top-0 z-50">
@@ -133,8 +126,21 @@ export const Navbar: React.FC = () => {
             />
           </DialogTrigger>
           <DialogContent className="h-screen w-screen max-w-none p-0 sm:h-screen sm:max-w-none [&>button]:hidden">
-            <DialogHeader className="sr-only">
-              <DialogTitle>Navigation Menu</DialogTitle>
+            <DialogHeader className="flex-row justify-end px-2">
+              <DialogTitle className="sr-only text-white">
+                Navigation Menu
+              </DialogTitle>
+              <DialogClose asChild>
+                <Button
+                  variant="icon_only"
+                  size="icon"
+                  aria-label="Close Navigation"
+                  iconOnly={
+                    <XMarkIcon aria-hidden="true" className="h-5 w-5" />
+                  }
+                  className="bg-transparent text-sunglow-400 focus-visible:ring-sunglow-400"
+                />
+              </DialogClose>
             </DialogHeader>
             <MobileMenuContent onNavigate={() => setIsMobileMenuOpen(false)} />
           </DialogContent>
@@ -178,13 +184,14 @@ const NavigationSectionContent: React.FC<{
                   key={route.href}
                   className="p-1 hover:bg-slate-100 sm:p-1.5 md:p-2"
                 >
-                  <NavLink
+                  <NavigationMenu.Link
                     href={route.href}
                     {...(route.href ===
                       "https://publications.ccv.brown.edu" && {
                       target: "_blank",
                       rel: "noopener noreferrer",
                     })}
+                    className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
                   >
                     {route.icon && (
                       <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-slate-400/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
@@ -201,7 +208,7 @@ const NavigationSectionContent: React.FC<{
                         </span>
                       )}
                     </div>
-                  </NavLink>
+                  </NavigationMenu.Link>
                 </li>
               ))}
             </ul>
@@ -303,4 +310,3 @@ const NavLink = React.forwardRef<
 NavLink.displayName = "NavigationLink"
 
 export default Navbar
-export { routes }
