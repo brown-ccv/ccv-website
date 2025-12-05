@@ -249,15 +249,11 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
                   {group.routes.map((route) => (
                     <React.Fragment key={route.name}>
                       {route.href.startsWith("http") ? (
-                        <NavLink
-                          href={route.href}
-                          key={route.name}
-                          onClick={handleNavigation}
-                        >
+                        <NavLink href={route.href} onClick={handleNavigation}>
                           {route.name}
                         </NavLink>
                       ) : (
-                        <NavLink href={route.href} key={route.name} asChild>
+                        <NavLink href={route.href} asChild>
                           <Link href={route.href} onClick={handleNavigation}>
                             {route.name}
                           </Link>
