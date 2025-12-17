@@ -4,7 +4,7 @@ description: |
   A guide for getting started using MDX files to create and edit content in the CCV website.
 ---
 
-<ContentSection title="What is MDX?">
+<ContentSection title="What is MDX?" id="what-is-mdx">
   MDX files combine regular text and Markdown formatting with React components and custom components to create a feature-rich, flexible, and easy-to-use content editing experience.
 
   The content of the MDX Editing Guide that you are _currently reading_ is rendered from an MDX file called `mdx-editing-guide.mdx`, which you can find in the `/content` folder of the CCV website codebase. It's extremely meta.
@@ -16,7 +16,7 @@ description: |
   </Button>
 </ContentSection>
 
-<ContentSection title="Available Components">
+<ContentSection title="Available Components" id="available-components">
   All available components are in the `/components` folder. To make them accessible in `.mdx` files, add them to `/mdx-components.tsx`. Import the component(s) at the top of the file and add it to the Global MDX Components section at the bottom. To request a new custom component, please add an issue to the CCV website github repository.
 
   <Button href="https://github.com/brown-ccv/ccv-website/issues">
@@ -33,7 +33,7 @@ description: |
   2. **Test your changes** - Run `npm run dev` to see your changes
 </ContentSection>
 
-<ContentSection title="Example MDX File">
+<ContentSection title="Example MDX File" id="example-mdx-file">
   ### This is an example of an MDX content file containing custom components and markdown formatting.
 
   ```tsx
@@ -69,7 +69,7 @@ description: |
   ### This is how the above example renders:
 </ContentSection>
 
-<ContentSection title="Welcome to the Wonderful World of MDX">
+<ContentSection title="Welcome to the Wonderful World of MDX" id="welcome">
   The `<ContentSection>` component is used to create a header for the page and apply styling to that page's section. It is a custom component that is defined in `/components/SectionHeader.tsx` and imported in `/mdx-components.tsx`. Every section of your page should be wrapped in a `<ContentSection>` component.
 
   Insert a button that links to a markdown cheat sheet and the `@next/mdx` documentation using the `<Button/>` component. It uses the same styling as the buttons that are used throughout this website. The `<ButtonGroup/>` component is used to group buttons together.

@@ -17,7 +17,7 @@ export default async function ClassroomSupport() {
   return (
     <>
       <Hero title={metadata.title} description={metadata.description} />
-      <ContentSection className="px-none bg-neutral-50">
+      <ContentSection className="px-none bg-neutral-50" id="in-class-tutorials">
         <ContentHeader>
           <ContentTitle title="In-Class Tutorials" />
         </ContentHeader>
