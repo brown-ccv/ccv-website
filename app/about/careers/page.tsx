@@ -28,7 +28,7 @@ export default async function Careers() {
           Contact Us
         </ButtonLink>
       </Hero>
-      <ContentSection className="bg-neutral-50">
+      <ContentSection className="bg-neutral-50" id="opportunities">
         <ContentHeader>
           <ContentTitle title="Opportunities" />
         </ContentHeader>
