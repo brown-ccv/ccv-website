@@ -30,11 +30,12 @@ const withNotProse = <T extends { className?: string }>(
 const MDXContentSection = ({
   title,
   children,
+  ...props
 }: {
   title: string
   children: React.ReactNode
-}) => (
-  <ContentSection>
+} & React.HTMLAttributes<HTMLDivElement>) => (
+  <ContentSection {...props}>
     <ContentHeader>
       <ContentTitle className="not-prose" title={title} />
     </ContentHeader>
