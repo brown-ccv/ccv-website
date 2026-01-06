@@ -14,6 +14,7 @@ import {
   DialogHeader,
   DialogClose,
 } from "@/components/ui/Dialog"
+import SiteSearch from "@/components/SiteSearch"
 import { RouteGroup } from "@/components/navbar/navbar-types"
 import { FaBars, FaChevronDown, FaQuestionCircle } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
@@ -102,13 +103,9 @@ export const Navbar: React.FC = () => {
             </NavigationMenu.Item>
 
             {/* TODO: Add search */}
-            {/* <NavigationMenu.Item>
-              <Button
-                variant="secondary_filled"
-                className="flex items-center justify-center ml-6"
-                iconOnly={<FaSearch />}
-              />
-            </NavigationMenu.Item> */}
+            <NavigationMenu.Item>
+              <SiteSearch />
+            </NavigationMenu.Item>
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
