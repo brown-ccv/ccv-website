@@ -44,7 +44,7 @@ type Page @table {
   route: String! @unique
   title: String! @searchable
   content: String! @searchable
-  keywords: String @searchable  # Optional field
+  keywords: String @searchable # Optional field
   updatedAt: Timestamp! @default(expr: "request.time")
 }
 
