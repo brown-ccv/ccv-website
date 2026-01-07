@@ -52,7 +52,7 @@ export const ButtonVariants = cva(
           "active:bg-neutral-800",
         ].join(" "),
         // ——————————————————— Icon Only (filled, for black icon buttons) ———————————————————
-        icon_only: [
+        icon: [
           "bg-transparent",
           "hover:bg-white hover:text-black active:bg-neutral-50",
         ].join(" "),
