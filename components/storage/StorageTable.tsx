@@ -158,7 +158,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
       cell: ({ row }: { row: Row<ServiceConfig> }) =>
         row.getIsPinned() ? (
           <Button
-            variant="icon_only"
+            variant="icon"
             size="icon-sm"
             className="border border-black"
             iconOnly={<Icon iconName="FaTimes" className="h-3 w-3" />}
@@ -167,7 +167,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
         ) : (
           <div className="flex gap-1">
             <Button
-              variant="icon_only"
+              variant="icon"
               size="icon-sm"
               className="border border-black"
               aria-label="Pin Column"
@@ -321,7 +321,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
                           <div className="pb-2">
                             {header.column.getIsPinned() !== "left" ? (
                               <Button
-                                variant="icon_only"
+                                variant="icon"
                                 size="icon-sm"
                                 className="border border-white"
                                 aria-label="Pin Column"
@@ -339,7 +339,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
                             ) : null}
                             {header.column.getIsPinned() ? (
                               <Button
-                                variant="icon_only"
+                                variant="icon"
                                 size="icon-sm"
                                 className="border border-white"
                                 iconOnly={

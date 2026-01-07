@@ -132,7 +132,7 @@ export const Navbar: React.FC = () => {
               </DialogTitle>
               <DialogClose asChild>
                 <Button
-                  variant="icon_only"
+                  variant="icon"
                   size="icon"
                   aria-label="Close Navigation"
                   iconOnly={
