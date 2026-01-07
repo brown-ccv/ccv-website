@@ -225,7 +225,7 @@ CarouselPrevious.displayName = "CarouselPrevious"
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = "outline", ...props }) => {
+>(({ className, variant = "outline", ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
   // TODO: use icon prop
