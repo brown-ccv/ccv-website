@@ -29,7 +29,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   href,
   asChild = false,
   icon,
-  iconPosition,
+  iconPosition = "left",
   size,
   variant = "unstyled",
   children,
@@ -37,8 +37,6 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   isCalendarEvent = false,
   ...props
 }) => {
-  const resolvedSize = icon && !size ? "icon" : size
-
   if (external) {
     return (
       <a
@@ -48,7 +46,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
             : cn(
                 ButtonVariants({
                   variant,
-                  size: resolvedSize,
+                  size,
                   className,
                 })
               )
@@ -78,7 +76,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
           : cn(
               ButtonVariants({
                 variant,
-                size: resolvedSize,
+                size,
                 className,
               })
             )

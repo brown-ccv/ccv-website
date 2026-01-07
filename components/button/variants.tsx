@@ -51,10 +51,12 @@ export const ButtonVariants = cva(
           "focus-visible:ring-sunglow-200",
           "active:bg-neutral-800",
         ].join(" "),
-        // ——————————————————— Icon Only (filled, for black icon buttons) ———————————————————
-        icon: [
-          "bg-transparent",
-          "hover:bg-white hover:text-black active:bg-neutral-50",
+        // ————————————————————— Ghost ——————————————————————
+        ghost: [
+          "bg-transparent text-current",
+          "hover:bg-neutral-100",
+          "focus-visible:ring-sunglow-300",
+          "active:bg-neutral-200",
         ].join(" "),
         unstyled: "",
       },
@@ -65,11 +67,6 @@ export const ButtonVariants = cva(
         lg: "h-12 px-6 py-3 text-lg",
         xl: "h-14 px-8 py-4 text-xl",
         xxl: "h-16 px-10 py-5 text-2xl",
-
-        // large icon-only
-        icon: "w-8 h-8 sm:w-10 sm:h-10",
-        // small circle for icon-only
-        "icon-sm": "h-6 w-6",
       },
 
       align: {
