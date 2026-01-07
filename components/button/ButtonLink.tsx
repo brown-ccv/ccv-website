@@ -21,7 +21,7 @@ export interface ExternalProps
     VariantProps<typeof ButtonVariants> {
   asChild?: boolean
   icon?: React.ReactNode
-  iconAlign?: "left" | "right"
+  iconPosition?: "left" | "right"
 }
 
 export const ButtonLink: React.FC<ExternalProps> = ({
@@ -29,7 +29,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   href,
   asChild = false,
   icon,
-  iconAlign,
+  iconPosition,
   size,
   variant = "unstyled",
   children,
