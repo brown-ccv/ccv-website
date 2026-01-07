@@ -210,7 +210,6 @@ const CarouselPrevious = React.forwardRef<
           : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
         className
       )}
-      size="icon"
       aria-label="previous project"
       onClick={scrollPrev}
       disabled={!canScrollPrev}
@@ -229,10 +228,10 @@ const CarouselNext = React.forwardRef<
 >(({ className, variant = "outline", size = "icon", ...props }, ref) => {
   const { orientation, scrollNext, canScrollNext } = useCarousel()
 
+  // TODO: use icon prop
   return (
     <Button
       variant="secondary_filled"
-      size="icon"
       aria-label="next project"
       className={cn(
         "absolute h-8 w-8 rounded-full",

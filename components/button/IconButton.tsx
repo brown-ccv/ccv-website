@@ -11,7 +11,7 @@ export const IconButton = ({
   ...props
 }: IconButtonProps) => {
   return (
-    <Button variant={"icon"} size={"icon"} {...props}>
+    <Button {...props}>
       <Icon aria-hidden="true" iconName={iconName} />
     </Button>
   )
