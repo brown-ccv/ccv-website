@@ -32,14 +32,11 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = asChild ? Slot : "button"
 
-    const resolvedSize = icon && !size ? "icon" : size
-
     return (
       <Comp
         className={cn(
           ButtonVariants({
             variant,
-            size: resolvedSize,
             align,
             className,
           })
