@@ -1,0 +1,193 @@
+# Enum definitions
+enum ProjectType {
+  DATA_SCIENCE
+  ARTIFICIAL_INTELLIGENCE
+  SOFTWARE_ENGINEERING
+  HIGH_PERFORMANCE_COMPUTING
+  COMPUTATIONAL_BIOLOGY
+  VISUALIZATION
+  TECHNICAL_INFRASTRUCTURE
+  SOFTWARE_SUSTAINABILITY
+  HARDWARE_CONSULTATION
+}
+
+enum WorkshopType {
+  TUTORIAL
+  SEMINAR
+  CONFERENCE
+  BOOTCAMP
+  TRAINING
+  OTHER
+}
+
+enum AffiliationType {
+  UNIVERSITY
+  RESEARCH_INSTITUTE
+  COMPANY
+  NONPROFIT
+  GOVERNMENT
+  OTHER
+}
+
+enum Role {
+  LEAD
+  CONTRIBUTOR
+  DEVELOPER
+  ADVISOR
+  COLLABORATOR
+  AUTHOR
+}
+
+# Page Table
+type Page @table {
+  id: UUID! @default(expr: "uuidV4()")
+  route: String! @unique
+  title: String! @searchable
+  content: String! @searchable
+  keywords: String @searchable  # Optional field
+  updatedAt: Timestamp! @default(expr: "request.time")
+}
+
+# Projects table
+type Project @table {
+  id: UUID! @default(expr: "uuidV4()")
+  name: String! @searchable
+  shortName: String! @searchable
+  description: String @searchable
+  shortDescription: String @searchable
+  startYear: Int
+  endYear: Int
+  repository: String
+  type: [ProjectType!]
+  tags: [String!]
+  languages: [String!]
+  url: String
+  isFeatured: Boolean @default(value: false)
+  image: String
+}
+
+# Staff table
+type Staff @table {
+  id: UUID! @default(expr: "uuidV4()")
+  displayName: String! @searchable
+  lastName: String! @searchable
+  team: String
+  title: String @searchable
+  brownUuid: String
+  bio: String @searchable
+  github: String
+}
+
+# Collaborators table
+type Collaborator @table {
+  id: UUID! @default(expr: "uuidV4()")
+  displayName: String! @searchable
+  lastName: String! @searchable
+  title: String @searchable
+  brownUuid: String
+  github: String
+  url: String
+}
+
+# Affiliations table
+type Affiliation @table {
+  id: UUID! @default(expr: "uuidV4()")
+  fullName: String! @searchable
+  shortName: String @searchable
+  abbreviation: String
+  url: String
+  type: [AffiliationType!]
+}
+
+# Publications table
+type Publication @table {
+  id: UUID! @default(expr: "uuidV4()")
+  title: String! @searchable
+  authors: String @searchable
+  publisher: String @searchable
+  url: String
+  doi: String
+  date: Date
+  abstract: String @searchable
+}
+
+# Workshops table
+type Workshop @table {
+  id: UUID! @default(expr: "uuidV4()")
+  name: String! @searchable
+  shortName: String @searchable
+  description: String @searchable
+  shortDescription: String @searchable
+  year: Int
+  type: [WorkshopType!]
+  tags: [String!]
+  languages: [String!]
+  url: String
+  isFeatured: Boolean @default(value: false)
+  image: String
+}
+
+# Testimonials table
+type Testimonial @table {
+  id: UUID! @default(expr: "uuidV4()")
+  collaboratorId: UUID!
+  collaborator: Collaborator! @ref
+  date: Date
+  text: String! @searchable
+}
+
+# Junction tables for many-to-many relationships
+
+type ProjectStaff @table(key: ["project", "staff"]) {
+  projectId: UUID!
+  project: Project! @ref
+  staffId: UUID!
+  staff: Staff! @ref
+  role: [Role!]
+}
+
+type ProjectCollaborator @table(key: ["project", "collaborator"]) {
+  projectId: UUID!
+  project: Project! @ref
+  collaboratorId: UUID!
+  collaborator: Collaborator! @ref
+  role: [Role!]
+}
+
+type AffiliationStaff @table(key: ["affiliation", "staff"]) {
+  affiliationId: UUID!
+  affiliation: Affiliation! @ref
+  staffId: UUID!
+  staff: Staff! @ref
+  role: [Role!]
+}
+
+type AffiliationCollaborator @table(key: ["affiliation", "collaborator"]) {
+  affiliationId: UUID!
+  affiliation: Affiliation! @ref
+  collaboratorId: UUID!
+  collaborator: Collaborator! @ref
+  role: [Role!]
+}
+
+type AffiliationProject @table(key: ["affiliation", "project"]) {
+  affiliationId: UUID!
+  affiliation: Affiliation! @ref
+  projectId: UUID!
+  project: Project! @ref
+  priority: Int
+}
+
+type ProjectPublication @table(key: ["project", "publication"]) {
+  projectId: UUID!
+  project: Project! @ref
+  publicationId: UUID!
+  publication: Publication! @ref
+}
+
+type PublicationStaff @table(key: ["publication", "staff"]) {
+  publicationId: UUID!
+  publication: Publication! @ref
+  staffId: UUID!
+  staff: Staff! @ref
+}
