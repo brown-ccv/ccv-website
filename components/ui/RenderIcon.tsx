@@ -5,17 +5,17 @@ import type { IconType } from "react-icons"
 // utility component to map icon names as strings in content folder to icon components from react-icons
 
 const iconLibraries: Record<string, Record<string, IconType>> = {
-  Fa: Fa
+  Fa: Fa,
 }
 
-type IconSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+type IconSize = "xs" | "sm" | "md" | "lg" | "xl"
 
 const iconSizes: Record<IconSize, string> = {
-  xs: 'w-3 h-3',
-  sm: 'w-4 h-4',
-  md: 'w-6 h-6',
-  lg: 'w-8 h-8',
-  xl: 'w-12 h-12',
+  xs: "w-3 h-3",
+  sm: "w-4 h-4",
+  md: "w-6 h-6",
+  lg: "w-8 h-8",
+  xl: "w-12 h-12",
 }
 
 interface IconProps {
@@ -35,11 +35,7 @@ const Icon: React.FC<IconProps> = ({ iconName, size = "md", className }) => {
       const IconComponent = iconLibraries[prefix][iconName]
 
       if (IconComponent) {
-        return (
-          <IconComponent
-            className={cn(iconSizes[size], className)}
-          />
-        )
+        return <IconComponent className={cn(iconSizes[size], className)} />
       }
     }
   }
