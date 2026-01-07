@@ -72,12 +72,6 @@ export const ButtonVariants = cva(
         "icon-sm": "h-6 w-6",
       },
 
-      iconPosition: {
-        none: "justify-center",
-        left: "flex-row",
-        right: "flex-row-reverse",
-      },
-
       align: {
         left: "justify-start",
         center: "justify-center",
@@ -88,7 +82,6 @@ export const ButtonVariants = cva(
     defaultVariants: {
       variant: "primary_filled",
       size: "md",
-      iconPosition: "none",
       align: "center",
     },
   }

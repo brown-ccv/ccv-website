@@ -106,7 +106,7 @@ export const Navbar: React.FC = () => {
               <Button
                 variant="secondary_filled"
                 className="flex items-center justify-center ml-6"
-                iconOnly={<FaSearch />}
+                icon={<FaSearch />}
               />
             </NavigationMenu.Item> */}
           </NavigationMenu.List>
@@ -119,7 +119,7 @@ export const Navbar: React.FC = () => {
               aria-label="Main Menu"
               aria-controls="main-menu"
               variant="secondary_filled"
-              iconOnly={
+              icon={
                 <FaBars aria-hidden focusable={false} className="h-6 w-6" />
               }
               className="rounded-2xl p-2 text-blue-navbar"
@@ -135,7 +135,7 @@ export const Navbar: React.FC = () => {
                   variant="icon"
                   size="icon"
                   aria-label="Close Navigation"
-                  iconOnly={
+                  icon={
                     <XMarkIcon aria-hidden="true" className="h-5 w-5" />
                   }
                   className="bg-transparent text-sunglow-400 focus-visible:ring-sunglow-400"

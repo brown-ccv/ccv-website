@@ -11,9 +11,8 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
   asChild?: boolean
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
-  iconOnly?: React.ReactNode
+  icon?: React.ReactNode,
+  iconAlign?: 'left' | 'right'
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -22,12 +21,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       className,
       variant,
       size,
-      iconPosition,
       align,
       asChild = false,
-      leftIcon,
-      rightIcon,
-      iconOnly,
+      icon,
+      iconAlign = 'left',
       children,
       ...props
     },
@@ -35,11 +32,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = asChild ? Slot : "button"
 
-    let resolvedIconPosition = iconPosition
-    if (!resolvedIconPosition && leftIcon) resolvedIconPosition = "left"
-    if (!resolvedIconPosition && rightIcon) resolvedIconPosition = "right"
-
-    const resolvedSize = iconOnly && !size ? "icon" : size
+    const resolvedSize = icon && !size ? "icon" : size
 
     return (
       <Comp
@@ -47,7 +40,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
           ButtonVariants({
             variant,
             size: resolvedSize,
-            iconPosition: resolvedIconPosition,
             align,
             className,
           })
@@ -55,18 +47,8 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {iconOnly ? (
-          <>
-            {iconOnly}
-            {children && <span className="sr-only">{children}</span>}
-          </>
-        ) : (
-          <>
-            {leftIcon}
-            {children}
-            {rightIcon}
-          </>
-        )}
+        {icon ? icon : null} 
+        {children}
       </Comp>
     )
   }

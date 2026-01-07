@@ -87,7 +87,7 @@ export default function StorageTool({
               onClick={handleReset}
               variant="primary_filled"
               size="sm"
-              leftIcon={<Icon iconName="FaUndo" aria-hidden="true" />}
+              icon={<Icon iconName="FaUndo" aria-hidden="true" />}
             >
               Reset Questions
             </Button>

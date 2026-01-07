@@ -161,7 +161,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
             variant="icon"
             size="icon-sm"
             className="border border-black"
-            iconOnly={<Icon iconName="FaTimes" className="h-3 w-3" />}
+            icon={<Icon iconName="FaTimes" className="h-3 w-3" />}
             onClick={() => row.pin(false)}
           ></Button>
         ) : (
@@ -171,7 +171,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
               size="icon-sm"
               className="border border-black"
               aria-label="Pin Column"
-              iconOnly={<Icon iconName="FaThumbtack" className="h-3 w-3" />}
+              icon={<Icon iconName="FaThumbtack" className="h-3 w-3" />}
               onClick={() => row.pin("top")}
             ></Button>
           </div>
@@ -278,13 +278,13 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
           onClick={() => scrollTable("left")}
           aria-label="Scroll left"
           variant="secondary_filled"
-          iconOnly={<ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />}
+          icon={<ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />}
         />
         <Button
           onClick={() => scrollTable("right")}
           aria-label="Scroll right"
           variant="secondary_filled"
-          iconOnly={<ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />}
+          icon={<ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />}
         />
       </div>
 
@@ -325,7 +325,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
                                 size="icon-sm"
                                 className="border border-white"
                                 aria-label="Pin Column"
-                                iconOnly={
+                                icon={
                                   <Icon
                                     iconName="FaThumbtack"
                                     className="h-3 w-3"
@@ -342,7 +342,7 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
                                 variant="icon"
                                 size="icon-sm"
                                 className="border border-white"
-                                iconOnly={
+                                icon={
                                   <Icon
                                     iconName="FaTimes"
                                     className="h-3 w-3"

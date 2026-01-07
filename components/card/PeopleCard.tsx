@@ -97,7 +97,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
                 href={`https://github.com/${personDetails.github_username}`}
                 variant={"icon"}
                 size={"icon"}
-                iconOnly={<FaGithub />}
+                icon={<FaGithub />}
                 external
                 title="GitHub Profile"
                 className="text-3xl hover:text-keppel-700"
@@ -110,7 +110,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
                 variant={"icon"}
                 size={"icon"}
                 external
-                iconOnly={<FaInfoCircle className="text-3xl" />}
+                icon={<FaInfoCircle className="text-3xl" />}
                 title="Brown Directory"
                 className="text-3xl hover:text-keppel-700"
               ></ButtonLink>

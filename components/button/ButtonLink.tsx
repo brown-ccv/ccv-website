@@ -20,19 +20,16 @@ export interface ExternalProps
   extends ButtonLinkProps,
     VariantProps<typeof ButtonVariants> {
   asChild?: boolean
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
-  iconOnly?: React.ReactNode
+  icon?: React.ReactNode
+  iconAlign?: 'left' | 'right'
 }
 
 export const ButtonLink: React.FC<ExternalProps> = ({
   external = true,
   href,
   asChild = false,
-  leftIcon,
-  rightIcon,
-  iconOnly,
-  iconPosition,
+  icon,
+  iconAlign,
   size,
   variant = "unstyled",
   children,
@@ -40,11 +37,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   isCalendarEvent = false,
   ...props
 }) => {
-  let resolvedIconPosition = iconPosition
-  if (!resolvedIconPosition && leftIcon) resolvedIconPosition = "left"
-  if (!resolvedIconPosition && rightIcon) resolvedIconPosition = "right"
-
-  const resolvedSize = iconOnly && !size ? "icon" : size
+  const resolvedSize = icon && !size ? "icon" : size
 
   if (external) {
     return (
@@ -56,7 +49,6 @@ export const ButtonLink: React.FC<ExternalProps> = ({
                 ButtonVariants({
                   variant,
                   size: resolvedSize,
-                  iconPosition: resolvedIconPosition,
                   className,
                 })
               )
@@ -66,16 +58,14 @@ export const ButtonLink: React.FC<ExternalProps> = ({
         rel="noopener noreferrer"
         {...props}
       >
-        {iconOnly ? (
+        {icon ? (
           <>
-            {iconOnly}
+            {icon}
             {children && <span className="sr-only">{children}</span>}
           </>
         ) : (
           <>
-            {leftIcon}
             {children}
-            {rightIcon}
           </>
         )}
       </a>
@@ -91,25 +81,14 @@ export const ButtonLink: React.FC<ExternalProps> = ({
               ButtonVariants({
                 variant,
                 size: resolvedSize,
-                iconPosition: resolvedIconPosition,
                 className,
               })
             )
       }
       {...props}
     >
-      {iconOnly ? (
-        <>
-          {iconOnly}
-          {children && <span className="sr-only">{children}</span>}
-        </>
-      ) : (
-        <>
-          {leftIcon}
-          {children}
-          {rightIcon}
-        </>
-      )}
+      {icon ? icon : null} 
+      {children}
     </Link>
   )
 }
