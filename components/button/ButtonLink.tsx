@@ -21,7 +21,7 @@ export interface ExternalProps
     VariantProps<typeof ButtonVariants> {
   asChild?: boolean
   icon?: React.ReactNode
-  iconAlign?: 'left' | 'right'
+  iconAlign?: "left" | "right"
 }
 
 export const ButtonLink: React.FC<ExternalProps> = ({
@@ -64,9 +64,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
             {children && <span className="sr-only">{children}</span>}
           </>
         ) : (
-          <>
-            {children}
-          </>
+          <>{children}</>
         )}
       </a>
     )
@@ -87,7 +85,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
       }
       {...props}
     >
-      {icon ? icon : null} 
+      {icon ? icon : null}
       {children}
     </Link>
   )

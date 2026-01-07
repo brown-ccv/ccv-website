@@ -11,8 +11,8 @@ export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof ButtonVariants> {
   asChild?: boolean
-  icon?: React.ReactNode,
-  iconAlign?: 'left' | 'right'
+  icon?: React.ReactNode
+  iconAlign?: "left" | "right"
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -24,7 +24,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       align,
       asChild = false,
       icon,
-      iconAlign = 'left',
+      iconAlign = "left",
       children,
       ...props
     },
@@ -47,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       >
-        {icon ? icon : null} 
+        {icon ? icon : null}
         {children}
       </Comp>
     )

@@ -135,9 +135,7 @@ export const Navbar: React.FC = () => {
                   variant="icon"
                   size="icon"
                   aria-label="Close Navigation"
-                  icon={
-                    <XMarkIcon aria-hidden="true" className="h-5 w-5" />
-                  }
+                  icon={<XMarkIcon aria-hidden="true" className="h-5 w-5" />}
                   className="bg-transparent text-sunglow-400 focus-visible:ring-sunglow-400"
                 />
               </DialogClose>
