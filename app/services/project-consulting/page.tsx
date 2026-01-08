@@ -17,7 +17,6 @@ export default function ProjectConsulting() {
                 variant="primary_filled"
                 size="lg"
                 href={link.target}
-                external={!link.target.startsWith("/")}
               >
                 {link.text}
               </ButtonLink>

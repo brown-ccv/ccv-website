@@ -23,7 +23,6 @@ export default async function CompareStorageOptions() {
           variant="secondary_filled"
           size="lg"
           href="https://brown.atlassian.net/servicedesk/customer/portal/16"
-          external
         >
           Request Storage
         </ButtonLink>

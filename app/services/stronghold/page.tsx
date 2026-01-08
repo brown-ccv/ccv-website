@@ -13,7 +13,6 @@ export default function Stronghold() {
           variant="primary_filled"
           size="lg"
           href="https://brown.atlassian.net/servicedesk/customer/portal/22/group/62/create/256"
-          external={true}
         >
           Request Environment
         </ButtonLink>
@@ -21,7 +20,6 @@ export default function Stronghold() {
           variant="secondary_filled"
           size="lg"
           href="https://docs.ccv.brown.edu/stronghold/"
-          external={true}
         >
           Documentation
         </ButtonLink>

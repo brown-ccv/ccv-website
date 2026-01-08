@@ -36,7 +36,6 @@ export default async function Home() {
             variant="primary_filled"
             size="lg"
             href="/about/help#contact-us"
-            external={false}
           >
             Work with Us
           </ButtonLink>
@@ -65,7 +64,6 @@ export default async function Home() {
                     variant="primary_filled"
                     size="lg"
                     href="https://events.brown.edu/ccv/all"
-                    external={true}
                   >
                     View All Events
                   </ButtonLink>

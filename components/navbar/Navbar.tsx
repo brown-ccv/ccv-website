@@ -81,7 +81,6 @@ export const Navbar: React.FC = () => {
             <NavigationMenu.Item>
               <ButtonLink
                 href="https://docs.ccv.brown.edu/documentation"
-                external={true}
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
                 <FaFileLines className="stroke-[2.5] text-xl" />
@@ -92,7 +91,6 @@ export const Navbar: React.FC = () => {
             {/* Help */}
             <NavigationMenu.Item>
               <ButtonLink
-                external={false}
                 href="/about/help"
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >

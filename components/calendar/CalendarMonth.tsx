@@ -116,7 +116,6 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               <p className="pb-2 font-semibold">{event.date}</p>
               <ButtonLink
                 href={event.url}
-                external={true}
                 className="flex gap-1 text-blue-500"
                 isCalendarEvent={true}
               >
@@ -152,7 +151,6 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           <div className="flex-auto">
             <ButtonLink
               href={event.url}
-              external={true}
               className="flex gap-1 text-blue-500"
               isCalendarEvent={true}
             >

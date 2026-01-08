@@ -145,7 +145,6 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
         >
           <ButtonLink
             href={event.url}
-            external={true}
             className={`${calColor} group absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg p-2 text-xs leading-tight lg:text-base`}
             isCalendarEvent={true}
           >

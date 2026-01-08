@@ -5,7 +5,7 @@
 import DefaultLink from "next/link"
 import { ComponentProps } from "react"
 
-interface LinkProps extends ComponentProps<typeof DefaultLink> {
+export interface LinkProps extends ComponentProps<typeof DefaultLink> {
   href: string
 }
 

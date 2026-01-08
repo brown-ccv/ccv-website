@@ -23,7 +23,6 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
       </h2>
       <ButtonLink
         href="https://brown.co1.qualtrics.com/jfe/form/SV_0GtBE8kWJpmeG4B"
-        external={true}
         variant="red_outlined"
       >
         Request an Oscar Account

@@ -29,7 +29,6 @@ export default function ConditionalStatusBanner({
             </p>
             <ButtonLink
               href={"https://status.ccv.brown.edu/"}
-              external
               variant="secondary_filled"
               size="sm"
               className="sm:text-md"
@@ -44,7 +43,6 @@ export default function ConditionalStatusBanner({
             </p>
             <ButtonLink
               href={"https://status.ccv.brown.edu/"}
-              external
               variant="secondary_filled"
               size="sm"
               className="sm:text-lg"

@@ -6,12 +6,7 @@ export default function NotFound() {
   return (
     <>
       <Hero title="Oops!" description="It looks like this page does not exist">
-        <ButtonLink
-          external={false}
-          href={"/"}
-          variant="primary_filled"
-          size="lg"
-        >
+        <ButtonLink href={"/"} variant="primary_filled" size="lg">
           Return Home
         </ButtonLink>
       </Hero>

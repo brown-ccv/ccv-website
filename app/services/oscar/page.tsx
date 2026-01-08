@@ -12,15 +12,13 @@ export default async function Oscar() {
         <ButtonLink
           variant="primary_filled"
           size="lg"
-          external={true}
           href="https://brown.co1.qualtrics.com/jfe/form/SV_0GtBE8kWJpmeG4B"
         >
           Request an Account
         </ButtonLink>
         <ButtonLink
           variant="secondary_filled"
-          size="lg"
-          external={true}
+          size="lg"s
           href="https://docs.ccv.brown.edu/oscar"
         >
           Documentation

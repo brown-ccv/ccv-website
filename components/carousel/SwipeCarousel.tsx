@@ -217,7 +217,6 @@ const StyledDialogCard = ({
               key={index}
               variant={button.variant}
               className="whitespace-nowrap"
-              external={true}
               href={button.url}
             >
               {button.text}
