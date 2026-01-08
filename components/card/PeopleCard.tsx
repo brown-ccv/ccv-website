@@ -12,7 +12,7 @@ import {
 } from "@/components/StyledDialog"
 
 import { FaGithub, FaInfoCircle } from "react-icons/fa"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 interface PeopleCardProps {
   className?: string
@@ -97,8 +97,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
                 href={`https://github.com/${personDetails.github_username}`}
                 variant={"icon"}
                 size={"icon"}
-                icon={<FaGithub />}
-                external
+                iconOnly={<FaGithub />}
                 title="GitHub Profile"
                 className="text-3xl hover:text-keppel-700"
               ></ButtonLink>
@@ -109,8 +108,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
                 href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
                 variant={"icon"}
                 size={"icon"}
-                external
-                icon={<FaInfoCircle className="text-3xl" />}
+                iconOnly={<FaInfoCircle className="text-3xl" />}
                 title="Brown Directory"
                 className="text-3xl hover:text-keppel-700"
               ></ButtonLink>
