@@ -108,15 +108,10 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       return (
         <li key={self.crypto.randomUUID()}>
           <Popover>
-            <PopoverTrigger
-              asChild
-              className="max-w-full rounded-md px-2 hover:bg-neutral-50"
-            >
-              <Button variant="unstyled">
-                <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
-                  {event.title}
-                </p>
-              </Button>
+            <PopoverTrigger className="max-w-full rounded-md px-2 hover:bg-neutral-50">
+              <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
+                {event.title}
+              </p>
             </PopoverTrigger>
             <PopoverContent className="bg-neutral-50">
               <p className="pb-2 font-semibold">
