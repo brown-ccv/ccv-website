@@ -10,13 +10,13 @@ interface LinkProps extends ComponentProps<typeof DefaultLink> {
 }
 
 export function Link({ href, children, ...props }: LinkProps) {
-  const isInternal = href.startsWith('/') || href.startsWith('#');
-  const isSystem = href.startsWith('mailto:') || href.startsWith('tel:');
+  const isInternal = href.startsWith("/") || href.startsWith("#")
+  const isSystem = href.startsWith("mailto:") || href.startsWith("tel:")
 
   // External
   if (!isInternal) {
     return (
-      <a 
+      <a
         href={href}
         // Open in new tab ONLY if it's a website, not email/phone
         target={isSystem ? undefined : "_blank"}
@@ -26,7 +26,7 @@ export function Link({ href, children, ...props }: LinkProps) {
       >
         {children}
       </a>
-    );
+    )
   }
 
   // If internal, use Next.js Link for client-side navigation
