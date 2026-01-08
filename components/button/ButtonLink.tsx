@@ -6,7 +6,9 @@ import type { VariantProps } from "class-variance-authority"
 import React from "react"
 import { cn } from "@/lib/utils"
 
-interface ButtonLinkProps extends LinkProps, VariantProps<typeof ButtonVariants> {
+interface ButtonLinkProps
+  extends LinkProps,
+    VariantProps<typeof ButtonVariants> {
   className?: string
   isCalendarEvent?: boolean
   asChild?: boolean
