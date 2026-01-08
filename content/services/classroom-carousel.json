@@ -48,7 +48,7 @@
     "description": "An introduction to MATLAB, a programming language for numerical computation and visualization. Topics covered include: basic MATLAB commands, working with arrays and matrices, plotting data, and using functions.",
     "image": "/images/services/classroom/featured-carousel/matlab.webp",
     "alt": "3D surface plot displayed in MATLAB, showing a multicolored graph of a mathematical function with axes labeled \"Real\" and \"Imag\" and MATLAB code visible on the left side.",
-    "attribution": "Photo by <a href='https://creativecommons.org/licenses/by-sa/4.0/'>Jschlosser</a>.",
+    "attribution": "Photo by <Link href='https://creativecommons.org/licenses/by-sa/4.0/'>Jschlosser</Link>.",
     "buttons": [
       {
         "text": "View Recorded Session",
@@ -63,7 +63,7 @@
     "description": "An introduction to R, a programming language for statistical computing and graphics. Topics covered include: basic R commands, working with data frames, plotting data, and using functions.",
     "image": "/images/services/classroom/featured-carousel/r.webp",
     "alt": "RStudio displaying code and a box plot showing the number of New York flights for each weekday in 2013, with data preview on the left.",
-    "attribution": "Photo by <a href='https://creativecommons.org/licenses/by-sa/4.0/'>cdhowe</a>.",
+    "attribution": "Photo by <Link href='https://creativecommons.org/licenses/by-sa/4.0/'>cdhowe</Link>.",
     "buttons": [
       {
         "text": "View Notebook",
