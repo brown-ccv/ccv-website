@@ -8,10 +8,7 @@ interface UpcomingEventsViewProps {
   limit?: number
 }
 
-const UpcomingEventsView = ({
-  events,
-  limit = 4,
-}: UpcomingEventsViewProps): JSX.Element => {
+export function UpcomingEvents({ events, limit = 4 }: UpcomingEventsViewProps) {
   const displayedEvents = limit ? events?.slice(0, limit) : events
 
   return (
@@ -26,5 +23,3 @@ const UpcomingEventsView = ({
     </div>
   )
 }
-
-export default UpcomingEventsView

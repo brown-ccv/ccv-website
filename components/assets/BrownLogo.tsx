@@ -1,10 +1,6 @@
 import React from "react"
 
-const BrownLogo: React.FC<{
-  className?: string
-  width?: number
-  height?: number
-}> = ({ className = "", width = 200, height = "auto" }) => {
+export function BrownLogo({ className = "", width = 200, height = "auto" }) {
   return (
     <svg
       version="1.1"
@@ -2750,5 +2746,3 @@ z"
     </svg>
   )
 }
-
-export default BrownLogo

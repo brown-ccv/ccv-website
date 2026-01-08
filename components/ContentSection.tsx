@@ -1,6 +1,6 @@
 import React from "react"
 import { cn } from "@/lib/utils"
-import CCVBars from "@/components/assets/CCVBars"
+import { CCVBars } from "@/components/assets/CCVBars"
 
 interface ContentSectionProps {
   align?: "left" | "center"

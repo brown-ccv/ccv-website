@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useCallback, useMemo, useState } from "react"
+import React, { useCallback, useState } from "react"
 import { Button } from "@/components/button/Button"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import {
@@ -9,7 +9,7 @@ import {
   ContentTitle,
 } from "@/components/ContentSection"
 import Form from "@/components/storage/StorageForm"
-import StorageTable from "@/components/storage/StorageTable"
+import { StorageTable } from "@/components/storage/StorageTable"
 import {
   SelectedAnswers,
   StorageData,

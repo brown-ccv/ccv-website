@@ -12,9 +12,7 @@ interface OpportunitiesCardProps {
   position: PositionProps
 }
 
-export const OpportunitiesCard: React.FC<OpportunitiesCardProps> = ({
-  position,
-}) => {
+export function OpportunitiesCard({ position }: OpportunitiesCardProps) {
   return (
     <ButtonLink
       key={position.externalPath}

@@ -88,7 +88,7 @@ function PinnedRow({ row, table }: { row: Row<any>; table: Table<any> }) {
   )
 }
 
-const StorageTable: React.FC<TableProps> = ({ services }) => {
+export function StorageTable({ services }: TableProps) {
   const [sorting, setSorting] = useState<SortingState>([])
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([])
   const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({
@@ -424,5 +424,3 @@ const StorageTable: React.FC<TableProps> = ({ services }) => {
     </>
   )
 }
-
-export default StorageTable

@@ -54,7 +54,7 @@ export interface DotsProps {
   setCardIndex: (index: number) => void
 }
 
-export const Dots = ({ carouselData, cardIndex, setCardIndex }: DotsProps) => {
+export function Dots({ carouselData, cardIndex, setCardIndex }: DotsProps) {
   return (
     <div className="absolute bottom-5 flex w-full justify-center gap-2">
       {carouselData.map((_, idx) => {
@@ -75,12 +75,7 @@ export const Dots = ({ carouselData, cardIndex, setCardIndex }: DotsProps) => {
   )
 }
 
-export const Organization = ({
-  organization,
-  pi,
-  pm,
-  name,
-}: OrganizationItem) => {
+export function Organization({ organization, pi, pm, name }: OrganizationItem) {
   return (
     <div className="flex flex-col">
       <h4>{name}</h4>
@@ -96,7 +91,7 @@ export const Organization = ({
   )
 }
 
-const FeatCarouselContent = ({
+function FeatCarouselContent({
   title,
   description,
   image,
@@ -105,7 +100,7 @@ const FeatCarouselContent = ({
   buttons,
   organizations,
   categories,
-}: StyledCarouselItem) => {
+}: StyledCarouselItem) {
   return (
     <div className="flex items-center gap-8 p-1">
       <div className="flex w-full flex-col space-y-6">
@@ -187,9 +182,7 @@ const FeatCarouselContent = ({
   )
 }
 
-export const StyledCarousel: React.FC<StyledCarouselProps> = ({
-  carouselData,
-}) => {
+export function StyledCarousel({ carouselData }: StyledCarouselProps) {
   return (
     <Carousel className="w-full">
       <CarouselContent className="">

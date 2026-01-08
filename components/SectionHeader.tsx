@@ -1,5 +1,5 @@
 import React from "react"
-import CCVBars from "@/components/assets/CCVBars"
+import { CCVBars } from "@/components/assets/CCVBars"
 import { cn } from "@/lib/utils"
 
 interface SectionHeaderProps {

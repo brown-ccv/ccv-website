@@ -23,7 +23,7 @@ export interface StyledCardProps extends VariantProps<typeof CardVariants> {
   headerColor?: HeaderColor
 }
 
-export const StyledCard: React.FC<StyledCardProps> = ({
+export function StyledCard({
   iconName,
   isDisabled = false,
   title,
@@ -32,7 +32,7 @@ export const StyledCard: React.FC<StyledCardProps> = ({
   children,
   footer,
   headerColor,
-}) => {
+}: StyledCardProps) {
   const IconComponent = iconName ? Icon : null
 
   const headerColorClass: Record<HeaderColor, string> = {

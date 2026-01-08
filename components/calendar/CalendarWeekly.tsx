@@ -24,16 +24,7 @@ import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { ClockIcon } from "@heroicons/react/20/solid"
 import ButtonLink from "@/components/button/ButtonLink"
 
-export interface weekProps {
-  id: string
-  num: number
-}
-
-const CalendarWeekly: React.FC<CalendarProps> = ({
-  events,
-  currentDate,
-  today,
-}) => {
+export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   const container = useRef<HTMLDivElement>(null)
   const containerNav = useRef<HTMLDivElement>(null)
   const containerOffset = useRef<HTMLDivElement>(null)
@@ -250,4 +241,3 @@ const CalendarWeekly: React.FC<CalendarProps> = ({
     </div>
   )
 }
-export default CalendarWeekly

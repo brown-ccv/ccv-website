@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { getEventData } from "@/app/queries"
 import { EventSection } from "@/components/EventSection"
-import Spinner from "@/components/assets/Spinner"
+import { Spinner } from "@/components/assets/Spinner"
 
 export function EventSectionClient() {
   const [futureDates, setFutureDates] = useState<any>(null)
