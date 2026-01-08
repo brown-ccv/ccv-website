@@ -1,9 +1,9 @@
 import CCVLogo from "@/components/assets/CCVLogo"
-import { CarbonBadge } from "@/components/CarbonBadge"
 import { FaArrowRight } from "react-icons/fa"
 import { MdEmail, MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
 import ButtonLink from "@/components/button/ButtonLink"
 import { CopyableEmail } from "@/components/CopyableEmail"
+import Link from "next/link"
 
 // Footer link component
 interface FooterLinkProps {
@@ -13,16 +13,13 @@ interface FooterLinkProps {
 
 const FooterLink = ({ href, label }: FooterLinkProps) => {
   return (
-    <li>
-      <ButtonLink
-        href={href}
-        size="sm"
-        className="flex items-center text-sm uppercase tracking-wider text-sunglow-400 transition-colors duration-300 hover:text-white"
-      >
-        {label}
-        <FaArrowRight className="ml-2 block" />
-      </ButtonLink>
-    </li>
+    <Link
+      href={href}
+      className="flex items-center text-sm uppercase tracking-wider text-sunglow-400 transition-colors duration-300 hover:text-white"
+    >
+      {label}
+      <FaArrowRight className="ml-2 block" />
+    </Link>
   )
 }
 
@@ -38,7 +35,9 @@ const FooterSection = ({ links, className = "" }: FooterSectionProps) => {
     <div className={"mb-10 w-full border-b border-stone-500 " + className}>
       <ul className="mb-8 flex w-full flex-col justify-center gap-x-0 gap-y-4 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-4">
         {links.map((link, index) => (
-          <FooterLink key={index} href={link.href} label={link.label} />
+          <li key={`${index}-${link.label}`}>
+            <FooterLink href={link.href} label={link.label} />
+          </li>
         ))}
       </ul>
     </div>
