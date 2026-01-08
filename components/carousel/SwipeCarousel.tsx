@@ -100,7 +100,7 @@ const Cards = ({ StyledCarouselItems, cardIndex }: CardsProps) => {
               scale: cardIndex === idx ? 0.95 : 0.85,
             }}
             transition={SPRING_OPTIONS}
-            className="w-screen shrink-0 rounded-xl bg-neutral-800 object-cover"
+            className="w-full shrink-0 rounded-xl bg-neutral-800 object-cover"
           >
             <Card className="bg-white">
               <CardContent className="flex flex-col p-0">
@@ -112,22 +112,15 @@ const Cards = ({ StyledCarouselItems, cardIndex }: CardsProps) => {
                   alt={item.alt}
                 />
                 <StyledDialog>
-                  <StyledDialogTrigger
-                    asChild
-                    className="mx-3 flex items-center justify-between px-3"
-                  >
-                    <Button
-                      variant="unstyled"
-                      aria-label="More Details"
-                      className="rounded-xl bg-slate-100"
-                    >
-                      <h3 className="font-bold">{item.title}</h3>
-                      <RenderIcon iconName="FaEllipsisV" />
-                    </Button>
+                  <StyledDialogTrigger className="m-3 flex w-auto items-start justify-between gap-2 rounded-xl bg-slate-100 px-3 py-2 hover:bg-slate-200">
+                    <h3 className="min-w-0 flex-1 break-words text-left font-bold">
+                      {item.title}
+                    </h3>
+                    <RenderIcon iconName="FaEllipsisV" />
                   </StyledDialogTrigger>
                   <StyledDialogCard {...item} />
                 </StyledDialog>
-                <div className="hidden px-3 md:line-clamp-2">
+                <div className="hidden break-words px-3 md:line-clamp-2">
                   <Markdown
                     remarkPlugins={[remarkGfm]}
                     rehypePlugins={[rehypeRaw]}
@@ -182,11 +175,11 @@ const StyledDialogCard = ({
           </Markdown>
         </div>
       )}
-      <StyledDialogTitle className="pt-4 text-center text-xl font-bold">
+      <StyledDialogTitle className="break-words pt-4 text-center text-xl font-bold">
         {title}
       </StyledDialogTitle>
       {/* Content */}
-      <div className="flex flex-col items-center gap-10 px-8">
+      <div className="flex flex-col items-center gap-10 break-words px-8">
         {/* Organizations */}
         {organizations && organizations.length > 0 && (
           <div
