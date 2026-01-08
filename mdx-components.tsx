@@ -51,6 +51,9 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <div className="prose prose-sm max-w-none lg:prose-base">{children}</div>
     ),
 
+    // Override default tags
+    a: Link,
+
     // Global MDX components
     Button: (props) => (
       <ButtonLink
