@@ -21,6 +21,7 @@ import {
   getDate,
   isSameDay,
   getWeeksInMonth,
+  format,
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
@@ -118,7 +119,9 @@ const CalendarMonth: React.FC<CalendarProps> = ({
               </Button>
             </PopoverTrigger>
             <PopoverContent className="bg-neutral-50">
-              <p className="pb-2 font-semibold">{event.date}</p>
+              <p className="pb-2 font-semibold">
+                {format(new Date(event.date_utc), "MMMM d, yyyy")}
+              </p>
               <ButtonLink
                 href={event.url}
                 external={true}
