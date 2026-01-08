@@ -16,7 +16,7 @@ import {
   StyledDialogTitle,
   StyledDialogTrigger,
 } from "@/components/StyledDialog"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import { Button } from "@/components/button/Button"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"

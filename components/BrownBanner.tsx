@@ -1,6 +1,6 @@
 import React from "react"
 import BrownLogo from "@/components/assets/BrownLogo"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import { Link } from "@/components/Link"
 
 interface BrownBannerProps {

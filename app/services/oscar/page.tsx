@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero"
 import OscarContent from "@/content/services/oscar.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 export default async function Oscar() {
   const metadata = getMDXMetadata("content/services/oscar.mdx")

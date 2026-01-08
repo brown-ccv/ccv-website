@@ -1,7 +1,7 @@
 import { Hero } from "@/components/Hero"
 import StrongholdContent from "@/content/services/stronghold.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 export default function Stronghold() {
   const metadata = getMDXMetadata("content/services/stronghold.mdx")

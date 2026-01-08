@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/button/Button"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import CCVLogo from "@/components/assets/CCVLogo"
 import { Link } from "@/components/Link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"

@@ -12,7 +12,7 @@ import {
 } from "@/components/StyledDialog"
 
 import { FaGithub, FaInfoCircle } from "react-icons/fa"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 interface PeopleCardProps {
   className?: string

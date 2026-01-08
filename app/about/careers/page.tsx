@@ -5,7 +5,7 @@ import {
   ContentSection,
   ContentTitle,
 } from "@/components/ContentSection"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import CareersContent from "@/content/about/careers.mdx"
 import CareerData from "@/components/CareerData"
 import { getMDXMetadata } from "@/lib/mdx-utils"

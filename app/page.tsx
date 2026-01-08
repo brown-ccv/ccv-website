@@ -7,7 +7,7 @@ import { StyledCarouselItem } from "@/components/carousel/StyledCarousel"
 import EventSectionClient from "@/components/EventSectionClient"
 import React from "react"
 import { ScrollButton } from "@/components/button/ScrollButton"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import { readContentFile } from "@/lib/content-utils"
 import {
   ContentHeader,

@@ -6,20 +6,16 @@ import type { VariantProps } from "class-variance-authority"
 import React from "react"
 import { cn } from "@/lib/utils"
 
-interface ButtonLinkProps extends LinkProps {
+interface ButtonLinkProps extends LinkProps, VariantProps<typeof ButtonVariants> {
   className?: string
   isCalendarEvent?: boolean
-}
-export interface ExternalProps
-  extends ButtonLinkProps,
-    VariantProps<typeof ButtonVariants> {
   asChild?: boolean
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
   iconOnly?: React.ReactNode
 }
 
-export const ButtonLink: React.FC<ExternalProps> = ({
+export function ButtonLink({
   href,
   asChild = false,
   leftIcon,
@@ -32,7 +28,7 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   className = "",
   isCalendarEvent = false,
   ...props
-}) => {
+}: ButtonLinkProps) {
   let resolvedIconPosition = iconPosition
   if (!resolvedIconPosition && leftIcon) resolvedIconPosition = "left"
   if (!resolvedIconPosition && rightIcon) resolvedIconPosition = "right"
@@ -71,5 +67,3 @@ export const ButtonLink: React.FC<ExternalProps> = ({
     </Link>
   )
 }
-
-export default ButtonLink
