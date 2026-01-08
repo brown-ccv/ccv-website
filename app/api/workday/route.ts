@@ -11,7 +11,7 @@ async function getWorkdayData() {
       limit: 20,
       offset: 0,
       appliedFacets: {},
-      // searchText: "180 George Street",
+      searchText: "180 George Street",
     })
 
     const response = await fetch(
