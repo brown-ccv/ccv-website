@@ -18,7 +18,7 @@ export default async function Oscar() {
         </ButtonLink>
         <ButtonLink
           variant="secondary_filled"
-          size="lg"s
+          size="lg"
           href="https://docs.ccv.brown.edu/oscar"
         >
           Documentation
