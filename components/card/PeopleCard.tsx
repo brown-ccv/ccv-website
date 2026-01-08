@@ -95,7 +95,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
             personDetails.github_username !== "" && (
               <ButtonLink
                 href={`https://github.com/${personDetails.github_username}`}
-                variant={"icon_only"}
+                variant={"icon"}
                 size={"icon"}
                 iconOnly={<FaGithub />}
                 title="GitHub Profile"
@@ -106,7 +106,7 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
             personDetails.brown_directory_uuid !== "" && (
               <ButtonLink
                 href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
-                variant={"icon_only"}
+                variant={"icon"}
                 size={"icon"}
                 iconOnly={<FaInfoCircle className="text-3xl" />}
                 title="Brown Directory"

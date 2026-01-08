@@ -12,18 +12,15 @@ interface ButtonLinkProps
   className?: string
   isCalendarEvent?: boolean
   asChild?: boolean
-  leftIcon?: React.ReactNode
-  rightIcon?: React.ReactNode
-  iconOnly?: React.ReactNode
+  icon?: React.ReactNode
+  iconPosition?: "left" | "right"
 }
 
 export function ButtonLink({
   href,
   asChild = false,
-  leftIcon,
-  rightIcon,
-  iconOnly,
-  iconPosition,
+  icon,
+  iconPosition = "left",
   size,
   variant = "unstyled",
   children,
@@ -31,12 +28,6 @@ export function ButtonLink({
   isCalendarEvent = false,
   ...props
 }: ButtonLinkProps) {
-  let resolvedIconPosition = iconPosition
-  if (!resolvedIconPosition && leftIcon) resolvedIconPosition = "left"
-  if (!resolvedIconPosition && rightIcon) resolvedIconPosition = "right"
-
-  const resolvedSize = iconOnly && !size ? "icon" : size
-
   return (
     <Link
       href={href}
@@ -46,26 +37,15 @@ export function ButtonLink({
           : cn(
               ButtonVariants({
                 variant,
-                size: resolvedSize,
-                iconPosition: resolvedIconPosition,
+                size,
                 className,
               })
             )
       }
       {...props}
     >
-      {iconOnly ? (
-        <>
-          {iconOnly}
-          {children && <span className="sr-only">{children}</span>}
-        </>
-      ) : (
-        <>
-          {leftIcon}
-          {children}
-          {rightIcon}
-        </>
-      )}
+      {icon ? icon : null}
+      {children}
     </Link>
   )
 }

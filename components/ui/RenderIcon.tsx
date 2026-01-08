@@ -1,18 +1,30 @@
 import React from "react"
 import * as Fa from "react-icons/fa"
+import { cn } from "@/lib/utils"
+import type { IconType } from "react-icons"
 // utility component to map icon names as strings in content folder to icon components from react-icons
 
-const iconLibraries: Record<string, Record<string, React.ComponentType>> = {
+const iconLibraries: Record<string, Record<string, IconType>> = {
   Fa: Fa,
+}
+
+type IconSize = "xs" | "sm" | "md" | "lg" | "xl"
+
+const iconSizes: Record<IconSize, string> = {
+  xs: "w-3 h-3",
+  sm: "w-4 h-4",
+  md: "w-6 h-6",
+  lg: "w-8 h-8",
+  xl: "w-12 h-12",
 }
 
 interface IconProps {
   iconName?: string
-  size?: string | number
+  size?: IconSize
   className?: string
 }
 
-const Icon: React.FC<IconProps> = ({ iconName, size, className }) => {
+const Icon: React.FC<IconProps> = ({ iconName, size = "md", className }) => {
   if (!iconName) {
     return null
   }
@@ -23,11 +35,7 @@ const Icon: React.FC<IconProps> = ({ iconName, size, className }) => {
       const IconComponent = iconLibraries[prefix][iconName]
 
       if (IconComponent) {
-        const props: Record<string, any> = {}
-        if (size) props.size = size
-        if (className) props.className = className
-
-        return React.createElement(IconComponent, props)
+        return <IconComponent className={cn(iconSizes[size], className)} />
       }
     }
   }
