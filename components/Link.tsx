@@ -2,24 +2,26 @@
  * Unstyled Link
  */
 
-import DefaultLink from 'next/link';
-import { ComponentProps } from 'react';
+import DefaultLink from "next/link"
+import { ComponentProps } from "react"
 
 interface LinkProps extends ComponentProps<typeof DefaultLink> {
-  href: string;
-  external?: boolean;
+  href: string
 }
 
-export function Link(
-  { href, external, children, ...props }: LinkProps,
-) {
-  // If external, use a standard anchor tag
-  if (external) {
+export function Link({ href, children, ...props }: LinkProps) {
+  const isInternal = href.startsWith('/') || href.startsWith('#');
+  const isSystem = href.startsWith('mailto:') || href.startsWith('tel:');
+
+  // External
+  if (!isInternal) {
     return (
       <a 
-        href={href} 
-        target="_blank" 
-        rel="noopener noreferrer" 
+        href={href}
+        // Open in new tab ONLY if it's a website, not email/phone
+        target={isSystem ? undefined : "_blank"}
+        // Security headers for new tabs
+        rel={isSystem ? undefined : "noopener noreferrer"}
         {...props}
       >
         {children}
@@ -32,5 +34,5 @@ export function Link(
     <DefaultLink href={href} {...props}>
       {children}
     </DefaultLink>
-  );
+  )
 }
