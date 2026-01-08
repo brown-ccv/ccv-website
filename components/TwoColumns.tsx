@@ -7,7 +7,7 @@ interface TwoColumnsProps {
   items: string[]
 }
 
-export const TwoColumns: React.FC<TwoColumnsProps> = ({ items }) => {
+export function TwoColumns({ items }: TwoColumnsProps) {
   return (
     <div className="flex flex-col flex-wrap md:flex-row md:justify-center">
       {items.map((item, i) => (

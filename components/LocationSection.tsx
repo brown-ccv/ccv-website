@@ -1,4 +1,4 @@
-import React from "react"
+import React, { JSX } from "react"
 import {
   ContentHeader,
   ContentSection,
@@ -12,9 +12,7 @@ interface LocationSectionProps {
   className?: string
 }
 
-export const LocationSection: React.FC<LocationSectionProps> = ({
-  className,
-}) => {
+export function LocationSection({ className }: LocationSectionProps) {
   return (
     <ContentSection
       className={cn(

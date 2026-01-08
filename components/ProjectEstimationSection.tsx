@@ -2,7 +2,7 @@ import React from "react"
 import { StyledTabs } from "@/components/StyledTabs"
 import { ProjectEstimateTab } from "@/components/ProjectEstimateTab"
 
-export const ProjectEstimationSection = () => {
+export function ProjectEstimationSection() {
   const tabs = [
     {
       value: "xs",

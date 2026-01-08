@@ -1,6 +1,5 @@
 import React from "react"
 import Image from "next/image"
-import Icon from "@/components/ui/RenderIcon"
 import ButtonLink from "@/components/button/ButtonLink"
 
 interface ProjectEstimateTabProps {
@@ -15,7 +14,7 @@ interface ProjectEstimateTabProps {
   alt?: string
 }
 
-export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
+export function ProjectEstimateTab({
   title,
   description,
   group,
@@ -25,7 +24,7 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
   image,
   attribution,
   alt,
-}) => {
+}: ProjectEstimateTabProps) {
   return (
     <div className="flex flex-col space-y-2 md:inline">
       {/*Image*/}

@@ -12,7 +12,7 @@ interface LinkProps {
   url: string
 }
 
-export const LinkList: React.FC<LinkListProps> = ({ links, className }) => {
+export function LinkList({ links, className }: LinkListProps) {
   return (
     <ul
       className={cn(

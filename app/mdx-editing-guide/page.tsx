@@ -1,4 +1,4 @@
-import Hero from "@/components/Hero"
+import { Hero } from "@/components/Hero"
 import MDXEditingGuideContent from "@/content/mdx-editing-guide.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 

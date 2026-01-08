@@ -24,7 +24,7 @@ interface StorageToolProps {
   services: StorageData
 }
 
-export default function StorageTool({
+export function StorageTool({
   questions,
   initialSelectedAnswers,
   services,

@@ -8,10 +8,7 @@ interface StatusBannerProps {
   className?: string
 }
 
-export default function StatusBanner({
-  children,
-  isOperational,
-}: StatusBannerProps) {
+export function StatusBanner({ children, isOperational }: StatusBannerProps) {
   const [isOpen, setIsOpen] = useState(true)
 
   if (!isOpen) return null
