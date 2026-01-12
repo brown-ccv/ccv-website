@@ -21,7 +21,7 @@ import {
   getDate,
   isSameDay,
   getWeeksInMonth,
-  format
+  format,
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
