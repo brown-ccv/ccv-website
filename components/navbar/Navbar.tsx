@@ -185,8 +185,8 @@ const NavigationSectionContent: React.FC<{
                 >
                   <NavigationMenu.Link asChild>
                     <Link
-                    href={route.href}
-                    className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                      href={route.href}
+                      className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
                     >
                       {route.icon && (
                         <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-slate-400/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
