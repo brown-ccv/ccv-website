@@ -20,7 +20,6 @@ import { FaFileLines } from "react-icons/fa6"
 import { routes } from "@/components/navbar/routes"
 import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/16/solid"
-import { Navigation } from "lucide-react"
 
 export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
