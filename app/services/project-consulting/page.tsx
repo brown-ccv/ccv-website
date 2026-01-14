@@ -1,5 +1,5 @@
 import { Hero } from "@/components/Hero"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import ProjectConsultingContent from "@/content/services/project-consulting.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
@@ -17,7 +17,6 @@ export default function ProjectConsulting() {
                 variant="primary_filled"
                 size="lg"
                 href={link.target}
-                external={!link.target.startsWith("/")}
               >
                 {link.text}
               </ButtonLink>

@@ -2,6 +2,7 @@ import React, { useCallback, useMemo } from "react"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup"
 import { SelectedAnswers, FormQuestions } from "@/lib/storage-types"
 import { StyledCard } from "@/components/card/StyledCard"
+import { Link } from "@/components/Link"
 
 interface FormProps {
   selectedAnswers: SelectedAnswers
@@ -40,12 +41,12 @@ const FormQuestion = React.memo<{
         ))}
 
       {question.link && (
-        <a
+        <Link
           className="text-sm text-keppel-800 hover:text-keppel-600"
           href={question.link.value}
         >
           {question.link.label}
-        </a>
+        </Link>
       )}
 
       {/* Radio group */}

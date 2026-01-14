@@ -13,7 +13,6 @@ export default function AITools() {
           variant="primary_filled"
           size="lg"
           href="https://ai.ccv.brown.edu"
-          external={true}
         >
           Access CCV AI Tools
         </ButtonLink>
