@@ -1,6 +1,6 @@
 import React, { CSSProperties, useMemo, useRef, useState } from "react"
 import { cn, humanize } from "@/lib/utils"
-import Link from "next/link"
+import { Link } from "@/components/Link"
 import { ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
 import {
   ServiceConfig,

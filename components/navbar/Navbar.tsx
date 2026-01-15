@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/button/Button"
-import ButtonLink from "@/components/button/ButtonLink"
-import { CCVLogo } from "@/components/assets/CCVLogo"
-import Link from "next/link"
+import { ButtonLink } from "@/components/button/ButtonLink"
+import CCVLogo from "@/components/assets/CCVLogo"
+import { Link } from "@/components/Link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
   Dialog,
@@ -21,7 +21,7 @@ import { routes } from "@/components/navbar/routes"
 import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/16/solid"
 
-export function Navbar() {
+export const Navbar: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const toggleMobileMenu = () => {
@@ -81,7 +81,6 @@ export function Navbar() {
             <NavigationMenu.Item>
               <ButtonLink
                 href="https://docs.ccv.brown.edu/documentation"
-                external={true}
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
                 <FaFileLines className="stroke-[2.5] text-xl" />
@@ -92,7 +91,6 @@ export function Navbar() {
             {/* Help */}
             <NavigationMenu.Item>
               <ButtonLink
-                external={false}
                 href="/about/help"
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
@@ -150,15 +148,10 @@ export function Navbar() {
   )
 }
 
-interface NavigationSectionContentProps {
+const NavigationSectionContent: React.FC<{
   groups: RouteGroup[]
   parentTitle: string
-}
-
-function NavigationSectionContent({
-  groups,
-  parentTitle,
-}: NavigationSectionContentProps) {
+}> = ({ groups }) => {
   const hasMultipleGroups = groups.length > 1
 
   return (
@@ -228,7 +221,9 @@ interface MobileMenuContentProps {
   onNavigate?: () => void
 }
 
-function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
+const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
+  onNavigate,
+}) => {
   const handleNavigation = () => {
     // Close the dialog when navigating
     onNavigate?.()

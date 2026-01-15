@@ -16,7 +16,8 @@ import {
   StyledDialogTitle,
   StyledDialogTrigger,
 } from "@/components/StyledDialog"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
+import { Button } from "@/components/button/Button"
 import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
@@ -38,7 +39,7 @@ interface CarouselProps {
   className?: string
 }
 
-export function SwipeCarousel({ carouselData, className }: CarouselProps) {
+export const SwipeCarousel = ({ carouselData, className }: CarouselProps) => {
   const [cardIndex, setCardIndex] = useState(0)
 
   const dragX = useMotionValue(0)
@@ -88,7 +89,7 @@ interface CardsProps {
   cardIndex: number
 }
 
-function Cards({ StyledCarouselItems, cardIndex }: CardsProps) {
+const Cards = ({ StyledCarouselItems, cardIndex }: CardsProps) => {
   return (
     <>
       {StyledCarouselItems.map((item, idx) => {
@@ -149,7 +150,7 @@ function Cards({ StyledCarouselItems, cardIndex }: CardsProps) {
   )
 }
 
-function StyledDialogCard({
+const StyledDialogCard = ({
   title,
   description,
   image,
@@ -157,7 +158,7 @@ function StyledDialogCard({
   attribution,
   buttons,
   organizations,
-}: StyledCarouselItem) {
+}: StyledCarouselItem) => {
   return (
     <StyledDialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl border-none bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
       <Image
@@ -209,7 +210,6 @@ function StyledDialogCard({
               key={index}
               variant={button.variant}
               className="whitespace-nowrap"
-              external={true}
               href={button.url}
             >
               {button.text}

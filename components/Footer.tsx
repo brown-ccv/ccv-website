@@ -1,8 +1,9 @@
-import { CCVLogo } from "@/components/assets/CCVLogo"
+import CCVLogo from "@/components/assets/CCVLogo"
 import { FaArrowRight } from "react-icons/fa"
 import { MdEmail, MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import { CopyableEmail } from "@/components/CopyableEmail"
+import { Link } from "@/components/Link"
 
 // Footer link component
 interface FooterLinkProps {
@@ -10,18 +11,15 @@ interface FooterLinkProps {
   label: string
 }
 
-function FooterLink({ href, label }: FooterLinkProps) {
+const FooterLink = ({ href, label }: FooterLinkProps) => {
   return (
-    <li>
-      <ButtonLink
-        href={href}
-        size="sm"
-        className="flex items-center text-sm uppercase tracking-wider text-sunglow-400 transition-colors duration-300 hover:text-white"
-      >
-        {label}
-        <FaArrowRight className="ml-2 block" />
-      </ButtonLink>
-    </li>
+    <Link
+      href={href}
+      className="flex items-center text-sm uppercase tracking-wider text-sunglow-400 transition-colors duration-300 hover:text-white"
+    >
+      {label}
+      <FaArrowRight className="ml-2 block" />
+    </Link>
   )
 }
 
@@ -32,12 +30,14 @@ interface FooterSectionProps {
   listClassName?: string
 }
 
-function FooterSection({ links, className = "" }: FooterSectionProps) {
+const FooterSection = ({ links, className = "" }: FooterSectionProps) => {
   return (
     <div className={"mb-10 w-full border-b border-stone-500 " + className}>
       <ul className="mb-8 flex w-full flex-col justify-center gap-x-0 gap-y-4 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-4">
         {links.map((link, index) => (
-          <FooterLink key={index} href={link.href} label={link.label} />
+          <li key={`${index}-${link.label}`}>
+            <FooterLink href={link.href} label={link.label} />
+          </li>
         ))}
       </ul>
     </div>
@@ -45,7 +45,7 @@ function FooterSection({ links, className = "" }: FooterSectionProps) {
 }
 
 // Footer component based on Brown University's footer
-export function Footer() {
+const Footer = () => {
   const quickNavLinks = [
     { href: "https://www.brown.edu/about/visit", label: "Visit Brown" },
     {
@@ -131,3 +131,5 @@ export function Footer() {
     </footer>
   )
 }
+
+export default Footer

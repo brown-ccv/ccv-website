@@ -41,7 +41,6 @@ export function LocationSection({ className }: LocationSectionProps) {
             variant="primary_filled"
             size="md"
             href="https://en.wikipedia.org/wiki/Brown_University_Computing_Laboratory"
-            external
             className="mx-auto my-2 w-auto"
           >
             Brown University Computing Laboratory

@@ -1,30 +1,27 @@
 import React from "react"
 import Image from "next/image"
-import ButtonLink from "@/components/button/ButtonLink"
 
 interface ProjectEstimateTabProps {
   title: string
   description: string
   group: string
   pi?: string
-  link?: string
   goal: string
   image?: string
   attribution?: string
   alt?: string
 }
 
-export function ProjectEstimateTab({
+export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
   title,
   description,
   group,
   pi,
-  link,
   goal,
   image,
   attribution,
   alt,
-}: ProjectEstimateTabProps) {
+}) => {
   return (
     <div className="flex flex-col space-y-2 md:inline">
       {/*Image*/}
@@ -42,9 +39,6 @@ export function ProjectEstimateTab({
         {pi ? `, ${pi}` : ""}
       </p>
       <p>{description}</p>
-      {link && (
-        <ButtonLink href={link} external={true} title={title} size="md" />
-      )}
       <h4 className="text-lg">CCV's Role</h4>
       <p>{goal}</p>
     </div>

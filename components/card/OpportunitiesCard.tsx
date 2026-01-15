@@ -1,7 +1,7 @@
 import React from "react"
 import { StyledCard } from "@/components/card/StyledCard"
-import ButtonLink from "@/components/button/ButtonLink"
 import Icon from "@/components/ui/RenderIcon"
+import { Link } from "@/components/Link"
 
 interface PositionProps {
   title: string
@@ -14,12 +14,10 @@ interface OpportunitiesCardProps {
 
 export function OpportunitiesCard({ position }: OpportunitiesCardProps) {
   return (
-    <ButtonLink
+    <Link
       key={position.externalPath}
-      external
       href={`https://brown.wd5.myworkdayjobs.com/en-US/staff-careers-brown${position.externalPath}`}
       className="w-full"
-      size="md"
     >
       <StyledCard size="custom" className="mb-16 w-full">
         <div className="flex justify-between">
@@ -36,6 +34,6 @@ export function OpportunitiesCard({ position }: OpportunitiesCardProps) {
           </div>
         </div>
       </StyledCard>
-    </ButtonLink>
+    </Link>
   )
 }

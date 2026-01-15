@@ -1,9 +1,9 @@
 "use client"
 
-import { JSX } from "react"
-import { CalendarWeekly } from "@/components/calendar/CalendarWeekly"
-import { CalendarMonth } from "@/components/calendar/CalendarMonth"
-import { UpcomingEvents } from "@/components/calendar/UpcomingEvents"
+import { JSX, use } from "react"
+import CalendarWeekly from "@/components/calendar/CalendarWeekly"
+import CalendarMonth from "@/components/calendar/CalendarMonth"
+import UpcomingEvents from "@/components/calendar/UpcomingEvents"
 import { StyledTabs } from "@/components/StyledTabs"
 
 export interface DataProps {
@@ -79,3 +79,5 @@ export function EventSection({
     </div>
   )
 }
+
+export default EventSection
