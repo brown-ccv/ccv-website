@@ -1,4 +1,4 @@
-import CCVLogo from "@/components/assets/CCVLogo"
+import { CCVLogo } from "@/components/assets/CCVLogo"
 import { FaArrowRight } from "react-icons/fa"
 import { MdEmail, MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
 import { ButtonLink } from "@/components/button/ButtonLink"
@@ -11,7 +11,7 @@ interface FooterLinkProps {
   label: string
 }
 
-const FooterLink = ({ href, label }: FooterLinkProps) => {
+function FooterLink({ href, label }: FooterLinkProps) {
   return (
     <Link
       href={href}
@@ -30,7 +30,7 @@ interface FooterSectionProps {
   listClassName?: string
 }
 
-const FooterSection = ({ links, className = "" }: FooterSectionProps) => {
+function FooterSection({ links, className = "" }: FooterSectionProps) {
   return (
     <div className={"mb-10 w-full border-b border-stone-500 " + className}>
       <ul className="mb-8 flex w-full flex-col justify-center gap-x-0 gap-y-4 sm:flex-row sm:flex-wrap sm:gap-x-8 sm:gap-y-4">
@@ -45,7 +45,7 @@ const FooterSection = ({ links, className = "" }: FooterSectionProps) => {
 }
 
 // Footer component based on Brown University's footer
-const Footer = () => {
+export function Footer() {
   const quickNavLinks = [
     { href: "https://www.brown.edu/about/visit", label: "Visit Brown" },
     {
@@ -131,5 +131,3 @@ const Footer = () => {
     </footer>
   )
 }
-
-export default Footer
