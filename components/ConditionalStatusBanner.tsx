@@ -8,7 +8,7 @@ interface ConditionalStatusBannerProps {
   issues: any[]
 }
 
-export default function ConditionalStatusBanner({
+export function ConditionalStatusBanner({
   issues,
 }: ConditionalStatusBannerProps) {
   const pathname = usePathname()

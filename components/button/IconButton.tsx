@@ -5,11 +5,7 @@ interface IconButtonProps extends ButtonProps {
   iconName: string
 }
 
-export const IconButton = ({
-  children,
-  iconName,
-  ...props
-}: IconButtonProps) => {
+export function IconButton({ iconName, ...props }: IconButtonProps) {
   return (
     <Button variant={"icon_only"} size={"icon"} {...props}>
       <Icon aria-hidden="true" iconName={iconName} />
