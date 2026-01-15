@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/button/Button"
 import { ButtonLink } from "@/components/button/ButtonLink"
-import CCVLogo from "@/components/assets/CCVLogo"
+import { CCVLogo } from "@/components/assets/CCVLogo"
 import { Link } from "@/components/Link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
@@ -21,7 +21,7 @@ import { routes } from "@/components/navbar/routes"
 import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/16/solid"
 
-export const Navbar: React.FC = () => {
+export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const toggleMobileMenu = () => {
@@ -148,10 +148,13 @@ export const Navbar: React.FC = () => {
   )
 }
 
-const NavigationSectionContent: React.FC<{
+function NavigationSectionContent({
+  groups,
+  parentTitle,
+}: {
   groups: RouteGroup[]
   parentTitle: string
-}> = ({ groups }) => {
+}) {
   const hasMultipleGroups = groups.length > 1
 
   return (
@@ -221,9 +224,7 @@ interface MobileMenuContentProps {
   onNavigate?: () => void
 }
 
-const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
-  onNavigate,
-}) => {
+function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
   const handleNavigation = () => {
     // Close the dialog when navigating
     onNavigate?.()
