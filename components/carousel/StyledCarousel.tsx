@@ -3,7 +3,6 @@
 import React from "react"
 import { Badge } from "@/components/ui/Badge"
 import { getColorForTag } from "@/lib/utils"
-import { Button } from "@/components/button/Button"
 import {
   Carousel,
   CarouselContent,
@@ -16,6 +15,7 @@ import Icon from "@/components/ui/RenderIcon"
 import Markdown from "react-markdown"
 import rehypeRaw from "rehype-raw"
 import remarkGfm from "remark-gfm"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 export interface StyledCarouselItem {
   title: string
@@ -149,15 +149,15 @@ const FeatCarouselContent = ({
         {buttons && buttons.length > 0 && (
           <div className="flex flex-wrap gap-4">
             {buttons.map((button, index) => (
-              <Button
+              <ButtonLink
                 key={index}
                 variant={button.variant}
                 className="whitespace-nowrap"
-                onClick={() => window.open(button.url, "_blank")}
                 aria-label={`Open ${button.text}`}
+                href={button.url}
               >
                 {button.text}
-              </Button>
+              </ButtonLink>
             ))}
           </div>
         )}
