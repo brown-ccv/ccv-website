@@ -12,6 +12,15 @@
     "copy-images": "tsx lib/build-utils.ts",
     "prepare": "husky"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  },
   "dependencies": {
     "@google-cloud/secret-manager": "^6.1.0",
     "@heroicons/react": "^2.2.0",
@@ -77,6 +86,7 @@
     "eslint-plugin-react": "^7.37.5",
     "fs-extra": "^11.3.2",
     "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
     "tailwindcss": "^3.4.10",
