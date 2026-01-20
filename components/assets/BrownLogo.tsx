@@ -6,7 +6,11 @@ interface BrownLogoProps {
   height?: number | string
 }
 
-export function BrownLogo({ className = "", width = 200, height = "auto" }: BrownLogoProps) {
+export function BrownLogo({
+  className = "",
+  width = 200,
+  height = "auto",
+}: BrownLogoProps) {
   return (
     <svg
       version="1.1"

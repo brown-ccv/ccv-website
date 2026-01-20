@@ -43,9 +43,7 @@ interface FeatureCellProps {
   iconName: string
 }
 
-const getCommonPinningStyles = (
-  column: Column<ServiceConfig>
-): CSSProperties => {
+function getCommonPinningStyles(column: Column<ServiceConfig>): CSSProperties {
   const isPinned = column.getIsPinned()
   const isLastLeftPinnedColumn =
     isPinned === "left" && column.getIsLastColumn("left")
@@ -106,11 +104,7 @@ export function StorageTable({ services }: TableProps) {
   const featureNames = services.metadata.feature_names
   const featureMetadata = services.metadata.feature_metadata
 
-  const FeatureCell: React.FC<FeatureCellProps> = ({
-    feature,
-    colorClass,
-    iconName,
-  }) => {
+  function FeatureCell({ feature, colorClass, iconName }: FeatureCellProps) {
     if (feature.notes) {
       return (
         <TooltipProvider>
