@@ -12,6 +12,7 @@ const compat = new FlatCompat({
 const eslintConfig = [
     ...compat.extends('next/core-web-vitals'),
     {
+        // Global rules for all files
         rules: {
             'react/no-unescaped-entities': 0,
             'react/function-component-definition': [
@@ -22,7 +23,14 @@ const eslintConfig = [
                 },
             ],
         },
-        ignores: ['components/ui/*', 'components/magicui/*'],
+    },
+    {
+        // Specific overrides for UI components
+        files: ['components/ui/**/*', 'components/magicui/**/*'],
+        rules: {
+            // Disable only this rule for these files
+            'react/function-component-definition': 0,
+        },
     },
 ]
 
