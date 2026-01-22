@@ -16,7 +16,7 @@ export interface TableProps {
   questions: FormQuestions[]
 }
 
-function StorageCards({ services, selectedAnswers, questions }: TableProps) {
+function Cards({ services, selectedAnswers, questions }: TableProps) {
   const { rankedServices, enabledCount } = useMemo(() => {
     const ranked = getServicesRankedByMatch(
       services.table_data,
@@ -84,4 +84,4 @@ function StorageCards({ services, selectedAnswers, questions }: TableProps) {
   )
 }
 
-export default React.memo(StorageCards)
+export const StorageCards = React.memo(Cards)

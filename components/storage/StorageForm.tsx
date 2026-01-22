@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo } from "react"
-import FormQuestion from "./FormQuestion"
+import { FormQuestion } from "./FormQuestion"
 import { SelectedAnswers, FormQuestions } from "@/lib/storage-types"
 import { StyledCard } from "@/components/card/StyledCard"
 
@@ -44,4 +44,4 @@ function Form({
   )
 }
 
-export default React.memo(Form)
+export const StorageForm = React.memo(Form)

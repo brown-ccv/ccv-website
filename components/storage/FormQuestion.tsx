@@ -9,7 +9,7 @@ interface FormQuestionProps {
   onAnswerChange: (questionId: string, answer: string) => void
 }
 
-function FormQuestion({
+function Question({
   question,
   selectedValue,
   onAnswerChange,
@@ -81,4 +81,4 @@ function FormQuestion({
   )
 }
 
-export default React.memo(FormQuestion)
+export const FormQuestion = React.memo(Question)

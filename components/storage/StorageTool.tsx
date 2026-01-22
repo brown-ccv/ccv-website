@@ -8,14 +8,14 @@ import {
   ContentSection,
   ContentTitle,
 } from "@/components/ContentSection"
-import Form from "@/components/storage/StorageForm"
+import { StorageForm } from "@/components/storage/StorageForm"
 import { StorageTable } from "@/components/storage/StorageTable"
 import {
   SelectedAnswers,
   StorageData,
   FormQuestions,
 } from "@/lib/storage-types"
-import StorageCards from "@/components/storage/StorageCards"
+import { StorageCards } from "@/components/storage/StorageCards"
 import Icon from "@/components/ui/RenderIcon"
 
 interface StorageToolProps {
@@ -78,7 +78,7 @@ export function StorageTool({
           </ScrollButton>
         </div>
         <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
-          <Form
+          <StorageForm
             selectedAnswers={selectedAnswers}
             onAnswerChange={handleAnswerChange}
             questions={questions}
@@ -91,7 +91,7 @@ export function StorageTool({
             >
               Reset Questions
             </Button>
-          </Form>
+          </StorageForm>
 
           <StorageCards
             services={services}
