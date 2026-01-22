@@ -1,5 +1,5 @@
 import React from "react"
-import CCVBars from "@/components/assets/CCVBars"
+import { CCVBars } from "@/components/assets/CCVBars"
 import { cn } from "@/lib/utils"
 
 interface SectionHeaderProps {
@@ -12,7 +12,7 @@ interface SectionHeaderProps {
   titleClassName?: string
 }
 
-export const SectionHeader: React.FC<SectionHeaderProps> = ({
+export function SectionHeader({
   title,
   align = "center",
   bars = true,
@@ -20,7 +20,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   icon,
   className,
   titleClassName,
-}) => {
+}: SectionHeaderProps) {
   return (
     <div
       className={cn(

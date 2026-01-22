@@ -31,11 +31,7 @@ function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-const CalendarMonth: React.FC<CalendarProps> = ({
-  events,
-  currentDate,
-  today,
-}) => {
+export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [activeDate, setActiveDate] = useState(new Date())
 
@@ -373,5 +369,3 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     </div>
   )
 }
-
-export default CalendarMonth

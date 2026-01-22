@@ -1,13 +1,9 @@
 import React from "react"
-import BrownLogo from "@/components/assets/BrownLogo"
+import { BrownLogo } from "@/components/assets/BrownLogo"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { Link } from "@/components/Link"
 
-interface BrownBannerProps {
-  id?: string
-}
-
-export const BrownBanner: React.FC<BrownBannerProps> = () => {
+export function BrownBanner() {
   return (
     <header className="flex flex-row items-center justify-between bg-white px-4 py-4">
       <Link
@@ -30,5 +26,3 @@ export const BrownBanner: React.FC<BrownBannerProps> = () => {
     </header>
   )
 }
-
-export default BrownBanner

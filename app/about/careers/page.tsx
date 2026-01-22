@@ -7,7 +7,7 @@ import {
 } from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import CareersContent from "@/content/about/careers.mdx"
-import CareerData from "@/components/CareerData"
+import { CareerData } from "@/components/CareerData"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default async function Careers() {

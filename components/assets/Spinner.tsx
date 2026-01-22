@@ -1,7 +1,7 @@
 import React from "react"
 import { LogoProps } from "@/components/assets/types"
 
-const Spinner: React.FC<LogoProps> = ({ width = 75 }) => {
+export function Spinner({ width = 75 }: LogoProps) {
   return (
     <div role="status" className="flex justify-center py-4 text-center">
       <svg
@@ -24,5 +24,3 @@ const Spinner: React.FC<LogoProps> = ({ width = 75 }) => {
     </div>
   )
 }
-
-export default Spinner

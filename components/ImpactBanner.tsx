@@ -1,6 +1,6 @@
-import React, { type JSX } from "react"
+import React from "react"
 
-export const ImpactBanner = (): JSX.Element => {
+export function ImpactBanner() {
   const impactMetrics = [
     { count: "650+", label: "Publication Contributions" },
     { count: "300+", label: "Yearly Office Hours Attendees" },

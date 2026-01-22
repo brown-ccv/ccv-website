@@ -21,7 +21,7 @@ interface CollapsableCardProps extends StyledCardProps {
   id: string
 }
 
-export const CollapsableCard: React.FC<CollapsableCardProps> = ({
+export function CollapsableCard({
   id,
   iconName,
   isDisabled = false,
@@ -30,7 +30,7 @@ export const CollapsableCard: React.FC<CollapsableCardProps> = ({
   size,
   children,
   footer,
-}) => {
+}: CollapsableCardProps) {
   const IconComponent = iconName ? Icon : null
   return (
     <Card

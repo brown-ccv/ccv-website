@@ -4,7 +4,7 @@ import {
   FormQuestions,
   StorageData,
 } from "@/lib/storage-types"
-import StorageServiceCard from "@/components/card/StorageServiceCard"
+import { StorageServiceCard } from "@/components/card/StorageServiceCard"
 import {
   getDisabledState,
   getServicesRankedByMatch,
@@ -16,11 +16,7 @@ export interface TableProps {
   questions: FormQuestions[]
 }
 
-const StorageCards: React.FC<TableProps> = ({
-  services,
-  selectedAnswers,
-  questions,
-}) => {
+function Cards({ services, selectedAnswers, questions }: TableProps) {
   const { rankedServices, enabledCount } = useMemo(() => {
     const ranked = getServicesRankedByMatch(
       services.table_data,
@@ -88,4 +84,4 @@ const StorageCards: React.FC<TableProps> = ({
   )
 }
 
-export default React.memo(StorageCards)
+export const StorageCards = React.memo(Cards)

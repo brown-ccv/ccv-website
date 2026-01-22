@@ -1,7 +1,7 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
 import { getMDXMetadata } from "@/lib/mdx-utils"
-import StorageTool from "@/components/storage/StorageTool"
+import { StorageTool } from "@/components/storage/StorageTool"
 import { SelectedAnswers } from "@/lib/storage-types"
 import services from "@/content/services/storage-features.json"
 import questions from "@/content/services/storage-questions.json"

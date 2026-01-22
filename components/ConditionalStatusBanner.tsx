@@ -1,14 +1,14 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import StatusBanner from "@/components/StatusBanner"
+import { StatusBanner } from "@/components/StatusBanner"
 import { ButtonLink } from "@/components/button/ButtonLink"
 
 interface ConditionalStatusBannerProps {
   issues: any[]
 }
 
-export default function ConditionalStatusBanner({
+export function ConditionalStatusBanner({
   issues,
 }: ConditionalStatusBannerProps) {
   const pathname = usePathname()

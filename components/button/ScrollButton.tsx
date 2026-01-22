@@ -6,7 +6,7 @@ interface ScrollButtonProps extends ButtonProps {
   id: string
 }
 
-export const ScrollButton = ({ id, children, ...props }: ScrollButtonProps) => {
+export function ScrollButton({ id, children, ...props }: ScrollButtonProps) {
   return (
     <Button onClick={() => scrollToID(id)} {...props}>
       {children}
