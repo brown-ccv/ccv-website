@@ -18,7 +18,6 @@ import { RouteGroup } from "@/components/navbar/navbar-types"
 import { FaBars, FaChevronDown, FaQuestionCircle } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
 import { routes } from "@/components/navbar/routes"
-import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/16/solid"
 
 export function Navbar() {
@@ -280,5 +279,3 @@ function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
     </NavigationMenu.Root>
   )
 }
-
-export default Navbar
