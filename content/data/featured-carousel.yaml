@@ -1,12 +1,12 @@
 carousel:
   - title: "CCV AI Tools"
-    categories: ["Web Development", "LLMs", "AI"]
+    categories: [ "Web Development", "LLMs", "AI" ]
     description: |
       CCV AI Tools provides a set of generative AI tools that are built and deployed in-house at Brown for all members of the Brown community. These tools include:
       - **LibreChat** (under construction): A chat interface that lets you talk to multiple AI models in a private, customizable way
       - **Transcribe**: Transcribe audio files in over 20 different languages to text using state-of-the-art AI models such as Google Gemini and OpenAI Whisper.
       - **Ask Oscar** (under construction): An AI assistant that can answer questions based on documentation of CCV and other Brown services.
-    image: "/images/home/featured-carousel/ccv-ai-services.webp"
+    image: "/images/projects/ccv-ai-services.webp"
     alt: "Website homepage for Brown University's Center for Computation and Visualization featuring a space-themed background."
     buttons:
       - text: "AI Tools Website"
@@ -14,7 +14,7 @@ carousel:
         variant: "primary_filled"
 
   - title: "Gearshift Fellowship"
-    categories: ["Web Development", "jsPsych", "Cognitive Science"]
+    categories: [ "Web Development", "jsPsych", "Cognitive Science" ]
     description: |
       The Gearshift Fellowship is a car-driving game where players take the role of a driver and aim to complete five 
       missions, each with distinct goals and challenges, while collecting as many reward points as possible. Developed 
@@ -23,12 +23,12 @@ carousel:
       psychophysiological tasks that interface with lab equipment such as EEG.
 
       Our team supported early software development for the Gearshift Fellowship prototype, a research platform conceptualized and designed by Dr. Nadja Ging-Jehli to study adaptive decision-making.
-    image: "/images/home/featured-carousel/gearshift.jpg"
+    image: "/images/projects/gearshift.jpg"
     alt: "Motorcycle racing game interface showing a player riding a motorcycle towards a red truck on a two-lane road, with game controls and progress indicators displayed at the bottom."
     organizations:
       - name: "Cognitive and Psychological Sciences"
         organization: "Brown University"
-        pi: ["Nadja Ging-Jehli"]
+        pi: [ "Nadja Ging-Jehli" ]
         icon: "FaUser"
     buttons:
       - text: "Gearshift Website"
@@ -39,18 +39,18 @@ carousel:
         variant: "secondary_filled"
 
   - title: "Ice Floe Tracker"
-    categories: ["Data Science", "Julia", "HPC"]
+    categories: [ "Data Science", "Julia", "HPC" ]
     description: |
       IceFloeTracker.jl is an open-source Julia package for tracking Arctic Ocean ice floes using data from the Aqua 
       and Terra Earth-observation satellites. It detects floe trajectories and rotation rates to infer ocean currents 
       and eddies, providing datasets that validate and inform ocean models within broader climate research. A built-in 
       workflow manager scales analyses from regional studies to the entire Arctic over decade-long timescales.
-    image: "/images/home/featured-carousel/icefloe.webp"
+    image: "/images/projects/icefloe.webp"
     alt: "Website title and mission statement for The Wilhelmus Lab emphasizing solutions to societal issues through fluid transport engineering"
     organizations:
       - name: "Wilhelmus Lab, Department of Engineering"
         organization: "Brown University"
-        pi: ["Monica Martinez Wilhelmus"]
+        pi: [ "Monica Martinez Wilhelmus" ]
         icon: "FaUser"
     buttons:
       - text: "Wilhelmus Lab"
@@ -61,15 +61,15 @@ carousel:
         variant: "secondary_filled"
 
   - title: "SOMA Pain Manager"
-    categories: ["Mobile Applications", "React Native", "JavaScript"]
+    categories: [ "Mobile Applications", "React Native", "JavaScript" ]
     description: |
       SOMA is an app from Brown University researchers designed to help people with acute and chronic pain. By allowing you to track symptoms and daily activities, SOMA provides insights into your pain and recovery patterns. You can use this data for your own understanding or share it with your healthcare provider to help guide your treatment. Available for free on the App Store and Google Play, SOMA is designed to empower you with a better understanding of your pain.
-    image: "/images/home/featured-carousel/soma.webp"
+    image: "/images/projects/soma.webp"
     alt: "Three smartphone screens displaying a health tracking app with graphs for pain and a body map for pain location assessment."
     organizations:
       - name: "Psychiatry, Embodiment and Computation (PEAC) Lab, Carney Institute for Brain Science, Department of Cognitive and Psychological Sciences"
         organization: "Brown University"
-        pi: ["Frederike Petzschner"]
+        pi: [ "Frederike Petzschner" ]
         icon: "FaUser"
     buttons:
       - text: "SOMA Website"
@@ -77,15 +77,15 @@ carousel:
         variant: "primary_filled"
 
   - title: "Unsupervised Cell Segmentation in 3D Data"
-    categories: ["3D Visualization", "Image Processing", "Neuroscience"]
+    categories: [ "3D Visualization", "Image Processing", "Neuroscience" ]
     description: |
       This project implements a comprehensive pipeline and application designed to assist researchers in identifying, labeling, and counting cells in mouse brain scans. Utilizing pre-trained deep learning models, the system analyzes 3D image data to automatically segment cells and generate structured results. This automated approach significantly reduces manual effort, accelerates research workflows, and improves consistency by minimizing human bias in segmentation and labeling processes, enabling neuroscience researchers to focus on analysis and interpretation rather than time-intensive manual cell identification.
 
-    image: "/images/home/featured-carousel/cell-segmentation.webp"
+    image: "/images/projects/cell-segmentation.webp"
     alt: "Four images illustrating data processing steps: starting image analysis, hyperparameter adjustments, mapping a region of interest, and extracting labels from the ROI."
     attribution: "Images by Hanna Hameedy"
     organizations:
       - name: "Department of Neuroscience"
         organization: "Brown University"
-        pi: ["Alexander Jaworski"]
+        pi: [ "Alexander Jaworski" ]
         icon: "FaUser"

@@ -18,9 +18,7 @@ export function ProjectEstimationSection() {
           goal={
             "CCV was responsible for developing a Python-based application that integrated pre-trained deep learning models to analyze 3D image data for automated cell segmentation and structured result generation. The project included implementing a complete processing pipeline, integrating the application as a plugin within Napari, and deploying the final solution on the lab's PC for routine use."
           }
-          image={
-            "/images/services/consulting/project-estimation/cell-seg-3d.webp"
-          }
+          image={"/images/projects/cell-seg-3d.webp"}
           attribution={"Images by Hanna Hameedy"}
           alt={
             "Display of initial brain scan, adjusting hyper parameters, finding binary map of the region of interest, and finally finding labels located in the region of interest"
@@ -44,7 +42,7 @@ export function ProjectEstimationSection() {
           goal={
             "Codify a reproducible bioinformatics pipeline with conda environments and singularity images to process and annotate small RNAs that is generalized, and analyze differential expression of different small RNAs, annotate RNA targets and compute overlap, and perform pathway analysis with the end goal of a publication."
           }
-          image={"/images/services/consulting/project-estimation/covid19.png"}
+          image={"/images/projects/covid19.png"}
           alt={"Molecular structure of EGME"}
         />
       ),
@@ -58,7 +56,7 @@ export function ProjectEstimationSection() {
           description={
             "A mobile application used to track participants  in an indoor environment to simulate the transfer of a pathogen."
           }
-          image={"/images/home/featured-carousel/mapps.webp"}
+          image={"/images/projects/mapps.webp"}
           group={"Department of Epidemiology, School of Public Health"}
           pi="Mark Lurie"
           goal={
@@ -82,7 +80,7 @@ export function ProjectEstimationSection() {
           goal={
             "CCV was responsible for translating code from MATLAB to Julia, reimplementing functionality that was available in MATLAB but not in Julia. The team added versatile interfaces, including functions for interactive analyses, and introduced new variants of processing steps, such as an alternative image segmentation algorithm."
           }
-          image={"/images/home/featured-carousel/icefloe.webp"}
+          image={"/images/projects/icefloe.webp"}
           alt={"Wilhelm Lab Home Page"}
         />
       ),
