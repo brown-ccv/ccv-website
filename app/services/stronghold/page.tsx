@@ -1,10 +1,10 @@
 import { Hero } from "@/components/Hero"
-import StrongholdContent from "@/content/services/stronghold.mdx"
+import StrongholdContent from "@/content/routes/services/stronghold.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 import { ButtonLink } from "@/components/button/ButtonLink"
 
 export default function Stronghold() {
-  const metadata = getMDXMetadata("content/services/stronghold.mdx")
+  const metadata = getMDXMetadata("content/routes/services/stronghold.mdx")
 
   return (
     <>
