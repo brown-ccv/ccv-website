@@ -1,9 +1,9 @@
 import { Hero } from "@/components/Hero"
-import AIOscarContent from "@/content/ai/ai-oscar.mdx"
+import AIOscarContent from "@/content/routes/ai/ai-oscar.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default function AIOscar() {
-  const metadata = getMDXMetadata("content/ai/ai-oscar.mdx")
+  const metadata = getMDXMetadata("content/routes/ai/ai-oscar.mdx")
 
   return (
     <>
