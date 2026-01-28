@@ -1,5 +1,5 @@
 import { Hero } from "@/components/Hero"
-import OscarContent from "@/content/routes/oscar.mdx"
+import OscarContent from "@/content/routes/services/oscar.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 import { ButtonLink } from "@/components/button/ButtonLink"
 
