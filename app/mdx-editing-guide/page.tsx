@@ -1,9 +1,9 @@
 import { Hero } from "@/components/Hero"
-import MDXEditingGuideContent from "@/content/mdx-editing-guide.mdx"
+import MDXEditingGuideContent from "@/content/routes/mdx-editing-guide.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default function Page() {
-  const metadata = getMDXMetadata("content/mdx-editing-guide.mdx")
+  const metadata = getMDXMetadata("content/routes/mdx-editing-guide.mdx")
 
   return (
     <>
