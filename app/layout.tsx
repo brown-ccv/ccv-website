@@ -1,10 +1,10 @@
 import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
 import "@/app/globals.css"
 import { ReactNode } from "react"
-import BrownBanner from "@/components/BrownBanner"
-import Navbar from "@/components/navbar/Navbar"
-import Footer from "@/components/Footer"
-import ConditionalStatusBanner from "@/components/ConditionalStatusBanner"
+import { BrownBanner } from "@/components/BrownBanner"
+import { Navbar } from "@/components/navbar/Navbar"
+import { Footer } from "@/components/Footer"
+import { ConditionalStatusBanner } from "@/components/ConditionalStatusBanner"
 import { GoogleAnalytics } from "@next/third-parties/google"
 
 // Only import server actions when not in static export mode

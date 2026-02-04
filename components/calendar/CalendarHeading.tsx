@@ -10,13 +10,13 @@ interface CalendarHeadingProps {
   todayButtonFunction: Function
 }
 
-export const CalendarHeading: React.FC<CalendarHeadingProps> = ({
+export function CalendarHeading({
   date,
   srButtonText,
   nextButtonFunction,
   prevButtonFunction,
   todayButtonFunction,
-}) => {
+}: CalendarHeadingProps) {
   return (
     <header className="mb-2 flex items-center justify-between rounded-md border border-gray-200 bg-gray-50 p-2 px-6 lg:flex-none">
       <p className="text-2xl font-semibold text-blue-navbar">

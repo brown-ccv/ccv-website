@@ -12,9 +12,7 @@ interface LocationSectionProps {
   className?: string
 }
 
-export const LocationSection: React.FC<LocationSectionProps> = ({
-  className,
-}) => {
+export function LocationSection({ className }: LocationSectionProps) {
   return (
     <ContentSection
       className={cn(

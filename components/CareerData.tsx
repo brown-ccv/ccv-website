@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react"
 import { Workday } from "@/components/Workday"
-import Spinner from "@/components/assets/Spinner"
+import { Spinner } from "@/components/assets/Spinner"
 
-export default function CareerData() {
+export function CareerData() {
   const [careers, setCareers] = useState<any[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -15,6 +15,7 @@ export default function CareerData() {
       setCareers(data)
       setLoading(false)
     }
+
     fetchCareers()
   }, [])
 

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useCallback, useMemo, useState } from "react"
+import React, { useCallback, useState } from "react"
 import { Button } from "@/components/button/Button"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import {
@@ -8,14 +8,14 @@ import {
   ContentSection,
   ContentTitle,
 } from "@/components/ContentSection"
-import Form from "@/components/storage/StorageForm"
-import StorageTable from "@/components/storage/StorageTable"
+import { StorageForm } from "@/components/storage/StorageForm"
+import { StorageTable } from "@/components/storage/StorageTable"
 import {
   SelectedAnswers,
   StorageData,
   FormQuestions,
 } from "@/lib/storage-types"
-import StorageCards from "@/components/storage/StorageCards"
+import { StorageCards } from "@/components/storage/StorageCards"
 import Icon from "@/components/ui/RenderIcon"
 
 interface StorageToolProps {
@@ -24,7 +24,7 @@ interface StorageToolProps {
   services: StorageData
 }
 
-export default function StorageTool({
+export function StorageTool({
   questions,
   initialSelectedAnswers,
   services,
@@ -78,7 +78,7 @@ export default function StorageTool({
           </ScrollButton>
         </div>
         <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
-          <Form
+          <StorageForm
             selectedAnswers={selectedAnswers}
             onAnswerChange={handleAnswerChange}
             questions={questions}
@@ -91,7 +91,7 @@ export default function StorageTool({
             >
               Reset Questions
             </Button>
-          </Form>
+          </StorageForm>
 
           <StorageCards
             services={services}

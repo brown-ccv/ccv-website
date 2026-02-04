@@ -33,13 +33,13 @@ interface PeopleCardProps {
   }
 }
 
-export const PeopleCard: React.FC<PeopleCardProps> = ({
+export function PeopleCard({
   imagePath,
   hoverImagePath,
   name,
   title,
   personDetails,
-}) => {
+}: PeopleCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   return (
     <StyledDialog>

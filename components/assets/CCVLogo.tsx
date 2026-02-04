@@ -1,7 +1,7 @@
 import React from "react"
 import { LogoProps } from "@/components/assets/types"
 
-const CCVLogo: React.FC<LogoProps> = ({ width = 75 }) => {
+export function CCVLogo({ width = 75 }: LogoProps) {
   return (
     <>
       <svg
@@ -106,5 +106,3 @@ const CCVLogo: React.FC<LogoProps> = ({ width = 75 }) => {
     </>
   )
 }
-
-export default CCVLogo

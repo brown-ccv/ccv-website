@@ -20,7 +20,7 @@ const heroCards = [
   },
 ]
 
-export const HeroCard: React.FC = () => {
+export function HeroCard() {
   return (
     <StyledCard
       className="relative z-10 mx-6 -mt-[170px] mb-16 flex justify-center px-2 sm:p-6 lg:mx-12 lg:p-8"

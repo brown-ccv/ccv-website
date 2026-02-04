@@ -4,7 +4,7 @@ import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 import { StyledCarouselItem } from "@/components/carousel/StyledCarousel"
-import EventSectionClient from "@/components/EventSectionClient"
+import { EventSectionClient } from "@/components/EventSectionClient"
 import React from "react"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import { ButtonLink } from "@/components/button/ButtonLink"
@@ -16,21 +16,23 @@ import {
   ContentTitle,
 } from "@/components/ContentSection"
 import { FaCalendarAlt } from "react-icons/fa"
+import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default async function Home() {
   // Load featured carousel data from YAML
   const featuredCarouselRaw = await readContentFile<{
     carousel: StyledCarouselItem[]
-  }>("content/home/featured-carousel.yaml")
+  }>("content/data/featured-carousel.yaml")
   const featuredCarouselData = featuredCarouselRaw.data.carousel
+  const metadata = getMDXMetadata("content/routes/home.mdx")
 
   try {
     return (
       <>
         <MainHero
           image={"/images/hero/ccv-original.webp"}
-          title="Center for Computation and Visualization"
-          description="Advancing computational research with scientific and computing expertise."
+          title={metadata.title}
+          description={metadata.description}
         >
           <ButtonLink
             variant="primary_filled"

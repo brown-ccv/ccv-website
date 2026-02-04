@@ -9,10 +9,7 @@ interface ServiceCardProps {
   isDisabled: boolean
 }
 
-const StorageServiceCard: React.FC<ServiceCardProps> = ({
-  service,
-  isDisabled,
-}) => {
+export function StorageServiceCard({ service, isDisabled }: ServiceCardProps) {
   // Helper to format the display value of a feature class
   const formatFeatureDisplayValue = (feature: ServiceFeature): string => {
     if (typeof feature.value === "boolean") {
@@ -56,5 +53,3 @@ const StorageServiceCard: React.FC<ServiceCardProps> = ({
     </CollapsableCard>
   )
 }
-
-export default StorageServiceCard

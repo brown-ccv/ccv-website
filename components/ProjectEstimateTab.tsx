@@ -12,7 +12,7 @@ interface ProjectEstimateTabProps {
   alt?: string
 }
 
-export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
+export function ProjectEstimateTab({
   title,
   description,
   group,
@@ -21,7 +21,7 @@ export const ProjectEstimateTab: React.FC<ProjectEstimateTabProps> = ({
   image,
   attribution,
   alt,
-}) => {
+}: ProjectEstimateTabProps) {
   return (
     <div className="flex flex-col space-y-2 md:inline">
       {/*Image*/}

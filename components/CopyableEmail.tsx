@@ -13,10 +13,7 @@ interface CopyableEmailProps {
   className?: string
 }
 
-export const CopyableEmail = ({
-  email,
-  className = "",
-}: CopyableEmailProps) => {
+export function CopyableEmail({ email, className = "" }: CopyableEmailProps) {
   const [copied, setCopied] = useState(false)
 
   const copyEmail = async () => {

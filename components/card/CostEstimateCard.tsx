@@ -11,14 +11,14 @@ interface RatesCardProps {
   className?: string
 }
 
-export const CostEstimateCard: React.FC<RatesCardProps> = ({
+export function CostEstimateCard({
   title,
   time,
   units,
   engineers,
   fte = "40%",
   className,
-}) => {
+}: RatesCardProps) {
   return (
     <StyledCard
       title={title}

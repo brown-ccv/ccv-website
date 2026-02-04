@@ -6,10 +6,7 @@ interface CardGroupProps {
   align?: "center" | "left"
 }
 
-export const CardGroup: React.FC<CardGroupProps> = ({
-  children,
-  align = "center",
-}) => {
+export function CardGroup({ children, align = "center" }: CardGroupProps) {
   return (
     <div
       className={cn(

@@ -77,6 +77,6 @@ async function PeopleSectionData({
 }
 
 // Client component wrapper for MDX compatibility
-export const PeopleSection = (props: PeopleSectionProps) => {
+export function PeopleSection(props: PeopleSectionProps) {
   return <PeopleSectionData {...props} />
 }
