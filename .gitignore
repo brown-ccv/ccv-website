@@ -46,3 +46,6 @@ pa11y-results.json
 pretty-pa11y-results.json
 
 /public/images/*
+
+# temperary search index (regenerated on build)
+content/search-index.json
