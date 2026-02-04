@@ -34,4 +34,4 @@ jobs:
         run: gcloud run services delete ${{ env.image }} --region ${{ env.gcp_location }} --quiet
 
       - name: Delete Images
-        run: gcloud container images delete ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_container_registry }}/${{ env.image }} --delete-tags
+        run: gcloud container images delete ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_container_registry }}/${{ env.image }} --force-delete-tags
