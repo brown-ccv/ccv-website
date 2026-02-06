@@ -1,0 +1,40 @@
+# This only gets re-run when a new Meilisearch version is released with important features or security fixes
+name: Deploy Meilisearch
+
+on:
+  workflow_dispatch:
+
+env:
+  gcp_project_id: ccv-website-next
+  gcp_registry_url: us-central1-docker.pkg.dev
+  gcp_container_registry: gcp-ccv-website
+
+jobs:
+  deploy-meilisearch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/auth@v2
+        with:
+          project_id: ${{ env.gcp_project_id }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      - uses: "google-github-actions/setup-gcloud@v2"
+
+      - name: Deploy Meilisearch to Cloud Run
+        run: |
+          gcloud run deploy meilisearch \
+            --image getmeili/meilisearch:v1.6.0 \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated \
+            --set-env-vars MEILISEARCH_MASTER_KEY=${{ secrets.MEILISEARCH_MASTER_KEY }} \
+            --memory 1Gi \
+            --cpu 1 \
+            --min-instances 1 \
+            --max-instances 1
+
+      - name: Get Meilisearch URL
+        run: |
+          URL=$(gcloud run services describe meilisearch --platform managed --region us-central1 --format 'value(status.url)')
+          echo "Meilisearch URL: $URL"
+          echo "Add this to GitHub Secrets as MEILISEARCH_HOST"
