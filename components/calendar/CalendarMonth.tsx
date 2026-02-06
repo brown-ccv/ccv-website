@@ -21,21 +21,17 @@ import {
   getDate,
   isSameDay,
   getWeeksInMonth,
+  format,
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
-import ButtonLink from "@/components/button/ButtonLink"
-import { Button } from "@/components/button/Button"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-const CalendarMonth: React.FC<CalendarProps> = ({
-  events,
-  currentDate,
-  today,
-}) => {
+export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
   const [selectedDate, setSelectedDate] = useState(new Date())
   const [activeDate, setActiveDate] = useState(new Date())
 
@@ -107,21 +103,17 @@ const CalendarMonth: React.FC<CalendarProps> = ({
       return (
         <li key={self.crypto.randomUUID()}>
           <Popover>
-            <PopoverTrigger
-              asChild
-              className="max-w-full rounded-md px-2 hover:bg-neutral-50"
-            >
-              <Button variant="unstyled">
-                <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
-                  {event.title}
-                </p>
-              </Button>
+            <PopoverTrigger className="max-w-full rounded-md px-2 hover:bg-neutral-50">
+              <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
+                {event.title}
+              </p>
             </PopoverTrigger>
             <PopoverContent className="bg-neutral-50">
-              <p className="pb-2 font-semibold">{event.date}</p>
+              <p className="pb-2 font-semibold">
+                {format(new Date(event.date_utc), "MMMM d, yyyy")}
+              </p>
               <ButtonLink
                 href={event.url}
-                external={true}
                 className="flex gap-1 text-blue-500"
                 isCalendarEvent={true}
               >
@@ -157,7 +149,6 @@ const CalendarMonth: React.FC<CalendarProps> = ({
           <div className="flex-auto">
             <ButtonLink
               href={event.url}
-              external={true}
               className="flex gap-1 text-blue-500"
               isCalendarEvent={true}
             >
@@ -378,5 +369,3 @@ const CalendarMonth: React.FC<CalendarProps> = ({
     </div>
   )
 }
-
-export default CalendarMonth

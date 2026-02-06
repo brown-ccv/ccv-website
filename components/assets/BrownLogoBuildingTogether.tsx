@@ -1,7 +1,7 @@
 import Image from "next/image"
 import BrownLogoBuildingTogetherImage from "../../content/images/BrownLogoBuildingTogether.webp"
 
-export default function BrownLogoBuildingTogether() {
+export function BrownLogoBuildingTogether() {
   return (
     <Image
       src={BrownLogoBuildingTogetherImage}

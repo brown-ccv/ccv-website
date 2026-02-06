@@ -1,10 +1,10 @@
 import { Hero } from "@/components/Hero"
 import { ButtonLink } from "@/components/button/ButtonLink"
-import AIToolsContent from "@/content/ai/ai-tools.mdx"
+import AIToolsContent from "@/content/routes/ai/ai-tools.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default function AITools() {
-  const metadata = getMDXMetadata("content/ai/ai-tools.mdx")
+  const metadata = getMDXMetadata("content/routes/ai/ai-tools.mdx")
 
   return (
     <>
@@ -13,7 +13,6 @@ export default function AITools() {
           variant="primary_filled"
           size="lg"
           href="https://ai.ccv.brown.edu"
-          external={true}
         >
           Access CCV AI Tools
         </ButtonLink>

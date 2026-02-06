@@ -5,15 +5,16 @@ import sanitizeHtml from "sanitize-html"
 import { StyledCard } from "@/components/card/StyledCard"
 import { DataProps } from "@/components/EventSection"
 import Icon from "@/components/ui/RenderIcon"
+import { Link } from "@/components/Link"
 
-export const EventsCard: React.FC<DataProps> = ({
+export function EventsCard({
   date_time,
   title,
   url,
   date,
   date_utc,
   description_long,
-}) => {
+}: DataProps) {
   const descriptionLong = sanitizeHtml(description_long, {
     allowedTags: [],
     allowedAttributes: {},
@@ -31,14 +32,12 @@ export const EventsCard: React.FC<DataProps> = ({
           <Icon iconName="FaClock" />
           {date_time}
         </div>
-        <a
+        <Link
           className="flex gap-2 font-bold leading-6 text-blue-500 hover:underline"
           href={url}
-          target="_blank"
-          rel="noopener noreferrer"
         >
           View Event <Icon iconName="FaExternalLinkAlt" size={16} />
-        </a>
+        </Link>
         {description_long && (
           <p className="line-clamp-[8]"> {descriptionLong} </p>
         )}

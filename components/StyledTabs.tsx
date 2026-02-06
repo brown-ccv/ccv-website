@@ -16,13 +16,13 @@ interface TabsProps {
   position?: "right" | "center"
 }
 
-export const StyledTabs: React.FC<TabsProps> = ({
+export function StyledTabs({
   tabs,
   defaultValue,
   className,
   variant = "default",
   position = "right",
-}) => {
+}: TabsProps) {
   // Use the first tab's value as default if none provided
   const defaultTab = defaultValue || tabs?.[0]?.value
 

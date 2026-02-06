@@ -1,32 +1,23 @@
 "use client"
 
-import Link, { LinkProps } from "next/link"
+import { Link, LinkProps } from "@/components/Link"
 import { ButtonVariants } from "@/components/button/variants"
 import type { VariantProps } from "class-variance-authority"
 import React from "react"
 import { cn } from "@/lib/utils"
 
-type ButtonLinkProps = React.PropsWithChildren<{
-  external?: boolean
+interface ButtonLinkProps
+  extends LinkProps,
+    VariantProps<typeof ButtonVariants> {
   className?: string
   isCalendarEvent?: boolean
-}> &
-  Omit<React.AnchorHTMLAttributes<HTMLAnchorElement>, "href"> &
-  Omit<LinkProps, "href"> & {
-    href: string
-  }
-
-export interface ExternalProps
-  extends ButtonLinkProps,
-    VariantProps<typeof ButtonVariants> {
   asChild?: boolean
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
   iconOnly?: React.ReactNode
 }
 
-export const ButtonLink: React.FC<ExternalProps> = ({
-  external = true,
+export function ButtonLink({
   href,
   asChild = false,
   leftIcon,
@@ -39,48 +30,13 @@ export const ButtonLink: React.FC<ExternalProps> = ({
   className = "",
   isCalendarEvent = false,
   ...props
-}) => {
+}: ButtonLinkProps) {
   let resolvedIconPosition = iconPosition
   if (!resolvedIconPosition && leftIcon) resolvedIconPosition = "left"
   if (!resolvedIconPosition && rightIcon) resolvedIconPosition = "right"
 
   const resolvedSize = iconOnly && !size ? "icon" : size
 
-  if (external) {
-    return (
-      <a
-        className={
-          isCalendarEvent
-            ? className
-            : cn(
-                ButtonVariants({
-                  variant,
-                  size: resolvedSize,
-                  iconPosition: resolvedIconPosition,
-                  className,
-                })
-              )
-        }
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        {...props}
-      >
-        {iconOnly ? (
-          <>
-            {iconOnly}
-            {children && <span className="sr-only">{children}</span>}
-          </>
-        ) : (
-          <>
-            {leftIcon}
-            {children}
-            {rightIcon}
-          </>
-        )}
-      </a>
-    )
-  }
   return (
     <Link
       href={href}
@@ -113,5 +69,3 @@ export const ButtonLink: React.FC<ExternalProps> = ({
     </Link>
   )
 }
-
-export default ButtonLink

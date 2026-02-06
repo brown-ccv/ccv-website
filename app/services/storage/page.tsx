@@ -1,16 +1,16 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
 import { getMDXMetadata } from "@/lib/mdx-utils"
-import StorageTool from "@/components/storage/StorageTool"
+import { StorageTool } from "@/components/storage/StorageTool"
 import { SelectedAnswers } from "@/lib/storage-types"
-import services from "@/content/services/storage-features.json"
-import questions from "@/content/services/storage-questions.json"
-import ButtonLink from "@/components/button/ButtonLink"
+import services from "@/content/data/storage-features.json"
+import questions from "@/content/data/storage-questions.json"
+import { ButtonLink } from "@/components/button/ButtonLink"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import Icon from "@/components/ui/RenderIcon"
 
 export default async function CompareStorageOptions() {
-  const metadata = getMDXMetadata("content/services/storage.mdx")
+  const metadata = getMDXMetadata("content/routes/services/storage.mdx")
   let initialSelectedAnswers: SelectedAnswers = {}
   questions.map((question: any, index: number) => {
     initialSelectedAnswers[question.id] = question.default_answer
@@ -23,7 +23,6 @@ export default async function CompareStorageOptions() {
           variant="secondary_filled"
           size="lg"
           href="https://brown.atlassian.net/servicedesk/customer/portal/16"
-          external
         >
           Request Storage
         </ButtonLink>

@@ -12,7 +12,7 @@ import {
 } from "@/components/StyledDialog"
 
 import { FaGithub, FaInfoCircle } from "react-icons/fa"
-import ButtonLink from "@/components/button/ButtonLink"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 interface PeopleCardProps {
   className?: string
@@ -33,13 +33,13 @@ interface PeopleCardProps {
   }
 }
 
-export const PeopleCard: React.FC<PeopleCardProps> = ({
+export function PeopleCard({
   imagePath,
   hoverImagePath,
   name,
   title,
   personDetails,
-}) => {
+}: PeopleCardProps) {
   const [isHovered, setIsHovered] = useState(false)
   return (
     <StyledDialog>
@@ -98,7 +98,6 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
                 variant={"icon_only"}
                 size={"icon"}
                 iconOnly={<FaGithub />}
-                external
                 title="GitHub Profile"
                 className="text-3xl hover:text-keppel-700"
               ></ButtonLink>
@@ -109,7 +108,6 @@ export const PeopleCard: React.FC<PeopleCardProps> = ({
                 href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
                 variant={"icon_only"}
                 size={"icon"}
-                external
                 iconOnly={<FaInfoCircle className="text-3xl" />}
                 title="Brown Directory"
                 className="text-3xl hover:text-keppel-700"

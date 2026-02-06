@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react"
 import { Button } from "@/components/button/Button"
-import ButtonLink from "@/components/button/ButtonLink"
-import CCVLogo from "@/components/assets/CCVLogo"
-import Link from "next/link"
+import { ButtonLink } from "@/components/button/ButtonLink"
+import { CCVLogo } from "@/components/assets/CCVLogo"
+import { Link } from "@/components/Link"
 import * as NavigationMenu from "@radix-ui/react-navigation-menu"
 import {
   Dialog,
@@ -19,10 +19,9 @@ import { RouteGroup } from "@/components/navbar/navbar-types"
 import { FaBars, FaChevronDown, FaQuestionCircle } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
 import { routes } from "@/components/navbar/routes"
-import { cn } from "@/lib/utils"
 import { XMarkIcon } from "@heroicons/react/16/solid"
 
-export const Navbar: React.FC = () => {
+export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const toggleMobileMenu = () => {
@@ -82,7 +81,6 @@ export const Navbar: React.FC = () => {
             <NavigationMenu.Item>
               <ButtonLink
                 href="https://docs.ccv.brown.edu/documentation"
-                external={true}
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
                 <FaFileLines className="stroke-[2.5] text-xl" />
@@ -93,7 +91,6 @@ export const Navbar: React.FC = () => {
             {/* Help */}
             <NavigationMenu.Item>
               <ButtonLink
-                external={false}
                 href="/about/help"
                 className="inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
               >
@@ -147,10 +144,13 @@ export const Navbar: React.FC = () => {
   )
 }
 
-const NavigationSectionContent: React.FC<{
+function NavigationSectionContent({
+  groups,
+  parentTitle,
+}: {
   groups: RouteGroup[]
   parentTitle: string
-}> = ({ groups }) => {
+}) {
   const hasMultipleGroups = groups.length > 1
 
   return (
@@ -181,30 +181,27 @@ const NavigationSectionContent: React.FC<{
                   key={route.href}
                   className="p-1 hover:bg-slate-100 sm:p-1.5 md:p-2"
                 >
-                  <NavigationMenu.Link
-                    href={route.href}
-                    {...(route.href ===
-                      "https://publications.ccv.brown.edu" && {
-                      target: "_blank",
-                      rel: "noopener noreferrer",
-                    })}
-                    className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
-                  >
-                    {route.icon && (
-                      <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-slate-400/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
-                        <route.icon className="h-1/2 w-1/2" />
-                      </div>
-                    )}
-                    <div className="flex flex-col">
-                      <span className="sm:pb-0.75 pb-0.5 text-lg font-semibold sm:text-lg md:pb-1">
-                        {route.name}
-                      </span>
-                      {route.description && (
-                        <span className="mb-1 max-w-[425px] text-sm italic text-slate-500 sm:mb-1.5 sm:text-sm md:mb-3">
-                          {route.description}
-                        </span>
+                  <NavigationMenu.Link asChild>
+                    <Link
+                      href={route.href}
+                      className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                    >
+                      {route.icon && (
+                        <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-slate-400/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
+                          <route.icon className="h-1/2 w-1/2" />
+                        </div>
                       )}
-                    </div>
+                      <div className="flex flex-col">
+                        <span className="sm:pb-0.75 pb-0.5 text-lg font-semibold sm:text-lg md:pb-1">
+                          {route.name}
+                        </span>
+                        {route.description && (
+                          <span className="mb-1 max-w-[425px] text-sm italic text-slate-500 sm:mb-1.5 sm:text-sm md:mb-3">
+                            {route.description}
+                          </span>
+                        )}
+                      </div>
+                    </Link>
                   </NavigationMenu.Link>
                 </li>
               ))}
@@ -220,9 +217,7 @@ interface MobileMenuContentProps {
   onNavigate?: () => void
 }
 
-const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
-  onNavigate,
-}) => {
+function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
   const handleNavigation = () => {
     // Close the dialog when navigating
     onNavigate?.()
@@ -241,22 +236,18 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
               <FaChevronDown className="h-8 w-8 transition-transform group-data-[state=open]:rotate-180" />
             </NavigationMenu.Trigger>
             <NavigationMenu.Content className="ml-12 mr-3 flex flex-col gap-4 py-3 text-lg text-white">
-              {route.groups.map((group) => (
-                <React.Fragment key={group.name}>
+              {route.groups.map((group, index) => (
+                <React.Fragment key={`${index}-${group.name}`}>
                   {group.routes.map((route) => (
-                    <React.Fragment key={route.name}>
-                      {route.href.startsWith("http") ? (
-                        <NavLink href={route.href} onClick={handleNavigation}>
-                          {route.name}
-                        </NavLink>
-                      ) : (
-                        <NavLink href={route.href} asChild>
-                          <Link href={route.href} onClick={handleNavigation}>
-                            {route.name}
-                          </Link>
-                        </NavLink>
-                      )}
-                    </React.Fragment>
+                    <NavigationMenu.Link key={route.name} asChild>
+                      <Link
+                        href={route.href}
+                        onClick={handleNavigation}
+                        className="focus-visible:ring-ring focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                      >
+                        {route.name}
+                      </Link>
+                    </NavigationMenu.Link>
                   ))}
                 </React.Fragment>
               ))}
@@ -285,21 +276,3 @@ const MobileMenuContent: React.FC<MobileMenuContentProps> = ({
     </NavigationMenu.Root>
   )
 }
-
-const NavLink = React.forwardRef<
-  React.ElementRef<typeof NavigationMenu.Link>,
-  React.ComponentPropsWithoutRef<typeof NavigationMenu.Link>
->(({ className, ...props }, ref) => (
-  <NavigationMenu.Link
-    {...props}
-    className={cn(
-      className,
-      "focus-visible:ring-ring focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
-    )}
-    ref={ref}
-  />
-))
-
-NavLink.displayName = "NavigationLink"
-
-export default Navbar

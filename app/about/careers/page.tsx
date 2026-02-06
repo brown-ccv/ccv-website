@@ -5,13 +5,13 @@ import {
   ContentSection,
   ContentTitle,
 } from "@/components/ContentSection"
-import ButtonLink from "@/components/button/ButtonLink"
-import CareersContent from "@/content/about/careers.mdx"
-import CareerData from "@/components/CareerData"
+import { ButtonLink } from "@/components/button/ButtonLink"
+import CareersContent from "@/content/routes/about/careers.mdx"
+import { CareerData } from "@/components/CareerData"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default async function Careers() {
-  const metadata = getMDXMetadata("content/about/careers.mdx")
+  const metadata = getMDXMetadata("content/routes/about/careers.mdx")
   return (
     <>
       <Hero
@@ -21,7 +21,6 @@ export default async function Careers() {
       >
         <ButtonLink
           href={"/about/help#contact-us"}
-          external={false}
           size="xl"
           variant="primary_filled"
         >

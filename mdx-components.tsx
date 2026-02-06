@@ -18,6 +18,7 @@ import { LocationSection } from "@/components/LocationSection"
 import { CopyableEmail } from "@/components/CopyableEmail"
 import { LinkList } from "@/components/LinkList"
 import { TwoColumns } from "@/components/TwoColumns"
+import { Link } from "@/components/Link"
 
 const withNotProse = <T extends { className?: string }>(
   Component: React.ComponentType<T>
@@ -50,13 +51,15 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       <div className="prose prose-sm max-w-none lg:prose-base">{children}</div>
     ),
 
+    // Override default tags
+    a: Link,
+
     // Global MDX components
     Button: (props) => (
       <ButtonLink
         variant="primary_filled"
         size="md"
         className="not-prose my-2"
-        external
         {...props}
       />
     ),
@@ -71,6 +74,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     PeopleSection: withNotProse(PeopleSection),
     LocationSection: withNotProse(LocationSection),
     ProjectEstimationSection,
+    Link,
     LinkList: withNotProse(LinkList),
     TwoColumns,
     img: (props) => (

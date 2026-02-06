@@ -1,14 +1,14 @@
 "use client"
 
 import { usePathname } from "next/navigation"
-import StatusBanner from "@/components/StatusBanner"
-import ButtonLink from "@/components/button/ButtonLink"
+import { StatusBanner } from "@/components/StatusBanner"
+import { ButtonLink } from "@/components/button/ButtonLink"
 
 interface ConditionalStatusBannerProps {
   issues: any[]
 }
 
-export default function ConditionalStatusBanner({
+export function ConditionalStatusBanner({
   issues,
 }: ConditionalStatusBannerProps) {
   const pathname = usePathname()
@@ -29,7 +29,6 @@ export default function ConditionalStatusBanner({
             </p>
             <ButtonLink
               href={"https://status.ccv.brown.edu/"}
-              external
               variant="secondary_filled"
               size="sm"
               className="sm:text-md"
@@ -44,7 +43,6 @@ export default function ConditionalStatusBanner({
             </p>
             <ButtonLink
               href={"https://status.ccv.brown.edu/"}
-              external
               variant="secondary_filled"
               size="sm"
               className="sm:text-lg"

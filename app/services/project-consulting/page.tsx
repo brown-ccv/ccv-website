@@ -1,10 +1,12 @@
 import { Hero } from "@/components/Hero"
-import ButtonLink from "@/components/button/ButtonLink"
-import ProjectConsultingContent from "@/content/services/project-consulting.mdx"
+import { ButtonLink } from "@/components/button/ButtonLink"
+import ProjectConsultingContent from "@/content/routes/services/project-consulting.mdx"
 import { getMDXMetadata } from "@/lib/mdx-utils"
 
 export default function ProjectConsulting() {
-  const metadata = getMDXMetadata("content/services/project-consulting.mdx")
+  const metadata = getMDXMetadata(
+    "content/routes/services/project-consulting.mdx"
+  )
 
   return (
     <>
@@ -17,7 +19,6 @@ export default function ProjectConsulting() {
                 variant="primary_filled"
                 size="lg"
                 href={link.target}
-                external={!link.target.startsWith("/")}
               >
                 {link.text}
               </ButtonLink>

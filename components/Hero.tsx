@@ -23,14 +23,14 @@ interface HeroContentProps {
   animated?: boolean
 }
 
-const HeroContent = ({
+function HeroContent({
   title,
   description,
   children,
   titleClassName,
   descriptionClassName,
   animated = false,
-}: HeroContentProps) => {
+}: HeroContentProps) {
   return (
     <div className="flex w-full max-w-[1400px] flex-col gap-6">
       {title && <h1 className={titleClassName}>{title}</h1>}
@@ -65,7 +65,7 @@ interface HeroWrapperProps {
   image?: string
 }
 
-const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
+function HeroWrapper({ children, className, image }: HeroWrapperProps) {
   if (image) {
     return (
       <div
@@ -117,14 +117,14 @@ const HeroWrapper = ({ children, className, image }: HeroWrapperProps) => {
 }
 
 // Standard Hero Component
-export const Hero = ({
+export function Hero({
   image,
   title,
   description,
   children,
   titleClassName = "font-semibold drop-shadow-md xl:text-5xl",
   descriptionClassName = "text-xl drop-shadow-md xl:text-2xl",
-}: HeroProps) => {
+}: HeroProps) {
   return (
     <HeroWrapper
       className="min-h-96 p-12 sm:px-16 lg:px-14 lg:pb-16 xl:px-20"
@@ -143,14 +143,14 @@ export const Hero = ({
 }
 
 // Main Hero Component (with animations)
-export const MainHero = ({
+export function MainHero({
   image,
   title,
   description,
   children,
   titleClassName = "font-semibold drop-shadow-md xl:text-5xl",
   descriptionClassName = "text-xl drop-shadow-md xl:text-2xl",
-}: HeroProps) => {
+}: HeroProps) {
   return (
     <HeroWrapper
       className="min-h-screen px-6 pb-52 md:px-14 xl:pl-36 xl:pr-96"
@@ -168,5 +168,3 @@ export const MainHero = ({
     </HeroWrapper>
   )
 }
-
-export default Hero
