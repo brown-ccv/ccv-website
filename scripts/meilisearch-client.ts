@@ -1,12 +1,27 @@
 import { MeiliSearch } from "meilisearch"
-import searchIndexData from "../content/search-index.json" with { type: "json" }
+import fs from "fs"
+import path from "path"
 
 const client = new MeiliSearch({
   host: process.env.MEILISEARCH_HOST || "http://127.0.0.1:7700",
-  apiKey: process.env.MEILISEARCH_MASTER_KEY,
+  apiKey: process.env.MEILISEARCH_MASTER_KEY || "",
 })
 
 const INDEX_NAME = "pages"
+
+// Load search index data at runtime instead of import
+function loadSearchIndexData() {
+  const indexPath = path.join(process.cwd(), "content", "search-index.json")
+
+  if (!fs.existsSync(indexPath)) {
+    throw new Error(
+      `search-index.json not found at ${indexPath}. Run 'npm run search:build' first.`
+    )
+  }
+
+  const data = fs.readFileSync(indexPath, "utf-8")
+  return JSON.parse(data)
+}
 
 // 1. Configure index settings
 async function configureIndex() {
@@ -43,7 +58,9 @@ async function configureIndex() {
 async function addDocuments() {
   console.log("📤 Adding documents to index...")
 
+  const searchIndexData = loadSearchIndexData()
   const { documents } = searchIndexData
+
   console.log(`📚 Found ${documents.length} documents to upload\n`)
 
   const index = client.index(INDEX_NAME)
