@@ -64,6 +64,127 @@ Containerized in Docker, stored in an image on Google Container Registry, and ru
 ID: `ccv-website-next`).
 Secrets are in [Google Cloud Secret Manager](https://console.cloud.google.com/security/secret-manager).
 
+## Meilisearch Deployment
+
+This project uses a self-hosted Meilisearch instance on Google Cloud Run for site-wide search functionality.
+
+### Deploy Meilisearch
+
+1. Go to the **Actions** tab in GitHub
+2. Select **"Deploy Meilisearch"** workflow
+3. Click **"Run workflow"** → **"Run workflow"** (green button)
+4. Wait for deployment to complete (~2-3 minutes)
+5. Copy the Meilisearch URL from the workflow logs (e.g., `https://meilisearch-xxxxx.a.run.app`)
+
+### Add Meilisearch Host to Secrets
+
+Add another secret with the deployed URL:
+
+- **Name:** `MEILISEARCH_HOST`
+- **Value:** The URL from step 3 (e.g., `https://meilisearch-xxxxx.a.run.app`)
+
+### Generate Search API Key
+
+Run the setup script locally to create a search-only API key:
+
+```bash
+# Update the host and master key in scripts/setup-search-key.ts first
+npm run search:setup-key
+```
+
+This will output a search-only API key. Copy it for the next step.
+
+### Add Search Key to Secrets
+
+Add the final secret:
+
+- **Name:** `MEILISEARCH_SEARCH_KEY`
+- **Value:** The key generated in previous step
+
+## Verification
+
+After setup, you should have these three secrets configured:
+
+- ✅ `MEILISEARCH_HOST` - Cloud Run URL
+- ✅ `MEILISEARCH_MASTER_KEY` - Master key for indexing
+- ✅ `MEILISEARCH_SEARCH_KEY` - Public search key for API
+
+The next deployment will automatically:
+
+1. Build a search index from all MDX content
+2. Upload it to your Meilisearch instance
+3. Enable search functionality in production
+
+## Maintenance
+
+### When to Re-run the Deployment Workflow
+
+You typically only need to deploy Meilisearch **once**. Re-run the workflow if you need to:
+
+- **Upgrade Meilisearch version** - Edit the workflow to change the version tag
+- **Scale resources** - Modify memory/CPU settings in the workflow
+- **Change regions** - Deploy to a different GCP region
+- **Disaster recovery** - Rebuild a corrupted or deleted instance
+
+### Monitoring
+
+Check your Meilisearch instance health:
+
+```bash
+curl https://your-meilisearch-url.run.app/health
+```
+
+View indexed documents:
+
+```bash
+curl https://your-meilisearch-url.run.app/indexes/pages/stats \
+  -H "Authorization: Bearer YOUR_MASTER_KEY"
+```
+
+### Cost Considerations
+
+The Meilisearch instance runs on Cloud Run with:
+
+- **2 GB RAM, 2 CPUs** (configurable in workflow)
+- **Minimum 1 instance** (always running for fast search)
+- Estimated cost: ~$15-30/month depending on traffic
+
+To reduce costs, you can modify the workflow to use `--min-instances 0`, but this will add cold-start delays to
+searches.
+
+## Troubleshooting
+
+### "Authorization header is missing" during build
+
+Ensure all three secrets are set correctly in GitHub. The build process needs `MEILISEARCH_HOST`
+and `MEILISEARCH_MASTER_KEY` to upload the search index.
+
+### Search returns no results
+
+The index might not be populated. Manually trigger a reindex:
+
+```bash
+# From your local environment with secrets configured
+npm run search:index
+```
+
+Or trigger via the API (requires master key):
+
+```bash
+curl -X POST https://your-app-url.com/api/search/sync \
+  -H "Authorization: Bearer YOUR_MASTER_KEY"
+```
+
+### Meilisearch instance is down
+
+Check Cloud Run logs:
+
+1. Go to [Google Cloud Console](https://console.cloud.google.com)
+2. Navigate to **Cloud Run** → **meilisearch** service
+3. Check **Logs** tab for errors
+
+Redeploy if needed using the GitHub Actions workflow.
+
 ## Accessibility
 
 ### Pa11y
