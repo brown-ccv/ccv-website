@@ -18,7 +18,7 @@ MEILISEARCH_SEARCH_KEY=myMasterKey123
 npm install
 ```
 
-Meiliesearch
+Meilisearch
 
 ```bash
 # For macOS
