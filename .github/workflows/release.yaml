@@ -37,13 +37,13 @@ jobs:
         run: npm ci
 
       - name: Build and Upload Search Index
-        env:
-          MEILISEARCH_HOST: ${{ secrets.MEILISEARCH_HOST }}
-          MEILISEARCH_MASTER_KEY: ${{ secrets.MEILISEARCH_MASTER_KEY }}
         run: |
           echo "🔍 Building search index..."
           npm run search:index
           echo "✅ Search index uploaded to Meilisearch"
+        env:
+          MEILISEARCH_HOST: ${{ secrets.MEILISEARCH_HOST }}
+          MEILISEARCH_MASTER_KEY: ${{ secrets.MEILISEARCH_MASTER_KEY }}
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
