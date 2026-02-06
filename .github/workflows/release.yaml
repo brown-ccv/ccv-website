@@ -1,20 +1,14 @@
 name: Deploy Release App
 
-# Do release action on push to main.
-# Change branch name if you have a different release branch.
 on:
   push:
     branches:
       - main
 
 env:
-  # Project ID for your GCP Project.
   gcp_project_id: ccv-website-next
-  # URL for the Google Container Registry: formatted as `${location}-docker.pkg.dev`, where location is often `us-central1`.
   gcp_registry_url: us-central1-docker.pkg.dev
-  # Name for your container Registry for this project.
   gcp_container_registry: gcp-ccv-website
-  # However you want to name your images in the Container Registry
   image: ${{ github.event.repository.name }}-release
 
 jobs:
@@ -32,6 +26,25 @@ jobs:
 
       - uses: "google-github-actions/setup-gcloud@v2"
 
+      # Setup Node.js for search indexing
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build and Upload Search Index
+        run: |
+          echo "🔍 Building search index..."
+          npm run search:index
+          echo "✅ Search index uploaded to Meilisearch"
+        env:
+          MEILISEARCH_HOST: ${{ secrets.MEILISEARCH_HOST }}
+          MEILISEARCH_MASTER_KEY: ${{ secrets.MEILISEARCH_MASTER_KEY }}
+
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
@@ -46,11 +59,16 @@ jobs:
         run: |
           gcloud auth configure-docker ${{ env.gcp_registry_url }}
 
+      # Build Docker image with environment variables
       - uses: docker/build-push-action@v6
         with:
           push: true
           tags: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_container_registry }}/${{ env.image }}:latest
+          build-args: |
+            MEILISEARCH_HOST=${{ secrets.MEILISEARCH_HOST }}
+            MEILISEARCH_SEARCH_KEY=${{ secrets.MEILISEARCH_SEARCH_KEY }}
 
+      # Deploy to Cloud Run with environment variables
       - uses: "google-github-actions/deploy-cloudrun@v2"
         id: "deploy"
         with:
@@ -58,3 +76,10 @@ jobs:
           project_id: ${{ env.gcp_project_id }}
           image: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_container_registry }}/${{ env.image }}
           flags: "--allow-unauthenticated"
+          env_vars: |
+            MEILISEARCH_HOST=${{ secrets.MEILISEARCH_HOST }}
+            MEILISEARCH_SEARCH_KEY=${{ secrets.MEILISEARCH_SEARCH_KEY }}
+
+      - name: Show Deployment URL
+        run: |
+          echo "🚀 Deployed to: ${{ steps.deploy.outputs.url }}"

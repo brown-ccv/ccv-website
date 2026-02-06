@@ -48,21 +48,21 @@ async function setupProductionSearchKey() {
     console.log(`MEILISEARCH_SEARCH_KEY=${searchKey.key}`)
     console.log(`MEILISEARCH_SEARCH_KEY_UID=${searchKey.uid}`)
   } catch (error) {
-    console.error("❌ Error setting up search key:");
+    console.error("❌ Error setting up search key:")
     if (error instanceof Error) {
-      console.error(`Name: ${error.name}`);
-      console.error(`Message: ${error.message}`);
+      console.error(`Name: ${error.name}`)
+      console.error(`Message: ${error.message}`)
       if (error.stack) {
-        console.error("Stack:", error.stack);
+        console.error("Stack:", error.stack)
       }
     } else {
       try {
-        console.error("Details:", JSON.stringify(error, null, 2));
+        console.error("Details:", JSON.stringify(error, null, 2))
       } catch {
-        console.error("Details:", error);
+        console.error("Details:", error)
       }
     }
-    process.exit(1);
+    process.exit(1)
   }
 }
 

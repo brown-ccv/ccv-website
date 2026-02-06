@@ -4,11 +4,28 @@ This is the website for the Center of Computation and Visualization at Brown Uni
 
 ## Getting Started
 
+## 0. Create env.local in your project root:
+
+```
+MEILISEARCH_HOST=http://127.0.0.1:7700
+MEILISEARCH_MASTER_KEY=myMasterKey123
+MEILISEARCH_SEARCH_KEY=myMasterKey123
+```
+
 ### 1. Install Dependencies
 
 ```bash
 npm install
 ```
+
+Meilisearch
+
+```bash
+# For macOS
+brew install meilisearch
+```
+
+Or download binary from https://www.meilisearch.com/docs/learn/getting_started/installation
 
 ### 2. Authenticate with Google Cloud
 
@@ -28,7 +45,7 @@ brew install gcloud-cli
 
 Once `gcloud-cli` is installed, log in to set up your Application Default Credentials for your user account:
 
-```
+```bash
 gcloud auth application-default login
 ```
 
@@ -51,6 +68,30 @@ npm run build
 ```
 
 ### 4. Run the Development Server
+
+In a separate terminal, run:
+
+```bash
+# Load environment variables and start Meilisearch
+export $(cat .env.local | xargs) && meilisearch --master-key="$MEILISEARCH_MASTER_KEY"
+```
+
+> Keep this terminal running while developing.
+
+In your main terminal
+
+```bash
+# Build search index from MDX files
+npm run search:build
+
+# Upload to Meilisearch
+npm run search:upload
+
+# Or do both at once
+npm run search:index
+```
+
+Then start the app
 
 ```bash
 npm run dev
