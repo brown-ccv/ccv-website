@@ -3,9 +3,22 @@ import { MeiliSearch } from "meilisearch"
 
 config({ path: ".env.production" }) // or .env.local for testing
 
+const { MEILISEARCH_HOST, MEILISEARCH_MASTER_KEY } = process.env
+
+if (!MEILISEARCH_HOST || !MEILISEARCH_MASTER_KEY) {
+  console.error("❌ Missing required Meilisearch environment variables.")
+  if (!MEILISEARCH_HOST) {
+    console.error("   - MEILISEARCH_HOST is not set")
+  }
+  if (!MEILISEARCH_MASTER_KEY) {
+    console.error("   - MEILISEARCH_MASTER_KEY is not set")
+  }
+  process.exit(1)
+}
+
 const client = new MeiliSearch({
-  host: process.env.MEILISEARCH_HOST!,
-  apiKey: process.env.MEILISEARCH_MASTER_KEY!,
+  host: MEILISEARCH_HOST,
+  apiKey: MEILISEARCH_MASTER_KEY,
 })
 
 async function setupProductionSearchKey() {

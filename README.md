@@ -172,14 +172,14 @@ You typically only need to deploy Meilisearch **once**. Re-run the workflow if y
 Check your Meilisearch instance health:
 
 ```bash
-curl https://your-meilisearch-url.run.app/health
+curl $MEILISEARCH_HOST/health
 ```
 
 View indexed documents:
 
 ```bash
-curl https://your-meilisearch-url.run.app/indexes/pages/stats \
-  -H "Authorization: Bearer YOUR_MASTER_KEY"
+curl $MEILISEARCH_HOST/indexes/pages/stats \
+  -H "Authorization: Bearer $MEILISEARCH_ADMIN_KEY"
 ```
 
 ### Cost Considerations
@@ -197,7 +197,7 @@ searches.
 
 ### "Authorization header is missing" during build
 
-Ensure all three secrets are set correctly in GitHub. The build process needs `MEILISEARCH_HOST`
+Ensure all three secrets are set correctly. The build process needs `MEILISEARCH_HOST`
 and `MEILISEARCH_MASTER_KEY` to upload the search index.
 
 ### Search returns no results
@@ -212,8 +212,8 @@ npm run search:index
 Or trigger via the API (requires master key):
 
 ```bash
-curl -X POST https://your-app-url.com/api/search/sync \
-  -H "Authorization: Bearer YOUR_MASTER_KEY"
+curl -X POST $MEILISEARCH_HOST/api/search/sync \
+  -H "Authorization: Bearer $MEILISEARCH_MASTER_KEY"
 ```
 
 ### Meilisearch instance is down
