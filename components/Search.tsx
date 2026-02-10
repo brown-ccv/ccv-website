@@ -10,6 +10,9 @@ import {
 } from "react-instantsearch"
 import type { Hit as AlgoliaHit } from "instantsearch.js"
 import { Link } from "./Link"
+import { X } from "lucide-react"
+import * as React from "react"
+import { urlToBreadcrumb } from "@/lib/utils"
 
 interface SearchHit {
   id: string
@@ -50,12 +53,12 @@ function SearchResults() {
   }
 
   return (
-    <div className="max-h-[400px] overflow-y-auto">
+    <div className="max-h-[400px] overflow-y-auto p-2">
       <Hits
         hitComponent={Hit}
         classNames={{
           root: "",
-          list: "space-y-0",
+          list: "space-y-2",
           item: "",
         }}
       />
@@ -67,10 +70,11 @@ function Hit({ hit }: HitProps) {
   return (
     <Link
       href={hit.url}
-      className="group flex items-start gap-3 border-b border-gray-700 px-4 py-3 transition-colors hover:bg-slate-100"
+      className="focus-visible:ring-ring group flex items-start gap-3 rounded-md px-4 py-3 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
     >
       {/* Content */}
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1 space-y-1">
+        <p className="text-xs text-gray-500">{urlToBreadcrumb(hit.url)}</p>
         <h3 className="mb-1 font-medium">
           <Highlight attribute="title" hit={hit} />
         </h3>
@@ -79,13 +83,6 @@ function Hit({ hit }: HitProps) {
           <p className="line-clamp-2 text-sm text-gray-700">
             <Highlight attribute="description" hit={hit} />
           </p>
-        )}
-
-        {/* Category badge */}
-        {hit.category && (
-          <span className="mt-2 inline-block rounded bg-gray-700 px-2 py-0.5 text-xs capitalize text-white">
-            {hit.category}
-          </span>
         )}
       </div>
     </Link>
@@ -109,21 +106,23 @@ export function Search() {
     >
       <div className="flex flex-col">
         {/* Search Input */}
-        <div className="relative border-b border-gray-700 px-4 py-3">
+        <div className="relative border-b border-gray-500 px-4 py-3">
           <SearchBox
             placeholder="Search documentation..."
             autoFocus
             submitIconComponent={() => null}
-            resetIconComponent={() => null}
+            resetIconComponent={() => <X className="h-4 w-4" />}
             loadingIconComponent={() => null}
             classNames={{
               root: "relative",
               form: "relative flex items-center gap-3",
               input:
-                "w-full mr-6 bg-transparent placeholder:text-gray-500 focus:outline-none",
-              submit: "shrink-0",
+                "w-full rounded-md mr-6 placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-ring focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
+              submit: "hidden",
               submitIcon: "",
-              reset: "hidden",
+              reset:
+                "absolute rounded-sm right-8 top-1/2 -translate-y-1/2 cursor-pointer focus-visible:outline-none focus-visible:ring-ring focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400",
+              resetIcon: "text-gray-400",
               loadingIndicator: "hidden",
             }}
           />
