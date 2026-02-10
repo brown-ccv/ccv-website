@@ -1,6 +1,13 @@
+import { config } from "dotenv"
 import { MeiliSearch } from "meilisearch"
 import fs from "fs"
 import path from "path"
+
+// Load .env.local only if it exists (local dev)
+const envPath = path.join(process.cwd(), ".env.local")
+if (fs.existsSync(envPath)) {
+  config({ path: envPath })
+}
 
 const client = new MeiliSearch({
   host: process.env.MEILISEARCH_HOST || "http://127.0.0.1:7700",
@@ -23,10 +30,7 @@ function loadSearchIndexData() {
   return JSON.parse(data)
 }
 
-// 1. Configure index settings
 async function configureIndex() {
-  console.log("⚙️  Configuring index settings...")
-
   const index = client.index(INDEX_NAME)
 
   await index.updateSettings({
@@ -50,18 +54,11 @@ async function configureIndex() {
       "category",
     ],
   })
-
-  console.log("✅ Index settings configured\n")
 }
 
-// 2. Add/update documents
 async function addDocuments() {
-  console.log("📤 Adding documents to index...")
-
   const searchIndexData = loadSearchIndexData()
   const { documents } = searchIndexData
-
-  console.log(`📚 Found ${documents.length} documents to upload\n`)
 
   const index = client.index(INDEX_NAME)
 
@@ -69,12 +66,9 @@ async function addDocuments() {
     primaryKey: "id",
   })
 
-  console.log(`📨 Task enqueued with UID: ${task.taskUid}`)
-
   return task.taskUid
 }
 
-// 3. Wait for task completion and show status
 async function waitForCompletion(taskUid: number) {
   console.log("⏳ Waiting for indexing to complete...\n")
 
@@ -98,7 +92,6 @@ async function waitForCompletion(taskUid: number) {
   return result
 }
 
-// 4. Get and display index stats
 async function showIndexStats() {
   console.log("\n📊 Index statistics:")
 
@@ -114,21 +107,13 @@ async function showIndexStats() {
   })
 }
 
-// 5. Main orchestration function
 async function syncSearchIndex() {
   try {
     console.log("🔍 Starting Meilisearch sync...\n")
 
-    // Step 1: Configure index
     await configureIndex()
-
-    // Step 2: Add documents
     const taskUid = await addDocuments()
-
-    // Step 3: Wait for completion
     await waitForCompletion(taskUid)
-
-    // Step 4: Show stats
     await showIndexStats()
 
     console.log("\n✨ Meilisearch sync complete!")
