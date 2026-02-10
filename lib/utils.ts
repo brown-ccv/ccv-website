@@ -71,3 +71,25 @@ export const humanize = (str: string | null | undefined): string => {
   }
   return cleanStr.charAt(0).toUpperCase() + cleanStr.slice(1)
 }
+
+/**
+ * Converts a URL path to breadcrumb format with title case
+ * Example: "/services/ai-tools" -> "Services > Ai Tools"
+ */
+export function urlToBreadcrumb(url: string): string {
+  const segments = url
+    .replace(/^\/|\/$/g, "")
+    .split("/")
+    .filter(Boolean)
+
+  const formatted = segments.map((segment) => {
+    const cleanSegment = segment.replace(/[_-]/g, " ")
+
+    return cleanSegment
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ")
+  })
+
+  return formatted.join(" > ")
+}
