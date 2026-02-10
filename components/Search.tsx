@@ -9,6 +9,7 @@ import {
   useInstantSearch,
 } from "react-instantsearch"
 import type { Hit as AlgoliaHit } from "instantsearch.js"
+import { Link } from "./Link"
 
 interface SearchHit {
   id: string
@@ -64,7 +65,7 @@ function SearchResults() {
 
 function Hit({ hit }: HitProps) {
   return (
-    <a
+    <Link
       href={hit.url}
       className="group flex items-start gap-3 border-b border-gray-700 px-4 py-3 transition-colors hover:bg-slate-100"
     >
@@ -87,7 +88,7 @@ function Hit({ hit }: HitProps) {
           </span>
         )}
       </div>
-    </a>
+    </Link>
   )
 }
 
