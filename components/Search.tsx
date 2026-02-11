@@ -26,8 +26,12 @@ interface SearchHit {
 }
 
 type HitProps = {
-  hit: AlgoliaHit<SearchHit>
+  hit: AlgoliaHit
 }
+
+// For the debounce
+let timerId: string | number | NodeJS.Timeout | undefined = undefined
+let timeout = 200
 
 function SearchResults() {
   const { results, indexUiState } = useInstantSearch()
@@ -108,6 +112,7 @@ export function Search() {
         {/* Search Input */}
         <div className="relative border-b border-gray-500 px-4 py-3">
           <SearchBox
+            queryHook={queryHook}
             placeholder="Search documentation..."
             autoFocus
             submitIconComponent={() => null}
@@ -133,4 +138,12 @@ export function Search() {
       </div>
     </InstantSearch>
   )
+}
+
+function queryHook(query: any, search: (arg0: any) => void) {
+  if (timerId) {
+    clearTimeout(timerId)
+  }
+
+  timerId = setTimeout(() => search(query), timeout)
 }
