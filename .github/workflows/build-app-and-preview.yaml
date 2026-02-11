@@ -5,7 +5,7 @@ on: pull_request
 env:
   gcp_project_id: ccv-website-next
   gcp_registry_url: us-central1-docker.pkg.dev
-  gcp_container_registry: gcp-ccv-website
+  gcp_artifact_registry: gcp-ccv-website
   image: "${{ github.event.repository.name }}-pr-${{ github.event.number }}"
 
 jobs:
@@ -62,7 +62,7 @@ jobs:
       - uses: docker/build-push-action@v6
         with:
           push: true
-          tags: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_container_registry }}/${{ env.image }}:latest
+          tags: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_artifact_registry }}/${{ env.image }}:latest
           build-args: |
             MEILISEARCH_HOST=${{ secrets.MEILISEARCH_HOST }}
             MEILISEARCH_SEARCH_KEY=${{ secrets.MEILISEARCH_SEARCH_KEY }}
@@ -73,7 +73,7 @@ jobs:
         with:
           service: ${{ env.image }}
           project_id: ${{ env.gcp_project_id }}
-          image: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_container_registry }}/${{ env.image }}
+          image: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_artifact_registry }}/${{ env.image }}
           flags: "--allow-unauthenticated"
           env_vars: |
             MEILISEARCH_HOST=${{ secrets.MEILISEARCH_HOST }}
