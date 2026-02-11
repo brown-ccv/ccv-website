@@ -29,13 +29,16 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED=1
 
-# Accept build args for environment variables
-ARG MEILISEARCH_HOST
-ARG MEILISEARCH_SEARCH_KEY
+# Build-time args (from GitHub workflow)
+ARG NEXT_PUBLIC_MEILISEARCH_HOST
+ARG NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY
 
-# Set environment variables for build
-ENV MEILISEARCH_HOST=${MEILISEARCH_HOST}
-ENV MEILISEARCH_SEARCH_KEY=${MEILISEARCH_SEARCH_KEY}
+# Set for Next.js build process
+ENV NEXT_PUBLIC_MEILISEARCH_HOST=${NEXT_PUBLIC_MEILISEARCH_HOST}
+ENV NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=${NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY}
+
+# Create placeholder search index
+RUN mkdir -p content && echo '{"documents":[],"meta":{"totalDocuments":0}}' > content/search-index.json
 
 RUN \
   if [ -f yarn.lock ]; then yarn run build; \
@@ -72,9 +75,4 @@ ENV PORT=3000
 # https://nextjs.org/docs/pages/api-reference/config/next-config-js/output
 ENV HOSTNAME="0.0.0.0"
 
-# Accept runtime environment variables
-ARG MEILISEARCH_HOST
-ARG MEILISEARCH_SEARCH_KEY
-ENV MEILISEARCH_HOST=${MEILISEARCH_HOST}
-ENV MEILISEARCH_SEARCH_KEY=${MEILISEARCH_SEARCH_KEY}
 CMD ["node", "server.js"]
