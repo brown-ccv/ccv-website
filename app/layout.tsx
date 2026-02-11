@@ -9,7 +9,6 @@ import { GoogleAnalytics } from "@next/third-parties/google"
 import Link from "next/link"
 
 // Only import server actions when not in static export mode
-// @ts-ignore
 let getCachedOpenIssues: () => Promise<any[]>
 
 if (!process.env.NEXT_PUBLIC_STATIC_EXPORT) {
