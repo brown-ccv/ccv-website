@@ -179,7 +179,7 @@ View indexed documents:
 
 ```bash
 curl $MEILISEARCH_HOST/indexes/pages/stats \
-  -H "Authorization: Bearer $MEILISEARCH_ADMIN_KEY"
+  -H "Authorization: Bearer $MEILISEARCH_MASTER_KEY"
 ```
 
 ### Cost Considerations
