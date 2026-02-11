@@ -10,7 +10,7 @@ import Link from "next/link"
 
 // Only import server actions when not in static export mode
 // @ts-ignore
-let getCachedOpenIssues: () => Promise
+let getCachedOpenIssues: () => Promise<any[]>
 
 if (!process.env.NEXT_PUBLIC_STATIC_EXPORT) {
   const { getOpenIssues } = require("@/lib/get-open-issues")
