@@ -113,7 +113,7 @@ export function Search() {
         <div className="relative border-b border-gray-500 px-4 py-3">
           <SearchBox
             queryHook={queryHook}
-            placeholder="Search documentation..."
+            placeholder="Search site..."
             autoFocus
             submitIconComponent={() => null}
             resetIconComponent={() => <X className="h-4 w-4" />}
