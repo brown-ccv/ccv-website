@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar/Navbar"
 import { Footer } from "@/components/Footer"
 import { ConditionalStatusBanner } from "@/components/ConditionalStatusBanner"
 import { GoogleAnalytics } from "@next/third-parties/google"
+import Link from "next/link"
 
 // Only import server actions when not in static export mode
 let getCachedOpenIssues: () => Promise<any[]>
@@ -66,10 +67,17 @@ export default async function RootLayoutWrapper({
         <title>{metadata.title}</title>
       </head>
       <body className={`${inter.className}`}>
+        <Link
+          href="#main-content"
+          className="focus:z-200 absolute -left-20 -top-10 z-0 rounded-sm bg-white/90 p-2 focus:left-2 focus:top-2"
+          tabIndex={0}
+        >
+          Skip to main content
+        </Link>
         <ConditionalStatusBanner issues={issues} />
         <BrownBanner />
         <Navbar />
-        <>{children}</>
+        <main id="main-content">{children}</main>
         <GoogleAnalytics gaId="G-F94VC913EH" />
         <Footer />
       </body>
