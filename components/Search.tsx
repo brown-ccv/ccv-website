@@ -50,9 +50,7 @@ function SearchResults() {
       <Hits
         hitComponent={Hit}
         classNames={{
-          root: "",
           list: "space-y-2",
-          item: "",
         }}
       />
     </div>
