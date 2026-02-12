@@ -77,19 +77,13 @@ export const humanize = (str: string | null | undefined): string => {
  * Example: "/services/ai-tools" -> "Services > Ai Tools"
  */
 export function urlToBreadcrumb(url: string): string {
-  const segments = url
-    .replace(/^\/|\/$/g, "")
-    .split("/")
-    .filter(Boolean)
+  const segments = url.match(/[^/]+/g) || []
 
-  const formatted = segments.map((segment) => {
-    const cleanSegment = segment.replace(/[_-]/g, " ")
-
-    return cleanSegment
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(" ")
-  })
+  const formatted = segments.map(segment => 
+  segment
+    .replace(/[_-]/g, " ")
+    .replace(/\b\w/g, char => char.toUpperCase())
+);
 
   return formatted.join(" > ")
 }
