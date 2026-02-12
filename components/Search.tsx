@@ -14,17 +14,6 @@ import { X } from "lucide-react"
 import * as React from "react"
 import { urlToBreadcrumb } from "@/lib/utils"
 
-interface SearchHit {
-  id: string
-  title: string
-  description: string
-  content: string
-  headings: string[]
-  url: string
-  category: string
-  type: string
-}
-
 type HitProps = {
   hit: AlgoliaHit
 }

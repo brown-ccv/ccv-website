@@ -74,16 +74,29 @@ export const humanize = (str: string | null | undefined): string => {
 
 /**
  * Converts a URL path to breadcrumb format with title case
- * Example: "/services/ai-tools" -> "Services > Ai Tools"
+ * Example: "/services/ai-tools" -> "Services > AI Tools"
  */
-export function urlToBreadcrumb(url: string): string {
+export function urlToBreadcrumb(
+  url: string,
+  acronyms: string[] = ["AI", "MDX"]
+): string {
   const segments = url.match(/[^/]+/g) || []
 
-  const formatted = segments.map(segment => 
-  segment
-    .replace(/[_-]/g, " ")
-    .replace(/\b\w/g, char => char.toUpperCase())
-);
+  const formatted = segments.map((segment) => {
+    let result = segment
+      .replace(/[_-]/g, " ")
+      .replace(/\b\w/g, (char) => char.toUpperCase())
+
+    // Capitalize acronyms
+    acronyms.forEach((acronym) => {
+      const titleCased =
+        acronym.charAt(0).toUpperCase() + acronym.slice(1).toLowerCase()
+      const regex = new RegExp(`\\b${titleCased}\\b`, "g")
+      result = result.replace(regex, acronym.toUpperCase())
+    })
+
+    return result
+  })
 
   return formatted.join(" > ")
 }
