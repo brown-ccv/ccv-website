@@ -82,21 +82,14 @@ export function urlToBreadcrumb(
 ): string {
   const segments = url.match(/[^/]+/g) || []
 
-  const formatted = segments.map((segment) => {
-    let result = segment
-      .replace(/[_-]/g, " ")
-      .replace(/\b\w/g, (char) => char.toUpperCase())
+  const formatted = segments
+    .map((segment) =>
+      segment
+        .replace(/[_-]/g, " ")
+        .replace(/\b\w/g, (char) => char.toUpperCase())
+    )
+    .join(" > ")
 
-    // Capitalize acronyms
-    acronyms.forEach((acronym) => {
-      const titleCased =
-        acronym.charAt(0).toUpperCase() + acronym.slice(1).toLowerCase()
-      const regex = new RegExp(`\\b${titleCased}\\b`, "g")
-      result = result.replace(regex, acronym.toUpperCase())
-    })
-
-    return result
-  })
-
-  return formatted.join(" > ")
+  const acronymPattern = new RegExp(`\\b(${acronyms.join("|")})\\b`, "gi")
+  return formatted.replace(acronymPattern, (match) => match.toUpperCase())
 }
