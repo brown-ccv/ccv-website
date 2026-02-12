@@ -140,7 +140,7 @@ export function Search() {
   )
 }
 
-function queryHook(query: any, search: (arg0: any) => void) {
+function queryHook(query: string, search: (value: string) => void) {
   if (timerId) {
     clearTimeout(timerId)
   }
