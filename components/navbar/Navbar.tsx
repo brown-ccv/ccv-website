@@ -14,6 +14,7 @@ import {
   DialogHeader,
   DialogClose,
 } from "@/components/ui/Dialog"
+import { DialogSearch } from "@/components/DialogSearch"
 import { RouteGroup } from "@/components/navbar/navbar-types"
 import { FaBars, FaChevronDown, FaQuestionCircle } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
@@ -97,51 +98,48 @@ export function Navbar() {
                 Help
               </ButtonLink>
             </NavigationMenu.Item>
-
-            {/* TODO: Add search */}
-            {/* <NavigationMenu.Item>
-              <Button
-                variant="secondary_filled"
-                className="flex items-center justify-center ml-6"
-                iconOnly={<FaSearch />}
-              />
-            </NavigationMenu.Item> */}
           </NavigationMenu.List>
         </NavigationMenu.Root>
 
-        {/* Mobile Menu */}
-        <Dialog open={isMobileMenuOpen} onOpenChange={toggleMobileMenu}>
-          <DialogTrigger asChild className="lg:hidden">
-            <Button
-              aria-label="Main Menu"
-              aria-controls="main-menu"
-              variant="secondary_filled"
-              iconOnly={
-                <FaBars aria-hidden focusable={false} className="h-6 w-6" />
-              }
-              className="rounded-2xl p-2 text-blue-navbar"
-            />
-          </DialogTrigger>
-          <DialogContent className="h-screen w-screen max-w-none p-0 sm:h-screen sm:max-w-none [&>button]:hidden">
-            <DialogHeader className="flex-row justify-end px-2">
-              <DialogTitle className="sr-only text-white">
-                Navigation Menu
-              </DialogTitle>
-              <DialogClose asChild>
-                <Button
-                  variant="icon_only"
-                  size="icon"
-                  aria-label="Close Navigation"
-                  iconOnly={
-                    <XMarkIcon aria-hidden="true" className="h-5 w-5" />
-                  }
-                  className="bg-transparent text-sunglow-400 focus-visible:ring-sunglow-400"
-                />
-              </DialogClose>
-            </DialogHeader>
-            <MobileMenuContent onNavigate={() => setIsMobileMenuOpen(false)} />
-          </DialogContent>
-        </Dialog>
+        <div className="flex items-center justify-between gap-8 md:pl-4">
+          <DialogSearch searchTitle="Search CCV" />
+
+          {/* Mobile Menu */}
+          <Dialog open={isMobileMenuOpen} onOpenChange={toggleMobileMenu}>
+            <DialogTrigger asChild className="lg:hidden">
+              <Button
+                aria-label="Main Menu"
+                aria-controls="main-menu"
+                variant="secondary_filled"
+                iconOnly={
+                  <FaBars aria-hidden focusable={false} className="h-6 w-6" />
+                }
+                className="rounded-2xl p-2 text-blue-navbar"
+              />
+            </DialogTrigger>
+            <DialogContent className="h-screen w-screen max-w-none p-0 sm:h-screen sm:max-w-none [&>button]:hidden">
+              <DialogHeader className="flex-row justify-end px-2">
+                <DialogTitle className="sr-only text-white">
+                  Navigation Menu
+                </DialogTitle>
+                <DialogClose asChild>
+                  <Button
+                    variant="icon_only"
+                    size="icon"
+                    aria-label="Close Navigation"
+                    iconOnly={
+                      <XMarkIcon aria-hidden="true" className="h-5 w-5" />
+                    }
+                    className="bg-transparent text-sunglow-400 focus-visible:ring-sunglow-400"
+                  />
+                </DialogClose>
+              </DialogHeader>
+              <MobileMenuContent
+                onNavigate={() => setIsMobileMenuOpen(false)}
+              />
+            </DialogContent>
+          </Dialog>
+        </div>
       </div>
     </div>
   )

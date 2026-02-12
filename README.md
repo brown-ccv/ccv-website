@@ -72,6 +72,8 @@ npm run build
 In a separate terminal, run:
 
 ```bash
+# From the project root, remove old Meilisearch data
+rm -rf -- ./data.ms
 # Load environment variables and start Meilisearch
 export $(cat .env.local | xargs) && meilisearch --master-key="$MEILISEARCH_MASTER_KEY"
 ```
