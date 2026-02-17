@@ -3,7 +3,7 @@
     "title": "Introduction to Linux",
     "categories": ["Linux"],
     "description": "A practical introduction to the Linux operating system and shell scripting in Bash. Topics covered include: basic Linux commands for maneuvering within the file system and manipulating files, working with environment variables and paths, and basic shell scripting in Bash (variables, loops, pipes, etc.).",
-    "image": "images/workshops-tutorials/linux.webp",
+    "image": "/images/workshops-tutorials/linux.webp",
     "alt": "A laptop displaying a terminal window with code output set against a scenic background of trees and water, accompanied by the Tux penguin mascot of Linux.",
     "attribution": "Photo by [open{code}.md](https://opencode.md/en/news/why-use-linux). Tux image created by <Link href='mailto:lewing@isc.tamu.edu'>Larry Ewing</Link> and [The GIMP](https://web.archive.org/web/20190927022731/https://isc.tamu.edu/~lewing/gimp)",
     "buttons": [
@@ -18,7 +18,7 @@
     "title": "Introduction to Oscar",
     "categories": ["HPC"],
     "description": "An introduction to Oscar, Brown's research computing cluster, for new users. Participants will learn how to connect to Oscar (ssh, VNC), how to navigate Oscar's filesystem, and how to use the module system to access software packages on Oscar.",
-    "image": "images/workshops-tutorials/oscar.webp",
+    "image": "/images/workshops-tutorials/oscar.webp",
     "alt": "Desktop view displaying multiple windows: a terminal showing command outputs, a web browser with a Red Hat page, and a file manager window listing various folders in a directory.",
     "buttons": [
       {
@@ -32,7 +32,7 @@
     "title": "Fundamentals of High-Performance Computing",
     "categories": ["HPC"],
     "description": "An introduction to GPUs, the architectures available on Oscar, submitting, running, and evaluating jobs. Using nvidia ngc containers on Oscar for deep learning, installing or building python packages, and using docker to make changes.",
-    "image": "images/workshops-tutorials/gpu.webp",
+    "image": "/images/workshops-tutorials/gpu.webp",
     "alt": "Close-up of an NVIDIA graphics chip alongside the NVIDIA logo.",
     "buttons": [
       {
@@ -46,7 +46,7 @@
     "title": "Using MATLAB on Oscar",
     "categories": ["Statistics"],
     "description": "An introduction to MATLAB, a programming language for numerical computation and visualization. Topics covered include: basic MATLAB commands, working with arrays and matrices, plotting data, and using functions.",
-    "image": "images/workshops-tutorials/matlab.webp",
+    "image": "/images/workshops-tutorials/matlab.webp",
     "alt": "3D surface plot displayed in MATLAB, showing a multicolored graph of a mathematical function with axes labeled \"Real\" and \"Imag\" and MATLAB code visible on the left side.",
     "attribution": "Photo by [Jschlosser](https://creativecommons.org/licenses/by-sa/4.0).",
     "buttons": [
@@ -61,7 +61,7 @@
     "title": "Introduction to Statistical Analysis with R on Oscar",
     "categories": ["Statistics"],
     "description": "An introduction to R, a programming language for statistical computing and graphics. Topics covered include: basic R commands, working with data frames, plotting data, and using functions.",
-    "image": "images/workshops-tutorials/r.webp",
+    "image": "/images/workshops-tutorials/r.webp",
     "alt": "RStudio displaying code and a box plot showing the number of New York flights for each weekday in 2013, with data preview on the left.",
     "attribution": "Photo by [cdhowe](https://creativecommons.org/licenses/by-sa/4.0)",
     "buttons": [
