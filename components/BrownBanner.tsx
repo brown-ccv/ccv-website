@@ -20,6 +20,7 @@ export function BrownBanner() {
       <ButtonLink
         href="https://brown.co1.qualtrics.com/jfe/form/SV_0GtBE8kWJpmeG4B"
         variant="red_outlined"
+        className="hidden md:flex"
       >
         Request an Oscar Account
       </ButtonLink>
