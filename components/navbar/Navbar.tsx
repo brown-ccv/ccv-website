@@ -20,22 +20,16 @@ import { FaBars, FaChevronDown, FaQuestionCircle } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
 import { routes } from "@/components/navbar/routes"
 import { XMarkIcon } from "@heroicons/react/16/solid"
+import { usePathname } from "next/navigation"
 
 export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-    // Prevent body scrolling when mobile menu is open
-    document.body.style.overflow = isMobileMenuOpen ? "auto" : "hidden"
-  }
+  const pathname = usePathname()
 
-  // Effect to clean up body overflow style when component unmounts
   useEffect(() => {
-    return () => {
-      document.body.style.overflow = "auto" // ensures body scrolling is re-enabled
-    }
-  }, [])
+    setIsMobileMenuOpen(false)
+  }, [pathname, setIsMobileMenuOpen])
 
   return (
     <div className="sticky top-0 z-50">
@@ -105,7 +99,7 @@ export function Navbar() {
           <DialogSearch searchTitle="Search CCV" />
 
           {/* Mobile Menu */}
-          <Dialog open={isMobileMenuOpen} onOpenChange={toggleMobileMenu}>
+          <Dialog open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <DialogTrigger asChild className="lg:hidden">
               <Button
                 aria-label="Main Menu"
