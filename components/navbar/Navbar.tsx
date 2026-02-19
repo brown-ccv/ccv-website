@@ -39,13 +39,11 @@ export function Navbar() {
 
   return (
     <div className="sticky top-0 z-50">
-      <div className="flex items-center justify-between bg-blue-navbar px-6 sm:px-8">
-        <div className="flex items-center px-6 py-4 sm:px-8 xl:px-10">
-          <Link href="/">
-            <span className="sr-only">CCV Home</span>
-            <CCVLogo width={120} />
-          </Link>
-        </div>
+      <div className="flex items-center justify-between bg-blue-navbar p-4 sm:px-8">
+        <Link href="/">
+          <span className="sr-only">CCV Home</span>
+          <CCVLogo width={120} />
+        </Link>
 
         {/* Navigation Menu for Desktop */}
         <NavigationMenu.Root className="relative z-10 hidden w-full items-stretch justify-between lg:flex">
@@ -117,20 +115,25 @@ export function Navbar() {
                 className="rounded-2xl p-2 text-blue-navbar"
               />
             </DialogTrigger>
-            <DialogContent className="h-screen w-screen max-w-none p-0 sm:h-screen sm:max-w-none [&>button]:hidden">
-              <DialogHeader className="flex-row justify-end px-2">
+            <DialogContent className="h-screen w-screen max-w-none border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden">
+              <DialogHeader className="flex-row items-center justify-between bg-blue-navbar p-4 sm:px-8">
                 <DialogTitle className="sr-only text-white">
                   Navigation Menu
                 </DialogTitle>
+                <CCVLogo width={120} />
                 <DialogClose asChild>
                   <Button
-                    variant="icon_only"
-                    size="icon"
                     aria-label="Close Navigation"
+                    aria-controls="main-menu"
+                    variant="secondary_filled"
                     iconOnly={
-                      <XMarkIcon aria-hidden="true" className="h-5 w-5" />
+                      <XMarkIcon
+                        aria-hidden
+                        focusable={false}
+                        className="h-6 w-6"
+                      />
                     }
-                    className="bg-transparent text-sunglow-400 focus-visible:ring-sunglow-400"
+                    className="rounded-2xl p-2 text-blue-navbar"
                   />
                 </DialogClose>
               </DialogHeader>
@@ -227,14 +230,17 @@ function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
   return (
     <NavigationMenu.Root
       orientation="vertical"
-      className="h-full w-full overflow-y-auto bg-slate-700 pb-40"
+      className="no-scrollbar h-full w-full overflow-y-auto bg-slate-700 pb-12"
     >
       <NavigationMenu.List>
         {routes.map((route) => (
-          <NavigationMenu.Item key={route.name}>
+          <NavigationMenu.Item
+            key={route.name}
+            className="border-b border-slate-500"
+          >
             <NavigationMenu.Trigger className="focus-visible:ring-ring group flex w-full items-center justify-between px-6 py-7 text-xl font-semibold text-sunglow-400 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sunglow-400 data-[state=open]:bg-sunglow-500 data-[state=open]:text-black">
               {route.name}
-              <FaChevronDown className="h-8 w-8 transition-transform group-data-[state=open]:rotate-180" />
+              <FaChevronDown className="h-6 w-6 transition-transform group-data-[state=open]:rotate-180" />
             </NavigationMenu.Trigger>
             <NavigationMenu.Content className="ml-12 mr-3 flex flex-col gap-4 py-3 text-lg text-white">
               {route.groups.map((group, index) => (
@@ -256,7 +262,7 @@ function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
           </NavigationMenu.Item>
         ))}
 
-        <NavigationMenu.Item className="focus-within:ring-ring group px-6 py-7 text-xl font-semibold text-sunglow-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-inset focus-within:ring-sunglow-400 hover:bg-sunglow-400 hover:text-black focus:outline-none active:bg-sunglow-200">
+        <NavigationMenu.Item className="focus-within:ring-ring group border-b border-slate-500 px-6 py-7 text-xl font-semibold text-sunglow-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-inset focus-within:ring-sunglow-400 hover:bg-sunglow-400 hover:text-black focus:outline-none active:bg-sunglow-200">
           <NavigationMenu.Link
             href="https://docs.ccv.brown.edu/documentation"
             className="focus-visible:outline-none"
