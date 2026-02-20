@@ -16,12 +16,12 @@ export function LocationSection({ className }: LocationSectionProps) {
   return (
     <ContentSection
       className={cn(
-        "lg:items-center lg:py-0 lg:pr-0 xl:py-0 xl:pr-0",
+        "p-0 sm:p-0 md:p-0 lg:items-center lg:pr-0 xl:py-0 xl:pr-0",
         className
       )}
       align="left"
     >
-      <ContentHeader>
+      <ContentHeader className="px-12 pt-12 lg:p-0">
         <ContentTitle title="Our Home" />
         <ContentSubHeader>
           <p>
@@ -43,7 +43,7 @@ export function LocationSection({ className }: LocationSectionProps) {
             href="https://en.wikipedia.org/wiki/Brown_University_Computing_Laboratory"
             className="mx-auto my-2 w-auto"
           >
-            Brown University Computing Laboratory
+            Computing Laboratory
           </ButtonLink>
         </ContentSubHeader>
       </ContentHeader>
