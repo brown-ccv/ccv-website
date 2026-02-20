@@ -35,7 +35,7 @@ export function DialogSearch({ searchTitle }: DialogSearchProps): JSX.Element {
         </Button>
       </DialogTrigger>
 
-      <DialogContent className="top-[10%] translate-y-0 gap-0 overflow-hidden bg-white p-0 sm:max-w-2xl">
+      <DialogContent className="top-[10%] translate-y-0 gap-0 overflow-hidden rounded-md bg-white p-0 sm:max-w-2xl">
         <DialogTitle className="sr-only">{searchTitle}</DialogTitle>
         <Search />
       </DialogContent>
