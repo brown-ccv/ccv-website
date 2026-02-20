@@ -54,7 +54,7 @@ export function SwipeCarousel({ carouselData, className }: CarouselProps) {
   }
 
   return (
-    <div className={cn("relative overflow-hidden py-8", className)}>
+    <div className={cn("relative overflow-hidden pb-8", className)}>
       <motion.div
         drag="x"
         dragConstraints={{
