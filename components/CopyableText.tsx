@@ -23,10 +23,11 @@ export function CopyableText({
 
   const copyText = async () => {
     // Extract text content from children
-    const text =
+    const rawText: string =
       typeof children === "string"
         ? children
         : extractTextFromChildren(children)
+    const text = rawText.trim()
 
     try {
       await navigator.clipboard.writeText(text)
