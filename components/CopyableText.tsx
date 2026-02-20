@@ -29,6 +29,7 @@ export function CopyableText({
 }: CopyableTextProps) {
   const [copied, setCopied] = useState(false)
   const [error, setError] = useState(false)
+  const [errorMessage, setErrorMessage] = useState("Failed to copy")
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   // Compute text content once and memoize it
@@ -52,6 +53,16 @@ export function CopyableText({
       clearTimeout(timeoutRef.current)
     }
 
+    // Check if clipboard API is available
+    if (!navigator.clipboard) {
+      console.error("Clipboard API not available")
+      setErrorMessage("Clipboard not available")
+      setError(true)
+      setCopied(false)
+      timeoutRef.current = setTimeout(() => setError(false), 2000)
+      return
+    }
+
     try {
       await navigator.clipboard.writeText(textContent)
       setCopied(true)
@@ -59,6 +70,7 @@ export function CopyableText({
       timeoutRef.current = setTimeout(() => setCopied(false), 2000)
     } catch (err) {
       console.error("Failed to copy text to clipboard:", err)
+      setErrorMessage("Failed to copy")
       setError(true)
       setCopied(false)
       timeoutRef.current = setTimeout(() => setError(false), 2000)
@@ -70,9 +82,9 @@ export function CopyableText({
       <Tooltip open={copied || error}>
         <TooltipTrigger asChild>
           <button
-            type="button"
-            className={`cursor-pointer font-bold text-keppel-800 hover:text-sunglow-400 hover:underline ${className}`}
+            className={`focus-visible:ring-ring inline cursor-pointer rounded-md border-0 bg-transparent p-0 text-start font-bold text-keppel-800 hover:underline focus:outline-none focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 ${className}`}
             onClick={copyText}
+            aria-label="Copy to clipboard"
           >
             {children}
           </button>
@@ -82,11 +94,11 @@ export function CopyableText({
           align="end"
           className={
             error
-              ? "bg-red-500 text-md text-white"
+              ? "bg-red-university text-md text-white"
               : "bg-sunglow-400 text-md text-black"
           }
         >
-          {error ? "✗ Failed to copy" : "✓ Copied!"}
+          {error ? `✗ ${errorMessage}` : "✓ Copied!"}
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
