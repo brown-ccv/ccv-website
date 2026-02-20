@@ -7,6 +7,7 @@ import {
   ReactNode,
   isValidElement,
   ReactElement,
+  useMemo,
 } from "react"
 import {
   Tooltip,
@@ -30,6 +31,12 @@ export function CopyableText({
   const [error, setError] = useState(false)
   const timeoutRef = useRef<NodeJS.Timeout | null>(null)
 
+  // Compute text content once and memoize it
+  const textContent = useMemo(
+    () => extractTextFromChildren(children).trim(),
+    [children]
+  )
+
   // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
@@ -45,11 +52,8 @@ export function CopyableText({
       clearTimeout(timeoutRef.current)
     }
 
-    // Extract and normalize text content from children
-    const text = extractTextFromChildren(children).trim()
-
     try {
-      await navigator.clipboard.writeText(text)
+      await navigator.clipboard.writeText(textContent)
       setCopied(true)
       setError(false)
       timeoutRef.current = setTimeout(() => setCopied(false), 2000)
@@ -60,7 +64,6 @@ export function CopyableText({
       timeoutRef.current = setTimeout(() => setError(false), 2000)
     }
   }
-  const textContent = extractTextFromChildren(children).trim()
 
   return (
     <TooltipProvider>
@@ -70,7 +73,6 @@ export function CopyableText({
             type="button"
             className={`cursor-pointer font-bold text-keppel-800 hover:text-sunglow-400 hover:underline ${className}`}
             onClick={copyText}
-            aria-label={`Copy ${textContent} to clipboard`}
           >
             {children}
           </button>
