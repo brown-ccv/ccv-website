@@ -15,34 +15,40 @@ import { ButtonGroup } from "@/components/button/ButtonGroup"
 import { CostEstimateCard } from "@/components/card/CostEstimateCard"
 import { ProjectEstimationSection } from "@/components/ProjectEstimationSection"
 import { LocationSection } from "@/components/LocationSection"
-import { CopyableEmail } from "@/components/CopyableEmail"
+import { CopyableText } from "@/components/CopyableText"
 import { LinkList } from "@/components/LinkList"
 import { TwoColumns } from "@/components/TwoColumns"
 import { Link } from "@/components/Link"
 
-const withNotProse = <T extends { className?: string }>(
+function withNotProse<T extends { className?: string }>(
   Component: React.ComponentType<T>
-) => {
-  return (props: T) => (
-    <Component {...props} className={cn("not-prose", props.className)} />
-  )
+) {
+  function WrappedComponent(props: T) {
+    return <Component {...props} className={cn("not-prose", props.className)} />
+  }
+
+  WrappedComponent.displayName = `withNotProse(${Component.displayName || Component.name || "Component"})`
+
+  return WrappedComponent
 }
 
-const MDXContentSection = ({
+function MDXContentSection({
   title,
   children,
   ...props
 }: {
   title: string
   children: React.ReactNode
-} & React.HTMLAttributes<HTMLDivElement>) => (
-  <ContentSection {...props}>
-    <ContentHeader>
-      <ContentTitle className="not-prose" title={title} />
-    </ContentHeader>
-    {children}
-  </ContentSection>
-)
+} & React.HTMLAttributes<HTMLDivElement>) {
+  return (
+    <ContentSection {...props}>
+      <ContentHeader>
+        <ContentTitle className="not-prose" title={title} />
+      </ContentHeader>
+      {children}
+    </ContentSection>
+  )
+}
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -64,7 +70,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     ButtonGroup,
-    CopyableEmail,
+    CopyableText,
     StyledCard: withNotProse(StyledCard),
     CostEstimateCard: withNotProse(CostEstimateCard),
     CardGroup,

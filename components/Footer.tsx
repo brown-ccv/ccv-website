@@ -2,7 +2,7 @@ import { CCVLogo } from "@/components/assets/CCVLogo"
 import { FaArrowRight } from "react-icons/fa"
 import { MdEmail, MdLocationPin, MdOutlinePhoneInTalk } from "react-icons/md"
 import { ButtonLink } from "@/components/button/ButtonLink"
-import { CopyableEmail } from "@/components/CopyableEmail"
+import { CopyableText } from "@/components/CopyableText"
 import { Link } from "@/components/Link"
 
 // Footer link component
@@ -94,10 +94,9 @@ export function Footer() {
                 aria-label="Email Icon"
                 className="mr-2 inline-block text-stone-400"
               />
-              <CopyableEmail
-                email="support@ccv.brown.edu"
-                className="font-normal text-white hover:text-white"
-              />
+              <CopyableText className="font-normal text-white hover:text-white">
+                support@ccv.brown.edu
+              </CopyableText>
             </div>
           </div>
         </div>
