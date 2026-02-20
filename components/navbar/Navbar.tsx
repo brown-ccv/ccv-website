@@ -29,7 +29,7 @@ export function Navbar() {
 
   useEffect(() => {
     setIsMobileMenuOpen(false)
-  }, [pathname, setIsMobileMenuOpen])
+  }, [pathname])
 
   return (
     <div className="sticky top-0 z-50">
