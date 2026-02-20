@@ -43,12 +43,14 @@ export function CopyableText({
     <TooltipProvider>
       <Tooltip open={copied}>
         <TooltipTrigger asChild>
-          <span
+          <button
+            type="button"
             className={`cursor-pointer font-bold text-keppel-800 hover:underline ${className}`}
             onClick={copyText}
+            aria-label="Copy text to clipboard"
           >
             {children}
-          </span>
+          </button>
         </TooltipTrigger>
         <TooltipContent
           side={side}
