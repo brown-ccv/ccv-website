@@ -41,7 +41,7 @@ jobs:
             --concurrency 10 \
             --timeout 10 \
             --min-instances 1 \
-            --max-instances 2 \
+            --max-instances 1 \
             --port 7700
 
       - name: Get Meilisearch URL
