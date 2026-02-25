@@ -33,7 +33,6 @@ jobs:
           if gcloud storage buckets describe "gs://${BUCKET_NAME}" --project=${{ env.gcp_project_id }} 2>/dev/null; then
             echo "✅ Bucket already exists and is accessible"
           else
-            EXIT_CODE=$?
           
             # If bucket doesn't exist, create it
             echo "Creating bucket: gs://${BUCKET_NAME}"
