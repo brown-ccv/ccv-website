@@ -1,4 +1,5 @@
 # This only gets re-run when a new Meilisearch version is released with important features or security fixes
+# .github/workflows/deploy-meilisearch.yaml
 name: Deploy Meilisearch
 
 on:
@@ -7,7 +8,8 @@ on:
 env:
   gcp_project_id: ccv-website-next
   gcp_registry_url: us-central1-docker.pkg.dev
-  gcp_container_registry: gcp-ccv-website
+  gcp_artifact_registry: gcp-ccv-website
+  meilisearch_bucket: ccv-website-next-meilisearch-data
 
 jobs:
   deploy-meilisearch:
@@ -20,6 +22,36 @@ jobs:
 
       - uses: "google-github-actions/setup-gcloud@v2"
 
+      # Create Cloud Storage bucket for Meilisearch data (only needed once)
+      - name: Create Storage Bucket
+        run: |
+          BUCKET_NAME="${{ env.meilisearch_bucket }}"
+          
+          echo "Checking if bucket exists: gs://${BUCKET_NAME}"
+          
+          # Check if bucket exists
+          if gcloud storage buckets describe "gs://${BUCKET_NAME}" --project=${{ env.gcp_project_id }} 2>/dev/null; then
+            echo "✅ Bucket already exists and is accessible"
+          else
+          
+            # If bucket doesn't exist, create it
+            echo "Creating bucket: gs://${BUCKET_NAME}"
+          
+            if gcloud storage buckets create "gs://${BUCKET_NAME}" \
+              --project=${{ env.gcp_project_id }} \
+              --location=us-central1 \
+              --uniform-bucket-level-access; then
+              echo "✅ Bucket created successfully"
+            else
+              echo "❌ Failed to create bucket"
+              echo "Possible reasons:"
+              echo "  - Bucket name collision (name taken globally)"
+              echo "  - Insufficient permissions"
+              echo "  - Invalid project ID"
+              exit 1
+            fi
+          fi
+
       - name: Deploy Meilisearch to Cloud Run
         run: |
           gcloud run deploy meilisearch \
@@ -27,7 +59,10 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
-            --set-env-vars MEILI_MASTER_KEY=${{ secrets.MEILISEARCH_MASTER_KEY }},MEILI_ENV=production \
+            --set-env-vars MEILI_MASTER_KEY=${{ secrets.MEILISEARCH_MASTER_KEY }},MEILI_ENV=production,MEILI_DB_PATH=/meili_data \
+            --execution-environment gen2 \
+            --add-volume name=meilisearch-data,type=cloud-storage,bucket=${{ env.meilisearch_bucket }} \
+            --add-volume-mount volume=meilisearch-data,mount-path=/meili_data \
             --memory 1Gi \
             --cpu 1 \
             --concurrency 10 \
