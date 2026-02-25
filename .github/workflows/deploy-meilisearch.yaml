@@ -59,7 +59,7 @@ jobs:
             --platform managed \
             --region us-central1 \
             --allow-unauthenticated \
-            --set-env-vars MEILI_MASTER_KEY=${{ secrets.MEILISEARCH_MASTER_KEY }},MEILI_ENV=production \
+            --set-env-vars MEILI_MASTER_KEY=${{ secrets.MEILISEARCH_MASTER_KEY }},MEILI_ENV=production,MEILI_DB_PATH=/meili_data \
             --execution-environment gen2 \
             --add-volume name=meilisearch-data,type=cloud-storage,bucket=${{ env.meilisearch_bucket }} \
             --add-volume-mount volume=meilisearch-data,mount-path=/meili_data \
