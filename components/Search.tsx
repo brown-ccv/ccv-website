@@ -103,17 +103,15 @@ export function Search() {
             placeholder="Search site..."
             autoFocus
             submitIconComponent={() => null}
-            resetIconComponent={() => <X className="h-4 w-4" />}
+            resetIconComponent={() => null}
             loadingIconComponent={() => null}
             classNames={{
               root: "relative",
               form: "relative flex items-center gap-3",
               input:
-                "w-full rounded-md mr-6 placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-ring focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
+                "w-full rounded-md mr-12 placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-ring focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 [&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
               submit: "hidden",
-              reset:
-                "absolute rounded-sm right-8 top-1/2 -translate-y-1/2 cursor-pointer focus-visible:outline-none focus-visible:ring-ring focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400",
-              resetIcon: "text-gray-400",
+              reset: "hidden",
               loadingIndicator: "hidden",
             }}
           />
