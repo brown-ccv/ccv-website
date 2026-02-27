@@ -16,7 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/Tooltip"
-import { cn } from "@/lib/utils" // Assuming you have a cn utility, otherwise use a template literal
+import { cn } from "@/lib/utils"
 
 interface CopyableTextProps {
   children: ReactNode
