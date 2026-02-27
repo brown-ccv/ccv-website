@@ -12,11 +12,11 @@ if (fs.existsSync(envPath)) {
 const client = new MeiliSearch({
   host: process.env.MEILISEARCH_HOST || "http://127.0.0.1:7700",
   apiKey: process.env.MEILISEARCH_MASTER_KEY || "",
+  timeout: 120000,
 })
 
 const INDEX_NAME = "pages"
 
-// Load search index data at runtime instead of import
 function loadSearchIndexData() {
   const indexPath = path.join(process.cwd(), "content", "search-index.json")
 
@@ -66,13 +66,15 @@ async function addDocuments() {
     primaryKey: "id",
   })
 
-  return task.taskUid
+  return { taskUid: task.taskUid, documentCount: documents.length }
 }
 
 async function waitForCompletion(taskUid: number) {
-  console.log("⏳ Waiting for indexing to complete...\n")
-
-  const result = await client.tasks.waitForTask(taskUid)
+  // Wait up to 2 minutes for the task
+  const result = await client.tasks.waitForTask(taskUid, {
+    timeout: 120000,
+    interval: 1000,
+  })
 
   if (result.status === "succeeded") {
     console.log("✅ Documents successfully indexed!")
@@ -92,31 +94,14 @@ async function waitForCompletion(taskUid: number) {
   return result
 }
 
-async function showIndexStats() {
-  console.log("\n📊 Index statistics:")
-
-  const index = client.index(INDEX_NAME)
-  const stats = await index.getStats()
-
-  console.log(`   Total documents: ${stats.numberOfDocuments}`)
-  console.log(`   Is indexing: ${stats.isIndexing ? "Yes" : "No"}`)
-  console.log(`   Field distribution:`)
-
-  Object.entries(stats.fieldDistribution).forEach(([field, count]) => {
-    console.log(`      ${field}: ${count}`)
-  })
-}
-
 async function syncSearchIndex() {
   try {
-    console.log("🔍 Starting Meilisearch sync...\n")
-
     await configureIndex()
-    const taskUid = await addDocuments()
-    await waitForCompletion(taskUid)
-    await showIndexStats()
+    const { taskUid, documentCount } = await addDocuments()
 
-    console.log("\n✨ Meilisearch sync complete!")
+    console.log(`📤 Uploading ${documentCount} documents...`)
+
+    await waitForCompletion(taskUid)
   } catch (error) {
     console.error("\n❌ Error syncing to Meilisearch:", error)
     if (error instanceof Error) {
@@ -127,5 +112,4 @@ async function syncSearchIndex() {
   }
 }
 
-// Run the sync
 syncSearchIndex()
