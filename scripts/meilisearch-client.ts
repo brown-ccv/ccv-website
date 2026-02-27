@@ -12,7 +12,7 @@ if (fs.existsSync(envPath)) {
 const client = new MeiliSearch({
   host: process.env.MEILISEARCH_HOST || "http://127.0.0.1:7700",
   apiKey: process.env.MEILISEARCH_MASTER_KEY || "",
-  timeout: 60000,
+  timeout: 120000,
 })
 
 const INDEX_NAME = "pages"
