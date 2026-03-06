@@ -46,7 +46,7 @@ carousel:
       and eddies, providing datasets that validate and inform ocean models within broader climate research. A built-in 
       workflow manager scales analyses from regional studies to the entire Arctic over decade-long timescales.
     image: "/images/projects/icefloe.webp"
-    alt: "Website title and mission statement for The Wilhelmus Lab emphasizing solutions to societal issues through fluid transport engineering"
+    alt: "Left: Animation of satellite images of a coastal region in the Arctic Ocean in May 2003. Images are from the Aqua and Terra satellites' MODIS instrument. Right: Animation showing detected ice floes, interstitial ice, clouds, ocean water and land in the same region."
     organizations:
       - name: "Wilhelmus Lab, Department of Engineering"
         organization: "Brown University"
