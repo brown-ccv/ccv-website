@@ -26,17 +26,17 @@ jobs:
       - name: Create Storage Bucket
         run: |
           BUCKET_NAME="${{ env.meilisearch_bucket }}"
-          
+
           echo "Checking if bucket exists: gs://${BUCKET_NAME}"
-          
+
           # Check if bucket exists
           if gcloud storage buckets describe "gs://${BUCKET_NAME}" --project=${{ env.gcp_project_id }} 2>/dev/null; then
             echo "✅ Bucket already exists and is accessible"
           else
-          
+
             # If bucket doesn't exist, create it
             echo "Creating bucket: gs://${BUCKET_NAME}"
-          
+
             if gcloud storage buckets create "gs://${BUCKET_NAME}" \
               --project=${{ env.gcp_project_id }} \
               --location=us-central1 \

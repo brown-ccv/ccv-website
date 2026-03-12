@@ -37,7 +37,7 @@ export function StorageServiceCard({ service, isDisabled }: ServiceCardProps) {
         aria-label={`documentation for ${humanize(service.serviceName)}`}
       >
         <span>Documentation</span>
-        <Icon iconName="FaExternalLinkAlt" size={16} aria-hidden="true" />
+        <Icon iconName="FaExternalLinkAlt" size={10} aria-hidden="true" />
       </Link>
       <ul className="mx-2 space-y-3 p-2">
         {Object.entries(service).map(([key, value]) => {
