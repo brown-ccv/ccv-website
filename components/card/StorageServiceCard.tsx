@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/Badge"
 import { humanize } from "@/lib/utils"
 import { CollapsableCard } from "@/components/card/CollapsableCard"
 import { Link } from "@/components/Link"
+import Icon from "@/components/ui/RenderIcon"
 
 interface ServiceCardProps {
   service: ServiceConfig
@@ -32,9 +33,11 @@ export function StorageServiceCard({ service, isDisabled }: ServiceCardProps) {
     >
       <Link
         href={service.documentation}
-        className="mx-2 block px-2 py-2 font-medium text-keppel-800 transition-colors hover:text-keppel-600 focus:outline-none focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-sunglow-400"
+        className="mx-2 inline-flex items-center gap-1 px-2 py-2 font-medium text-keppel-800 transition-colors hover:text-keppel-600 focus:outline-none focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-sunglow-400"
+        aria-label={`documentation for ${humanize(service.serviceName)}`}
       >
-        {humanize(service.serviceName)} documentation
+        <span>Documentation</span>
+        <Icon iconName="FaExternalLinkAlt" size={16} aria-hidden="true" />
       </Link>
       <ul className="mx-2 space-y-3 p-2">
         {Object.entries(service).map(([key, value]) => {
