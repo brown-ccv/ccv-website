@@ -30,6 +30,7 @@ export default async function CompareStorageOptions() {
           variant="primary_filled"
           size="lg"
           id="table"
+          className="hidden lg:block"
           aria-describedby="table-nav-desc"
           aria-label="Scroll to comparison table section"
         >
