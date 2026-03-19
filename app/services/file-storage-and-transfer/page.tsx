@@ -10,7 +10,9 @@ import { ScrollButton } from "@/components/button/ScrollButton"
 import Icon from "@/components/ui/RenderIcon"
 
 export default async function CompareStorageOptions() {
-  const metadata = getMDXMetadata("content/routes/services/storage.mdx")
+  const metadata = getMDXMetadata(
+    "content/routes/services/file-storage-and-transfer.mdx"
+  )
   let initialSelectedAnswers: SelectedAnswers = {}
   questions.map((question: any, index: number) => {
     initialSelectedAnswers[question.id] = question.default_answer
