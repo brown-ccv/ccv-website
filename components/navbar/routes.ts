@@ -46,7 +46,7 @@ export const routes: NavSection[] = [
           {
             name: "Storage and Transfer",
             href: "/services/file-storage-and-transfer",
-            description: "Brown's file-storage-and-transfer options",
+            description: "Brown's highly secure computing & storage enclave",
             icon: FaFileImport,
           },
           {
