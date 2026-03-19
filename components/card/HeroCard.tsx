@@ -16,7 +16,7 @@ const heroCards = [
   {
     title: "Compute Infrastructure",
     description:
-      "We maintain secure, high‑performance computing infrastructure, along with storage solutions and virtual computing environments to support research and innovation.",
+      "We maintain secure, high‑performance computing infrastructure, along with file-storage-and-transfer solutions and virtual computing environments to support research and innovation.",
   },
 ]
 
