@@ -28,6 +28,20 @@ export default async function CompareStorageOptions() {
         >
           Request Storage
         </ButtonLink>
+        <ButtonLink
+          variant="secondary_filled"
+          size="lg"
+          href="https://brown.atlassian.net/servicedesk/customer/portal/16/group/55/create/262"
+        >
+          Request Quota Change
+        </ButtonLink>
+        <ButtonLink
+          variant="secondary_filled"
+          size="lg"
+          href="https://brown.atlassian.net/servicedesk/customer/portal/16/group/55/create/217"
+        >
+          Storage Help
+        </ButtonLink>
         <ScrollButton
           variant="primary_filled"
           size="lg"
