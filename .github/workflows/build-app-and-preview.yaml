@@ -66,7 +66,10 @@ jobs:
           service: ${{ env.image }}
           project_id: ${{ env.gcp_project_id }}
           image: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_artifact_registry }}/${{ env.image }}
-          flags: "--allow-unauthenticated"
+          flags: >-
+            --allow-unauthenticated
+            --min-instances=0
+            --max-instances=1
           env_vars: |
             NEXT_PUBLIC_MEILISEARCH_HOST=${{ secrets.MEILISEARCH_HOST }}
             NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=${{ secrets.MEILISEARCH_SEARCH_KEY }}
