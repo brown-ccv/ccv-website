@@ -69,7 +69,7 @@ export const getTextColorForBackground = (backgroundColor: string): string => {
 }
 
 /**
- * Maps feature values to badge background colors based on the file-storage-and-transfer-types color map
+ * Maps feature values to badge background colors based on the storage-types color map
  */
 export const getBadgeBackgroundColor = (
   value: string | boolean | number

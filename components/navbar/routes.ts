@@ -39,14 +39,13 @@ export const routes: NavSection[] = [
           {
             name: "Stronghold",
             href: "/services/stronghold",
-            description:
-              "Brown's highly secure computing & file-storage-and-transfer enclave",
+            description: "Brown's highly secure computing & storage enclave",
             icon: FaWindowRestore,
           },
           {
             name: "Storage and Transfer",
             href: "/services/file-storage-and-transfer",
-            description: "Brown's highly secure computing & storage enclave",
+            description: "Brown's file storage and transfer options",
             icon: FaFileImport,
           },
           {
