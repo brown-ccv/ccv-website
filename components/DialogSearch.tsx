@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect } from "react"
+import React from "react"
 import {
   Dialog,
   DialogContent,
@@ -10,21 +10,14 @@ import {
 import { Button } from "@/components/button/Button"
 import { FaMagnifyingGlass } from "react-icons/fa6"
 import { Search } from "@/components/Search"
-import { usePathname } from "next/navigation"
 
 interface DialogSearchProps {
   searchTitle: string
 }
 
 export function DialogSearch({ searchTitle }: DialogSearchProps): JSX.Element {
-  const [open, setOpen] = React.useState(false)
-  const pathname = usePathname()
-
-  useEffect(() => {
-    setOpen(false)
-  }, [pathname, setOpen])
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog>
       <DialogTrigger asChild>
         <Button
           variant="icon_only"
