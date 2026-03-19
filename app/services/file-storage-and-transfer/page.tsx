@@ -5,6 +5,8 @@ import { StorageTool } from "@/components/storage/StorageTool"
 import { SelectedAnswers } from "@/lib/storage-types"
 import services from "@/content/data/storage-features.json"
 import questions from "@/content/data/storage-questions.json"
+import StorageContent from "@/content/routes/services/file-storage-and-transfer.mdx"
+
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import Icon from "@/components/ui/RenderIcon"
@@ -59,6 +61,7 @@ export default async function CompareStorageOptions() {
         initialSelectedAnswers={initialSelectedAnswers}
         services={services}
       />
+      <StorageContent />
     </>
   )
 }
