@@ -2,10 +2,12 @@
 
 import { Octokit } from "octokit"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
+
 interface GitHubIssue {
   id: number
   title: string
   pull_request?: any
+
   [key: string]: any
 }
 
@@ -55,4 +57,21 @@ export async function getOpenIssues() {
   )
 
   return issuesData.filter((repo) => repo.openIssues.length > 0)
+}
+
+export async function getDocumentationData() {
+  const secret = await getSecret()
+  const octokit = new Octokit({ auth: secret })
+
+  const docConfig = await octokit.request(
+    `GET /repos/{owner}/{repo}/contents/{path}`,
+    {
+      owner: "brown-ccv",
+      repo: "ccv-documentation",
+      path: "searchConfig.json",
+      headers: {
+        "X-GitHub-Api-Version": "2026-03-10",
+      },
+    }
+  )
 }
