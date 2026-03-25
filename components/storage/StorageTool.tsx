@@ -60,7 +60,7 @@ export function StorageTool({
           that meet your requirements.
         </p>
         <div
-          className="hidden lg:flex lg:items-center lg:gap-4 lg:pb-8"
+          className={`${TABLE_VISIBILITY} lg:items-center lg:gap-4 lg:pb-8`}
           role="navigation"
           aria-label="Page navigation"
         >
