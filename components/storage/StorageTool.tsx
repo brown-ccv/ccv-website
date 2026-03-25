@@ -44,8 +44,8 @@ export function StorageTool({ className }: StorageToolProps) {
   }, [initialSelectedAnswers])
 
   return (
-    <div className={className}>
-      <ContentSection id="form">
+    <>
+      <ContentSection id="form" className="not-prose">
         <ContentHeader>
           <ContentTitle title="Storage Selection Tool" />
         </ContentHeader>
@@ -96,7 +96,7 @@ export function StorageTool({ className }: StorageToolProps) {
           />
         </div>
       </ContentSection>
-      <ContentSection id="table" className="hidden lg:block">
+      <ContentSection id="table" className="not-prose hidden lg:block">
         <ContentHeader>
           <ContentTitle title="Compare Storage Options" />
         </ContentHeader>
@@ -109,6 +109,6 @@ export function StorageTool({ className }: StorageToolProps) {
 
         <StorageTable services={services} />
       </ContentSection>
-    </div>
+    </>
   )
 }
