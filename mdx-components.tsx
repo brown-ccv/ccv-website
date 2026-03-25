@@ -20,6 +20,8 @@ import { CopyableText } from "@/components/CopyableText"
 import { LinkList } from "@/components/LinkList"
 import { TwoColumns } from "@/components/TwoColumns"
 import { Link } from "@/components/Link"
+import { StorageAccordion } from "@/components/storage/StorageAccordion"
+import { Accordion } from "@/components/StyledAccordion"
 
 function withNotProse<T extends { className?: string }>(
   Component: React.ComponentType<T>
@@ -93,6 +95,12 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     StorageTool: withNotProse(StorageTool),
+    StorageAccordion: (props: {
+      title: string
+      id: string
+      children: React.ReactNode
+    }) => <StorageAccordion {...props} />,
+    Accordion: withNotProse(Accordion),
     ...components,
   }
 }
