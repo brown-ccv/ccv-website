@@ -1,10 +1,6 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
 import { getMDXMetadata } from "@/lib/mdx-utils"
-import { StorageTool } from "@/components/storage/StorageTool"
-import { SelectedAnswers } from "@/lib/storage-types"
-import services from "@/content/data/storage-features.json"
-import questions from "@/content/data/storage-questions.json"
 import StorageContent from "@/content/routes/services/file-storage-and-transfer.mdx"
 
 import { ButtonLink } from "@/components/button/ButtonLink"
@@ -15,10 +11,6 @@ export default async function CompareStorageOptions() {
   const metadata = getMDXMetadata(
     "content/routes/services/file-storage-and-transfer.mdx"
   )
-  let initialSelectedAnswers: SelectedAnswers = {}
-  questions.map((question: any, index: number) => {
-    initialSelectedAnswers[question.id] = question.default_answer
-  })
 
   return (
     <>
@@ -55,12 +47,6 @@ export default async function CompareStorageOptions() {
           <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
         </ScrollButton>
       </Hero>
-
-      <StorageTool
-        questions={questions}
-        initialSelectedAnswers={initialSelectedAnswers}
-        services={services}
-      />
       <StorageContent />
     </>
   )

@@ -7,6 +7,7 @@ import {
   ContentHeader,
   ContentTitle,
 } from "@/components/ContentSection"
+import { StorageTool } from "@/components/storage/StorageTool"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
@@ -91,6 +92,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className="h-auto max-w-full"
       />
     ),
+    StorageTool: withNotProse(StorageTool),
     ...components,
   }
 }
