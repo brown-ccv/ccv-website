@@ -8,6 +8,7 @@ import questions from "@/content/data/storage-questions.json"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import Icon from "@/components/ui/RenderIcon"
+import { TABLE_VISIBILITY } from "@/lib/styles"
 
 export default async function CompareStorageOptions() {
   const metadata = getMDXMetadata("content/routes/services/storage.mdx")
@@ -30,7 +31,7 @@ export default async function CompareStorageOptions() {
           variant="primary_filled"
           size="lg"
           id="table"
-          className="hidden lg:block"
+          className={TABLE_VISIBILITY}
           aria-describedby="table-nav-desc"
           aria-label="Scroll to comparison table section"
         >

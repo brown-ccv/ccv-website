@@ -15,6 +15,7 @@ import {
   StorageData,
   FormQuestions,
 } from "@/lib/storage-types"
+import { TABLE_VISIBILITY } from "@/lib/styles"
 import { StorageCards } from "@/components/storage/StorageCards"
 import Icon from "@/components/ui/RenderIcon"
 
@@ -100,7 +101,7 @@ export function StorageTool({
           />
         </div>
       </ContentSection>
-      <ContentSection id="table" className="hidden lg:block">
+      <ContentSection id="table" className={TABLE_VISIBILITY}>
         <ContentHeader>
           <ContentTitle title="Compare Storage Options" />
         </ContentHeader>
