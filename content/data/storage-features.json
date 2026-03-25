@@ -175,11 +175,7 @@
         "name": "storage_threshold",
         "value": "2 TB +",
         "sortValue": 2000,
-        "notes": [
-          "2 TB per PI",
-          "20 TB per grant",
-          "Paid after that @ $50/TB/Yr. (Summed across all paid storage types)"
-        ]
+        "notes": ["2 TB per PI", "20 TB per grant"]
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -263,11 +259,7 @@
         "name": "storage_threshold",
         "value": "1 TB +",
         "sortValue": 1000,
-        "notes": [
-          "1 TB per PI",
-          "10 TB per grant",
-          "Paid after that @ $100/TB/Yr. (Summed across all paid storage types)"
-        ]
+        "notes": ["1 TB per PI", "10 TB per grant"]
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -519,11 +511,7 @@
         "name": "storage_threshold",
         "value": "1 TB +",
         "sortValue": 1000,
-        "notes": [
-          "1 TB per PI",
-          "10 TB per grant",
-          "Paid after that @ $100/TB/Yr. (Summed across all paid storage types)"
-        ]
+        "notes": ["1 TB per PI", "10 TB per grant"]
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -607,11 +595,7 @@
         "name": "storage_threshold",
         "value": "1 TB +",
         "sortValue": 1000,
-        "notes": [
-          "1 TB per PI",
-          "10 TB per grant",
-          "Paid after that @ $100/TB/Yr. (Summed across all paid storage types)"
-        ]
+        "notes": ["1 TB per PI", "10 TB per grant"]
       },
       "max_file_size": {
         "name": "max_file_size",
