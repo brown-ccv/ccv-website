@@ -5,13 +5,17 @@ import { StorageTool } from "@/components/storage/StorageTool"
 import { SelectedAnswers } from "@/lib/storage-types"
 import services from "@/content/data/storage-features.json"
 import questions from "@/content/data/storage-questions.json"
+import StorageContent from "@/content/routes/services/file-storage-and-transfer.mdx"
+
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import Icon from "@/components/ui/RenderIcon"
 import { TABLE_VISIBILITY } from "@/lib/styles"
 
 export default async function CompareStorageOptions() {
-  const metadata = getMDXMetadata("content/routes/services/storage.mdx")
+  const metadata = getMDXMetadata(
+    "content/routes/services/file-storage-and-transfer.mdx"
+  )
   let initialSelectedAnswers: SelectedAnswers = {}
   questions.map((question: any, index: number) => {
     initialSelectedAnswers[question.id] = question.default_answer
@@ -26,6 +30,20 @@ export default async function CompareStorageOptions() {
           href="https://brown.atlassian.net/servicedesk/customer/portal/16"
         >
           Request Storage
+        </ButtonLink>
+        <ButtonLink
+          variant="secondary_filled"
+          size="lg"
+          href="https://brown.atlassian.net/servicedesk/customer/portal/16/group/55/create/262"
+        >
+          Request Quota Change
+        </ButtonLink>
+        <ButtonLink
+          variant="secondary_filled"
+          size="lg"
+          href="https://brown.atlassian.net/servicedesk/customer/portal/16/group/55/create/217"
+        >
+          Storage Help
         </ButtonLink>
         <ScrollButton
           variant="primary_filled"
@@ -45,6 +63,7 @@ export default async function CompareStorageOptions() {
         initialSelectedAnswers={initialSelectedAnswers}
         services={services}
       />
+      <StorageContent />
     </>
   )
 }
