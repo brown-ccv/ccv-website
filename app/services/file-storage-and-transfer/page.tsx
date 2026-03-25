@@ -44,6 +44,13 @@ export default async function CompareStorageOptions() {
         >
           Storage Help
         </ButtonLink>
+        <ButtonLink
+          variant="primary_filled"
+          size="lg"
+          href="/services/rates#research-data-storage"
+        >
+          Storage Rates
+        </ButtonLink>
         <ScrollButton
           variant="primary_filled"
           size="lg"
