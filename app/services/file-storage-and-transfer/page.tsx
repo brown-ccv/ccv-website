@@ -53,8 +53,10 @@ export default async function CompareStorageOptions() {
           aria-describedby="table-nav-desc"
           aria-label="Scroll to comparison table section"
         >
-          Compare Storage
-          <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 whitespace-nowrap">
+            Compare Storage
+            <Icon iconName="FaAngleDoubleDown" />
+          </span>
         </ScrollButton>
       </Hero>
 
