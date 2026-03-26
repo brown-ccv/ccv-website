@@ -10,26 +10,23 @@ import {
 } from "@/components/ContentSection"
 import { StorageForm } from "@/components/storage/StorageForm"
 import { StorageTable } from "@/components/storage/StorageTable"
-import {
-  SelectedAnswers,
-  StorageData,
-  FormQuestions,
-} from "@/lib/storage-types"
 import { TABLE_VISIBILITY } from "@/lib/styles"
+import { SelectedAnswers } from "@/lib/storage-types"
+import services from "@/content/data/storage-features.json"
+import questions from "@/content/data/storage-questions.json"
+
 import { StorageCards } from "@/components/storage/StorageCards"
 import Icon from "@/components/ui/RenderIcon"
 
 interface StorageToolProps {
-  questions: FormQuestions[]
-  initialSelectedAnswers: SelectedAnswers
-  services: StorageData
+  className?: string
 }
 
-export function StorageTool({
-  questions,
-  initialSelectedAnswers,
-  services,
-}: StorageToolProps) {
+export function StorageTool({ className }: StorageToolProps) {
+  let initialSelectedAnswers: SelectedAnswers = {}
+  questions.map((question: any, index: number) => {
+    initialSelectedAnswers[question.id] = question.default_answer
+  })
   const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(
     initialSelectedAnswers
   )
@@ -50,7 +47,7 @@ export function StorageTool({
 
   return (
     <>
-      <ContentSection id="form">
+      <ContentSection id="form" className="not-prose">
         <ContentHeader>
           <ContentTitle title="Storage Selection Tool" />
         </ContentHeader>
@@ -103,7 +100,7 @@ export function StorageTool({
           />
         </div>
       </ContentSection>
-      <ContentSection id="table" className={TABLE_VISIBILITY}>
+      <ContentSection id="table" className={`not-prose ${TABLE_VISIBILITY}`}>
         <ContentHeader>
           <ContentTitle title="Compare Storage Options" />
         </ContentHeader>
