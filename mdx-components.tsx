@@ -20,8 +20,8 @@ import { CopyableText } from "@/components/CopyableText"
 import { LinkList } from "@/components/LinkList"
 import { TwoColumns } from "@/components/TwoColumns"
 import { Link } from "@/components/Link"
-import { StorageAccordion } from "@/components/storage/StorageAccordion"
-import { Accordion } from "@/components/StyledAccordion"
+import { Accordion, AccordionItem } from "@/components/StyledAccordion"
+import { AccordionContent, AccordionTrigger } from "@radix-ui/react-accordion"
 
 function withNotProse<T extends { className?: string }>(
   Component: React.ComponentType<T>
@@ -95,11 +95,18 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       />
     ),
     StorageTool: withNotProse(StorageTool),
-    StorageAccordion: (props: {
+    AccordionItem: (props: {
       title: string
       id: string
       children: React.ReactNode
-    }) => <StorageAccordion {...props} />,
+    }) => (
+      <AccordionItem className="lg:mx-6" value={props.id}>
+        <AccordionTrigger className="py-2 text-md font-semibold lg:py-4">
+          {props.title}
+        </AccordionTrigger>
+        <AccordionContent>{props.children}</AccordionContent>
+      </AccordionItem>
+    ),
     Accordion: withNotProse(Accordion),
     ...components,
   }
