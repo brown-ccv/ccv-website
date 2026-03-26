@@ -72,7 +72,9 @@ function MDXAccordionItem({
       <AccordionTrigger className="py-2 text-md font-semibold lg:py-4">
         {title}
       </AccordionTrigger>
-      <AccordionContent>{children}</AccordionContent>
+      <AccordionContent className="prose prose-sm max-w-none space-y-2 lg:prose-base [&_ul]:list-disc [&_ul]:pl-6">
+        {children}
+      </AccordionContent>
     </AccordionItem>
   )
 }
