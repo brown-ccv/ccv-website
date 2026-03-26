@@ -7,6 +7,7 @@ import {
   ContentHeader,
   ContentTitle,
 } from "@/components/ContentSection"
+import { StorageTool } from "@/components/storage/StorageTool"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { StyledCard } from "@/components/card/StyledCard"
 import { CardGroup } from "@/components/card/CardGroup"
@@ -19,6 +20,12 @@ import { CopyableText } from "@/components/CopyableText"
 import { LinkList } from "@/components/LinkList"
 import { TwoColumns } from "@/components/TwoColumns"
 import { Link } from "@/components/Link"
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/StyledAccordion"
 
 function withNotProse<T extends { className?: string }>(
   Component: React.ComponentType<T>
@@ -47,6 +54,28 @@ function MDXContentSection({
       </ContentHeader>
       {children}
     </ContentSection>
+  )
+}
+
+function MDXAccordionItem({
+  title,
+  id,
+  children,
+  ...props
+}: {
+  title: string
+  id: string
+  children: React.ReactNode
+}) {
+  return (
+    <AccordionItem className="lg:mx-6" value={id} {...props}>
+      <AccordionTrigger className="py-2 text-md font-semibold lg:py-4">
+        {title}
+      </AccordionTrigger>
+      <AccordionContent className="prose prose-sm max-w-none space-y-2 lg:prose-base [&_ul]:list-disc [&_ul]:pl-6">
+        {children}
+      </AccordionContent>
+    </AccordionItem>
   )
 }
 
@@ -91,6 +120,13 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         className="h-auto max-w-full"
       />
     ),
+    StorageTool: withNotProse(StorageTool),
+    AccordionItem: (props: {
+      title: string
+      id: string
+      children: React.ReactNode
+    }) => <MDXAccordionItem {...props} />,
+    Accordion: withNotProse(Accordion),
     ...components,
   }
 }
