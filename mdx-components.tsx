@@ -20,8 +20,12 @@ import { CopyableText } from "@/components/CopyableText"
 import { LinkList } from "@/components/LinkList"
 import { TwoColumns } from "@/components/TwoColumns"
 import { Link } from "@/components/Link"
-import { Accordion, AccordionItem } from "@/components/StyledAccordion"
-import { AccordionContent, AccordionTrigger } from "@radix-ui/react-accordion"
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/StyledAccordion"
 
 function withNotProse<T extends { className?: string }>(
   Component: React.ComponentType<T>
@@ -50,6 +54,26 @@ function MDXContentSection({
       </ContentHeader>
       {children}
     </ContentSection>
+  )
+}
+
+function MDXAccordionItem({
+  title,
+  id,
+  children,
+  ...props
+}: {
+  title: string
+  id: string
+  children: React.ReactNode
+}) {
+  return (
+    <AccordionItem className="lg:mx-6" value={id} {...props}>
+      <AccordionTrigger className="py-2 text-md font-semibold lg:py-4">
+        {title}
+      </AccordionTrigger>
+      <AccordionContent>{children}</AccordionContent>
+    </AccordionItem>
   )
 }
 
@@ -99,14 +123,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       title: string
       id: string
       children: React.ReactNode
-    }) => (
-      <AccordionItem className="lg:mx-6" value={props.id}>
-        <AccordionTrigger className="py-2 text-md font-semibold lg:py-4">
-          {props.title}
-        </AccordionTrigger>
-        <AccordionContent>{props.children}</AccordionContent>
-      </AccordionItem>
-    ),
+    }) => <MDXAccordionItem {...props} />,
     Accordion: withNotProse(Accordion),
     ...components,
   }
