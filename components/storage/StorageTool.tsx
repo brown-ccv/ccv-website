@@ -60,23 +60,25 @@ export function StorageTool({
           that meet your requirements.
         </p>
         <div
-          className={`${TABLE_VISIBILITY} lg:items-center lg:gap-4 lg:pb-8`}
+          className={TABLE_VISIBILITY}
           role="navigation"
           aria-label="Page navigation"
         >
-          <p className="text-lg" id="table-nav-desc">
-            Want to dive into comparing features?
-          </p>
-          <ScrollButton
-            variant="primary_filled"
-            size="md"
-            id="table"
-            aria-describedby="table-nav-desc"
-            aria-label="Scroll to comparison table section"
-          >
-            View Comparison Table
-            <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
-          </ScrollButton>
+          <span className="flex items-center gap-4 pb-8">
+            <p className="text-lg" id="table-nav-desc">
+              Want to dive into comparing features?
+            </p>
+            <ScrollButton
+              variant="primary_filled"
+              size="md"
+              id="table"
+              aria-describedby="table-nav-desc"
+              aria-label="Scroll to comparison table section"
+            >
+              View Comparison Table
+              <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
+            </ScrollButton>
+          </span>
         </div>
         <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
           <StorageForm
