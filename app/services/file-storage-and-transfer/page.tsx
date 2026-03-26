@@ -6,6 +6,7 @@ import StorageContent from "@/content/routes/services/file-storage-and-transfer.
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import Icon from "@/components/ui/RenderIcon"
+import { TABLE_VISIBILITY } from "@/lib/styles"
 
 export default async function CompareStorageOptions() {
   const metadata = getMDXMetadata(
@@ -40,11 +41,14 @@ export default async function CompareStorageOptions() {
           variant="primary_filled"
           size="lg"
           id="table"
+          className={TABLE_VISIBILITY}
           aria-describedby="table-nav-desc"
           aria-label="Scroll to comparison table section"
         >
-          Compare Storage
-          <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 whitespace-nowrap">
+            Compare Storage
+            <Icon iconName="FaAngleDoubleDown" />
+          </span>
         </ScrollButton>
       </Hero>
       <StorageContent />
