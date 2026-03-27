@@ -175,7 +175,7 @@
         "name": "storage_threshold",
         "value": "2 TB +",
         "sortValue": 2000,
-        "notes": ["2 TB per PI", "20 TB per grant"]
+        "notes": null
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -259,7 +259,7 @@
         "name": "storage_threshold",
         "value": "1 TB +",
         "sortValue": 1000,
-        "notes": ["1 TB per PI", "10 TB per grant"]
+        "notes": null
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -511,7 +511,7 @@
         "name": "storage_threshold",
         "value": "1 TB +",
         "sortValue": 1000,
-        "notes": ["1 TB per PI", "10 TB per grant"]
+        "notes": null
       },
       "max_file_size": {
         "name": "max_file_size",
@@ -595,7 +595,7 @@
         "name": "storage_threshold",
         "value": "1 TB +",
         "sortValue": 1000,
-        "notes": ["1 TB per PI", "10 TB per grant"]
+        "notes": null
       },
       "max_file_size": {
         "name": "max_file_size",
