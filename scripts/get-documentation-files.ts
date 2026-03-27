@@ -1,9 +1,17 @@
 import { Octokit } from "octokit"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
+import { remark } from "remark"
+import strip from "strip-markdown"
 
-interface DocumentationPage {
-  slug: string
+export interface SearchDocument {
+  id: string
+  title: string
   content: string
+  description: string
+  headings: string[]
+  url: string
+  type: string
+  category: string
 }
 
 interface DocConfig {
@@ -16,6 +24,23 @@ interface DocConfig {
     slug: string
   }[]
 }
+
+interface IncludeItem {
+  name: string
+  slug: string
+}
+
+interface DocumentationPageRaw {
+  includeName: string // config include.name
+  includeSlug: string // config include.slug (base category)
+  repoFilePath: string // e.g. hibernate/getting-started-with-hibernate/login-procedure.md
+  url: string // final docs url
+  markdown: string // markdown with frontmatter removed
+}
+
+const OWNER = "brown-ccv"
+const REPO = "ccv-documentation"
+const BASE_URL = "https://docs.ccv.brown.edu"
 
 async function getSecret() {
   const client = new SecretManagerServiceClient()
@@ -31,161 +56,177 @@ async function getSecret() {
 }
 
 function removeFrontmatter(markdown: string): string {
-  return markdown.replace(/^---[\s\S]*?---\n/, "")
+  return markdown.replace(/^---[\s\S]*?---\n?/, "")
 }
 
-function buildSlug(folderSlug: string, filePath: string): string {
-  const BASE_URL = "https://docs.ccv.brown.edu"
+function extractHeadingsFromMarkdown(markdown: string): string[] {
+  const headings: string[] = []
+  const seen = new Set<string>()
+  const re = /^#{1,6}\s+(.+)$/gm
+  let match: RegExpExecArray | null
 
-  // README.md is the index page, so it maps to the folder's root url
-  if (filePath === "README.md") {
-    return `${BASE_URL}/${folderSlug}`
-  }
-
-  // Remove .md extension and build the full url
-  const fileName = filePath.replace(/\.md$/, "")
-  return `${BASE_URL}/${folderSlug}/${fileName}`
-}
-
-async function getDocumentationData() {
-  const secret = await getSecret()
-  const octokit = new Octokit({ auth: secret })
-
-  const docConfig = await octokit.request(
-    `GET /repos/{owner}/{repo}/contents/{path}`,
-    {
-      owner: "brown-ccv",
-      repo: "ccv-documentation",
-      path: "searchConfig.json",
-      headers: {
-        "X-GitHub-Api-Version": "2026-03-10",
-      },
+  while ((match = re.exec(markdown)) !== null) {
+    const h = match[1].trim()
+    const key = h.toLowerCase()
+    if (h && !seen.has(key)) {
+      seen.add(key)
+      headings.push(h)
     }
-  )
-
-  const data = docConfig.data
-
-  if (Array.isArray(data) || !("content" in data)) {
-    throw new Error("Unexpected response format from GitHub API")
   }
 
-  const content = JSON.parse(
-    Buffer.from(data.content, "base64").toString("utf-8")
-  ) as DocConfig
-
-  const folders = content.include.map((item) => item.slug)
-  const ignoredFiles = content.ignore.files
-  const ignoredFolders = content.ignore.folders
-
-  return { folders, ignoredFiles, ignoredFolders }
+  return headings
 }
 
-async function fetchMarkdownFiles(
-  octokit: Octokit,
-  owner: string,
-  repo: string,
-  repoPath: string,
-  folderSlug: string,
-  ignoredFiles: string[],
-  ignoredFolders: string[]
-): Promise<DocumentationPage[]> {
-  const pages: DocumentationPage[] = []
+async function markdownToPlainText(markdown: string): Promise<string> {
+  const stripped = await remark().use(strip).process(markdown)
+  return String(stripped)
+    .replace(/[ \t]+/g, " ")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim()
+}
 
-  const response = await octokit.request(
+function toUrl(includeSlug: string, repoFilePath: string): string {
+  // repoFilePath is full path from repo root; convert to relative inside includeSlug
+  // e.g. includeSlug=hibernate, repoFilePath=hibernate/README.md => ""
+  // e.g. includeSlug=hibernate, repoFilePath=hibernate/faq.md => "faq"
+  // e.g. includeSlug=hibernate, repoFilePath=hibernate/getting-started/login.md => "getting-started/login"
+  const rel = repoFilePath.replace(new RegExp(`^${includeSlug}/?`), "")
+  if (/^README\.md$/i.test(rel)) return `${BASE_URL}/${includeSlug}`
+  const noExt = rel.replace(/\.md$/i, "")
+  return `${BASE_URL}/${includeSlug}/${noExt}`.replace(/\/+$/, "")
+}
+
+function makeId(url: string): string {
+  return url
+    .replace(/^https?:\/\//, "")
+    .replace(/[^\w/-]+/g, "")
+    .replace(/\//g, "-")
+    .toLowerCase()
+}
+
+async function getDocConfig(octokit: Octokit): Promise<DocConfig> {
+  const res = await octokit.request(
     "GET /repos/{owner}/{repo}/contents/{path}",
     {
-      owner,
-      repo,
-      path: repoPath,
-      headers: {
-        "X-GitHub-Api-Version": "2022-11-28",
-      },
+      owner: OWNER,
+      repo: REPO,
+      path: "searchConfig.json",
+      headers: { "X-GitHub-Api-Version": "2022-11-28" },
     }
   )
 
-  const data = response.data
-
-  if (!Array.isArray(data)) {
-    throw new Error(`Expected directory listing at path: ${repoPath}`)
+  const data = res.data
+  if (Array.isArray(data) || !("content" in data)) {
+    throw new Error("Unexpected searchConfig.json response")
   }
 
+  return JSON.parse(
+    Buffer.from(data.content, "base64").toString("utf-8")
+  ) as DocConfig
+}
+
+async function walkMarkdown(
+  octokit: Octokit,
+  include: IncludeItem,
+  ignoredFiles: string[],
+  ignoredFolders: string[],
+  currentPath: string
+): Promise<DocumentationPageRaw[]> {
+  const out: DocumentationPageRaw[] = []
+
+  const res = await octokit.request(
+    "GET /repos/{owner}/{repo}/contents/{path}",
+    {
+      owner: OWNER,
+      repo: REPO,
+      path: currentPath,
+      headers: { "X-GitHub-Api-Version": "2022-11-28" },
+    }
+  )
+
+  const data = res.data
+  if (!Array.isArray(data)) return out
+
   for (const item of data) {
-    // Handle markdown files
-    if (item.type === "file" && item.name.endsWith(".md")) {
+    if (item.type === "dir") {
+      if (ignoredFolders.includes(item.name)) continue
+      const nested = await walkMarkdown(
+        octokit,
+        include,
+        ignoredFiles,
+        ignoredFolders,
+        item.path
+      )
+      out.push(...nested)
+      continue
+    }
+
+    if (item.type === "file" && item.name.toLowerCase().endsWith(".md")) {
       if (ignoredFiles.includes(item.name)) continue
 
-      const fileResponse = await octokit.request(
+      const fileRes = await octokit.request(
         "GET /repos/{owner}/{repo}/contents/{path}",
         {
-          owner,
-          repo,
+          owner: OWNER,
+          repo: REPO,
           path: item.path,
-          headers: {
-            "X-GitHub-Api-Version": "2022-11-28",
-          },
+          headers: { "X-GitHub-Api-Version": "2022-11-28" },
         }
       )
 
-      const fileData = fileResponse.data
+      const fileData = fileRes.data
+      if (Array.isArray(fileData) || !("content" in fileData)) continue
 
-      if (Array.isArray(fileData) || !("content" in fileData)) {
-        throw new Error(`Unexpected response format for file: ${item.path}`)
-      }
+      const raw = Buffer.from(fileData.content, "base64").toString("utf-8")
+      const markdown = removeFrontmatter(raw)
 
-      const rawContent = Buffer.from(fileData.content, "base64").toString(
-        "utf-8"
-      )
-      const content = removeFrontmatter(rawContent)
-      const slug = buildSlug(folderSlug, item.name)
-
-      pages.push({ slug, content })
-    }
-
-    // Recursively handle subdirectories
-    if (item.type === "dir") {
-      if (ignoredFolders.includes(item.name)) continue
-
-      const subfolderSlug = `${folderSlug}/${item.name}`
-      const subPages = await fetchMarkdownFiles(
-        octokit,
-        owner,
-        repo,
-        item.path,
-        subfolderSlug,
-        ignoredFiles,
-        ignoredFolders
-      )
-
-      pages.push(...subPages)
+      out.push({
+        includeName: include.name,
+        includeSlug: include.slug,
+        repoFilePath: item.path,
+        url: toUrl(include.slug, item.path),
+        markdown,
+      })
     }
   }
 
-  return pages
+  return out
 }
 
-export async function getMarkdownContent(
-  folders: string[],
-  ignoredFiles: string[],
-  ignoredFolders: string[]
-): Promise<DocumentationPage[]> {
-  const secret = await getSecret()
-  const octokit = new Octokit({ auth: secret })
+export async function getDocumentationSearchDocuments(): Promise<
+  SearchDocument[]
+> {
+  const token = await getSecret()
+  const octokit = new Octokit({ auth: token })
 
-  const allPages: DocumentationPage[] = []
+  const config = await getDocConfig(octokit)
+  const docs: SearchDocument[] = []
 
-  for (const folderSlug of folders) {
-    const pages = await fetchMarkdownFiles(
+  for (const include of config.include) {
+    const rawPages = await walkMarkdown(
       octokit,
-      "brown-ccv",
-      "ccv-documentation",
-      folderSlug, // repo path matches the slug (e.g. "hibernate")
-      folderSlug, // base url slug also starts from the folder slug
-      ignoredFiles,
-      ignoredFolders
+      include,
+      config.ignore.files,
+      config.ignore.folders,
+      include.slug
     )
 
-    allPages.push(...pages)
+    for (const page of rawPages) {
+      const plain = await markdownToPlainText(page.markdown)
+      const headings = extractHeadingsFromMarkdown(page.markdown)
+
+      docs.push({
+        id: makeId(page.url),
+        title: include.name, // per your requirement
+        content: plain, // markdown/html stripped
+        description: "",
+        headings,
+        url: page.url,
+        type: "documentation",
+        category: `${BASE_URL}/${include.slug}`, // base url category
+      })
+    }
   }
 
-  return allPages
+  return docs
 }
