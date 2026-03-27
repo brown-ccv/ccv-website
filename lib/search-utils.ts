@@ -164,7 +164,7 @@ export function buildBreadcrumb(
 export function chunkMarkdownByHeadings(markdown: string): ContentChunk[] {
   const lines = markdown.split("\n")
   const chunks: ContentChunk[] = []
-  let currentSection = "Overview"
+  let currentSection = ""
   let buffer: string[] = []
   let inFence = false
 
