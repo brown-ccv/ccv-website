@@ -1,6 +1,7 @@
 import fs from "fs"
 import path from "path"
 import { buildPagesDocuments } from "./get-pages-files"
+import { getDocumentationSearchDocuments } from "./get-documentation-files"
 
 // Export to JSON
 export async function exportToJSON(): Promise<void> {
@@ -8,10 +9,9 @@ export async function exportToJSON(): Promise<void> {
     console.log("🔍 Building search index...\n")
 
     const documentsPages = await buildPagesDocuments()
-    // const documentsDocumentation = await getDocumentationSearchDocuments()
-    //
-    // const documents = [...documentsPages, ...documentsDocumentation]
-    const documents = documentsPages
+    const documentsDocumentation = await getDocumentationSearchDocuments()
+
+    const documents = [...documentsPages, ...documentsDocumentation]
     console.log(`\n📚 Found ${documents.length} documents`)
 
     const searchData = {
