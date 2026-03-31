@@ -93,3 +93,13 @@ export function urlToBreadcrumb(
   const acronymPattern = new RegExp(`\\b(${acronyms.join("|")})\\b`, "gi")
   return formatted.replace(acronymPattern, (match) => match.toUpperCase())
 }
+
+export function slugifyAnchor(raw: string): string {
+  // expects already sanitized/plain input
+  return raw
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
+}
