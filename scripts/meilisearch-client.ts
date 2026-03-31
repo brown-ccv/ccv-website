@@ -52,6 +52,8 @@ async function configureIndex() {
       "headings",
       "url",
       "category",
+      "type",
+      "breadcrumb",
     ],
   })
 }
