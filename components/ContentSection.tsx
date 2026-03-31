@@ -1,10 +1,10 @@
 import React from "react"
-import { cn } from "@/lib/utils"
+import { cn, slugifyAnchor } from "@/lib/utils"
 import { CCVBars } from "@/components/assets/CCVBars"
 
 interface ContentSectionProps {
   align?: "left" | "center"
-  title: string
+  title?: string
   bars?: boolean
   icon?: React.ReactNode
 }
@@ -18,10 +18,22 @@ export function ContentSection({
   children,
   ...props
 }: ContentSectionProps & React.HTMLAttributes<HTMLDivElement>) {
-  const santitizedTitle = title.toLowerCase().replace(/\s+/g, "-")
+  const sanitizedTitle = title ? slugifyAnchor(title) : undefined
+
+  // Separate ContentHeader children from other children
+  const contentHeaderChild = React.Children.toArray(children).find(
+    (
+      child
+    ): child is React.ReactElement<React.HTMLAttributes<HTMLDivElement>> =>
+      React.isValidElement(child) && child.type === ContentHeader
+  )
+  const otherChildren = React.Children.toArray(children).filter(
+    (child) => !(React.isValidElement(child) && child.type === ContentHeader)
+  )
+
   return (
     <section
-      id={santitizedTitle}
+      id={sanitizedTitle}
       className={cn(
         "w-full space-y-4 px-12 py-12 even:bg-neutral-50 sm:px-16 lg:px-14 xl:px-20",
         align === "left"
@@ -32,10 +44,13 @@ export function ContentSection({
       data-align={align}
       {...props}
     >
-      <ContentHeader>
-        <ContentTitle title={title} bars={bars} icon={icon} />
-      </ContentHeader>
-      {children}
+      {(title || contentHeaderChild) && (
+        <ContentHeader>
+          {title && <ContentTitle title={title} bars={bars} icon={icon} />}
+          {contentHeaderChild?.props.children}
+        </ContentHeader>
+      )}
+      {otherChildren}
     </section>
   )
 }
