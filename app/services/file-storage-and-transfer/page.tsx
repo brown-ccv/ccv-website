@@ -41,6 +41,9 @@ export default async function CompareStorageOptions() {
           variant="primary_filled"
           size="lg"
           href="/services/rates#research-data-storage"
+          // NOTE: Amar requested this link to open a new page which is against the norm of internal links
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Storage Rates
         </ButtonLink>
