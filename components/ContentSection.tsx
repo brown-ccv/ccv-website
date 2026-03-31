@@ -45,7 +45,7 @@ export function ContentSection({
       {...props}
     >
       {(title || contentHeaderChild) && (
-        <ContentHeader>
+        <ContentHeader className="not-prose">
           {title && <ContentTitle title={title} bars={bars} icon={icon} />}
           {contentHeaderChild?.props.children}
         </ContentHeader>

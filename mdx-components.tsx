@@ -48,10 +48,7 @@ function MDXContentSection({
   children: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <ContentSection {...props}>
-      <ContentHeader>
-        <ContentTitle className="not-prose" title={title} />
-      </ContentHeader>
+    <ContentSection {...props} title={title}>
       {children}
     </ContentSection>
   )
