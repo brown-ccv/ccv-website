@@ -4,15 +4,24 @@ import { CCVBars } from "@/components/assets/CCVBars"
 
 interface ContentSectionProps {
   align?: "left" | "center"
+  title: string
+  bars?: boolean
+  icon?: React.ReactNode
 }
 
 export function ContentSection({
   align = "center",
+  title,
+  bars = true,
+  icon,
   className,
+  children,
   ...props
 }: ContentSectionProps & React.HTMLAttributes<HTMLDivElement>) {
+  const santitizedTitle = title.toLowerCase().replace(/\s+/g, "-")
   return (
     <section
+      id={santitizedTitle}
       className={cn(
         "w-full space-y-4 px-12 py-12 even:bg-neutral-50 sm:px-16 lg:px-14 xl:px-20",
         align === "left"
@@ -22,7 +31,12 @@ export function ContentSection({
       )}
       data-align={align}
       {...props}
-    />
+    >
+      <ContentHeader>
+        <ContentTitle title={title} bars={bars} icon={icon} />
+      </ContentHeader>
+      {children}
+    </section>
   )
 }
 

@@ -47,11 +47,7 @@ export function StorageTool({ className }: StorageToolProps) {
 
   return (
     <>
-      <ContentSection id="form" className="not-prose">
-        <ContentHeader>
-          <ContentTitle title="Storage Selection Tool" />
-        </ContentHeader>
-
+      <ContentSection title="Storage Selection Tool" className="not-prose">
         <p className="mb-6 text-lg leading-tight lg:text-xl">
           Answering the questions in the form will provide a list of services
           that meet your requirements.
@@ -68,7 +64,7 @@ export function StorageTool({ className }: StorageToolProps) {
             <ScrollButton
               variant="primary_filled"
               size="md"
-              id="table"
+              id="compare-storage-options"
               aria-describedby="table-nav-desc"
               aria-label="Scroll to comparison table section"
             >
@@ -100,10 +96,10 @@ export function StorageTool({ className }: StorageToolProps) {
           />
         </div>
       </ContentSection>
-      <ContentSection id="table" className={`not-prose ${TABLE_VISIBILITY}`}>
-        <ContentHeader>
-          <ContentTitle title="Compare Storage Options" />
-        </ContentHeader>
+      <ContentSection
+        title="Compare Storage Options"
+        className={`not-prose ${TABLE_VISIBILITY}`}
+      >
         <p className="mb-6 text-lg leading-tight lg:text-xl">
           This tool lets you compare the available storage options at Brown to
           compare their features and decide which of these services best suits
