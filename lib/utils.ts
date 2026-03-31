@@ -1,6 +1,5 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
-import { sanitizeForSearch } from "@/lib/search-utils"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -96,8 +95,8 @@ export function urlToBreadcrumb(
 }
 
 export function slugifyAnchor(raw: string): string {
-  const cleaned = sanitizeForSearch(raw)
-  return cleaned
+  // expects already sanitized/plain input
+  return raw
     .toLowerCase()
     .replace(/[^\w\s-]/g, "")
     .replace(/\s+/g, "-")
