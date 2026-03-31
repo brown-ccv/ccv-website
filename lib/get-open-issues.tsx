@@ -1,6 +1,6 @@
 "use server"
 
-import { Octokit } from "octokit"
+import { Octokit } from "@octokit/rest"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
 
 interface GitHubIssue {
