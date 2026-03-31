@@ -10,8 +10,8 @@ import {
   removeFrontmatter,
   sanitizeForSearch,
   SearchDocument,
-  slugifyAnchor,
 } from "@/lib/search-utils"
+import { slugifyAnchor } from "@/lib/utils"
 
 interface DocConfig {
   ignore: { files: string[]; folders: string[] }

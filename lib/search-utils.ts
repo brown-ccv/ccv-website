@@ -1,5 +1,6 @@
 import { remark } from "remark"
 import strip from "strip-markdown"
+import { slugifyAnchor } from "@/lib/utils"
 
 export interface ContentChunk {
   section: string
@@ -105,15 +106,6 @@ export function stripFencedCodeBlocks(s: string): string {
 }
 
 // -------------------- Chunk Helpers --------------------
-export function slugifyAnchor(raw: string): string {
-  const cleaned = sanitizeForSearch(raw)
-  return cleaned
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "")
-}
 
 export function titleCaseSegment(segment: string): string {
   return segment

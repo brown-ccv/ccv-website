@@ -9,8 +9,8 @@ import {
   chunkMarkdownByHeadings,
   markdownToPlainText,
   sanitizeForSearch,
-  slugifyAnchor,
 } from "@/lib/search-utils"
+import { slugifyAnchor } from "@/lib/utils"
 
 interface FrontMatter {
   title?: string

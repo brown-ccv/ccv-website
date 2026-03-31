@@ -1,5 +1,6 @@
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
+import { sanitizeForSearch } from "@/lib/search-utils"
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
@@ -92,4 +93,14 @@ export function urlToBreadcrumb(
 
   const acronymPattern = new RegExp(`\\b(${acronyms.join("|")})\\b`, "gi")
   return formatted.replace(acronymPattern, (match) => match.toUpperCase())
+}
+
+export function slugifyAnchor(raw: string): string {
+  const cleaned = sanitizeForSearch(raw)
+  return cleaned
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-|-$/g, "")
 }
