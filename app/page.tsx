@@ -13,7 +13,6 @@ import {
   ContentHeader,
   ContentSection,
   ContentSubHeader,
-  ContentTitle,
 } from "@/components/ContentSection"
 import { FaCalendarAlt } from "react-icons/fa"
 import { getMDXMetadata } from "@/lib/mdx-utils"
@@ -48,15 +47,11 @@ export default async function Home() {
         <HeroCard />
         <ImpactBanner />
         <div>
-          <ContentSection className="px-none">
-            <ContentHeader>
-              <ContentTitle title="Featured Projects" />
-            </ContentHeader>
+          <ContentSection title="Featured Projects" className="px-none">
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>
-          <ContentSection id="events" align="left">
+          <ContentSection title="Events" icon={<FaCalendarAlt />} align="left">
             <ContentHeader>
-              <ContentTitle title="Events" icon={<FaCalendarAlt />} />
               <ContentSubHeader>
                 <>
                   <h3 className="font-serif font-normal italic">

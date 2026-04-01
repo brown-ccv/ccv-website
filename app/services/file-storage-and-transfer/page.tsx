@@ -1,24 +1,17 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
 import { getMDXMetadata } from "@/lib/mdx-utils"
-import { StorageTool } from "@/components/storage/StorageTool"
-import { SelectedAnswers } from "@/lib/storage-types"
-import services from "@/content/data/storage-features.json"
-import questions from "@/content/data/storage-questions.json"
 import StorageContent from "@/content/routes/services/file-storage-and-transfer.mdx"
 
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import Icon from "@/components/ui/RenderIcon"
+import { TABLE_VISIBILITY } from "@/lib/styles"
 
 export default async function CompareStorageOptions() {
   const metadata = getMDXMetadata(
     "content/routes/services/file-storage-and-transfer.mdx"
   )
-  let initialSelectedAnswers: SelectedAnswers = {}
-  questions.map((question: any, index: number) => {
-    initialSelectedAnswers[question.id] = question.default_answer
-  })
 
   return (
     <>
@@ -44,23 +37,30 @@ export default async function CompareStorageOptions() {
         >
           Storage Help
         </ButtonLink>
+        <ButtonLink
+          variant="primary_filled"
+          size="lg"
+          href="/services/rates#research-data-storage"
+          // NOTE: Amar requested this link to open a new page which is against the norm of internal links
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Storage Rates
+        </ButtonLink>
         <ScrollButton
           variant="primary_filled"
           size="lg"
-          id="table"
+          id="compare-storage-options"
+          className={TABLE_VISIBILITY}
           aria-describedby="table-nav-desc"
           aria-label="Scroll to comparison table section"
         >
-          Compare Storage
-          <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
+          <span className="inline-flex items-center gap-2 whitespace-nowrap">
+            Compare Storage
+            <Icon iconName="FaAngleDoubleDown" />
+          </span>
         </ScrollButton>
       </Hero>
-
-      <StorageTool
-        questions={questions}
-        initialSelectedAnswers={initialSelectedAnswers}
-        services={services}
-      />
       <StorageContent />
     </>
   )
