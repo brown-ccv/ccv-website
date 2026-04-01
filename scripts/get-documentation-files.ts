@@ -9,8 +9,8 @@ import {
   pathHasIgnoredFolder,
   removeFrontmatter,
   sanitizeForSearch,
-  SearchDocument,
 } from "@/lib/search-utils"
+import type { SearchDocument } from "@/lib/search-utils"
 import { slugifyAnchor } from "@/lib/utils"
 
 interface DocConfig {
