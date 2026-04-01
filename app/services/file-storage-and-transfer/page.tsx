@@ -50,7 +50,7 @@ export default async function CompareStorageOptions() {
         <ScrollButton
           variant="primary_filled"
           size="lg"
-          id="table"
+          id="compare-storage-options"
           className={TABLE_VISIBILITY}
           aria-describedby="table-nav-desc"
           aria-label="Scroll to comparison table section"
