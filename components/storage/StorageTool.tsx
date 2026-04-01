@@ -3,11 +3,7 @@
 import React, { useCallback, useState } from "react"
 import { Button } from "@/components/button/Button"
 import { ScrollButton } from "@/components/button/ScrollButton"
-import {
-  ContentHeader,
-  ContentSection,
-  ContentTitle,
-} from "@/components/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 import { StorageForm } from "@/components/storage/StorageForm"
 import { StorageTable } from "@/components/storage/StorageTable"
 import { TABLE_VISIBILITY } from "@/lib/styles"

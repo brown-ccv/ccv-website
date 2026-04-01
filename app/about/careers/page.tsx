@@ -1,10 +1,6 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
-import {
-  ContentHeader,
-  ContentSection,
-  ContentTitle,
-} from "@/components/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import CareersContent from "@/content/routes/about/careers.mdx"
 import { CareerData } from "@/components/CareerData"
