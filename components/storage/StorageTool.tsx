@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useMemo, useState } from "react"
 import { Button } from "@/components/button/Button"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import {
@@ -23,10 +23,14 @@ interface StorageToolProps {
 }
 
 export function StorageTool({ className }: StorageToolProps) {
-  let initialSelectedAnswers: SelectedAnswers = {}
-  questions.map((question: any, index: number) => {
-    initialSelectedAnswers[question.id] = question.default_answer
-  })
+  const initialSelectedAnswers = useMemo<SelectedAnswers>(() => {
+    const initial: SelectedAnswers = {}
+    questions.forEach((question: any) => {
+      initial[question.id] = question.default_answer
+    })
+    return initial
+  }, [])
+
   const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(
     initialSelectedAnswers
   )
