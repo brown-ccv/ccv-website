@@ -2,11 +2,7 @@ import React from "react"
 import type { MDXComponents } from "mdx/types"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
-import {
-  ContentSection,
-  ContentHeader,
-  ContentTitle,
-} from "@/components/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 import { StorageTool } from "@/components/storage/StorageTool"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { StyledCard } from "@/components/card/StyledCard"
@@ -48,10 +44,7 @@ function MDXContentSection({
   children: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>) {
   return (
-    <ContentSection {...props}>
-      <ContentHeader>
-        <ContentTitle className="not-prose" title={title} />
-      </ContentHeader>
+    <ContentSection {...props} title={title}>
       {children}
     </ContentSection>
   )

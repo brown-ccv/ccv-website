@@ -1,18 +1,62 @@
 import React from "react"
-import { cn } from "@/lib/utils"
+import { cn, slugifyAnchor } from "@/lib/utils"
 import { CCVBars } from "@/components/assets/CCVBars"
 
 interface ContentSectionProps {
   align?: "left" | "center"
+  title?: string
+  bars?: boolean
+  icon?: React.ReactNode
 }
 
 export function ContentSection({
   align = "center",
+  title,
+  bars = true,
+  icon,
   className,
+  children,
   ...props
 }: ContentSectionProps & React.HTMLAttributes<HTMLDivElement>) {
+  const sanitizedTitle = title ? slugifyAnchor(title) : undefined
+
+  const allChildren = React.Children.toArray(children)
+
+  // Separate ContentHeader children from other children
+  const contentHeaderChild = allChildren.find(
+    (
+      child
+    ): child is React.ReactElement<React.HTMLAttributes<HTMLDivElement>> =>
+      React.isValidElement(child) && child.type === ContentHeader
+  )
+
+  const otherChildren = allChildren.filter(
+    (child) => !(React.isValidElement(child) && child.type === ContentHeader)
+  )
+
+  const autoTitle = title ? (
+    <ContentTitle title={title} bars={bars} icon={icon} />
+  ) : null
+
+  const renderedHeader = contentHeaderChild ? (
+    React.cloneElement(contentHeaderChild, {
+      ...contentHeaderChild.props,
+      className: cn("not-prose", contentHeaderChild.props.className),
+      children: (
+        <>
+          {autoTitle}
+          {contentHeaderChild.props.children}
+        </>
+      ),
+    })
+  ) : title ? (
+    <ContentHeader className="not-prose">{autoTitle}</ContentHeader>
+  ) : null
+
   return (
     <section
+      {...props}
+      id={props.id ?? sanitizedTitle}
       className={cn(
         "w-full space-y-4 px-12 py-12 even:bg-neutral-50 sm:px-16 lg:px-14 xl:px-20",
         align === "left"
@@ -21,8 +65,10 @@ export function ContentSection({
         className
       )}
       data-align={align}
-      {...props}
-    />
+    >
+      {renderedHeader}
+      {otherChildren}
+    </section>
   )
 }
 
