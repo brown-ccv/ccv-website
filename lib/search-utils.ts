@@ -140,7 +140,17 @@ export function getPathSegmentsFromUrl(url: string, baseUrl: string): string[] {
     return noHash.replace(/^\/+/, "").split("/").filter(Boolean)
   }
 
-  return noHash.replace(`${baseUrl}/`, "").split("/").filter(Boolean)
+  const normalizedBaseUrl = baseUrl.replace(/\/+$/, "")
+
+  if (noHash === normalizedBaseUrl) {
+    return []
+  }
+
+  if (noHash.startsWith(`${normalizedBaseUrl}/`)) {
+    return noHash.slice(normalizedBaseUrl.length + 1).split("/").filter(Boolean)
+  }
+
+  return noHash.split("/").filter(Boolean)
 }
 
 export function buildBreadcrumb(
