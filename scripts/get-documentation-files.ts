@@ -7,8 +7,8 @@ import {
   chunkMarkdownByHeadings,
   makeId,
   markdownToPlainText,
+  parseFrontmatter,
   pathHasIgnoredFolder,
-  removeFrontmatter,
   sanitizeForSearch,
 } from "@/lib/search-utils"
 import { slugifyAnchor } from "@/lib/utils"
@@ -100,8 +100,9 @@ export async function walkRepo(
         const raw = Buffer.from(blobRes.data.content, "base64").toString(
           "utf-8"
         )
-        const markdown = removeFrontmatter(raw)
-        const chunks = chunkMarkdownByHeadings(markdown)
+        const { data, content } = parseFrontmatter(raw)
+        if (data.hidden === "true" || data.hidden === true) return []
+        const chunks = chunkMarkdownByHeadings(content)
         const pageUrl = buildPageUrl(include.slug, item.path, BASE_URL)
 
         const fileDocs: SearchDocument[] = []

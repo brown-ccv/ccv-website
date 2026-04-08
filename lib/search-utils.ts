@@ -26,6 +26,25 @@ export function removeFrontmatter(markdown: string): string {
   return markdown.replace(/^---[\s\S]*?---\n?/, "")
 }
 
+export function parseFrontmatter(raw: string) {
+  if (!raw.startsWith("---")) return { data: {}, content: raw }
+
+  const end = raw.indexOf("\n---", 3)
+  if (end === -1) return { data: {}, content: raw }
+
+  const fm = raw.slice(3, end).trim()
+  const content = raw.slice(end + 4)
+  const data: Record<string, any> = {}
+
+  fm.split("\n").forEach((line) => {
+    const [k, ...v] = line.split(":")
+    if (!k) return
+    data[k.trim()] = v.join(":").trim()
+  })
+
+  return { data, content }
+}
+
 export function stripHtmlTags(s: string): string {
   return s.replace(/<[^>]*>/g, " ")
 }
