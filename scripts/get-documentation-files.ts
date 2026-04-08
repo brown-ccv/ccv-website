@@ -1,4 +1,6 @@
 import { Octokit } from "@octokit/rest"
+import { throttling } from "@octokit/plugin-throttling"
+import { retry } from "@octokit/plugin-retry"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
 import type { SearchDocument } from "@/lib/search-utils"
 import {
@@ -34,6 +36,9 @@ async function getSecret(): Promise<string> {
   return secret.payload.data.toString()
 }
 
+// -------------------- Octokit with Plugins --------------------
+const MyOctokit = Octokit.plugin(throttling, retry)
+
 // -------------------- Config Fetch --------------------
 async function getDocConfig(octokit: Octokit): Promise<DocConfig> {
   const res = await octokit.request(
@@ -54,6 +59,54 @@ async function getDocConfig(octokit: Octokit): Promise<DocConfig> {
   return JSON.parse(
     Buffer.from(data.content, "base64").toString("utf-8")
   ) as DocConfig
+}
+
+// -------------------- GraphQL (Batch) --------------------
+async function fetchBlobsGraphQL(
+  octokit: Octokit,
+  paths: string[]
+): Promise<Record<string, string>> {
+  // Build query with aliases
+  const exprVars = paths.map((_, i) => `$expression${i}: String!`).join(", ")
+  const fields = paths
+    .map(
+      (_, i) => `
+      f${i}: object(expression: $expression${i}) {
+        ... on Blob {
+          text
+        }
+      }`
+    )
+    .join("\n")
+
+  const query = `
+    query($owner: String!, $repo: String!, ${exprVars}) {
+      repository(owner: $owner, name: $repo) {
+        ${fields}
+      }
+    }
+  `
+
+  const variables: Record<string, string> = {
+    owner: OWNER,
+    repo: REPO,
+  }
+
+  paths.forEach((p, i) => {
+    variables[`expression${i}`] = `HEAD:${p}`
+  })
+
+  const result = await octokit.graphql<any>(query, variables)
+
+  const out: Record<string, string> = {}
+  const repo = result.repository
+
+  paths.forEach((p, i) => {
+    const text = repo?.[`f${i}`]?.text
+    if (typeof text === "string") out[p] = text
+  })
+
+  return out
 }
 
 // -------------------- Tree-based Fetch (Batch Processing) --------------------
@@ -80,26 +133,15 @@ export async function walkRepo(
   const batchSize = 10 // adjust concurrency level
   for (let i = 0; i < mdFiles.length; i += batchSize) {
     const batch = mdFiles.slice(i, i + batchSize)
+    const paths = batch.map((b) => b.path!).filter(Boolean)
 
+    const blobMap = await fetchBlobsGraphQL(octokit, paths)
     const batchResults = await Promise.all(
       batch.map(async (item) => {
+        const raw = blobMap[item.path!]
+        if (!raw) return []
         if (!item.sha || !item.path) return []
 
-        const blobRes = await octokit.request(
-          "GET /repos/{owner}/{repo}/git/blobs/{file_sha}",
-          {
-            owner: OWNER,
-            repo: REPO,
-            file_sha: item.sha,
-            headers: { "X-GitHub-Api-Version": "2022-11-28" },
-          }
-        )
-
-        if (!("content" in blobRes.data)) return []
-
-        const raw = Buffer.from(blobRes.data.content, "base64").toString(
-          "utf-8"
-        )
         const { data, content } = parseFrontmatter(raw)
         if (data.hidden === "true" || data.hidden === true) return []
         const chunks = chunkMarkdownByHeadings(content)
@@ -153,7 +195,19 @@ export async function getDocumentationSearchDocuments(): Promise<
   SearchDocument[]
 > {
   const token = await getSecret()
-  const octokit = new Octokit({ auth: token })
+  const octokit = new MyOctokit({
+    auth: token,
+    throttle: {
+      onRateLimit: (retryAfter: any) => {
+        console.warn(`Rate limit hit, retrying after ${retryAfter}s`)
+        return true
+      },
+      onSecondaryRateLimit: (retryAfter: any) => {
+        console.warn(`Secondary rate limit, retrying after ${retryAfter}s`)
+        return true
+      },
+    },
+  })
 
   const config = await getDocConfig(octokit)
 
