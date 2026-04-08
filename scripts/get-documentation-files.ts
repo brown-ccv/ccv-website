@@ -1,5 +1,6 @@
 import { Octokit } from "@octokit/rest"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
+import type { SearchDocument } from "@/lib/search-utils"
 import {
   buildBreadcrumb,
   buildPageUrl,
@@ -10,8 +11,8 @@ import {
   removeFrontmatter,
   sanitizeForSearch,
 } from "@/lib/search-utils"
-import type { SearchDocument } from "@/lib/search-utils"
 import { slugifyAnchor } from "@/lib/utils"
+import path from "path"
 
 interface DocConfig {
   ignore: { files: string[]; folders: string[] }
@@ -55,97 +56,92 @@ async function getDocConfig(octokit: Octokit): Promise<DocConfig> {
   ) as DocConfig
 }
 
-// -------------------- Recursive Fetch --------------------
-async function walkRepo(
+// -------------------- Tree-based Fetch (Batch Processing) --------------------
+export async function walkRepo(
   octokit: Octokit,
   include: { name: string; slug: string },
-  repoPath: string,
   ignoredFiles: string[],
-  ignoredFolders: string[]
+  ignoredFolders: string[],
+  tree: { path?: string; type?: string; sha?: string }[]
 ): Promise<SearchDocument[]> {
   const docs: SearchDocument[] = []
 
-  const res = await octokit.request(
-    "GET /repos/{owner}/{repo}/contents/{path}",
-    {
-      owner: OWNER,
-      repo: REPO,
-      path: repoPath,
-      headers: { "X-GitHub-Api-Version": "2022-11-28" },
-    }
-  )
+  if (!Array.isArray(tree)) return docs
 
-  if (!Array.isArray(res.data)) return docs
+  // 2) Filter markdown blobs
+  const mdFiles = tree.filter((item) => {
+    if (item.type !== "blob") return false
+    if (!item.path?.toLowerCase().endsWith(".md")) return false
+    if (!item.path.startsWith(`${include.slug}/`)) return false
+    if (ignoredFiles.includes(path.basename(item.path))) return false
+    return !pathHasIgnoredFolder(item.path, ignoredFolders)
+  })
 
-  for (const item of res.data) {
-    if (item.type === "dir") {
-      if (ignoredFolders.includes(item.name)) continue
-      docs.push(
-        ...(await walkRepo(
-          octokit,
-          include,
-          item.path,
-          ignoredFiles,
-          ignoredFolders
-        ))
-      )
-      continue
-    }
+  const batchSize = 10 // adjust concurrency level
+  for (let i = 0; i < mdFiles.length; i += batchSize) {
+    const batch = mdFiles.slice(i, i + batchSize)
 
-    if (
-      item.type === "file" &&
-      item.name.toLowerCase().endsWith(".md") &&
-      !ignoredFiles.includes(item.name) &&
-      !pathHasIgnoredFolder(item.path, ignoredFolders)
-    ) {
-      const fileRes = await octokit.request(
-        "GET /repos/{owner}/{repo}/contents/{path}",
-        {
-          owner: OWNER,
-          repo: REPO,
-          path: item.path,
-          headers: { "X-GitHub-Api-Version": "2022-11-28" },
-        }
-      )
+    const batchResults = await Promise.all(
+      batch.map(async (item) => {
+        if (!item.sha || !item.path) return []
 
-      if (Array.isArray(fileRes.data) || !("content" in fileRes.data)) continue
-
-      const raw = Buffer.from(fileRes.data.content, "base64").toString("utf-8")
-      const markdown = removeFrontmatter(raw)
-      const chunks = chunkMarkdownByHeadings(markdown)
-      const pageUrl = buildPageUrl(include.slug, item.path, BASE_URL)
-
-      for (let i = 0; i < chunks.length; i++) {
-        const section = sanitizeForSearch(chunks[i].section)
-        if (!section || section.toLowerCase() === "untitled") continue
-
-        const plain = await markdownToPlainText(chunks[i].content)
-        if (!plain || plain.length < 40) continue
-
-        const anchor = slugifyAnchor(section)
-        const url = anchor ? `${pageUrl}#${anchor}` : pageUrl
-        const { breadcrumb, pathSegments } = buildBreadcrumb(
-          include.name,
-          pageUrl,
-          section,
-          BASE_URL
+        const blobRes = await octokit.request(
+          "GET /repos/{owner}/{repo}/git/blobs/{file_sha}",
+          {
+            owner: OWNER,
+            repo: REPO,
+            file_sha: item.sha,
+            headers: { "X-GitHub-Api-Version": "2022-11-28" },
+          }
         )
 
-        docs.push({
-          id: `${makeId(url)}-${i}`,
-          title: sanitizeForSearch(include.name),
-          content: plain,
-          description: section,
-          headings: [section],
-          url,
-          type: "documentation",
-          category: include.slug,
-          breadcrumb,
-          pathSegments,
-          section,
-        })
-      }
-    }
+        if (!("content" in blobRes.data)) return []
+
+        const raw = Buffer.from(blobRes.data.content, "base64").toString(
+          "utf-8"
+        )
+        const markdown = removeFrontmatter(raw)
+        const chunks = chunkMarkdownByHeadings(markdown)
+        const pageUrl = buildPageUrl(include.slug, item.path, BASE_URL)
+
+        const fileDocs: SearchDocument[] = []
+
+        for (let i = 0; i < chunks.length; i++) {
+          const section = sanitizeForSearch(chunks[i].section)
+          if (!section || section.toLowerCase() === "untitled") continue
+
+          const plain = await markdownToPlainText(chunks[i].content)
+          if (!plain || plain.length < 40) continue
+
+          const anchor = slugifyAnchor(section)
+          const url = anchor ? `${pageUrl}#${anchor}` : pageUrl
+          const { breadcrumb, pathSegments } = buildBreadcrumb(
+            include.name,
+            pageUrl,
+            section,
+            BASE_URL
+          )
+
+          fileDocs.push({
+            id: `${makeId(url)}-${i}`,
+            title: sanitizeForSearch(include.name),
+            content: plain,
+            description: section,
+            headings: [section],
+            url,
+            type: "documentation",
+            category: include.slug,
+            breadcrumb,
+            pathSegments,
+            section,
+          })
+        }
+
+        return fileDocs
+      })
+    )
+
+    docs.push(...batchResults.flat())
   }
 
   return docs
@@ -159,18 +155,33 @@ export async function getDocumentationSearchDocuments(): Promise<
   const octokit = new Octokit({ auth: token })
 
   const config = await getDocConfig(octokit)
-  const allDocs: SearchDocument[] = []
 
-  for (const include of config.include) {
-    const docs = await walkRepo(
-      octokit,
-      include,
-      include.slug,
-      config.ignore.files,
-      config.ignore.folders
+  // fetch tree once
+  const treeRes = await octokit.request(
+    "GET /repos/{owner}/{repo}/git/trees/{tree_sha}",
+    {
+      owner: OWNER,
+      repo: REPO,
+      tree_sha: "HEAD",
+      recursive: "true",
+      headers: { "X-GitHub-Api-Version": "2022-11-28" },
+    }
+  )
+
+  const tree = treeRes.data.tree
+  if (!Array.isArray(tree)) return []
+
+  const allDocs = await Promise.all(
+    config.include.map((include) =>
+      walkRepo(
+        octokit,
+        include,
+        config.ignore.files,
+        config.ignore.folders,
+        tree
+      )
     )
-    allDocs.push(...docs)
-  }
+  )
 
-  return allDocs
+  return allDocs.flat()
 }
