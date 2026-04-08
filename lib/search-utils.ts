@@ -22,10 +22,6 @@ export interface SearchDocument {
 }
 
 // -------------------- Cleaning Helpers --------------------
-export function removeFrontmatter(markdown: string): string {
-  return markdown.replace(/^---[\s\S]*?---\n?/, "")
-}
-
 export function parseFrontmatter(raw: string) {
   if (!raw.startsWith("---")) return { data: {}, content: raw }
 
