@@ -37,11 +37,7 @@ export async function exportToJSON(): Promise<void> {
       console.log("  Title:", sample.title)
       console.log("  URL:", sample.url)
       console.log("  Category:", sample.category)
-      console.log("  Section:", sample.section || "(none)")
       console.log("  Breadcrumb:", sample.breadcrumb)
-      console.log("  Path segments:", sample.pathSegments)
-      console.log("  Headings:", sample.headings)
-      console.log("  Description length:", sample.description.length, "chars")
       console.log("  Content length:", sample.content.length, "chars")
       console.log(
         "  Content preview:",
@@ -62,23 +58,6 @@ export async function exportToJSON(): Promise<void> {
       .sort(([, a], [, b]) => b - a)
       .forEach(([category, count]) => {
         console.log(`  ${category}: ${count}`)
-      })
-
-    const sectionCounts = documents.reduce(
-      (acc, doc) => {
-        const key = doc.section || "Overview"
-        acc[key] = (acc[key] || 0) + 1
-        return acc
-      },
-      {} as Record<string, number>
-    )
-
-    console.log("\n📑 Top sections:")
-    Object.entries(sectionCounts)
-      .sort(([, a], [, b]) => b - a)
-      .slice(0, 10)
-      .forEach(([section, count]) => {
-        console.log(`  ${section}: ${count}`)
       })
 
     const contentLengths = documents.map((d) => d.content.length)
