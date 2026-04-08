@@ -11,14 +11,10 @@ export interface SearchDocument {
   id: string
   title: string
   content: string
-  description: string
-  headings: string[]
   url: string
   type: string
   category: string
   breadcrumb: string[]
-  pathSegments: string[]
-  section?: string
 }
 
 // -------------------- Cleaning Helpers --------------------
@@ -147,7 +143,10 @@ export function getPathSegmentsFromUrl(url: string, baseUrl: string): string[] {
   }
 
   if (noHash.startsWith(`${normalizedBaseUrl}/`)) {
-    return noHash.slice(normalizedBaseUrl.length + 1).split("/").filter(Boolean)
+    return noHash
+      .slice(normalizedBaseUrl.length + 1)
+      .split("/")
+      .filter(Boolean)
   }
 
   return noHash.split("/").filter(Boolean)
@@ -158,7 +157,7 @@ export function buildBreadcrumb(
   url: string,
   section: string,
   baseUrl: string
-): { breadcrumb: string[]; pathSegments: string[] } {
+): string[] {
   const pathSegments = getPathSegmentsFromUrl(url, baseUrl)
   const labelSegments = pathSegments.map(titleCaseSegment)
 
@@ -175,7 +174,7 @@ export function buildBreadcrumb(
     }
   }
 
-  return { breadcrumb: labelSegments, pathSegments }
+  return labelSegments
 }
 
 export function chunkMarkdownByHeadings(markdown: string): ContentChunk[] {

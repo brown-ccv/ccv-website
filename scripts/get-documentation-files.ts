@@ -158,7 +158,7 @@ export async function walkRepo(
 
           const anchor = slugifyAnchor(section)
           const url = anchor ? `${pageUrl}#${anchor}` : pageUrl
-          const { breadcrumb, pathSegments } = buildBreadcrumb(
+          const breadcrumb = buildBreadcrumb(
             include.name,
             pageUrl,
             section,
@@ -169,14 +169,10 @@ export async function walkRepo(
             id: `${makeId(url)}-${i}`,
             title: sanitizeForSearch(include.name),
             content: plain,
-            description: section,
-            headings: [section],
             url,
             type: "documentation",
             category: include.slug,
             breadcrumb,
-            pathSegments,
-            section,
           })
         }
 

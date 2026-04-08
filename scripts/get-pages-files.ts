@@ -309,17 +309,11 @@ function dedupeChunksBySection(chunks: ContentChunk[]): ContentChunk[] {
 }
 
 // Create chunks from markdown headings OR MDX component headings
+/**
+ * Create chunks from MDX ContentSection blocks first, then fallback to markdown headings.
+ */
 function makeChunksForLocalMdx(content: string): ContentChunk[] {
-  // Prefer true markdown heading chunks if available
-  const mdChunks = chunkMarkdownByHeadings(content)
-    .map((c) => ({ section: normalizeSection(c.section), content: c.content }))
-    .filter((c) => c.content?.trim())
-
-  if (mdChunks.length > 0) {
-    return dedupeChunksBySection(mdChunks) // keep empty section too (intro)
-  }
-
-  // Fallback to extracting body from JSX Section components by title
+  // Prefer extracting ContentSection blocks so each section becomes its own document
   const sectionBlocks = extractMdxSectionBlocks(content)
   if (sectionBlocks.length > 0) {
     const jsxChunks: ContentChunk[] = sectionBlocks.map((b) => ({
@@ -329,11 +323,23 @@ function makeChunksForLocalMdx(content: string): ContentChunk[] {
     return dedupeChunksBySection(jsxChunks).filter((c) => c.section)
   }
 
+  // Fallback to markdown heading chunking if no section components exist
+  const mdChunks = chunkMarkdownByHeadings(content)
+    .map((c) => ({ section: normalizeSection(c.section), content: c.content }))
+    .filter((c) => c.content?.trim())
+
+  if (mdChunks.length > 0) {
+    return dedupeChunksBySection(mdChunks)
+  }
+
   // No section structure found -> one page-level chunk
   return [{ section: "", content }]
 }
 
 // -------------------- Builder --------------------
+/**
+ * Build search documents for local pages.
+ */
 export async function buildPagesDocuments(): Promise<SearchDocument[]> {
   const documents: SearchDocument[] = []
   const routesDir = path.join(process.cwd(), "content", "routes")
@@ -343,6 +349,9 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
   const includeName = "Pages"
   const baseUrl = "/"
 
+  /**
+   * Process a directory recursively and index MDX files.
+   */
   async function processDirectory(dir: string): Promise<void> {
     const files = fs.readdirSync(dir)
 
@@ -379,7 +388,6 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
       const category =
         frontmatter.category || slug.split("/").filter(Boolean)[0] || "general"
 
-      const headings = extractHeadings(content)
       const dataText = await loadAndExtractReferencedData(frontmatter)
       const chunks = makeChunksForLocalMdx(content)
 
@@ -387,7 +395,7 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
       const usedIds = new Set<string>()
 
       for (const chunk of chunks) {
-        const section = normalizeSection(chunk.section) // empty => page-level doc
+        const section = normalizeSection(chunk.section)
         const plainChunk = await extractPlainTextFromMdx(chunk.content)
 
         const combinedContent = [plainChunk, dataText]
@@ -399,12 +407,7 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
         if (!isMeaningfulContent(combinedContent)) continue
 
         const url = section ? buildSectionUrl(slug, section) : slug
-        const { breadcrumb, pathSegments } = buildBreadcrumb(
-          includeName,
-          url,
-          section,
-          baseUrl
-        )
+        const breadcrumb = buildBreadcrumb(includeName, url, section, baseUrl)
 
         const idBase = slug.replace(/^\//, "").replace(/\//g, "-") || "home"
         const sectionId = section ? slugifyAnchor(section) || "section" : "page"
@@ -417,14 +420,10 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
           id,
           title: frontmatter.title || "",
           content: combinedContent,
-          description: frontmatter.description || "",
-          headings,
           url,
           type: "page",
           category,
           breadcrumb,
-          pathSegments,
-          ...(section ? { section } : {}),
         }
 
         documents.push(doc)
@@ -441,12 +440,7 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
           .trim()
 
         if (isMeaningfulContent(fallbackContent)) {
-          const { breadcrumb, pathSegments } = buildBreadcrumb(
-            includeName,
-            slug,
-            "",
-            baseUrl
-          )
+          const breadcrumb = buildBreadcrumb(includeName, slug, "", baseUrl)
           const idBase = slug.replace(/^\//, "").replace(/\//g, "-") || "home"
           const id = `${idBase}--page`
 
@@ -455,13 +449,10 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
               id,
               title: frontmatter.title || "",
               content: fallbackContent,
-              description: frontmatter.description || "",
-              headings,
               url: slug,
               type: "page",
               category,
               breadcrumb,
-              pathSegments,
             })
             indexedChunkCount = 1
           }
@@ -469,9 +460,6 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
       }
 
       console.log(`  ✓ Indexed: ${slug}`)
-      console.log(
-        `    Headings: ${headings.length} found - [${headings.join(", ")}]`
-      )
       console.log(`    Chunks indexed: ${indexedChunkCount}`)
       console.log(`    Category: ${category}`)
     }
