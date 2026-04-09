@@ -21,6 +21,15 @@ const TYPE_CONFIG: Record<string, { label: string; order: number }> = {
   documentation: { label: "Documentation", order: 2 },
 }
 
+const { searchClient } = instantMeiliSearch(
+  process.env.NEXT_PUBLIC_MEILISEARCH_HOST!,
+  process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY!,
+  { primaryKey: "id" }
+)
+
+let timerId: ReturnType<typeof setTimeout> | undefined
+const timeout = 200
+
 function getTypeLabel(type: string): string {
   return TYPE_CONFIG[type]?.label ?? type.toUpperCase()
 }
@@ -117,23 +126,13 @@ function Hit({ hit }: HitProps) {
         )}
         {hit.description && (
           <p className="line-clamp-2 text-sm text-slate-700">
-            <Highlight attribute="description" hit={hit} />
+            <Highlight attribute="content" hit={hit} />
           </p>
         )}
       </div>
     </Link>
   )
 }
-
-// Move client outside component to avoid re-instantiation on render
-const { searchClient } = instantMeiliSearch(
-  process.env.NEXT_PUBLIC_MEILISEARCH_HOST!,
-  process.env.NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY!,
-  { primaryKey: "id" }
-)
-
-let timerId: ReturnType<typeof setTimeout> | undefined
-const timeout = 200
 
 function queryHook(query: string, search: (value: string) => void) {
   if (timerId) clearTimeout(timerId)
