@@ -17,7 +17,7 @@ type HitProps = {
 }
 
 const TYPE_CONFIG: Record<string, { label: string; order: number }> = {
-  page: { label: "Pages", order: 1 },
+  page: { label: "CCV Website", order: 1 },
   documentation: { label: "Documentation", order: 2 },
 }
 
@@ -91,6 +91,14 @@ function SearchResults() {
     )
   }
 
+  if (hasQuery && !results) {
+    return (
+      <div className="py-12 text-center">
+        <p className="text-sm text-slate-700">Loading results...</p>
+      </div>
+    )
+  }
+
   if (results && results.hits.length === 0) {
     return (
       <div className="py-12 text-center">
@@ -118,15 +126,27 @@ function Hit({ hit }: HitProps) {
       className="focus-visible:ring-ring group flex items-start gap-3 rounded-md px-4 py-3 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
     >
       <div className="min-w-0 flex-1 space-y-1">
-        <p className="text-xs text-slate-500">
-          <Highlight attribute="title" hit={hit} />
-        </p>
         {breadcrumb.length > 0 && (
-          <p className="mb-1 text-lg font-medium">{breadcrumb.join(" › ")}</p>
+          <p className="mb-1 text-lg font-medium">
+            <Highlight
+              attribute="breadcrumb"
+              hit={hit}
+              separator=" › "
+              classNames={{
+                highlighted: "bg-sunglow-200",
+              }}
+            />
+          </p>
         )}
-        {hit.description && (
+        {hit.content && (
           <p className="line-clamp-2 text-sm text-slate-700">
-            <Highlight attribute="content" hit={hit} />
+            <Highlight
+              attribute="content"
+              hit={hit}
+              classNames={{
+                highlighted: "bg-sunglow-200",
+              }}
+            />
           </p>
         )}
       </div>
