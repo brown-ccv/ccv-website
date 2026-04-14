@@ -131,20 +131,20 @@ export async function walkRepo(
     if (!item.path?.toLowerCase().endsWith(".md")) return false
     if (!item.path.startsWith(`${include.slug}/`)) return false
     if (ignoredFiles.includes(path.basename(item.path))) return false
-    return !pathHasIgnoredFolder(item.path, ignoredFolders)
+    if (pathHasIgnoredFolder(item.path, ignoredFolders)) return false
+    return Boolean(item.sha && item.path)
   })
 
-  const batchSize = 10 // adjust concurrency level
+  const batchSize = 10
   for (let i = 0; i < mdFiles.length; i += batchSize) {
     const batch = mdFiles.slice(i, i + batchSize)
-    const paths = batch.map((b) => b.path!).filter(Boolean)
+    const paths = batch.map((b) => b.path)
 
     const blobMap = await fetchBlobsGraphQL(octokit, paths)
     const batchResults = await Promise.all(
       batch.map(async (item) => {
-        const raw = blobMap[item.path!]
+        const raw = blobMap[item.path]
         if (!raw) return []
-        if (!item.sha || !item.path) return []
 
         const { data, content } = parseFrontmatter(raw)
         if (data.hidden === "true" || data.hidden === true) return []
