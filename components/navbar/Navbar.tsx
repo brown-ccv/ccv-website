@@ -117,6 +117,7 @@ function MobileMenuHeader({ onClose }: MobileMenuHeaderProps) {
       <DialogClose asChild>
         <Button
           aria-label="Close Navigation"
+          aria-controls="main-menu"
           variant="secondary_filled"
           iconOnly={
             <XMarkIcon aria-hidden focusable={false} className="h-6 w-6" />
@@ -143,6 +144,7 @@ function MobileMenuDialog({ isOpen, onOpenChange }: MobileMenuDialogProps) {
       <DialogTrigger asChild className="lg:hidden">
         <Button
           aria-label="Main Menu"
+          aria-controls="main-menu"
           variant="secondary_filled"
           iconOnly={
             <FaBars aria-hidden focusable={false} className="h-6 w-6" />
@@ -150,7 +152,10 @@ function MobileMenuDialog({ isOpen, onOpenChange }: MobileMenuDialogProps) {
           className="rounded-2xl p-2 text-blue-navbar"
         />
       </DialogTrigger>
-      <DialogContent className="h-screen w-screen max-w-none border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden">
+      <DialogContent
+        id="main-menu"
+        className="h-screen w-screen max-w-none border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden"
+      >
         <MobileMenuHeader onClose={() => onOpenChange(false)} />
         <MobileMenuContent onNavigate={() => onOpenChange(false)} />
       </DialogContent>
