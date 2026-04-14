@@ -1,6 +1,6 @@
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/Tabs"
 import React from "react"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/helper"
 
 export interface TabItem {
   value: string

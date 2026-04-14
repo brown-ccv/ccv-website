@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/Card"
 import Icon from "@/components/ui/RenderIcon"
 import React from "react"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/helper"
 import { CardVariants } from "@/components/card/variants"
 import { VariantProps } from "class-variance-authority"
 

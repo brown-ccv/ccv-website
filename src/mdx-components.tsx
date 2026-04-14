@@ -1,6 +1,6 @@
 import React from "react"
 import type { MDXComponents } from "mdx/types"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/helper"
 import Image from "next/image"
 import { ContentSection } from "@/components/ContentSection"
 import { StorageTool } from "@/components/storage/StorageTool"

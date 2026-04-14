@@ -1,7 +1,7 @@
 import React from "react"
 import { ServiceConfig, ServiceFeature } from "@/lib/storage-types"
 import { Badge } from "@/components/ui/Badge"
-import { humanize } from "@/lib/utils"
+import { humanize } from "@/utils/helper"
 import { CollapsableCard } from "@/components/card/CollapsableCard"
 import { Link } from "@/components/Link"
 import Icon from "@/components/ui/RenderIcon"

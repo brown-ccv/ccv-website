@@ -21,7 +21,7 @@ import Markdown from "react-markdown"
 import remarkGfm from "remark-gfm"
 import rehypeRaw from "rehype-raw"
 import Icon from "@/components/ui/RenderIcon"
-import { cn, getColorForTag } from "@/lib/utils"
+import { cn, getColorForTag } from "@/utils/helper"
 import Image from "next/image"
 
 const DRAG_BUFFER = 50

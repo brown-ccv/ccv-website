@@ -12,7 +12,7 @@ import type { Hit as AlgoliaHit } from "instantsearch.js"
 import { Link } from "./Link"
 import { X } from "lucide-react"
 import * as React from "react"
-import { urlToBreadcrumb } from "@/lib/utils"
+import { urlToBreadcrumb } from "@/utils/helper"
 
 type HitProps = {
   hit: AlgoliaHit

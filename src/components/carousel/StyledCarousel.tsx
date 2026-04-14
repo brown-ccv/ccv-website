@@ -2,7 +2,7 @@
 
 import React from "react"
 import { Badge } from "@/components/ui/Badge"
-import { getColorForTag } from "@/lib/utils"
+import { getColorForTag } from "@/utils/helper"
 import {
   Carousel,
   CarouselContent,

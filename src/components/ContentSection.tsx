@@ -1,5 +1,5 @@
 import React from "react"
-import { cn, slugifyAnchor } from "@/lib/utils"
+import { cn, slugifyAnchor } from "@/utils/helper"
 import { CCVBars } from "@/components/assets/CCVBars"
 
 interface ContentSectionProps {

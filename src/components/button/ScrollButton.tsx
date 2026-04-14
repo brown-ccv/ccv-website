@@ -1,5 +1,5 @@
 "use client"
-import { scrollToID } from "@/lib/utils"
+import { scrollToID } from "@/utils/helper"
 import { Button, ButtonProps } from "@/components/button/Button"
 
 interface ScrollButtonProps extends ButtonProps {

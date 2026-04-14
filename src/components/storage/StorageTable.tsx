@@ -1,5 +1,5 @@
 import React, { CSSProperties, useMemo, useRef, useState } from "react"
-import { cn, humanize } from "@/lib/utils"
+import { cn, humanize } from "@/utils/helper"
 import { Link } from "@/components/Link"
 import { ChevronRightIcon, ChevronLeftIcon } from "lucide-react"
 import {

@@ -1,6 +1,6 @@
 import React from "react"
 import Icon from "@/components/ui/RenderIcon"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/helper"
 import { Link } from "@/components/Link"
 
 interface LinkListProps {

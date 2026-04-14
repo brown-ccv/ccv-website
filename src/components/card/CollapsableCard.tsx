@@ -6,7 +6,7 @@ import {
 } from "@/components/StyledAccordion"
 import React from "react"
 import { StyledCardProps } from "@/components/card/StyledCard"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/helper"
 import {
   Card,
   CardContent,

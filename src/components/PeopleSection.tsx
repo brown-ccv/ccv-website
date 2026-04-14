@@ -4,7 +4,7 @@ import { PeopleTypes, PageContentData } from "@/lib/about-types"
 import { readContentFile } from "@/lib/content-utils"
 import path from "path"
 import fs from "fs/promises"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/helper"
 
 interface PeopleSectionProps {
   peopleContentPath: string

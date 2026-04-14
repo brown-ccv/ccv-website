@@ -6,7 +6,7 @@ import {
   ContentTitle,
 } from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
-import { cn } from "@/lib/utils"
+import { cn } from "@/utils/helper"
 
 interface LocationSectionProps {
   className?: string
