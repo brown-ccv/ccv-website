@@ -1,6 +1,6 @@
 import React from "react"
 import { PeopleCard } from "@/components/card/PeopleCard"
-import { PeopleTypes, PageContentData } from "@/lib/about-types"
+import { PeopleTypes, PageContentData } from "@/types/about-types"
 import { readContentFile } from "@/utils/content"
 import path from "path"
 import fs from "fs/promises"

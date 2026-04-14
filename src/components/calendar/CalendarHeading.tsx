@@ -1,4 +1,3 @@
-import { ALL_MONTHS } from "@/components/calendar/utils"
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/20/solid"
 import React from "react"
 
@@ -17,6 +16,20 @@ export function CalendarHeading({
   prevButtonFunction,
   todayButtonFunction,
 }: CalendarHeadingProps) {
+  const ALL_MONTHS = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]
   return (
     <header className="mb-2 flex items-center justify-between rounded-md border border-gray-200 bg-gray-50 p-2 px-6 lg:flex-none">
       <p className="text-2xl font-semibold text-blue-navbar">

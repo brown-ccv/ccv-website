@@ -1,7 +1,6 @@
 "use client"
 
 import React, { useEffect, useRef, useState } from "react"
-import { ALL_DAYS_OF_WEEK } from "@/components/calendar/utils"
 import {
   format,
   startOfWeek,
@@ -19,7 +18,7 @@ import {
   getYear,
 } from "date-fns"
 
-import { CalendarProps } from "@/components/calendar/types"
+import { CalendarProps } from "@/types/calendar-types"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { ClockIcon } from "@heroicons/react/20/solid"
 import { ButtonLink } from "@/components/button/ButtonLink"
@@ -42,6 +41,8 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
     "col-start-7",
     "col-start-8",
   ]
+
+  const ALL_DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
 
   const TIMES_ARRAY = Array.from(Array(24), (_, i) => ({
     key: Math.random(),

@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from "react"
 import { FormQuestion } from "./FormQuestion"
-import { SelectedAnswers, FormQuestions } from "@/lib/storage-types"
+import { SelectedAnswers, FormQuestions } from "@/types/storage-types"
 import { StyledCard } from "@/components/card/StyledCard"
 
 interface FormProps {

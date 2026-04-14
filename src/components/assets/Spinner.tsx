@@ -1,5 +1,5 @@
 import React from "react"
-import { LogoProps } from "@/components/assets/types"
+import { LogoProps } from "@/types/logo-types"
 
 export function Spinner({ width = 75 }: LogoProps) {
   return (

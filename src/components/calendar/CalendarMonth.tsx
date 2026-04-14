@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/Popover"
 import { ClockIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid"
 import React, { useState } from "react"
-import { CalendarProps } from "@/components/calendar/types"
+import { CalendarProps } from "@/types/calendar-types"
 import {
   addDays,
   getDay,

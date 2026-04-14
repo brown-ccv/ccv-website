@@ -7,7 +7,7 @@ import {
   StorageData,
   ServiceFeature,
   featureColorMap,
-} from "@/lib/storage-types"
+} from "@/types/storage-types"
 import {
   createColumnHelper,
   flexRender,

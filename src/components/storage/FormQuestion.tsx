@@ -1,7 +1,7 @@
 import React from "react"
 import { useCallback } from "react"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/RadioGroup"
-import { FormQuestions } from "@/lib/storage-types"
+import { FormQuestions } from "@/types/storage-types"
 
 interface FormQuestionProps {
   question: FormQuestions

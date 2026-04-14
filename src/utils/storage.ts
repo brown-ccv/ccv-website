@@ -2,7 +2,7 @@ import {
   FormQuestions,
   SelectedAnswers,
   ServiceConfig,
-} from "@/lib/storage-types"
+} from "@/types/storage-types"
 
 /**
  * Returns an array of services that match the selected answers

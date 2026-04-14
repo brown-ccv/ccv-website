@@ -6,7 +6,7 @@ import StorageContent from "@/content/routes/services/file-storage-and-transfer.
 import { ButtonLink } from "@/components/button/ButtonLink"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import Icon from "@/components/ui/RenderIcon"
-import { TABLE_VISIBILITY } from "@/lib/styles"
+import { TABLE_VISIBILITY } from "@/styles/visibility"
 
 export default async function CompareStorageOptions() {
   const metadata = getMDXMetadata(

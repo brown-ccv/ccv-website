@@ -15,7 +15,7 @@ import {
   DialogClose,
 } from "@/components/ui/Dialog"
 import { DialogSearch } from "@/components/DialogSearch"
-import { RouteGroup } from "@/components/navbar/navbar-types"
+import { RouteGroup } from "@/types/navbar-types"
 import { FaBars, FaChevronDown, FaQuestionCircle } from "react-icons/fa"
 import { FaFileLines } from "react-icons/fa6"
 import { routes } from "@/components/navbar/routes"

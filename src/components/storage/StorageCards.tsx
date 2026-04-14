@@ -3,7 +3,7 @@ import {
   SelectedAnswers,
   FormQuestions,
   StorageData,
-} from "@/lib/storage-types"
+} from "@/types/storage-types"
 import { StorageServiceCard } from "@/components/card/StorageServiceCard"
 import { getDisabledState, getServicesRankedByMatch } from "@/utils/storage"
 

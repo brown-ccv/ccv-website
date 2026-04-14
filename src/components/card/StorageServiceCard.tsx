@@ -1,5 +1,5 @@
 import React from "react"
-import { ServiceConfig, ServiceFeature } from "@/lib/storage-types"
+import { ServiceConfig, ServiceFeature } from "@/types/storage-types"
 import { Badge } from "@/components/ui/Badge"
 import { humanize } from "@/utils/helper"
 import { CollapsableCard } from "@/components/card/CollapsableCard"

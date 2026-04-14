@@ -1,4 +1,4 @@
-import { NavSection } from "@/components/navbar/navbar-types"
+import { NavSection } from "@/types/navbar-types"
 import {
   FaBook,
   FaBuilding,
