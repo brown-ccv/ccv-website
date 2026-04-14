@@ -5,10 +5,7 @@ import {
   StorageData,
 } from "@/lib/storage-types"
 import { StorageServiceCard } from "@/components/card/StorageServiceCard"
-import {
-  getDisabledState,
-  getServicesRankedByMatch,
-} from "@/components/storage/utils"
+import { getDisabledState, getServicesRankedByMatch } from "@/utils/storage"
 
 export interface TableProps {
   services: StorageData
