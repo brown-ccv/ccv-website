@@ -155,10 +155,10 @@ export async function walkRepo(
         const fileDocs: SearchDocument[] = []
 
         for (let j = 0; j < chunks.length; j++) {
-          const section = sanitizeForSearch(chunks[i].section)
+          const section = sanitizeForSearch(chunks[j].section)
           if (!section || section.toLowerCase() === "untitled") continue
 
-          const plain = await markdownToPlainText(chunks[i].content)
+          const plain = await markdownToPlainText(chunks[j].content)
           if (!plain || plain.length < 40) continue
 
           const anchor = slugifyAnchor(section)
@@ -171,7 +171,7 @@ export async function walkRepo(
           )
 
           fileDocs.push({
-            id: `${makeId(url)}-${i}`,
+            id: `${makeId(url)}-${j}`,
             title: sanitizeForSearch(include.name),
             content: plain,
             url,
