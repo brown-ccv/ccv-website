@@ -18,7 +18,7 @@ const client = new MeiliSearch({
 const INDEX_NAME = "pages"
 
 function loadSearchIndexData() {
-  const indexPath = path.join(process.cwd(), "content", "search-index.json")
+  const indexPath = path.join(process.cwd(), "src/content", "search-index.json")
 
   if (!fs.existsSync(indexPath)) {
     throw new Error(
