@@ -149,7 +149,7 @@ export async function walkRepo(
 
         const fileDocs: SearchDocument[] = []
 
-        for (let i = 0; i < chunks.length; i++) {
+        for (let j = 0; j < chunks.length; j++) {
           const section = sanitizeForSearch(chunks[i].section)
           if (!section || section.toLowerCase() === "untitled") continue
 
