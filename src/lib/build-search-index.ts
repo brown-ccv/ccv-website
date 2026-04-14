@@ -164,7 +164,7 @@ async function loadAndExtractReferencedData(
   const allDataText: string[] = []
 
   for (const ref of dataRefs) {
-    const filePath = path.join(process.cwd(), "content", ref)
+    const filePath = path.join(process.cwd(), "src/content", ref)
 
     if (!fs.existsSync(filePath)) {
       console.warn(`⚠️  Referenced file not found: ${ref}`)
@@ -207,7 +207,7 @@ function generateSlug(filePath: string, frontmatterSlug?: string): string {
   return (
     "/" +
     filePath
-      .replace(/^.*content\/routes\//, "")
+      .replace(/^.*src\/content\/routes\//, "")
       .replace(/\/(index)?\.mdx$/, "")
       .replace(/\.mdx$/, "")
   )
@@ -216,7 +216,7 @@ function generateSlug(filePath: string, frontmatterSlug?: string): string {
 // Build the search index
 async function buildSearchIndex(): Promise<SearchDocument[]> {
   const documents: SearchDocument[] = []
-  const routesDir = path.join(process.cwd(), "content", "routes")
+  const routesDir = path.join(process.cwd(), "src/content/routes")
 
   // Excluded files
   const excludedFiles = ["mdx-editing-guide.mdx", "sitemap.mdx"]
@@ -324,7 +324,11 @@ async function exportToJSON(): Promise<void> {
     }
 
     // Write to file
-    const outputPath = path.join(process.cwd(), "content", "search-index.json")
+    const outputPath = path.join(
+      process.cwd(),
+      "src/content",
+      "search-index.json"
+    )
     fs.writeFileSync(outputPath, JSON.stringify(searchData, null, 2), "utf-8")
 
     console.log(`\n✅ Exported search index to: ${outputPath}`)
