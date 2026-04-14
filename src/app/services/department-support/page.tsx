@@ -1,10 +1,10 @@
 import { Hero } from "@/components/Hero"
 import DepartmentSupportContent from "@/content/routes/services/department-support.mdx"
-import { getMDXMetadata } from "@/lib/mdx-utils"
+import { getMDXMetadata } from "@/utils/mdx"
 
 export default function DepartmentSupport() {
   const metadata = getMDXMetadata(
-    "content/routes/services/department-support.mdx"
+    "src/content/routes/services/department-support.mdx"
   )
 
   return (

@@ -1,13 +1,13 @@
 import { Hero } from "@/components/Hero"
 import ClassroomContent from "@/content/routes/services/classroom.mdx"
-import { getMDXMetadata } from "@/lib/mdx-utils"
+import { getMDXMetadata } from "@/utils/mdx"
 import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 import classroomCarousel from "@/content/data/classroom-carousel.json"
 import { StyledCarouselItem } from "@/components/carousel/StyledCarousel"
 import { ContentSection } from "@/components/ContentSection"
 
 export default async function ClassroomSupport() {
-  const metadata = getMDXMetadata("content/routes/services/classroom.mdx")
+  const metadata = getMDXMetadata("src/content/routes/services/classroom.mdx")
   // @ts-ignore
   const typedClassroomData = classroomCarousel as const as StyledCarouselItem[]
   return (

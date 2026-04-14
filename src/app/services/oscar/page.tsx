@@ -1,10 +1,10 @@
 import { Hero } from "@/components/Hero"
 import OscarContent from "@/content/routes/services/oscar.mdx"
-import { getMDXMetadata } from "@/lib/mdx-utils"
+import { getMDXMetadata } from "@/utils/mdx"
 import { ButtonLink } from "@/components/button/ButtonLink"
 
 export default async function Oscar() {
-  const metadata = getMDXMetadata("content/routes/services/oscar.mdx")
+  const metadata = getMDXMetadata("src/content/routes/services/oscar.mdx")
 
   return (
     <>

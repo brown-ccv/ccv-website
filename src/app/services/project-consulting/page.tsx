@@ -1,11 +1,11 @@
 import { Hero } from "@/components/Hero"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import ProjectConsultingContent from "@/content/routes/services/project-consulting.mdx"
-import { getMDXMetadata } from "@/lib/mdx-utils"
+import { getMDXMetadata } from "@/utils/mdx"
 
 export default function ProjectConsulting() {
   const metadata = getMDXMetadata(
-    "content/routes/services/project-consulting.mdx"
+    "src/content/routes/services/project-consulting.mdx"
   )
 
   return (

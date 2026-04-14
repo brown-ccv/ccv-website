@@ -8,14 +8,14 @@ import { EventSectionClient } from "@/components/EventSectionClient"
 import React from "react"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import { ButtonLink } from "@/components/button/ButtonLink"
-import { readContentFile } from "@/lib/content-utils"
+import { readContentFile } from "@/utils/content"
 import {
   ContentHeader,
   ContentSection,
   ContentSubHeader,
 } from "@/components/ContentSection"
 import { FaCalendarAlt } from "react-icons/fa"
-import { getMDXMetadata } from "@/lib/mdx-utils"
+import { getMDXMetadata } from "@/utils/mdx"
 
 export default async function Home() {
   // Load featured carousel data from YAML

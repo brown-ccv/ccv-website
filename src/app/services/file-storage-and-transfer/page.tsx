@@ -1,6 +1,6 @@
 import React from "react"
 import { Hero } from "@/components/Hero"
-import { getMDXMetadata } from "@/lib/mdx-utils"
+import { getMDXMetadata } from "@/utils/mdx"
 import StorageContent from "@/content/routes/services/file-storage-and-transfer.mdx"
 
 import { ButtonLink } from "@/components/button/ButtonLink"
@@ -10,7 +10,7 @@ import { TABLE_VISIBILITY } from "@/lib/styles"
 
 export default async function CompareStorageOptions() {
   const metadata = getMDXMetadata(
-    "content/routes/services/file-storage-and-transfer.mdx"
+    "src/content/routes/services/file-storage-and-transfer.mdx"
   )
 
   return (

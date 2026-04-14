@@ -1,9 +1,9 @@
 import { Hero } from "@/components/Hero"
 import RatesContent from "@/content/routes/services/rates.mdx"
-import { getMDXMetadata } from "@/lib/mdx-utils"
+import { getMDXMetadata } from "@/utils/mdx"
 
 export default async function Rates() {
-  const metadata = getMDXMetadata("content/routes/services/rates.mdx")
+  const metadata = getMDXMetadata("src/content/routes/services/rates.mdx")
 
   return (
     <>

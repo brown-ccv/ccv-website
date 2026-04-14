@@ -4,10 +4,10 @@ import { ContentSection } from "@/components/ContentSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import CareersContent from "@/content/routes/about/careers.mdx"
 import { CareerData } from "@/components/CareerData"
-import { getMDXMetadata } from "@/lib/mdx-utils"
+import { getMDXMetadata } from "@/utils/mdx"
 
 export default async function Careers() {
-  const metadata = getMDXMetadata("content/routes/about/careers.mdx")
+  const metadata = getMDXMetadata("src/content/routes/about/careers.mdx")
   return (
     <>
       <Hero

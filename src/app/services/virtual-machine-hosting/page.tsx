@@ -1,11 +1,11 @@
 import { Hero } from "@/components/Hero"
 import VirtualMachineContent from "@/content/routes/services/virtual-machine-hosting.mdx"
-import { getMDXMetadata } from "@/lib/mdx-utils"
+import { getMDXMetadata } from "@/utils/mdx"
 import { ButtonLink } from "@/components/button/ButtonLink"
 
 export default function VirtualMachineHosting() {
   const metadata = getMDXMetadata(
-    "content/routes/services/virtual-machine-hosting.mdx"
+    "src/content/routes/services/virtual-machine-hosting.mdx"
   )
 
   return (
