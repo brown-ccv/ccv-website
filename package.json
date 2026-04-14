@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "tsx src/lib/build-utils.ts && next build",
+    "build": "tsx src/lib/execute-on-build.ts && next build",
     "start": "next start",
     "search:build": "tsx src/lib/build-search-index.ts",
     "search:upload": "tsx src/lib/meilisearch-client.ts",
@@ -13,7 +13,7 @@
     "lint": "next lint",
     "format": "prettier . --write",
     "typecheck": "tsc --noEmit",
-    "copy-images": "tsx src/lib/build-utils.ts",
+    "copy-images": "tsx src/lib/execute-on-build.ts",
     "prepare": "husky"
   },
   "lint-staged": {
