@@ -96,7 +96,11 @@ async function fetchBlobsGraphQL(
     variables[`expression${i}`] = `HEAD:${p}`
   })
 
-  const result = await octokit.graphql<any>(query, variables)
+  const result: {
+    repository: {
+      [key: string]: { text?: string }
+    }
+  } = await octokit.graphql(query, variables)
 
   const out: Record<string, string> = {}
   const repo = result.repository
@@ -194,11 +198,11 @@ export async function getDocumentationSearchDocuments(): Promise<
   const octokit = new MyOctokit({
     auth: token,
     throttle: {
-      onRateLimit: (retryAfter: any) => {
+      onRateLimit: (retryAfter: number) => {
         console.warn(`Rate limit hit, retrying after ${retryAfter}s`)
         return true
       },
-      onSecondaryRateLimit: (retryAfter: any) => {
+      onSecondaryRateLimit: (retryAfter: number) => {
         console.warn(`Secondary rate limit, retrying after ${retryAfter}s`)
         return true
       },
