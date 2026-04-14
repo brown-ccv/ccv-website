@@ -47,7 +47,7 @@ async function getDocConfig(octokit: Octokit): Promise<DocConfig> {
       owner: OWNER,
       repo: REPO,
       path: "searchConfig.json",
-      headers: { "X-GitHub-Api-Version": "2022-11-28" },
+      headers: { "X-GitHub-Api-Version": "2026-03-10" },
     }
   )
 
@@ -230,7 +230,7 @@ export async function getDocumentationSearchDocuments(): Promise<
       repo: REPO,
       tree_sha: "HEAD",
       recursive: "true",
-      headers: { "X-GitHub-Api-Version": "2022-11-28" },
+      headers: { "X-GitHub-Api-Version": "2026-03-10" },
     }
   )
 
