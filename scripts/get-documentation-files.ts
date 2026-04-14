@@ -138,11 +138,12 @@ export async function walkRepo(
   const batchSize = 10
   for (let i = 0; i < mdFiles.length; i += batchSize) {
     const batch = mdFiles.slice(i, i + batchSize)
-    const paths = batch.map((b) => b.path)
+    const paths = batch.map((b) => b.path!)
 
     const blobMap = await fetchBlobsGraphQL(octokit, paths)
     const batchResults = await Promise.all(
       batch.map(async (item) => {
+        if (!item.path) return []
         const raw = blobMap[item.path]
         if (!raw) return []
 
