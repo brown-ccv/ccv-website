@@ -198,13 +198,23 @@ export async function getDocumentationSearchDocuments(): Promise<
   const octokit = new MyOctokit({
     auth: token,
     throttle: {
-      onRateLimit: (retryAfter: number) => {
-        console.warn(`Rate limit hit, retrying after ${retryAfter}s`)
-        return true
+      onRateLimit: (
+        retryAfter: number,
+        options: { request: { retryCount: number } }
+      ) => {
+        if (options.request.retryCount < 3) {
+          console.warn(`Rate limit hit, retrying after ${retryAfter}s`)
+          return true
+        }
       },
-      onSecondaryRateLimit: (retryAfter: number) => {
-        console.warn(`Secondary rate limit, retrying after ${retryAfter}s`)
-        return true
+      onSecondaryRateLimit: (
+        retryAfter: number,
+        options: { request: { retryCount: number } }
+      ) => {
+        if (options.request.retryCount < 3) {
+          console.warn(`Secondary rate limit, retrying after ${retryAfter}s`)
+          return true
+        }
       },
     },
   })
