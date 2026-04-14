@@ -21,9 +21,9 @@ export default async function Home() {
   // Load featured carousel data from YAML
   const featuredCarouselRaw = await readContentFile<{
     carousel: StyledCarouselItem[]
-  }>("content/data/featured-carousel.yaml")
+  }>("src/content/data/featured-carousel.yaml")
   const featuredCarouselData = featuredCarouselRaw.data.carousel
-  const metadata = getMDXMetadata("content/routes/home.mdx")
+  const metadata = getMDXMetadata("src/content/routes/home.mdx")
 
   try {
     return (
