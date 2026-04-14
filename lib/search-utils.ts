@@ -1,5 +1,6 @@
 import { remark } from "remark"
 import strip from "strip-markdown"
+import { slugifyAnchor } from "@/lib/utils"
 
 export interface ContentChunk {
   section: string
@@ -10,19 +11,30 @@ export interface SearchDocument {
   id: string
   title: string
   content: string
-  description: string
-  headings: string[]
   url: string
   type: string
   category: string
   breadcrumb: string[]
-  pathSegments: string[]
-  section?: string
 }
 
 // -------------------- Cleaning Helpers --------------------
-export function removeFrontmatter(markdown: string): string {
-  return markdown.replace(/^---[\s\S]*?---\n?/, "")
+export function parseFrontmatter(raw: string) {
+  if (!raw.startsWith("---")) return { data: {}, content: raw }
+
+  const end = raw.indexOf("\n---", 3)
+  if (end === -1) return { data: {}, content: raw }
+
+  const fm = raw.slice(3, end).trim()
+  const content = raw.slice(end + 4)
+  const data: Record<string, any> = {}
+
+  fm.split("\n").forEach((line) => {
+    const [k, ...v] = line.split(":")
+    if (!k) return
+    data[k.trim()] = v.join(":").trim()
+  })
+
+  return { data, content }
 }
 
 export function stripHtmlTags(s: string): string {
@@ -105,15 +117,6 @@ export function stripFencedCodeBlocks(s: string): string {
 }
 
 // -------------------- Chunk Helpers --------------------
-export function slugifyAnchor(raw: string): string {
-  const cleaned = sanitizeForSearch(raw)
-  return cleaned
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
-    .replace(/^-|-$/g, "")
-}
 
 export function titleCaseSegment(segment: string): string {
   return segment
@@ -133,7 +136,20 @@ export function getPathSegmentsFromUrl(url: string, baseUrl: string): string[] {
     return noHash.replace(/^\/+/, "").split("/").filter(Boolean)
   }
 
-  return noHash.replace(`${baseUrl}/`, "").split("/").filter(Boolean)
+  const normalizedBaseUrl = baseUrl.replace(/\/+$/, "")
+
+  if (noHash === normalizedBaseUrl) {
+    return []
+  }
+
+  if (noHash.startsWith(`${normalizedBaseUrl}/`)) {
+    return noHash
+      .slice(normalizedBaseUrl.length + 1)
+      .split("/")
+      .filter(Boolean)
+  }
+
+  return noHash.split("/").filter(Boolean)
 }
 
 export function buildBreadcrumb(
@@ -141,7 +157,7 @@ export function buildBreadcrumb(
   url: string,
   section: string,
   baseUrl: string
-): { breadcrumb: string[]; pathSegments: string[] } {
+): string[] {
   const pathSegments = getPathSegmentsFromUrl(url, baseUrl)
   const labelSegments = pathSegments.map(titleCaseSegment)
 
@@ -158,7 +174,7 @@ export function buildBreadcrumb(
     }
   }
 
-  return { breadcrumb: labelSegments, pathSegments }
+  return labelSegments
 }
 
 export function chunkMarkdownByHeadings(markdown: string): ContentChunk[] {

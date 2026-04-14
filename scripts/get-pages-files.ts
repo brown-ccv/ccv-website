@@ -9,8 +9,8 @@ import {
   chunkMarkdownByHeadings,
   markdownToPlainText,
   sanitizeForSearch,
-  slugifyAnchor,
 } from "@/lib/search-utils"
+import { slugifyAnchor } from "@/lib/utils"
 
 interface FrontMatter {
   title?: string
@@ -68,71 +68,132 @@ function extractHeadings(mdxContent: string): string[] {
   return headings
 }
 
+// -------------------- MDX Section Block Extraction --------------------
+interface SectionBlock {
+  title: string
+  body: string
+}
+
+function extractMdxSectionBlocks(mdx: string): SectionBlock[] {
+  const blocks: SectionBlock[] = []
+  const openTagRegex = /<([A-Z]\w*Section)\b([^>]*)>/g
+
+  let openMatch: RegExpExecArray | null
+  while ((openMatch = openTagRegex.exec(mdx)) !== null) {
+    const componentName = openMatch[1]
+    const attrs = openMatch[2] || ""
+    const titleMatch = /\btitle="([^"]+)"/i.exec(attrs)
+    if (!titleMatch) continue
+
+    const title = titleMatch[1].trim()
+    if (!title) continue
+
+    const startOfBody = openTagRegex.lastIndex
+    const closeTag = `</${componentName}>`
+
+    // Find matching close tag with nesting support for same component
+    let depth = 1
+    let cursor = startOfBody
+
+    while (cursor < mdx.length) {
+      const nextOpen = mdx.indexOf(`<${componentName}`, cursor)
+      const nextClose = mdx.indexOf(closeTag, cursor)
+
+      if (nextClose === -1) break
+
+      if (nextOpen !== -1 && nextOpen < nextClose) {
+        depth++
+        cursor = nextOpen + componentName.length + 1
+      } else {
+        depth--
+        if (depth === 0) {
+          const body = mdx.slice(startOfBody, nextClose).trim()
+          blocks.push({ title, body })
+          openTagRegex.lastIndex = nextClose + closeTag.length
+          break
+        }
+        cursor = nextClose + closeTag.length
+      }
+    }
+  }
+
+  return blocks
+}
+
 // -------------------- MDX/JSX Cleaning --------------------
 function stripMdxJsxNoise(mdxContent: string): string {
   let cleaned = mdxContent
 
-  // Remove import/export statements
-  cleaned = cleaned.replace(/^import\s+.*$/gm, "")
-  cleaned = cleaned.replace(/^export\s+.*$/gm, "")
+  // 1) remove import/export
+  cleaned = cleaned.replace(/^import\s+.*$/gm, " ")
+  cleaned = cleaned.replace(/^export\s+.*$/gm, " ")
 
-  // Remove JSX comments {/* ... */}
+  // 2) remove JSX comments
   cleaned = cleaned.replace(/\{\/\*[\s\S]*?\*\/}/g, " ")
 
-  // Remove self-closing JSX components: <Component ... />
-  cleaned = cleaned.replace(/<[A-Z]\w*[^>]*\/>/g, " ")
+  // 3) remove JSX tags themselves (keep inner text)
+  // opening/closing tags + fragments
+  cleaned = cleaned
+    .replace(/<\/?[A-Za-z][\w.:-]*(\s[^<>]*?)?>/g, " ")
+    .replace(/<\/?>/g, " ") // fragments: <> </>
 
-  // Remove paired JSX components but keep inner text content
-  let previousLength = -1
-  let iterations = 0
-  const maxIterations = 20
+  // 4) remove remaining HTML tags
+  cleaned = cleaned.replace(/<\/?[a-z][a-z0-9-]*(\s[^<>]*?)?>/gi, " ")
 
-  while (cleaned.length !== previousLength && iterations < maxIterations) {
-    previousLength = cleaned.length
-    iterations++
-    cleaned = cleaned.replace(/<[A-Z]\w*[^>]*>([\s\S]*?)<\/[A-Z]\w*>/g, "$1")
+  // 5) remove JSX expressions (best-effort, iterative)
+  // handles {...} blocks that remain after tag removal
+  let prev = ""
+  let i = 0
+  while (cleaned !== prev && i < 10) {
+    prev = cleaned
+    cleaned = cleaned.replace(/\{[^{}]*}/g, " ")
+    i++
   }
-
-  // Remove remaining HTML tags
-  cleaned = cleaned.replace(/<\/?[a-z][a-z0-9-]*[^>]*>/gi, " ")
-
-  // Remove JSX expressions { ... }
-  cleaned = cleaned.replace(/\{[^{}]*}/g, " ")
 
   return cleaned
 }
 
 async function extractPlainTextFromMdx(mdxContent: string): Promise<string> {
   const cleaned = stripMdxJsxNoise(mdxContent)
+
+  // 6) markdown -> plain
   const plain = await markdownToPlainText(cleaned)
-  return sanitizeForSearch(plain)
+
+  // 7) final normalize
+  return plain
+    .replace(/\\_/g, "_")
+    .replace(/\\"/g, '"')
+    .replace(/\\'/g, "'")
+    .replace(/\s+/g, " ")
+    .trim()
 }
 
 // -------------------- Data Ref Extraction --------------------
+const SKIP_DATA_KEYS = new Set([
+  "image",
+  "images",
+  "thumbnail",
+  "avatar",
+  "icon",
+  "logo",
+  "url",
+  "href",
+  "link",
+  "github_username",
+  "brown_directory_uuid",
+  "uuid",
+  "id",
+  "_id",
+  "slug",
+  "path",
+  "filename",
+  "file",
+])
+
 function extractTextFromData(data: any, depth: number = 0): string {
   if (depth > 10) return ""
 
   const textParts: string[] = []
-  const skipKeys = new Set([
-    "image",
-    "images",
-    "thumbnail",
-    "avatar",
-    "icon",
-    "logo",
-    "url",
-    "href",
-    "link",
-    "github_username",
-    "brown_directory_uuid",
-    "uuid",
-    "id",
-    "_id",
-    "slug",
-    "path",
-    "filename",
-    "file",
-  ])
 
   if (typeof data === "string") {
     textParts.push(data)
@@ -145,7 +206,7 @@ function extractTextFromData(data: any, depth: number = 0): string {
     }
   } else if (data && typeof data === "object") {
     for (const [key, value] of Object.entries(data)) {
-      if (skipKeys.has(key.toLowerCase())) continue
+      if (SKIP_DATA_KEYS.has(key.toLowerCase())) continue
       const t = extractTextFromData(value, depth + 1)
       if (t) textParts.push(t)
     }
@@ -195,20 +256,24 @@ async function loadAndExtractReferencedData(
 }
 
 // -------------------- URL + Slug Helpers --------------------
-function generateSlug(filePath: string, frontmatterSlug?: string): string {
+function generateSlug(
+  routesDir: string,
+  filePath: string,
+  frontmatterSlug?: string
+): string {
   if (frontmatterSlug) {
     return frontmatterSlug.startsWith("/")
       ? frontmatterSlug
       : `/${frontmatterSlug}`
   }
 
-  return (
-    "/" +
-    filePath
-      .replace(/^.*content\/routes\//, "")
-      .replace(/\/(index)?\.mdx$/, "")
-      .replace(/\.mdx$/, "")
-  )
+  const rel = path.relative(routesDir, filePath) // works on Windows/macOS/Linux
+  const normalized = rel.replace(/\\/g, "/") // normalize separators
+
+  const noIndex = normalized.replace(/\/index\.mdx$/i, "")
+  const noExt = noIndex.replace(/\.mdx$/i, "")
+
+  return `/${noExt}`.replace(/\/+/g, "/")
 }
 
 function buildSectionUrl(baseSlug: string, section?: string): string {
@@ -224,28 +289,57 @@ function isMeaningfulContent(s: string): boolean {
   return cleaned.length > 1
 }
 
-// Create chunks from markdown headings OR MDX component headings
-function makeChunksForLocalMdx(
-  content: string,
-  headings: string[]
-): ContentChunk[] {
-  const mdChunks = chunkMarkdownByHeadings(content).filter(
-    (c) => c.section && c.content?.trim()
-  )
+function normalizeSection(section?: string): string {
+  const s = (section || "").trim()
+  return s.toLowerCase() === "overview" ? "" : s
+}
 
-  if (mdChunks.length > 0) return mdChunks
+function dedupeChunksBySection(chunks: ContentChunk[]): ContentChunk[] {
+  const seen = new Set<string>()
+  const out: ContentChunk[] = []
 
-  // Fallback: if headings exist only in JSX components, create synthetic chunks.
-  // We cannot reliably map exact body text per heading without parsing JSX AST,
-  // so use full content per section for recall.
-  if (headings.length > 0) {
-    return headings.map((h) => ({ section: h, content }))
+  for (const c of chunks) {
+    const key = normalizeSection(c.section).toLowerCase()
+    if (seen.has(key)) continue
+    seen.add(key)
+    out.push({ section: normalizeSection(c.section), content: c.content })
   }
 
+  return out
+}
+
+// Create chunks from markdown headings OR MDX component headings
+/**
+ * Create chunks from MDX ContentSection blocks first, then fallback to markdown headings.
+ */
+function makeChunksForLocalMdx(content: string): ContentChunk[] {
+  // Prefer extracting ContentSection blocks so each section becomes its own document
+  const sectionBlocks = extractMdxSectionBlocks(content)
+  if (sectionBlocks.length > 0) {
+    const jsxChunks: ContentChunk[] = sectionBlocks.map((b) => ({
+      section: normalizeSection(b.title),
+      content: b.body,
+    }))
+    return dedupeChunksBySection(jsxChunks).filter((c) => c.section)
+  }
+
+  // Fallback to markdown heading chunking if no section components exist
+  const mdChunks = chunkMarkdownByHeadings(content)
+    .map((c) => ({ section: normalizeSection(c.section), content: c.content }))
+    .filter((c) => c.content?.trim())
+
+  if (mdChunks.length > 0) {
+    return dedupeChunksBySection(mdChunks)
+  }
+
+  // No section structure found -> one page-level chunk
   return [{ section: "", content }]
 }
 
 // -------------------- Builder --------------------
+/**
+ * Build search documents for local pages.
+ */
 export async function buildPagesDocuments(): Promise<SearchDocument[]> {
   const documents: SearchDocument[] = []
   const routesDir = path.join(process.cwd(), "content", "routes")
@@ -255,6 +349,9 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
   const includeName = "Pages"
   const baseUrl = "/"
 
+  /**
+   * Process a directory recursively and index MDX files.
+   */
   async function processDirectory(dir: string): Promise<void> {
     const files = fs.readdirSync(dir)
 
@@ -287,18 +384,18 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
 
       console.log(`\n📄 Processing: ${file}`)
 
-      const slug = generateSlug(filePath, frontmatter.slug)
+      const slug = generateSlug(routesDir, filePath, frontmatter.slug)
       const category =
         frontmatter.category || slug.split("/").filter(Boolean)[0] || "general"
 
-      const headings = extractHeadings(content)
       const dataText = await loadAndExtractReferencedData(frontmatter)
+      const chunks = makeChunksForLocalMdx(content)
 
-      const chunks = makeChunksForLocalMdx(content, headings)
       let indexedChunkCount = 0
+      const usedIds = new Set<string>()
 
       for (const chunk of chunks) {
-        const section = (chunk.section || "").trim() // empty => page-level doc
+        const section = normalizeSection(chunk.section)
         const plainChunk = await extractPlainTextFromMdx(chunk.content)
 
         const combinedContent = [plainChunk, dataText]
@@ -310,28 +407,23 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
         if (!isMeaningfulContent(combinedContent)) continue
 
         const url = section ? buildSectionUrl(slug, section) : slug
-        const { breadcrumb, pathSegments } = buildBreadcrumb(
-          includeName,
-          url,
-          section || "",
-          baseUrl
-        )
+        const breadcrumb = buildBreadcrumb(includeName, url, section, baseUrl)
 
         const idBase = slug.replace(/^\//, "").replace(/\//g, "-") || "home"
         const sectionId = section ? slugifyAnchor(section) || "section" : "page"
+        const id = `${idBase}--${sectionId}`
+
+        if (usedIds.has(id)) continue
+        usedIds.add(id)
 
         const doc: SearchDocument = {
-          id: `${idBase}--${sectionId}`,
+          id,
           title: frontmatter.title || "",
           content: combinedContent,
-          description: frontmatter.description || "",
-          headings,
           url,
           type: "page",
           category,
           breadcrumb,
-          pathSegments,
-          ...(section ? { section } : {}),
         }
 
         documents.push(doc)
@@ -348,34 +440,26 @@ export async function buildPagesDocuments(): Promise<SearchDocument[]> {
           .trim()
 
         if (isMeaningfulContent(fallbackContent)) {
-          const { breadcrumb, pathSegments } = buildBreadcrumb(
-            includeName,
-            slug,
-            "",
-            baseUrl
-          )
+          const breadcrumb = buildBreadcrumb(includeName, slug, "", baseUrl)
           const idBase = slug.replace(/^\//, "").replace(/\//g, "-") || "home"
+          const id = `${idBase}--page`
 
-          documents.push({
-            id: `${idBase}--page`,
-            title: frontmatter.title || "",
-            content: fallbackContent,
-            description: frontmatter.description || "",
-            headings,
-            url: slug,
-            type: "page",
-            category,
-            breadcrumb,
-            pathSegments,
-          })
-          indexedChunkCount = 1
+          if (!usedIds.has(id)) {
+            documents.push({
+              id,
+              title: frontmatter.title || "",
+              content: fallbackContent,
+              url: slug,
+              type: "page",
+              category,
+              breadcrumb,
+            })
+            indexedChunkCount = 1
+          }
         }
       }
 
       console.log(`  ✓ Indexed: ${slug}`)
-      console.log(
-        `    Headings: ${headings.length} found - [${headings.join(", ")}]`
-      )
       console.log(`    Chunks indexed: ${indexedChunkCount}`)
       console.log(`    Category: ${category}`)
     }

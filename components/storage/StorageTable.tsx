@@ -202,15 +202,9 @@ export function StorageTable({ services }: TableProps) {
         {
           id: featureName,
           header: () => (
-            <div className="flex items-center justify-center gap-2.5">
-              <Icon
-                iconName={metadata?.icon}
-                className="h-4 w-4 flex-shrink-0"
-              />
-              <p className="text-sm font-medium uppercase">
-                {metadata.display_name}
-              </p>
-            </div>
+            <p className="text-sm font-medium uppercase">
+              {metadata.display_name}
+            </p>
           ),
           cell: (info) => {
             const feature = info.row.original[featureName] as ServiceFeature
@@ -310,9 +304,9 @@ export function StorageTable({ services }: TableProps) {
                       style={{ ...getCommonPinningStyles(column) }}
                       onClick={header.column.getToggleSortingHandler()}
                     >
-                      <div className="flex items-center justify-between gap-5">
+                      <div className="flex items-center gap-3">
                         {!header.isPlaceholder && header.column.getCanPin() && (
-                          <div className="pb-2">
+                          <div>
                             {header.column.getIsPinned() !== "left" ? (
                               <Button
                                 variant="icon_only"

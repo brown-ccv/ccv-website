@@ -1,17 +1,20 @@
 import { Octokit } from "@octokit/rest"
+import { throttling } from "@octokit/plugin-throttling"
+import { retry } from "@octokit/plugin-retry"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
+import type { SearchDocument } from "@/lib/search-utils"
 import {
   buildBreadcrumb,
   buildPageUrl,
   chunkMarkdownByHeadings,
   makeId,
   markdownToPlainText,
+  parseFrontmatter,
   pathHasIgnoredFolder,
-  removeFrontmatter,
   sanitizeForSearch,
-  SearchDocument,
-  slugifyAnchor,
 } from "@/lib/search-utils"
+import { slugifyAnchor } from "@/lib/utils"
+import path from "path"
 
 interface DocConfig {
   ignore: { files: string[]; folders: string[] }
@@ -33,6 +36,9 @@ async function getSecret(): Promise<string> {
   return secret.payload.data.toString()
 }
 
+// -------------------- Octokit with Plugins --------------------
+const MyOctokit = Octokit.plugin(throttling, retry)
+
 // -------------------- Config Fetch --------------------
 async function getDocConfig(octokit: Octokit): Promise<DocConfig> {
   const res = await octokit.request(
@@ -41,7 +47,7 @@ async function getDocConfig(octokit: Octokit): Promise<DocConfig> {
       owner: OWNER,
       repo: REPO,
       path: "searchConfig.json",
-      headers: { "X-GitHub-Api-Version": "2022-11-28" },
+      headers: { "X-GitHub-Api-Version": "2026-03-10" },
     }
   )
 
@@ -55,97 +61,131 @@ async function getDocConfig(octokit: Octokit): Promise<DocConfig> {
   ) as DocConfig
 }
 
-// -------------------- Recursive Fetch --------------------
-async function walkRepo(
+// -------------------- GraphQL (Batch) --------------------
+async function fetchBlobsGraphQL(
+  octokit: Octokit,
+  paths: string[]
+): Promise<Record<string, string>> {
+  // Build query with aliases
+  const exprVars = paths.map((_, i) => `$expression${i}: String!`).join(", ")
+  const fields = paths
+    .map(
+      (_, i) => `
+      f${i}: object(expression: $expression${i}) {
+        ... on Blob {
+          text
+        }
+      }`
+    )
+    .join("\n")
+
+  const query = `
+    query($owner: String!, $repo: String!, ${exprVars}) {
+      repository(owner: $owner, name: $repo) {
+        ${fields}
+      }
+    }
+  `
+
+  const variables: Record<string, string> = {
+    owner: OWNER,
+    repo: REPO,
+  }
+
+  paths.forEach((p, i) => {
+    variables[`expression${i}`] = `HEAD:${p}`
+  })
+
+  const result: {
+    repository: {
+      [key: string]: { text?: string }
+    }
+  } = await octokit.graphql(query, variables)
+
+  const out: Record<string, string> = {}
+  const repo = result.repository
+
+  paths.forEach((p, i) => {
+    const text = repo?.[`f${i}`]?.text
+    if (typeof text === "string") out[p] = text
+  })
+
+  return out
+}
+
+// -------------------- Tree-based Fetch (Batch Processing) --------------------
+export async function walkRepo(
   octokit: Octokit,
   include: { name: string; slug: string },
-  repoPath: string,
   ignoredFiles: string[],
-  ignoredFolders: string[]
+  ignoredFolders: string[],
+  tree: { path?: string; type?: string; sha?: string }[]
 ): Promise<SearchDocument[]> {
   const docs: SearchDocument[] = []
 
-  const res = await octokit.request(
-    "GET /repos/{owner}/{repo}/contents/{path}",
-    {
-      owner: OWNER,
-      repo: REPO,
-      path: repoPath,
-      headers: { "X-GitHub-Api-Version": "2022-11-28" },
-    }
-  )
+  if (!Array.isArray(tree)) return docs
 
-  if (!Array.isArray(res.data)) return docs
+  // 2) Filter markdown blobs
+  const mdFiles = tree.filter((item) => {
+    if (item.type !== "blob") return false
+    if (!item.path?.toLowerCase().endsWith(".md")) return false
+    if (!item.path.startsWith(`${include.slug}/`)) return false
+    if (ignoredFiles.includes(path.basename(item.path))) return false
+    if (pathHasIgnoredFolder(item.path, ignoredFolders)) return false
+    return Boolean(item.sha && item.path)
+  })
 
-  for (const item of res.data) {
-    if (item.type === "dir") {
-      if (ignoredFolders.includes(item.name)) continue
-      docs.push(
-        ...(await walkRepo(
-          octokit,
-          include,
-          item.path,
-          ignoredFiles,
-          ignoredFolders
-        ))
-      )
-      continue
-    }
+  const batchSize = 10
+  for (let i = 0; i < mdFiles.length; i += batchSize) {
+    const batch = mdFiles.slice(i, i + batchSize)
+    const paths = batch.map((b) => b.path!)
 
-    if (
-      item.type === "file" &&
-      item.name.toLowerCase().endsWith(".md") &&
-      !ignoredFiles.includes(item.name) &&
-      !pathHasIgnoredFolder(item.path, ignoredFolders)
-    ) {
-      const fileRes = await octokit.request(
-        "GET /repos/{owner}/{repo}/contents/{path}",
-        {
-          owner: OWNER,
-          repo: REPO,
-          path: item.path,
-          headers: { "X-GitHub-Api-Version": "2022-11-28" },
+    const blobMap = await fetchBlobsGraphQL(octokit, paths)
+    const batchResults = await Promise.all(
+      batch.map(async (item) => {
+        if (!item.path) return []
+        const raw = blobMap[item.path]
+        if (!raw) return []
+
+        const { data, content } = parseFrontmatter(raw)
+        if (data.hidden === "true" || data.hidden === true) return []
+        const chunks = chunkMarkdownByHeadings(content)
+        const pageUrl = buildPageUrl(include.slug, item.path, BASE_URL)
+
+        const fileDocs: SearchDocument[] = []
+
+        for (let j = 0; j < chunks.length; j++) {
+          const section = sanitizeForSearch(chunks[j].section)
+          if (!section || section.toLowerCase() === "untitled") continue
+
+          const plain = await markdownToPlainText(chunks[j].content)
+          if (!plain || plain.length < 40) continue
+
+          const anchor = slugifyAnchor(section)
+          const url = anchor ? `${pageUrl}#${anchor}` : pageUrl
+          const breadcrumb = buildBreadcrumb(
+            include.name,
+            pageUrl,
+            section,
+            BASE_URL
+          )
+
+          fileDocs.push({
+            id: `${makeId(url)}-${j}`,
+            title: sanitizeForSearch(include.name),
+            content: plain,
+            url,
+            type: "documentation",
+            category: include.slug,
+            breadcrumb,
+          })
         }
-      )
 
-      if (Array.isArray(fileRes.data) || !("content" in fileRes.data)) continue
+        return fileDocs
+      })
+    )
 
-      const raw = Buffer.from(fileRes.data.content, "base64").toString("utf-8")
-      const markdown = removeFrontmatter(raw)
-      const chunks = chunkMarkdownByHeadings(markdown)
-      const pageUrl = buildPageUrl(include.slug, item.path, BASE_URL)
-
-      for (let i = 0; i < chunks.length; i++) {
-        const section = sanitizeForSearch(chunks[i].section)
-        if (!section || section.toLowerCase() === "untitled") continue
-
-        const plain = await markdownToPlainText(chunks[i].content)
-        if (!plain || plain.length < 40) continue
-
-        const anchor = slugifyAnchor(section)
-        const url = anchor ? `${pageUrl}#${anchor}` : pageUrl
-        const { breadcrumb, pathSegments } = buildBreadcrumb(
-          include.name,
-          pageUrl,
-          section,
-          BASE_URL
-        )
-
-        docs.push({
-          id: `${makeId(url)}-${i}`,
-          title: sanitizeForSearch(include.name),
-          content: plain,
-          description: section,
-          headings: [section],
-          url,
-          type: "documentation",
-          category: include.slug,
-          breadcrumb,
-          pathSegments,
-          section,
-        })
-      }
-    }
+    docs.push(...batchResults.flat())
   }
 
   return docs
@@ -156,21 +196,58 @@ export async function getDocumentationSearchDocuments(): Promise<
   SearchDocument[]
 > {
   const token = await getSecret()
-  const octokit = new Octokit({ auth: token })
+  const octokit = new MyOctokit({
+    auth: token,
+    throttle: {
+      onRateLimit: (
+        retryAfter: number,
+        options: { request: { retryCount: number } }
+      ) => {
+        if (options.request.retryCount < 3) {
+          console.warn(`Rate limit hit, retrying after ${retryAfter}s`)
+          return true
+        }
+      },
+      onSecondaryRateLimit: (
+        retryAfter: number,
+        options: { request: { retryCount: number } }
+      ) => {
+        if (options.request.retryCount < 3) {
+          console.warn(`Secondary rate limit, retrying after ${retryAfter}s`)
+          return true
+        }
+      },
+    },
+  })
 
   const config = await getDocConfig(octokit)
-  const allDocs: SearchDocument[] = []
 
-  for (const include of config.include) {
-    const docs = await walkRepo(
-      octokit,
-      include,
-      include.slug,
-      config.ignore.files,
-      config.ignore.folders
+  // fetch tree once
+  const treeRes = await octokit.request(
+    "GET /repos/{owner}/{repo}/git/trees/{tree_sha}",
+    {
+      owner: OWNER,
+      repo: REPO,
+      tree_sha: "HEAD",
+      recursive: "true",
+      headers: { "X-GitHub-Api-Version": "2026-03-10" },
+    }
+  )
+
+  const tree = treeRes.data.tree
+  if (!Array.isArray(tree)) return []
+
+  const allDocs = await Promise.all(
+    config.include.map((include) =>
+      walkRepo(
+        octokit,
+        include,
+        config.ignore.files,
+        config.ignore.folders,
+        tree
+      )
     )
-    allDocs.push(...docs)
-  }
+  )
 
-  return allDocs
+  return allDocs.flat()
 }
