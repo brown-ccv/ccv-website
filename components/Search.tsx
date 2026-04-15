@@ -11,9 +11,12 @@ import {
 import type { Hit as AlgoliaHit } from "instantsearch.js"
 import { Link } from "./Link"
 import * as React from "react"
+import type { SearchDocument } from "@/lib/search-utils"
+
+type SearchHit = AlgoliaHit<SearchDocument>
 
 type HitProps = {
-  hit: AlgoliaHit
+  hit: SearchHit
 }
 
 const TYPE_CONFIG: Record<string, { label: string; order: number }> = {
@@ -39,11 +42,11 @@ function getTypeOrder(type: string): number {
 }
 
 function GroupedHits() {
-  const { items } = useHits<AlgoliaHit>()
+  const { items } = useHits<SearchDocument>()
 
   // Group hits by type
-  const grouped = items.reduce<Record<string, AlgoliaHit[]>>((acc, hit) => {
-    const type = (hit.type as string) ?? "other"
+  const grouped = items.reduce<Record<string, SearchHit[]>>((acc, hit) => {
+    const type = hit.type ?? "other"
     if (!acc[type]) acc[type] = []
     acc[type].push(hit)
     return acc
@@ -118,11 +121,11 @@ function SearchResults() {
 }
 
 function Hit({ hit }: HitProps) {
-  const breadcrumb = (hit.breadcrumb as string[]) ?? []
+  const breadcrumb = hit.breadcrumb ?? []
 
   return (
     <Link
-      href={hit.url as string}
+      href={hit.url}
       className="focus-visible:ring-ring group flex items-start gap-3 rounded-md px-4 py-3 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
     >
       <div className="min-w-0 flex-1 space-y-1">
