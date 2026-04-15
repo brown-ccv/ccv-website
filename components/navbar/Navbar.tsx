@@ -13,6 +13,7 @@ import {
   DialogContent,
   DialogHeader,
   DialogClose,
+  DialogDescription,
 } from "@/components/ui/Dialog"
 import { DialogSearch } from "@/components/DialogSearch"
 import { RouteGroup } from "@/components/navbar/navbar-types"
@@ -26,6 +27,8 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const pathname = usePathname()
+  const mobileMenuTitleId = React.useId()
+  const mobileMenuDescriptionId = React.useId()
 
   useEffect(() => {
     setIsMobileMenuOpen(false)
@@ -109,11 +112,24 @@ export function Navbar() {
                 className="rounded-2xl p-2 text-blue-navbar"
               />
             </DialogTrigger>
-            <DialogContent className="h-screen w-screen max-w-none border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden">
+            <DialogContent
+              aria-labelledby={mobileMenuTitleId}
+              aria-describedby={mobileMenuDescriptionId}
+              className="h-screen w-screen max-w-none border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden"
+            >
               <DialogHeader className="flex-row items-center justify-between bg-blue-navbar p-4 sm:px-8">
-                <DialogTitle className="sr-only text-white">
+                <DialogTitle
+                  id={mobileMenuTitleId}
+                  className="sr-only text-white"
+                >
                   Navigation Menu
                 </DialogTitle>
+                <DialogDescription
+                  id={mobileMenuDescriptionId}
+                  className="sr-only"
+                >
+                  Main site navigation links.
+                </DialogDescription>
                 <CCVLogo width={120} />
                 <DialogClose asChild>
                   <Button
