@@ -149,6 +149,11 @@ Secrets are in [Google Cloud Secret Manager](https://console.cloud.google.com/se
 This project uses a self-hosted Meilisearch instance on Google Cloud Run for
 site-wide search functionality.
 
+Making changes to the Meilisearch deployment is done via the GitHub Actions
+workflow `release.yaml`. This means that changes to the search UI, indexing
+logic, or search configuration will **only** appear on the live site
+(not in App Preview).
+
 ### Deploy Meilisearch
 
 1. Go to the **Actions** tab in GitHub
