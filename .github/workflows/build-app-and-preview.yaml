@@ -91,5 +91,4 @@ jobs:
           comment-tag: previewlink
           message: |
             # [App Preview](${{ steps.deploy.outputs.url }})
-            🔍 Search enabled via shared Meilisearch instance
             <sub>(${{ env.COMMIT_SHA }})</sub>
