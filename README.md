@@ -7,9 +7,9 @@ This is the website for the Center of Computation and Visualization at Brown Uni
 ## 0. Create env.local in your project root:
 
 ```
-MEILISEARCH_HOST=http://127.0.0.1:7700
+NEXT_PUBLIC_MEILISEARCH_HOST=http://127.0.0.1:7700
 MEILISEARCH_MASTER_KEY=myMasterKey123
-MEILISEARCH_SEARCH_KEY=myMasterKey123
+NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=myMasterKey123
 ```
 
 ### 1. Install Dependencies
