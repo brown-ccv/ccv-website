@@ -1,6 +1,6 @@
 import { remark } from "remark"
 import strip from "strip-markdown"
-import { slugifyAnchor } from "@/lib/utils"
+import { slugifyAnchor } from "@/utils/helper"
 
 export interface ContentChunk {
   section: string

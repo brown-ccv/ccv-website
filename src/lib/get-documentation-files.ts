@@ -2,7 +2,7 @@ import { Octokit } from "@octokit/rest"
 import { throttling } from "@octokit/plugin-throttling"
 import { retry } from "@octokit/plugin-retry"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
-import type { SearchDocument } from "@/lib/search-utils"
+import type { SearchDocument } from "@/utils/search-utils"
 import {
   buildBreadcrumb,
   buildPageUrl,
@@ -12,8 +12,8 @@ import {
   parseFrontmatter,
   pathHasIgnoredFolder,
   sanitizeForSearch,
-} from "@/lib/search-utils"
-import { slugifyAnchor } from "@/lib/utils"
+} from "@/utils/search-utils"
+import { slugifyAnchor } from "@/utils/helper"
 import path from "path"
 
 interface DocConfig {

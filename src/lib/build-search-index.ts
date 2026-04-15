@@ -24,7 +24,11 @@ export async function exportToJSON(): Promise<void> {
       },
     }
 
-    const outputPath = path.join(process.cwd(), "content", "search-index.json")
+    const outputPath = path.join(
+      process.cwd(),
+      "src/content",
+      "search-index.json"
+    )
     fs.writeFileSync(outputPath, JSON.stringify(searchData, null, 2), "utf-8")
 
     console.log(`\n✅ Exported search index to: ${outputPath}`)
@@ -44,21 +48,6 @@ export async function exportToJSON(): Promise<void> {
         sample.content.substring(0, 200) + "..."
       )
     }
-
-    const categoryCounts = documents.reduce(
-      (acc, doc) => {
-        acc[doc.category] = (acc[doc.category] || 0) + 1
-        return acc
-      },
-      {} as Record<string, number>
-    )
-
-    console.log("\n📊 Documents by category:")
-    Object.entries(categoryCounts)
-      .sort(([, a], [, b]) => b - a)
-      .forEach(([category, count]) => {
-        console.log(`  ${category}: ${count}`)
-      })
 
     const contentLengths = documents.map((d) => d.content.length)
     const avgLength = Math.round(

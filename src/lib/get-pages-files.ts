@@ -3,14 +3,14 @@ import path from "path"
 import matter from "gray-matter"
 import yaml from "js-yaml"
 
-import type { ContentChunk, SearchDocument } from "@/lib/search-utils"
+import type { ContentChunk, SearchDocument } from "@/utils/search-utils"
 import {
   buildBreadcrumb,
   chunkMarkdownByHeadings,
   markdownToPlainText,
   sanitizeForSearch,
-} from "@/lib/search-utils"
-import { slugifyAnchor } from "@/lib/utils"
+} from "@/utils/search-utils"
+import { slugifyAnchor } from "@/utils/helper"
 
 interface FrontMatter {
   title?: string
@@ -21,51 +21,6 @@ interface FrontMatter {
   searchable?: boolean
 
   [key: string]: any
-}
-
-// -------------------- Heading Extraction --------------------
-// Extract headings from ContentSection and other components + markdown headings
-function extractHeadings(mdxContent: string): string[] {
-  const headings: string[] = []
-  const seen = new Set<string>()
-
-  const add = (raw?: string) => {
-    const heading = (raw || "").trim()
-    if (!heading) return
-    const k = heading.toLowerCase()
-    if (!seen.has(k)) {
-      headings.push(heading)
-      seen.add(k)
-    }
-  }
-
-  let match: RegExpExecArray | null
-
-  // Pattern 1: <ContentSection title="..." ...>
-  const contentSectionRegex = /<ContentSection[^>]*title="([^"]*)"/gi
-  while ((match = contentSectionRegex.exec(mdxContent)) !== null) {
-    add(match[1])
-  }
-
-  // Pattern 2: <LocationSection title="..." ...>
-  const locationSectionRegex = /<LocationSection[^>]*title="([^"]*)"/gi
-  while ((match = locationSectionRegex.exec(mdxContent)) !== null) {
-    add(match[1])
-  }
-
-  // Pattern 3: Any other *Section components with title prop
-  const genericSectionRegex = /<\w+Section[^>]*title="([^"]*)"/gi
-  while ((match = genericSectionRegex.exec(mdxContent)) !== null) {
-    add(match[1])
-  }
-
-  // Pattern 4: Markdown headings (## or ###)
-  const markdownHeadingRegex = /^#{2,3}\s+(.+)$/gm
-  while ((match = markdownHeadingRegex.exec(mdxContent)) !== null) {
-    add(match[1])
-  }
-
-  return headings
 }
 
 // -------------------- MDX Section Block Extraction --------------------
@@ -222,7 +177,7 @@ async function loadAndExtractReferencedData(
   const allDataText: string[] = []
 
   for (const ref of dataRefs) {
-    const filePath = path.join(process.cwd(), "content", ref)
+    const filePath = path.join(process.cwd(), "src/content", ref)
 
     if (!fs.existsSync(filePath)) {
       console.warn(`⚠️  Referenced file not found: ${ref}`)
@@ -342,7 +297,7 @@ function makeChunksForLocalMdx(content: string): ContentChunk[] {
  */
 export async function buildPagesDocuments(): Promise<SearchDocument[]> {
   const documents: SearchDocument[] = []
-  const routesDir = path.join(process.cwd(), "content", "routes")
+  const routesDir = path.join(process.cwd(), "src/content", "routes")
 
   const excludedFiles = ["mdx-editing-guide.mdx", "sitemap.mdx"]
 

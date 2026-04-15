@@ -6,7 +6,7 @@ import path from "path"
 export const dynamic = "force-static"
 
 const baseUrl = process.env.SITE_URL || "http://localhost:3000"
-const baseDir = "app"
+const baseDir = "src/app"
 
 async function getRoutes(): Promise<MetadataRoute.Sitemap> {
   const fullPath = path.join(process.cwd(), baseDir)
