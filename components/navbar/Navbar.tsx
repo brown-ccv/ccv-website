@@ -144,9 +144,9 @@ function MobileMenuDialog({ isOpen, onOpenChange }: MobileMenuDialogProps) {
         />
       </DialogTrigger>
       <DialogContent
-        className="h-screen w-screen max-w-none border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden"
+        className="left-0 top-0 flex h-screen w-screen max-w-none translate-x-0 translate-y-0 flex-col border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden"
         aria-describedby={"main-menu-description"}
-        aria-labelledby={"main-menu-title"}
+        aria-labelledby={"main-menu"}
       >
         <MobileMenuHeader onClose={() => onOpenChange(false)} />
         <MobileMenuContent onNavigate={() => onOpenChange(false)} />
