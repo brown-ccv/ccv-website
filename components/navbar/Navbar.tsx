@@ -83,15 +83,6 @@ function DesktopNavigation() {
             />
           </NavigationMenu.Item>
         ))}
-
-        {/* <NavigationMenu.Item> */}
-        {/* TODO: Add blog */}
-        {/* <NavigationMenu.Link
-                className="inline-flex h-9 items-center justify-center gap-2 px-2 xl:px-4 text-white font-semibold text-2xl transition-colors hover:text-sunglow-400 focus:outline-none disabled:pointer-events-none disabled:opacity-50"
-                href="/blog">
-                Blog
-              </NavigationMenu.Link>
-            </NavigationMenu.Item> */}
       </NavigationMenu.List>
 
       <DesktopLinks
