@@ -153,8 +153,9 @@ function MobileMenuDialog({ isOpen, onOpenChange }: MobileMenuDialogProps) {
         />
       </DialogTrigger>
       <DialogContent
-        id="main-menu"
         className="h-screen w-screen max-w-none border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden"
+        aria-describedby={"main-menu-description"}
+        aria-labelledby={"main-menu-title"}
       >
         <MobileMenuHeader onClose={() => onOpenChange(false)} />
         <MobileMenuContent onNavigate={() => onOpenChange(false)} />
