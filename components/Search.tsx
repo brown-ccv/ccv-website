@@ -63,8 +63,17 @@ function GroupedHits() {
     stableGroupsRef.current = sortedGroups
   }
 
+  const hasStableResults = stableGroupsRef.current.length > 0
   const displayGroups =
     status === "idle" ? sortedGroups : stableGroupsRef.current
+
+  if (!hasStableResults && (status === "stalled" || status === "loading")) {
+    return (
+      <div className="py-12 text-center">
+        <p className="text-sm text-slate-700">Loading results...</p>
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-2">
@@ -102,15 +111,7 @@ function SearchResults() {
     )
   }
 
-  if (hasQuery && status === "stalled") {
-    return (
-      <div className="py-12 text-center">
-        <p className="text-sm text-slate-700">Loading results...</p>
-      </div>
-    )
-  }
-
-  if (results && results.hits.length === 0) {
+  if (status === "idle" && results && results.hits.length === 0) {
     return (
       <div className="py-12 text-center">
         <p className="text-sm text-slate-700">
