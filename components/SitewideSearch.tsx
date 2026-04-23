@@ -162,7 +162,7 @@ function queryHook(query: string, search: (value: string) => void) {
   timerId = setTimeout(() => search(query), timeout)
 }
 
-export function Search() {
+export function SitewideSearch() {
   return (
     <InstantSearch
       searchClient={searchClient}
@@ -173,7 +173,7 @@ export function Search() {
         <div className="relative border-b border-slate-500 px-4 py-3">
           <SearchBox
             queryHook={queryHook}
-            placeholder="Search site..."
+            placeholder="SitewideSearch site..."
             autoFocus
             submitIconComponent={() => null}
             resetIconComponent={() => null}
