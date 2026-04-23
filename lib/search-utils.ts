@@ -1,6 +1,8 @@
-import { remark } from "remark"
-import strip from "strip-markdown"
 import { slugifyAnchor } from "@/lib/utils"
+import { SKIP, visit } from "unist-util-visit"
+import { toString } from "mdast-util-to-string"
+import { unified } from "unified"
+import remarkParse from "remark-parse"
 
 export interface ContentChunk {
   section: string
@@ -18,6 +20,44 @@ export interface SearchDocument {
 }
 
 // -------------------- Cleaning Helpers --------------------
+/**
+ * Remark plugin to remove unwanted markdown AST nodes.
+ */
+function remarkStripCustom() {
+  return (tree: any) => {
+    visit(tree, (node, index, parent) => {
+      if (!parent || typeof index !== "number") return
+
+      // Remove full nodes entirely
+      if (
+        node.type === "image" || // Match images.
+        node.type === "table" || // Match markdown tables.
+        node.type === "html" || // Match raw HTML blocks like <table>.
+        node.type === "code" // Match fenced/inline code blocks.
+      ) {
+        parent.children.splice(index, 1)
+        return [SKIP, index]
+      }
+
+      if (node.type === "link") {
+        const text = toString(node) // extract visible label
+        parent.children.splice(index, 1, { type: "text", value: text })
+        return [SKIP, index]
+      }
+
+      // Flatten emphasis/strong to just text content
+      if (
+        node.type === "strong" || // Match bold nodes.
+        node.type === "emphasis" // Match italic nodes.
+      ) {
+        const text = toString(node)
+        parent.children.splice(index, 1, { type: "text", value: text })
+        return [SKIP, index]
+      }
+    })
+  }
+}
+
 /**
  * Parse a simple frontmatter block and return metadata plus content.
  */
@@ -45,6 +85,13 @@ export function parseFrontmatter(raw: string) {
  */
 export function stripHtmlTags(s: string): string {
   return s.replace(/<[^>]*>/g, " ") // Match any HTML tag and replace with a space.
+}
+
+/**
+ * Remove common urls from text.
+ */
+export function stripUrls(s: string): string {
+  return s.replace(/(?:https?|ftp):\/\/[^\s)]+/g, " ") // Match URLs starting with http:// or https:// and replace with a space.
 }
 
 /**
@@ -167,13 +214,18 @@ export function precleanMarkdown(markdown: string): string {
 /**
  * Convert a slug segment to readable title case.
  */
+const ACRONYMS = new Set(["api", "cpu", "gpu", "ml", "ai", "r", "sql"])
+
 export function titleCaseSegment(segment: string): string {
   return segment
+    .replace(/_+/g, "-") // Match underscores and normalize to hyphens.
     .split("-")
     .filter(Boolean)
-    .map((w) =>
-      w.length <= 3 ? w.toUpperCase() : w.charAt(0).toUpperCase() + w.slice(1)
-    )
+    .map((w) => {
+      const lower = w.toLowerCase()
+      if (ACRONYMS.has(lower)) return lower.toUpperCase()
+      return lower.charAt(0).toUpperCase() + lower.slice(1)
+    })
     .join(" ")
 }
 
@@ -275,9 +327,21 @@ export function chunkMarkdownByHeadings(markdown: string): ContentChunk[] {
  * Convert markdown into plain text via unified remark pipeline.
  */
 export async function markdownToPlainText(markdown: string): Promise<string> {
+  // Pre-clean non-standard syntax first
   const cleaned = precleanMarkdown(markdown)
-  const stripped = await remark().use(strip).process(cleaned)
-  return sanitizeForSearch(String(stripped))
+
+  // Parse → transform → extract text
+  const tree = unified().use(remarkParse).parse(cleaned)
+
+  // Apply AST stripping
+  remarkStripCustom()(tree)
+
+  // Convert AST to plain text
+  const text = toString(tree)
+
+  const postclean = stripUrls(text)
+
+  return sanitizeForSearch(postclean)
 }
 
 // -------------------- URL Helpers --------------------
