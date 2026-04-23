@@ -44,7 +44,10 @@ export function CollapsableCard({
       )}
     >
       <Accordion type="single" collapsible>
-        <AccordionItem className="border-none p-4" value={id}>
+        <AccordionItem
+          className="border-none p-4 hover:text-keppel-600"
+          value={id}
+        >
           {title && (
             <CardHeader className="flex-shrink-0">
               <CardTitle>
@@ -54,7 +57,7 @@ export function CollapsableCard({
                     className="mt-1 flex-shrink-0 text-2xl"
                   />
                 )}
-                <AccordionTrigger className="py-0 font-bold leading-none tracking-tight">
+                <AccordionTrigger className="py-0 font-bold leading-none tracking-tight focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400">
                   {title}
                 </AccordionTrigger>
               </CardTitle>

@@ -1,11 +1,13 @@
 "use server"
 
-import { Octokit } from "octokit"
+import { Octokit } from "@octokit/rest"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
+
 interface GitHubIssue {
   id: number
   title: string
   pull_request?: any
+
   [key: string]: any
 }
 
@@ -30,27 +32,23 @@ export async function getOpenIssues() {
   const secret = await getSecret()
   const org = "ccv-status"
   const octokit = new Octokit({ auth: secret })
-
-  const allRepos = await octokit.request(`GET /orgs/${org}/repos`, {
-    org: { org },
+  const allRepos = await octokit.rest.repos.listForOrg({
+    org,
     type: "private",
   })
 
   const issuesData = await Promise.all(
     allRepos.data.map(async ({ name }: { name: string }) => {
-      const open = await octokit.request(`GET /repos/${org}/${name}/issues`, {
-        org: { org },
-        repo: { name },
+      const open = await octokit.rest.issues.listForRepo({
+        owner: org,
+        repo: name,
         sort: "created",
         direction: "desc",
       })
 
       const openIssues = filterPRs(open.data as GitHubIssue[])
 
-      return {
-        name,
-        openIssues,
-      }
+      return { name, openIssues }
     })
   )
 
