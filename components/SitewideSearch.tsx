@@ -12,11 +12,17 @@ import type { Hit as AlgoliaHit } from "instantsearch.js"
 import { Link } from "./Link"
 import * as React from "react"
 import type { SearchDocument } from "@/lib/search-utils"
+import { DialogClose } from "@/components/ui/Dialog"
 
 type SearchHit = AlgoliaHit<SearchDocument>
 
 type HitProps = {
   hit: SearchHit
+  onResultSelect?: () => void
+}
+
+interface SitewideSearchProps {
+  onResultSelect?: () => void
 }
 
 const TYPE_CONFIG: Record<string, { label: string; order: number }> = {
@@ -41,7 +47,7 @@ function getTypeOrder(type: string): number {
   return TYPE_CONFIG[type]?.order ?? 99
 }
 
-function GroupedHits() {
+function GroupedHits({ onResultSelect }: { onResultSelect?: () => void }) {
   const { items } = useHits<SearchDocument>()
 
   // Group hits by type
@@ -72,7 +78,7 @@ function GroupedHits() {
           <ul className="space-y-1">
             {hits.map((hit) => (
               <li key={hit.objectID}>
-                <Hit hit={hit} />
+                <Hit hit={hit} onResultSelect={onResultSelect} />
               </li>
             ))}
           </ul>
@@ -82,7 +88,7 @@ function GroupedHits() {
   )
 }
 
-function SearchResults() {
+function SearchResults({ onResultSelect }: { onResultSelect?: () => void }) {
   const { results, indexUiState } = useInstantSearch()
   const hasQuery = indexUiState.query && indexUiState.query.length > 0
 
@@ -115,17 +121,18 @@ function SearchResults() {
 
   return (
     <div className="max-h-[400px] overflow-y-auto p-2">
-      <GroupedHits />
+      <GroupedHits onResultSelect={onResultSelect} />
     </div>
   )
 }
 
-function Hit({ hit }: HitProps) {
+function Hit({ hit, onResultSelect }: HitProps) {
   const breadcrumb = hit.breadcrumb ?? []
 
   return (
     <Link
       href={hit.url}
+      onClick={onResultSelect}
       className="focus-visible:ring-ring group flex items-start gap-3 rounded-md px-4 py-3 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
     >
       <div className="min-w-0 flex-1 space-y-1">
@@ -162,7 +169,7 @@ function queryHook(query: string, search: (value: string) => void) {
   timerId = setTimeout(() => search(query), timeout)
 }
 
-export function SitewideSearch() {
+export function SitewideSearch({ onResultSelect }: SitewideSearchProps) {
   return (
     <InstantSearch
       searchClient={searchClient}
@@ -190,7 +197,7 @@ export function SitewideSearch() {
           />
         </div>
 
-        <SearchResults />
+        <SearchResults onResultSelect={onResultSelect} />
       </div>
     </InstantSearch>
   )

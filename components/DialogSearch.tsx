@@ -49,7 +49,7 @@ export function DialogSearch({ searchTitle }: DialogSearchProps): JSX.Element {
         <DialogDescription id={descriptionId} className="sr-only">
           Search the CCV site and related documentation.
         </DialogDescription>
-        <SitewideSearch />
+        <SitewideSearch onResultSelect={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
   )
