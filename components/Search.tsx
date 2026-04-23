@@ -43,23 +43,43 @@ function getTypeOrder(type: string): number {
 
 function GroupedHits() {
   const { items } = useHits<SearchDocument>()
+  const { status } = useInstantSearch()
 
-  // Group hits by type
-  const grouped = items.reduce<Record<string, SearchHit[]>>((acc, hit) => {
-    const type = hit.type ?? "other"
-    if (!acc[type]) acc[type] = []
-    acc[type].push(hit)
-    return acc
-  }, {})
+  const stableGroupsRef = React.useRef<[string, SearchHit[]][]>([])
 
-  // Sort groups by defined order
-  const sortedGroups = Object.entries(grouped).sort(
-    ([a], [b]) => getTypeOrder(a) - getTypeOrder(b)
-  )
+  const sortedGroups = React.useMemo(() => {
+    const grouped = items.reduce<Record<string, SearchHit[]>>((acc, hit) => {
+      const type = hit.type ?? "other"
+      if (!acc[type]) acc[type] = []
+      acc[type].push(hit)
+      return acc
+    }, {})
+    return Object.entries(grouped).sort(
+      ([a], [b]) => getTypeOrder(a) - getTypeOrder(b)
+    )
+  }, [items])
+
+  React.useEffect(() => {
+    if (status === "idle") {
+      stableGroupsRef.current = sortedGroups
+    }
+  }, [status, sortedGroups])
+
+  const hasStableResults = stableGroupsRef.current.length > 0
+  const displayGroups =
+    status === "idle" ? sortedGroups : stableGroupsRef.current
+
+  if (!hasStableResults && (status === "stalled" || status === "loading")) {
+    return (
+      <div className="py-12 text-center">
+        <p className="text-sm text-slate-700">Loading results...</p>
+      </div>
+    )
+  }
 
   return (
     <div className="space-y-2">
-      {sortedGroups.map(([type, hits]) => (
+      {displayGroups.map(([type, hits]) => (
         <div key={type}>
           {/* Section header */}
           <div className="bg-white px-4 py-2">
@@ -67,7 +87,6 @@ function GroupedHits() {
               {getTypeLabel(type)}
             </span>
           </div>
-
           {/* Hits in this group */}
           <ul className="space-y-1">
             {hits.map((hit) => (
@@ -83,7 +102,7 @@ function GroupedHits() {
 }
 
 function SearchResults() {
-  const { results, indexUiState } = useInstantSearch()
+  const { results, indexUiState, status } = useInstantSearch()
   const hasQuery = indexUiState.query && indexUiState.query.length > 0
 
   if (!hasQuery) {
@@ -94,15 +113,7 @@ function SearchResults() {
     )
   }
 
-  if (hasQuery && !results) {
-    return (
-      <div className="py-12 text-center">
-        <p className="text-sm text-slate-700">Loading results...</p>
-      </div>
-    )
-  }
-
-  if (results && results.hits.length === 0) {
+  if (status === "idle" && results && results.hits.length === 0) {
     return (
       <div className="py-12 text-center">
         <p className="text-sm text-slate-700">
