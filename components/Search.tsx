@@ -59,9 +59,11 @@ function GroupedHits() {
     )
   }, [items])
 
-  if (status === "idle") {
-    stableGroupsRef.current = sortedGroups
-  }
+  React.useEffect(() => {
+    if (status === "idle") {
+      stableGroupsRef.current = sortedGroups
+    }
+  }, [status, sortedGroups])
 
   const hasStableResults = stableGroupsRef.current.length > 0
   const displayGroups =
