@@ -62,6 +62,7 @@ function getCommonPinningStyles(column: Column<ServiceConfig>): CSSProperties {
 function PinnedRow({ row, table }: { row: Row<any>; table: Table<any> }) {
   return (
     <tr
+      aria-label="Pinned row"
       style={{
         position: "sticky",
         top:
@@ -119,9 +120,11 @@ export function StorageTable({ services }: TableProps) {
                   {String(feature.value)}
                 </span>
               </div>
+              {/* Icon is decorative; the tooltip trigger and its text content provide the accessible label */}
               <Icon
                 iconName="FaInfoCircle"
                 className="h-3 w-3 group-hover:text-keppel-600"
+                aria-hidden="true"
               />
             </TooltipTrigger>
             <TooltipContent className="rounded-md border bg-white shadow">
@@ -259,6 +262,15 @@ export function StorageTable({ services }: TableProps) {
     }
   }
 
+  // Map TanStack sort state to the aria-sort attribute values
+  const getAriaSortValue = (
+    isSorted: false | "asc" | "desc"
+  ): "ascending" | "descending" | "none" => {
+    if (isSorted === "asc") return "ascending"
+    if (isSorted === "desc") return "descending"
+    return "none"
+  }
+
   return (
     <>
       <div className="mb-4 flex justify-end space-x-2">
@@ -280,7 +292,10 @@ export function StorageTable({ services }: TableProps) {
         ref={tableContainerRef}
         className="overflow-auto rounded-lg border border-slate-200 bg-white"
       >
-        <table className="min-w-full divide-y divide-stone-500">
+        <table
+          className="min-w-full divide-y divide-stone-500"
+          aria-label="Storage services comparison"
+        >
           <thead className="sticky top-0 z-20 shadow-sm">
             {table.getHeaderGroups().map((headerGroup) => (
               <tr key={headerGroup.id}>
@@ -290,19 +305,35 @@ export function StorageTable({ services }: TableProps) {
                     return (
                       <th
                         key={header.id}
+                        scope="col"
                         className="w-12 bg-neutral-900 px-4 py-3"
                         style={{ ...getCommonPinningStyles(column) }}
-                      ></th>
+                      >
+                        <span className="sr-only">Pin Column</span>
+                      </th>
                     )
                   }
                   return (
                     <th
                       key={header.id}
+                      scope="col"
+                      aria-sort={
+                        header.column.getCanSort()
+                          ? getAriaSortValue(header.column.getIsSorted())
+                          : undefined
+                      }
                       className={cn(
                         "min-w-56 cursor-pointer border-r border-stone-500 bg-neutral-900 px-4 py-3 text-left font-medium uppercase tracking-wider text-white last:border-r-0 hover:bg-neutral-500"
                       )}
                       style={{ ...getCommonPinningStyles(column) }}
                       onClick={header.column.getToggleSortingHandler()}
+                      tabIndex={header.column.getCanSort() ? 0 : undefined}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault()
+                          header.column.getToggleSortingHandler()?.(e as any)
+                        }
+                      }}
                     >
                       <div className="flex items-center gap-3">
                         {!header.isPlaceholder && header.column.getCanPin() && (
@@ -350,7 +381,8 @@ export function StorageTable({ services }: TableProps) {
                             header.getContext()
                           )}
                           {header.column.getCanSort() && (
-                            <span>
+                            // Sort direction icons are decorative; sort state is conveyed via aria-sort on the <th>
+                            <span aria-hidden="true">
                               {{
                                 asc: (
                                   <Icon
