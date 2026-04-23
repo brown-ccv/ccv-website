@@ -183,8 +183,10 @@ export function titleCaseSegment(segment: string): string {
 export function getPathSegmentsFromUrl(url: string, baseUrl: string): string[] {
   const noHash = url.split("#")[0]
 
-  // If baseUrl is "/" just strip leading slash if (baseUrl === "/") {
-  return noHash.replace(/^\/+/, "").split("/").filter(Boolean) // Match one or more leading slashes.
+  // If baseUrl is "/" just strip leading slash
+  if (baseUrl === "/") {
+    return noHash.replace(/^\/+/, "").split("/").filter(Boolean) // Match one or more leading slashes.
+  }
 
   const normalizedBaseUrl = baseUrl.replace(/\/+$/, "") // Match one or more trailing slashes.
 
