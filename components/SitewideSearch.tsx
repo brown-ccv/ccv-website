@@ -12,7 +12,6 @@ import type { Hit as AlgoliaHit } from "instantsearch.js"
 import { Link } from "./Link"
 import * as React from "react"
 import type { SearchDocument } from "@/lib/search-utils"
-import { DialogClose } from "@/components/ui/Dialog"
 
 type SearchHit = AlgoliaHit<SearchDocument>
 
