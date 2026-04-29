@@ -1,34 +1,32 @@
 "use client"
 
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useMemo, useState } from "react"
 import { Button } from "@/components/button/Button"
 import { ScrollButton } from "@/components/button/ScrollButton"
-import {
-  ContentHeader,
-  ContentSection,
-  ContentTitle,
-} from "@/components/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 import { StorageForm } from "@/components/storage/StorageForm"
 import { StorageTable } from "@/components/storage/StorageTable"
-import {
-  SelectedAnswers,
-  StorageData,
-  FormQuestions,
-} from "@/lib/storage-types"
+import { TABLE_VISIBILITY } from "@/lib/styles"
+import { SelectedAnswers } from "@/lib/storage-types"
+import services from "@/content/data/storage-features.json"
+import questions from "@/content/data/storage-questions.json"
+
 import { StorageCards } from "@/components/storage/StorageCards"
 import Icon from "@/components/ui/RenderIcon"
 
 interface StorageToolProps {
-  questions: FormQuestions[]
-  initialSelectedAnswers: SelectedAnswers
-  services: StorageData
+  className?: string
 }
 
-export function StorageTool({
-  questions,
-  initialSelectedAnswers,
-  services,
-}: StorageToolProps) {
+export function StorageTool({ className }: StorageToolProps) {
+  const initialSelectedAnswers = useMemo<SelectedAnswers>(() => {
+    const initial: SelectedAnswers = {}
+    questions.forEach((question: any) => {
+      initial[question.id] = question.default_answer
+    })
+    return initial
+  }, [])
+
   const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(
     initialSelectedAnswers
   )
@@ -49,33 +47,31 @@ export function StorageTool({
 
   return (
     <>
-      <ContentSection id="form">
-        <ContentHeader>
-          <ContentTitle title="Storage Selection Tool" />
-        </ContentHeader>
-
+      <ContentSection title="Storage Selection Tool" className="not-prose">
         <p className="mb-6 text-lg leading-tight lg:text-xl">
           Answering the questions in the form will provide a list of services
           that meet your requirements.
         </p>
         <div
-          className="hidden lg:flex lg:items-center lg:gap-4 lg:pb-8"
+          className={TABLE_VISIBILITY}
           role="navigation"
           aria-label="Page navigation"
         >
-          <p className="text-lg" id="table-nav-desc">
-            Want to dive into comparing features?
-          </p>
-          <ScrollButton
-            variant="primary_filled"
-            size="md"
-            id="table"
-            aria-describedby="table-nav-desc"
-            aria-label="Scroll to comparison table section"
-          >
-            View Comparison Table
-            <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
-          </ScrollButton>
+          <span className="flex items-center gap-4 pb-8">
+            <p className="text-lg" id="table-nav-desc">
+              Want to dive into comparing features?
+            </p>
+            <ScrollButton
+              variant="primary_filled"
+              size="md"
+              id="compare-storage-options"
+              aria-describedby="table-nav-desc"
+              aria-label="Scroll to comparison table section"
+            >
+              View Comparison Table
+              <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
+            </ScrollButton>
+          </span>
         </div>
         <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
           <StorageForm
@@ -100,10 +96,10 @@ export function StorageTool({
           />
         </div>
       </ContentSection>
-      <ContentSection id="table" className="hidden lg:block">
-        <ContentHeader>
-          <ContentTitle title="Compare Storage Options" />
-        </ContentHeader>
+      <ContentSection
+        title="Compare Storage Options"
+        className={`not-prose ${TABLE_VISIBILITY}`}
+      >
         <p className="mb-6 text-lg leading-tight lg:text-xl">
           This tool lets you compare the available storage options at Brown to
           compare their features and decide which of these services best suits

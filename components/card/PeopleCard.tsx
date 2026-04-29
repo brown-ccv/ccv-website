@@ -9,6 +9,7 @@ import {
   DialogContent,
   DialogTitle,
   DialogTrigger,
+  DialogDescription,
 } from "@/components/ui/Dialog"
 
 import { FaGithub, FaInfoCircle } from "react-icons/fa"
@@ -41,6 +42,8 @@ export function PeopleCard({
   personDetails,
 }: PeopleCardProps) {
   const [isHovered, setIsHovered] = useState(false)
+  const titleId = React.useId()
+  const descriptionId = React.useId()
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -72,7 +75,11 @@ export function PeopleCard({
           </StyledCard>
         </button>
       </DialogTrigger>
-      <DialogContent className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-slate-600 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24">
+      <DialogContent
+        aria-labelledby={titleId}
+        aria-describedby={descriptionId}
+        className="max-h-3xl flex h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl bg-white p-8 text-center text-slate-600 sm:w-[90vw] md:w-[90vw] lg:h-[80vh] lg:max-w-3xl lg:p-24"
+      >
         <Image
           src={imagePath}
           alt=""
@@ -80,10 +87,12 @@ export function PeopleCard({
           height={200}
           className="h-[200px] w-[200px] rounded-full md:h-[250px] md:w-[250px] lg:h-[300px] lg:w-[300px]"
         />
-        <DialogTitle className="py-4 text-2xl">
+        <DialogTitle id={titleId} className="py-4 text-2xl">
           {personDetails?.display_name}
         </DialogTitle>
-        <p className="text-xl font-normal">{personDetails?.title || title}</p>
+        <DialogDescription id={descriptionId} className="text-xl font-normal">
+          {personDetails?.title || title}
+        </DialogDescription>
         {personDetails?.team && (
           <p className="-mb-2 text-lg font-semibold">{personDetails.team}</p>
         )}

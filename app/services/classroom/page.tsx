@@ -4,11 +4,7 @@ import { getMDXMetadata } from "@/lib/mdx-utils"
 import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 import classroomCarousel from "@/content/data/classroom-carousel.json"
 import { StyledCarouselItem } from "@/components/carousel/StyledCarousel"
-import {
-  ContentHeader,
-  ContentSection,
-  ContentTitle,
-} from "@/components/ContentSection"
+import { ContentSection } from "@/components/ContentSection"
 
 export default async function ClassroomSupport() {
   const metadata = getMDXMetadata("content/routes/services/classroom.mdx")
@@ -17,10 +13,10 @@ export default async function ClassroomSupport() {
   return (
     <>
       <Hero title={metadata.title} description={metadata.description} />
-      <ContentSection className="px-none bg-neutral-50" id="in-class-tutorials">
-        <ContentHeader>
-          <ContentTitle title="In-Class Tutorials" />
-        </ContentHeader>
+      <ContentSection
+        title="In-Class Tutorials"
+        className="px-none bg-neutral-50"
+      >
         <p className="px-page">
           CCV offers a variety of tutorials to provide students with experience
           using Brown's HPC systems. CCV staff members provide students with an
