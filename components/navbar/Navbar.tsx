@@ -318,7 +318,8 @@ function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
         <NavigationMenu.Item className={mobileNavItemClassName}>
           <NavigationMenu.Link
             href="https://docs.ccv.brown.edu/documentation"
-            className="focus-visible:outline-none"
+            className="block h-full w-full focus-visible:outline-none"
+            target="_blank"
             onClick={handleNavigation}
           >
             Docs
@@ -326,7 +327,10 @@ function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
         </NavigationMenu.Item>
 
         <NavigationMenu.Item className="focus-within:ring-ring group px-6 py-7 text-xl font-semibold text-sunglow-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-inset focus-within:ring-sunglow-400 hover:bg-sunglow-400 hover:text-black focus:outline-none active:bg-sunglow-200">
-          <NavigationMenu.Link asChild className="focus-visible:outline-none">
+          <NavigationMenu.Link
+            asChild
+            className="block h-full w-full focus-visible:outline-none"
+          >
             <Link href="/about/help" onClick={handleNavigation}>
               Help
             </Link>
