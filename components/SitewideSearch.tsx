@@ -17,6 +17,11 @@ type SearchHit = AlgoliaHit<SearchDocument>
 
 type HitProps = {
   hit: SearchHit
+  onResultSelect?: () => void
+}
+
+interface SitewideSearchProps {
+  onResultSelect?: () => void
 }
 
 const TYPE_CONFIG: Record<string, { label: string; order: number }> = {
@@ -41,45 +46,25 @@ function getTypeOrder(type: string): number {
   return TYPE_CONFIG[type]?.order ?? 99
 }
 
-function GroupedHits() {
+function GroupedHits({ onResultSelect }: { onResultSelect?: () => void }) {
   const { items } = useHits<SearchDocument>()
-  const { status } = useInstantSearch()
 
-  const stableGroupsRef = React.useRef<[string, SearchHit[]][]>([])
+  // Group hits by type
+  const grouped = items.reduce<Record<string, SearchHit[]>>((acc, hit) => {
+    const type = hit.type ?? "other"
+    if (!acc[type]) acc[type] = []
+    acc[type].push(hit)
+    return acc
+  }, {})
 
-  const sortedGroups = React.useMemo(() => {
-    const grouped = items.reduce<Record<string, SearchHit[]>>((acc, hit) => {
-      const type = hit.type ?? "other"
-      if (!acc[type]) acc[type] = []
-      acc[type].push(hit)
-      return acc
-    }, {})
-    return Object.entries(grouped).sort(
-      ([a], [b]) => getTypeOrder(a) - getTypeOrder(b)
-    )
-  }, [items])
-
-  React.useEffect(() => {
-    if (status === "idle") {
-      stableGroupsRef.current = sortedGroups
-    }
-  }, [status, sortedGroups])
-
-  const hasStableResults = stableGroupsRef.current.length > 0
-  const displayGroups =
-    status === "idle" ? sortedGroups : stableGroupsRef.current
-
-  if (!hasStableResults && (status === "stalled" || status === "loading")) {
-    return (
-      <div className="py-12 text-center">
-        <p className="text-sm text-slate-700">Loading results...</p>
-      </div>
-    )
-  }
+  // Sort groups by defined order
+  const sortedGroups = Object.entries(grouped).sort(
+    ([a], [b]) => getTypeOrder(a) - getTypeOrder(b)
+  )
 
   return (
     <div className="space-y-2">
-      {displayGroups.map(([type, hits]) => (
+      {sortedGroups.map(([type, hits]) => (
         <div key={type}>
           {/* Section header */}
           <div className="bg-white px-4 py-2">
@@ -87,11 +72,12 @@ function GroupedHits() {
               {getTypeLabel(type)}
             </span>
           </div>
+
           {/* Hits in this group */}
           <ul className="space-y-1">
             {hits.map((hit) => (
               <li key={hit.objectID}>
-                <Hit hit={hit} />
+                <Hit hit={hit} onResultSelect={onResultSelect} />
               </li>
             ))}
           </ul>
@@ -101,8 +87,8 @@ function GroupedHits() {
   )
 }
 
-function SearchResults() {
-  const { results, indexUiState, status } = useInstantSearch()
+function SearchResults({ onResultSelect }: { onResultSelect?: () => void }) {
+  const { results, indexUiState } = useInstantSearch()
   const hasQuery = indexUiState.query && indexUiState.query.length > 0
 
   if (!hasQuery) {
@@ -113,7 +99,15 @@ function SearchResults() {
     )
   }
 
-  if (status === "idle" && results && results.hits.length === 0) {
+  if (hasQuery && !results) {
+    return (
+      <div className="py-12 text-center">
+        <p className="text-sm text-slate-700">Loading results...</p>
+      </div>
+    )
+  }
+
+  if (results && results.hits.length === 0) {
     return (
       <div className="py-12 text-center">
         <p className="text-sm text-slate-700">
@@ -126,17 +120,18 @@ function SearchResults() {
 
   return (
     <div className="max-h-[400px] overflow-y-auto p-2">
-      <GroupedHits />
+      <GroupedHits onResultSelect={onResultSelect} />
     </div>
   )
 }
 
-function Hit({ hit }: HitProps) {
+function Hit({ hit, onResultSelect }: HitProps) {
   const breadcrumb = hit.breadcrumb ?? []
 
   return (
     <Link
       href={hit.url}
+      onClick={onResultSelect}
       className="focus-visible:ring-ring group flex items-start gap-3 rounded-md px-4 py-3 transition-colors hover:bg-slate-100 focus:outline-none focus-visible:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
     >
       <div className="min-w-0 flex-1 space-y-1">
@@ -173,7 +168,7 @@ function queryHook(query: string, search: (value: string) => void) {
   timerId = setTimeout(() => search(query), timeout)
 }
 
-export function Search() {
+export function SitewideSearch({ onResultSelect }: SitewideSearchProps) {
   return (
     <InstantSearch
       searchClient={searchClient}
@@ -184,7 +179,7 @@ export function Search() {
         <div className="relative border-b border-slate-500 px-4 py-3">
           <SearchBox
             queryHook={queryHook}
-            placeholder="Search site..."
+            placeholder="Search the CCV site..."
             autoFocus
             submitIconComponent={() => null}
             resetIconComponent={() => null}
@@ -201,7 +196,7 @@ export function Search() {
           />
         </div>
 
-        <SearchResults />
+        <SearchResults onResultSelect={onResultSelect} />
       </div>
     </InstantSearch>
   )

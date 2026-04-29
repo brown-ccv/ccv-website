@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/Dialog"
 import { Button } from "@/components/button/Button"
 import { FaMagnifyingGlass } from "react-icons/fa6"
-import { Search } from "@/components/Search"
 import { usePathname } from "next/navigation"
+import { SitewideSearch } from "@/components/SitewideSearch"
 
 interface DialogSearchProps {
   searchTitle: string
@@ -49,7 +49,7 @@ export function DialogSearch({ searchTitle }: DialogSearchProps): JSX.Element {
         <DialogDescription id={descriptionId} className="sr-only">
           Search the CCV site and related documentation.
         </DialogDescription>
-        <Search />
+        <SitewideSearch onResultSelect={() => setOpen(false)} />
       </DialogContent>
     </Dialog>
   )
