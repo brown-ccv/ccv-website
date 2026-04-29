@@ -180,7 +180,7 @@ export function SitewideSearch({ onResultSelect }: SitewideSearchProps) {
         <div className="relative border-b border-slate-500 px-4 py-3">
           <SearchBox
             queryHook={queryHook}
-            placeholder="SitewideSearch site..."
+            placeholder="Search the CCV site..."
             autoFocus
             submitIconComponent={() => null}
             resetIconComponent={() => null}
