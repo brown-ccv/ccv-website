@@ -102,8 +102,11 @@ export function ContentTitle({
     <>
       {bars && <CCVBars />}
       <h2
-        className={cn("pb-2 tracking-tighter", icon ? "flex" : "", className)}
-        aria-label={title}
+        className={cn(
+          "pb-2 text-center tracking-tighter",
+          icon ? "flex" : "",
+          className
+        )}
         {...props}
       >
         {icon && (
