@@ -1,10 +1,11 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import { Badge } from "@/components/ui/Badge"
 import { getColorForTag } from "@/lib/utils"
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -183,17 +184,41 @@ function FeatCarouselContent({
 }
 
 export function StyledCarousel({ carouselData }: StyledCarouselProps) {
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+  const [count, setCount] = React.useState(0)
+
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    setCount(api.scrollSnapList().length)
+    setCurrent(api.selectedScrollSnap() + 1)
+
+    api.on("select", () => {
+      setCurrent(api.selectedScrollSnap() + 1)
+    })
+  }, [api])
   return (
-    <Carousel className="w-full">
-      <CarouselContent className="">
-        {carouselData.map((_, index) => (
-          <CarouselItem key={index}>
-            <FeatCarouselContent {..._} />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div className="relative w-full">
+      <Carousel setApi={setApi} className="w-full">
+        <CarouselContent>
+          {carouselData.map((item, index) => (
+            <CarouselItem key={index}>
+              <FeatCarouselContent {...item} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+
+      <Dots
+        cardIndex={current - 1}
+        setCardIndex={(index) => api?.scrollTo(index)}
+        carouselData={carouselData}
+      />
+    </div>
   )
 }
