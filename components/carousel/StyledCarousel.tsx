@@ -57,14 +57,16 @@ export interface DotsProps {
 
 export function Dots({ carouselData, cardIndex, setCardIndex }: DotsProps) {
   return (
-    <div className="absolute bottom-5 flex w-full justify-center gap-2">
+    <div className="absolute bottom-0 flex w-full justify-center gap-4 lg:bottom-5">
       {carouselData.map((_, idx) => {
         return (
           <button
             key={idx}
             onClick={() => setCardIndex(idx)}
-            className={`h-2 rounded-full transition-colors ${
-              idx === cardIndex ? "w-3 bg-neutral-500" : "w-2 bg-neutral-300"
+            className={`h-3 rounded-full transition-colors lg:h-2 ${
+              idx === cardIndex
+                ? "w-4 bg-neutral-500 lg:w-3"
+                : "w-3 bg-neutral-300 lg:w-2"
             }`}
             aria-label={`Go to slide ${idx + 1}: ${_.title}`}
             aria-current={cardIndex === idx ? "true" : "false"}
