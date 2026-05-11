@@ -674,7 +674,7 @@
     },
     {
       "serviceName": "Hibernate",
-      "documentation": "https://docs.ccv.brown.edu/hibernate/",
+      "documentation": "https://docs.ccv.brown.edu/storage-and-transfer/hibernate/overview/",
       "storage_threshold": {
         "name": "storage_threshold",
         "value": "2 TB +",
