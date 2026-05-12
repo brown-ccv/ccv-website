@@ -104,23 +104,23 @@ export function PeopleCard({
             personDetails.github_username !== "" && (
               <ButtonLink
                 href={`https://github.com/${personDetails.github_username}`}
-                variant={"icon_only"}
-                size={"icon"}
-                iconOnly={<FaGithub />}
+                size="icon"
                 title="GitHub Profile"
                 className="text-3xl hover:text-keppel-700"
-              ></ButtonLink>
+              >
+                <FaGithub />
+              </ButtonLink>
             )}
           {personDetails?.brown_directory_uuid &&
             personDetails.brown_directory_uuid !== "" && (
               <ButtonLink
                 href={`https://directory.brown.edu/uuid/${personDetails.brown_directory_uuid}`}
-                variant={"icon_only"}
-                size={"icon"}
-                iconOnly={<FaInfoCircle className="text-3xl" />}
+                size="icon"
                 title="Brown Directory"
                 className="text-3xl hover:text-keppel-700"
-              ></ButtonLink>
+              >
+                <FaInfoCircle className="text-3xl" />
+              </ButtonLink>
             )}
         </div>
         {personDetails?.bio && <div className="mt-4">{personDetails.bio}</div>}

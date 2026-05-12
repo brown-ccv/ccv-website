@@ -110,12 +110,11 @@ function MobileMenuHeader({ onClose }: MobileMenuHeaderProps) {
           aria-label="Close Navigation"
           aria-controls="main-menu"
           variant="secondary_filled"
-          iconOnly={
-            <XMarkIcon aria-hidden focusable={false} className="h-6 w-6" />
-          }
           className="rounded-2xl p-2 text-blue-navbar"
           onClick={onClose}
-        />
+        >
+          <XMarkIcon aria-hidden focusable={false} className="h-6 w-6" />
+        </Button>
       </DialogClose>
     </DialogHeader>
   )
@@ -137,11 +136,10 @@ function MobileMenuDialog({ isOpen, onOpenChange }: MobileMenuDialogProps) {
           aria-label="Main Menu"
           aria-controls="main-menu"
           variant="secondary_filled"
-          iconOnly={
-            <FaBars aria-hidden focusable={false} className="h-6 w-6" />
-          }
           className="rounded-2xl p-2 text-blue-navbar"
-        />
+        >
+          <FaBars aria-hidden focusable={false} className="h-6 w-6" />
+        </Button>
       </DialogTrigger>
       <DialogContent
         className="left-0 top-0 flex h-screen w-screen max-w-none translate-x-0 translate-y-0 flex-col border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden"
