@@ -4,16 +4,16 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "tsx lib/build-utils.ts && next build",
+    "build": "tsx src/lib/execute-on-build.ts && next build",
     "start": "next start",
-    "search:build": "tsx scripts/build-search-index.ts",
-    "search:upload": "tsx scripts/meilisearch-client.ts",
+    "search:build": "tsx src/lib/build-search-index.ts",
+    "search:upload": "tsx src/lib/meilisearch-client.ts",
     "search:index": "npm run search:build && npm run search:upload",
-    "search:setup-key": "tsx scripts/setup-search-key.ts",
+    "search:setup-key": "tsx src/lib/setup-search-key.ts",
     "lint": "next lint",
     "format": "prettier . --write",
     "typecheck": "tsc --noEmit",
-    "copy-images": "tsx lib/build-utils.ts",
+    "copy-images": "tsx src/lib/execute-on-build.ts",
     "prepare": "husky"
   },
   "lint-staged": {

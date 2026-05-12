@@ -1,0 +1,114 @@
+"use client"
+
+import React, { useCallback, useMemo, useState } from "react"
+import { Button } from "@/components/button/Button"
+import { ScrollButton } from "@/components/button/ScrollButton"
+import { ContentSection } from "@/components/ContentSection"
+import { StorageForm } from "@/components/storage/StorageForm"
+import { StorageTable } from "@/components/storage/StorageTable"
+import { TABLE_VISIBILITY } from "@/styles/visibility"
+import { SelectedAnswers } from "@/types/storage-types"
+import services from "@/content/data/storage-features.json"
+import questions from "@/content/data/storage-questions.json"
+
+import { StorageCards } from "@/components/storage/StorageCards"
+import Icon from "@/components/ui/RenderIcon"
+
+interface StorageToolProps {
+  className?: string
+}
+
+export function StorageTool({ className }: StorageToolProps) {
+  const initialSelectedAnswers = useMemo<SelectedAnswers>(() => {
+    const initial: SelectedAnswers = {}
+    questions.forEach((question: any) => {
+      initial[question.id] = question.default_answer
+    })
+    return initial
+  }, [])
+
+  const [selectedAnswers, setSelectedAnswers] = useState<SelectedAnswers>(
+    initialSelectedAnswers
+  )
+
+  const handleAnswerChange = useCallback(
+    (questionId: string, answer: string) => {
+      setSelectedAnswers((prev) => ({
+        ...prev,
+        [questionId]: answer,
+      }))
+    },
+    []
+  )
+
+  const handleReset = useCallback(() => {
+    setSelectedAnswers(initialSelectedAnswers)
+  }, [initialSelectedAnswers])
+
+  return (
+    <>
+      <ContentSection title="Storage Selection Tool" className="not-prose">
+        <p className="mb-6 text-lg leading-tight lg:text-xl">
+          Answering the questions in the form will provide a list of services
+          that meet your requirements.
+        </p>
+        <div
+          className={TABLE_VISIBILITY}
+          role="navigation"
+          aria-label="Page navigation"
+        >
+          <span className="flex items-center gap-4 pb-8">
+            <p className="text-lg" id="table-nav-desc">
+              Want to dive into comparing features?
+            </p>
+            <ScrollButton
+              variant="primary_filled"
+              size="md"
+              id="compare-storage-options"
+              aria-describedby="table-nav-desc"
+              aria-label="Scroll to comparison table section"
+            >
+              View Comparison Table
+              <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
+            </ScrollButton>
+          </span>
+        </div>
+        <div className="flex flex-col items-center gap-6 lg:flex-row lg:items-start lg:gap-12">
+          <StorageForm
+            selectedAnswers={selectedAnswers}
+            onAnswerChange={handleAnswerChange}
+            questions={questions}
+          >
+            <Button
+              onClick={handleReset}
+              variant="primary_filled"
+              size="sm"
+              leftIcon={<Icon iconName="FaUndo" aria-hidden="true" />}
+            >
+              Reset Questions
+            </Button>
+          </StorageForm>
+
+          <StorageCards
+            services={services}
+            selectedAnswers={selectedAnswers}
+            questions={questions}
+          />
+        </div>
+      </ContentSection>
+      <ContentSection
+        title="Compare Storage Options"
+        className={`not-prose ${TABLE_VISIBILITY}`}
+      >
+        <p className="mb-6 text-lg leading-tight lg:text-xl">
+          This tool lets you compare the available storage options at Brown to
+          compare their features and decide which of these services best suits
+          your needs. Select a storage service in the table for more information
+          about the service.
+        </p>
+
+        <StorageTable services={services} />
+      </ContentSection>
+    </>
+  )
+}

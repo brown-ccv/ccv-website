@@ -1,0 +1,342 @@
+"use client"
+
+import React, { useEffect, useState } from "react"
+import { Button } from "@/components/button/Button"
+import { ButtonLink } from "@/components/button/ButtonLink"
+import { CCVLogo } from "@/components/assets/CCVLogo"
+import { Link } from "@/components/Link"
+import * as NavigationMenu from "@radix-ui/react-navigation-menu"
+import {
+  Dialog,
+  DialogTrigger,
+  DialogTitle,
+  DialogContent,
+  DialogHeader,
+  DialogClose,
+} from "@/components/ui/Dialog"
+import { DialogSearch } from "@/components/DialogSearch"
+import { RouteGroup } from "@/types/navbar-types"
+import { FaBars, FaChevronDown, FaQuestionCircle } from "react-icons/fa"
+import { FaFileLines } from "react-icons/fa6"
+import { routes } from "@/components/navbar/routes"
+import { XMarkIcon } from "@heroicons/react/16/solid"
+import { usePathname } from "next/navigation"
+
+const desktopNavItemClassName =
+  "inline-flex h-9 items-center justify-center gap-2 px-2 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 xl:px-4"
+
+const desktopNavTriggerClassName =
+  "group inline-flex h-9 items-center justify-center gap-2 px-3 text-xl font-semibold text-white transition-colors hover:text-sunglow-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 data-[state=open]:text-sunglow-400 xl:px-6"
+
+const mobileNavItemClassName =
+  "focus-within:ring-ring group border-b border-slate-500 px-6 py-7 text-xl font-semibold text-sunglow-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-inset focus-within:ring-sunglow-400 hover:bg-sunglow-400 hover:text-black focus:outline-none active:bg-sunglow-200"
+
+interface DesktopLinksProps {
+  docsHref: string
+  helpHref: string
+}
+
+/**
+ * Desktop-only action links.
+ */
+function DesktopLinks({ docsHref, helpHref }: DesktopLinksProps) {
+  return (
+    <NavigationMenu.List className="flex h-full items-center">
+      {/* Documentation */}
+      <NavigationMenu.Item>
+        <ButtonLink href={docsHref} className={desktopNavItemClassName}>
+          <FaFileLines className="stroke-[2.5] text-xl" />
+          Docs
+        </ButtonLink>
+      </NavigationMenu.Item>
+
+      {/* Help */}
+      <NavigationMenu.Item>
+        <ButtonLink href={helpHref} className={desktopNavItemClassName}>
+          <FaQuestionCircle className="stroke-[2.5] text-xl" />
+          Help
+        </ButtonLink>
+      </NavigationMenu.Item>
+    </NavigationMenu.List>
+  )
+}
+
+/**
+ * Desktop navigation menu.
+ */
+function DesktopNavigation() {
+  return (
+    <NavigationMenu.Root className="relative z-10 hidden w-full items-stretch justify-between lg:flex">
+      <NavigationMenu.List className="flex h-full items-center">
+        {routes.map((section) => (
+          <NavigationMenu.Item key={section.name}>
+            <NavigationMenu.Trigger className={desktopNavTriggerClassName}>
+              {section.name}
+              <FaChevronDown
+                className="relative top-[1px] h-3 w-3 transition duration-300 group-data-[state=open]:rotate-180 xl:ml-1"
+                aria-hidden="true"
+              />
+            </NavigationMenu.Trigger>
+            <NavigationSectionContent
+              groups={section.groups}
+              parentTitle={section.name}
+            />
+          </NavigationMenu.Item>
+        ))}
+      </NavigationMenu.List>
+
+      <DesktopLinks
+        docsHref="https://docs.ccv.brown.edu/documentation"
+        helpHref="/about/help"
+      />
+    </NavigationMenu.Root>
+  )
+}
+
+interface MobileMenuHeaderProps {
+  onClose: () => void
+}
+
+/**
+ * Mobile menu dialog header.
+ */
+function MobileMenuHeader({ onClose }: MobileMenuHeaderProps) {
+  return (
+    <DialogHeader className="h-20 flex-row items-center justify-between bg-blue-navbar p-4 sm:px-8">
+      <DialogTitle className="sr-only text-white">Navigation Menu</DialogTitle>
+      <CCVLogo width={120} />
+      <DialogClose asChild>
+        <Button
+          aria-label="Close Navigation"
+          aria-controls="main-menu"
+          variant="secondary_filled"
+          iconOnly={
+            <XMarkIcon aria-hidden focusable={false} className="h-6 w-6" />
+          }
+          className="rounded-2xl p-2 text-blue-navbar"
+          onClick={onClose}
+        />
+      </DialogClose>
+    </DialogHeader>
+  )
+}
+
+interface MobileMenuDialogProps {
+  isOpen: boolean
+  onOpenChange: (open: boolean) => void
+}
+
+/**
+ * Mobile menu dialog.
+ */
+function MobileMenuDialog({ isOpen, onOpenChange }: MobileMenuDialogProps) {
+  return (
+    <Dialog open={isOpen} onOpenChange={onOpenChange}>
+      <DialogTrigger asChild className="lg:hidden">
+        <Button
+          aria-label="Main Menu"
+          aria-controls="main-menu"
+          variant="secondary_filled"
+          iconOnly={
+            <FaBars aria-hidden focusable={false} className="h-6 w-6" />
+          }
+          className="rounded-2xl p-2 text-blue-navbar"
+        />
+      </DialogTrigger>
+      <DialogContent
+        className="left-0 top-0 flex h-screen w-screen max-w-none translate-x-0 translate-y-0 flex-col border-none bg-slate-700 p-0 sm:max-w-none [&>button]:hidden"
+        aria-describedby={"main-menu-description"}
+        aria-labelledby={"main-menu"}
+      >
+        <MobileMenuHeader onClose={() => onOpenChange(false)} />
+        <MobileMenuContent onNavigate={() => onOpenChange(false)} />
+      </DialogContent>
+    </Dialog>
+  )
+}
+
+/**
+ * Navbar component.
+ */
+export function Navbar() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  const pathname = usePathname()
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [pathname])
+
+  return (
+    <header className="sticky top-0 z-50">
+      <div className="flex h-20 items-center justify-between bg-blue-navbar p-4 sm:px-8">
+        <Link href="/">
+          <span className="sr-only">CCV Home</span>
+          <CCVLogo width={120} />
+        </Link>
+
+        {/* Navigation Menu for Desktop */}
+        <DesktopNavigation />
+
+        <div className="flex items-center justify-between gap-8 md:pl-4">
+          <DialogSearch searchTitle="Search CCV" />
+
+          {/* Mobile Menu */}
+          <MobileMenuDialog
+            isOpen={isMobileMenuOpen}
+            onOpenChange={setIsMobileMenuOpen}
+          />
+        </div>
+      </div>
+    </header>
+  )
+}
+
+interface NavigationSectionContentProps {
+  groups: RouteGroup[]
+  parentTitle: string
+}
+
+/**
+ * Navigation menu section content.
+ */
+function NavigationSectionContent({
+  groups,
+  parentTitle,
+}: NavigationSectionContentProps) {
+  const hasMultipleGroups = groups.length > 1
+
+  return (
+    <NavigationMenu.Content className="absolute top-full z-50 hidden w-max rounded-md bg-white shadow-md lg:block">
+      <div
+        tabIndex={-1}
+        className={`flex max-h-[80vh] flex-col overflow-y-auto p-2 sm:p-4 md:p-6 xl:flex-row ${hasMultipleGroups ? "space-x-8" : ""}`}
+        aria-label={parentTitle}
+      >
+        {groups.map((group, index) => (
+          <section
+            key={group.name}
+            className={`${
+              hasMultipleGroups && index > 0
+                ? "border-t border-slate-700 py-1 xl:border-l xl:border-t-0 xl:py-0 xl:pl-6"
+                : ""
+            } ${hasMultipleGroups && index === 0 ? "px-6 py-1 xl:px-0 xl:py-0" : ""} ${
+              hasMultipleGroups ? "flex-1" : ""
+            }`}
+          >
+            {group.name && (
+              <h3 className="mb-2 max-w-[425px] pl-2 text-lg uppercase tracking-widest sm:mb-3 md:mb-4">
+                {group.name}
+              </h3>
+            )}
+            <ul className="flex flex-col gap-1 sm:gap-1.5 md:gap-2">
+              {group.routes.map((route) => (
+                <li
+                  key={route.href}
+                  className="p-1 hover:bg-slate-100 sm:p-1.5 md:p-2"
+                >
+                  <NavigationMenu.Link asChild>
+                    <Link
+                      href={route.href}
+                      className="flex items-start focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                    >
+                      {route.icon && (
+                        <div className="mr-1 flex h-8 w-8 items-center justify-center rounded-md bg-slate-400/75 text-white sm:mr-1.5 sm:h-12 sm:w-12 md:mr-2 md:h-16 md:w-16">
+                          <route.icon className="h-1/2 w-1/2" />
+                        </div>
+                      )}
+                      <div className="flex flex-col">
+                        <span className="sm:pb-0.75 pb-0.5 text-lg font-semibold sm:text-lg md:pb-1">
+                          {route.name}
+                        </span>
+                        {route.description && (
+                          <span className="mb-1 max-w-[425px] text-sm italic text-slate-500 sm:mb-1.5 sm:text-sm md:mb-3">
+                            {route.description}
+                          </span>
+                        )}
+                      </div>
+                    </Link>
+                  </NavigationMenu.Link>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </NavigationMenu.Content>
+  )
+}
+
+interface MobileMenuContentProps {
+  onNavigate?: () => void
+}
+
+/**
+ * Mobile menu content.
+ */
+function MobileMenuContent({ onNavigate }: MobileMenuContentProps) {
+  const handleNavigation = () => {
+    // Close the dialog when navigating
+    onNavigate?.()
+  }
+
+  return (
+    <NavigationMenu.Root
+      orientation="vertical"
+      className="no-scrollbar h-full w-full overflow-y-auto bg-slate-700 pb-12"
+    >
+      <NavigationMenu.List>
+        {routes.map((route) => (
+          <NavigationMenu.Item
+            key={route.name}
+            className="border-b border-slate-500"
+          >
+            <NavigationMenu.Trigger className="focus-visible:ring-ring group flex w-full items-center justify-between px-6 py-7 text-xl font-semibold text-sunglow-400 focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-sunglow-400 data-[state=open]:bg-sunglow-500 data-[state=open]:text-black">
+              {route.name}
+              <FaChevronDown className="h-6 w-6 transition-transform group-data-[state=open]:rotate-180" />
+            </NavigationMenu.Trigger>
+            <NavigationMenu.Content className="ml-12 mr-3 flex flex-col gap-4 py-3 text-lg text-white">
+              {route.groups.map((group, index) => (
+                <React.Fragment key={`${index}-${group.name}`}>
+                  {group.routes.map((route) => (
+                    <NavigationMenu.Link key={route.name} asChild>
+                      <Link
+                        href={route.href}
+                        onClick={handleNavigation}
+                        className="focus-visible:ring-ring focus:outline-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
+                      >
+                        {route.name}
+                      </Link>
+                    </NavigationMenu.Link>
+                  ))}
+                </React.Fragment>
+              ))}
+            </NavigationMenu.Content>
+          </NavigationMenu.Item>
+        ))}
+
+        <NavigationMenu.Item className={mobileNavItemClassName}>
+          <NavigationMenu.Link
+            href="https://docs.ccv.brown.edu/documentation"
+            className="block h-full w-full focus-visible:outline-none"
+            target="_blank"
+            onClick={handleNavigation}
+          >
+            Docs
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
+
+        <NavigationMenu.Item className="focus-within:ring-ring group px-6 py-7 text-xl font-semibold text-sunglow-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-inset focus-within:ring-sunglow-400 hover:bg-sunglow-400 hover:text-black focus:outline-none active:bg-sunglow-200">
+          <NavigationMenu.Link
+            asChild
+            className="block h-full w-full focus-visible:outline-none"
+          >
+            <Link href="/about/help" onClick={handleNavigation}>
+              Help
+            </Link>
+          </NavigationMenu.Link>
+        </NavigationMenu.Item>
+      </NavigationMenu.List>
+    </NavigationMenu.Root>
+  )
+}

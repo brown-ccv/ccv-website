@@ -43,9 +43,10 @@ function getCustomColors(config) {
 
 module.exports = {
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./mdx-components.tsx",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/content/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/mdx-components.tsx",
   ],
   presets: [],
   darkMode: "media", // or 'class'
