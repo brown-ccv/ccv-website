@@ -61,6 +61,7 @@
     "js-yaml": "^4.1.0",
     "lucide-react": "^0.545.0",
     "markdown-it": "^14.1.0",
+    "mdast-util-to-string": "^4.0.0",
     "meilisearch": "^0.55.0",
     "motion": "^12.23.22",
     "next": "^15.5.9",
@@ -76,11 +77,14 @@
     "remark": "^15.0.1",
     "remark-frontmatter": "^5.0.0",
     "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
     "sanitize-html": "^2.17.0",
     "sharp": "^0.34.4",
     "strip-markdown": "^6.0.0",
     "tailwind-merge": "^3.3.1",
-    "tailwindcss": "^3.4.10"
+    "tailwindcss": "^3.4.10",
+    "unified": "^11.0.5",
+    "unist-util-visit": "^5.1.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.3",

@@ -34,24 +34,16 @@ async function configureIndex() {
   const index = client.index(INDEX_NAME)
 
   await index.updateSettings({
-    searchableAttributes: ["title", "headings", "description", "content"],
+    searchableAttributes: ["title", "content"],
     filterableAttributes: ["category", "type"],
-    sortableAttributes: [],
-    rankingRules: [
-      "words",
-      "typo",
-      "proximity",
-      "attribute",
-      "sort",
-      "exactness",
-    ],
+    rankingRules: ["words", "typo", "proximity", "attribute", "exactness"],
     displayedAttributes: [
-      "id",
       "title",
-      "description",
-      "headings",
       "url",
       "category",
+      "type",
+      "content",
+      "breadcrumb",
     ],
   })
 }

@@ -1,6 +1,10 @@
 import React from "react"
-import { CCVBars } from "@/components/assets/CCVBars"
 import { cn } from "@/utils/helper"
+import {
+  ContentHeader,
+  ContentTitle,
+  ContentSubHeader,
+} from "@/components/ContentSection"
 
 interface SectionHeaderProps {
   title: string
@@ -22,29 +26,22 @@ export function SectionHeader({
   titleClassName,
 }: SectionHeaderProps) {
   return (
-    <div
+    <ContentHeader
       className={cn(
-        `not-prose flex flex-col ${align === "center" ? "items-center" : "items-center lg:items-start"}`,
+        "not-prose",
+        align === "center" ? "items-center" : "items-center lg:items-start",
         className
       )}
+      data-align={align}
     >
-      {bars && <CCVBars />}
-      <h2
-        className={cn(
-          "pb-2 tracking-tighter",
-          icon ? "flex" : "",
-          titleClassName
-        )}
+      <ContentTitle
+        title={title}
+        bars={bars}
+        icon={icon}
+        className={titleClassName}
         aria-label={title}
-      >
-        {icon && (
-          <span className="mr-3" aria-hidden="true">
-            {icon}
-          </span>
-        )}
-        {title}
-      </h2>
-      {subHeader && <div className="space-y-6 pt-4">{subHeader}</div>}
-    </div>
+      />
+      {subHeader && <ContentSubHeader>{subHeader}</ContentSubHeader>}
+    </ContentHeader>
   )
 }

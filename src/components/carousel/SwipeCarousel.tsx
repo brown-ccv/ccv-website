@@ -15,6 +15,7 @@ import {
   DialogContent,
   DialogTitle,
   DialogTrigger,
+  DialogDescription,
 } from "@/components/ui/Dialog"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import Markdown from "react-markdown"
@@ -158,8 +159,17 @@ function DialogCard({
   buttons,
   organizations,
 }: StyledCarouselItem) {
+  const titleId = React.useId()
+  const descriptionId = React.useId()
   return (
-    <DialogContent className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl border-none bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl">
+    <DialogContent
+      aria-labelledby={titleId}
+      aria-describedby={descriptionId}
+      className="max-h-3xl flex max-h-[95vh] w-[95vw] flex-col items-center overflow-y-auto rounded-xl border-none bg-white p-0 text-slate-600 sm:w-[90vw] md:w-[90vw] lg:max-w-3xl"
+    >
+      <DialogDescription id={descriptionId} className="sr-only">
+        {description}
+      </DialogDescription>
       <Image
         className="aspect-video w-full shrink-0 bg-neutral-900 object-cover"
         width={800}
@@ -174,7 +184,10 @@ function DialogCard({
           </Markdown>
         </div>
       )}
-      <DialogTitle className="break-words pt-4 text-center text-xl font-bold">
+      <DialogTitle
+        id={titleId}
+        className="break-words pt-4 text-center text-xl font-bold"
+      >
         {title}
       </DialogTitle>
       {/* Content */}
