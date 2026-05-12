@@ -112,7 +112,7 @@ function Cards({ StyledCarouselItems, cardIndex }: CardsProps) {
                 />
                 <Dialog>
                   <DialogTrigger className="m-3 text-keppel-800">
-                    <h3 className="line-clamp-2 min-w-0 flex-1 break-words text-left font-bold underline underline-offset-1">
+                    <h3 className="line-clamp-2 min-w-0 break-words text-left font-bold underline underline-offset-1">
                       {item.title}
                     </h3>
                   </DialogTrigger>

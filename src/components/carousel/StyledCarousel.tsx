@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React from "react"
 import { Badge } from "@/components/ui/Badge"
 import { getColorForTag } from "@/utils/helper"
 import {
@@ -188,14 +188,12 @@ function FeatCarouselContent({
 export function StyledCarousel({ carouselData }: StyledCarouselProps) {
   const [api, setApi] = React.useState<CarouselApi>()
   const [current, setCurrent] = React.useState(0)
-  const [count, setCount] = React.useState(0)
 
   React.useEffect(() => {
     if (!api) {
       return
     }
 
-    setCount(api.scrollSnapList().length)
     setCurrent(api.selectedScrollSnap() + 1)
 
     api.on("select", () => {
