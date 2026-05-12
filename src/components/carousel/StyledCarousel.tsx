@@ -194,11 +194,25 @@ export function StyledCarousel({ carouselData }: StyledCarouselProps) {
       return
     }
 
-    setCurrent(api.selectedScrollSnap() + 1)
-
-    api.on("select", () => {
+    const handleSelect = () => {
       setCurrent(api.selectedScrollSnap() + 1)
-    })
+    }
+
+    const handleReInit = () => {
+      setCurrent(api.scrollSnapList().length)
+      handleSelect()
+    }
+
+    setCurrent(api.scrollSnapList().length)
+    handleSelect()
+
+    api.on("select", handleSelect)
+    api.on("reInit", handleReInit)
+
+    return () => {
+      api.off("select", handleSelect)
+      api.off("reInit", handleReInit)
+    }
   }, [api])
   return (
     <div className="relative w-full">
