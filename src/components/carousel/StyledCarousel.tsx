@@ -195,7 +195,7 @@ export function StyledCarousel({ carouselData }: StyledCarouselProps) {
     }
 
     const handleSelect = () => {
-      setCurrent(api.selectedScrollSnap() + 1)
+      setCurrent(api.selectedScrollSnap())
     }
 
     const handleReInit = () => {
@@ -229,7 +229,7 @@ export function StyledCarousel({ carouselData }: StyledCarouselProps) {
       </Carousel>
 
       <Dots
-        cardIndex={current - 1}
+        cardIndex={current}
         setCardIndex={(index) => api?.scrollTo(index)}
         carouselData={carouselData}
       />
