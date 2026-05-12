@@ -26,7 +26,7 @@ const eslintConfig = [
   },
   {
     // Specific overrides for UI components
-    files: ["components/ui/**/*", "components/magicui/**/*"],
+    files: ["src/components/ui/**/*", "src/components/magicui/**/*"],
     rules: {
       // Disable only this rule for these files
       "react/function-component-definition": 0,
