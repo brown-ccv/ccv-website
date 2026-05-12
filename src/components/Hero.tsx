@@ -83,7 +83,7 @@ function HeroWrapper({ children, className, image }: HeroWrapperProps) {
           />
         )}
         {/* Gradient Overlay - Black to transparent */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-t from-transparent to-black/80" />
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-black to-black/50" />
         <div className="relative z-10 mt-auto">{children}</div>
       </div>
     )
@@ -153,7 +153,7 @@ export function MainHero({
 }: HeroProps) {
   return (
     <HeroWrapper
-      className="px-6 pb-52 md:px-14 xl:pl-36 xl:pr-96"
+      className="px-6 pb-52 md:h-[70vh] md:px-14 xl:pl-36 xl:pr-96"
       image={image}
     >
       <HeroContent
