@@ -3,17 +3,19 @@ import VirtualMachineContent from "@/content/routes/services/virtual-machine-hos
 import { getMDXMetadata } from "@/utils/mdx"
 import type { Metadata } from "next"
 
-export const metadata: Metadata = {
-  title: "Virtual Machine Hosting",
-}
-export default function VirtualMachineHosting() {
-  const metadata = getMDXMetadata(
-    "src/content/routes/services/virtual-machine-hosting.mdx"
-  )
+const frontMatter = getMDXMetadata(
+  "src/content/routes/services/virtual-machine-hosting.mdx"
+)
 
+export const metadata: Metadata = {
+  title: frontMatter.title,
+  description: frontMatter.description,
+}
+
+export default function VirtualMachineHosting() {
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description} />
+      <Hero title={frontMatter.title} description={frontMatter.description} />
       <VirtualMachineContent />
     </>
   )

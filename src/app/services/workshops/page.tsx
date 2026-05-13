@@ -3,15 +3,16 @@ import UserSupportContent from "@/content/routes/services/workshops.mdx"
 import { getMDXMetadata } from "@/utils/mdx"
 import type { Metadata } from "next"
 
+const frontMatter = getMDXMetadata("src/content/routes/services/workshops.mdx")
+
 export const metadata: Metadata = {
-  title: "Workshops",
+  title: frontMatter.title,
+  description: frontMatter.description,
 }
 export default function UserSupport() {
-  const metadata = getMDXMetadata("src/content/routes/services/workshops.mdx")
-
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description} />
+      <Hero title={frontMatter.title} description={frontMatter.description} />
       <UserSupportContent />
     </>
   )

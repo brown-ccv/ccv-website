@@ -4,16 +4,17 @@ import { getMDXMetadata } from "@/utils/mdx"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import type { Metadata } from "next"
 
+const frontMatter = getMDXMetadata("src/content/routes/services/stronghold.mdx")
+
 export const metadata: Metadata = {
-  title: "Stronghold",
+  title: frontMatter.title,
+  description: frontMatter.description,
 }
 
 export default function Stronghold() {
-  const metadata = getMDXMetadata("src/content/routes/services/stronghold.mdx")
-
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description}>
+      <Hero title={frontMatter.title} description={frontMatter.description}>
         <ButtonLink
           variant="primary_filled"
           size="lg"

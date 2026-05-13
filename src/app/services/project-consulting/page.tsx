@@ -4,21 +4,22 @@ import ProjectConsultingContent from "@/content/routes/services/project-consulti
 import { getMDXMetadata } from "@/utils/mdx"
 import type { Metadata } from "next"
 
+const frontMatter = getMDXMetadata(
+  "src/content/routes/services/project-consulting.mdx"
+)
+
 export const metadata: Metadata = {
-  title: "Project Consulting",
+  title: frontMatter.title,
+  description: frontMatter.description,
 }
 
 export default function ProjectConsulting() {
-  const metadata = getMDXMetadata(
-    "src/content/routes/services/project-consulting.mdx"
-  )
-
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description}>
+      <Hero title={frontMatter.title} description={frontMatter.description}>
         <div className="flex flex-col items-start">
           <div className="flex w-full flex-col flex-wrap items-start gap-4 xl:flex-row">
-            {metadata.links.map((link: any, index: number) => (
+            {frontMatter.links.map((link: any, index: number) => (
               <ButtonLink
                 key={index}
                 variant="primary_filled"

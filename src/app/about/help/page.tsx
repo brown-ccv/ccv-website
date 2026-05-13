@@ -4,18 +4,19 @@ import { getMDXMetadata } from "@/utils/mdx"
 import { Hero } from "@/components/Hero"
 import type { Metadata } from "next"
 
+const frontMatter = getMDXMetadata("src/content/routes/about/help.mdx")
+
 export const metadata: Metadata = {
-  title: "Help",
+  title: frontMatter.title,
+  description: frontMatter.description,
 }
 export default async function ContactUs() {
-  const metadata = getMDXMetadata("src/content/routes/about/help.mdx")
-
   return (
     <>
       <Hero
-        image={metadata.image}
-        title={metadata.title}
-        description={metadata.description}
+        image={frontMatter.image}
+        title={frontMatter.title}
+        description={frontMatter.description}
       />
       <ContactContent />
     </>

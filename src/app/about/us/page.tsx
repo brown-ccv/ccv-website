@@ -4,18 +4,19 @@ import AboutUsContent from "@/content/routes/about/us.mdx"
 import { getMDXMetadata } from "@/utils/mdx"
 import type { Metadata } from "next"
 
+const frontMatter = getMDXMetadata("src/content/routes/about/us.mdx")
+
 export const metadata: Metadata = {
-  title: "About Us",
+  title: frontMatter.title,
+  description: frontMatter.description,
 }
 export default async function AboutUs() {
-  const metadata = getMDXMetadata("src/content/routes/about/us.mdx")
-
   return (
     <>
       <Hero
-        image={metadata.image}
-        title={metadata.title}
-        description={metadata.description}
+        image={frontMatter.image}
+        title={frontMatter.title}
+        description={frontMatter.description}
       />
       <AboutUsContent />
     </>
