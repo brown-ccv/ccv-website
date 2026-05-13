@@ -78,13 +78,13 @@ function HeroWrapper({ children, className, image }: HeroWrapperProps) {
             alt="Hero background"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-bottom md:object-center"
             quality={90}
           />
         )}
         {/* Gradient Overlay - Black to transparent */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-t from-black to-transparent" />
-        <div className="relative z-10 mt-6 md:mt-auto">{children}</div>
+        <div className="absolute inset-0 z-0 bg-gradient-to-t from-black to-black/50 md:to-transparent" />
+        <div className="relative z-10 mt-auto">{children}</div>
       </div>
     )
   }
@@ -148,12 +148,12 @@ export function MainHero({
   title,
   description,
   children,
-  titleClassName = "font-semibold drop-shadow-md xl:text-5xl",
+  titleClassName = "mt-8 font-semibold drop-shadow-md xl:text-5xl",
   descriptionClassName = "text-xl drop-shadow-md xl:text-2xl",
 }: HeroProps) {
   return (
     <HeroWrapper
-      className="min-h-screen px-6 pb-52 md:px-14 xl:pl-36 xl:pr-96"
+      className="px-6 pb-52 md:h-[70vh] md:px-14 xl:pl-36 xl:pr-96"
       image={image}
     >
       <HeroContent

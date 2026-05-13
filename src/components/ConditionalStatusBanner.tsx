@@ -29,9 +29,9 @@ export function ConditionalStatusBanner({
             </p>
             <ButtonLink
               href={"https://status.ccv.brown.edu/"}
-              variant="secondary_filled"
+              variant="unstyled"
               size="sm"
-              className="sm:text-md"
+              className="bg-red-university text-white hover:bg-white hover:text-red-university"
             >
               View Incidents
             </ButtonLink>
@@ -45,7 +45,6 @@ export function ConditionalStatusBanner({
               href={"https://status.ccv.brown.edu/"}
               variant="secondary_filled"
               size="sm"
-              className="sm:text-lg"
             >
               View Status
             </ButtonLink>

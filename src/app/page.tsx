@@ -16,6 +16,8 @@ import {
 } from "@/components/ContentSection"
 import { FaCalendarAlt } from "react-icons/fa"
 import { getMDXMetadata } from "@/utils/mdx"
+import { CopyableText } from "@/components/CopyableText"
+import { Link } from "@/components/Link"
 
 export default async function Home() {
   // Load featured carousel data from YAML
@@ -35,12 +37,12 @@ export default async function Home() {
         >
           <ButtonLink
             variant="primary_filled"
-            size="lg"
+            size="xl"
             href="/about/help#contact-us"
           >
             Work with Us
           </ButtonLink>
-          <ScrollButton id="events" variant="secondary_filled" size="lg">
+          <ScrollButton id="events" variant="secondary_filled" size="xl">
             View Events
           </ScrollButton>
         </MainHero>

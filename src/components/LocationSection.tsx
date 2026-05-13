@@ -39,7 +39,6 @@ export function LocationSection({ className }: LocationSectionProps) {
           </p>
           <ButtonLink
             variant="primary_filled"
-            size="md"
             href="https://en.wikipedia.org/wiki/Brown_University_Computing_Laboratory"
             className="mx-auto my-2 w-auto"
           >

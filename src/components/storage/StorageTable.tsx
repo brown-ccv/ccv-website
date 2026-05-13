@@ -155,22 +155,23 @@ export function StorageTable({ services }: TableProps) {
       cell: ({ row }: { row: Row<ServiceConfig> }) =>
         row.getIsPinned() ? (
           <Button
-            variant="icon_only"
-            size="icon-sm"
+            size="icon"
             className="border border-black"
-            iconOnly={<Icon iconName="FaTimes" className="h-3 w-3" />}
+            aria-label="Unpin Service"
             onClick={() => row.pin(false)}
-          ></Button>
+          >
+            <Icon iconName="FaTimes" className="h-3 w-3" />
+          </Button>
         ) : (
           <div className="flex gap-1">
             <Button
-              variant="icon_only"
-              size="icon-sm"
+              size="icon"
               className="border border-black"
-              aria-label="Pin Column"
-              iconOnly={<Icon iconName="FaThumbtack" className="h-3 w-3" />}
+              aria-label="Pin Service"
               onClick={() => row.pin("top")}
-            ></Button>
+            >
+              <Icon iconName="FaThumbtack" className="h-3 w-3" />
+            </Button>
           </div>
         ),
       enablePinning: false,
@@ -278,14 +279,18 @@ export function StorageTable({ services }: TableProps) {
           onClick={() => scrollTable("left")}
           aria-label="Scroll left"
           variant="secondary_filled"
-          iconOnly={<ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />}
-        />
+          size="icon"
+        >
+          <ChevronLeftIcon className="h-6 w-6" strokeWidth={2.5} />
+        </Button>
         <Button
           onClick={() => scrollTable("right")}
           aria-label="Scroll right"
           variant="secondary_filled"
-          iconOnly={<ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />}
-        />
+          size="icon"
+        >
+          <ChevronRightIcon className="h-6 w-6" strokeWidth={2.5} />
+        </Button>
       </div>
 
       <div
@@ -340,38 +345,32 @@ export function StorageTable({ services }: TableProps) {
                           <div>
                             {header.column.getIsPinned() !== "left" ? (
                               <Button
-                                variant="icon_only"
-                                size="icon-sm"
+                                size="icon"
                                 className="border border-white"
                                 aria-label="Pin Column"
-                                iconOnly={
-                                  <Icon
-                                    iconName="FaThumbtack"
-                                    className="h-3 w-3"
-                                  />
-                                }
                                 onClick={(event) => {
                                   event.stopPropagation()
                                   header.column.pin("left")
                                 }}
-                              ></Button>
+                              >
+                                <Icon
+                                  iconName="FaThumbtack"
+                                  className="h-3 w-3"
+                                />
+                              </Button>
                             ) : null}
                             {header.column.getIsPinned() ? (
                               <Button
-                                variant="icon_only"
-                                size="icon-sm"
+                                size="icon"
                                 className="border border-white"
-                                iconOnly={
-                                  <Icon
-                                    iconName="FaTimes"
-                                    className="h-3 w-3"
-                                  />
-                                }
+                                aria-label="Unpin Column"
                                 onClick={(event) => {
                                   event.stopPropagation()
                                   header.column.pin(false)
                                 }}
-                              ></Button>
+                              >
+                                <Icon iconName="FaTimes" className="h-3 w-3" />
+                              </Button>
                             ) : null}
                           </div>
                         )}
