@@ -89,7 +89,7 @@ export function Footer() {
               />
               401-863-1000
             </div>
-            <div className="font-serif text-md text-white sm:text-lg xl:text-xl">
+            <div className="flex items-center font-serif text-md text-white sm:text-lg xl:text-xl">
               <MdEmail
                 aria-label="Email Icon"
                 className="mr-2 inline-block text-stone-400"
