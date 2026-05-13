@@ -8,7 +8,6 @@ import {
   ReactElement,
   useMemo,
 } from "react"
-import { Copy, Check } from "lucide-react"
 import {
   Tooltip,
   TooltipContent,
@@ -80,21 +79,21 @@ export function CopyableText({
     return (
       <TooltipProvider>
         <Tooltip open={copied || error}>
-          <div className={cn("inline-flex items-center gap-2", className)}>
+          <span className={cn("inline-flex items-center gap-2", className)}>
             <span className="text-start font-bold text-keppel-800">
               {children}
             </span>
             <TooltipTrigger asChild>
               <Button
                 size="icon"
-                className="h-6 w-6 text-xs"
+                className="mb-2 mr-2 h-6 w-6 text-xs"
                 onClick={copyText}
                 aria-label="Copy text to clipboard"
               >
                 {copied ? <FaCheck /> : <FaCopy />}
               </Button>
             </TooltipTrigger>
-          </div>
+          </span>
           <TooltipContent
             side={side}
             align="center"
