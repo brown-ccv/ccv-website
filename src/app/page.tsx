@@ -16,6 +16,7 @@ import {
 } from "@/components/ContentSection"
 import { FaCalendarAlt } from "react-icons/fa"
 import { getMDXMetadata } from "@/utils/mdx"
+import { CopyableText } from "@/components/CopyableText"
 
 export default async function Home() {
   // Load featured carousel data from YAML
@@ -47,6 +48,9 @@ export default async function Home() {
         <HeroCard />
         <ImpactBanner />
         <div>
+          <CopyableText>
+            <a href="mailto:support@brown.edu">support@brown.edu</a>
+          </CopyableText>
           <ContentSection title="Featured Projects" className="px-none">
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>

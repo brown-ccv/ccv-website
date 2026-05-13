@@ -1,5 +1,4 @@
 "use client"
-
 import {
   useState,
   useEffect,
@@ -17,6 +16,8 @@ import {
   TooltipTrigger,
 } from "@/components/ui/Tooltip"
 import { cn } from "@/utils/helper"
+import { FaCopy, FaCheck } from "react-icons/fa"
+import { Button } from "@/components/button/Button"
 
 interface CopyableTextProps {
   children: ReactNode
@@ -45,9 +46,7 @@ export function CopyableText({
   // Cleanup timeout on unmount
   useEffect(() => {
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current)
-      }
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
   }, [])
 
@@ -81,18 +80,21 @@ export function CopyableText({
     return (
       <TooltipProvider>
         <Tooltip open={copied || error}>
-          <TooltipTrigger asChild>
-            <button
-              className={cn(
-                "focus-visible:ring-ring inline cursor-pointer rounded-md border-0 bg-transparent p-0 text-start font-bold text-keppel-800 hover:underline focus:outline-none focus-visible:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400",
-                className
-              )}
-              onClick={copyText}
-              aria-label="Copy to clipboard"
-            >
+          <div className={cn("inline-flex items-center gap-2", className)}>
+            <span className="text-start font-bold text-keppel-800">
               {children}
-            </button>
-          </TooltipTrigger>
+            </span>
+            <TooltipTrigger asChild>
+              <Button
+                size="icon"
+                className="h-6 w-6 text-xs"
+                onClick={copyText}
+                aria-label="Copy text to clipboard"
+              >
+                {copied ? <FaCheck /> : <FaCopy />}
+              </Button>
+            </TooltipTrigger>
+          </div>
           <TooltipContent
             side={side}
             align="center"
@@ -102,7 +104,7 @@ export function CopyableText({
                 : "bg-sunglow-400 text-md text-black"
             }
           >
-            {error ? `✗ ${errorMessage}` : "✓ Copied!"}
+            {error ? `${errorMessage}` : "Copied to clipboard"}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -120,17 +122,14 @@ export function CopyableText({
       <TooltipProvider>
         <Tooltip open={copied || error}>
           <TooltipTrigger asChild>
-            <button
+            <Button
+              size="icon"
+              className="h-6 w-6 text-xs"
               onClick={copyText}
-              className="ml-4 flex h-8 w-8 shrink-0 items-center justify-center rounded-md text-slate-800 transition-colors hover:bg-slate-800 hover:text-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400"
-              aria-label="Copy text"
+              aria-label="Copy text to clipboard"
             >
-              {copied ? (
-                <Check className="h-4 w-4" />
-              ) : (
-                <Copy className="h-4 w-4" />
-              )}
-            </button>
+              {copied ? <FaCheck /> : <FaCopy />}
+            </Button>
           </TooltipTrigger>
           <TooltipContent
             side="left"
@@ -140,7 +139,7 @@ export function CopyableText({
                 : "bg-sunglow-400 text-xs text-black"
             }
           >
-            {error ? errorMessage : "Copied!"}
+            {error ? `${errorMessage}` : "Copied to clipboard"}
           </TooltipContent>
         </Tooltip>
       </TooltipProvider>
@@ -153,7 +152,6 @@ function extractTextFromChildren(children: ReactNode): string {
   const textAccumulator: string[] = []
 
   const traverse = (node: ReactNode) => {
-    // 1. Handle primitives (null, undefined, boolean) - skip them
     if (
       node === null ||
       typeof node === "boolean" ||
@@ -162,13 +160,11 @@ function extractTextFromChildren(children: ReactNode): string {
       return
     }
 
-    // 2. Handle simple text (string, number)
     if (typeof node === "string" || typeof node === "number") {
       textAccumulator.push(String(node))
       return
     }
 
-    // 3. Handle Arrays (recursion)
     if (Array.isArray(node)) {
       for (const child of node) {
         traverse(child)
@@ -176,7 +172,6 @@ function extractTextFromChildren(children: ReactNode): string {
       return
     }
 
-    // 4. Handle React Elements (recursion into children)
     if (isValidElement(node)) {
       const element = node as ReactElement<{ children?: ReactNode }>
       traverse(element.props.children)
