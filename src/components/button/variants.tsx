@@ -54,10 +54,10 @@ export const ButtonVariants = cva(
         unstyled: "",
       },
       size: {
-        default: "h-10 px-4 px-6",
+        default: "h-10 px-4 px-6", // this is md
         sm: "h-8 px-3 text-xs",
         lg: "h-12 px-6",
-        xl: "h-14 px-8 text-base",
+        xl: "h-14 px-8 text-base font-semibold",
         icon: "h-9 w-9",
       },
     },
