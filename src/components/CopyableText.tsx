@@ -81,15 +81,12 @@ export function CopyableText({
     return (
       <TooltipProvider>
         <Tooltip open={copied || error}>
-          <span className={cn("inline-flex gap-2", className)}>
+          <span className={cn("inline-flex items-center gap-2", className)}>
             <span className="text-start font-bold">{children}</span>
             <TooltipTrigger asChild>
               <Button
                 size="icon"
-                className={cn(
-                  "relative -top-1 mr-2 h-6 w-6 text-xs",
-                  buttonClassName
-                )}
+                className={cn("mr-1 h-6 w-6 text-xs", buttonClassName)}
                 onClick={copyText}
                 aria-label="Copy text to clipboard"
               >
