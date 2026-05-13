@@ -1,0 +1,82 @@
+import React from "react"
+import { PeopleCard } from "@/components/card/PeopleCard"
+import { PeopleTypes, PageContentData } from "@/types/about-types"
+import { readContentFile } from "@/utils/content"
+import path from "path"
+import fs from "fs/promises"
+import { cn } from "@/utils/helper"
+
+interface PeopleSectionProps {
+  peopleContentPath: string
+  className?: string
+}
+
+function imagePath(imageName: string) {
+  return path.join("/images/people", imageName)
+}
+
+async function getImagePaths(imageName: string | undefined | null) {
+  const defaultPath = "/logos/ccv-logo.svg"
+
+  if (!imageName) {
+    return { main: defaultPath, hover: defaultPath }
+  }
+
+  const mainPath = imagePath(imageName)
+  const hoverName = imageName.replace("main", "hover")
+  const hoverPath = imagePath(hoverName)
+
+  try {
+    await fs.access(path.join("public", mainPath))
+  } catch {
+    return { main: defaultPath, hover: defaultPath }
+  }
+
+  try {
+    await fs.access(path.join("public", hoverPath))
+    return { main: mainPath, hover: hoverPath }
+  } catch {
+    return { main: mainPath, hover: mainPath }
+  }
+}
+
+// Server component that loads people data
+async function PeopleSectionData({
+  peopleContentPath,
+  className,
+}: PeopleSectionProps) {
+  const loadedContent =
+    await readContentFile<PageContentData>(peopleContentPath)
+  const pageContent = loadedContent.data
+
+  return (
+    <div
+      className={cn("xs:w-1/2 flex flex-wrap justify-center gap-4", className)}
+    >
+      {pageContent?.people &&
+        (await Promise.all(
+          pageContent.people
+            .sort((a, b) => a.last_name.localeCompare(b.last_name))
+            .map(async (person: PeopleTypes) => {
+              const { main, hover } = await getImagePaths(person.image)
+              return (
+                <React.Fragment key={person.display_name}>
+                  <PeopleCard
+                    imagePath={main}
+                    hoverImagePath={hover}
+                    name={person.display_name}
+                    title={person.title}
+                    personDetails={person}
+                  />
+                </React.Fragment>
+              )
+            })
+        ))}
+    </div>
+  )
+}
+
+// Client component wrapper for MDX compatibility
+export function PeopleSection(props: PeopleSectionProps) {
+  return <PeopleSectionData {...props} />
+}
