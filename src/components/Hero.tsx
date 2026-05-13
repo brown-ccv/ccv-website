@@ -78,7 +78,7 @@ function HeroWrapper({ children, className, image }: HeroWrapperProps) {
             alt="Hero background"
             fill
             priority
-            className="object-cover object-bottom"
+            className="object-cover object-bottom md:object-center"
             quality={90}
           />
         )}
