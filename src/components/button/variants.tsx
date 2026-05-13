@@ -60,16 +60,10 @@ export const ButtonVariants = cva(
         xl: "h-14 px-8 text-base",
         icon: "h-9 w-9",
       },
-      align: {
-        left: "justify-start",
-        center: "justify-center",
-        right: "justify-end",
-      },
     },
     defaultVariants: {
       variant: "primary_filled",
       size: "default",
-      align: "center",
     },
   }
 )
