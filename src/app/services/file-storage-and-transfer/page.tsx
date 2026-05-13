@@ -19,23 +19,17 @@ export default async function CompareStorageOptions() {
         <ButtonLink
           variant="secondary_filled"
           size="lg"
-          href="https://brown.atlassian.net/servicedesk/customer/portal/16"
-        >
-          Request Storage
-        </ButtonLink>
-        <ButtonLink
-          variant="secondary_filled"
-          size="lg"
-          href="https://brown.atlassian.net/servicedesk/customer/portal/16/group/55/create/262"
-        >
-          Request Quota Change
-        </ButtonLink>
-        <ButtonLink
-          variant="secondary_filled"
-          size="lg"
-          href="https://brown.atlassian.net/servicedesk/customer/portal/16/group/55/create/217"
+          href="https://www.help.brown.edu/servicedesk/customer/portal/16/group/-1"
         >
           Storage Help
+        </ButtonLink>
+        <ButtonLink
+          variant="secondary_filled"
+          size="lg"
+          href="https://docs.ccv.brown.edu/storage-and-transfer"
+          aria-label="File Storage and Transfer Documentation"
+        >
+          Documentation
         </ButtonLink>
         <ButtonLink
           variant="primary_filled"
@@ -47,6 +41,7 @@ export default async function CompareStorageOptions() {
         >
           Storage Rates
         </ButtonLink>
+
         <ScrollButton
           variant="primary_filled"
           size="lg"
