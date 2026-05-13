@@ -16,8 +16,6 @@ import {
 } from "@/components/ContentSection"
 import { FaCalendarAlt } from "react-icons/fa"
 import { getMDXMetadata } from "@/utils/mdx"
-import { CopyableText } from "@/components/CopyableText"
-import { Link } from "@/components/Link"
 
 export default async function Home() {
   // Load featured carousel data from YAML

@@ -5,6 +5,11 @@ import { ButtonLink } from "@/components/button/ButtonLink"
 import CareersContent from "@/content/routes/about/careers.mdx"
 import { CareerData } from "@/components/CareerData"
 import { getMDXMetadata } from "@/utils/mdx"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Careers",
+}
 
 export default async function Careers() {
   const metadata = getMDXMetadata("src/content/routes/about/careers.mdx")

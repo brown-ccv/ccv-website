@@ -2,6 +2,11 @@ import { Hero } from "@/components/Hero"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import AIToolsContent from "@/content/routes/ai/ai-tools.mdx"
 import { getMDXMetadata } from "@/utils/mdx"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "AI Tools",
+}
 
 export default function AITools() {
   const metadata = getMDXMetadata("src/content/routes/ai/ai-tools.mdx")

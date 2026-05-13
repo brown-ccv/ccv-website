@@ -5,6 +5,11 @@ import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 import classroomCarousel from "@/content/data/classroom-carousel.json"
 import { StyledCarouselItem } from "@/components/carousel/StyledCarousel"
 import { ContentSection } from "@/components/ContentSection"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Classroom Support",
+}
 
 export default async function ClassroomSupport() {
   const metadata = getMDXMetadata("src/content/routes/services/classroom.mdx")

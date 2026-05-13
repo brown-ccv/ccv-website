@@ -2,6 +2,11 @@ import { Hero } from "@/components/Hero"
 import OscarContent from "@/content/routes/services/oscar.mdx"
 import { getMDXMetadata } from "@/utils/mdx"
 import { ButtonLink } from "@/components/button/ButtonLink"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Oscar",
+}
 
 export default async function Oscar() {
   const metadata = getMDXMetadata("src/content/routes/services/oscar.mdx")
