@@ -86,7 +86,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Button: (props) => (
       <ButtonLink
         variant="primary_filled"
-        size="md"
+        size="default"
         className="not-prose my-2"
         {...props}
       />

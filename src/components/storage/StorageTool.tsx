@@ -63,13 +63,16 @@ export function StorageTool({ className }: StorageToolProps) {
             </p>
             <ScrollButton
               variant="primary_filled"
-              size="md"
               id="compare-storage-options"
               aria-describedby="table-nav-desc"
               aria-label="Scroll to comparison table section"
             >
               View Comparison Table
-              <Icon iconName="FaAngleDoubleDown" aria-hidden="true" />
+              <Icon
+                data-icon="inline-end"
+                iconName="FaAngleDoubleDown"
+                aria-hidden="true"
+              />
             </ScrollButton>
           </span>
         </div>
@@ -79,12 +82,12 @@ export function StorageTool({ className }: StorageToolProps) {
             onAnswerChange={handleAnswerChange}
             questions={questions}
           >
-            <Button
-              onClick={handleReset}
-              variant="primary_filled"
-              size="sm"
-              leftIcon={<Icon iconName="FaUndo" aria-hidden="true" />}
-            >
+            <Button onClick={handleReset} variant="primary_filled" size="sm">
+              <Icon
+                data-icon="inline-start"
+                iconName="FaUndo"
+                aria-hidden="true"
+              />
               Reset Questions
             </Button>
           </StorageForm>
