@@ -15,7 +15,7 @@ function FooterLink({ href, label }: FooterLinkProps) {
   return (
     <Link
       href={href}
-      className="flex items-center text-sm uppercase tracking-wider text-sunglow-400 transition-colors duration-300 hover:text-white"
+      className="flex items-center text-sm uppercase tracking-wider text-sunglow-400 transition-colors duration-300 hover:text-white focus-visible:outline-none focus-visible:outline-white"
     >
       {label}
       <FaArrowRight className="ml-2 block" />
@@ -94,8 +94,13 @@ export function Footer() {
                 aria-label="Email Icon"
                 className="mr-2 inline-block text-stone-400"
               />
-              <CopyableText className="font-normal text-white hover:text-white">
-                support@ccv.brown.edu
+              <CopyableText buttonClassName="bg-black border border-2 border-white hover:bg-white hover:text-black">
+                <Link
+                  className="font-normal text-white hover:underline focus-visible:outline-none focus-visible:outline-sunglow-400"
+                  href="mailto:support@ccv.brown.edu"
+                >
+                  support@ccv.brown.edu
+                </Link>
               </CopyableText>
             </div>
           </div>

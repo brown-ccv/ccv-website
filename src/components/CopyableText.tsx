@@ -22,6 +22,7 @@ interface CopyableTextProps {
   children: ReactNode
   side?: "top" | "bottom" | "left" | "right"
   className?: string
+  buttonClassName?: string
   variant?: "inline" | "code"
 }
 
@@ -29,6 +30,7 @@ export function CopyableText({
   children,
   side = "right",
   className = "",
+  buttonClassName = "",
   variant = "inline",
 }: CopyableTextProps) {
   const [copied, setCopied] = useState(false)
@@ -80,13 +82,11 @@ export function CopyableText({
       <TooltipProvider>
         <Tooltip open={copied || error}>
           <span className={cn("inline-flex items-center gap-2", className)}>
-            <span className="text-start font-bold text-keppel-800">
-              {children}
-            </span>
+            <span className="text-start font-bold">{children}</span>
             <TooltipTrigger asChild>
               <Button
                 size="icon"
-                className="mb-2 mr-2 h-6 w-6 text-xs"
+                className={cn("mr-2 h-6 w-6 text-xs", buttonClassName)}
                 onClick={copyText}
                 aria-label="Copy text to clipboard"
               >
@@ -123,7 +123,7 @@ export function CopyableText({
           <TooltipTrigger asChild>
             <Button
               size="icon"
-              className="h-6 w-6 text-xs"
+              className={cn("h-6 w-6 text-xs", buttonClassName)}
               onClick={copyText}
               aria-label="Copy text to clipboard"
             >

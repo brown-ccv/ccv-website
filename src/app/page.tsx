@@ -49,9 +49,6 @@ export default async function Home() {
         <HeroCard />
         <ImpactBanner />
         <div>
-          <CopyableText>
-            <Link href="mailto:support@brown.edu">support@brown.edu</Link>
-          </CopyableText>
           <ContentSection title="Featured Projects" className="px-none">
             <FeaturedCarousel carouselData={featuredCarouselData} />
           </ContentSection>
