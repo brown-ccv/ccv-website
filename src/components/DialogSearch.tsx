@@ -30,11 +30,11 @@ export function DialogSearch({ searchTitle }: DialogSearchProps): JSX.Element {
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
-          variant="icon_only"
-          iconOnly={<FaMagnifyingGlass />}
-          className="bg-red-university text-white"
+          size="icon"
+          className="bg-red-university text-white hover:bg-white hover:text-red-university"
+          aria-label={searchTitle}
         >
-          {searchTitle}
+          <FaMagnifyingGlass />
         </Button>
       </DialogTrigger>
 

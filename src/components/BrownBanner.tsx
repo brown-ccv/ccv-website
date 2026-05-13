@@ -19,6 +19,7 @@ export function BrownBanner() {
       </h2>
       <ButtonLink
         href="https://brown.co1.qualtrics.com/jfe/form/SV_0GtBE8kWJpmeG4B"
+        size="xl"
         variant="red_outlined"
         className="hidden md:flex"
       >

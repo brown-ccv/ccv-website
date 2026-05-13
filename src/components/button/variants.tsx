@@ -1,7 +1,7 @@
 import { cva } from "class-variance-authority"
 
 export const ButtonVariants = cva(
-  "inline-flex text-center flex-wrap items-center justify-center gap-2 rounded-full text-md font-bold transition-colors focus-visible:outline-none focus-visible:ring-ring focus:outline-none focus-visible:ring-2 focus-visible:ring-sunglow-400 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none focus-visible:ring-sunglow-400 disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
@@ -51,45 +51,19 @@ export const ButtonVariants = cva(
           "focus-visible:ring-sunglow-200",
           "active:bg-neutral-800",
         ].join(" "),
-        // ——————————————————— Icon Only (filled, for black icon buttons) ———————————————————
-        icon_only: [
-          "bg-transparent",
-          "hover:bg-white hover:text-black active:bg-neutral-50",
-        ].join(" "),
         unstyled: "",
       },
-
       size: {
-        sm: "min-h-8 px-4 py-2 text-sm",
-        md: "min-h-10 px-5 py-2.5 text-md",
-        lg: "min-h-12 px-6 py-3 text-lg",
-        xl: "min-h-14 px-8 py-4 text-xl",
-        xxl: "min-h-16 px-10 py-5 text-2xl",
-
-        // large icon-only
-        icon: "w-10 h-10",
-        // small circle for icon-only
-        "icon-sm": "h-6 w-6",
-      },
-
-      iconPosition: {
-        none: "justify-center",
-        left: "flex-row",
-        right: "flex-row-reverse",
-      },
-
-      align: {
-        left: "justify-start",
-        center: "justify-center",
-        right: "justify-end",
+        default: "h-10 px-4 px-6", // this is md
+        sm: "h-8 px-3 text-xs",
+        lg: "h-12 px-6",
+        xl: "h-14 px-8 text-base font-semibold",
+        icon: "h-9 w-9",
       },
     },
-
     defaultVariants: {
       variant: "primary_filled",
-      size: "md",
-      iconPosition: "none",
-      align: "center",
+      size: "default",
     },
   }
 )

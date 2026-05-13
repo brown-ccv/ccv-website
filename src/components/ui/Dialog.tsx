@@ -3,7 +3,8 @@
 import * as React from "react"
 import * as DialogPrimitive from "@radix-ui/react-dialog"
 import { cn } from "@/utils/helper"
-import { IconButton } from "@/components/button/IconButton"
+import { Button } from "@/components/button/Button"
+import { FaTimes } from "react-icons/fa"
 
 const Dialog = DialogPrimitive.Root
 
@@ -52,13 +53,15 @@ const DialogContent = React.forwardRef<
     >
       {children}
       <DialogClose asChild>
-        <IconButton
-          iconName={"FaTimes"}
+        <Button
+          size="icon"
           aria-label="Close"
           className={
             "data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute right-4 top-4 flex bg-white opacity-80 transition-opacity hover:opacity-100 disabled:pointer-events-none"
           }
-        />
+        >
+          <FaTimes />
+        </Button>
       </DialogClose>
     </DialogPrimitive.Content>
   </DialogPortal>

@@ -15,11 +15,7 @@ export default async function Careers() {
         title={metadata.title}
         description={metadata.description}
       >
-        <ButtonLink
-          href={"/about/help#contact-us"}
-          size="xl"
-          variant="primary_filled"
-        >
+        <ButtonLink href="/about/help#contact-us" variant="primary_filled">
           Contact Us
         </ButtonLink>
       </Hero>
