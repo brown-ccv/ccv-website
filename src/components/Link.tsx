@@ -18,6 +18,7 @@ export function Link({ href, children, ...props }: LinkProps) {
     return (
       <a
         href={href}
+        className="underline hover:text-keppel-500"
         // Open in new tab ONLY if it's a website, not email/phone
         target={isSystem ? undefined : "_blank"}
         // Security headers for new tabs
