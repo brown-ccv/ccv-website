@@ -5,15 +5,22 @@ import { ButtonLink } from "@/components/button/ButtonLink"
 import CareersContent from "@/content/routes/about/careers.mdx"
 import { CareerData } from "@/components/CareerData"
 import { getMDXMetadata } from "@/utils/mdx"
+import type { Metadata } from "next"
+
+const frontMatter = getMDXMetadata("src/content/routes/about/careers.mdx")
+
+export const metadata: Metadata = {
+  title: frontMatter.title,
+  description: frontMatter.description,
+}
 
 export default async function Careers() {
-  const metadata = getMDXMetadata("src/content/routes/about/careers.mdx")
   return (
     <>
       <Hero
-        image={metadata.image}
-        title={metadata.title}
-        description={metadata.description}
+        image={frontMatter.image}
+        title={frontMatter.title}
+        description={frontMatter.description}
       >
         <ButtonLink href="/about/help#contact-us" variant="primary_filled">
           Contact Us

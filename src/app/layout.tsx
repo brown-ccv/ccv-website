@@ -1,6 +1,7 @@
 import { Inter, Source_Sans_3, Source_Serif_4 } from "next/font/google"
 import "@/app/globals.css"
 import { ReactNode } from "react"
+import type { Metadata } from "next"
 import { BrownBanner } from "@/components/BrownBanner"
 import { Navbar } from "@/components/navbar/Navbar"
 import { Footer } from "@/components/Footer"
@@ -35,8 +36,11 @@ const sourceSerif = Source_Serif_4({
   display: "swap",
 })
 
-export const metadata = {
-  title: "Center for Computation & Visualization",
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Center for Computation & Visualization",
+    default: "Center for Computation & Visualization",
+  },
   description:
     "Advancing computational research with scientific and computing expertise at Brown University.",
   icons: {
@@ -64,7 +68,6 @@ export default async function RootLayoutWrapper({
     >
       <head>
         <link rel="icon" href="/favicon.ico" />
-        <title>{metadata.title}</title>
       </head>
       <body className={`${inter.className}`}>
         <Link

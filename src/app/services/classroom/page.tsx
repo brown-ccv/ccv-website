@@ -5,14 +5,21 @@ import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 import classroomCarousel from "@/content/data/classroom-carousel.json"
 import { StyledCarouselItem } from "@/components/carousel/StyledCarousel"
 import { ContentSection } from "@/components/ContentSection"
+import type { Metadata } from "next"
+
+const frontMatter = getMDXMetadata("src/content/routes/services/classroom.mdx")
+
+export const metadata: Metadata = {
+  title: frontMatter.title,
+  description: frontMatter.description,
+}
 
 export default async function ClassroomSupport() {
-  const metadata = getMDXMetadata("src/content/routes/services/classroom.mdx")
   // @ts-ignore
   const typedClassroomData = classroomCarousel as const as StyledCarouselItem[]
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description} />
+      <Hero title={frontMatter.title} description={frontMatter.description} />
       <ContentSection
         title="In-Class Tutorials"
         className="px-none bg-neutral-50"

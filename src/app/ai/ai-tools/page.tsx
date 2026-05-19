@@ -2,13 +2,18 @@ import { Hero } from "@/components/Hero"
 import { ButtonLink } from "@/components/button/ButtonLink"
 import AIToolsContent from "@/content/routes/ai/ai-tools.mdx"
 import { getMDXMetadata } from "@/utils/mdx"
+import type { Metadata } from "next"
 
+const frontMatter = getMDXMetadata("src/content/routes/ai/ai-tools.mdx")
+
+export const metadata: Metadata = {
+  title: frontMatter.title,
+  description: frontMatter.description,
+}
 export default function AITools() {
-  const metadata = getMDXMetadata("src/content/routes/ai/ai-tools.mdx")
-
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description}>
+      <Hero title={frontMatter.title} description={frontMatter.description}>
         <ButtonLink
           variant="primary_filled"
           size="lg"

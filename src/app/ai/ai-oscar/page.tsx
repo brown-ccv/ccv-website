@@ -1,13 +1,18 @@
 import { Hero } from "@/components/Hero"
 import AIOscarContent from "@/content/routes/ai/ai-oscar.mdx"
 import { getMDXMetadata } from "@/utils/mdx"
+import type { Metadata } from "next"
 
+const frontMatter = getMDXMetadata("src/content/routes/ai/ai-oscar.mdx")
+
+export const metadata: Metadata = {
+  title: frontMatter.title,
+  description: frontMatter.description,
+}
 export default function AIOscar() {
-  const metadata = getMDXMetadata("src/content/routes/ai/ai-oscar.mdx")
-
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description} />
+      <Hero title={frontMatter.title} description={frontMatter.description} />
       <AIOscarContent />
     </>
   )
