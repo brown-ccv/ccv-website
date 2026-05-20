@@ -7,15 +7,20 @@ import { ButtonLink } from "@/components/button/ButtonLink"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import Icon from "@/components/ui/RenderIcon"
 import { TABLE_VISIBILITY } from "@/styles/visibility"
+import type { Metadata } from "next"
+
+const frontMatter = getMDXMetadata(
+  "src/content/routes/services/file-storage-and-transfer.mdx"
+)
+export const metadata: Metadata = {
+  title: frontMatter.title,
+  description: frontMatter.description,
+}
 
 export default async function CompareStorageOptions() {
-  const metadata = getMDXMetadata(
-    "src/content/routes/services/file-storage-and-transfer.mdx"
-  )
-
   return (
     <>
-      <Hero title={metadata.title} description={metadata.description}>
+      <Hero title={frontMatter.title} description={frontMatter.description}>
         <ButtonLink
           variant="secondary_filled"
           size="lg"
