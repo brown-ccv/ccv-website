@@ -6,7 +6,6 @@ import { CalendarMonth } from "@/components/calendar/CalendarMonth"
 import { UpcomingEvents } from "@/components/calendar/UpcomingEvents"
 import { StyledTabs } from "@/components/StyledTabs"
 import { Spinner } from "@/components/assets/Spinner"
-import { getEventData } from "@/app/queries"
 
 export interface DataProps {
   id: number
@@ -118,8 +117,8 @@ async function fetchEventRanges(
   today: string
 ): Promise<[DataProps[], DataProps[]]> {
   const [past, future] = await Promise.all([
-    getEventData(`-2 months${today}`),
-    getEventData(today),
+    getEventData("-2 months", today), // bounded past window
+    getEventData(today), // future from today
   ])
   return [past, future]
 }
@@ -129,6 +128,51 @@ async function fetchEventRanges(
  */
 function getTodayIsoDate(date: Date): string {
   return date.toISOString().split("T")[0]
+}
+
+async function getCCVData(startDate: string, endDate?: string) {
+  const endPart = endDate ? `/end_date/${encodeURIComponent(endDate)}` : ""
+  const url = `https://events.brown.edu/live/json/events/description_long/true/group/Center%20for%20Computation%20and%20Visualization%20%28CCV%29/start_date/${encodeURIComponent(startDate)}${endPart}/`
+  const response = await fetch(url)
+  return await response.json()
+}
+
+async function getDscovData(startDate: string, endDate?: string) {
+  const description_long = true
+  const group = "Data%20Science%20Institute"
+  const endPart = endDate ? `/end_date/${encodeURIComponent(endDate)}` : ""
+  const url = `https://events.brown.edu/live/json/events/description_long/${description_long}/group/${group}/start_date/${encodeURIComponent(startDate)}${endPart}/`
+
+  const response = await fetch(url)
+  const data = await response.json()
+  return data.filter((event: DataProps) =>
+    event.title.toLowerCase().includes("dscov")
+  )
+}
+
+export async function getEventData(startDate: string, endDate?: string) {
+  const [ccvData, dscovData] = await Promise.all([
+    getCCVData(startDate, endDate),
+    getDscovData(startDate, endDate),
+  ])
+
+  const combinedData = [...ccvData, ...dscovData]
+  combinedData.sort(compareDates)
+  return combinedData
+}
+
+function compareDates(a: DataProps, b: DataProps): number {
+  const timeA = new Date(a.date_iso ?? "").getTime()
+  const timeB = new Date(b.date_iso ?? "").getTime()
+
+  const validA = Number.isFinite(timeA)
+  const validB = Number.isFinite(timeB)
+
+  if (!validA && !validB) return 0
+  if (!validA) return 1 // invalid goes to end
+  if (!validB) return -1 // invalid goes to end
+
+  return timeA - timeB
 }
 
 export default EventSection
