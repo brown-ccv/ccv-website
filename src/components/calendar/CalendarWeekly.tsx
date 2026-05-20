@@ -100,7 +100,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
 
     return <>{week}</>
   }
-
+  // TODO: sticky all day events at the TOP
   const generateEventsForCurrentWeek = (activeDate: Date) => {
     let thisDate = activeDate
     const startDate = startOfWeek(thisDate)
@@ -146,7 +146,11 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                 className="hidden h-3 w-3 flex-shrink-0 lg:block"
                 aria-hidden="true"
               />
-              <time dateTime={event.date_utc}>{event.date_time}</time>
+              {event.is_all_day ? (
+                "All Day"
+              ) : (
+                <time dateTime={event.date_utc}>{event.date_time}</time>
+              )}
             </p>
           </ButtonLink>
         </li>

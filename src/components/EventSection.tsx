@@ -10,6 +10,7 @@ import { getEventData } from "@/app/queries"
 
 export interface DataProps {
   id: number
+  is_all_day: boolean
   date: string
   date_utc: string
   date2_utc: string
@@ -44,6 +45,8 @@ export function EventSection(): JSX.Element {
       const [past, future] = await fetchEventRanges(todayStr)
 
       if (!active) return
+      console.log("Fetched past events:", past)
+      console.log("Fetched future events:", future)
 
       setPastDates(past)
       setFutureDates(future)
