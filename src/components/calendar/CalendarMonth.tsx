@@ -132,7 +132,7 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
                   className="mr-1 h-4 w-4 text-keppel-700"
                   aria-hidden="true"
                 />
-                {event.date_time}
+                {event.is_all_day ? "All Day" : event.date_time}
               </time>
             </PopoverContent>
           </Popover>
@@ -166,7 +166,7 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
                 className="mr-2 h-5 w-5 text-keppel-700"
                 aria-hidden="true"
               />
-              {event.date_time}
+              {event.is_all_day ? "All Day" : event.date_time}
             </time>
           </div>
         </li>

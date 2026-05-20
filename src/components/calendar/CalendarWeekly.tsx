@@ -67,6 +67,22 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
       1440
   }, [])
 
+  const getWeekEvents = (activeDate: Date) => {
+    const startDate = startOfWeek(activeDate)
+    const weekEvents = events.filter(
+      (event) =>
+        isAfter(event.date_utc, startDate) &&
+        isBefore(event.date_utc, addDays(startDate, 7))
+    )
+
+    return {
+      allDay: weekEvents.filter((event) => event.is_all_day),
+      timed: weekEvents.filter((event) => !event.is_all_day),
+    }
+  }
+
+  const { allDay, timed } = getWeekEvents(activeDate)
+
   const generateDatesForCurrentWeek = (
     date: Date,
     selectedDate: Date,
@@ -101,60 +117,6 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
     return <>{week}</>
   }
 
-  const generateEventsForCurrentWeek = (activeDate: Date) => {
-    let thisDate = activeDate
-    const startDate = startOfWeek(thisDate)
-    const weekEvents = events.filter(
-      (event) =>
-        isAfter(event.date_utc, startDate) &&
-        isBefore(event.date_utc, addDays(startDate, 7))
-    )
-
-    const formattedWeekEvents = weekEvents.map((event, i) => {
-      thisDate = addDays(startDate, i)
-      const lengthOfTime =
-        event.date2_utc && event.date_utc
-          ? differenceInHours(event.date2_utc, event.date_utc)
-          : 1
-      const dayOfWeek = getDay(addDays(event.date_iso, 1))
-      const yearEvent = getYear(event.date_utc)
-      const monthEvent = getMonth(event.date_utc)
-      const dateEvent = getDate(event.date_utc)
-      const durationIntoDay = differenceInMinutes(
-        event.date_iso,
-        new Date(yearEvent, monthEvent, dateEvent)
-      )
-
-      const calColor = "bg-sunglow-300 hover:bg-sunglow-200"
-
-      return (
-        <li
-          key={self.crypto.randomUUID()}
-          className={`relative mt-px col-start-${dayOfWeek} sm:flex`}
-          style={{
-            gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,
-          }}
-        >
-          <ButtonLink
-            href={event.url}
-            className={`${calColor} group absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg p-2 text-xs leading-tight lg:text-base`}
-            isCalendarEvent={true}
-          >
-            <p className="font-semibold text-blue-navbar">{event.title}</p>
-            <p className="flex items-center gap-2 text-keppel-800">
-              <ClockIcon
-                className="hidden h-3 w-3 flex-shrink-0 lg:block"
-                aria-hidden="true"
-              />
-              <time dateTime={event.date_utc}>{event.date_time}</time>
-            </p>
-          </ButtonLink>
-        </li>
-      )
-    })
-    return <>{formattedWeekEvents}</>
-  }
-
   return (
     <div className="flex h-full w-full flex-grow flex-col">
       <CalendarHeading
@@ -184,6 +146,28 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                 activeDate
               )}
             </div>
+          </div>
+          {/* Sticky all-day row */}
+          <div className="sticky top-16 z-20 hidden bg-transparent sm:block sm:pr-8">
+            <ol className="ml-14 grid grid-cols-7 gap-1 px-1 py-1">
+              {allDay.map((event) => {
+                const dayOfWeek = getDay(event.date_iso)
+                return (
+                  <li
+                    key={self.crypto.randomUUID()}
+                    className={`${CAL_STYLE_ARRAY[dayOfWeek]} min-w-0`}
+                  >
+                    <ButtonLink
+                      href={event.url}
+                      className="block rounded-md bg-sunglow-200 px-2 py-1 text-xs font-semibold text-blue-navbar hover:bg-sunglow-100"
+                      isCalendarEvent={true}
+                    >
+                      <span className="line-clamp-2">{event.title}</span>
+                    </ButtonLink>
+                  </li>
+                )
+              })}
+            </ol>
           </div>
           <div className="flex flex-auto">
             <div className="bg-gray sticky left-0 z-10 w-14 flex-none ring-1 ring-gray-100" />
@@ -232,7 +216,51 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                 role="grid"
                 aria-label="Calendar events"
               >
-                {generateEventsForCurrentWeek(activeDate)}
+                {timed.map((event) => {
+                  const lengthOfTime =
+                    event.date2_utc && event.date_utc
+                      ? differenceInHours(event.date2_utc, event.date_utc)
+                      : 1
+
+                  const dayOfWeek = getDay(addDays(event.date_iso, 1))
+                  const yearEvent = getYear(event.date_utc)
+                  const monthEvent = getMonth(event.date_utc)
+                  const dateEvent = getDate(event.date_utc)
+
+                  const durationIntoDay = differenceInMinutes(
+                    event.date_iso,
+                    new Date(yearEvent, monthEvent, dateEvent)
+                  )
+
+                  return (
+                    <li
+                      key={self.crypto.randomUUID()}
+                      className={`relative mt-px ${CAL_STYLE_ARRAY[dayOfWeek]} sm:flex`}
+                      style={{
+                        gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,
+                      }}
+                    >
+                      <ButtonLink
+                        href={event.url}
+                        className="group absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg bg-sunglow-300 p-2 text-xs leading-tight hover:bg-sunglow-200"
+                        isCalendarEvent={true}
+                      >
+                        <p className="font-semibold text-blue-navbar">
+                          {event.title}
+                        </p>
+                        <p className="flex items-center gap-2 text-keppel-800">
+                          <ClockIcon
+                            className="hidden h-3 w-3 flex-shrink-0 lg:block"
+                            aria-hidden="true"
+                          />
+                          <time dateTime={event.date_utc}>
+                            {event.date_time}
+                          </time>
+                        </p>
+                      </ButtonLink>
+                    </li>
+                  )
+                })}{" "}
               </ol>
             </div>
           </div>
