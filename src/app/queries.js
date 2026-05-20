@@ -2,8 +2,7 @@ async function getCCVData(time) {
   const response = await fetch(
     `https://events.brown.edu/live/json/events/description_long/true/group/Center%20for%20Computation%20and%20Visualization%20%28CCV%29/start_date/${time}/`
   )
-  const data = await response.json()
-  return data
+  return await response.json()
 }
 
 async function getDscovData(time) {
@@ -15,16 +14,12 @@ async function getDscovData(time) {
   const data = await response.json()
 
   // Filter for only DSCOV events
-  const filteredData = data.filter((event) =>
-    event.title.toLowerCase().includes("dscov")
-  )
-
-  return filteredData
+  return data.filter((event) => event.title.toLowerCase().includes("dscov"))
 }
 
-function compareDate2Utc(a, b) {
-  const dateA = new Date(a.date2_utc)
-  const dateB = new Date(b.date2_utc)
+function compareDates(a, b) {
+  const dateA = new Date(a.date_iso)
+  const dateB = new Date(b.date_iso)
   const validA = !isNaN(dateA.getTime())
   const validB = !isNaN(dateB.getTime())
 
@@ -41,7 +36,7 @@ export async function getEventData(time) {
   ])
 
   const combinedData = [...ccvData, ...dscovData]
-  combinedData.sort(compareDate2Utc)
+  combinedData.sort(compareDates)
 
   return combinedData
 }

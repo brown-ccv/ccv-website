@@ -4,7 +4,7 @@ import { HeroCard } from "@/components/card/HeroCard"
 import { ImpactBanner } from "@/components/ImpactBanner"
 import { FeaturedCarousel } from "@/components/carousel/FeaturedCarousel"
 import { StyledCarouselItem } from "@/components/carousel/StyledCarousel"
-import { EventSectionClient } from "@/components/EventSectionClient"
+import { EventSection } from "@/components/EventSection"
 import React from "react"
 import { ScrollButton } from "@/components/button/ScrollButton"
 import { ButtonLink } from "@/components/button/ButtonLink"
@@ -67,7 +67,7 @@ export default async function Home() {
                 </>
               </ContentSubHeader>
             </ContentHeader>
-            <EventSectionClient />
+            <EventSection />
           </ContentSection>
         </div>
       </>
