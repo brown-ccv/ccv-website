@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useMemo, useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import {
   format,
   startOfWeek,
@@ -23,7 +23,6 @@ import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { ClockIcon } from "@heroicons/react/20/solid"
 import { ButtonLink } from "@/components/button/ButtonLink"
 
-const ALL_DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
 export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   const container = useRef<HTMLDivElement>(null)
   const containerNav = useRef<HTMLDivElement>(null)
@@ -43,6 +42,8 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
     "col-start-8",
   ]
 
+  const ALL_DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
+
   const TIMES_ARRAY = Array.from(Array(24), (_, i) => ({
     key: Math.random(),
     time: `${((i + 11) % 12) + 1}${i <= 11 ? "AM" : "PM"}`,
@@ -57,8 +58,6 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   useEffect(() => {
     // Set the container scroll position based on the current time.
     const currentMinute = new Date().getHours() * 60
-    if (!container.current || !containerNav.current || !containerOffset.current)
-      return
 
     container.current!.scrollTop =
       ((container.current!.scrollHeight -
@@ -138,7 +137,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
         >
           <ButtonLink
             href={event.url}
-            className={`${calColor} group absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg p-2 text-xs leading-tight lg:text-base`}
+            className={`${calColor} group absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg p-2 text-xs leading-tight`}
             isCalendarEvent={true}
           >
             <p className="font-semibold text-blue-navbar">{event.title}</p>
@@ -201,9 +200,12 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                 <div ref={containerOffset} className="row-end-1 h-7"></div>
                 {TIMES_ARRAY.map(({ key, time }) => (
                   <React.Fragment key={key}>
-                    <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-600">
-                      <time dateTime={time}>{time}</time>
+                    <div>
+                      <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-600">
+                        <time dateTime={time}>{time}</time>
+                      </div>
                     </div>
+                    <div />
                   </React.Fragment>
                 ))}
               </div>
