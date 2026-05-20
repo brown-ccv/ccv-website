@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/Badge"
 import { getColorForTag } from "@/utils/helper"
 import {
   Carousel,
+  type CarouselApi,
   CarouselContent,
   CarouselItem,
   CarouselNext,
@@ -56,14 +57,16 @@ export interface DotsProps {
 
 export function Dots({ carouselData, cardIndex, setCardIndex }: DotsProps) {
   return (
-    <div className="absolute bottom-5 flex w-full justify-center gap-2">
+    <div className="absolute bottom-0 flex w-full justify-center gap-4 lg:bottom-5">
       {carouselData.map((_, idx) => {
         return (
           <button
             key={idx}
             onClick={() => setCardIndex(idx)}
-            className={`h-2 rounded-full transition-colors ${
-              idx === cardIndex ? "w-3 bg-neutral-500" : "w-2 bg-neutral-300"
+            className={`h-3 rounded-full transition-colors lg:h-2 ${
+              idx === cardIndex
+                ? "w-4 bg-neutral-500 lg:w-3"
+                : "w-3 bg-neutral-300 lg:w-2"
             }`}
             aria-label={`Go to slide ${idx + 1}: ${_.title}`}
             aria-current={cardIndex === idx ? "true" : "false"}
@@ -183,17 +186,53 @@ function FeatCarouselContent({
 }
 
 export function StyledCarousel({ carouselData }: StyledCarouselProps) {
+  const [api, setApi] = React.useState<CarouselApi>()
+  const [current, setCurrent] = React.useState(0)
+
+  React.useEffect(() => {
+    if (!api) {
+      return
+    }
+
+    const handleSelect = () => {
+      setCurrent(api.selectedScrollSnap())
+    }
+
+    const handleReInit = () => {
+      setCurrent(api.scrollSnapList().length)
+      handleSelect()
+    }
+
+    setCurrent(api.scrollSnapList().length)
+    handleSelect()
+
+    api.on("select", handleSelect)
+    api.on("reInit", handleReInit)
+
+    return () => {
+      api.off("select", handleSelect)
+      api.off("reInit", handleReInit)
+    }
+  }, [api])
   return (
-    <Carousel className="w-full">
-      <CarouselContent className="">
-        {carouselData.map((_, index) => (
-          <CarouselItem key={index}>
-            <FeatCarouselContent {..._} />
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
+    <div className="relative w-full">
+      <Carousel setApi={setApi} className="w-full">
+        <CarouselContent>
+          {carouselData.map((item, index) => (
+            <CarouselItem key={index}>
+              <FeatCarouselContent {...item} />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+
+      <Dots
+        cardIndex={current}
+        setCardIndex={(index) => api?.scrollTo(index)}
+        carouselData={carouselData}
+      />
+    </div>
   )
 }
