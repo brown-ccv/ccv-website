@@ -5,7 +5,7 @@ import path from "path"
 // Required for static export
 export const dynamic = "force-static"
 
-const baseUrl = process.env.SITE_URL || "http://localhost:3000"
+const baseUrl = "https://ccv.brown.edu/"
 const baseDir = "src/app"
 
 async function getRoutes(): Promise<MetadataRoute.Sitemap> {
