@@ -1,4 +1,6 @@
-import { DataProps } from "@/components/EventSection"
+"use client"
+
+import type { DataProps } from "@/components/EventSection"
 import {
   Popover,
   PopoverContent,

@@ -19,7 +19,7 @@ import {
 import { PopoverEvent } from "@/components/calendar/PopoverEvent"
 import { CalendarProps } from "@/types/calendar-types"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
-import { DataProps } from "@/components/EventSection"
+import type { DataProps } from "@/components/EventSection"
 
 export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   const container = useRef<HTMLDivElement>(null)
