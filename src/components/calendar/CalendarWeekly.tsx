@@ -97,7 +97,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
       return (
         <div
           key={day}
-          className={`flex items-center justify-center py-3 lg:py-4 ${
+          className={`flex items-center justify-center pb-10 pt-3 lg:pt-4 ${
             isSameMonth(thisDate, activeDate) ? "" : "inactiveDay"
           } ${isSameDay(thisDate, selectedDate) ? "selectedDay" : ""} ${isSameDay(thisDate, currentDate) ? "today bg-sunglow-50" : "bg-white"}`}
           onClick={() => {
@@ -148,7 +148,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
             </div>
           </div>
           {/* Sticky all-day row */}
-          <div className="sticky top-16 z-20 hidden bg-transparent sm:block sm:pr-8">
+          <div className="sticky top-9 z-40 hidden bg-transparent sm:block sm:pr-8 lg:top-10">
             <ol className="ml-14 grid grid-cols-7 gap-1 px-1 py-1">
               {allDay.map((event) => {
                 const dayOfWeek = getDay(event.date_iso)
