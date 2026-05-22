@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/tmp/", "/_next/"],
+      disallow: ["/api/", "/tmp/"],
     },
     sitemap: "https://ccv.brown.edu/sitemap.xml",
   }
