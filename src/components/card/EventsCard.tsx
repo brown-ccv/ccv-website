@@ -13,6 +13,7 @@ export function EventsCard({
   url,
   date,
   date_utc,
+  is_all_day,
   description_long,
 }: DataProps) {
   const descriptionLong = sanitizeHtml(description_long, {
@@ -30,7 +31,7 @@ export function EventsCard({
         <p className="font-semibold text-slate-900">{normalDate}</p>
         <div className="flex items-center gap-2 text-keppel-800">
           <Icon iconName="FaClock" />
-          {date_time}
+          {is_all_day ? "All Day" : date_time}
         </div>
         <Link
           className="flex gap-2 font-bold leading-6 text-blue-500 hover:underline"
