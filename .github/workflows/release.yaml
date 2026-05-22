@@ -10,7 +10,7 @@ env:
   gcp_registry_url: us-central1-docker.pkg.dev
   gcp_artifact_registry: gcp-ccv-website
   image: ${{ github.event.repository.name }}-release
-  SITE_URL: https://ccv.brown.edu/
+  SITE_URL: https://ccv.brown.edu
 
 jobs:
   build-release-and-deploy:
