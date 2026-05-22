@@ -59,7 +59,7 @@ export function PopoverEvent({
 
         <time
           dateTime={event.date_utc}
-          className="flex items-center text-keppel-700"
+          className="flex items-center text-keppel-800"
         >
           <ClockIcon
             className="mr-1 h-4 w-4 flex-shrink-0"
