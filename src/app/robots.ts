@@ -1,12 +1,14 @@
 import type { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
+  const baseUrl = process.env.SITE_URL ?? "http://localhost:3000"
+
   return {
     rules: {
       userAgent: "*",
       allow: "/",
       disallow: ["/api/", "/tmp/"],
     },
-    sitemap: "https://ccv.brown.edu/sitemap.xml",
+    sitemap: new URL("/sitemap.xml", baseUrl).toString(),
   }
 }
