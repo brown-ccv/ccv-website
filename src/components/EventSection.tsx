@@ -153,6 +153,7 @@ function getTodayIsoDate(date: Date): string {
   return date.toISOString().split("T")[0]
 }
 
+// Brown Events uses the LiveWhale API: https://support.livewhale.com/live/blurbs/api
 async function getCCVData(startDate: string, endDate?: string) {
   const endPart = endDate ? `/end_date/${encodeURIComponent(endDate)}` : ""
   const url = `https://events.brown.edu/live/json/events/description_long/true/group/Center%20for%20Computation%20and%20Visualization%20%28CCV%29/start_date/${encodeURIComponent(startDate)}${endPart}/`
