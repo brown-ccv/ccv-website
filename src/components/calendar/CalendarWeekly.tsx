@@ -288,8 +288,9 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                       }}
                     >
                       <PopoverEvent
-                        className="absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg bg-sunglow-300 p-2 text-xs leading-tight hover:bg-sunglow-200"
+                        className="absolute inset-1 flex flex-col items-center gap-2 overflow-y-auto rounded-lg bg-sunglow-300 p-2 text-xs leading-tight hover:bg-sunglow-200"
                         event={event}
+                        includeTime
                       />
                     </li>
                   )

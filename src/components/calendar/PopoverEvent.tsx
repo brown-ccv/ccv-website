@@ -11,16 +11,33 @@ import React from "react"
 
 interface PopoverEventProps {
   event: DataProps
+  includeTime?: boolean
   className?: string
 }
 
-export function PopoverEvent({ event, className }: PopoverEventProps) {
+export function PopoverEvent({
+  event,
+  className,
+  includeTime = false,
+}: PopoverEventProps) {
   return (
     <Popover>
       <PopoverTrigger className={className}>
         <p className="line-clamp-2 font-semibold text-blue-navbar">
           {event.title}
         </p>
+        {includeTime && (
+          <time
+            dateTime={event.date_utc}
+            className="flex items-center text-keppel-800"
+          >
+            <ClockIcon
+              className="mr-1 h-4 w-4 flex-shrink-0"
+              aria-hidden="true"
+            />
+            {event.is_all_day ? "All Day" : event.date_time}
+          </time>
+        )}
       </PopoverTrigger>
       <PopoverContent className="flex flex-col gap-1.5 bg-neutral-50">
         <p className="font-semibold">
