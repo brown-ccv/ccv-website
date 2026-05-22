@@ -10,6 +10,7 @@ env:
   gcp_registry_url: us-central1-docker.pkg.dev
   gcp_artifact_registry: gcp-ccv-website
   image: ${{ github.event.repository.name }}-release
+  SITE_URL: https://ccv.brown.edu
 
 jobs:
   build-release-and-deploy:
@@ -62,6 +63,7 @@ jobs:
           build-args: |
             NEXT_PUBLIC_MEILISEARCH_HOST=${{ secrets.MEILISEARCH_HOST }}
             NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=${{ secrets.MEILISEARCH_SEARCH_KEY }}
+            SITE_URL=${{ env.SITE_URL }}
 
       - uses: "google-github-actions/deploy-cloudrun@v2"
         id: "deploy"
@@ -76,6 +78,7 @@ jobs:
           env_vars: |
             NEXT_PUBLIC_MEILISEARCH_HOST=${{ secrets.MEILISEARCH_HOST }}
             NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=${{ secrets.MEILISEARCH_SEARCH_KEY }}
+            SITE_URL=${{ env.SITE_URL }}
 
       - name: Show Deployment URL
         run: |
