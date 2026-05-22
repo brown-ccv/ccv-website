@@ -22,10 +22,10 @@ export interface DataProps {
 }
 
 export function EventSection(): JSX.Element {
-  const [futureDates, setFutureDates] = useState<DataProps[] | null>(null)
-  const [pastDates, setPastDates] = useState<DataProps[] | null>(null)
+  const [futureDates, setFutureDates] = useState<DataProps[]>([])
+  const [pastDates, setPastDates] = useState<DataProps[]>([])
   const [currentDate, setCurrentDate] = useState<Date | null>(null)
-  const [today, setToday] = useState<string>("")
+  const [today, setToday] = useState("")
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
@@ -50,11 +50,12 @@ export function EventSection(): JSX.Element {
         if (!active) return
         setPastDates(past)
         setFutureDates(future)
-      } catch {
+      } catch (err) {
         if (!active) return
+        console.error("Failed to load events:", err)
         setError("Unable to load events right now.")
       } finally {
-        if (!active) setLoading(false)
+        if (active) setLoading(false)
       }
     }
 
@@ -65,34 +66,35 @@ export function EventSection(): JSX.Element {
     }
   }, [])
 
-  if (loading || !currentDate || !pastDates || !futureDates)
+  // Error first so it isn't hidden by loading/data guards
+  if (error) {
+    return (
+      <div role="alert" className="flex items-center justify-center">
+        <FaExclamationTriangle
+          className="mr-3 flex-shrink-0 text-red-university md:mr-2"
+          aria-hidden="true"
+        />
+        <span>{error} If the problem persists, please contact support.</span>
+      </div>
+    )
+  }
+
+  if (loading || !currentDate) {
     return (
       <div className="flex items-center justify-center">
         <Spinner />
       </div>
     )
-  if (error)
-    return (
-      <div role="alert" className="flex items-center justify-center">
-        <FaExclamationTriangle
-          className="mr-3 flex-shrink-0 text-red-university md:mr-2"
-          aria-label="Error: "
-        />
-        {error} If the problem persists, please contact support.
-      </div>
-    )
+  }
 
-  const dataFuture = futureDates
-  const dataPast = pastDates
+  const allEvents = pastDates.concat(futureDates)
 
   return (
     <div className="flex w-full flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">
-      {/* Mobile: Show only upcoming events */}
       <div className="md:hidden">
-        <UpcomingEvents events={dataFuture} />
+        <UpcomingEvents events={futureDates} />
       </div>
 
-      {/* Desktop: Toggle and Views */}
       <div className="hidden w-full md:flex">
         <StyledTabs
           variant="neutral"
@@ -100,14 +102,14 @@ export function EventSection(): JSX.Element {
             {
               value: "upcoming",
               label: "Upcoming",
-              content: <UpcomingEvents events={dataFuture} />,
+              content: <UpcomingEvents events={futureDates} />,
             },
             {
               value: "weekly",
               label: "Weekly",
               content: (
                 <CalendarWeekly
-                  events={dataPast.concat(dataFuture)}
+                  events={allEvents}
                   currentDate={currentDate}
                   today={today}
                 />
@@ -118,7 +120,7 @@ export function EventSection(): JSX.Element {
               label: "Monthly",
               content: (
                 <CalendarMonth
-                  events={dataPast.concat(dataFuture)}
+                  events={allEvents}
                   currentDate={currentDate}
                   today={today}
                 />
@@ -138,7 +140,7 @@ async function fetchEventRanges(
   today: string
 ): Promise<[DataProps[], DataProps[]]> {
   const [past, future] = await Promise.all([
-    getEventData(`-2 months${today}`),
+    getEventData(`-2 months ${today}`),
     getEventData(today),
   ])
   return [past, future]
