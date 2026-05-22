@@ -269,7 +269,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                       ? differenceInHours(eventEnd, eventUtc)
                       : 1
 
-                  const dayOfWeek = getDay(addDays(eventStart, 1))
+                  const dayOfWeek = getDay(eventStart)
                   const yearEvent = getYear(eventUtc)
                   const monthEvent = getMonth(eventUtc)
                   const dateEvent = getDate(eventUtc)
