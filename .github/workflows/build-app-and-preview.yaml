@@ -53,7 +53,6 @@ jobs:
           build-args: |
             NEXT_PUBLIC_MEILISEARCH_HOST=${{ secrets.MEILISEARCH_HOST }}
             NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=${{ secrets.MEILISEARCH_SEARCH_KEY }}
-
       - uses: "google-github-actions/deploy-cloudrun@v2"
         id: "deploy"
         with:
@@ -67,7 +66,6 @@ jobs:
           env_vars: |
             NEXT_PUBLIC_MEILISEARCH_HOST=${{ secrets.MEILISEARCH_HOST }}
             NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=${{ secrets.MEILISEARCH_SEARCH_KEY }}
-
       - name: Extract Git SHA for Comment
         id: vars
         run: |
