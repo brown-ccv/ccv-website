@@ -7,6 +7,7 @@ import { UpcomingEvents } from "@/components/calendar/UpcomingEvents"
 import { StyledTabs } from "@/components/StyledTabs"
 import { Spinner } from "@/components/assets/Spinner"
 import { getEventData } from "@/app/queries"
+import { FaExclamationTriangle } from "react-icons/fa"
 
 export interface DataProps {
   id: number
@@ -26,28 +27,35 @@ export function EventSection(): JSX.Element {
   const [currentDate, setCurrentDate] = useState<Date | null>(null)
   const [today, setToday] = useState<string>("")
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
     let active = true
 
+    /**
+     * Loads past and future event data and updates component state.
+     */
     async function loadEvents(): Promise<void> {
-      /**
-       * Loads past and future event data and updates component state.
-       */
       const now = new Date()
       const todayStr = getTodayIsoDate(now)
 
+      if (!active) return
       setCurrentDate(now)
       setToday(todayStr)
       setLoading(true)
+      setError(null)
 
-      const [past, future] = await fetchEventRanges(todayStr)
-
-      if (!active) return
-
-      setPastDates(past)
-      setFutureDates(future)
-      setLoading(false)
+      try {
+        const [past, future] = await fetchEventRanges(todayStr)
+        if (!active) return
+        setPastDates(past)
+        setFutureDates(future)
+      } catch {
+        if (!active) return
+        setError("Unable to load events right now.")
+      } finally {
+        if (!active) setLoading(false)
+      }
     }
 
     loadEvents()
@@ -58,6 +66,16 @@ export function EventSection(): JSX.Element {
   }, [])
 
   if (loading || !currentDate || !pastDates || !futureDates) return <Spinner />
+  if (error)
+    return (
+      <div role="alert" className="flex items-center justify-center">
+        <FaExclamationTriangle
+          className="mr-3 flex-shrink-0 text-red-university md:mr-2"
+          aria-label="Error: "
+        />
+        {error} If the problem persists, please contact support.
+      </div>
+    )
 
   const dataFuture = futureDates
   const dataPast = pastDates
