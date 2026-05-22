@@ -5,7 +5,6 @@ import {
   format,
   startOfWeek,
   addDays,
-  differenceInHours,
   isSameMonth,
   isSameDay,
   subDays,
@@ -264,10 +263,10 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                     ? new Date(event.date2_utc)
                     : null
 
-                  const lengthOfTime =
-                    eventEnd && eventUtc
-                      ? differenceInHours(eventEnd, eventUtc)
-                      : 1
+                  const spanBlocks = getEventSpanInFiveMinuteBlocks(
+                    eventUtc,
+                    eventEnd
+                  )
 
                   const dayOfWeek = getDay(eventStart)
                   const yearEvent = getYear(eventUtc)
@@ -284,11 +283,13 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                       key={self.crypto.randomUUID()}
                       className={`relative mt-px ${CAL_STYLE_ARRAY[dayOfWeek]} sm:flex`}
                       style={{
-                        gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,
+                        gridRow: `${Math.floor(durationIntoDay / 5) + 2} / span ${spanBlocks}`,
                       }}
                     >
                       <PopoverEvent
-                        className="absolute inset-1 flex flex-col items-center gap-2 overflow-y-auto rounded-lg bg-sunglow-300 p-2 text-xs leading-tight hover:bg-sunglow-200"
+                        className={`absolute inset-1 flex flex-col items-center rounded-lg bg-sunglow-300 p-2 text-xs leading-tight hover:bg-sunglow-200 ${
+                          spanBlocks > 6 ? "gap-2" : ""
+                        }`}
                         event={event}
                         includeTime
                       />
@@ -302,4 +303,20 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
       </div>
     </div>
   )
+}
+
+/**
+ * Converts an event duration to 5-minute grid blocks and clamps to at least one block.
+ */
+const getEventSpanInFiveMinuteBlocks = (
+  eventStartUtc: Date,
+  eventEndUtc: Date | null
+): number => {
+  if (!eventEndUtc) return 12
+
+  const durationMinutes = differenceInMinutes(eventEndUtc, eventStartUtc)
+  const safeDurationMinutes = Math.max(durationMinutes, 5)
+  const spanBlocks = Math.ceil(safeDurationMinutes / 5)
+
+  return Math.max(spanBlocks, 1)
 }
