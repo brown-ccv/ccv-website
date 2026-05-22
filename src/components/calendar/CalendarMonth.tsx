@@ -1,10 +1,7 @@
 "use client"
 
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/Popover"
+import { PopoverEvent } from "@/components/calendar/PopoverEvent"
+
 import { ClockIcon, ArrowTopRightOnSquareIcon } from "@heroicons/react/20/solid"
 import React, { useState } from "react"
 import { CalendarProps } from "@/types/calendar-types"
@@ -21,7 +18,6 @@ import {
   getDate,
   isSameDay,
   getWeeksInMonth,
-  format,
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
 import { DataProps } from "@/components/EventSection"
@@ -102,40 +98,10 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
     const formattedCalEvents = validDayEvents.map((event: DataProps) => {
       return (
         <li key={self.crypto.randomUUID()}>
-          <Popover>
-            <PopoverTrigger className="max-w-full rounded-md px-2 hover:bg-neutral-50">
-              <p className="min-w-0 flex-auto truncate text-lg font-semibold text-blue-500">
-                {event.title}
-              </p>
-            </PopoverTrigger>
-            <PopoverContent className="bg-neutral-50">
-              <p className="pb-2 font-semibold">
-                {format(new Date(event.date_utc), "MMMM d, yyyy")}
-              </p>
-              <ButtonLink
-                href={event.url}
-                className="flex gap-1 text-blue-500"
-                isCalendarEvent={true}
-              >
-                <p className="font-semibold hover:underline">{event.title}</p>
-                <ArrowTopRightOnSquareIcon
-                  className="mr-2 h-3 w-3"
-                  aria-hidden="true"
-                />
-              </ButtonLink>
-
-              <time
-                dateTime={event.date_utc}
-                className="hidden flex-none text-keppel-700 group-hover:font-semibold group-hover:text-keppel-700 xl:flex xl:items-center"
-              >
-                <ClockIcon
-                  className="mr-1 h-4 w-4 text-keppel-700"
-                  aria-hidden="true"
-                />
-                {event.is_all_day ? "All Day" : event.date_time}
-              </time>
-            </PopoverContent>
-          </Popover>
+          <PopoverEvent
+            className="max-w-full border-l-2 border-sunglow-400 pl-2 text-left tracking-tight hover:bg-slate-100"
+            event={event}
+          />
         </li>
       )
     })

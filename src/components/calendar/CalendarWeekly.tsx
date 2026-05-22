@@ -17,11 +17,9 @@ import {
   getMonth,
   getYear,
 } from "date-fns"
-
+import { PopoverEvent } from "@/components/calendar/PopoverEvent"
 import { CalendarProps } from "@/types/calendar-types"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
-import { ClockIcon } from "@heroicons/react/20/solid"
-import { ButtonLink } from "@/components/button/ButtonLink"
 import { DataProps } from "@/components/EventSection"
 
 export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
@@ -194,14 +192,11 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                   {ALL_DAYS_OF_WEEK.map((_, dayIndex) => (
                     <div key={dayIndex} className="min-w-0 space-y-1">
                       {allDayByWeekday[dayIndex].map((event) => (
-                        <ButtonLink
+                        <PopoverEvent
+                          className="rounded-lg bg-sunglow-300 py-2 text-xs leading-tight hover:bg-sunglow-200"
+                          event={event}
                           key={self.crypto.randomUUID()}
-                          href={event.url}
-                          className="block rounded-md bg-sunglow-200 px-2 py-1 text-xs font-semibold text-blue-navbar hover:bg-sunglow-100"
-                          isCalendarEvent={true}
-                        >
-                          <span className="line-clamp-2">{event.title}</span>
-                        </ButtonLink>
+                        />
                       ))}
                     </div>
                   ))}
@@ -292,24 +287,10 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                         gridRow: `${durationIntoDay / 5 + 2} / span ${lengthOfTime * 12}`,
                       }}
                     >
-                      <ButtonLink
-                        href={event.url}
-                        className="group absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg bg-sunglow-300 p-2 text-xs leading-tight hover:bg-sunglow-200"
-                        isCalendarEvent={true}
-                      >
-                        <p className="font-semibold text-blue-navbar">
-                          {event.title}
-                        </p>
-                        <p className="flex items-center gap-2 text-keppel-800">
-                          <ClockIcon
-                            className="hidden h-3 w-3 flex-shrink-0 lg:block"
-                            aria-hidden="true"
-                          />
-                          <time dateTime={event.date_utc}>
-                            {event.date_time}
-                          </time>
-                        </p>
-                      </ButtonLink>
+                      <PopoverEvent
+                        className="absolute inset-1 flex flex-col gap-2 overflow-y-auto rounded-lg bg-sunglow-300 p-2 text-xs leading-tight hover:bg-sunglow-200"
+                        event={event}
+                      />
                     </li>
                   )
                 })}
