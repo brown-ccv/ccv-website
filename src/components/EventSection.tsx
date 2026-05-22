@@ -65,7 +65,12 @@ export function EventSection(): JSX.Element {
     }
   }, [])
 
-  if (loading || !currentDate || !pastDates || !futureDates) return <Spinner />
+  if (loading || !currentDate || !pastDates || !futureDates)
+    return (
+      <div className="flex items-center justify-center">
+        <Spinner />
+      </div>
+    )
   if (error)
     return (
       <div role="alert" className="flex items-center justify-center">
