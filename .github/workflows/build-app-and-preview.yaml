@@ -7,7 +7,9 @@ env:
   gcp_registry_url: us-central1-docker.pkg.dev
   gcp_artifact_registry: gcp-ccv-website
   image: "${{ github.event.repository.name }}-pr-${{ github.event.number }}"
-  SITE_URL: https://ccv.brown.edu
+
+  # Keep as localhost for Pa11y
+  SITE_URL: http://localhost:3000
 
 jobs:
   build-preview-and-deploy:
