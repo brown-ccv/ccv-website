@@ -1,20 +1,7 @@
 import React from "react"
 
 import priorityStatus from "@/lib/status/priorityStatus"
-interface Label {
-  name: string
-  color?: string
-}
-interface GitHubIssue {
-  id: number
-  title: string
-  pull_request?: any
-  created_at: number
-  priority: number[]
-  labels: Label[]
-
-  [key: string]: any
-}
+import { type GitHubIssue } from "@/types/issue-types"
 
 interface GridProps {
   name: string

@@ -1,18 +1,4 @@
-interface Label {
-  name: string
-  color?: string
-}
-
-interface GitHubIssue {
-  id: number
-  title: string
-  pull_request?: any
-  created_at: number
-  labels: Label[]
-  priority: number[]
-
-  [key: string]: any
-}
+import { GitHubIssue, Label } from "@/types/issue-types"
 
 function convertToPriorityNumber(label: Label): number {
   return Number(label.name.split("-")[0])
@@ -28,7 +14,7 @@ function getPriority(openIssues: GitHubIssue[]) {
     }))
     .sort((a, b) =>
       a.priority - b.priority === 0
-        ? a.created_at - b.created_at
+        ? new Date(a.created_at).valueOf() - new Date(b.created_at).valueOf()
         : a.priority - b.priority
     )
 }

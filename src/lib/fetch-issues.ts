@@ -1,15 +1,8 @@
 "use server"
 
+import { type GitHubIssue } from "@/types/issue-types"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
 import { Octokit } from "@octokit/rest"
-
-interface GitHubIssue {
-  id: number
-  title: string
-  pull_request?: any
-
-  [key: string]: any
-}
 
 function filterPRs(issues: GitHubIssue[]): GitHubIssue[] {
   return issues.filter((el) => !el.hasOwnProperty("pull_request"))
