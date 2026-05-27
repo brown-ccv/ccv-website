@@ -81,7 +81,9 @@ export default async function RootLayoutWrapper({
         <BrownBanner />
         <Navbar />
         <main id="main-content">{children}</main>
-        <GoogleAnalytics gaId="G-F94VC913EH" />
+        {process.env.NEXT_PUBLIC_SITE_URL && (
+          <GoogleAnalytics gaId="G-F94VC913EH" />
+        )}
         <Footer />
       </body>
     </html>
