@@ -1,22 +1,29 @@
 import React from "react"
 
 import priorityStatus from "@/lib/status/priorityStatus"
-
+interface Label {
+  name: string
+  color?: string
+}
 interface GitHubIssue {
   id: number
   title: string
   pull_request?: any
+  created_at: number
+  priority: number[]
+  labels: Label[]
 
   [key: string]: any
 }
 
 interface GridProps {
-  issues: { name: string; openIssues: GitHubIssue[] }[]
+  name: string
+  openIssues: GitHubIssue[]
 }
 
 // from https://tailwindui.com/components/application-ui/lists/grid-lists
 
-export default async function IssueGrid({ issues }: { issues: GridProps }) {
+export default async function IssueGrid({ issues }: { issues: GridProps[] }) {
   // const borderStyle = {border: `1px solid ${priorityStatus(repo.openIssues)?.color}`, }
   return (
     <ul
