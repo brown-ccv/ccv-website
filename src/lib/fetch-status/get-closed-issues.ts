@@ -1,10 +1,9 @@
 "use server"
 
 import { Octokit } from "@octokit/rest"
-import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
-import { filterPRs, getSecret, type GitHubIssue } from "./common"
+import { filterPRs, getSecret } from "./common"
 
-export async function getClosedIssues({ repo }) {
+export async function getClosedIssues(repo: string) {
   const secret = await getSecret()
   const org = "ccv-status"
   const octokit = new Octokit({ auth: secret })
@@ -29,10 +28,7 @@ export async function getClosedIssues({ repo }) {
 
       return {
         ...issue,
-        comments: comments.data.sort(
-          (a, b) =>
-            new Date(b.created_at).valueOf() - new Date(a.created_at).valueOf()
-        ),
+        comments: comments.data,
       }
     })
   )

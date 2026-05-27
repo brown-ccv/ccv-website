@@ -1,7 +1,7 @@
 "use server"
 
 import { Octokit } from "@octokit/rest"
-import { filterPRs, getSecret, type GitHubIssue } from "./common"
+import { filterPRs, getSecret } from "./common"
 
 export async function getOpenIssues() {
   const secret = await getSecret()
@@ -21,7 +21,7 @@ export async function getOpenIssues() {
         direction: "desc",
       })
 
-      const openIssues = filterPRs(open.data as GitHubIssue[])
+      const openIssues = filterPRs(open.data)
 
       return { name, openIssues }
     })
