@@ -47,10 +47,9 @@ export async function getOpenIssues() {
       })
 
       const openIssues = filterPRs(open.data as GitHubIssue[])
-
       return { name, openIssues }
     })
   )
-
-  return issuesData.filter((repo) => repo.openIssues.length > 0)
+  return issuesData
+  // return issuesData.filter((repo) => repo.openIssues.length > 0)
 }

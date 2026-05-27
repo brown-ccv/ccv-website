@@ -17,11 +17,12 @@ export function ConditionalStatusBanner({
   if (pathname !== "/") {
     return null
   }
-
+  console.log(issues)
+  const openIssues = issues.filter((repo) => repo.openIssues.length > 0)
   return (
-    <StatusBanner isOperational={issues.length === 0}>
+    <StatusBanner isOperational={openIssues.length === 0}>
       <div className="flex flex-row items-center justify-center gap-2 text-sm sm:gap-4">
-        {issues.length > 0 ? (
+        {openIssues.length > 0 ? (
           <>
             <p className="sm:text-md">
               <strong>Service Disruption:</strong>{" "}
