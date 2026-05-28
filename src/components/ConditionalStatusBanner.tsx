@@ -17,7 +17,6 @@ export function ConditionalStatusBanner({
   if (pathname !== "/") {
     return null
   }
-  console.log(issues)
   const openIssues = issues.filter((repo) => repo.openIssues.length > 0)
   return (
     <StatusBanner isOperational={openIssues.length === 0}>
