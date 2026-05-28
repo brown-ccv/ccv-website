@@ -22,7 +22,7 @@ export default async function IssueGrid({ issues }: { issues: GridProps[] }) {
           key={repo.name}
           className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
         >
-          <div className="flex w-full items-center justify-between p-6">
+          <div className="flex h-4/6 w-full items-center justify-between p-6">
             <div className="flex items-start space-x-3">
               <h2
                 className="inline-flex flex-shrink-0 truncate text-lg font-medium leading-8"
