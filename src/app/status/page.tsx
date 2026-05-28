@@ -25,7 +25,7 @@ export default async function ActiveStatus() {
 
   return (
     <>
-      <IssueGrid issues={issues}></IssueGrid>
+      <IssueGrid issues={issues} />
     </>
   )
 }
