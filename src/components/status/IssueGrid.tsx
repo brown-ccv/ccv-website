@@ -22,34 +22,32 @@ export default async function IssueGrid({ issues }: { issues: GridProps[] }) {
           key={repo.name}
           className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow"
         >
-          <div className="flex h-4/6 w-full items-start justify-between space-x-6 p-6">
-            <div className="flex-1 truncate">
-              <div className="flex items-start space-x-3">
-                <h2
-                  className="inline-flex flex-shrink-0 truncate text-lg font-medium"
-                  style={{ lineHeight: "1.25rem" }}
-                >
-                  {repo.name}
-                </h2>
-                <a
-                  href={
-                    repo.openIssues.length !== 0 ? `#${repo.name}` : undefined
-                  }
-                  style={{
-                    border: `2px solid ${priorityStatus(repo.openIssues)?.color}`,
-                  }}
-                  className={`${repo.openIssues.length === 0 ? "disabled" : "hover:text-gray-600"} inline-flex flex-shrink-0 items-center rounded-full px-1.5 py-0.5 text-xs text-black no-underline`}
-                >
-                  {priorityStatus(repo.openIssues)?.name}
-                </a>
-              </div>
-              <p className="mt-1 truncate text-gray-500">
-                {priorityStatus(repo.openIssues)?.title}{" "}
-                {repo.openIssues.length > 1
-                  ? `+${repo.openIssues.length - 1} more`
-                  : ""}
-              </p>
+          <div className="flex w-full items-center justify-between p-6">
+            <div className="flex items-start space-x-3">
+              <h2
+                className="inline-flex flex-shrink-0 truncate text-lg font-medium leading-8"
+                style={{ lineHeight: "1.25rem" }}
+              >
+                {repo.name}
+              </h2>
+              <a
+                href={
+                  repo.openIssues.length !== 0 ? `#${repo.name}` : undefined
+                }
+                style={{
+                  border: `2px solid ${priorityStatus(repo.openIssues)?.color}`,
+                }}
+                className={`${repo.openIssues.length === 0 ? "disabled" : "hover:text-gray-600"} inline-flex flex-shrink-0 items-center rounded-full px-1.5 py-0.5 text-xs text-black no-underline`}
+              >
+                {priorityStatus(repo.openIssues)?.name}
+              </a>
             </div>
+            <p className="mt-1 truncate text-gray-500">
+              {priorityStatus(repo.openIssues)?.title}{" "}
+              {repo.openIssues.length > 1
+                ? `+${repo.openIssues.length - 1} more`
+                : ""}
+            </p>
             <span
               style={{
                 backgroundColor: priorityStatus(repo.openIssues)?.color,
