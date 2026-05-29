@@ -4,14 +4,15 @@ import { type GitHubIssue } from "@/types/issue-types"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
 import { Octokit } from "@octokit/rest"
 
-type RepoPrivacy =
-  | "all"
-  | "private"
-  | "public"
-  | "forks"
-  | "sources"
-  | "member"
-  | undefined
+type RepoPrivacy = "all" | "private" | "public"
+
+let org = "ccv-status"
+let privacy: RepoPrivacy = "private"
+// fetch from public repo if in dev
+if (!process.env.SITE_URL) {
+  org = "test-status"
+  privacy = "public"
+}
 
 function filterPRs(issues: GitHubIssue[]): GitHubIssue[] {
   return issues.filter((el) => !el.hasOwnProperty("pull_request"))
@@ -30,7 +31,6 @@ async function getSecret() {
 
 export async function getClosedIssues(repo: string) {
   const secret = await getSecret()
-  const org = "ccv-status"
   const octokit = new Octokit({ auth: secret })
 
   const closed = await octokit.request(
@@ -46,7 +46,7 @@ export async function getClosedIssues(repo: string) {
     filterPRs(closed.data).map(async (issue) => {
       const comments = await octokit.request(`GET ${issue.comments_url}`, {
         org: { org },
-        type: "private",
+        type: privacy,
         sort: "created",
         direction: "desc",
       })
@@ -61,20 +61,11 @@ export async function getClosedIssues(repo: string) {
 
 export async function getOpenIssues() {
   const secret = await getSecret()
-  let org = "ccv-status"
-  let privacy: RepoPrivacy = "private"
-  // fetch from public repo if in dev
-  if (!process.env.SITE_URL) {
-    org = "test-status"
-    privacy = "public"
-  }
   const octokit = new Octokit({ auth: secret })
   const allRepos = await octokit.rest.repos.listForOrg({
     org,
     type: privacy,
   })
-
-  console.log(allRepos)
 
   const issuesData = await Promise.all(
     allRepos.data.map(async ({ name }: { name: string }) => {
@@ -90,5 +81,4 @@ export async function getOpenIssues() {
     })
   )
   return issuesData
-  // return issuesData.filter((repo) => repo.openIssues.length > 0)
 }
