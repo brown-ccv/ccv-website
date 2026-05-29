@@ -14,6 +14,7 @@ function getRepo() {
     org = "test-status"
     privacy = "public"
   }
+  return { org, privacy }
 }
 
 function filterPRs(issues: GitHubIssue[]): GitHubIssue[] {
@@ -34,6 +35,7 @@ async function getSecret() {
 export async function getClosedIssues(repo: string) {
   const secret = await getSecret()
   const octokit = new Octokit({ auth: secret })
+  const { org, privacy } = getRepo()
 
   const closed = await octokit.request(
     `GET /repos/${org}/${repo}/issues?state=closed`,
@@ -64,6 +66,7 @@ export async function getClosedIssues(repo: string) {
 export async function getOpenIssues() {
   const secret = await getSecret()
   const octokit = new Octokit({ auth: secret })
+  const { org, privacy } = getRepo()
   const allRepos = await octokit.rest.repos.listForOrg({
     org,
     type: privacy,
@@ -88,6 +91,7 @@ export async function getOpenIssues() {
 export async function getIssueComments(issues: GitHubIssue[], repo: string) {
   const secret = await getSecret()
   const octokit = new Octokit({ auth: secret })
+  const { org } = getRepo()
   const issuesWithComment = await Promise.all(
     issues.map(async (issue) => {
       const comments = await octokit.rest.issues.listComments({
