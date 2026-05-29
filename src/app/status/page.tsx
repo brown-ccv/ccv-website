@@ -16,9 +16,5 @@ export default async function ActiveStatus() {
     console.error("Failed to fetch GitHub issues:", error)
   }
 
-  return (
-    <>
-      <IssueGrid issues={issues}></IssueGrid>
-    </>
-  )
+  return <>{/* <IssueGrid issues={issues}></IssueGrid> */}</>
 }
