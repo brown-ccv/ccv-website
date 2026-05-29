@@ -82,3 +82,20 @@ export async function getOpenIssues() {
   )
   return issuesData
 }
+
+export async function getIssueComments(issues: GitHubIssue[], repo: string) {
+  const secret = await getSecret()
+  const octokit = new Octokit({ auth: secret })
+  const issuesWithComment = await Promise.all(
+    issues.map(async (issue) => {
+      const comments = await octokit.rest.issues.listComments({
+        owner: org,
+        repo,
+        issue_number: issue.number,
+      })
+      const commentData = comments.data
+      return { repo, issue, commentData }
+    })
+  )
+  return issuesWithComment
+}
