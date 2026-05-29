@@ -6,12 +6,14 @@ import { Octokit } from "@octokit/rest"
 
 type RepoPrivacy = "all" | "private" | "public"
 
-let org = "ccv-status"
-let privacy: RepoPrivacy = "private"
-// fetch from public repo if in dev
-if (!process.env.SITE_URL) {
-  org = "test-status"
-  privacy = "public"
+function getRepo() {
+  let org = "ccv-status"
+  let privacy: RepoPrivacy = "private"
+  // fetch from public repo if in dev
+  if (!process.env.SITE_URL || process.env.NEXT_PUBLIC_STATIC_EXPORT) {
+    org = "test-status"
+    privacy = "public"
+  }
 }
 
 function filterPRs(issues: GitHubIssue[]): GitHubIssue[] {
