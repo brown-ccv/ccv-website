@@ -11,7 +11,6 @@ interface GridProps {
 // from https://tailwindui.com/components/application-ui/lists/grid-lists
 
 export default async function IssueGrid({ issues }: { issues: GridProps[] }) {
-  // const borderStyle = {border: `1px solid ${priorityStatus(repo.openIssues)?.color}`, }
   return (
     <ul
       role="list"
@@ -65,7 +64,7 @@ export default async function IssueGrid({ issues }: { issues: GridProps[] }) {
               Current Incidents
             </a>
             <a
-              href={`/history/${repo.name}`}
+              href={`/status/history/${repo.name}`}
               className={
                 "-mr-px flex w-0 flex-1 items-center justify-center gap-x-3 py-4 text-xs font-semibold hover:bg-gray-100"
               }

@@ -73,5 +73,4 @@ export async function getOpenIssues() {
     })
   )
   return issuesData
-  // return issuesData.filter((repo) => repo.openIssues.length > 0)
 }
