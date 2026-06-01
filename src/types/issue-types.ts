@@ -7,9 +7,9 @@ interface Comment {
 }
 
 export interface Label {
-  name: string
+  name?: string
   color?: string
-  title: string
+  title?: string
 }
 
 export interface GitHubIssue {
@@ -18,8 +18,8 @@ export interface GitHubIssue {
   pull_request?: any
   created_at: string
   priority?: number[]
-  labels: Label[]
-  comments: Comment[]
+  labels?: Label[] | string
+  comments: number
 
   [key: string]: any
 }
