@@ -9,13 +9,13 @@ const getCachedOpenIssues = unstable_cache(getOpenIssues, ["open-issues"], {
 })
 
 export default async function ActiveStatus() {
-  let issues = []
-  try {
-    issues = await getCachedOpenIssues()
-  } catch (error) {
-    console.error("Failed to fetch GitHub issues:", error)
-  }
-
+  // let issues = []
+  // try {
+  //   issues = await getCachedOpenIssues()
+  // } catch (error) {
+  //   console.error("Failed to fetch GitHub issues:", error)
+  // }
+  const issues = await getOpenIssues()
   return (
     <>
       <IssueGrid issues={issues} />

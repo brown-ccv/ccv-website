@@ -74,8 +74,6 @@ export async function getOpenIssues() {
     org,
     type: privacy,
   })
-  console.log(org)
-  console.log(privacy)
 
   const issuesData = await Promise.all(
     allRepos.data.map(async ({ name }: { name: string }) => {
