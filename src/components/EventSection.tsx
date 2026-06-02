@@ -8,7 +8,7 @@ import { StyledTabs } from "@/components/StyledTabs"
 import { Spinner } from "@/components/assets/Spinner"
 import { FaExclamationTriangle } from "react-icons/fa"
 
-// For number values that typically would correspond as boolean, the API returns 0/1 instead of true/false.
+// For number values that typically would correspond as boolean, the API returns 1/0 instead of true/false.
 export interface EventDataProps {
   id: number
   gid: number
