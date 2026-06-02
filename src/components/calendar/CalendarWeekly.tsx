@@ -19,7 +19,7 @@ import {
 import { PopoverEvent } from "@/components/calendar/PopoverEvent"
 import { CalendarProps } from "@/types/calendar-types"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
-import type { DataProps } from "@/components/EventSection"
+import type { EventDataProps } from "@/components/EventSection"
 
 export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   const container = useRef<HTMLDivElement>(null)
@@ -74,7 +74,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
    */
   const getWeekEvents = (date: Date) => {
     const startDate = startOfWeek(date)
-    const weekEvents = (events as DataProps[]).filter((event) => {
+    const weekEvents = (events as EventDataProps[]).filter((event) => {
       const eventDate = new Date(event.date_utc)
       return (
         isAfter(eventDate, startDate) &&
@@ -91,8 +91,8 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   /**
    * Groups all-day events by weekday index so each day column can stack events.
    */
-  const getAllDayByWeekday = (allDayEvents: DataProps[]) => {
-    const byDay: Record<number, DataProps[]> = {
+  const getAllDayByWeekday = (allDayEvents: EventDataProps[]) => {
+    const byDay: Record<number, EventDataProps[]> = {
       0: [],
       1: [],
       2: [],

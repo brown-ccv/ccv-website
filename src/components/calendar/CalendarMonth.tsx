@@ -20,7 +20,7 @@ import {
   getWeeksInMonth,
 } from "date-fns"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
-import { DataProps } from "@/components/EventSection"
+import { EventDataProps } from "@/components/EventSection"
 import { ButtonLink } from "@/components/button/ButtonLink"
 
 function classNames(...classes: (string | boolean | undefined)[]) {
@@ -87,7 +87,7 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
   const generateEventsForCurrentDay = (day: Date, isMobile = false) => {
     let sameDayEvents = events.filter((event) => isSameDay(event.date_utc, day))
     const dayEvents = sameDayEvents.filter(
-      (item: DataProps, index: number, self: DataProps[]) =>
+      (item: EventDataProps, index: number, self: EventDataProps[]) =>
         item.id !== undefined &&
         index === self.findIndex((t) => t.id === item.id)
     )
@@ -95,7 +95,7 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
       (event) => event.date_time !== undefined
     )
 
-    const formattedCalEvents = validDayEvents.map((event: DataProps) => {
+    const formattedCalEvents = validDayEvents.map((event: EventDataProps) => {
       return (
         <li key={self.crypto.randomUUID()}>
           <PopoverEvent
@@ -183,7 +183,7 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
         isSameDay(event.date_utc, day.date)
       )
       const dayEvents = sameDayEvents.filter(
-        (item: DataProps, index: number, self: DataProps[]) =>
+        (item: EventDataProps, index: number, self: EventDataProps[]) =>
           item.id !== undefined &&
           index === self.findIndex((t) => t.id === item.id)
       )
