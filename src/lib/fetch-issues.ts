@@ -6,7 +6,7 @@ import { Octokit } from "@octokit/rest"
 
 type RepoPrivacy = "all" | "private" | "public"
 
-function getRepo() {
+function getOrg() {
   let org = "ccv-status"
   let privacy: RepoPrivacy = "private"
   // fetch from public repo if in dev
@@ -38,7 +38,7 @@ async function getSecret() {
 export async function getClosedIssues(repo: string) {
   const secret = await getSecret()
   const octokit = new Octokit({ auth: secret })
-  const { org, privacy } = getRepo()
+  const { org, privacy } = getOrg()
 
   const closed = await octokit.request(
     `GET /repos/${org}/${repo}/issues?state=closed`,
@@ -69,11 +69,13 @@ export async function getClosedIssues(repo: string) {
 export async function getOpenIssues() {
   const secret = await getSecret()
   const octokit = new Octokit({ auth: secret })
-  const { org, privacy } = getRepo()
+  const { org, privacy } = getOrg()
   const allRepos = await octokit.rest.repos.listForOrg({
     org,
     type: privacy,
   })
+  console.log(org)
+  console.log(privacy)
 
   const issuesData = await Promise.all(
     allRepos.data.map(async ({ name }: { name: string }) => {

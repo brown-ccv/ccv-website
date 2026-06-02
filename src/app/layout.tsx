@@ -12,15 +12,11 @@ import Link from "next/link"
 // Only import server actions when not in static export mode
 let getCachedOpenIssues: () => Promise<any[]>
 
-if (!process.env.NEXT_PUBLIC_STATIC_EXPORT) {
-  const { getOpenIssues } = require("@/lib/fetch-issues")
-  const { unstable_cache } = require("next/cache")
-  getCachedOpenIssues = unstable_cache(getOpenIssues, ["open-issues"], {
-    revalidate: 60,
-  })
-} else {
-  getCachedOpenIssues = async () => []
-}
+const { getOpenIssues } = require("@/lib/fetch-issues")
+const { unstable_cache } = require("next/cache")
+getCachedOpenIssues = unstable_cache(getOpenIssues, ["open-issues"], {
+  revalidate: 60,
+})
 
 const inter = Inter({ subsets: ["latin"] })
 const sourceSans = Source_Sans_3({
