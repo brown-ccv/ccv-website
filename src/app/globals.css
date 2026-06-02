@@ -101,4 +101,8 @@
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
   }
+  /* Disabled button */
+  .button-disabled {
+    @apply pointer-events-none text-gray-200;
+  }
 }
