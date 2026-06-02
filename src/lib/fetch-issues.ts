@@ -10,7 +10,10 @@ function getRepo() {
   let org = "ccv-status"
   let privacy: RepoPrivacy = "private"
   // fetch from public repo if in dev
-  if (!process.env.SITE_URL || process.env.NEXT_PUBLIC_STATIC_EXPORT) {
+  if (
+    !process.env.NEXT_PUBLIC_SITE_URL ||
+    process.env.NEXT_PUBLIC_STATIC_EXPORT
+  ) {
     org = "test-status"
     privacy = "public"
   }
