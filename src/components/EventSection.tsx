@@ -151,7 +151,6 @@ export function EventSection(): JSX.Element {
   }
 
   const allEvents = pastDates.concat(futureDates)
-  console.log(allEvents)
 
   return (
     <div className="flex w-full flex-col gap-4 xl:flex-row xl:justify-between xl:gap-24">
