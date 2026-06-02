@@ -1,7 +1,7 @@
-import { DataProps } from "@/components/EventSection"
+import { EventDataProps } from "@/components/EventSection"
 
 export interface CalendarProps {
-  events: Array<DataProps>
+  events: Array<EventDataProps>
   currentDate: Date
   today: string
 }

@@ -99,7 +99,7 @@ export function CalendarMonth({ events, currentDate, today }: CalendarProps) {
       return (
         <li key={self.crypto.randomUUID()}>
           <PopoverEvent
-            className="max-w-full border-l-2 border-sunglow-400 pl-2 text-left tracking-tight hover:bg-slate-100"
+            className={`max-w-full border-l-2 pl-2 text-left tracking-tight hover:bg-slate-100 ${event.is_canceled == 1 ? "border-red-university opacity-60" : "border-sunglow-400"}`}
             event={event}
           />
         </li>
