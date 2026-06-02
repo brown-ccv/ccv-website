@@ -18,6 +18,18 @@ export interface GitHubIssue {
   pull_request?: any
   created_at: string
   priority?: number[]
+  labels: Label[]
+  comments: Comment[]
+
+  [key: string]: any
+}
+
+export interface GitHubIssueRest {
+  id: number
+  title: string
+  pull_request?: any
+  created_at: string
+  priority?: number[]
   labels?: Label[] | string
   comments: number
 

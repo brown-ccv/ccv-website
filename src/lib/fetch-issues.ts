@@ -1,6 +1,6 @@
 "use server"
 
-import { type GitHubIssue } from "@/types/issue-types"
+import { GitHubIssueRest, type GitHubIssue } from "@/types/issue-types"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
 import { Octokit } from "@octokit/rest"
 
@@ -26,7 +26,9 @@ function getRepo() {
   return { org, privacy }
 }
 
-function filterPRs(issues: GitHubIssue[]): GitHubIssue[] {
+function filterPRs(
+  issues: (GitHubIssue | GitHubIssueRest)[]
+): (GitHubIssue | GitHubIssueRest)[] {
   return issues.filter((el) => !el.hasOwnProperty("pull_request"))
 }
 
@@ -108,7 +110,7 @@ export async function getOpenIssues() {
         direction: "desc",
       })
 
-      const openIssues = filterPRs(open.data as GitHubIssue[])
+      const openIssues = filterPRs(open.data as GitHubIssueRest[])
       return { name, openIssues }
     })
   )
