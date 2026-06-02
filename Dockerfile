@@ -32,10 +32,12 @@ COPY . .
 # Build-time args (from GitHub workflow)
 ARG NEXT_PUBLIC_MEILISEARCH_HOST
 ARG NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY
+ARG NEXT_PUBLIC_SITE_URL
 
 # Set for Next.js build process
 ENV NEXT_PUBLIC_MEILISEARCH_HOST=${NEXT_PUBLIC_MEILISEARCH_HOST}
 ENV NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY=${NEXT_PUBLIC_MEILISEARCH_SEARCH_KEY}
+ENV NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL}
 
 # Create placeholder search index
 RUN mkdir -p content && echo '{"documents":[],"meta":{"totalDocuments":0}}' > content/search-index.json
