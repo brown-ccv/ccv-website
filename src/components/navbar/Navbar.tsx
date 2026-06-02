@@ -66,7 +66,10 @@ function DesktopLinks({ docsHref, helpHref }: DesktopLinksProps) {
  */
 function DesktopNavigation() {
   return (
-    <NavigationMenu.Root className="relative z-10 hidden w-full items-stretch justify-between lg:flex">
+    <NavigationMenu.Root
+      className="relative z-10 hidden w-full items-stretch justify-between lg:flex"
+      delayDuration={0}
+    >
       <NavigationMenu.List className="flex h-full items-center">
         {routes.map((section) => (
           <NavigationMenu.Item key={section.name}>
