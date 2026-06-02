@@ -6,6 +6,12 @@ import { Octokit } from "@octokit/rest"
 
 type RepoPrivacy = "all" | "private" | "public"
 
+type GetCommentsParams = {
+  name: string
+  openIssues: GitHubIssue[]
+  closeIssues: GitHubIssue[]
+}
+
 function getRepo() {
   let org = "ccv-status"
   let privacy: RepoPrivacy = "private"
@@ -35,13 +41,13 @@ async function getSecret() {
   return secret.payload.data.toString()
 }
 
-export async function getClosedIssues(repo: string) {
+export async function getRepoIssuesWithComments(repo: string, closed = false) {
   const secret = await getSecret()
   const octokit = new Octokit({ auth: secret })
   const { org, privacy } = getRepo()
 
-  const closed = await octokit.request(
-    `GET /repos/${org}/${repo}/issues?state=closed`,
+  const issues = await octokit.request(
+    `GET /repos/${org}/${repo}/issues${closed ? "?state=closed" : ""}`,
     {
       org: { org },
       sort: "created",
@@ -50,7 +56,7 @@ export async function getClosedIssues(repo: string) {
     }
   )
   return await Promise.all(
-    filterPRs(closed.data).map(async (issue) => {
+    filterPRs(issues.data).map(async (issue) => {
       const comments = await octokit.request(`GET ${issue.comments_url}`, {
         org: { org },
         type: privacy,
@@ -64,6 +70,24 @@ export async function getClosedIssues(repo: string) {
       }
     })
   )
+}
+
+export async function getAllIssuesWithComments(closed = false) {
+  const secret = await getSecret()
+  const octokit = new Octokit({ auth: secret })
+  const { org, privacy } = getRepo()
+  const allRepos = await octokit.rest.repos.listForOrg({
+    org,
+    type: privacy,
+  })
+
+  const issuesData = await Promise.all(
+    allRepos.data.map(async ({ name }: { name: string }) => {
+      const openIssues = await getRepoIssuesWithComments(name, closed)
+      return { name, openIssues }
+    })
+  )
+  return issuesData
 }
 
 export async function getOpenIssues() {
@@ -91,20 +115,19 @@ export async function getOpenIssues() {
   return issuesData
 }
 
-export async function getIssueComments(issues: GitHubIssue[], repo: string) {
-  const secret = await getSecret()
-  const octokit = new Octokit({ auth: secret })
-  const { org } = getRepo()
-  const issuesWithComment = await Promise.all(
-    issues.map(async (issue) => {
-      const comments = await octokit.rest.issues.listComments({
-        owner: org,
-        repo,
-        issue_number: issue.number,
-      })
-      const commentData = comments.data
-      return { repo, issue, commentData }
-    })
-  )
-  return issuesWithComment
-}
+// export async function getIssueComments(issue) {
+//   const secret = await getSecret()
+//   const octokit = new Octokit({ auth: secret })
+//   const { org, privacy } = getRepo()
+//   const comments = await octokit.request(`GET ${issue.comments_url}`, {
+//     org: { org },
+//     type: privacy,
+//     sort: "created",
+//     direction: "desc",
+//   })
+
+//   return {
+//     ...issue,
+//     comments: comments.data,
+//   }
+// }
