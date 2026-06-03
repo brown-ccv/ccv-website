@@ -7,16 +7,17 @@ import { Octokit } from "@octokit/rest"
 type RepoPrivacy = "all" | "private" | "public"
 
 async function getOrg() {
-  let org = "ccv-status"
-  let privacy: RepoPrivacy = "private"
+  let org = "test-status"
+  let privacy: RepoPrivacy = "public"
   let secret = ""
   // fetch from public repo if in dev
   if (
-    !process.env.NEXT_PUBLIC_SITE_URL ||
-    process.env.NEXT_PUBLIC_STATIC_EXPORT
+    process.env.NEXT_PUBLIC_SITE_URL &&
+    !process.env.NEXT_PUBLIC_STATIC_EXPORT
   ) {
-    org = "test-status"
-    privacy = "public"
+    console.log(process.env.NEXT_PUBLIC_SITE_URL)
+    org = "ccv-status"
+    privacy = "private"
     secret = await getSecret()
   }
   return { org, privacy, secret }
