@@ -21,7 +21,7 @@ export default async function IssueGrid({ issues }: { issues: GridProps[] }) {
           key={repo.name}
           className="col-span-1 min-w-full divide-y divide-gray-200 rounded-lg bg-white shadow"
         >
-          <div className="flex h-4/6 w-full items-center justify-between p-6">
+          <div className="flex h-4/6 w-full items-center justify-between gap-4 p-6">
             <div className="flex items-start space-x-3 truncate">
               <h2
                 className="inline-flex truncate text-nowrap text-lg font-medium leading-8"
@@ -38,19 +38,21 @@ export default async function IssueGrid({ issues }: { issues: GridProps[] }) {
                 <p>{priorityStatus(repo.openIssues)?.name}</p>
               </div>
             </div>
-            <div className="flex content-center items-center gap-2">
-              <p className="text-gray-500">
+            <div className="flex content-center items-center gap-2 truncate">
+              <p className="truncate text-gray-500">
                 {repo.openIssues.length > 1
                   ? `+${repo.openIssues.length - 1} more`
                   : ""}
               </p>
-              <span
-                style={{
-                  backgroundColor: priorityStatus(repo.openIssues)?.color,
-                  color: priorityStatus(repo.openIssues)?.color,
-                }}
-                className="pulse h-4 w-4 flex-shrink-0 overflow-visible rounded-full"
-              />
+              <div className="h-4 w-4">
+                <span
+                  style={{
+                    backgroundColor: priorityStatus(repo.openIssues)?.color,
+                    color: priorityStatus(repo.openIssues)?.color,
+                  }}
+                  className="pulse absolute h-4 w-4 flex-shrink-0 overflow-visible rounded-full"
+                />
+              </div>
             </div>
           </div>
           <div className="flex h-2/6 divide-x divide-gray-200">

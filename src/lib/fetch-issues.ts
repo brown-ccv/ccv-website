@@ -4,6 +4,25 @@ import { type GitHubIssue } from "@/types/issue-types"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
 import { Octokit } from "@octokit/rest"
 
+type RepoPrivacy = "all" | "private" | "public"
+
+async function getOrg() {
+  let org = "test-status"
+  let privacy: RepoPrivacy = "public"
+  let secret = ""
+  // fetch from public repo if in dev
+  if (
+    process.env.NEXT_PUBLIC_SITE_URL &&
+    !process.env.NEXT_PUBLIC_STATIC_EXPORT
+  ) {
+    console.log(process.env.NEXT_PUBLIC_SITE_URL)
+    org = "ccv-status"
+    privacy = "private"
+    secret = await getSecret()
+  }
+  return { org, privacy, secret }
+}
+
 function filterPRs(issues: GitHubIssue[]): GitHubIssue[] {
   return issues.filter((el) => !el.hasOwnProperty("pull_request"))
 }
@@ -20,8 +39,7 @@ async function getSecret() {
 }
 
 export async function getClosedIssues(repo: string) {
-  const secret = await getSecret()
-  const org = "ccv-status"
+  const { org, privacy, secret } = await getOrg()
   const octokit = new Octokit({ auth: secret })
 
   const closed = await octokit.request(
@@ -37,7 +55,7 @@ export async function getClosedIssues(repo: string) {
     filterPRs(closed.data).map(async (issue) => {
       const comments = await octokit.request(`GET ${issue.comments_url}`, {
         org: { org },
-        type: "private",
+        type: privacy,
         sort: "created",
         direction: "desc",
       })
@@ -51,12 +69,12 @@ export async function getClosedIssues(repo: string) {
 }
 
 export async function getOpenIssues() {
-  const secret = await getSecret()
-  const org = "ccv-status"
+  const { org, privacy, secret } = await getOrg()
   const octokit = new Octokit({ auth: secret })
+
   const allRepos = await octokit.rest.repos.listForOrg({
     org,
-    type: "private",
+    type: privacy,
   })
 
   const issuesData = await Promise.all(
