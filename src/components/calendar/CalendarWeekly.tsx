@@ -19,7 +19,8 @@ import {
 import { PopoverEvent } from "@/components/calendar/PopoverEvent"
 import { CalendarProps } from "@/types/calendar-types"
 import { CalendarHeading } from "@/components/calendar/CalendarHeading"
-import type { DataProps } from "@/components/EventSection"
+import type { EventDataProps } from "@/components/EventSection"
+import { cn } from "@/utils/helper"
 
 export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   const container = useRef<HTMLDivElement>(null)
@@ -74,7 +75,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
    */
   const getWeekEvents = (date: Date) => {
     const startDate = startOfWeek(date)
-    const weekEvents = (events as DataProps[]).filter((event) => {
+    const weekEvents = (events as EventDataProps[]).filter((event) => {
       const eventDate = new Date(event.date_utc)
       return (
         isAfter(eventDate, startDate) &&
@@ -91,8 +92,8 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
   /**
    * Groups all-day events by weekday index so each day column can stack events.
    */
-  const getAllDayByWeekday = (allDayEvents: DataProps[]) => {
-    const byDay: Record<number, DataProps[]> = {
+  const getAllDayByWeekday = (allDayEvents: EventDataProps[]) => {
+    const byDay: Record<number, EventDataProps[]> = {
       0: [],
       1: [],
       2: [],
@@ -192,7 +193,10 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                     <div key={dayIndex} className="min-w-0 space-y-1">
                       {allDayByWeekday[dayIndex].map((event) => (
                         <PopoverEvent
-                          className="rounded-lg bg-sunglow-300 py-2 text-xs leading-tight hover:bg-sunglow-200"
+                          className={cn(
+                            "rounded-lg bg-sunglow-300 py-2 text-xs leading-tight hover:bg-sunglow-200",
+                            event.is_canceled == 1 ? "opacity-60" : ""
+                          )}
                           event={event}
                           key={self.crypto.randomUUID()}
                         />
@@ -289,7 +293,7 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                       <PopoverEvent
                         className={`absolute inset-1 flex flex-col items-center rounded-lg bg-sunglow-300 p-2 text-xs leading-tight hover:bg-sunglow-200 ${
                           spanBlocks > 6 ? "gap-2" : ""
-                        }`}
+                        } ${event.is_canceled == 1 ? "opacity-60" : ""}`}
                         event={event}
                         includeTime
                       />

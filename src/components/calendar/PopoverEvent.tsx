@@ -1,6 +1,6 @@
 "use client"
 
-import type { DataProps } from "@/components/EventSection"
+import type { EventDataProps } from "@/components/EventSection"
 import {
   Popover,
   PopoverContent,
@@ -12,7 +12,7 @@ import { ArrowTopRightOnSquareIcon, ClockIcon } from "@heroicons/react/20/solid"
 import React from "react"
 
 interface PopoverEventProps {
-  event: DataProps
+  event: EventDataProps
   includeTime?: boolean
   className?: string
 }

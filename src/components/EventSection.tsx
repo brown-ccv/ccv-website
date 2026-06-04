@@ -8,22 +8,85 @@ import { StyledTabs } from "@/components/StyledTabs"
 import { Spinner } from "@/components/assets/Spinner"
 import { FaExclamationTriangle } from "react-icons/fa"
 
-export interface DataProps {
+// For number values that typically would correspond as boolean, the API returns 1/0 instead of true/false.
+export interface EventDataProps {
   id: number
-  is_all_day: boolean
-  date: string
-  date_utc: string
-  date2_utc: string
-  date_iso: string
-  date_time: string
+  gid: number
   title: string
-  description_long: string
   url: string
+
+  date: string
+  date_time: string
+  date_utc: string
+  date_iso: string
+  date_ts: number
+  tz_offset: string
+  timezone: string
+
+  date2_time: string
+  date2_utc: string
+  date2_iso: string
+  date2_ts: number
+  tz2_offset: string
+
+  is_all_day: boolean
+
+  repeats: string | null
+  repeats_until: string | null
+  repeats_start: string | null
+  repeats_end: string | null
+
+  is_starred: boolean | null
+  is_canceled: number
+  is_online: number
+
+  online_type: string | null
+  online_url: string | null
+  online_button_label: string | null
+  online_instructions: string | null
+
+  description: string | null
+  description_long: string | null
+  contact_info: string | null
+
+  cost: string | null
+
+  location: string | null
+  location_title: string | null
+  location_latitude: number | null
+  location_longitude: number | null
+  location_id: number | null
+
+  thumbnail: string | null
+  thumbnail_caption: string | null
+  thumbnail_alt: string | null
+
+  has_registration: boolean | null
+  registration_owner_email: string | null
+  has_wait_list: boolean | null
+  registration_limit: number | null
+  wait_list_limit: number | null
+
+  rsvp_total: number | null
+  rsvp_waitlist_total: number | null
+
+  event_types: string[] | null
+  event_types_audience: string[] | null
+  event_types_campus: string[] | null
+
+  tags: string[] | null
+  tags_starred: string[] | null
+  tags_global: string[] | null
+
+  last_editor: string
+  last_modified: number
+
+  group: string
 }
 
 export function EventSection(): JSX.Element {
-  const [futureDates, setFutureDates] = useState<DataProps[]>([])
-  const [pastDates, setPastDates] = useState<DataProps[]>([])
+  const [futureDates, setFutureDates] = useState<EventDataProps[]>([])
+  const [pastDates, setPastDates] = useState<EventDataProps[]>([])
   const [currentDate, setCurrentDate] = useState<Date | null>(null)
   const [today, setToday] = useState("")
   const [loading, setLoading] = useState(true)
@@ -138,7 +201,7 @@ export function EventSection(): JSX.Element {
  */
 async function fetchEventRanges(
   today: string
-): Promise<[DataProps[], DataProps[]]> {
+): Promise<[EventDataProps[], EventDataProps[]]> {
   const [past, future] = await Promise.all([
     getEventData("-2 months", today), // bounded past window
     getEventData(today), // future from today
@@ -169,7 +232,7 @@ async function getDscovData(startDate: string, endDate?: string) {
 
   const response = await fetch(url)
   const data = await response.json()
-  return data.filter((event: DataProps) =>
+  return data.filter((event: EventDataProps) =>
     event.title.toLowerCase().includes("dscov")
   )
 }
@@ -185,7 +248,7 @@ export async function getEventData(startDate: string, endDate?: string) {
   return combinedData
 }
 
-function compareDates(a: DataProps, b: DataProps): number {
+function compareDates(a: EventDataProps, b: EventDataProps): number {
   const timeA = new Date(a.date_iso ?? "").getTime()
   const timeB = new Date(b.date_iso ?? "").getTime()
 

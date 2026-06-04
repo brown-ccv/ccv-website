@@ -42,7 +42,7 @@ export function StyledCard({
   }
 
   const titleClassName = cn(
-    "flex text-lg items-center justify-center gap-4 border-b border-gray-300 py-4 text-center rounded-md text-black",
+    "flex text-lg items-center justify-center gap-4 border-b border-gray-300 py-4 text-center",
     headerColor ? headerColorClass[headerColor] : undefined
   )
   return (
