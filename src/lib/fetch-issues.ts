@@ -1,15 +1,8 @@
 "use server"
 
-import { Octokit } from "@octokit/rest"
+import { type GitHubIssue } from "@/types/issue-types"
 import { SecretManagerServiceClient } from "@google-cloud/secret-manager"
-
-interface GitHubIssue {
-  id: number
-  title: string
-  pull_request?: any
-
-  [key: string]: any
-}
+import { Octokit } from "@octokit/rest"
 
 function filterPRs(issues: GitHubIssue[]): GitHubIssue[] {
   return issues.filter((el) => !el.hasOwnProperty("pull_request"))
@@ -20,12 +13,41 @@ async function getSecret() {
   const [secret] = await client.accessSecretVersion({
     name: "projects/ccv-website-next/secrets/myGithubToken/versions/latest",
   })
-
   if (!secret.payload?.data) {
     throw new Error("Secret payload missing or empty.")
   }
-
   return secret.payload.data.toString()
+}
+
+export async function getClosedIssues(repo: string) {
+  const secret = await getSecret()
+  const org = "ccv-status"
+  const octokit = new Octokit({ auth: secret })
+
+  const closed = await octokit.request(
+    `GET /repos/${org}/${repo}/issues?state=closed`,
+    {
+      org: { org },
+      sort: "created",
+      direction: "desc",
+      per_page: 100,
+    }
+  )
+  return await Promise.all(
+    filterPRs(closed.data).map(async (issue) => {
+      const comments = await octokit.request(`GET ${issue.comments_url}`, {
+        org: { org },
+        type: "private",
+        sort: "created",
+        direction: "desc",
+      })
+
+      return {
+        ...issue,
+        comments: comments.data,
+      }
+    })
+  )
 }
 
 export async function getOpenIssues() {
@@ -47,10 +69,8 @@ export async function getOpenIssues() {
       })
 
       const openIssues = filterPRs(open.data as GitHubIssue[])
-
       return { name, openIssues }
     })
   )
-
-  return issuesData.filter((repo) => repo.openIssues.length > 0)
+  return issuesData
 }

@@ -13,7 +13,7 @@ import Link from "next/link"
 let getCachedOpenIssues: () => Promise<any[]>
 
 if (!process.env.NEXT_PUBLIC_STATIC_EXPORT) {
-  const { getOpenIssues } = require("@/lib/get-open-issues")
+  const { getOpenIssues } = require("@/lib/fetch-issues")
   const { unstable_cache } = require("next/cache")
   getCachedOpenIssues = unstable_cache(getOpenIssues, ["open-issues"], {
     revalidate: 60,
