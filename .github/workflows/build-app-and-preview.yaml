@@ -60,7 +60,7 @@ jobs:
           project_id: ${{ env.gcp_project_id }}
           image: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_artifact_registry }}/${{ env.image }}
           flags: >-
-            --allow-unauthenticated
+            --no-invoker-iam-check
             --min-instances=0
             --max-instances=1
           env_vars: |
