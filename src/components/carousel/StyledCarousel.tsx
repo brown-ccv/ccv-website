@@ -198,8 +198,6 @@ export function StyledCarousel({ carouselData }: StyledCarouselProps) {
       setCurrent(api.selectedScrollSnap())
     }
 
-    // Following pattern set in Carousel.tsx which was from shadcn/ui's carousel component
-
     handleSelect()
     api.on("select", handleSelect)
     api.on("reInit", handleSelect)
