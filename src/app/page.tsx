@@ -25,59 +25,50 @@ export default async function Home() {
   const featuredCarouselData = featuredCarouselRaw.data.carousel
   const metadata = getMDXMetadata("src/content/routes/home.mdx")
 
-  try {
-    return (
-      <>
-        <MainHero
-          image={"/images/hero/ccv-original.webp"}
-          title={metadata.title}
-          description={metadata.description}
+  return (
+    <>
+      <MainHero
+        image={"/images/hero/ccv-original.webp"}
+        title={metadata.title}
+        description={metadata.description}
+      >
+        <ButtonLink
+          variant="primary_filled"
+          size="xl"
+          href="/about/help#contact-us"
         >
-          <ButtonLink
-            variant="primary_filled"
-            size="xl"
-            href="/about/help#contact-us"
-          >
-            Work with Us
-          </ButtonLink>
-          <ScrollButton id="events" variant="secondary_filled" size="xl">
-            View Events
-          </ScrollButton>
-        </MainHero>
-        <HeroCard />
-        <ImpactBanner />
-        <div>
-          <ContentSection title="Featured Projects" className="px-none">
-            <FeaturedCarousel carouselData={featuredCarouselData} />
-          </ContentSection>
-          <ContentSection title="Events" icon={<FaCalendarAlt />} align="left">
-            <ContentHeader>
-              <ContentSubHeader>
-                <>
-                  <h3 className="font-serif font-normal italic">
-                    What's next at CCV
-                  </h3>
-                  <ButtonLink
-                    variant="primary_filled"
-                    size="lg"
-                    href="https://events.brown.edu/ccv/all"
-                  >
-                    View All Events
-                  </ButtonLink>
-                </>
-              </ContentSubHeader>
-            </ContentHeader>
-            <EventSection />
-          </ContentSection>
-        </div>
-      </>
-    )
-  } catch (err: any) {
-    console.error(err)
-    return (
-      <div className="my-6 px-2">
-        <p>{err.message}</p>
+          Work with Us
+        </ButtonLink>
+        <ScrollButton id="events" variant="secondary_filled" size="xl">
+          View Events
+        </ScrollButton>
+      </MainHero>
+      <HeroCard />
+      <ImpactBanner />
+      <div>
+        <ContentSection title="Featured Projects" className="px-none">
+          <FeaturedCarousel carouselData={featuredCarouselData} />
+        </ContentSection>
+        <ContentSection title="Events" icon={<FaCalendarAlt />} align="left">
+          <ContentHeader>
+            <ContentSubHeader>
+              <>
+                <h3 className="font-serif font-normal italic">
+                  What's next at CCV
+                </h3>
+                <ButtonLink
+                  variant="primary_filled"
+                  size="lg"
+                  href="https://events.brown.edu/ccv/all"
+                >
+                  View All Events
+                </ButtonLink>
+              </>
+            </ContentSubHeader>
+          </ContentHeader>
+          <EventSection />
+        </ContentSection>
       </div>
-    )
-  }
+    </>
+  )
 }
