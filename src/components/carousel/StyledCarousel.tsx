@@ -198,20 +198,15 @@ export function StyledCarousel({ carouselData }: StyledCarouselProps) {
       setCurrent(api.selectedScrollSnap())
     }
 
-    const handleReInit = () => {
-      setCurrent(api.scrollSnapList().length)
-      handleSelect()
-    }
+    // Following pattern set in Carousel.tsx which was from shadcn/ui's carousel component
 
-    setCurrent(api.scrollSnapList().length)
     handleSelect()
-
     api.on("select", handleSelect)
-    api.on("reInit", handleReInit)
+    api.on("reInit", handleSelect)
 
     return () => {
       api.off("select", handleSelect)
-      api.off("reInit", handleReInit)
+      api.off("reInit", handleSelect)
     }
   }, [api])
   return (
