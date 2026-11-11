@@ -20,12 +20,14 @@ interface DialogSearchProps {
 export function DialogSearch({ searchTitle }: DialogSearchProps): JSX.Element {
   const [open, setOpen] = React.useState(false)
   const pathname = usePathname()
+  const [prevPathname, setPrevPathname] = React.useState(pathname)
   const titleId = React.useId()
   const descriptionId = React.useId()
 
-  useEffect(() => {
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname)
     setOpen(false)
-  }, [pathname, setOpen])
+  }
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
