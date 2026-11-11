@@ -44,14 +44,11 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
 
   const ALL_DAYS_OF_WEEK = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"]
 
-  const TIMES_ARRAY = Array.from(Array(24), (_, i) => ({
-    key: Math.random(),
-    time: `${((i + 11) % 12) + 1}${i <= 11 ? "AM" : "PM"}`,
-  }))
-  const DAY_COLUMN_ARRAY = Array.from(Array(8), (_, i) => ({
-    key: Math.random(),
-    day: i,
-  }))
+  const TIMES_ARRAY = Array.from(
+    Array(24),
+    (_, i) => `${((i + 11) % 12) + 1}${i <= 11 ? "AM" : "PM"}`
+  )
+  const DAY_COLUMN_ARRAY = Array.from(Array(8), (_, i) => i)
 
   const todayRow = getDay(today) + 1
 
@@ -217,8 +214,8 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
                 style={{ gridTemplateRows: "repeat(48, minmax(3.5rem, 1fr))" }}
               >
                 <div ref={containerOffset} className="row-end-1 h-7"></div>
-                {TIMES_ARRAY.map(({ key, time }) => (
-                  <React.Fragment key={key}>
+                {TIMES_ARRAY.map((time) => (
+                  <React.Fragment key={time}>
                     <div>
                       <div className="sticky left-0 z-20 -ml-14 -mt-2.5 w-14 pr-2 text-right text-xs leading-5 text-gray-600">
                         <time dateTime={time}>{time}</time>
@@ -231,9 +228,9 @@ export function CalendarWeekly({ events, currentDate, today }: CalendarProps) {
 
               {/* Vertical lines */}
               <div className="col-start-1 col-end-2 row-start-1 hidden grid-cols-7 grid-rows-1 divide-x divide-gray-100 sm:grid sm:grid-cols-7">
-                {DAY_COLUMN_ARRAY.map(({ day, key }) => (
+                {DAY_COLUMN_ARRAY.map((day) => (
                   <div
-                    key={key}
+                    key={day}
                     className={`row-span-full ${CAL_STYLE_ARRAY[day]} ${
                       day === 7 ? "w-8" : ""
                     } ${
