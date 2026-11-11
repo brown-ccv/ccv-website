@@ -2,7 +2,7 @@ name: Build Search Index
 
 on:
   repository_dispatch:
-    types: [ ccv-documentation-updated ]
+    types: [ccv-documentation-updated]
 
 env:
   gcp_project_id: ccv-website-next
