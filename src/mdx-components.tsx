@@ -105,7 +105,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Link,
     LinkList: withNotProse(LinkList),
     TwoColumns,
-    img: ({ alt = "", ...props }) => (
+    img: ({ alt, ...props }) => (
       <Image
         {...props}
         alt={alt}
