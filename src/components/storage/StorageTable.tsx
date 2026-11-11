@@ -230,6 +230,8 @@ export function StorageTable({ services }: TableProps) {
     return [pinColumn, serviceColumn, ...featureColumns]
   }, [featureNames, featureMetadata, columnHelper])
 
+  // TanStack Table returns unmemoizable functions; React Compiler skips this component, which is expected
+  // eslint-disable-next-line react-hooks/incompatible-library
   const table = useReactTable({
     data: tableData,
     columns,
