@@ -16,21 +16,21 @@ jobs:
   build-release-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: google-github-actions/auth@v2
+      - uses: google-github-actions/auth@v3
         with:
           project_id: ${{ env.gcp_project_id }}
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           export_environment_variables: true
           create_credentials_file: true
 
-      - uses: "google-github-actions/setup-gcloud@v2"
+      - uses: google-github-actions/setup-gcloud@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "26.6"
+          node-version-file: .nvmrc
           cache: "npm"
 
       - name: Install dependencies
@@ -43,9 +43,9 @@ jobs:
           MEILISEARCH_MASTER_KEY: ${{ secrets.MEILISEARCH_MASTER_KEY }}
 
       - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+        uses: docker/setup-buildx-action@v4
 
-      - uses: docker/login-action@v3
+      - uses: docker/login-action@v4
         with:
           registry: ${{ env.gcp_registry_url }}
           username: _json_key
@@ -56,7 +56,7 @@ jobs:
         run: |
           gcloud auth configure-docker ${{ env.gcp_registry_url }}
 
-      - uses: docker/build-push-action@v6
+      - uses: docker/build-push-action@v7
         with:
           push: true
           tags: ${{ env.gcp_registry_url }}/${{ env.gcp_project_id }}/${{ env.gcp_artifact_registry }}/${{ env.image }}:latest
