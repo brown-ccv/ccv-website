@@ -21,5 +21,8 @@ jobs:
       - name: 🔬 Lint
         run: npm run lint -- --max-warnings=0
 
+      - name: Generate Next.js types
+        run: npx next typegen
+
       - name: 🔬 Typecheck
         run: npm run typecheck
