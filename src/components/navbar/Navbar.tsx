@@ -163,10 +163,12 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const pathname = usePathname()
+  const [prevPathname, setPrevPathname] = useState(pathname)
 
-  useEffect(() => {
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname)
     setIsMobileMenuOpen(false)
-  }, [pathname])
+  }
 
   return (
     <header className="sticky top-0 z-50">

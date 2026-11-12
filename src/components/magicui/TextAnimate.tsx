@@ -1,8 +1,18 @@
 "use client"
 
+// Refer to Magic UI's Text Animate component
+// Source: https://magicui.design/docs/components/text-animate
+
+import { memo } from "react"
+import {
+  AnimatePresence,
+  motion,
+  type DOMMotionComponents,
+  type MotionProps,
+  type Variants,
+} from "motion/react"
+
 import { cn } from "@/utils/helper"
-import { AnimatePresence, motion, MotionProps, Variants } from "motion/react"
-import { ElementType, memo } from "react"
 
 type AnimationType = "text" | "word" | "character" | "line"
 type AnimationVariant =
@@ -17,7 +27,27 @@ type AnimationVariant =
   | "scaleUp"
   | "scaleDown"
 
-interface TextAnimateProps extends MotionProps {
+const motionElements = {
+  article: motion.article,
+  div: motion.div,
+  h1: motion.h1,
+  h2: motion.h2,
+  h3: motion.h3,
+  h4: motion.h4,
+  h5: motion.h5,
+  h6: motion.h6,
+  li: motion.li,
+  p: motion.p,
+  section: motion.section,
+  span: motion.span,
+} as const
+
+type MotionElementType = Extract<
+  keyof DOMMotionComponents,
+  keyof typeof motionElements
+>
+
+interface TextAnimateProps extends Omit<MotionProps, "children"> {
   /**
    * The text content to animate
    */
@@ -45,7 +75,7 @@ interface TextAnimateProps extends MotionProps {
   /**
    * The element type to render
    */
-  as?: ElementType
+  as?: MotionElementType
   /**
    * How to split the text ("text", "word", "character")
    */
@@ -316,7 +346,7 @@ const TextAnimateBase = ({
   accessible = true,
   ...props
 }: TextAnimateProps) => {
-  const MotionComponent = motion.create(Component)
+  const MotionComponent = motionElements[Component]
 
   let segments: string[] = []
   switch (by) {
@@ -393,11 +423,7 @@ const TextAnimateBase = ({
         aria-label={accessible ? children : undefined}
         {...props}
       >
-        {accessible && (
-          <span className="sr-only" aria-live="polite">
-            {children}
-          </span>
-        )}
+        {accessible && <span className="sr-only">{children}</span>}
         {segments.map((segment, i) => (
           <motion.span
             key={`${by}-${segment}-${i}`}
@@ -408,7 +434,7 @@ const TextAnimateBase = ({
               by === "character" && "",
               segmentClassName
             )}
-            aria-hidden={accessible}
+            aria-hidden={accessible ? true : undefined}
           >
             {segment}
           </motion.span>

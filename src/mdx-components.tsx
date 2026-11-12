@@ -105,9 +105,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     Link,
     LinkList: withNotProse(LinkList),
     TwoColumns,
-    img: (props) => (
+    img: ({ alt, ...props }) => (
       <Image
         {...props}
+        alt={alt}
         width={800}
         height={600}
         className="h-auto max-w-full"

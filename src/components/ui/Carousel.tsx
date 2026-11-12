@@ -110,6 +110,10 @@ const Carousel = React.forwardRef<
         return
       }
 
+      // Initial sync of Embla's scroll state. Ignoring the lint error: this
+      // pattern comes from shadcn/ui's carousel and can cost one extra render
+      // when Embla initializes.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       onSelect(api)
       api.on("reInit", onSelect)
       api.on("select", onSelect)
