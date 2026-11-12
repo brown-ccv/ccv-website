@@ -22,7 +22,7 @@ interface DocConfig {
 }
 
 const OWNER = "brown-ccv"
-const REPO = "ccv-documentation"
+const REPO = "ccv-documentation-public"
 const BASE_URL = "https://docs.ccv.brown.edu"
 
 // -------------------- Secret --------------------
