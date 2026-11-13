@@ -48,6 +48,49 @@ async function configureIndex() {
   })
 }
 
+async function pruneStaleDocuments() {
+  const searchIndexData = loadSearchIndexData()
+  const { documents } = searchIndexData
+
+  // Guard: the docs-repo fetch fails soft, so a GitHub failure (or an empty
+  // build) would otherwise look like every documentation page was deleted
+  if (!documents.some((d) => d.type === "documentation")) {
+    console.warn("⚠️  No documentation documents found; skipping pruning.")
+    return
+  }
+
+  const index = client.index(INDEX_NAME)
+  const newIds = new Set(documents.map((d) => d.id))
+  const staleIds: string[] = []
+  const limit = 1000
+
+  try {
+    for (let offset = 0, total = 1; offset < total; offset += limit) {
+      const page = await index.getDocuments<{ id: string }>({
+        fields: ["id"],
+        limit,
+        offset,
+      })
+      staleIds.push(
+        ...page.results.map((d) => d.id).filter((id) => !newIds.has(id))
+      )
+      total = page.total
+    }
+  } catch (error) {
+    // Index doesn't exist yet on first run: nothing to prune
+    if (
+      (error as { cause?: { code?: string } }).cause?.code !== "index_not_found"
+    )
+      throw error
+  }
+
+  if (staleIds.length === 0) return
+
+  console.log(`🧹 Deleting ${staleIds.length} stale documents...`)
+  const task = await index.deleteDocuments(staleIds)
+  await waitForCompletion(task.taskUid)
+}
+
 async function addDocuments() {
   const searchIndexData = loadSearchIndexData()
   const { documents } = searchIndexData
@@ -89,6 +132,7 @@ async function waitForCompletion(taskUid: number) {
 async function syncSearchIndex() {
   try {
     await configureIndex()
+    await pruneStaleDocuments()
     const { taskUid, documentCount } = await addDocuments()
 
     console.log(`📤 Uploading ${documentCount} documents...`)
