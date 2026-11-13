@@ -2,6 +2,7 @@ import { config } from "dotenv"
 import { MeiliSearch } from "meilisearch"
 import fs from "fs"
 import path from "path"
+import type { SearchDocument } from "@/utils/search-utils"
 
 // Load .env.local only if it exists (local dev)
 const envPath = path.join(process.cwd(), ".env.local")
@@ -17,7 +18,7 @@ const client = new MeiliSearch({
 
 const INDEX_NAME = "pages"
 
-function loadSearchIndexData() {
+function loadSearchIndexData(): { documents: SearchDocument[] } {
   const indexPath = path.join(process.cwd(), "src/content", "search-index.json")
 
   if (!fs.existsSync(indexPath)) {
