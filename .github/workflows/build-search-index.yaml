@@ -4,6 +4,10 @@ on:
   repository_dispatch:
     types: [ccv-documentation-updated]
 
+concurrency:
+  group: meilisearch-index
+  cancel-in-progress: false
+
 env:
   gcp_project_id: ccv-website-next
   gcp_registry_url: us-central1-docker.pkg.dev
