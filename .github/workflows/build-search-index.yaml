@@ -13,6 +13,9 @@ env:
 jobs:
   build-search-index:
     runs-on: ubuntu-latest
+    concurrency:
+      group: meilisearch-index
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v7
 

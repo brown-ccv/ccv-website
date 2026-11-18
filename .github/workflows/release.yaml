@@ -13,8 +13,15 @@ env:
   SITE_URL: https://ccv.brown.edu
 
 jobs:
-  build-release-and-deploy:
+  # Index writes are serialized across workflows. A pending index run may be
+  # superseded by a newer one, which is safe because every run indexes the
+  # latest content. Deploys are deliberately NOT in this group so a pending
+  # release is never dropped.
+  update-search-index:
     runs-on: ubuntu-latest
+    concurrency:
+      group: meilisearch-index
+      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v7
 
@@ -24,8 +31,6 @@ jobs:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
           export_environment_variables: true
           create_credentials_file: true
-
-      - uses: google-github-actions/setup-gcloud@v3
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -41,6 +46,20 @@ jobs:
         env:
           MEILISEARCH_HOST: ${{ secrets.MEILISEARCH_HOST }}
           MEILISEARCH_MASTER_KEY: ${{ secrets.MEILISEARCH_MASTER_KEY }}
+
+  build-release-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: google-github-actions/auth@v3
+        with:
+          project_id: ${{ env.gcp_project_id }}
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+          export_environment_variables: true
+          create_credentials_file: true
+
+      - uses: google-github-actions/setup-gcloud@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
